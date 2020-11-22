@@ -19,6 +19,10 @@ Preparation notes and tips & tricks for DCA (Docker Certified Associate) exam.
   - > Options are randomly presented, one at a time.
       For each presented option, the examinee chooses YES or NO to indicate if the option is correct.
 
+## Docker Architecture
+
+![](./out/diagrams/docker-architecture/Docker%20Architecture.png)
+
 ## Tips & Tricks
 
 ## Links and resources

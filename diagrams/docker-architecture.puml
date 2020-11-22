@@ -1,0 +1,44 @@
+@startuml Docker Architecture
+title High Level docker Architecture
+
+!include <cloudinsight/docker>
+!include <cloudinsight/linux>
+
+' Remove UML component notation
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+package "<$docker> Docker" as runtime {
+
+    component "Docker CLI" as dockercli
+    component "REST API" as restapi
+
+    dockercli <--> restapi
+    node "Docker Deamon" as dockerdeamon {
+        [Images]
+        [Volumes]
+        [Networks]
+    }
+    restapi <--> dockerdeamon
+    component libcontainer
+    dockerdeamon <-[hidden]-> libcontainer
+
+    node containerd {
+        [Manage Containers]
+    }
+    node runC {
+        [Run Containers]
+    }
+
+    dockerdeamon --- containerd
+    containerd --- runC
+}
+
+package "<$linux> Linux" as linux {
+    component "namespace"
+    component "CGroups"
+}
+
+libcontainer - linux
+
+@enduml
