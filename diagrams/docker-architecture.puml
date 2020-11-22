@@ -1,8 +1,9 @@
 @startuml Docker Architecture
 title High Level docker Architecture
 
-!include <cloudinsight/docker>
-!include <cloudinsight/linux>
+'!include <cloudinsight/docker>
+!include <tupadr3/devicons/linux>
+!include <tupadr3/devicons/docker>
 
 ' Remove UML component notation
 skinparam componentStyle rectangle

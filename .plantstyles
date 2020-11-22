@@ -1,5 +1,6 @@
 skinparam defaultFontName  Helvetica
 skinparam sequenceMessageAlign center
+skinparam defaultTextAlignment center
 skinparam monochrome true
 skinparam componentStyle rectangle
 skinparam linetype ortho
