@@ -21,7 +21,7 @@ Preparation notes and tips & tricks for DCA (Docker Certified Associate) exam.
 
 ## Docker Architecture
 
-![](./out/diagrams/docker-architecture/Docker%20Architecture.png)
+![](./diagrams/docker-architecture.png)
 
 ## Tips & Tricks
 

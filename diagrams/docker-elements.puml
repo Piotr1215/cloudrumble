@@ -1,0 +1,20 @@
+@startuml High Level Components For Running Docker Containers
+title High Level Components For Running Docker Containers
+
+!include <cloudinsight/docker>
+!include <cloudinsight/linux>
+
+' Remove UML component notation
+
+package "<$docker> Docker Runtime" as runtime {
+    component "namespaces"
+    component "CGroupss"
+
+}
+
+package "<$registry> Linux" as linux {
+    component "namespace"
+    component "CGroups"
+}
+
+@enduml
