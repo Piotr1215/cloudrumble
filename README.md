@@ -15,6 +15,7 @@ Table of Contents
     - [Different ways of copying files](#different-ways-of-copying-files)
     - [Docker deamon stop behavior](#docker-deamon-stop-behavior)
     - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
+    - [Ports mapping](#ports-mapping)
     - [Expose docker host to enable running docker CLI commands from outside](#expose-docker-host-to-enable-running-docker-cli-commands-from-outside)
     - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
     - [Check Docker Status](#check-docker-status)
@@ -76,6 +77,10 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 Configuration file is located at `/etc/docker/deamon.json` and is by default in `json` format.
 This file is not present by default.
+
+### Ports mapping
+
+> Hint: Prefer using "-p" option with static port when running containers in production.
 
 ### Expose docker host to enable running docker CLI commands from outside
 
@@ -146,5 +151,3 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 |----------------|----------------|----------------|
 |  OCI |  Open Container Initiative | https://opencontainers.org/|
 | Unix Socket  | Intra-process communication between linux processes/services  | |
-
-
