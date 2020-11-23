@@ -13,7 +13,9 @@ Table of Contents
   - [Tips & Tricks](#tips--tricks)
     - [Where is everything stored](#where-is-everything-stored)
     - [Different ways of copying files](#different-ways-of-copying-files)
-    - [Docker deamon stop behavior](#docker-deamon-stop-behavior)
+    - [Check logs to troubleshoot docker service](#check-logs-to-troubleshoot-docker-service)
+    - [Logging in docker](#logging-in-docker)
+    - [Docker daemon stop behavior](#docker-daemon-stop-behavior)
     - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
     - [Ports mapping](#ports-mapping)
     - [Expose docker host to enable running docker CLI commands from outside](#expose-docker-host-to-enable-running-docker-cli-commands-from-outside)
@@ -64,10 +66,19 @@ Once installed, docker creates a folder under `/etc/lib/docker/` where all the c
 
 Copying files is very easy, first parameter after cp command is source and second destination.
 
-1. Copy file from host to contianer: `docker container cp /tmp/file.txt container_name:/tmp/file.txt`
-2. Copy file from contianer tp host: `docker container cp container_name:/tmp/file.txt /tmp/file.txt`
+1. Copy file from host to continuer: `docker container cp /tmp/file.txt container_name:/tmp/file.txt`
+2. Copy file from container tp host: `docker container cp container_name:/tmp/file.txt /tmp/file.txt`
 
-### Docker deamon stop behavior
+### Check logs to troubleshoot docker service
+
+- Check system logs: `journalctl -u docker.service`
+- Check free space on the host: `df -h`, use `docker container prune` or `docker image prune` to get rid of stale containers/images
+
+### Logging in docker
+
+Default logging drive for docker is __json-file__.
+
+### Docker daemon stop behavior
 
 By default once docker deamon is stopped or crashes all containers will be stopped as well.
 
