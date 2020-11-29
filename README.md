@@ -17,9 +17,11 @@ Table of Contents
     - [Logging in docker](#logging-in-docker)
     - [Docker daemon stop behavior](#docker-daemon-stop-behavior)
     - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
+    - [Building Images](#building-images)
     - [Ports mapping](#ports-mapping)
     - [Expose docker host to enable running docker CLI commands from outside](#expose-docker-host-to-enable-running-docker-cli-commands-from-outside)
     - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
+  - [Useful Commands](#useful-commands)
     - [Check Docker Status](#check-docker-status)
     - [Stop all running containers](#stop-all-running-containers)
     - [Setup container hostname](#setup-container-hostname)
@@ -46,7 +48,7 @@ Table of Contents
 
 ## Docker Architecture
 
-![](./diagrams/docker-architecture.png)
+![Docker Architecture](./diagrams/docker-architecture.png)
 
 ### Docker CLI syntax
 
@@ -86,8 +88,12 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ### Change docker daemon host configuration
 
-Configuration file is located at `/etc/docker/deamon.json` and is by default in `json` format.
+Configuration file is located at `/etc/docker/daemon.json` and is by default in `json` format.
 This file is not present by default.
+
+### Building Images
+
+Docker images can be build directly from a git repository. So for example
 
 ### Ports mapping
 
@@ -117,37 +123,46 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 4. Logoff and login with the docker user.
 5. Optional - restart docker service: `sudo systemctl restart docker`
 
+## Useful Commands
+
+This section describes useful docker CLI commands in following format:
+> **Command:** - docker command syntax
+>
+> **When is it useful:** - common usecases when command should be used
+>
+> **Result:** - what is the extected behavior or
+
 ### Check Docker Status
 
-  **Command:** `docker system info`
-
-  **When is it useful:** quickly see how many containers are running and what is the status of host OS
-
-  **Result:** information about docker host environment and containers
+>**Command:** `docker system info`
+>
+>**When is it useful:** quickly see how many containers are running and what is the status of host OS
+>
+>**Result:** information about docker host environment and containers
 
 ### Stop all running containers
 
-  **Command:** `docker container stop $(docker container ls -q)`
-
-  **When is it useful:** quickly stop all running containers at once.
-
-  **Result:** all containers are stopped.
+>**Command:** `docker container stop $(docker container ls -q)`
+>
+>**When is it useful:** quickly stop all running containers at once.
+>
+>**Result:** all containers are stopped.
 
 ### Setup container hostname
 
-  **Command:** `docker container run -it --name=ingress --hostname=nginx nginx`
-
-  **When is it useful:** default hostname is container id, setting up recognizable hostname can help with logging etc.
-
-  **Result:** container hostname is set to custom one.
+>**Command:** `docker container run -it --name=ingress --hostname=nginx nginx`
+>
+>**When is it useful:** default hostname is container id, setting up recognizable hostname can help with logging etc.
+>
+>**Result:** container hostname is set to custom one.
 
 ### Automatically remove the container when it exits
 
-  **Command:** `docker container run -d --name=ingress --rm nginx`
-
-  **When is it useful:** run a container and automatically remove it once stopped. This is very usefully when running CI/CD containers.
-
-  **Result:** container starts and is removed once it's stopped.
+>**Command:** `docker container run -d --name=ingress --rm nginx`
+>
+>**When is it useful:** run a container and automatically remove it once stopped. This is very usefully when running CI/CD containers.
+>
+>**Result:** container starts and is removed once it's stopped.
 
 ## Links and resources
 
