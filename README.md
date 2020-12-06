@@ -9,6 +9,7 @@ Table of Contents
     - [Certification](#certification)
     - [Exam](#exam)
   - [Docker Architecture](#docker-architecture)
+    - [Components Diagram](#components-diagram)
     - [Docker CLI syntax](#docker-cli-syntax)
   - [Tips & Tricks](#tips--tricks)
     - [Where is everything stored](#where-is-everything-stored)
@@ -21,11 +22,16 @@ Table of Contents
     - [Ports mapping](#ports-mapping)
     - [Expose docker host to enable running docker CLI commands from outside](#expose-docker-host-to-enable-running-docker-cli-commands-from-outside)
     - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
+    - [Docker Security](#docker-security)
+    - [How to control how resources a container can consume](#how-to-control-how-resources-a-container-can-consume)
+      - [CPU](#cpu)
+      - [Memory](#memory)
   - [Useful Commands](#useful-commands)
     - [Check Docker Status](#check-docker-status)
     - [Stop all running containers](#stop-all-running-containers)
     - [Setup container hostname](#setup-container-hostname)
     - [Automatically remove the container when it exits](#automatically-remove-the-container-when-it-exits)
+    - [Add or remove capabilities for the user running a container](#add-or-remove-capabilities-for-the-user-running-a-container)
   - [Links and resources](#links-and-resources)
   - [Definitions](#definitions)
 
@@ -47,6 +53,8 @@ Table of Contents
       For each presented option, the examinee chooses YES or NO to indicate if the option is correct.
 
 ## Docker Architecture
+
+### Components Diagram
 
 ![Docker Architecture](./diagrams/docker-architecture.png)
 
@@ -123,6 +131,28 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 4. Logoff and login with the docker user.
 5. Optional - restart docker service: `sudo systemctl restart docker`
 
+### Docker Security
+
+![Layered Security](diagrams/docker-security-layers.png)
+
+### How to control how resources a container can consume
+
+#### CPU
+
+__Option 1:__
+If host has multiple CPUs, it is possible to assign each container a specific CPU.
+
+__Option 2:__
+If host has multiple CPUs, it is possible to restrict how many CPUs can given container use.
+
+It's worth noting that container orchestrators (like Kubernetes) provide declarative methods to restrict resources usage per run-time unit (pod in case of Kubernetes).
+
+#### Memory
+
+__Option 1:__
+Run container with `--memory=limit` flag to restrict use of memory.
+If a container tries to consume more memory than its limit, system will kill it exiting the process with Out Of Memory Exception (OOM). By default container will be allowed to consume same amount of SWAP space as the memory limit, effectively doubling the memory limit. Providing of course that SWAP space is not disabled on the host.
+
 ## Useful Commands
 
 This section describes useful docker CLI commands in following format:
@@ -130,7 +160,7 @@ This section describes useful docker CLI commands in following format:
 >
 > **When is it useful:** - common usecases when command should be used
 >
-> **Result:** - what is the extected behavior or
+> **Result:** - what is the expected behavior or
 
 ### Check Docker Status
 
@@ -164,6 +194,14 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** container starts and is removed once it's stopped.
 
+### Add or remove capabilities for the user running a container
+
+>**Command:** `docker run --cap-add/--cap-drop KILL nginx` or `docker run --privileged nginx`
+>
+>**When is it useful:** This command is useful when elevating or dropping privileges on the user running container. By default containers run with limited root privileges. Second command runs container with full user privileges.
+>
+>**Result:** container is run with expected privileges.
+
 ## Links and resources
 
 1. [Docker Certified Associate Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf)
@@ -177,3 +215,6 @@ This section describes useful docker CLI commands in following format:
 |----------------|----------------|----------------|
 |  OCI |  Open Container Initiative | https://opencontainers.org/|
 | Unix Socket  | Intra-process communication between linux processes/services  | |
+| Containers Namespaces  | Dedicated Linux namespace per container ensures process isolation | |
+| CGroups (Control Groups)  | Linux feature allowing control over CPU and memory resources per process | |
+| SWAP space  | Space on a hard drive that can be used in case server runs out of RAM capacity. SWAP space can also be disabled  | |
