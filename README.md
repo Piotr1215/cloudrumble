@@ -139,17 +139,19 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 
 #### CPU
 
-__Option 1:__
+Default CPU share per container is 1024
+
+**Option 1:**
 If host has multiple CPUs, it is possible to assign each container a specific CPU.
 
-__Option 2:__
+**Option 2:**
 If host has multiple CPUs, it is possible to restrict how many CPUs can given container use.
 
 It's worth noting that container orchestrators (like Kubernetes) provide declarative methods to restrict resources usage per run-time unit (pod in case of Kubernetes).
 
 #### Memory
 
-__Option 1:__
+**Option 1:**
 Run container with `--memory=limit` flag to restrict use of memory.
 If a container tries to consume more memory than its limit, system will kill it exiting the process with Out Of Memory Exception (OOM). By default container will be allowed to consume same amount of SWAP space as the memory limit, effectively doubling the memory limit. Providing of course that SWAP space is not disabled on the host.
 
