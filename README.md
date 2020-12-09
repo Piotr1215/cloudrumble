@@ -216,7 +216,7 @@ This section describes useful docker CLI commands in following format:
 |  <div style="min-width:200px">Term</div> |  Definition | Link |
 |----------------|----------------|----------------|
 |  OCI |  Open Container Initiative | https://opencontainers.org/|
-| Unix Socket  | Intra-process communication between linux processes/services  | |
+| Unix Socket  | Intra-process communication between linux processes/services  | https://beej.us/guide/bgipc/html/multi/unixsock.html |
 | Containers Namespaces  | Dedicated Linux namespace per container ensures process isolation | |
 | CGroups (Control Groups)  | Linux feature allowing control over CPU and memory resources per process | |
 | SWAP space  | Space on a hard drive that can be used in case server runs out of RAM capacity. SWAP space can also be disabled  | |
