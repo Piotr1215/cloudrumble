@@ -13,7 +13,9 @@ Table of Contents
     - [Docker CLI syntax](#docker-cli-syntax)
   - [Tips & Tricks](#tips--tricks)
     - [Where is everything stored](#where-is-everything-stored)
-    - [Different ways of copying files](#different-ways-of-copying-files)
+    - [Container Layer](#container-layer)
+    - [Mounting volumes syntax](#mounting-volumes-syntax)
+    - [How to copy files](#how-to-copy-files)
     - [Check logs to troubleshoot docker service](#check-logs-to-troubleshoot-docker-service)
     - [Logging in docker](#logging-in-docker)
     - [Docker daemon stop behavior](#docker-daemon-stop-behavior)
@@ -70,9 +72,19 @@ Docker CLI has following syntax:
 
 ### Where is everything stored
 
-Once installed, docker creates a folder under `/etc/lib/docker/` where all the containers, images, volumes and configurations are stored.
+Once installed, docker creates a folder under `/var/lib/docker/` where all the containers, images, volumes and configurations are stored.
 
-### Different ways of copying files
+### Container Layer
+
+By default all docker image layers are immutable (read-only). When container is created using `docker run` command, an additional mutable (read-write) layer is created. **This layer is only there for the duration of container lifetime and will be removed once container exits**. When modifying any files in a running container, docker creates a copy of the file and moves it to container layer (COPY-ON-WRITE) before changes are saved. Original files as part of the image are never changed.
+
+### Mounting volumes syntax
+
+Template: `docker run -v volume_name:<path to store in container> container_name`
+
+Example: `docker run -v data_vol:/var/lib/nginx_data nginx`
+
+### How to copy files
 
 Copying files is very easy, first parameter after cp command is source and second destination.
 
