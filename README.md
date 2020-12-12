@@ -18,6 +18,7 @@ Table of Contents
     - [How to copy files](#how-to-copy-files)
     - [Check logs to troubleshoot docker service](#check-logs-to-troubleshoot-docker-service)
     - [Logging in docker](#logging-in-docker)
+    - [Docker Compose](#docker-compose)
     - [Docker daemon stop behavior](#docker-daemon-stop-behavior)
     - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
     - [Building Images](#building-images)
@@ -80,9 +81,31 @@ By default all docker image layers are immutable (read-only). When container is 
 
 ### Mounting volumes syntax
 
-Template: `docker run -v volume_name:<path to store in container> container_name`
+List of common storage drivers:
 
-Example: `docker run -v data_vol:/var/lib/nginx_data nginx`
+- AUFS - Ubuntu default
+- ZFS
+- BTRFS
+- Device Mapper
+- Overlay
+- Overlay2
+
+<u>Wit volume mount</u>
+
+Template old syntax: `docker run -v volume_name:<path to store in container> container_name`
+
+Template new syntax: `docker run --mount source=volume_name,target=<path to store in container> container_name`
+
+Example old syntax: `docker run -v data_vol:/var/lib/nginx_data nginx`
+
+<u>Wit bind mount</u>
+
+Template old syntax: `docker run -v <full path to folder in docker host>:<full path to folder in container> container_name`
+
+Template new syntax:
+`docker run --mount type=bind,source=<full path to folder in docker host>,target=<path to store in container> container_name`
+
+Example old syntax: `docker run -v /data/nginx_data:/var/lib/nginx_data nginx`
 
 ### How to copy files
 
@@ -99,6 +122,10 @@ Copying files is very easy, first parameter after cp command is source and secon
 ### Logging in docker
 
 Default logging drive for docker is __json-file__.
+
+### Docker Compose
+
+By default docker compose will pull images from configured images repository (Docker Hub by default), but it's possible to specify `build` directive instead of `image` with a path to `Dockerfile`
 
 ### Docker daemon stop behavior
 

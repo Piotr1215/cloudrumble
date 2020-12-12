@@ -1,0 +1,16 @@
+version: "3"
+services:
+  redis:
+   image: redis
+  db:
+   image: postgres:9.4
+  vote:
+   build: ../example-voting-app/vote
+   ports:
+    - 5000:80
+  result:
+   build: ../example-voting-app/result
+   ports:
+    - 5001:80
+  worker:
+   build: ../example-voting-app/worker
