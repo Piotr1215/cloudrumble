@@ -64,7 +64,7 @@ Table of Contents
 
 ### Docker Networking
 
-![Docker Networking Mindmap](./diagrams/docker-networks.png)
+![Docker Networking Mindmap](./diagrams/Docker-Networks.png)
 
 > <font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
 
