@@ -66,7 +66,7 @@ Table of Contents
 
 ![Docker Networking Mindmap](./diagrams/docker-networks.png)
 
-><font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
+> <font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
 
 ### Docker CLI syntax
 
