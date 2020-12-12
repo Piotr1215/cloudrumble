@@ -1,9 +1,3 @@
-skinparam defaultFontName  Helvetica
-skinparam sequenceMessageAlign center
-skinparam defaultTextAlignment center
-skinparam monochrome false
-skinparam componentStyle rectangle
-skinparam linetype ortho
 
 skinparam activity {
     ArrowColor Black
@@ -61,11 +55,20 @@ skinparam component {
     InterfaceBackgroundColor White
     BorderColor Black
     InterfaceBorderColor Black
+    skinparam componentStyle rectangle
+    skinparam linetype ortho
+    skinparam defaultFontName  Helvetica
+    skinparam sequenceMessageAlign center
+    skinparam defaultTextAlignment center
+    skinparam monochrome false
 }
 
 skinparam note {
     BackgroundColor White
     BorderColor Black
+    skinparam sequenceMessageAlign center
+    skinparam defaultTextAlignment center
+    skinparam monochrome false
 }
 
 skinparam state {

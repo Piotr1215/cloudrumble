@@ -10,6 +10,7 @@ Table of Contents
     - [Exam](#exam)
   - [Docker Architecture](#docker-architecture)
     - [Components Diagram](#components-diagram)
+    - [Docker Networking](#docker-networking)
     - [Docker CLI syntax](#docker-cli-syntax)
   - [Tips & Tricks](#tips--tricks)
     - [Where is everything stored](#where-is-everything-stored)
@@ -60,6 +61,12 @@ Table of Contents
 ### Components Diagram
 
 ![Docker Architecture](./diagrams/docker-architecture.png)
+
+### Docker Networking
+
+![Docker Networking Mindmap](./diagrams/docker-networks.png)
+
+><font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
 
 ### Docker CLI syntax
 
