@@ -1,0 +1,26 @@
+@startmindmap Orchesrtation
+
+*[#lightblue] **Orchestration**
+** **Containers**
+***[#lightgreen] App configuration
+***[#lightgreen] Provisioning, deployment
+***[#lightgreen] Container availability
+***[#lightgreen] Container scaling
+***[#lightgreen] Security, secure communication
+***[#lightgreen] Allocating resources between containers
+***[#lightgreen] Load balancing between replicas
+***[#lightgreen] Routing
+***[#lightgreen] Health Monitoring
+***[#lightgreen] Containers allocaiton/scheduling to nodes
+
+left side
+
+** **Nodes**
+***[#lightgray] Nodes configuration
+***[#lightgray] Health Monitoring
+***[#lightgray] Nodes scaling
+***[#lightgray] Load balancing between nodes
+***[#lightgray] Volumes/Storage synchronization
+***[#lightgray] Provisioning, deployment
+
+@endmindmap

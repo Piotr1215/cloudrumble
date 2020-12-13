@@ -8,11 +8,14 @@ Table of Contents
   - [Exam and certification info](#exam-and-certification-info)
     - [Certification](#certification)
     - [Exam](#exam)
+      - [Exam topics](#exam-topics)
+      - [Basic Info](#basic-info)
   - [Docker Architecture](#docker-architecture)
-    - [Components Diagram](#components-diagram)
+    - [Docker Components](#docker-components)
     - [Docker Networking](#docker-networking)
-    - [Docker CLI syntax](#docker-cli-syntax)
+  - [Orchestration](#orchestration)
   - [Tips & Tricks](#tips--tricks)
+    - [Docker CLI syntax](#docker-cli-syntax)
     - [Where is everything stored](#where-is-everything-stored)
     - [Container Layer](#container-layer)
     - [Mounting volumes syntax](#mounting-volumes-syntax)
@@ -48,6 +51,19 @@ Table of Contents
 
 ### Exam
 
+#### Exam topics
+
+| Topic                                    | % of exam questions |
+|------------------------------------------|---------------------|
+| Orchestration                            | 25%                 |
+| Image Creation, Management, and Registry | 20%                 |
+| Installation and Configuration           | 15%                 |
+| Networking                               | 15%                 |
+| Security                                 | 15%                 |
+| Storage and Volumes                      | 10%                 |
+
+#### Basic Info
+
 - Exam can be taken remotely
 - **90** minutes to answer **55** questions
 - All questions are multiple choice
@@ -58,7 +74,9 @@ Table of Contents
 
 ## Docker Architecture
 
-### Components Diagram
+This section contains set of `Plantuml` diagrams  (component, sequence, mindmaps) to visualize and better understand architectural concepts in Docker. All diagrams are available in [Diagrams](/diagrams) folder.
+
+### Docker Components
 
 ![Docker Architecture](./diagrams/docker-architecture.png)
 
@@ -68,6 +86,12 @@ Table of Contents
 
 > <font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
 
+## Orchestration
+
+![Orchestration](diagrams/docker-orchestration.png)
+
+## Tips & Tricks
+
 ### Docker CLI syntax
 
 Docker CLI has following syntax:
@@ -75,8 +99,6 @@ Docker CLI has following syntax:
 **Syntax:** `docker <docker-object> <sub-command> <-options> <arguments/commands>`
 
 **Example**: `docker container run -it ubuntu`
-
-## Tips & Tricks
 
 ### Where is everything stored
 
