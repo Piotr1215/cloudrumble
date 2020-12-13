@@ -10,6 +10,11 @@ Table of Contents
     - [Exam](#exam)
       - [Exam topics](#exam-topics)
       - [Basic Info](#basic-info)
+  - [Learning Plan](#learning-plan)
+    - [1. Find a good online training](#1-find-a-good-online-training)
+    - [2. Go though mock questions and exams](#2-go-though-mock-questions-and-exams)
+    - [3. Practice with docker](#3-practice-with-docker)
+    - [4. Make notes](#4-make-notes)
   - [Docker Architecture](#docker-architecture)
     - [Docker Components](#docker-components)
     - [Docker Networking](#docker-networking)
@@ -71,6 +76,43 @@ Table of Contents
   - 52 questions are *Discrete Option Multiple Choice (DOMC)* where
   - > Options are randomly presented, one at a time.
       For each presented option, the examinee chooses YES or NO to indicate if the option is correct.
+
+## Learning Plan
+
+### 1. Find a good online training
+
+As a primary learning source I have used Kodekloud's [Docker Certified Associate Exam Course](https://kodekloud.com/p/docker-certified-associate-exam-course).
+
+I have already passed, and blogged about [CKA](https://medium.com/faun/preparation-and-resources-for-cka-exam-ca868fc678c9) and [CKAD](https://piotrzan.medium.com/preparation-and-resources-for-ckad-exam-ea1b2e8888e3) and there is significant overlap with Kubernetes orchestration part and containers basics.
+
+There is a great repo by [Govinda Fichtner](https://github.com/Govinda-Fichtner) where there are links to docker documentation organized per learning topic. You can find the repo here: [DCA Prep Guide from DevOps-Academy](https://github.com/DevOps-Academy-Org/dca-prep-guide).
+
+### 2. Go though mock questions and exams
+
+Since the exam is in the form of questions, it is important to exercise as much as possible and go thought questions and mock exams. Kodekloud course I've mentioned before has a lot of quesitons build in, but there are also free mock exams and questions. One from medium I find very good:
+[Medium blog - 250 Practice Questions for the DCA Exam](https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce).
+
+### 3. Practice with docker
+
+In this exam practical exercises are not as important as in CKA and CKAD for example, but I still find it valuable to follow up a theoretical session with a practical review.
+
+There is a free service there you can spin up a few vms (some of them already have docker swarm preinstalled) and exercise without installing anything on your machine!
+
+[Interactive online docker environments on demand: docker](https://labs.play-with-docker.com/)
+
+There is also a similar service for exercising with Kubernetes and is very useful for the Kubernetes orchestration part.
+
+[Interactive online docker environments on demand: kubernetes](https://labs.play-with-k8s.com/)
+
+### 4. Make notes
+
+This article and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
+
+Sections below contain my notes and diagrams as well as docker commands and tips and tricks. This is by definition an opinionated learning material, but I hope you will find it useful on your journey to learning and passing Docker Certified Associate exam.
+
+Please let me know in comments if you spot an error and feel free to do a PR if you would like to contribute to the repo.
+
+I wish you best of luck on getting the Docker Certified Associate certification :)
 
 ## Docker Architecture
 
