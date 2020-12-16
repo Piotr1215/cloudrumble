@@ -132,6 +132,10 @@ This section contains set of `Plantuml` diagrams  (component, sequence, mindmaps
 
 ![Orchestration](diagrams/docker-orchestration.png)
 
+There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
+
+I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
+
 ## Tips & Tricks
 
 ### Docker CLI syntax
@@ -145,6 +149,9 @@ Docker CLI has following syntax:
 ### Where is everything stored
 
 Once installed, docker creates a folder under `/var/lib/docker/` where all the containers, images, volumes and configurations are stored.
+
+Kubernetes and Docker Swarm store cluster state and related information in [etcd](https://etcd.io/).
+etcd by default listens on port `2380` for client connections.
 
 ### Container Layer
 
@@ -193,6 +200,25 @@ Copying files is very easy, first parameter after cp command is source and secon
 ### Logging in docker
 
 Default logging drive for docker is __json-file__.
+To change logging driver to for example splunk, update deamon.json, like so:
+
+`echo ‘{“log-driver”: “splunk”}’ > /var/lib/docker/daemon.json`
+
+List of supported logging drivers:
+| Driver     | Description                                                                                                 |
+|------------|-------------------------------------------------------------------------------------------------------------|
+| none       | No logs are available for the container and docker logs does not return any output\.                        |
+| local      | Logs are stored in a custom format designed for minimal overhead\.                                          |
+| json\-file | The logs are formatted as JSON\. The default logging driver for Docker\.                                    |
+| syslog     | Writes logging messages to the syslog facility\. The syslog daemon must be running on the host machine\.    |
+| journald   | Writes log messages to journald\. The journald daemon must be running on the host machine\.                 |
+| gelf       | Writes log messages to a Graylog Extended Log Format \(GELF\) endpoint such as Graylog or Logstash\.        |
+| fluentd    | Writes log messages to fluentd \(forward input\)\. The fluentd daemon must be running on the host machine\. |
+| awslogs    | Writes log messages to Amazon CloudWatch Logs\.                                                             |
+| splunk     | Writes log messages to splunk using the HTTP Event Collector\.                                              |
+| etwlogs    | Writes log messages as Event Tracing for Windows \(ETW\) events\. Only available on Windows platforms\.     |
+| gcplogs    | Writes log messages to Google Cloud Platform \(GCP\) Logging\.                                              |
+| logentries | Writes log messages to Rapid7 Logentries\.                                                                  |
 
 ### Docker Compose
 
