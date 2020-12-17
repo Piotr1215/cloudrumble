@@ -1,1 +1,4 @@
-theme: jekyll-theme-hacker
+title: Docker Certified Associate (DCA) Exam Prep
+show_downloads: true
+# theme: jekyll-theme-hacker
+remote_theme: benbalter/retlab
