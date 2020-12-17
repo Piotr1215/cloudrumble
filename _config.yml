@@ -1,6 +1,8 @@
 title: Docker Certified Associate (DCA)
 subtitle:  Exam preparation notes
+baseurl: https://github.com/Piotr1215/dca-prep-kit
 show_downloads: true
 # theme: jekyll-theme-hacker
 # remote_theme: benbalter/retlab
-remote_theme: enfield-jekyll-theme
+remote_theme: chauff/cse-theme
+cssTheme: dark-blue
