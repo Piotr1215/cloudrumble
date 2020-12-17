@@ -4,5 +4,4 @@ show_downloads: true
 url: https://piotr1215.github.io/dca-prep-kit/
 # theme: jekyll-theme-hacker
 # remote_theme: benbalter/retlab
-remote_theme: minimal-mistakes-jekyll
-minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+remote_theme: enfield-jekyll-theme
