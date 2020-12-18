@@ -58,14 +58,15 @@ Table of Contents
 
 #### Exam topics
 
+
 | Topic                                    | % of exam questions |
-|------------------------------------------|---------------------|
-| Orchestration                            | 25%                 |
-| Image Creation, Management, and Registry | 20%                 |
-| Installation and Configuration           | 15%                 |
-| Networking                               | 15%                 |
-| Security                                 | 15%                 |
-| Storage and Volumes                      | 10%                 |
+| ---------------------------------------- |:-------------------:|
+| Orchestration                            |         25%         |
+| Image Creation, Management, and Registry |         20%         |
+| Installation and Configuration           |         15%         |
+| Networking                               |         15%         |
+| Security                                 |         15%         |
+| Storage and Volumes                      |         10%         |
 
 #### Basic Info
 
