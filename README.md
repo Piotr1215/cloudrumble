@@ -41,6 +41,7 @@ Table of Contents
       - [Memory](#memory)
   - [Useful Commands](#useful-commands)
     - [Check Docker Status](#check-docker-status)
+    - [Remove all unused docker artifacts](#remove-all-unused-docker-artifacts)
     - [Stop all running containers](#stop-all-running-containers)
     - [Setup container hostname](#setup-container-hostname)
     - [Automatically remove the container when it exits](#automatically-remove-the-container-when-it-exits)
@@ -299,6 +300,22 @@ This section describes useful docker CLI commands in following format:
 >**When is it useful:** quickly see how many containers are running and what is the status of host OS
 >
 >**Result:** information about docker host environment and containers
+
+### Remove all unused docker artifacts
+
+>**Command:** `docker system prune --all`
+>
+>**Command Variation:** `docker system prune --all --volumes`
+>
+>**When is it useful:** when learning or experimenting with docker, it is useful to clear unused artifacts without resetting the whole environment. Command variation with `--volumes` flag will also remove volumes.
+>
+>**Result:** following will be removed:
+>
+> - all stopped containers
+> - all networks not used by at least one container
+> - all images without at least one container associated to them
+> - all build cache
+> - volumes (if `--volumes` flag is used)
 
 ### Stop all running containers
 
