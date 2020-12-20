@@ -182,7 +182,7 @@ List of common storage drivers:
 - Overlay
 - Overlay2
 
-<u>Wit volume mount</u>
+<u>Volume mount</u>
 
 Template old syntax: `docker run -v volume_name:<path to store in container> container_name`
 
@@ -190,7 +190,7 @@ Template new syntax: `docker run --mount source=volume_name,target=<path to stor
 
 Example old syntax: `docker run -v data_vol:/var/lib/nginx_data nginx`
 
-<u>Wit bind mount</u>
+<u>Bind mount</u>
 
 Template old syntax: `docker run -v <full path to folder in docker host>:<full path to folder in container> container_name`
 
@@ -367,7 +367,12 @@ This section describes useful docker CLI commands in following format:
 1. [Docker Certified Associate Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf)
 2. [DCA Prep Guide from DevOps-Academy](https://github.com/DevOps-Academy-Org/dca-prep-guide)
 3. [Interactive online docker environments on demand](https://labs.play-with-docker.com/)
-4. [Medium blog - 250 Practice Questions for the DCA Exam](https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce)
+4. [Interactive online kubernetes environments on demand](https://labs.play-with-k8s.com/)
+5. [Medium blog - 250 Practice Questions for the DCA Exam](https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce)
+6. [Kubernetes Official Documentation](https://kubernetes.io/)
+7. [Docker Docs](https://docs.docker.com/)
+8. [Mirantis Docs](https://docs.mirantis.com/welcome/)
+9. [PlantUML Diagrams as Code](https://plantuml.com/)
 
 ## Definitions
 
