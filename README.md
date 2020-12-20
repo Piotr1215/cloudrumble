@@ -142,7 +142,7 @@ I have covered in detail my learning path for **CKA** and **CKAD** certification
 ### Docker Swarm
 
 ![Docker Swarm](diagrams/docker-swarm-architecture.png)
-[^1]: Source: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
+_Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
 ## Tips & Tricks
 
