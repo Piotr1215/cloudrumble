@@ -8,6 +8,13 @@ title Secure Docker
 !include <tupadr3/material/perm_identity>
 !include <tupadr3/font-awesome/check>
 
+skinparam monochrome true
+skinparam style strictuml
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 35
+skinparam rectangleBorderStyle dashed
+skinparam linetype ortho
+
 * Security\n<$security>
 ** Theats\n<$error>
 *** Remove volumes

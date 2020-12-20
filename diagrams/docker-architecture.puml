@@ -6,7 +6,11 @@ title High Level docker Architecture
 !include <tupadr3/devicons/docker>
 
 ' Remove UML component notation
-skinparam componentStyle rectangle
+skinparam monochrome true
+skinparam style strictuml
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 35
+skinparam rectangleBorderStyle dashed
 skinparam linetype ortho
 
 package "<$docker> Docker" as runtime {
