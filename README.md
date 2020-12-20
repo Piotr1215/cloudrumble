@@ -20,6 +20,7 @@ Table of Contents
     - [Docker Networking](#docker-networking)
   - [Orchestration](#orchestration)
     - [Docker Swarm](#docker-swarm)
+  - [Kubernetes Architecture](#kubernetes-architecture)
   - [Tips & Tricks](#tips--tricks)
     - [Docker CLI syntax](#docker-cli-syntax)
     - [Where is everything stored](#where-is-everything-stored)
@@ -145,6 +146,10 @@ I have covered in detail my learning path for **CKA** and **CKAD** certification
 ![Docker Swarm](diagrams/docker-swarm-architecture.png)
 _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
+## Kubernetes Architecture
+
+![Kubernetes Architecture](diagrams/kubernetes-architecture.png)
+_Source_: https://kubernetes.io/docs/concepts/overview/components/.
 ## Tips & Tricks
 
 ### Docker CLI syntax
