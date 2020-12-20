@@ -15,11 +15,11 @@ Table of Contents
     - [2. Go though mock questions and exams](#2-go-though-mock-questions-and-exams)
     - [3. Practice with docker](#3-practice-with-docker)
     - [4. Make notes](#4-make-notes)
-  - [Docker Architecture](#docker-architecture)
+  - [Architecture & Concepts](#architecture--concepts)
     - [Docker Components](#docker-components)
     - [Docker Networking](#docker-networking)
-  - [Orchestration](#orchestration)
-    - [Docker Swarm](#docker-swarm)
+    - [Orchestration](#orchestration)
+  - [Docker Swarm Architecture](#docker-swarm-architecture)
   - [Kubernetes Architecture](#kubernetes-architecture)
   - [Tips & Tricks](#tips--tricks)
     - [Docker CLI syntax](#docker-cli-syntax)
@@ -119,9 +119,9 @@ Please let me know in comments if you spot an error and feel free to do a PR if 
 
 I wish you best of luck on getting the Docker Certified Associate certification :)
 
-## Docker Architecture
+## Architecture & Concepts
 
-This section contains set of `Plantuml` diagrams  (component, sequence, mindmaps) to visualize and better understand architectural concepts in Docker. All diagrams are available in [Diagrams](/diagrams) folder.
+This section contains set of `Plantuml` diagrams  (component, sequence, mindmaps) to visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams](/diagrams) folder.
 
 ### Docker Components
 
@@ -133,7 +133,7 @@ This section contains set of `Plantuml` diagrams  (component, sequence, mindmaps
 
 > <font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
 
-## Orchestration
+### Orchestration
 
 ![Orchestration](diagrams/docker-orchestration.png)
 
@@ -141,7 +141,7 @@ There are a few solutions on the marked that can help with container and nodes o
 
 I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
 
-### Docker Swarm
+## Docker Swarm Architecture
 
 ![Docker Swarm](diagrams/docker-swarm-architecture.png)
 _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
