@@ -1,0 +1,70 @@
+@startuml Docker Swarm Architecture
+skinparam linetype ortho
+'------'
+'SETUP '
+'------'
+
+package "Docker Client" as client {
+    component "Docker CLI" as cli
+    note right
+        Docker Service Create
+    end note
+}
+
+package "Swarm Manager Node" as manager{
+    component API as api
+    note right
+        Accepts commands and
+        creates service objects
+    end note
+    component Orchestrator as orch
+    note right
+        Reconcilliation loop that
+        creates tasks for service objects
+    end note
+    component Allocator as all
+    note right
+        Allocates IP addresses to tasks
+    end note
+    component Disparcher as disp
+    note right
+        Assigns tasks to nodes
+    end note
+    component Scheduler as sched
+    note right
+        Instructs worker to
+        run a task
+    end note
+}
+
+package "Swarm Worker Node" as worker {
+    component Worker as work
+    note right
+        Connects to dispatcher to
+        check for assigned tasks
+    end note
+    component Executor as exec
+    note right
+        Executes tasks assigned to worker node
+    end note
+    component Contianer as cont
+}
+
+'----------'
+'RELATIONS '
+'----------'
+
+client -[hidden]r- manager
+manager -[hidden]r- worker
+
+cli -> api
+work -> sched
+
+api --> orch
+orch --> all
+all --> disp
+disp --> sched
+
+cont -[hidden]-> work
+work -[hidden]-> exec
+@enduml

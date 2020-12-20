@@ -19,6 +19,7 @@ Table of Contents
     - [Docker Components](#docker-components)
     - [Docker Networking](#docker-networking)
   - [Orchestration](#orchestration)
+    - [Docker Swarm](#docker-swarm)
   - [Tips & Tricks](#tips--tricks)
     - [Docker CLI syntax](#docker-cli-syntax)
     - [Where is everything stored](#where-is-everything-stored)
@@ -44,6 +45,7 @@ Table of Contents
     - [Setup container hostname](#setup-container-hostname)
     - [Automatically remove the container when it exits](#automatically-remove-the-container-when-it-exits)
     - [Add or remove capabilities for the user running a container](#add-or-remove-capabilities-for-the-user-running-a-container)
+    - [Filter restuls using --filter flag](#filter-restuls-using---filter-flag)
   - [Links and resources](#links-and-resources)
   - [Definitions](#definitions)
 
@@ -135,6 +137,11 @@ This section contains set of `Plantuml` diagrams  (component, sequence, mindmaps
 There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
 
 I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
+
+### Docker Swarm
+
+![Docker Swarm](diagrams/docker-swarm-architecture.png)
+[^1]: Source: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
 ## Tips & Tricks
 
@@ -323,6 +330,14 @@ This section describes useful docker CLI commands in following format:
 >**When is it useful:** This command is useful when elevating or dropping privileges on the user running container. By default containers run with limited root privileges. Second command runs container with full user privileges.
 >
 >**Result:** container is run with expected privileges.
+
+### Filter restuls using --filter flag
+
+>**Command:** `docker search --filter=stars=3 --no-trunc busybox`
+>
+>**When is it useful:** Results of almost every docker command can be filtered using `--filter key=value` flag. Refer to docker documentation to check what filter options are supported for given command.
+>
+>**Result:** command output filtered as per filter flag.
 
 ## Links and resources
 
