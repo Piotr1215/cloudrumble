@@ -20,6 +20,9 @@ Table of Contents
     - [Docker Networking](#docker-networking)
     - [Orchestration](#orchestration)
   - [Docker Swarm Architecture](#docker-swarm-architecture)
+  - [Raft Consensus and Quorum](#raft-consensus-and-quorum)
+    - [Quorum](#quorum)
+    - [Fault Tolerance](#fault-tolerance)
   - [Kubernetes Architecture](#kubernetes-architecture)
   - [Tips & Tricks](#tips--tricks)
     - [Docker CLI syntax](#docker-cli-syntax)
@@ -61,7 +64,6 @@ Table of Contents
 ### Exam
 
 #### Exam topics
-
 
 | Topic                                    | % of exam questions |
 | ---------------------------------------- |:-------------------:|
@@ -146,10 +148,29 @@ I have covered in detail my learning path for **CKA** and **CKAD** certification
 ![Docker Swarm](diagrams/docker-swarm-architecture.png)
 _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
+## Raft Consensus and Quorum
+
+Implementing [Raft Consensus Algorithm](http://thesecretlivesofdata.com/raft/) ensures that all manager nodes in a distributed system are storing the same consistent state.
+
+### Quorum
+
+To calculate minimum number of master nodes required to achieve _quorum_ (or simply majority) use N = $\frac{N +1}{2}$ and round the result to full number.
+
+So having 5 master nodes, the quorum is 3.
+
+### Fault Tolerance
+
+Knowing the quorum of master nodes, we can predict fault tolerance which is a number describing how many master nodes can fail before cluster is going to be put in an inconsistent state.
+
+To calculate _fault tolerance_ of the cluster use N = $\frac{N -1}{2}$
+
+So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
+
 ## Kubernetes Architecture
 
 ![Kubernetes Architecture](diagrams/kubernetes-architecture.png)
 _Source_: https://kubernetes.io/docs/concepts/overview/components/.
+
 ## Tips & Tricks
 
 ### Docker CLI syntax
