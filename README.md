@@ -37,7 +37,7 @@ Table of Contents
     - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
     - [Building Images](#building-images)
     - [Ports mapping](#ports-mapping)
-    - [Expose docker host to enable running docker CLI commands from outside](#expose-docker-host-to-enable-running-docker-cli-commands-from-outside)
+    - [Access remote docker host from CLI](#access-remote-docker-host-from-cli)
     - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
     - [Docker Security](#docker-security)
     - [How to control how resources a container can consume](#how-to-control-how-resources-a-container-can-consume)
@@ -48,11 +48,10 @@ Table of Contents
     - [Remove all unused docker artifacts](#remove-all-unused-docker-artifacts)
     - [Stop all running containers](#stop-all-running-containers)
     - [Setup container hostname](#setup-container-hostname)
-    - [Automatically remove the container when it exits](#automatically-remove-the-container-when-it-exits)
+    - [Automatically remove a container when on exit](#automatically-remove-a-container-when-on-exit)
     - [Add or remove capabilities for the user running a container](#add-or-remove-capabilities-for-the-user-running-a-container)
-    - [Filter restuls using --filter flag](#filter-restuls-using---filter-flag)
+    - [Filter results using --filter flag](#filter-results-using---filter-flag)
   - [Links and resources](#links-and-resources)
-  - [Definitions](#definitions)
 
 ## Exam and certification info
 
@@ -262,7 +261,7 @@ Docker images can be build directly from a git repository. So for example
 
 > Hint: Prefer using "-p" option with static port when running containers in production.
 
-### Expose docker host to enable running docker CLI commands from outside
+### Access remote docker host from CLI
 
 On machine form where you want to access docker host, setup variable:
 
@@ -359,7 +358,7 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** container hostname is set to custom one.
 
-### Automatically remove the container when it exits
+### Automatically remove a container when on exit
 
 >**Command:** `docker container run -d --name=ingress --rm nginx`
 >
@@ -375,7 +374,7 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** container is run with expected privileges.
 
-### Filter restuls using --filter flag
+### Filter results using --filter flag
 
 >**Command:** `docker search --filter=stars=3 --no-trunc busybox`
 >
@@ -394,13 +393,3 @@ This section describes useful docker CLI commands in following format:
 7. [Docker Docs](https://docs.docker.com/)
 8. [Mirantis Docs](https://docs.mirantis.com/welcome/)
 9. [PlantUML Diagrams as Code](https://plantuml.com/)
-
-## Definitions
-
-|  <div style="min-width:200px">Term</div> |  Definition | Link |
-|----------------|----------------|----------------|
-|  OCI |  Open Container Initiative | https://opencontainers.org/|
-| Unix Socket  | Intra-process communication between linux processes/services  | https://beej.us/guide/bgipc/html/multi/unixsock.html |
-| Containers Namespaces  | Dedicated Linux namespace per container ensures process isolation | |
-| CGroups (Control Groups)  | Linux feature allowing control over CPU and memory resources per process | |
-| SWAP space  | Space on a hard drive that can be used in case server runs out of RAM capacity. SWAP space can also be disabled  | |
