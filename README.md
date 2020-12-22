@@ -14,7 +14,8 @@ Table of Contents
   - [1. Find a good online training](#1-find-a-good-online-training)
   - [2. Go though mock questions and exams](#2-go-though-mock-questions-and-exams)
   - [3. Practice with docker](#3-practice-with-docker)
-  - [4. Make notes](#4-make-notes)
+  - [4. Know Docker/Mirantis documentation well](#4-know-dockermirantis-documentation-well)
+  - [5. Make notes](#5-make-notes)
 - [Basic Concepts](#basic-concepts)
   - [Docker CLI syntax](#docker-cli-syntax)
   - [Docker Components](#docker-components)
@@ -68,6 +69,8 @@ Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequen
 
 ## Exam
 
+>Exam curriculum is based on material update from official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
+
 ### Exam topics
 
 | Topic                                    | % of exam questions |
@@ -116,7 +119,33 @@ There is also a similar service for exercising with Kubernetes and is very usefu
 
 [Interactive online docker environments on demand: kubernetes](https://labs.play-with-k8s.com/)
 
-## 4. Make notes
+## 4. Know Docker/Mirantis documentation well
+
+There are plenty of great learning repositories with exam topics directly linked to Docker/Mirantis documentation. A good one that is also up to date is [Evalle/DCA](https://github.com/Evalle/DCA).
+
+Such sources are great shortcut for learning and reference later on, but I like to have all my links at my fingertips right in bookmarks bar.
+
+If you would like to have same bookmarks, please use my gist below and import them from file. Bookmarks are arranged in subfolder corresponding to exam topics:
+
+![DCA-Bookmarks](diagrams/Bookmarks-DCA.png)
+
+<details><summary>DCA Bookmarks GIST</summary>
+<p>
+https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7
+</p>
+</details>
+
+## 5. Make notes
+
+Making notes is easy, making good notes a bit more difficult. To make best of learning notes, I follow this 5 step approach:
+
+| **Notes Level** | **How to** | **When to use** |
+|---|---|---|
+| 1. Regular notes | Typically copy and paste or direct link. | Use for low importance/easy to remember topics. |
+| 2. Highlight with formatting | Use highlighting or other formatting techniques. | Use for topics with large volume of material to highlight important bits. |
+| 3. Visual representation | Create diagrams, mindmaps and other visual representation of the topic. | Use for complex topics, typically architecture and high level design. |
+| 4. Visual representation with summary | Create diagrams, mindmaps and other visual representation of the topic with summary in your own words. | Use for complex topics that you need to understand on a deep level. |
+| 5. Design to teach | Use all the above techniques, but always ask youself a question, how can I teach this topic to anyone in best possible way? Typically you would create a blog, youtube video or engage directly with community | Use for very complex topics or the ones you wish to became expert in. By far making notes and content in a way that is designed to teach someone is the best ways to learn. |
 
 This article and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
 
@@ -249,6 +278,12 @@ Copying files is very easy, first parameter after cp command is source and secon
 By default docker will pull images from configured images repository (Docker Hub by default), but it's possible to specify `build` directive instead of `image` with a path to `Dockerfile`
 
 # Installation and Configuration 15%
+
+Be aware that after Docker ascuisition by Mirantis there have been some naming and product changes, so following applies:
+
+- Docker Trusted Registry (DRT) **is now** Mirantis Secure Registry (MSR)
+- Universal Control Plane **is now** Mirantis Kubernetes Engine (MKE)
+- Docker Enterprise Edition (DEE) **is now** Mirantis Container Runtime (MCR)
 
 ## Change docker daemon host configuration
 
