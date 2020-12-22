@@ -1,6 +1,6 @@
 # Docker Certified Associate (DCA)
 
-Preparation notes and tips & tricks for DCA (Docker Certified Associate) exam.
+Preparation notes for DCA (Docker Certified Associate) exam.
 
 Table of Contents
 
