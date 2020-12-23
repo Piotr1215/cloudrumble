@@ -209,12 +209,12 @@ I have covered in detail my learning path for **CKA** and **CKAD** certification
 
 ## Kubernetes Architecture
 
-![Kubernetes Architecture](diagrams/kubernetes-architecture.png)
+![Kubernetes Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/kubernetes-architecture.puml)
 _Source_: https://kubernetes.io/docs/concepts/overview/components/.
 
 ## Docker Swarm Architecture
 
-![Docker Swarm](diagrams/docker-swarm-architecture.png)
+![Docker Swarm](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml)
 _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
 ## Raft Consensus and Quorum
@@ -307,7 +307,7 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ## Docker Networking
 
-![Docker Networking Mindmap](./diagrams/Docker-Networks.png)
+![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml)
 
 > <font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
 
@@ -315,7 +315,7 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ## Security Layers
 
-![Layered Security](diagrams/docker-security-layers.png)
+![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml)
 
 # Storage and Volumes 10%
 
