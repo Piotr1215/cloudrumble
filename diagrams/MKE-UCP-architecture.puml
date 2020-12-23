@@ -12,7 +12,7 @@ skinparam rectangleBorderStyle dashed
 skinparam linetype ortho
 
 rectangle "Nodes" as nodes {
-    node "Master Node" as master {
+    together "Master Node" as master {
         component "ucp-agent" as u1
         component "ucp-controller" as cont
         component "ucp-metrics" as met

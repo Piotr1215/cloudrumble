@@ -1,7 +1,7 @@
 @startuml docker-swarm-architecture
 !include <tupadr3/devicons/docker>
 
-title <$docker> Docker Swarm Architecture
+rectangle "                  <$docker>\n Docker Swarm Architecture"
 
 skinparam monochrome true
 skinparam style strictuml
@@ -9,10 +9,6 @@ skinparam componentShadowing true
 skinparam rectangleRoundCorner 35
 skinparam rectangleBorderStyle dashed
 skinparam linetype ortho
-
-'------'
-'SETUP '
-'------'
 
 package "Docker Client" as client {
     component "Docker CLI" as cli
@@ -59,10 +55,6 @@ package "Swarm Worker Node" as worker {
     end note
     component Contianer as cont
 }
-
-'----------'
-'RELATIONS '
-'----------'
 
 client -[hidden]r- manager
 manager -[hidden]r- worker
