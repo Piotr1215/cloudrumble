@@ -1,6 +1,6 @@
 @startuml kubernetes-architecture
 
-title Kubernetes <$master> Architecture
+rectangle "            <$master>\nKubernetes Architecture"
 
 !include <kubernetes/k8s-sprites-labeled-25pct>
 skinparam monochrome true
@@ -11,14 +11,14 @@ skinparam rectangleBorderStyle dashed
 skinparam linetype ortho
 
 legend left
- |= Icon |= Type |= Function  |
- |  <$etcd>  | Perisstent store | Key-value backing store for all \n cluster data |
- |  <$sched> | Scheduler | Watches for pods and assigns \n them to nodes |
- |  <$api>   | Kube API server | Exposes Kubernetes API,\n front end for control plane |
- |  <$c_m>   | Controller manager | Node Controller, Replication Controller, \n Endpoints Controller, \n Service Account & Token Controllers |
- |  <$c_c_m> | Cloud controller manager\n optional | Embeds cloud specific control logic |
- |  <$kubelet> | Kubelet | Responsible for runnning \n containers in a pod |
- |  <$k_proxy> | Kube proxy | Maintains network rules on nodes |
+ |= Component |= Name |= Function  |
+ |     <$etcd>  | Perisstent store | Key-value backing store for all \n cluster data |
+ |     <$sched> | Scheduler | Watches for pods and assigns \n them to nodes |
+ |     <$api>   | Kube API server | Exposes Kubernetes API,\n front end for control plane |
+ |     <$c_m>   | Controller manager | Node Controller, Replication Controller, \n Endpoints Controller, \n Service Account & Token Controllers |
+ |     <$c_c_m> | Cloud controller manager\n optional | Embeds cloud specific control logic |
+ |     <$kubelet> | Kubelet | Responsible for runnning \n containers in a pod |
+ |     <$k_proxy> | Kube proxy | Maintains network rules on nodes |
 endlegend
 
 rectangle  "Control Plane" as ctrl {

@@ -1,5 +1,5 @@
 @startuml docker-architecture
-title <$docker> High Level docker Architecture
+rectangle "                      <$docker>\n High Level docker Architecture"
 
 '!include <cloudinsight/docker>
 !include <tupadr3/devicons/linux>

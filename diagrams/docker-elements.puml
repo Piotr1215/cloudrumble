@@ -1,20 +1,28 @@
 @startuml docker-components
-title <$docker> Components For Running Docker Containers
+
+rectangle "                                  <$docker>\n Components For Running Docker Containers" as tit
 
 !include <cloudinsight/docker>
 !include <cloudinsight/linux>
 
-' Remove UML component notation
+skinparam monochrome true
+skinparam style strictuml
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 35
+skinparam rectangleBorderStyle dashed
+skinparam linetype ortho
+together "Group" as grp {
+    package "Docker Runtime" as runtime {
+        component "namespaces"
+        component "CGroupss"
 
-package "<$docker> Docker Runtime" as runtime {
-    component "namespaces"
-    component "CGroupss"
+    }
 
+    package "<$registry> Linux" as linux {
+        component "namespace"
+        component "CGroups"
+    }
 }
 
-package "<$registry> Linux" as linux {
-    component "namespace"
-    component "CGroups"
-}
-
+tit -[hidden]-> grp
 @enduml

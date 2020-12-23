@@ -2,9 +2,9 @@
 
 !include <kubernetes/k8s-sprites-labeled-25pct>
 !include <logos/kafka>
-title <color:black><$master></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>\n
+rectangle "<color:black><$master></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>\n" as tit
 
-'skinparam monochrome true
+skinparam monochrome true
 skinparam style strictuml
 skinparam componentShadowing true
 skinparam rectangleRoundCorner 35
@@ -34,5 +34,5 @@ rectangle "Nodes" as nodes {
         component "ucp-proxy" as prox2
     }
 }
-
+tit -[hidden]-nodes
 @enduml

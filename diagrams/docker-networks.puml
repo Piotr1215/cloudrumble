@@ -1,9 +1,7 @@
 @startmindmap docker-networking
 !include <cloudinsight/docker>
 
-title <$docker> Mindmap of docker networking topics
-
-*[#Gray] Docker Networks
+*[#Gray] <$docker>\nDocker Networking
 **[#Lightgreen] Bridge
 ***[#Lightgreen] Default
 ***[#Lightgreen] Built in DNS

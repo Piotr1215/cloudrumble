@@ -1,8 +1,7 @@
 @startmindmap docker-security
-title <$docker> Docker Security
 
 !include <tupadr3/devicons/linux>
-!include <tupadr3/devicons/docker>
+!include <cloudinsight/docker>
 !include <tupadr3/material/error>
 !include <tupadr3/material/security>
 !include <tupadr3/material/perm_identity>
@@ -15,18 +14,18 @@ skinparam rectangleRoundCorner 35
 skinparam rectangleBorderStyle dashed
 skinparam linetype ortho
 
-* Security\n<$security>
+* Docker Security\n        <$security>
 ** Theats\n<$error>
 *** Remove volumes
 *** Run unauthorized containers
 *** Gain root access to the system
 *** Manupilate network and network devices
-** Remedies\n<$check>
-*** Access to Host\n<$linux>
+** Remedies\n  <$check>
+*** Access to Host\n      <$linux>
 **** Disable Password Based Authentication
 **** Enable SSH only access
 **** Apply minimum required access policy
-*** Authentication\n<$perm_identity>
+*** Authentication\n       <$perm_identity>
 **** Encrypt access to docke host from CLI
 **** Set **tlsverify** to true in daemon.json
 **** Distribute certificates to trusted clients
