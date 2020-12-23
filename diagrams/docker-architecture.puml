@@ -1,17 +1,12 @@
 @startuml docker-architecture
 rectangle "                      <$docker>\n High Level docker Architecture"
 
-'!include <cloudinsight/docker>
+'Icons
 !include <tupadr3/devicons/linux>
 !include <tupadr3/devicons/docker>
 
-' Remove UML component notation
-skinparam monochrome true
-skinparam style strictuml
-skinparam componentShadowing true
-skinparam rectangleRoundCorner 35
-skinparam rectangleBorderStyle dashed
-skinparam linetype ortho
+'Global Styles
+!include styles.iuml
 
 package "<$docker> Docker" as runtime {
 

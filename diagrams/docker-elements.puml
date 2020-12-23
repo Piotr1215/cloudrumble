@@ -4,13 +4,8 @@ rectangle "                                  <$docker>\n Components For Running 
 
 !include <cloudinsight/docker>
 !include <cloudinsight/linux>
+!include styles.iuml
 
-skinparam monochrome true
-skinparam style strictuml
-skinparam componentShadowing true
-skinparam rectangleRoundCorner 35
-skinparam rectangleBorderStyle dashed
-skinparam linetype ortho
 together "Group" as grp {
     package "Docker Runtime" as runtime {
         component "namespaces"

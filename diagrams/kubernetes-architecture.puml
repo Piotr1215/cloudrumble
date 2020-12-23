@@ -11,7 +11,7 @@ skinparam rectangleBorderStyle dashed
 skinparam linetype ortho
 
 legend left
- |= Component |= Name |= Function  |
+ |= Component |= Description |= Function  |
  |     <$etcd>  | Perisstent store | Key-value backing store for all \n cluster data |
  |     <$sched> | Scheduler | Watches for pods and assigns \n them to nodes |
  |     <$api>   | Kube API server | Exposes Kubernetes API,\n front end for control plane |

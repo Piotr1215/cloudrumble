@@ -1,7 +1,7 @@
 @startuml MKE-UCP-Architecture
-
 !include <kubernetes/k8s-sprites-labeled-25pct>
-!include <logos/kafka>
+!include <tupadr3/devicons/docker>
+!include <tupadr3/font-awesome/server>
 rectangle "<color:black><$master></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>\n" as tit
 
 skinparam monochrome true
@@ -12,27 +12,26 @@ skinparam rectangleBorderStyle dashed
 skinparam linetype ortho
 
 rectangle "Nodes" as nodes {
-    together "Master Node" as master {
-        component "ucp-agent" as u1
-        component "ucp-controller" as cont
-        component "ucp-metrics" as met
-        component "ucp-auth-api" as auth
-        component "ucp-auth-worker" as authworker
-        component "ucp-auth-store" as store
-        component "ucp-client-root-ca" as clientca
-        component "ucp-cluster-root-ca" as clusterca
-        component "ucp-dsinfo" as dsinfo
-        component "ucp-interlock" as ilock
-        component "ucp-interlock-proxy" as ilockprox
+    node "Manager Node\n<$server>" as master {
+        rectangle "   <$docker>\nucp-agent" as u1
+        rectangle "   <$docker>\nucp-controller" as cont
+        rectangle "   <$docker>\nucp-auth-api" as auth
+        collections "          <$docker>\nother-components" as other
     }
-    node "Worker Node" as worker1 {
-        component "ucp-agent" as u2
-        component "ucp-proxy" as prox1
+    node "Worker Node\n<$server>" as worker1 {
+        rectangle "   <$docker>\nucp-agent" as u2
+        rectangle "   <$docker>\nucp-proxy" as prox1
     }
-    node "Worker Node" as worker2 {
-        component "ucp-agent" as u3
-        component "ucp-proxy" as prox2
+    node "Worker Node\n<$server>" as worker2 {
+        rectangle "   <$docker>\nucp-agent" as u3
+        rectangle "   <$docker>\nucp-proxy" as prox2
     }
 }
 tit -[hidden]-nodes
+
+legend left
+ |= Component |= Description |= Function  |
+ |     ucp-agent  | Globally scheduled service \n (runs on every node) | Node monitoring, different behavior \n depending if it runs on manager or worker node |
+endlegend
+
 @enduml
