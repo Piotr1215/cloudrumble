@@ -1,10 +1,12 @@
 @startuml docker-components
-
-rectangle "                                  <$docker>\n Components For Running Docker Containers" as tit
-
+'Icons
 !include <cloudinsight/docker>
 !include <cloudinsight/linux>
+
+'Global Styles
 !include styles.iuml
+
+rectangle "                                  <$docker>\n Components For Running Docker Containers" as tit
 
 together "Group" as grp {
     package "Docker Runtime" as runtime {

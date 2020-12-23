@@ -1,12 +1,11 @@
 @startuml docker-architecture
-rectangle "                      <$docker>\n High Level docker Architecture"
-
 'Icons
 !include <tupadr3/devicons/linux>
 !include <tupadr3/devicons/docker>
-
 'Global Styles
 !include styles.iuml
+
+rectangle "                      <$docker>\n High Level docker Architecture"
 
 package "<$docker> Docker" as runtime {
 

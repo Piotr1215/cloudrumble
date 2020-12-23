@@ -1,18 +1,13 @@
 @startmindmap docker-security
-
+'Icons
 !include <tupadr3/devicons/linux>
 !include <cloudinsight/docker>
 !include <tupadr3/material/error>
 !include <tupadr3/material/security>
 !include <tupadr3/material/perm_identity>
 !include <tupadr3/font-awesome/check>
-
-skinparam monochrome true
-skinparam style strictuml
-skinparam componentShadowing true
-skinparam rectangleRoundCorner 35
-skinparam rectangleBorderStyle dashed
-skinparam linetype ortho
+'Global Styles
+!include styles.iuml
 
 * Docker Security\n        <$security>
 ** Theats\n<$error>

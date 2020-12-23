@@ -1,14 +1,10 @@
 @startuml kubernetes-architecture
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+'Global Styles
+!include styles.iuml
 
 rectangle "            <$master>\nKubernetes Architecture"
-
-!include <kubernetes/k8s-sprites-labeled-25pct>
-skinparam monochrome true
-skinparam style strictuml
-skinparam componentShadowing true
-skinparam rectangleRoundCorner 35
-skinparam rectangleBorderStyle dashed
-skinparam linetype ortho
 
 legend left
  |= Component |= Description |= Function  |

@@ -1,4 +1,5 @@
 @startmindmap docker-orchesrtation
+'Icons
 !include <cloudinsight/docker>
 
 *[#lightblue] <$docker>\n**Orchestration**

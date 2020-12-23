@@ -1,4 +1,5 @@
 @startmindmap docker-networking
+'Icons
 !include <cloudinsight/docker>
 
 *[#Gray] <$docker>\nDocker Networking

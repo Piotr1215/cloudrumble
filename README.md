@@ -38,6 +38,7 @@ Table of Contents
   - [Check logs to troubleshoot docker service](#check-logs-to-troubleshoot-docker-service)
   - [Where Images are pulled from?](#where-images-are-pulled-from)
 - [Installation and Configuration 15%](#installation-and-configuration-15)
+  - [MKE Architecture](#mke-architecture)
   - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
   - [Logging in docker](#logging-in-docker)
 - [Networking 15%](#networking-15)
@@ -200,8 +201,8 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 # Orchestration 25%
 
 ## Orchestration Areas
-[RENDERING]:svg
-![Orchestration](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml&fmt=[RENDERING])
+
+![Orchestration](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml&fmt=svg)
 
 There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
 
@@ -278,6 +279,10 @@ Copying files is very easy, first parameter after cp command is source and secon
 By default docker will pull images from configured images repository (Docker Hub by default), but it's possible to specify `build` directive instead of `image` with a path to `Dockerfile`
 
 # Installation and Configuration 15%
+
+## MKE Architecture
+
+![MKE Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
 
 Be aware that after Docker ascuisition by Mirantis there have been some naming and product changes, so following applies:
 
