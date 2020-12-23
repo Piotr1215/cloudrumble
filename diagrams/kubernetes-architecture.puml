@@ -6,7 +6,49 @@
 
 rectangle "            <$master>\nKubernetes Architecture"
 
-legend left
+rectangle  "Control Plane" as ctrl {
+    collections "<$etcd>" as etcd
+    collections "<$sched>" as sched
+    collections "<$api>" as api
+    collections "<$c_m>" as cm
+    collections "<$c_c_m>" as ccm
+    api -> cm
+    api .> ccm
+    api -> sched
+    api -> etcd
+}
+
+rectangle "Nodes" as nodes {
+    node "Node" as node1 {
+        component "<$kubelet>" as 1
+        component "<$k_proxy>" as 2
+        1 -[hidden]--> 2
+    }
+    node "Node" as node2 {
+        component "<$kubelet>" as 3
+        component "<$k_proxy>" as 4
+        3 -[hidden]--> 4
+    }
+    node "Node" as node3 {
+        component "<$kubelet>" as 5
+        component "<$k_proxy>" as 6
+        5 -[hidden]--> 6
+    }
+}
+
+cloud "Cloud Provider\n API" as cloud
+
+ctrl -[hidden]r-> nodes
+ccm -> cloud
+
+1 -> api
+2 -> api
+3 -> api
+4 -> api
+5 -> api
+6 -> api
+
+legend bottom
  |= Component |= Description |= Function  |
  |     <$etcd>  | Perisstent store | Key-value backing store for all \n cluster data |
  |     <$sched> | Scheduler | Watches for pods and assigns \n them to nodes |
@@ -17,45 +59,4 @@ legend left
  |     <$k_proxy> | Kube proxy | Maintains network rules on nodes |
 endlegend
 
-rectangle  "Control Plane" as ctrl {
-    collections "<$etcd>" as etcd
-    collections "<$sched>" as sched
-    collections "<$api>" as api
-    collections "<$c_m>" as cm
-    collections "<$c_c_m>" as ccm
-    api --> cm
-    api ....> ccm
-    api --> sched
-    api --> etcd
-}
-
-rectangle "Nodes" as nodes {
-    node "Node" as node1 {
-        component "<$kubelet>" as 1
-        component "<$k_proxy>" as 2
-        1 -[hidden]-> 2
-    }
-    node "Node" as node2 {
-        component "<$kubelet>" as 3
-        component "<$k_proxy>" as 4
-        3 -[hidden]-> 4
-    }
-    node "Node" as node3 {
-        component "<$kubelet>" as 5
-        component "<$k_proxy>" as 6
-        5 -[hidden]-> 6
-    }
-}
-
-cloud "Cloud Provider\n API" as cloud
-
-'ctrl -[hidden]-> nodes
-ccm -> cloud
-
-1 -> api
-2 -> api
-3 -> api
-4 -> api
-5 -> api
-6 -> api
 @enduml
