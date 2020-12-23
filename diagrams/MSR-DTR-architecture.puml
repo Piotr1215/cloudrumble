@@ -1,4 +1,4 @@
-@startuml MKE-UCP-Architecture
+@startuml MSR-DTR-Architecture
 'Icons
 !include <kubernetes/k8s-sprites-labeled-25pct>
 !include <tupadr3/devicons/docker>
@@ -16,49 +16,30 @@ rectangle "Clients" as client{
     rectangle "<$chrome>\nWeb UI" as webclt
 }
 
+rectangle "Load Balancer" as bal
+
 rectangle "Swarm Cluster" as nodes {
     node "Manager Node\n<$server>" as master {
 
         rectangle "   <$docker>\nucp-agent" as u1
-        rectangle "   <$docker>\nucp-controller" as cont
-        rectangle "   <$docker>\nucp-auth-api" as auth
-        rectangle "<$chrome>\n<$docker>\nWeb UI" as web
         collections "          <$docker>\nother-components" as other
     }
-    node "Worker Node\n<$server>" as worker1 {
-        rectangle "   <$docker>\nucp-agent" as u2
-        rectangle "   <$docker>\nucp-proxy" as prox2
-        collections "          <$docker>\nother-components" as other2
-    }
-    node "Worker Node\n<$server>" as worker2 {
-        rectangle "   <$docker>\nucp-agent" as u3
-        rectangle "   <$docker>\nucp-proxy" as prox3
-        collections "          <$docker>\nother-components" as other3
+    together {
+        node "Worker Node\n<$server>" as worker1 {
+            rectangle "   <$docker>\nucp-agent" as u2
+            rectangle "<$docker>\nMSR" as msr2
+            collections "          <$docker>\nother-components" as other2
+        }
+        node "Worker Node\n<$server>" as worker2 {
+            rectangle "   <$docker>\nucp-agent" as u3
+            rectangle "<$docker>\nMSR" as msr3
+            collections "          <$docker>\nother-components" as other3
+        }
     }
 }
 
-nodes <- client: HTTPS
-
-u1 --> web : Creates\n Container
-u1 --> cont : Creates\n Container
-u1 --> auth : Creates\n Container
-u1 --> other : Creates\n Containers
-
-u2 --> prox2 : Creates\n Container
-u2 --> other2 : Creates\n Containers
-
-u3 --> prox3 : Creates\n Container
-u3 --> other3 : Creates\n Containers
-
-note top of u1
-    Starts first
-end note
-note top of u2
-    Starts first
-end note
-note top of u3
-    Starts first
-end note
+bal -r- client : HTTPS
+bal --- nodes : HTTPS
 
 legend bottom
 <color:black></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>
