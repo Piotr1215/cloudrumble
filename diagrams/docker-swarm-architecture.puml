@@ -2,7 +2,7 @@
 'Icons
 !include <tupadr3/devicons/docker>
 'Global Styles
-!includeurl https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
 
 rectangle "                  <$docker>\n Docker Swarm Architecture"
 

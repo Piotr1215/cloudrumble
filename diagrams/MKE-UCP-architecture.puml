@@ -6,7 +6,7 @@
 !include <tupadr3/font-awesome/chrome>
 !include <tupadr3/font-awesome/terminal>
 'Global Styles
-!includeurl https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
 'Overrides
 skinparam linetype default
 
