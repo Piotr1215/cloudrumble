@@ -7,7 +7,7 @@
 !include <tupadr3/material/perm_identity>
 !include <tupadr3/font-awesome/check>
 'Global Styles
-!include styles.iuml
+!includeurl https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
 
 * Docker Security\n        <$security>
 ** Theats\n<$error>
