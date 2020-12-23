@@ -13,14 +13,15 @@ Table of Contents
 - [Learning Plan](#learning-plan)
   - [1. Find a good online training](#1-find-a-good-online-training)
   - [2. Go though mock questions and exams](#2-go-though-mock-questions-and-exams)
-  - [3. Practice with docker](#3-practice-with-docker)
+  - [3. Practice with Docker](#3-practice-with-docker)
   - [4. Know Docker/Mirantis documentation well](#4-know-dockermirantis-documentation-well)
   - [5. Make notes](#5-make-notes)
 - [Basic Concepts](#basic-concepts)
   - [Docker CLI syntax](#docker-cli-syntax)
   - [Docker Components](#docker-components)
+- [TEST HERE:](#test-here)
   - [Container Layer](#container-layer)
-  - [Access remote docker host from CLI](#access-remote-docker-host-from-cli)
+  - [Access remote Docker host from CLI](#access-remote-docker-host-from-cli)
   - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
 - [Orchestration 25%](#orchestration-25)
   - [Orchestration Areas](#orchestration-areas)
@@ -30,7 +31,7 @@ Table of Contents
     - [Quorum](#quorum)
     - [Fault Tolerance](#fault-tolerance)
 - [Image Creation, Management, and Registry 20%](#image-creation-management-and-registry-20)
-  - [How to control how resources a container can consume](#how-to-control-how-resources-a-container-can-consume)
+  - [How to control resources utilization by a container](#how-to-control-resources-utilization-by-a-container)
     - [CPU](#cpu)
     - [Memory](#memory)
   - [Ports mapping](#ports-mapping)
@@ -107,7 +108,7 @@ There is a great repo by [Govinda Fichtner](https://github.com/Govinda-Fichtner)
 Since the exam is in the form of questions, it is important to exercise as much as possible and go thought questions and mock exams. Kodekloud course I've mentioned before has a lot of questions build in, but there are also free mock exams and questions. One from medium I find very good:
 [Medium blog - 250 Practice Questions for the DCA Exam](https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce).
 
-## 3. Practice with docker
+## 3. Practice with Docker
 
 In this exam practical exercises are not as important as in CKA and CKAD for example, but I still find it valuable to follow up a theoretical session with a practical review.
 
@@ -169,11 +170,15 @@ Docker CLI has following syntax:
 
 ![Docker Architecture](./diagrams/docker-architecture.png)
 
+# TEST HERE:
+
+![Docker Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-architecture.puml)
+
 ## Container Layer
 
 By default all docker image layers are immutable (read-only). When container is created using `docker run` command, an additional mutable (read-write) layer is created. **This layer is only there for the duration of container lifetime and will be removed once container exits**. When modifying any files in a running container, docker creates a copy of the file and moves it to container layer (COPY-ON-WRITE) before changes are saved. Original files as part of the image are never changed.
 
-## Access remote docker host from CLI
+## Access remote Docker host from CLI
 
 On machine form where you want to access docker host, setup variable:
 
@@ -237,7 +242,7 @@ So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault to
 
 # Image Creation, Management, and Registry 20%
 
-## How to control how resources a container can consume
+## How to control resources utilization by a container
 
 ### CPU
 

@@ -1,0 +1,40 @@
+@startuml MKE-UCP-Architecture
+
+
+
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <logos/kafka>
+title <color:black><$master></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>\n
+
+'skinparam monochrome true
+skinparam style strictuml
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 35
+skinparam rectangleBorderStyle dashed
+skinparam linetype ortho
+
+rectangle "Nodes" as nodes {
+    node "Master Node" as master {
+        component "ucp-agent" as u1
+        component "ucp-controller" as cont
+        component "ucp-metrics" as met
+        component "ucp-auth-api" as auth
+        component "ucp-auth-worker" as authworker
+        component "ucp-auth-store" as store
+        component "ucp-client-root-ca" as clientca
+        component "ucp-cluster-root-ca" as clusterca
+        component "ucp-dsinfo" as dsinfo
+        component "ucp-interlock" as ilock
+        component "ucp-interlock-proxy" as ilockprox
+    }
+    node "Worker Node" as worker1 {
+        component "ucp-agent" as u2
+        component "ucp-proxy" as prox1
+    }
+    node "Worker Node" as worker2 {
+        component "ucp-agent" as u3
+        component "ucp-proxy" as prox2
+    }
+}
+
+@enduml
