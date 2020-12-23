@@ -19,7 +19,6 @@ Table of Contents
 - [Basic Concepts](#basic-concepts)
   - [Docker CLI syntax](#docker-cli-syntax)
   - [Docker Components](#docker-components)
-- [TEST HERE:](#test-here)
   - [Container Layer](#container-layer)
   - [Access remote Docker host from CLI](#access-remote-docker-host-from-cli)
   - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
@@ -202,7 +201,7 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 
 ## Orchestration Areas
 
-![Orchestration](diagrams/docker-orchestration.png)
+![Orchestration](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml)
 
 There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
 
