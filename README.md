@@ -168,10 +168,6 @@ Docker CLI has following syntax:
 
 ## Docker Components
 
-![Docker Architecture](./diagrams/docker-architecture.png)
-
-# TEST HERE:
-
 ![Docker Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-architecture.puml)
 
 ## Container Layer

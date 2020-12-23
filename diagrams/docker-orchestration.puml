@@ -1,4 +1,7 @@
-@startmindmap Orchesrtation
+@startmindmap docker-orchesrtation
+!include <cloudinsight/docker>
+
+title <$docker> Mindmap of docker orchestration topics
 
 *[#lightblue] **Orchestration**
 ** **Containers**

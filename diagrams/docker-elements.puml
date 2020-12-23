@@ -1,5 +1,5 @@
-@startuml High Level Components For Running Docker Containers
-title High Level Components For Running Docker Containers
+@startuml docker-components
+title <$docker> Components For Running Docker Containers
 
 !include <cloudinsight/docker>
 !include <cloudinsight/linux>

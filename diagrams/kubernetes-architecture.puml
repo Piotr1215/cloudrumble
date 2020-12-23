@@ -1,4 +1,6 @@
-@startuml Kubernetes Architecture
+@startuml kubernetes-architecture
+
+title Kubernetes <$master> Architecture
 
 !include <kubernetes/k8s-sprites-labeled-25pct>
 skinparam monochrome true

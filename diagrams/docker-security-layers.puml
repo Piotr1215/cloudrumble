@@ -1,5 +1,5 @@
-@startmindmap Docker Security
-title Secure Docker
+@startmindmap docker-security
+title <$docker> Docker Security
 
 !include <tupadr3/devicons/linux>
 !include <tupadr3/devicons/docker>

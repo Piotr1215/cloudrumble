@@ -1,4 +1,8 @@
-@startuml Docker Swarm Architecture
+@startuml docker-swarm-architecture
+!include <tupadr3/devicons/docker>
+
+title <$docker> Docker Swarm Architecture
+
 skinparam monochrome true
 skinparam style strictuml
 skinparam componentShadowing true

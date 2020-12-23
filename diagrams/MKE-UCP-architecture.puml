@@ -1,7 +1,5 @@
 @startuml MKE-UCP-Architecture
 
-
-
 !include <kubernetes/k8s-sprites-labeled-25pct>
 !include <logos/kafka>
 title <color:black><$master></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>\n
