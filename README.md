@@ -167,7 +167,7 @@ Docker CLI has following syntax:
 
 ## Docker Components
 
-![Docker Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-architecture.puml)
+![Docker Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-architecture.puml&fmt=svg)
 
 ## Container Layer
 
@@ -201,7 +201,7 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 
 ## Orchestration Areas
 
-![Orchestration](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml)
+![Orchestration](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml&fmt=svg)
 
 There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
 
@@ -209,12 +209,12 @@ I have covered in detail my learning path for **CKA** and **CKAD** certification
 
 ## Kubernetes Architecture
 
-![Kubernetes Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/kubernetes-architecture.puml)
+![Kubernetes Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/kubernetes-architecture.puml&fmt=svg)
 _Source_: https://kubernetes.io/docs/concepts/overview/components/.
 
 ## Docker Swarm Architecture
 
-![Docker Swarm](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml)
+![Docker Swarm](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml&fmt=svg)
 _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
 ## Raft Consensus and Quorum
@@ -307,7 +307,7 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ## Docker Networking
 
-![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml)
+![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml&fmt=svg)
 
 > <font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
 
@@ -315,7 +315,7 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ## Security Layers
 
-![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml)
+![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml&fmt=svg)
 
 # Storage and Volumes 10%
 
