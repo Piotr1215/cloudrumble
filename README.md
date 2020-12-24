@@ -171,11 +171,11 @@ Docker CLI has following syntax:
 ![Docker Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-architecture.puml&fmt=svg)
 _Sources_:
 
-- ![dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/)
-- ![containerd](https://containerd.io/)
-- ![runc](https://github.com/opencontainers/runc)
-- ![libcontainer](http://jancorg.github.io/blog/2015/01/03/libcontainer-overview/)
-- ![containerd-shim](https://medium.com/faun/docker-containerd-standalone-runtimes-heres-what-you-should-know-b834ef155426)
+- [dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/)
+- [containerd](https://containerd.io/)
+- [runc](https://github.com/opencontainers/runc)
+- [libcontainer](http://jancorg.github.io/blog/2015/01/03/libcontainer-overview/)
+- [containerd-shim](https://medium.com/faun/docker-containerd-standalone-runtimes-heres-what-you-should-know-b834ef155426)
 
 ## Container Layer
 
