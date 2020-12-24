@@ -124,6 +124,22 @@ There is also a similar service for exercising with Kubernetes and is very usefu
 
 [Interactive online docker environments on demand: kubernetes](https://labs.play-with-k8s.com/)
 
+> Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
+
+Here are easy steps to run the container:
+
+``` bash
+# Run container on same network as host
+docker run -d --network=host --name=kubectl-host --rm -it piotrzan/kubectl-comp:zsh
+
+# Copy over Kubernetes config file
+kubectl config view --raw > config
+docker cp ./config kubectl-host:./root/.kube
+
+# Attach shell to running container
+docker attach kubectl-host
+```
+
 ## 4. Know Docker/Mirantis documentation well
 
 There are plenty of great learning repositories with exam topics directly linked to Docker/Mirantis documentation. A good one that is also up to date is [Evalle/DCA](https://github.com/Evalle/DCA).
