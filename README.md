@@ -19,17 +19,21 @@ Table of Contents
 - [Basic Concepts](#basic-concepts)
   - [Docker CLI syntax](#docker-cli-syntax)
   - [Docker Components](#docker-components)
-  - [Container Layer](#container-layer)
-  - [Access remote Docker host from CLI](#access-remote-docker-host-from-cli)
-  - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
+    - [Container Layer](#container-layer)
+    - [Access remote Docker host from CLI](#access-remote-docker-host-from-cli)
+    - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
 - [Orchestration 25%](#orchestration-25)
   - [Orchestration Areas](#orchestration-areas)
   - [Kubernetes Architecture](#kubernetes-architecture)
   - [Docker Swarm Architecture](#docker-swarm-architecture)
+    - [What is docker stack](#what-is-docker-stack)
+    - [Difference between docker stack ls and docker stack ps](#difference-between-docker-stack-ls-and-docker-stack-ps)
   - [Raft Consensus and Quorum](#raft-consensus-and-quorum)
     - [Quorum](#quorum)
     - [Fault Tolerance](#fault-tolerance)
 - [Image Creation, Management, and Registry 20%](#image-creation-management-and-registry-20)
+  - [Creating docker images](#creating-docker-images)
+    - [Difference between CMD and ENTRYPOINT](#difference-between-cmd-and-entrypoint)
   - [How to control resources utilization by a container](#how-to-control-resources-utilization-by-a-container)
     - [CPU](#cpu)
     - [Memory](#memory)
@@ -177,11 +181,11 @@ _Sources_:
 - [libcontainer](http://jancorg.github.io/blog/2015/01/03/libcontainer-overview/)
 - [containerd-shim](https://medium.com/faun/docker-containerd-standalone-runtimes-heres-what-you-should-know-b834ef155426)
 
-## Container Layer
+### Container Layer
 
 By default all docker image layers are immutable (read-only). When container is created using `docker run` command, an additional mutable (read-write) layer is created. **This layer is only there for the duration of container lifetime and will be removed once container exits**. When modifying any files in a running container, docker creates a copy of the file and moves it to container layer (COPY-ON-WRITE) before changes are saved. Original files as part of the image are never changed.
 
-## Access remote Docker host from CLI
+### Access remote Docker host from CLI
 
 On machine form where you want to access docker host, setup variable:
 
@@ -197,7 +201,7 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 
 **IMPORTANT**: This setting is only for testing/playground purposes. It will make docker host available on the network and by default there is no authentication.
 
-## Use docker CLI as non root user
+### Use docker CLI as non root user
 
 1. Create Docker group: `sudo groupadd docker`
 2. Create a non-root user you want to use with docker: `sudo useradd -G docker <user-name>`
@@ -225,6 +229,15 @@ _Source_: https://kubernetes.io/docs/concepts/overview/components/.
 ![Docker Swarm](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml&fmt=svg)
 _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
+### What is docker stack
+
+Docker stack is very similar to docker compose with key difference being that **docker compose defines containers** while **docker stack defines services**. Swarm also provides commands to work with stacks directly.
+
+### Difference between docker stack ls and docker stack ps
+
+`docker stack ls` - lists all the stacks
+`docker stack ps <stack-name>` - lists all the services running in a stack
+
 ## Raft Consensus and Quorum
 
 Implementing [Raft Consensus Algorithm](http://thesecretlivesofdata.com/raft/) ensures that all manager nodes in a distributed system are storing the same consistent state.
@@ -244,6 +257,31 @@ To calculate _fault tolerance_ of the cluster use N = $\frac{N -1}{2}$
 So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
 
 # Image Creation, Management, and Registry 20%
+
+## Creating docker images
+
+Docker image is an immutable blueprint based on which containers are created.
+
+### Difference between CMD and ENTRYPOINT
+
+_CMD_ and _ENTRYPOINT_ sections of `Dockerfile` are used to instruct docker what to do once container is started.
+
+<u>CMD</u>
+
+This section defines what command will be executed once container starts.
+For example:
+
+- defining `CMD ["httpd"]` in a `Dockerfile` building httpd server will start httpd Apache server based on the image used
+- running httpd image with command override `docker run httpd printenv` will override default `CMD` with `printenv` command which will output environmental variables to the terminal
+- command can be specified as regular command: `CMD httpd` or as json array `CMD ["sleep", "5"]`
+  > in json array syntax first element of an array is command itself and all subsequent elements are parameters/options
+
+<u>ENTRYPOINT</u>
+
+This section defines what command will be executed once container starts and cannot be overridden by default (you need to use `--entrypoint` flag to force override). All arguments passed via docker run will be appended to command defined in `ENTRYPOINT`
+
+- `CMD` and `ENTRYPOINT` work great together where `ENTRYPOINT` defines "fixed" command to be executed once container starts and `CMD` provides default, but overrideable arguments to run the container in different ways.
+  > It is required to specify both `CMD` and `ENTRYPOINT` in a json array format for the override to work
 
 ## How to control resources utilization by a container
 
