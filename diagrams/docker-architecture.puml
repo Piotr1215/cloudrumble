@@ -4,8 +4,9 @@
 !include <tupadr3/devicons/docker>
 'Global Styles
 !include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
-
-rectangle "                      <$docker>\n High Level docker Architecture"
+skinparam Linetype default
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
 
 package "<$docker> Docker" as runtime {
 
@@ -13,31 +14,50 @@ package "<$docker> Docker" as runtime {
     component "REST API" as restapi
 
     dockercli <--> restapi
-    node "Docker Deamon" as dockerdeamon {
+    node "dockerd\n Manages" as dockerdeamon {
         [Images]
         [Volumes]
         [Networks]
     }
-    restapi <--> dockerdeamon
+    restapi <--> dockerdeamon : HTTPS
     component libcontainer
-    dockerdeamon <-[hidden]-> libcontainer
+    dockerdeamon <-[hidden]r-> libcontainer
 
     node containerd {
         [Manage Containers]
+    }
+
+    node "containerd-shim" as containerd_shim {
+        [Monitor Containers]
     }
     node runC {
         [Run Containers]
     }
 
-    dockerdeamon --- containerd
-    containerd --- runC
+    collections "Containers" as cont
+
+    dockerdeamon - libcontainer
+    dockerdeamon -- containerd: gRPC
+    containerd -- containerd_shim
+    containerd_shim -- runC
+    runC -- cont
 }
 
 package "<$linux> Linux" as linux {
-    component "namespace"
+    component "namespaces"
     component "CGroups"
 }
 
 libcontainer - linux
+
+legend right
+<color:black></color> High Level docker Architecture <color:blue><$k8s></color>
+|= Component |= Description |= Function  |
+|  dockerd  | Docker daemon |  persistent process that manages containers. Docker uses different binaries for the daemon and client.\n To run the daemon you type dockerd |
+|  libcontainer  | Docker execution environment | Libcontainer enables containers to work with Linux namespaces, control groups, capabilities, AppArmor,\n security profiles, network interfaces and firewalling rules in a consistent and predictable way. |
+|  containerd  | Daemon for Linux and Windows | It manages the complete container lifecycle of its host system, from image transfer and storage\n to container execution and supervision to low-level storage to network attachments and beyond. |
+|  runC  | Lightweight binary | Responsible for spawning and running containers according to the OCI specification |
+|  containerd-shim  | Daemon | Allows contianerd to exit after running a contianer, thus no need for long running\n runtime processes for running containers |
+endlegend
 
 @enduml
