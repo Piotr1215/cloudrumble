@@ -5,65 +5,65 @@ Preparation notes for DCA (Docker Certified Associate) exam.
 Table of Contents
 
 - [Docker Certified Associate (DCA)](#docker-certified-associate-dca)
-- [Introduction](#introduction)
+  - [Introduction](#introduction)
   - [Certification](#certification)
   - [Exam](#exam)
     - [Exam topics](#exam-topics)
     - [Exam Info](#exam-info)
-- [Learning Plan](#learning-plan)
-  - [1. Find a good online training](#1-find-a-good-online-training)
-  - [2. Go though mock questions and exams](#2-go-though-mock-questions-and-exams)
-  - [3. Practice with Docker](#3-practice-with-docker)
-  - [4. Know Docker/Mirantis documentation well](#4-know-dockermirantis-documentation-well)
-  - [5. Make notes](#5-make-notes)
-- [Basic Concepts](#basic-concepts)
-  - [Docker CLI syntax](#docker-cli-syntax)
+  - [Learning Plan](#learning-plan)
+    - [1. Find a good online training](#1-find-a-good-online-training)
+    - [2. Go though mock questions and exams](#2-go-though-mock-questions-and-exams)
+    - [3. Practice with Docker](#3-practice-with-docker)
+    - [4. Know Docker/Mirantis documentation well](#4-know-dockermirantis-documentation-well)
+    - [5. Make notes](#5-make-notes)
+  - [Basic Concepts](#basic-concepts)
+    - [Docker CLI syntax](#docker-cli-syntax)
   - [Docker Components](#docker-components)
     - [Container Layer](#container-layer)
     - [Access remote Docker host from CLI](#access-remote-docker-host-from-cli)
     - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
-- [Orchestration 25%](#orchestration-25)
-  - [Orchestration Areas](#orchestration-areas)
-  - [Kubernetes Architecture](#kubernetes-architecture)
-  - [Docker Swarm Architecture](#docker-swarm-architecture)
-    - [What is docker stack](#what-is-docker-stack)
-    - [Difference between docker stack ls and docker stack ps](#difference-between-docker-stack-ls-and-docker-stack-ps)
-  - [Raft Consensus and Quorum](#raft-consensus-and-quorum)
-    - [Quorum](#quorum)
-    - [Fault Tolerance](#fault-tolerance)
-- [Image Creation, Management, and Registry 20%](#image-creation-management-and-registry-20)
-  - [Creating docker images](#creating-docker-images)
+  - [Orchestration 25%](#orchestration-25)
+    - [Orchestration Areas](#orchestration-areas)
+    - [Kubernetes Architecture](#kubernetes-architecture)
+    - [Docker Swarm Architecture](#docker-swarm-architecture)
+      - [What is docker stack](#what-is-docker-stack)
+      - [Difference between docker stack ls and docker stack ps](#difference-between-docker-stack-ls-and-docker-stack-ps)
+    - [Raft Consensus and Quorum](#raft-consensus-and-quorum)
+      - [Quorum](#quorum)
+      - [Fault Tolerance](#fault-tolerance)
+  - [Image Creation, Management, and Registry 20%](#image-creation-management-and-registry-20)
+    - [Creating docker images](#creating-docker-images)
     - [Difference between CMD and ENTRYPOINT](#difference-between-cmd-and-entrypoint)
-  - [How to control resources utilization by a container](#how-to-control-resources-utilization-by-a-container)
-    - [CPU](#cpu)
-    - [Memory](#memory)
-  - [Ports mapping](#ports-mapping)
-  - [How to copy files](#how-to-copy-files)
-  - [Check logs to troubleshoot docker service](#check-logs-to-troubleshoot-docker-service)
-  - [Where Images are pulled from?](#where-images-are-pulled-from)
-- [Installation and Configuration 15%](#installation-and-configuration-15)
-  - [MKE Architecture](#mke-architecture)
-  - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
-  - [Logging in docker](#logging-in-docker)
-- [Networking 15%](#networking-15)
-  - [Docker daemon stop behavior](#docker-daemon-stop-behavior)
-  - [Docker Networking](#docker-networking)
-- [Security 15%](#security-15)
-  - [Security Layers](#security-layers)
-- [Storage and Volumes 10%](#storage-and-volumes-10)
-  - [Where is everything stored](#where-is-everything-stored)
-  - [Mounting volumes syntax](#mounting-volumes-syntax)
-- [Useful Commands](#useful-commands)
-  - [Check Docker Status](#check-docker-status)
-  - [Remove all unused docker artifacts](#remove-all-unused-docker-artifacts)
-  - [Stop all running containers](#stop-all-running-containers)
-  - [Setup container hostname](#setup-container-hostname)
-  - [Automatically remove a container when on exit](#automatically-remove-a-container-when-on-exit)
-  - [Add or remove capabilities for the user running a container](#add-or-remove-capabilities-for-the-user-running-a-container)
-  - [Filter results using --filter flag](#filter-results-using---filter-flag)
-- [Links and resources](#links-and-resources)
+    - [How to control resources utilization by a container](#how-to-control-resources-utilization-by-a-container)
+      - [CPU](#cpu)
+      - [Memory](#memory)
+    - [Ports mapping](#ports-mapping)
+    - [How to copy files](#how-to-copy-files)
+    - [Check logs to troubleshoot docker service](#check-logs-to-troubleshoot-docker-service)
+    - [Where Images are pulled from?](#where-images-are-pulled-from)
+  - [Installation and Configuration 15%](#installation-and-configuration-15)
+    - [MKE Architecture](#mke-architecture)
+    - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
+    - [Logging in docker](#logging-in-docker)
+  - [Networking 15%](#networking-15)
+    - [Docker daemon stop behavior](#docker-daemon-stop-behavior)
+    - [Docker Networking](#docker-networking)
+  - [Security 15%](#security-15)
+    - [Security Layers](#security-layers)
+  - [Storage and Volumes 10%](#storage-and-volumes-10)
+    - [Where is everything stored](#where-is-everything-stored)
+    - [Mounting volumes syntax](#mounting-volumes-syntax)
+  - [Useful Commands](#useful-commands)
+    - [Check Docker Status](#check-docker-status)
+    - [Remove all unused docker artifacts](#remove-all-unused-docker-artifacts)
+    - [Stop all running containers](#stop-all-running-containers)
+    - [Setup container hostname](#setup-container-hostname)
+    - [Automatically remove a container when on exit](#automatically-remove-a-container-when-on-exit)
+    - [Add or remove capabilities for the user running a container](#add-or-remove-capabilities-for-the-user-running-a-container)
+    - [Filter results using --filter flag](#filter-results-using---filter-flag)
+  - [Links and resources](#links-and-resources)
 
-# Introduction
+## Introduction
 
 Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams](/diagrams) folder.
 
@@ -99,9 +99,9 @@ Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequen
   - > Options are randomly presented, one at a time.
       For each presented option, the examinee chooses YES or NO to indicate if the option is correct.
 
-# Learning Plan
+## Learning Plan
 
-## 1. Find a good online training
+### 1. Find a good online training
 
 As a primary learning source I have used Kodekloud's [Docker Certified Associate Exam Course](https://kodekloud.com/p/docker-certified-associate-exam-course).
 
@@ -109,12 +109,12 @@ I have already passed, and blogged about [CKA](https://medium.com/faun/preparati
 
 There is a great repo by [Govinda Fichtner](https://github.com/Govinda-Fichtner) where there are links to docker documentation organized per learning topic. You can find the repo here: [DCA Prep Guide from DevOps-Academy](https://github.com/DevOps-Academy-Org/dca-prep-guide).
 
-## 2. Go though mock questions and exams
+### 2. Go though mock questions and exams
 
 Since the exam is in the form of questions, it is important to exercise as much as possible and go thought questions and mock exams. Kodekloud course I've mentioned before has a lot of questions build in, but there are also free mock exams and questions. One from medium I find very good:
 [Medium blog - 250 Practice Questions for the DCA Exam](https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce).
 
-## 3. Practice with Docker
+### 3. Practice with Docker
 
 In this exam practical exercises are not as important as in CKA and CKAD for example, but I still find it valuable to follow up a theoretical session with a practical review.
 
@@ -142,7 +142,7 @@ docker cp ./config kubectl-host:./root/.kube
 docker attach kubectl-host
 ```
 
-## 4. Know Docker/Mirantis documentation well
+### 4. Know Docker/Mirantis documentation well
 
 There are plenty of great learning repositories with exam topics directly linked to Docker/Mirantis documentation. A good one that is also up to date is [Evalle/DCA](https://github.com/Evalle/DCA).
 
@@ -158,7 +158,7 @@ https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7
 </p>
 </details>
 
-## 5. Make notes
+### 5. Make notes
 
 Making notes is easy, making good notes a bit more difficult. To make best of learning notes, I follow this 5 step approach:
 
@@ -178,9 +178,9 @@ Please let me know in comments if you spot an error and feel free to do a PR if 
 
 I wish you best of luck on getting the Docker Certified Associate certification :)
 
-# Basic Concepts
+## Basic Concepts
 
-## Docker CLI syntax
+### Docker CLI syntax
 
 Docker CLI has following syntax:
 
@@ -227,9 +227,9 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 4. Logoff and login with the docker user.
 5. Optional - restart docker service: `sudo systemctl restart docker`
 
-# Orchestration 25%
+## Orchestration 25%
 
-## Orchestration Areas
+### Orchestration Areas
 
 ![Orchestration](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml&fmt=svg)
 
@@ -237,36 +237,36 @@ There are a few solutions on the marked that can help with container and nodes o
 
 I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
 
-## Kubernetes Architecture
+### Kubernetes Architecture
 
 ![Kubernetes Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/kubernetes-architecture.puml&fmt=svg)
 _Source_: https://kubernetes.io/docs/concepts/overview/components/.
 
-## Docker Swarm Architecture
+### Docker Swarm Architecture
 
 ![Docker Swarm](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml&fmt=svg)
 _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
-### What is docker stack
+#### What is docker stack
 
 Docker stack is very similar to docker compose with key difference being that **docker compose defines containers** while **docker stack defines services**. Swarm also provides commands to work with stacks directly.
 
-### Difference between docker stack ls and docker stack ps
+#### Difference between docker stack ls and docker stack ps
 
 `docker stack ls` - lists all the stacks
 `docker stack ps <stack-name>` - lists all the services running in a stack
 
-## Raft Consensus and Quorum
+### Raft Consensus and Quorum
 
 Implementing [Raft Consensus Algorithm](http://thesecretlivesofdata.com/raft/) ensures that all manager nodes in a distributed system are storing the same consistent state.
 
-### Quorum
+#### Quorum
 
 To calculate minimum number of master nodes required to achieve _quorum_ (or simply majority) use N = $\frac{N +1}{2}$ and round the result to full number.
 
 So having 5 master nodes, the quorum is 3.
 
-### Fault Tolerance
+#### Fault Tolerance
 
 Knowing the quorum of master nodes, we can predict fault tolerance which is a number describing how many master nodes can fail before cluster is going to be put in an inconsistent state.
 
@@ -274,9 +274,9 @@ To calculate _fault tolerance_ of the cluster use N = $\frac{N -1}{2}$
 
 So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
 
-# Image Creation, Management, and Registry 20%
+## Image Creation, Management, and Registry 20%
 
-## Creating docker images
+### Creating docker images
 
 Docker image is an immutable blueprint based on which containers are created.
 
@@ -301,9 +301,9 @@ This section defines what command will be executed once container starts and can
 - `CMD` and `ENTRYPOINT` work great together where `ENTRYPOINT` defines "fixed" command to be executed once container starts and `CMD` provides default, but overrideable arguments to run the container in different ways.
   > It is required to specify both `CMD` and `ENTRYPOINT` in a json array format for the override to work
 
-## How to control resources utilization by a container
+### How to control resources utilization by a container
 
-### CPU
+#### CPU
 
 Default CPU share per container is 1024
 
@@ -315,35 +315,35 @@ If host has multiple CPUs, it is possible to restrict how many CPUs can given co
 
 It's worth noting that container orchestrators (like Kubernetes) provide declarative methods to restrict resources usage per run-time unit (pod in case of Kubernetes).
 
-### Memory
+#### Memory
 
 **Option 1:**
 Run container with `--memory=limit` flag to restrict use of memory.
 If a container tries to consume more memory than its limit, system will kill it exiting the process with Out Of Memory Exception (OOM). By default container will be allowed to consume same amount of SWAP space as the memory limit, effectively doubling the memory limit. Providing of course that SWAP space is not disabled on the host.
 
-## Ports mapping
+### Ports mapping
 
 > Hint: Prefer using "-p" option with static port when running containers in production.
 
-## How to copy files
+### How to copy files
 
 Copying files is very easy, first parameter after cp command is source and second destination.
 
 1. Copy file from host to continuer: `docker container cp /tmp/file.txt container_name:/tmp/file.txt`
 2. Copy file from container tp host: `docker container cp container_name:/tmp/file.txt /tmp/file.txt`
 
-## Check logs to troubleshoot docker service
+### Check logs to troubleshoot docker service
 
 - Check system logs: `journalctl -u docker.service`
 - Check free space on the host: `df -h`, use `docker container prune` or `docker image prune` to get rid of stale containers/images
 
-## Where Images are pulled from?
+### Where Images are pulled from?
 
 By default docker will pull images from configured images repository (Docker Hub by default), but it's possible to specify `build` directive instead of `image` with a path to `Dockerfile`
 
-# Installation and Configuration 15%
+## Installation and Configuration 15%
 
-## MKE Architecture
+### MKE Architecture
 
 ![MKE Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
 
@@ -353,49 +353,49 @@ Be aware that after Docker ascuisition by Mirantis there have been some naming a
 - Universal Control Plane **is now** Mirantis Kubernetes Engine (MKE)
 - Docker Enterprise Edition (DEE) **is now** Mirantis Container Runtime (MCR)
 
-## Change docker daemon host configuration
+### Change docker daemon host configuration
 
 Configuration file is located at `/etc/docker/daemon.json` and is by default in `json` format.
 This file is not present by default.
 
-## Logging in docker
+### Logging in docker
 
 Default logging drive for docker is __json-file__.
 To change logging driver to for example splunk, update deamon.json, like so:
 
 `echo ‘{“log-driver”: “splunk”}’ > /etc/docker/daemon.json`
 
-# Networking 15%
+## Networking 15%
 
-## Docker daemon stop behavior
+### Docker daemon stop behavior
 
 By default once docker deamon is stopped or crashes all containers will be stopped as well.
 
 To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` config file.
 
-## Docker Networking
+### Docker Networking
 
 ![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml&fmt=svg)
 
 > <font color=yellow>**Important: Containers can only communicate on a user defined bridge/host network**</font>
 
-# Security 15%
+## Security 15%
 
-## Security Layers
+### Security Layers
 
 ![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml&fmt=svg)
 _Source_: https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html
 
-# Storage and Volumes 10%
+## Storage and Volumes 10%
 
-## Where is everything stored
+### Where is everything stored
 
 Once installed, docker creates a folder under `/var/lib/docker/` where all the containers, images, volumes and configurations are stored.
 
 Kubernetes and Docker Swarm store cluster state and related information in [etcd](https://etcd.io/).
 etcd by default listens on port `2380` for client connections.
 
-## Mounting volumes syntax
+### Mounting volumes syntax
 
 List of common storage drivers:
 
@@ -423,7 +423,7 @@ Template new syntax:
 
 Example old syntax: `docker run -v /data/nginx_data:/var/lib/nginx_data nginx`
 
-# Useful Commands
+## Useful Commands
 
 This section describes useful docker CLI commands in following format:
 > **Command:** - docker command syntax
@@ -432,7 +432,7 @@ This section describes useful docker CLI commands in following format:
 >
 > **Result:** - what is the expected behavior or
 
-## Check Docker Status
+### Check Docker Status
 
 >**Command:** `docker system info`
 >
@@ -440,7 +440,7 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** information about docker host environment and containers
 
-## Remove all unused docker artifacts
+### Remove all unused docker artifacts
 
 >**Command:** `docker system prune --all`
 >
@@ -456,7 +456,7 @@ This section describes useful docker CLI commands in following format:
 > - all build cache
 > - volumes (if `--volumes` flag is used)
 
-## Stop all running containers
+### Stop all running containers
 
 >**Command:** `docker container stop $(docker container ls -q)`
 >
@@ -464,7 +464,7 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** all containers are stopped.
 
-## Setup container hostname
+### Setup container hostname
 
 >**Command:** `docker container run -it --name=ingress --hostname=nginx nginx`
 >
@@ -472,7 +472,7 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** container hostname is set to custom one.
 
-## Automatically remove a container when on exit
+### Automatically remove a container when on exit
 
 >**Command:** `docker container run -d --name=ingress --rm nginx`
 >
@@ -480,7 +480,7 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** container starts and is removed once it's stopped.
 
-## Add or remove capabilities for the user running a container
+### Add or remove capabilities for the user running a container
 
 >**Command:** `docker run --cap-add/--cap-drop KILL nginx` or `docker run --privileged nginx`
 >
@@ -488,7 +488,7 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** container is run with expected privileges.
 
-## Filter results using --filter flag
+### Filter results using --filter flag
 
 >**Command:** `docker search --filter=stars=3 --no-trunc busybox`
 >
@@ -496,7 +496,7 @@ This section describes useful docker CLI commands in following format:
 >
 >**Result:** command output filtered as per filter flag.
 
-# Links and resources
+## Links and resources
 
 1. [Docker Certified Associate Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf)
 2. [DCA Prep Guide from DevOps-Academy](https://github.com/DevOps-Academy-Org/dca-prep-guide)
