@@ -68,6 +68,8 @@ Table of Contents
 Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams](/diagrams) folder.
 
 > Web version of this documentation can be accessed under https://dcaguide.net
+>
+> If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
 
 ## Certification
 
