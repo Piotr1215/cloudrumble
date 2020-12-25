@@ -152,8 +152,6 @@ Such sources are great shortcut for learning and reference later on, but I like 
 
 If you would like to have same bookmarks, please use my gist below and import them from file. Bookmarks are arranged in subfolder corresponding to exam topics:
 
-![DCA-Bookmarks](diagrams/Bookmarks-DCA.png)
-
 <details><summary>DCA Bookmarks GIST</summary>
 <p>
 https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7
