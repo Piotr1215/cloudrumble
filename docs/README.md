@@ -14,6 +14,7 @@ I wish you best of luck on getting the Docker Certified Associate certification 
 
 Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams](/diagrams) folder.
 
+> [!NOTE]
 > Web version of this documentation can be accessed under https://dcaguide.net
 >
 > If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
@@ -22,11 +23,12 @@ Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequen
 
 - Certification is provided by Mirantis
 
-?> [Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
+> [!NOTE]
+> [Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
 
 ## Exam
-
-!> Exam curriculum is based on material update from official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
+> [!ATTENTION]
+> Exam curriculum is based on material update from official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
 
 ### Exam topics
 
@@ -45,8 +47,7 @@ Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequen
 - **90** minutes to answer **55** questions
 - All questions are multiple choice
   - 13 questions are *normal* multiple choice
-  - 52 questions are *Discrete Option Multiple Choice (DOMC)* where
-    > Options are randomly presented, one at a time.
+  - 52 questions are *Discrete Option Multiple Choice (DOMC)* where options are randomly presented, one at a time.
       For each presented option, the examinee chooses YES or NO to indicate if the option is correct.
 
 ## Learning Plan
@@ -76,7 +77,8 @@ There is also a similar service for exercising with Kubernetes and is very usefu
 
 [Interactive online docker environments on demand: kubernetes](https://labs.play-with-k8s.com/)
 
-?> Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
+> [!TIP]
+> Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
 
 Here are easy steps to run the container:
 
@@ -99,8 +101,8 @@ There are plenty of great learning repositories with exam topics directly linked
 Such sources are great shortcut for learning and reference later on, but I like to have all my links at my fingertips right in bookmarks bar.
 
 If you would like to have same bookmarks, please use my gist below and import them from file. Bookmarks are arranged in subfolder corresponding to exam topics:
-
-?> [DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
+> [!NOTE]
+> [DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
 
 ### 5. Make notes
 
@@ -146,14 +148,15 @@ On machine form where you want to access docker host, setup variable:
 ``` bash
 export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 ```
-
+> [!NOTE]
 > Docker default ports:
 >
 > - **2375** - unencrypted traffic
 >
 > - **2376** - encrypted traffic.
 
-!> **IMPORTANT**: This setting is only for testing/playground purposes. It will make docker host available on the network and by default there is no authentication.
+> [!WARNING]
+> **IMPORTANT**: This setting is only for testing/playground purposes. It will make docker host available on the network and by default there is no authentication.
 
 ### Use docker CLI as non root user
 
@@ -171,7 +174,8 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 
 There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
 
-?> I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
+> [!TIP]
+> I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
 
 ### Kubernetes Architecture
 
@@ -229,7 +233,8 @@ For example:
 - running httpd image with command override `docker run httpd printenv` will override default `CMD` with `printenv` command which will output environmental variables to the terminal
 - command can be specified as regular command: `CMD httpd` or as json array `CMD ["sleep", "5"]`
 
-?> in json array syntax first element of an array is command itself and all subsequent elements are parameters/options
+> [!NOTE]
+> in json array syntax first element of an array is command itself and all subsequent elements are parameters/options
 
 <u>ENTRYPOINT</u>
 
@@ -237,7 +242,8 @@ This section defines what command will be executed once container starts and can
 
 - `CMD` and `ENTRYPOINT` work great together where `ENTRYPOINT` defines "fixed" command to be executed once container starts and `CMD` provides default, but overrideable arguments to run the container in different ways.
 
-?> It is required to specify both `CMD` and `ENTRYPOINT` in a json array format for the override to work
+> [!NOTE]
+> It is required to specify both `CMD` and `ENTRYPOINT` in a json array format for the override to work
 
 ### How to control resources utilization by a container
 
@@ -263,7 +269,8 @@ If a container tries to consume more memory than its limit, system will kill it 
 
 Ports mapping always goes from HOST to CONTAINER, so `-p 8080:80` would be mapping of port 8080 on host to port 80 on container.
 
-?> Hint: Prefer using "-p" option with static port when running containers in production.
+> [!TIP]
+> Hint: Prefer using "-p" option with static port when running containers in production.
 
 ### How to copy files
 
@@ -318,7 +325,8 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml&fmt=svg)
 
-!> **Important** Containers can only communicate on a user defined bridge/host network
+> [!ATTENTION]
+> **Important** Containers can only communicate on a user defined bridge/host network
 
 ## Security 15%
 
