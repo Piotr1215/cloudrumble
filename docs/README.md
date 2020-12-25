@@ -2,68 +2,15 @@
 
 Preparation notes for DCA (Docker Certified Associate) exam.
 
-Table of Contents
-
-- [Docker Certified Associate (DCA)](#docker-certified-associate-dca)
-  - [Introduction](#introduction)
-  - [Certification](#certification)
-  - [Exam](#exam)
-    - [Exam topics](#exam-topics)
-    - [Exam Info](#exam-info)
-  - [Learning Plan](#learning-plan)
-    - [1. Find a good online training](#1-find-a-good-online-training)
-    - [2. Go though mock questions and exams](#2-go-though-mock-questions-and-exams)
-    - [3. Practice with Docker](#3-practice-with-docker)
-    - [4. Know Docker/Mirantis documentation well](#4-know-dockermirantis-documentation-well)
-    - [5. Make notes](#5-make-notes)
-  - [Basic Concepts](#basic-concepts)
-    - [Docker CLI syntax](#docker-cli-syntax)
-  - [Docker Components](#docker-components)
-    - [Container Layer](#container-layer)
-    - [Access remote Docker host from CLI](#access-remote-docker-host-from-cli)
-    - [Use docker CLI as non root user](#use-docker-cli-as-non-root-user)
-  - [Orchestration 25%](#orchestration-25)
-    - [Orchestration Areas](#orchestration-areas)
-    - [Kubernetes Architecture](#kubernetes-architecture)
-    - [Docker Swarm Architecture](#docker-swarm-architecture)
-      - [What is docker stack](#what-is-docker-stack)
-      - [Difference between docker stack ls and docker stack ps](#difference-between-docker-stack-ls-and-docker-stack-ps)
-    - [Raft Consensus and Quorum](#raft-consensus-and-quorum)
-      - [Quorum](#quorum)
-      - [Fault Tolerance](#fault-tolerance)
-  - [Image Creation, Management, and Registry 20%](#image-creation-management-and-registry-20)
-    - [Creating docker images](#creating-docker-images)
-    - [Difference between CMD and ENTRYPOINT](#difference-between-cmd-and-entrypoint)
-    - [How to control resources utilization by a container](#how-to-control-resources-utilization-by-a-container)
-      - [CPU](#cpu)
-      - [Memory](#memory)
-    - [Ports mapping](#ports-mapping)
-    - [How to copy files](#how-to-copy-files)
-    - [Check logs to troubleshoot docker service](#check-logs-to-troubleshoot-docker-service)
-    - [Where Images are pulled from?](#where-images-are-pulled-from)
-  - [Installation and Configuration 15%](#installation-and-configuration-15)
-    - [MKE Architecture](#mke-architecture)
-    - [Change docker daemon host configuration](#change-docker-daemon-host-configuration)
-    - [Logging in docker](#logging-in-docker)
-  - [Networking 15%](#networking-15)
-    - [Docker daemon stop behavior](#docker-daemon-stop-behavior)
-    - [Docker Networking](#docker-networking)
-  - [Security 15%](#security-15)
-    - [Security Layers](#security-layers)
-  - [Storage and Volumes 10%](#storage-and-volumes-10)
-    - [Where is everything stored](#where-is-everything-stored)
-    - [Mounting volumes syntax](#mounting-volumes-syntax)
-  - [Useful Commands](#useful-commands)
-    - [Check Docker Status](#check-docker-status)
-    - [Remove all unused docker artifacts](#remove-all-unused-docker-artifacts)
-    - [Stop all running containers](#stop-all-running-containers)
-    - [Setup container hostname](#setup-container-hostname)
-    - [Automatically remove a container when on exit](#automatically-remove-a-container-when-on-exit)
-    - [Add or remove capabilities for the user running a container](#add-or-remove-capabilities-for-the-user-running-a-container)
-    - [Filter results using --filter flag](#filter-results-using---filter-flag)
-  - [Links and resources](#links-and-resources)
-
 ## Introduction
+
+This article and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
+
+Sections below contain my notes and diagrams as well as docker commands and tips and tricks. This is by definition an opinionated learning material, but I hope you will find it useful on your journey to learning and passing Docker Certified Associate exam.
+
+Please let me know in comments if you spot an error and feel free to do a PR if you would like to contribute to the repo.
+
+I wish you best of luck on getting the Docker Certified Associate certification :)
 
 Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams](/diagrams) folder.
 
@@ -169,14 +116,6 @@ Making notes is easy, making good notes a bit more difficult. To make best of le
 | 3. Visual representation | Create diagrams, mindmaps and other visual representation of the topic. | Use for complex topics, typically architecture and high level design. |
 | 4. Visual representation with summary | Create diagrams, mindmaps and other visual representation of the topic with summary in your own words. | Use for complex topics that you need to understand on a deep level. |
 | 5. Design to teach | Use all the above techniques, but always ask youself a question, how can I teach this topic to anyone in best possible way? Typically you would create a blog, youtube video or engage directly with community | Use for very complex topics or the ones you wish to became expert in. By far making notes and content in a way that is designed to teach someone is the best ways to learn. |
-
-This article and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
-
-Sections below contain my notes and diagrams as well as docker commands and tips and tricks. This is by definition an opinionated learning material, but I hope you will find it useful on your journey to learning and passing Docker Certified Associate exam.
-
-Please let me know in comments if you spot an error and feel free to do a PR if you would like to contribute to the repo.
-
-I wish you best of luck on getting the Docker Certified Associate certification :)
 
 ## Basic Concepts
 
