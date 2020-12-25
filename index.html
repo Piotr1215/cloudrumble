@@ -15,12 +15,22 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-      loadSidebar: false,
-      name: '',
-      repo: '',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      autoHeader: true,
+      name: 'Docker Certified Associate',
+      repo: 'Piotr1215/dca-prep-kit',
       themeable: {
         readyTransition: true, // default
         responsiveTables: true // default
+      },
+      search: {
+      maxAge: 86400000, // Expiration time, the default one day
+      paths: 'auto',
+      placeholder: 'Type to search',
+      noData: 'No Results!',
+      depth: 6,
+      hideOtherSidebarContent: true, // whether or not to hide other sidebar content
       }
     }
   </script>
@@ -29,6 +39,7 @@
   <!-- docsify-themeable (latest v0.x.x) -->
   <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 </body>
 
 </html>
