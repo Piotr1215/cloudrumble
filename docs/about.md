@@ -24,8 +24,6 @@
 <a href="https://twitter.com/piotr1215" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="piotr1215" height="30" width="40" /></a>
 <a href="https://medium.com/@piotrzan" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/medium.svg" alt="@piotrzan" height="30" width="40" /></a>
 </p>
-<div style="overflow: hidden;">
 <p style="float: left;"><img  src="https://github-readme-stats.vercel.app/api/top-langs?username=piotr1215&show_icons=true&theme=dark&locale=en&layout=compact" alt="piotr1215" /></p>
 
 <p style="float: right;">&nbsp;<img  src="https://github-readme-stats.vercel.app/api?username=piotr1215&show_icons=true&theme=dark&locale=en" alt="piotr1215" /></p>
-</div>
