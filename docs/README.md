@@ -285,6 +285,7 @@ By default docker will pull images from configured images repository (Docker Hub
 ### MKE Architecture
 
 ![MKE Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
+_Source_: https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html
 
 Be aware that after Docker ascuisition by Mirantis there have been some naming and product changes, so following applies:
 
@@ -323,7 +324,6 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 ### Security Layers
 
 ![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml&fmt=svg)
-_Source_: https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html
 
 ## Storage and Volumes 10%
 
