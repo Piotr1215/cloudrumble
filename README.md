@@ -2,5 +2,5 @@
 
 Preparation notes for DCA (Docker Certified Associate) exam.
 
-- Markdown [Documentaiton](docs/README.md)
-- Web [Documentaiton](https://dcaguide.net)
+- Markdown [Documentation](docs/README.md)
+- Web [Documentation](https://dcaguide.net)

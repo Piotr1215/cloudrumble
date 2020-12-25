@@ -13,6 +13,12 @@
 
 <body>
   <div id="app"></div>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
+  <!-- docsify-themeable (latest v0.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
   <script>
     window.$docsify = {
       loadSidebar: '_sidebar.md',
@@ -31,15 +37,12 @@
         noData: 'No Results!',
         depth: 6,
         hideOtherSidebarContent: false, // whether or not to hide other sidebar content
-      }
+      },
+      plugins: [
+        EditOnGithubPlugin.create('https://github.com/Piotr1215/dca-prep-kit/blob/master/docs/')
+      ]
     }
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <!-- docsify-themeable (latest v0.x.x) -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 </body>
 
 </html>
