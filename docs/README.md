@@ -199,7 +199,7 @@ Implementing [Raft Consensus Algorithm](http://thesecretlivesofdata.com/raft/) e
 
 #### Quorum
 
-To calculate minimum number of master nodes required to achieve _quorum_ (or simply majority) use N = $\frac{N +1}{2}$ and round the result to full number.
+To calculate minimum number of master nodes required to achieve _quorum_ (or simply majority) use $\boxed{N=\frac {N + 1} 2}$ and round the result to full number.
 
 So having 5 master nodes, the quorum is 3.
 
@@ -207,7 +207,7 @@ So having 5 master nodes, the quorum is 3.
 
 Knowing the quorum of master nodes, we can predict fault tolerance which is a number describing how many master nodes can fail before cluster is going to be put in an inconsistent state.
 
-To calculate _fault tolerance_ of the cluster use N = $\frac{N -1}{2}$
+To calculate _fault tolerance_ of the cluster use $\boxed{N=\frac {N - 1} 2}$
 
 So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
 
