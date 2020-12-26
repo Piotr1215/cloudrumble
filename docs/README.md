@@ -1,7 +1,3 @@
-# Docker Certified Associate (DCA)
-
-Preparation notes for DCA (Docker Certified Associate) exam.
-
 ## Introduction
 
 This article and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
