@@ -17,15 +17,19 @@ Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequen
 
 ## Certification
 
-- Certification is provided by Mirantis
-
 > [!NOTE]
-> [Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
+>
+> - More details about certification and exam [available on Mirantis website](https://training.mirantis.com/dca-certification-exam/).
+>
+> - [Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
 
 ## Exam
 
 > [!ATTENTION]
-> Exam curriculum is based on material update from official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
+>
+> - Unlike CKA or CKAD there is no free retake of the exam, each subsequent attempt must be separately paid for.
+>
+> - Exam curriculum is based on material update from official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
 
 ### Exam topics
 
@@ -49,9 +53,13 @@ Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequen
 
 ## Learning Plan
 
-### 1. Find a good online training
+### 1. Find good training material
 
-As a primary learning source I have used Kodekloud's [Docker Certified Associate Exam Course](https://kodekloud.com/p/docker-certified-associate-exam-course).
+As a primary online training learning source I have used Kodekloud's [Docker Certified Associate Exam Course](https://kodekloud.com/p/docker-certified-associate-exam-course).
+
+As a primary learning resource in general I cannot recommend enough **Nigel Poulton's DOCKER DEEP DIVE**. You can get the book for less than 10 EUR on Amazon in kindle format.
+
+You can check out [Nigel's personal page](https://nigelpoulton.com/) for more information.
 
 I have already passed, and blogged about [CKA](https://medium.com/faun/preparation-and-resources-for-cka-exam-ca868fc678c9) and [CKAD](https://piotrzan.medium.com/preparation-and-resources-for-ckad-exam-ea1b2e8888e3) and there is significant overlap with Kubernetes orchestration part and containers basics.
 
