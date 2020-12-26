@@ -23,6 +23,7 @@ Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequen
 > [Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
 
 ## Exam
+
 > [!ATTENTION]
 > Exam curriculum is based on material update from official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
 
@@ -104,7 +105,7 @@ If you would like to have same bookmarks, please use my gist below and import th
 
 Making notes is easy, making good notes a bit more difficult. To make best of learning notes, I follow this 5 step approach:
 
-| **Notes Level** | **How to** | **When to use** |
+| <div style="width:290px">**Notes Level**</div> | **How to** | **When to use** |
 |---|---|---|
 | 1. Regular notes | Typically copy and paste or direct link. | Use for low importance/easy to remember topics. |
 | 2. Highlight with formatting | Use highlighting or other formatting techniques. | Use for topics with large volume of material to highlight important bits. |
@@ -122,7 +123,7 @@ Docker CLI has following syntax:
 
 **Example**: `docker container run -it ubuntu`
 
-## Docker Components
+### Docker Components
 
 ![Docker Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-architecture.puml&fmt=svg)
 _Sources_:
@@ -162,7 +163,7 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 4. Logoff and login with the docker user.
 5. Optional - restart docker service: `sudo systemctl restart docker`
 
-## Orchestration 25%
+## Orchestration
 
 ### Orchestration Areas
 
@@ -210,7 +211,7 @@ To calculate _fault tolerance_ of the cluster use N = $\frac{N -1}{2}$
 
 So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
 
-## Image Creation, Management, and Registry 20%
+## Images and Registry
 
 ### Creating docker images
 
@@ -284,7 +285,7 @@ Copying files is very easy, first parameter after cp command is source and secon
 
 By default docker will pull images from configured images repository (Docker Hub by default), but it's possible to specify `build` directive instead of `image` with a path to `Dockerfile`
 
-## Installation and Configuration 15%
+## Installation and Configuration
 
 ### MKE Architecture
 
@@ -309,7 +310,7 @@ To change logging driver to for example splunk, update deamon.json, like so:
 
 `echo ‘{“log-driver”: “splunk”}’ > /etc/docker/daemon.json`
 
-## Networking 15%
+## Networking
 
 ### Docker daemon stop behavior
 
@@ -324,13 +325,13 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 > [!ATTENTION]
 > **Important** Containers can only communicate on a user defined bridge/host network
 
-## Security 15%
+## Security
 
 ### Security Layers
 
 ![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml&fmt=svg)
 
-## Storage and Volumes 10%
+## Storage and Volumes
 
 ### Where is everything stored
 
