@@ -196,6 +196,14 @@ _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
 Docker stack is very similar to docker compose with key difference being that **docker compose defines containers** while **docker stack defines services**. Swarm also provides commands to work with stacks directly.
 
+Useful Stack commands
+
+- `docker stack deploy -c <compose file>` - deploy the new stack or update
+- `docker stack services` - list services in the stack
+- `docker stack ps` - list the tasks in the stack
+- `docker stack rm` - remove the stack
+- `docker stack ls` - List stack
+
 #### Difference between docker stack ls and docker stack ps
 
 `docker stack ls` - lists all the stacks
