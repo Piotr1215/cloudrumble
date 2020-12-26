@@ -1,11 +1,10 @@
 @startmindmap k8s-network-policy
 'Icons
 !include <kubernetes/k8s-sprites-labeled-25pct>
-!include <tupadr3/font-awesome-5/network_wired>
 
-*[#lightyellow] <$network_wired>\nNetwork Policy
+*[#lightyellow] Network Policy\n     <$netpol>
 
-**[#lightgray] Prerequisites
+**[#lightgray] <&spreadsheet>Prerequisites <&spreadsheet>
 ***[#lightgray] Network plugin supporting\n Network Policies
 ****[#lightgray] Calico
 ****[#lightgray] Cilium
@@ -13,7 +12,7 @@
 ****[#lightgray] Romana
 ****[#lightgray] Weave Net
 
-**[#lightgreen] What is it for
+**[#lightgreen] <&question-mark>What is it for <&question-mark>
 ***[#lightgreen] Control pods communication with
 ****[#lightgreen] Other pods
 ****[#lightgreen] Namespaces
@@ -21,7 +20,7 @@
 
 left side
 
-**[#LightCyan] How does it work
+**[#LightCyan] <&cog>How does it work <&cog>
 ***[#LightCyan] Policies are addative
 ***[#LightCyan] Pods accept all traffic by default
 ***[#LightCyan] To apply policy to pod
