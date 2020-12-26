@@ -324,6 +324,9 @@ Kubernetes uses services to enable communication between pods and other resource
 - **TargetPort** - is the port on which the service will send requests to, that your pod will be listening on. Your application in the container will need to be listening on this port also.
 - **NodePort** - exposes a service externally to the cluster by means of the target nodes IP address and the NodePort. NodePort is the default setting if the port field is not specified.
 
+> [!NOTE]
+> By default NodePort range in Kubernetes is **30000-32767**
+
 ### Docker daemon stop behavior
 
 By default once docker deamon is stopped or crashes all containers will be stopped as well.
@@ -464,3 +467,4 @@ This section describes useful docker CLI commands in following format:
 7. [Docker Docs](https://docs.docker.com/)
 8. [Mirantis Docs](https://docs.mirantis.com/welcome/)
 9. [PlantUML Diagrams as Code](https://plantuml.com/)
+10. [K8s Services Explained](https://www.bmc.com/blogs/kubernetes-port-targetport-nodeport/)
