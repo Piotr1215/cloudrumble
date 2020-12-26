@@ -199,6 +199,7 @@ Docker stack is very similar to docker compose with key difference being that **
 #### Difference between docker stack ls and docker stack ps
 
 `docker stack ls` - lists all the stacks
+`docker stack services` - list the services created by a stack
 `docker stack ps <stack-name>` - lists all the services running in a stack
 
 ### Raft Consensus and Quorum
@@ -306,6 +307,14 @@ Be aware that after Docker ascuisition by Mirantis there have been some naming a
 - Universal Control Plane **is now** Mirantis Kubernetes Engine (MKE)
 - Docker Enterprise Edition (DEE) **is now** Mirantis Container Runtime (MCR)
 
+### UCP/MKE Backup
+
+To take a backup of UCP/MKE use **docker/ucp** container
+
+### Kubernetes configMaps
+
+In order to configure configMapKeyRef in a pod to use environment variables defined in a ConfigMap, use container path subset **spec.containers.env.valueFrom**
+
 ### Change docker daemon host configuration
 
 Configuration file is located at `/etc/docker/daemon.json` and is by default in `json` format.
@@ -348,6 +357,10 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 > [!ATTENTION]
 > **Important** Containers can only communicate on a user defined bridge/host network
 
+### DTR overlay network
+
+The network created for the DTR services to communicate with each other is **overlay/dtr-ol**
+
 ## Security
 
 ### Security Layers
@@ -358,6 +371,8 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ![Access Control Model](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-access-control-model.puml&fmt=svg)
 _Source:_ http://docs.docker.oeynet.com/datacenter/ucp/2.2/guides/access-control/
+
+Grants are effectively Access Control Lists (ACLs) which provide comprehensive access policies for an entire organization when grouped together.,Grants define which users can access what resources in what way.,A grant is made up of a subject, a role, and a resource set.
 
 ## Storage and Volumes
 
