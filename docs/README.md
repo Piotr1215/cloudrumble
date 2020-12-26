@@ -354,6 +354,11 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml&fmt=svg)
 
+### Access Control Model in MKE
+
+![Access Control Model](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-access-control-model.puml&fmt=svg)
+_Source:_ http://docs.docker.oeynet.com/datacenter/ucp/2.2/guides/access-control/
+
 ## Storage and Volumes
 
 ### Where is everything stored
