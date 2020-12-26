@@ -312,6 +312,10 @@ To change logging driver to for example splunk, update deamon.json, like so:
 
 ## Networking
 
+### Kubernetes network policies
+
+![Kubernetes Network Policy](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-network-policy.puml&fmt=svg)
+
 ### Docker daemon stop behavior
 
 By default once docker deamon is stopped or crashes all containers will be stopped as well.
