@@ -316,6 +316,14 @@ To change logging driver to for example splunk, update deamon.json, like so:
 
 ![Kubernetes Network Policy](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-network-policy.puml&fmt=svg)
 
+### Kubernetes service resource
+
+Kubernetes uses services to enable communication between pods and other resources as well as external endpoints. Service can declare 3 types of ports:
+
+- **Port** - exposes the Kubernetes service on the specified port within the cluster. Other pods within the cluster can communicate with this server on the specified port.
+- **TargetPort** - is the port on which the service will send requests to, that your pod will be listening on. Your application in the container will need to be listening on this port also.
+- **NodePort** - exposes a service externally to the cluster by means of the target nodes IP address and the NodePort. NodePort is the default setting if the port field is not specified.
+
 ### Docker daemon stop behavior
 
 By default once docker deamon is stopped or crashes all containers will be stopped as well.
