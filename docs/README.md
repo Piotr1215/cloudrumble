@@ -196,7 +196,7 @@ _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
 Docker stack is very similar to docker compose with key difference being that **docker compose defines containers** while **docker stack defines services**. Swarm also provides commands to work with stacks directly.
 
-Useful Stack commands
+Useful Stack commands:
 
 - `docker stack deploy -c <compose file>` - deploy the new stack or update
 - `docker stack services` - list services in the stack
@@ -206,9 +206,17 @@ Useful Stack commands
 
 #### Difference between docker stack ls and docker stack ps
 
-`docker stack ls` - lists all the stacks
-`docker stack services` - list the services created by a stack
-`docker stack ps <stack-name>` - lists all the services running in a stack
+- `docker stack ls` - lists all the stacks
+- `docker stack services` - list the services created by a stack
+- `docker stack ps <stack-name>` - lists all the services running in a stack
+
+#### Docker Swarm Networks
+
+- **Overlay networks**: manage communications among the Docker daemons participating in the swarm.You can attach a service to one or more existing overlay networks as well, to enable service-to-service communication.
+
+- **ingress network**: is a special overlay network that facilitates load balancing among a service’s nodes. When any swarm node receives a request on a published port, it hands that request off to a module called IPVS. IPVS keeps track of all the IP addresses participating in that service, selects one of them, and routes the request to it, over the ingress network.
+
+- **docker_gwbridge**: is a bridge network that connects the overlay networks (including the ingress network) to an individual Docker daemon’s physical network.
 
 ### Raft Consensus and Quorum
 
