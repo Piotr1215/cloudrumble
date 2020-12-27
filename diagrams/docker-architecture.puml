@@ -2,6 +2,9 @@
 'Icons
 !include <tupadr3/devicons/linux>
 !include <tupadr3/devicons/docker>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome/terminal>
+
 'Global Styles
 !include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
 skinparam Linetype default
@@ -10,7 +13,7 @@ skinparam rectangleBorderStyle default
 
 package "<$docker> Docker" as runtime {
 
-    component "Docker CLI" as dockercli
+    component "     <$terminal>\nDocker CLI" as dockercli
     component "REST API" as restapi
 
     dockercli <--> restapi
@@ -34,7 +37,7 @@ package "<$docker> Docker" as runtime {
         [Run Containers]
     }
 
-    collections "Containers" as cont
+    collections "   <$ECScontainer>\nContainers" as cont
 
     dockerdeamon - libcontainer
     dockerdeamon -- containerd: gRPC
