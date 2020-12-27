@@ -64,7 +64,7 @@ legend bottom
 <color:black></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>
 |= Component |= Description |= Function  |
 |  ucp-agent  | Globally scheduled service \n (runs on every node) | Node monitoring, different behavior \n depending if it runs on manager or worker node |
-|  ucp-agent  | A TLS proxy | Allows secure access to the local Mirantis Container Runtime to MKE components |
+|  ucp-proxy  | A TLS proxy | Allows secure access to the local Mirantis Container Runtime to MKE components |
 endlegend
 
 @enduml

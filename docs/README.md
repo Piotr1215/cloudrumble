@@ -318,7 +318,7 @@ By default docker will pull images from configured images repository (Docker Hub
 ![MKE Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
 _Source_: https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html
 
-Be aware that after Docker ascuisition by Mirantis there have been some naming and product changes, so following applies:
+Be aware that after Docker acquisition by Mirantis there have been some naming and product changes, so following applies:
 
 - Docker Trusted Registry (DRT) **is now** Mirantis Secure Registry (MSR)
 - Universal Control Plane **is now** Mirantis Kubernetes Engine (MKE)
