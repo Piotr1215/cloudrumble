@@ -1,6 +1,6 @@
-# Frequently asked questions and troubleshooting
+# Frequently asked questions and troubleshooting <!-- {docsify-ignore-all} -->
 
-### Q: I see 500 error instead of diagram
+## Q: I see 500 error instead of diagram
 
 ![Plantuml 503](_media/plantuml-503.png)
 
