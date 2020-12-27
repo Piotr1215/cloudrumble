@@ -19,13 +19,10 @@ skinparam rectangle {
     shadowing<<host>> true
 }
 
-'left to right direction
-'top to bottom direction
 title TITLE
-right header
+center header
     Based on "Networking" chapter from "Docker Deep Dive".
 end header
-
 
 Rectangle "<$docker>\nDocker host" as core #lightgray {
     Rectangle "App in container\n     <color:lightblue><$ECScontainer*1.5>\n           :**80**" as container

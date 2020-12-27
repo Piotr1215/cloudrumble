@@ -12,7 +12,7 @@ skinparam RectangleBackgroundColor white
 'left to right direction
 'top to bottom direction
 title TITLE
-right header
+center header
     Based on "Networking" chapter from "Docker Deep Dive".
 end header
 
