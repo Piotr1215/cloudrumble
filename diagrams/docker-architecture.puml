@@ -46,6 +46,7 @@ package "<$docker> Docker" as runtime {
 package "<$linux> Linux" as linux {
     component "namespaces"
     component "CGroups"
+    component "CFS: Completely Fair Scheduler"
 }
 
 libcontainer - linux
@@ -58,6 +59,7 @@ legend right
 |  containerd  | Daemon for Linux and Windows | It manages the complete container lifecycle of its host system, from image transfer and storage\n to container execution and supervision to low-level storage to network attachments and beyond. |
 |  runC  | Lightweight binary | Responsible for spawning and running containers according to the OCI specification |
 |  containerd-shim  | Daemon | Allows contianerd to exit after running a contianer, thus no need for long running\n runtime processes for running containers |
+|  CFS  | Part of kernel | Responsible for managing CPU resources and allocating the time of the CPU between different processes |
 endlegend
 
 @enduml
