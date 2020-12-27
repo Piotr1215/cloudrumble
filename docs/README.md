@@ -1,6 +1,6 @@
 ## Introduction
 
-This article and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
+This documentation and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
 
 Sections below contain my notes and diagrams as well as docker commands and tips and tricks. This is by definition an opinionated learning material, but I hope you will find it useful on your journey to learning and passing Docker Certified Associate exam.
 
@@ -8,12 +8,13 @@ Please let me know in comments if you spot an error and feel free to do a PR if 
 
 I wish you best of luck on getting the Docker Certified Associate certification :)
 
-Each section corresponds to exam topics. `Plantuml` diagrams  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams]([/diagrams](https://github.com/Piotr1215/dca-prep-kit/tree/master/diagrams)) folder.
+Each section corresponds to exam topics. [`Plantuml` diagrams](https://plantuml.com/)  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams]([/diagrams](https://github.com/Piotr1215/dca-prep-kit/tree/master/diagrams)) folder.
 
 > [!NOTE]
-> Web version of this documentation can be accessed under https://dcaguide.net
 >
-> If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
+> - Web version of this documentation can be accessed under https://dcaguide.net.
+>
+> - If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
 
 ## Certification
 
@@ -327,6 +328,25 @@ Be aware that after Docker ascuisition by Mirantis there have been some naming a
 
 To take a backup of UCP/MKE use **docker/ucp** container
 
+### DTR/MSR Backup
+
+To perform a backup of a MSR node, run the **mirantis/dtr backup <msr-cli-backup>** command
+
+### Docker Swarm Backup (simplified)
+
+To back up the swarm using any manager, follow these steps.
+
+1. If the swarm has auto-lock enabled, you need the unlock key to restore the swarm from backup.
+
+2. Stop Docker on the manager before backing up the data, so that no data is being changed during the backup.
+
+  > [!NOTE]
+  > Be sure to maintain the quorum of swarm managers
+
+3. Back up the entire /var/lib/docker/swarm directory.
+
+4. Restart the manager.
+
 ### Kubernetes configMaps
 
 In order to configure configMapKeyRef in a pod to use environment variables defined in a ConfigMap, use container path subset **spec.containers.env.valueFrom**
@@ -348,6 +368,8 @@ To change logging driver to for example splunk, update deamon.json, like so:
 ### Kubernetes network policies
 
 ![Kubernetes Network Policy](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-network-policy.puml&fmt=svg)
+
+As soon as a network policy is associated with a POD all ingress and egress traffic to that POD are denied except allowed by the network policy.
 
 ### Kubernetes service resource
 
@@ -390,6 +412,12 @@ _Source:_ http://docs.docker.oeynet.com/datacenter/ucp/2.2/guides/access-control
 
 Grants are effectively Access Control Lists (ACLs) which provide comprehensive access policies for an entire organization when grouped together.,Grants define which users can access what resources in what way.,A grant is made up of a subject, a role, and a resource set.
 
+To control user access, cluster resources are grouped into Docker Swarm collections or Kubernetes namespaces.,Together, collections and namespaces are named resource sets.
+
+### Image Scanning
+
+DTR/MSR has an ability to scan images for known vulnerabilities, it is done with a container called **dtr-jobrunner**.
+
 ## Storage and Volumes
 
 ### Where is everything stored
@@ -398,6 +426,14 @@ Once installed, docker creates a folder under `/var/lib/docker/` where all the c
 
 Kubernetes and Docker Swarm store cluster state and related information in [etcd](https://etcd.io/).
 etcd by default listens on port `2380` for client connections.
+
+### Configure a storage class for an application in k8s
+
+Steps:
+
+1. Create a storage class with a provisioner
+2. Create a PVC with the storage class
+3. Use the PVC in the volumes section in the pod definition file
 
 ### Mounting volumes syntax
 
