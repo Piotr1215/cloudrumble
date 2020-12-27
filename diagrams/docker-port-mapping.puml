@@ -1,0 +1,47 @@
+@startuml docker-port-mapping
+!include <tupadr3/font-awesome/terminal>
+!include <tupadr3/devicons/docker>
+!include <tupadr3/devicons/chrome>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!define TITLE Docker Port Mapping
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+skinparam linetype default
+skinparam nodesep 15
+skinparam ranksep 30
+skinparam monochrome false
+skinparam ComponentBackgroundColor white
+skinparam RectangleBackgroundColor white
+skinparam FrameBackgroundColor white
+
+skinparam rectangle {
+    backgroundColor<<host>> e6fbff
+    borderColor<<host>> e6fbff
+    shadowing<<host>> true
+}
+
+'left to right direction
+'top to bottom direction
+title TITLE
+right header
+    Based on "Networking" chapter from "Docker Deep Dive".
+end header
+
+
+Rectangle "<$docker>\nDocker host" as core #lightgray {
+    Rectangle "App in container\n     <color:lightblue><$ECScontainer*1.5>\n           :**80**" as container
+    Rectangle "10.10.2.15:**5000**" <<host>> as hostip
+
+}
+frame "<$chrome>   " <<https://10.10.2.15:5000>> as browser
+
+container <--> hostip
+
+hostip <---- browser
+
+legend bottom
+<color:blue>TITLE </color>
+Traffic going to the port **5000** to docker host
+will be mapped to container port **80**
+end legend
+
+@enduml

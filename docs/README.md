@@ -392,6 +392,10 @@ By default once docker deamon is stopped or crashes all containers will be stopp
 
 To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` config file.
 
+### Docker port mapping
+
+![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-port-mapping.puml&fmt=svg)
+
 ### Docker Networking
 
 ![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml&fmt=svg)

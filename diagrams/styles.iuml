@@ -4,3 +4,4 @@ skinparam componentShadowing true
 skinparam rectangleRoundCorner 35
 skinparam rectangleBorderStyle dashed
 skinparam linetype ortho
+skinparam rectangleShadowing true
