@@ -394,7 +394,7 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ### Docker port mapping
 
-![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-port-mapping.puml&fmt=svg)
+![Docker Port Mapping](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-port-mapping.puml&fmt=svg)
 
 ### Docker Networking
 
