@@ -347,6 +347,8 @@ To back up the swarm using any manager, follow these steps.
 
 4. Restart the manager.
 
+_Source_: https://docs.docker.com/engine/swarm/admin_guide/#back-up-the-swarm
+
 ### Kubernetes configMaps
 
 In order to configure configMapKeyRef in a pod to use environment variables defined in a ConfigMap, use container path subset **spec.containers.env.valueFrom**
