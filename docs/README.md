@@ -28,9 +28,11 @@ Each section corresponds to exam topics. [`Plantuml` diagrams](https://plantuml.
 
 > [!ATTENTION]
 >
-> - Unlike CKA or CKAD there is no free retake of the exam, each subsequent attempt must be separately paid for.
+> - Unlike CKA or CKAD there is no free retake of the exam, each subsequent attempt must be separately paid for, so make sure to prepare well. Remember that you can reschedule the exam at any time.
 >
-> - Exam curriculum is based on material update from official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
+> - Exam is pretty challenging. Questions are very detailed and often revolve around obscure details about particular topic. My exam had a lot of questions around PVs, PVCs, StorageClasses as well as detailed configuration of DTR and UCP. Please remember that your exam might be different, as questions are changed often.
+>
+> - This guide is based on official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
 
 ### Exam topics
 
