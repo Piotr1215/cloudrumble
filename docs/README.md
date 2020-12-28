@@ -136,7 +136,7 @@ Docker CLI has following syntax:
 
 ### Docker Components
 
-![Docker Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-architecture.puml&fmt=svg)
+![Docker Architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-architecture.puml&fmt=svg)
 _Sources_:
 
 - [dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/)
@@ -178,7 +178,7 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 
 ### Orchestration Areas
 
-![Orchestration](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml&fmt=svg)
+![Orchestration](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml&fmt=svg)
 
 There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
 
@@ -187,12 +187,12 @@ There are a few solutions on the marked that can help with container and nodes o
 
 ### Kubernetes Architecture
 
-![Kubernetes Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/kubernetes-architecture.puml&fmt=svg)
+![Kubernetes Architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/kubernetes-architecture.puml&fmt=svg)
 _Source_: https://kubernetes.io/docs/concepts/overview/components/.
 
 ### Docker Swarm Architecture
 
-![Docker Swarm](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml&fmt=svg)
+![Docker Swarm](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml&fmt=svg)
 _Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
 #### What is docker stack
@@ -317,7 +317,7 @@ By default docker will pull images from configured images repository (Docker Hub
 
 ### MKE Architecture
 
-![MKE Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
+![MKE Architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
 _Source_: https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html
 
 Be aware that after Docker acquisition by Mirantis there have been some naming and product changes, so following applies:
@@ -369,11 +369,11 @@ To change logging driver to for example splunk, update deamon.json, like so:
 
 ## Networking
 
-![Docker Core Networking](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-core-networking.puml&fmt=svg)
+![Docker Core Networking](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-core-networking.puml&fmt=svg)
 
 ### Kubernetes network policies
 
-![Kubernetes Network Policy](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-network-policy.puml&fmt=svg)
+![Kubernetes Network Policy](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-network-policy.puml&fmt=svg)
 
 As soon as a network policy is associated with a POD all ingress and egress traffic to that POD are denied except allowed by the network policy.
 
@@ -396,11 +396,11 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ### Docker port mapping
 
-![Docker Port Mapping](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-port-mapping.puml&fmt=svg)
+![Docker Port Mapping](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-port-mapping.puml&fmt=svg)
 
 ### Docker Networking
 
-![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml&fmt=svg)
+![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml&fmt=svg)
 
 > [!ATTENTION]
 > **Important** Containers can only communicate on a user defined bridge/host network
@@ -413,11 +413,11 @@ The network created for the DTR services to communicate with each other is **ove
 
 ### Security Layers
 
-![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml&fmt=svg)
+![Layered Security](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml&fmt=svg)
 
 ### Access Control Model in MKE
 
-![Access Control Model](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-access-control-model.puml&fmt=svg)
+![Access Control Model](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-access-control-model.puml&fmt=svg)
 _Source:_ http://docs.docker.oeynet.com/datacenter/ucp/2.2/guides/access-control/
 
 Grants are effectively Access Control Lists (ACLs) which provide comprehensive access policies for an entire organization when grouped together.,Grants define which users can access what resources in what way.,A grant is made up of a subject, a role, and a resource set.
