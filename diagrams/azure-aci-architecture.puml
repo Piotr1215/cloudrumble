@@ -1,0 +1,5 @@
+@startuml azure-aci-architecture
+
+!define TITLE Arure Container Instances Architecture
+
+@enduml
