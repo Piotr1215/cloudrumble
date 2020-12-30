@@ -22,7 +22,7 @@ skinparam monochrome false
 skinparam rectangleBackgroundColor white
 skinparam RectangleBorderThickness<<contianer>> 0
 skinparam rectangleBorderStyle default
-skinparam Linetype poly
+skinparam Linetype polyline
 left to right direction
 
 AzureVirtualMachine(vm, "Azure VM", "VM"){
@@ -45,7 +45,7 @@ con2 -- fsecret
 con1 --- con2 : http://localhost
 
 browser -- dns: HTTPS
-dns -- con1: HTTPS
+dns -- con1
 
 
 @enduml
