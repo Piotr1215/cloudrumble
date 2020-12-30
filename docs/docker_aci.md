@@ -6,20 +6,22 @@
 - [Install Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [Install Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-##
+## What are Azure Container Instances
 
-## What is Azure Container Instance
+![Azure ACI Architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/azure-aci-architecture.puml&fmt=svg)
+
+### Serverless vs ACI vs AKS
 
 ### How does it work
 
 ### When it is useful
 
-Fast startup: Launch containers in seconds.
-Per second billing: Incur costs only while the container is running.
-Hypervisor-level security: Isolate your application as completely as it would be in a VM.
-Custom sizes: Specify exact values for CPU cores and memory.
-Persistent storage: Mount Azure Files shares directly to a container to retrieve and persist state.
-Linux and Windows: Schedule both Windows and Linux containers using the same API.
+- Fast startup: Launch containers in seconds.
+- Per second billing: Incur costs only while the container is running.
+- Hypervisor-level security: Isolate your application as completely as it would be in a VM.
+- Custom sizes: Specify exact values for CPU cores and memory.
+- Persistent storage: Mount Azure Files shares directly to a container to retrieve and persist state.
+- Linux and Windows: Schedule both Windows and Linux containers using the same API.
 
 ## Flow
 
