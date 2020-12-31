@@ -9,11 +9,3 @@
 
 - Sample app deployment on Docker Swarm
 - Sample app deployment on Kubernetes
-
-## More Certification Guides
-
-- CKAD: Certified Kubernetes Application Developer
-- CKA: Certified Application Administrator
-- Azure Solutions Architect Expert
-  - AZ-303
-  - AZ-304
