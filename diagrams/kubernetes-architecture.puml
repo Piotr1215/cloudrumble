@@ -1,4 +1,4 @@
-@startuml kubernetes-architecture
+@startuml k8s-architecture
 'Icons
 !include <kubernetes/k8s-sprites-labeled-25pct>
 'Global Styles

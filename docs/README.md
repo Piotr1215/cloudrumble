@@ -187,7 +187,7 @@ There are a few solutions on the marked that can help with container and nodes o
 
 ### Kubernetes Architecture
 
-![Kubernetes Architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/kubernetes-architecture.puml&fmt=svg)
+![Kubernetes Architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-architecture.puml&fmt=svg)
 _Source_: https://kubernetes.io/docs/concepts/overview/components/.
 
 ### Docker Swarm Architecture
