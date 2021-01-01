@@ -1,0 +1,62 @@
+@startuml kubernetes-storage-seq
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome-5/user>
+'Global Styles
+'!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
+skinparam rectangleBackgroundColor white
+skinparam componentBackgroundColor white
+skinparam linetype poly
+skinparam rectangleShadowing true
+skinparam ActorBackgroundColor white
+skinparam ParticipantBackgroundColor DodgerBlue
+'skinparam monochrome false
+!define TITLE Kubernetes PV and PVC
+
+title TITLE
+
+actor admin
+
+==Creation==
+admin -> pv : creates
+activate pv
+note left of pv : Backed by phisical storage
+actor dev
+dev -> pvc : creates
+activate pvc
+==Setup==
+pv <- pvc : claims
+pvc -> pvc : checks pv availability
+
+==Usage==
+pvc -> pod : mounted to
+
+pvc -> pvc : set to bound
+pod <- containers : use mounted\nvolumes
+==Reclaiming==
+dev -> pvc:  Delete
+destroy pvc
+alt Retain
+
+    pv --> pv : remains available
+
+else Delete
+    pv --> pv : automatically removed
+    destroy pv
+else Recycle
+    note right
+        Warning: The Recycle reclaim policy is deprecated.
+        Instead, the recommended approach
+        is to use dynamic provisioning.
+    end note
+    pv --> pv: scrub data in pv\nremains available
+end
+
+
+
+
+@enduml
