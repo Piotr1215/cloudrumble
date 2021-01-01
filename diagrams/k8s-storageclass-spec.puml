@@ -1,0 +1,41 @@
+@startjson k8s-storageclass-spec
+{
+    "apiVersion": "storage.k8s.io/v1",
+    "kind": "StorageClass",
+    "metadata": {
+        "name": "standard"
+    }
+    ,
+    "provisioner":[
+        "AWSElasticBlockStore",
+        "AzureFile",
+        "AzureDisk",
+        "CephFS",
+        "Cinder",
+        "FC",
+        "FlexVolume",
+        "Flocker",
+        "GCEPersistentDisk",
+        "Glusterfs",
+        "iSCSI",
+        "Quobyte",
+        "NFS",
+        "RBD",
+        "VsphereVolume",
+        "PortworxVolume",
+        "ScaleIO",
+        "StorageOS",
+        "Local"
+    ],
+    "parameters": {
+        "type": "gp2"
+    }
+    ,
+    "reclaimPolicy": ["Retain", "Delete"],
+    "allowVolumeExpansion": true,
+    "mountOptions": [
+    "debug"
+    ],
+    "volumeBindingMode": "Immediate"
+}
+@endjson
