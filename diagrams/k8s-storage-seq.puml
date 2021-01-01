@@ -45,9 +45,6 @@ alt Retain
 
     pv --> pv : remains available
 
-else Delete
-    pv --> pv : automatically removed
-    destroy pv
 else Recycle
     note right
         Warning: The Recycle reclaim policy is deprecated.
@@ -55,9 +52,9 @@ else Recycle
         is to use dynamic provisioning.
     end note
     pv --> pv: scrub data in pv\nremains available
+else Delete
+    pv --> pv : automatically removed
+    destroy pv
 end
-
-
-
 
 @enduml

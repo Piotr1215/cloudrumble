@@ -430,10 +430,13 @@ DTR/MSR has an ability to scan images for known vulnerabilities, it is done with
 
 ## Storage and Volumes
 
-## Kubernetes Storage Lifecycle
+### Kubernetes Storage Lifecycle
 
-![Kubernetes Storage Lifecycle](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-storage-seq.puml&fmt=svg)
+![Kubernetes Storage Lifecycle](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-storage-seq.puml&fmt=png)
+
 _Source_: [Kubernetes Documentation](https://kubernetes.io/)
+
+The above diagram shows manual provisioning of **Persistent Volumes** as well as using them via **Persistent Volume Claims**.
 
 ### Where is everything stored
 
