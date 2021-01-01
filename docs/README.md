@@ -241,7 +241,7 @@ So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault to
 
 ### Kubernetes Deployment Spec
 
-![Kubernetes Deployment Spec](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-spec.puml&fmt=png)
+![Kubernetes Deployment Spec](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-spec.puml&fmt=png)
 
 _Sources_:
 
