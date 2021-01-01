@@ -438,6 +438,12 @@ _Source_: [Kubernetes Documentation](https://kubernetes.io/)
 
 The above diagram shows manual provisioning of **Persistent Volumes** as well as using them via **Persistent Volume Claims**.
 
+The process can be divided into 4 phases:
+- Creation
+- Setting up
+- Usage
+- Cleanup
+
 ### Where is everything stored
 
 Once installed, docker creates a folder under `/var/lib/docker/` where all the containers, images, volumes and configurations are stored.

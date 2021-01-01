@@ -14,46 +14,53 @@ skinparam componentBackgroundColor white
 skinparam linetype poly
 skinparam rectangleShadowing true
 skinparam ActorBackgroundColor white
-skinparam ParticipantBackgroundColor DodgerBlue
+skinparam ParticipantBackgroundColor lightblue
+skinparam ArrowColor black
 'skinparam monochrome false
-!define TITLE Kubernetes PV and PVC
+!define TITLE Kubernetes PV and PVC Lifecycle
 
 title TITLE
 
-actor admin
+actor "Admin" as admin #green
+participant "Persistent Volume" as pv
 
 ==Creation==
-admin -> pv : creates
-activate pv
+admin -> pv : Creates
+activate pv #lightgray
 note left of pv : Backed by phisical storage
-actor dev
-dev -> pvc : creates
-activate pvc
+actor "Developer" as dev #gray
+participant "Persistent Volume Claim" as pvc
+dev -> pvc : Creates
+activate pvc #lightgray
+
 ==Setup==
-pv <- pvc : claims
-pvc -> pvc : checks pv availability
+pv <- pvc : Claims
+pvc -> pvc : Checks pv availability
 
 ==Usage==
-pvc -> pod : mounted to
+pvc -> pod : Mounted to
+pvc -> pvc : Set to bound
+pod <- containers : Use mounted\nvolumes
 
-pvc -> pvc : set to bound
-pod <- containers : use mounted\nvolumes
-==Reclaiming==
-dev -> pvc:  Delete
+==Cleanup==
+dev -> pvc:  Deletes PVC
 destroy pvc
-alt Retain
+group Reclaiming Policies
+    else Retain
 
-    pv --> pv : remains available
+    pv --> pv : PV Remains available
 
-else Recycle
+    else Recycle
     note right
         Warning: The Recycle reclaim policy is deprecated.
         Instead, the recommended approach
         is to use dynamic provisioning.
     end note
-    pv --> pv: scrub data in pv\nremains available
-else Delete
-    pv --> pv : automatically removed
+
+    pv --> pv: PV Data is scrubbed, but \nremains available
+
+    else Delete
+    pv -[#red]-> pv : PV is automatically removed\ndata lost
     destroy pv
 end
 
