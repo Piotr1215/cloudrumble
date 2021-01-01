@@ -239,6 +239,20 @@ To calculate _fault tolerance_ of the cluster use $\boxed{N=\frac {N - 1} 2}$
 
 So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
 
+### Kubernetes Deployment Spec
+
+![Kubernetes Deployment Spec](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-spec.puml&fmt=svg)
+
+_Sources_:
+
+- Json representation of a deployment based on my [blazor in Docker demo](https://hub.docker.com/repository/docker/piotrzan/blazorindocker)
+- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#writing-a-deployment-spec
+
+Highlighted fields are the only required fields for deployment to work.
+
+> [!NOTE]
+> .spec.template is the same as pod spec, without apiVersion and kind fields
+
 ## Images and Registry
 
 ### Creating docker images
@@ -318,6 +332,7 @@ By default docker will pull images from configured images repository (Docker Hub
 ### MKE Architecture
 
 ![MKE Architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
+
 _Source_: https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html
 
 Be aware that after Docker acquisition by Mirantis there have been some naming and product changes, so following applies:

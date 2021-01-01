@@ -32,8 +32,7 @@ rectangle "<$pod>\nPod Spec" as pod {
     }
 }
 
-cont1 --- volumes : mount
-cont2 --- volumes : mount
+containers --- volumes : mount
 legend left
 TITLE
 |= Component |= Definition |
