@@ -5,6 +5,7 @@
 !include <tupadr3/font-awesome-5/user>
 'Global Styles
 '!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+skinparam BackgroundColor white
 skinparam componentShadowing true
 skinparam rectangleRoundCorner 0
 skinparam rectangleBorderStyle default
