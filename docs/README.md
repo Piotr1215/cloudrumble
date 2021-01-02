@@ -240,7 +240,6 @@ To calculate _fault tolerance_ of the cluster use $\boxed{N=\frac {N - 1} 2}$
 So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
 
 ### Kubernetes Deployment Spec
-<!-- TODO: Fix rendering of jsoncontent by Plantuml Server -->
 
 ![Kubernetes Deployment Spec](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-spec.puml&fmt=png)
 
