@@ -102,6 +102,14 @@ docker cp ./config kubectl-host:./root/.kube
 docker attach kubectl-host
 ```
 
+Or simpler version with volume mount
+
+``` bash
+# .kube/config is a symling to /etc/kubernetes/admin.conf
+docker run --network=host --name=kubectl-host -v /etc/kubernetes/admin.conf:/root/.kube/config --rm -it piotrzan/kubectl-comp:zsh
+```
+
+
 ### 4. Know Docker/Mirantis documentation well
 
 There are plenty of great learning repositories with exam topics directly linked to Docker/Mirantis documentation. A good one that is also up to date is [Evalle/DCA](https://github.com/Evalle/DCA).
