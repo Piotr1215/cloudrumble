@@ -32,7 +32,8 @@ actor "Developer" as dev #gray
 participant "Persistent Volume Claim" as pvc
 dev -> pvc : Creates
 activate pvc #lightgray
-
+dev -> pod : Mounts PVC to pod
+activate pod #lightgray
 ==Setup==
 pv <- pvc : Claims
 pvc -> pvc : Checks pv availability
