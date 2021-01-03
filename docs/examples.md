@@ -6,7 +6,7 @@ I highly recommend checking out
 
 - [Collabnix Github - Dockerlabs](https://github.com/collabnix/dockerlabs) for excellent Docker tutorials and exercises.
 
-- [Collabnix Github - Dockerlabs](https://github.com/collabnix/kubelabs) for excellent Kubernetes tutorials and exercises.
+- [Collabnix Github - Kubelabs](https://github.com/collabnix/kubelabs) for excellent Kubernetes tutorials and exercises.
 
 ## Lab Setup
 
