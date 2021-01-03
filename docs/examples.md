@@ -1,26 +1,21 @@
-# Examples and exercises
+# Examples and Exercises Setup <!-- {docsify-ignore-all} -->
 
-Kubernetes and Docker Swarm Code Examples
+The goal is to explain Kubernetes and Docker Swarm topics in a practical way, like storage, deployments, services etc and provide exercises scenarios for everyone to follow along.
 
-I highly recommend checking out
+The idea is to focus on the core functionality, understand it well enough and exercise along.
 
-- [Collabnix Github - Dockerlabs](https://github.com/collabnix/dockerlabs) for excellent Docker tutorials and exercises.
+If you already watched a few tutorials and maybe created pod or deployment and are ready for next level, those exercises are for you.
 
-- [Collabnix Github - Kubelabs](https://github.com/collabnix/kubelabs) for excellent Kubernetes tutorials and exercises.
+If you are new do Kubernetes, but still would like to follow along with the series I highly recommend checking out [Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]](https://www.youtube.com/watch?v=X48VuDVv0do&ab_channel=TechWorldwithNana) from TechWorld with Nana
 
-## Lab Setup
+## Example Files
 
-### Kubernetes
+Exercises and sample code is located in a [separate repository](https://github.com/Piotr1215/dca-exercises). You can either clone it and work directly from command line or use `kubectl` with remote location of a file or folder you want to deploy.
 
-All kubernetes examples can be done using free [Kubelab - Play With Kubernetes](https://labs.play-with-k8s.com/).
+## Structure
 
-Follow instructions in [This guide](https://github.com/collabnix/kubelabs/blob/master/kube101.md) and setup 3 nodes cluster. 1 master and 2 worker nodes
+Each topic will follow the same structure:
 
-> [!ATTENTION]
-> The guide asks to setup 5 nodes but for our purposes 3 are more than enough.
-
-### Docker Swarm
-
-All Docker Swarm examples can be done using [Kubelab - Play With Docker](https://labs.play-with-docker.com/).
-
-Follow instructions in [This guide](https://github.com/collabnix/dockerlabs/blob/master/intermediate/swarm/README.md) and choose 3 Managers and 2 Workers setup form instance templates.
+1. How does it work?
+2. What Problem does it solve?
+3. How to implement it?
