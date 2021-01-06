@@ -14,7 +14,8 @@ skinparam componentBackgroundColor white
 skinparam linetype poly
 skinparam rectangleShadowing true
 skinparam ActorBackgroundColor white
-skinparam ParticipantBackgroundColor lightblue
+skinparam ParticipantBackgroundColor transparent
+skinparam CollectionsBackgroundColor transparent
 skinparam ArrowColor black
 'skinparam monochrome false
 !define TITLE Kubernetes PV and PVC Lifecycle
@@ -22,28 +23,30 @@ skinparam ArrowColor black
 title TITLE
 
 actor "Admin" as admin #green
-participant "Persistent Volume" as pv
+participant "<$pv>\nPersistent Volume" as pv
 
-==Creation==
+==Provisioning==
 admin -> pv : Creates
 activate pv #lightgray
 note left of pv : Backed by phisical storage
 actor "Developer" as dev #gray
-participant "Persistent Volume Claim" as pvc
+participant "<$pvc>\nPersistent Volume Claim" as pvc
 dev -> pvc : Creates
 activate pvc #lightgray
+participant "<$pod>\nPod" as pod
 dev -> pod : Mounts PVC to pod
 activate pod #lightgray
-==Setup==
+==Binding==
 pv <- pvc : Claims
 pvc -> pvc : Checks pv availability
 
-==Usage==
+==Using==
 pvc -> pod : Mounted to
 pvc -> pvc : Set to bound
+collections "<$ECScontainer>\nContainers" as containers
 pod <- containers : Use mounted\nvolumes
 
-==Cleanup==
+==Reclaiming==
 dev -> pvc:  Deletes PVC
 destroy pvc
 group Reclaiming Policies
@@ -64,5 +67,14 @@ group Reclaiming Policies
     pv -[#red]-> pv : PV is automatically removed\ndata lost
     destroy pv
 end
+
+legend left
+TITLE
+|= Component |= Definition |
+|     <$pod> | **Pod** is the smallest deployable units of\n computing that you can create and manage in Kubernetes. |
+|     <$pv> | **Persistent Volume** is a cluster resource providing storage to pods,\n but exisitng independently of pod lifecycle. |
+|     <$pvc> | **Persistent Volume Claim** is a request for storage,\n consumes persistent volumes. |
+|      <$ECScontainer> | **Container** is a lightway and portable executable image\n that contains software and all of its dependencies. |
+endlegend
 
 @enduml

@@ -1,7 +1,6 @@
 * [DCA Guide](/)
 * [Examples](examples.md)
-  * [Examples K8S](examples-k8s.md)
-  * [Examples Swarm](examples-swarm.md)
+  * [k8s Storage: pv & pvc](/examples/k8s-storage-pv-pvc.md)
 * [About Me](about.md)
 * [Coming Soon :construction:](coming_soon.md)
 * [FAQ](faq.md)
