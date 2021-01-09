@@ -4,7 +4,7 @@
 * [Useful Commands](cheatsheets.md)
   * [k8s commands](k8scommands.md)
   * [k8s networking](k8snetworking.md)
-* [Azure Resources](azure301.md)
+* [Azure Resources](/azure301)
 * [About Me](about.md)
 * [Coming Soon :construction:](coming_soon.md)
 * [FAQ](faq.md)
