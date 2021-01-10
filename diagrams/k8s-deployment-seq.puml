@@ -1,0 +1,37 @@
+@startuml k8s-deployment-seq
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome-5/user>
+'Global Styles
+'!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+skinparam BackgroundColor white
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
+skinparam rectangleBackgroundColor white
+skinparam componentBackgroundColor white
+skinparam linetype poly
+skinparam rectangleShadowing true
+skinparam ActorBackgroundColor white
+skinparam ParticipantBackgroundColor transparent
+skinparam CollectionsBackgroundColor transparent
+skinparam ArrowColor black
+skinparam ParticipantPadding 20
+skinparam BoxPadding 10
+'skinparam monochrome false
+!define TITLE Kubernetes Deployment, scaling, rollouts and rollbacks
+!pragma teoz true
+
+title TITLE
+
+legend left
+TITLE
+|= Component |= Definition |
+|     <$pod> | **Pod** is the smallest deployable units of\n computing that you can create and manage in Kubernetes. |
+|     <$pv> | **Persistent Volume** is a cluster resource providing storage to pods,\n but exisitng independently of pod lifecycle. |
+|     <$pvc> | **Persistent Volume Claim** is a request for storage,\n consumes persistent volumes. |
+|      <$ECScontainer> | **Container** is a lightway and portable executable image\n that contains software and all of its dependencies. |
+endlegend
+
+@enduml
