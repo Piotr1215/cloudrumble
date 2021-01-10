@@ -78,3 +78,7 @@ We are going to revisit scenarios from the section [What Problem does it solve?]
 **Conclusion:** We have successfully proven that pods in a deployment can be easily changed via deployment manipulation.
 
 #### Deployment: enables zero-downtime updates of pods to new versions
+
+This scenario is a little bit more involving, so there are a few more steps.
+
+1.
