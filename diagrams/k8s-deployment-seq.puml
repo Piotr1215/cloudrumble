@@ -17,21 +17,53 @@ skinparam ActorBackgroundColor white
 skinparam ParticipantBackgroundColor transparent
 skinparam CollectionsBackgroundColor transparent
 skinparam ArrowColor black
-skinparam ParticipantPadding 20
-skinparam BoxPadding 10
+skinparam ParticipantPadding 40
+skinparam BoxPadding 20
 'skinparam monochrome false
-!define TITLE Kubernetes Deployment, scaling, rollouts and rollbacks
+!define TITLE Kubernetes Deployment: Rolling Update
 !pragma teoz true
 
 title TITLE
+autonumber
 
-legend left
-TITLE
-|= Component |= Definition |
-|     <$pod> | **Pod** is the smallest deployable units of\n computing that you can create and manage in Kubernetes. |
-|     <$pv> | **Persistent Volume** is a cluster resource providing storage to pods,\n but exisitng independently of pod lifecycle. |
-|     <$pvc> | **Persistent Volume Claim** is a request for storage,\n consumes persistent volumes. |
-|      <$ECScontainer> | **Container** is a lightway and portable executable image\n that contains software and all of its dependencies. |
-endlegend
+participant "<$deploy>\n3 replicas deployment" as dep
+note left of dep
+Pods can be scheduled on different nodes
+end note
+participant "<$svc>\nservice" as svc
+participant "<$pod>\npod1" as po1
+participant "<$pod>\npod2" as po2
+participant "<$pod>\npod3" as po3
+participant "<$pod>\npod1'" as po1n
+participant "<$pod>\npod2'" as po2n
+participant "<$pod>\npod3'" as po3n
+
+
+[-> dep: Image Update Triggered
+
+note left of dep
+For example by `k set image deployment/nginx-test nginx-test=piotrzan/nginx-demo:blue --record`
+end note
+
+activate po1n
+dep -> po1n : Create pod1' with new image
+dep -> svc: Update Service with pod1' IP
+svc -> po1n: Serve traffic to pod1'
+dep -> po1 : Destroy pod1
+destroy po1
+
+activate po2n
+dep -> po2n : Create pod2' with new image
+dep -> svc: Update Service with pod2' IP
+svc -> po2n: Serve traffic to pod2'
+dep -> po2 : Destroy pod2
+destroy po2
+
+activate po3n
+dep -> po3n : Create pod3' with new image
+dep -> svc: Update Service with pod3' IP
+svc -> po2n: Serve traffic to pod2'
+dep -> po3 : Destroy pod3
+destroy po3
 
 @enduml

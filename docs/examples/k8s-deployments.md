@@ -23,8 +23,8 @@ Deployments are very flexible and can be used in many ways. Below I have selecte
 
 - **Scalability**: enable up and down-scaling of pods
 - **Configuration**: enables changing of pods state and configuration on the flight
-- **Deployment**: enables zero-downtime updates of pods to new versions: rollouts
-- **Delivery Control**: enables zero-downtime reversing of updates made to pods: rollbacks
+- **Deployment**: enables zero-downtime updates of pods to new versions
+- **Delivery Control**: enables high degree of control over delivery process by using rollouts and rollbacks
 
 ## How to implement it?
 
@@ -97,4 +97,10 @@ We are going to use **octant** to see pods being updated in real time as well as
 
 This short video shows the steps in action
 
-[![asciicast](https://i9.ytimg.com/vi/QQAhPbi8mm4/mq2.jpg?sqp=CLzI7v8F&rs=AOn4CLBbm6cxNaxywsYLIapxPuauIW5GhA)](https://www.youtube.com/watch?v=QQAhPbi8mm4&ab_channel=DockerCertifiedAssociateExamples)
+[![deployment](https://i.ytimg.com/vi/QQAhPbi8mm4/maxresdefault.jpg)](https://www.youtube.com/watch?v=QQAhPbi8mm4&ab_channel=DockerCertifiedAssociateExamples)
+
+**Conclusion:** We have successfully proven that pods in a deployment can be easily updated with new version of an image without causing downtime in availability.
+
+#### Delivery Control: enables high degree of control over delivery process by using rollouts and rollbacks
+
+First we need to understand how Kubernetes performs updates
