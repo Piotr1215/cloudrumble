@@ -80,5 +80,21 @@ We are going to revisit scenarios from the section [What Problem does it solve?]
 #### Deployment: enables zero-downtime updates of pods to new versions
 
 This scenario is a little bit more involving, so there are a few more steps.
+We are going to use **octant** to see pods being updated in real time as well as a [very simple static page](https://hub.docker.com/repository/docker/piotrzan/nginx-demo) served by nginx.
 
-1.
+> [!TIP]
+> Check [introduction to the series](https://itnext.io/kubernetes-explained-deep-enough-1ea2c6821501) for setup.
+
+1. Install and run **octant**
+2. Install [browser auto-refresh plugin](https://www.supersimpleautorefresh.tk/) to see the effects of updates
+3. Create deployment if you haven't already
+4. Scale the deployment to 5 replicas
+5. Expose deployment by creating a service of type *NodePort*
+6. Check port of the newly service
+7. Access the pods in a browser **localhost:PORT**
+8. Update image of the containers running in pods controlled by our deployment
+9. Observe how page changes to new version
+
+This short video shows the steps in action
+
+[![asciicast](https://i9.ytimg.com/vi/QQAhPbi8mm4/mq2.jpg?sqp=CLzI7v8F&rs=AOn4CLBbm6cxNaxywsYLIapxPuauIW5GhA)](https://www.youtube.com/watch?v=QQAhPbi8mm4&ab_channel=DockerCertifiedAssociateExamples)
