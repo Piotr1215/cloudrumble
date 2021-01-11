@@ -6,5 +6,4 @@
   * [k8s commands](k8scommands.md)
   * [k8s networking](k8snetworking.md)
 * [About Me](about.md)
-* [Coming Soon :construction:](coming_soon.md)
 * [FAQ](faq.md)
