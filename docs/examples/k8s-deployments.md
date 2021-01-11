@@ -122,7 +122,7 @@ Let's dive in!
 1. You should have deployment and service from previous example, make sure to set replicas to 10
 2. Check what image deployment currently has and trigger rolling update by setting new version of the image (blue or green tag)
 3. Observe how Kuberentes performs a rollout
-4. Trigger another rolling update by setting new version of the image, but this time ake a mistake in image name
+4. Trigger another rolling update by setting new version of the image, but this time make a mistake in image name
 5. Observe how Kuberentes performs a rollout
 6. Check logs to see error messages
 7. Check rollout history to determine how many revisions are recorded, there should be at least one
