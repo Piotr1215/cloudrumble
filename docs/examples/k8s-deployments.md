@@ -105,4 +105,35 @@ This short video shows the steps in action
 
 First we need to understand how Kubernetes performs updates:
 
+> [!NOTE]
+> Kubernetes supports two types of deployment strategies
+> - RollingUpdate
+> - Recreate
+>
+> We are only looking at RollingUpdate below
+
 ![Deployment Spec](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-seq.puml&fmt=png)
+*Source*: https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/
+
+Rollback is simply the reverse of rolling update. Kubernetes stores state of previous updates, so it's very easy to revert to previous revision.
+
+Let's dive in!
+
+1. You should have deployment and service from previous example, make sure to set replicas to 10
+2. Check what image deployment currently has and trigger rolling update by setting new version of the image (blue or green tag)
+3. Observe how Kuberentes performs a rollout
+4. Trigger another rolling update by setting new version of the image, but this time ake a mistake in image name
+5. Observe how Kuberentes performs a rollout
+6. Check logs to see error messages
+7. Check rollout history to determine how many revisions are recorded, there should be at least one
+8. Perform rollback to previous version
+9. Observe how Kuberentes performs a new rollout
+10. Do a curl on service to make sure deployment was succesfull
+
+[![asciicast](https://asciinema.org/a/383849.svg)](https://asciinema.org/a/383849)
+
+**Conclusion:** We have successfully proven that Kubernetes allows fain grained control over software delivery process via rollouts and rollbacks.
+
+### Challenge
+
+Is there anything you would like to test? Think about a scenario, test it and let us know in comments.
