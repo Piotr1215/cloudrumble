@@ -103,4 +103,6 @@ This short video shows the steps in action
 
 #### Delivery Control: enables high degree of control over delivery process by using rollouts and rollbacks
 
-First we need to understand how Kubernetes performs updates
+First we need to understand how Kubernetes performs updates:
+
+![Deployment Spec](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-seq.puml&fmt=png)

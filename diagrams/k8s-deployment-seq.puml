@@ -42,7 +42,8 @@ participant "<$pod>\npod3'" as po3n
 [-> dep: Image Update Triggered
 
 note left of dep
-For example by `k set image deployment/nginx-test nginx-test=piotrzan/nginx-demo:blue --record`
+For example by
+k set image deployment/nginx-test nginx-test=piotrzan/nginx-demo:blue --record
 end note
 
 activate po1n
