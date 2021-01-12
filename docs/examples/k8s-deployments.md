@@ -107,6 +107,7 @@ First we need to understand how Kubernetes performs updates:
 
 > [!NOTE]
 > Kubernetes supports two types of deployment strategies
+>
 > - RollingUpdate
 > - Recreate
 >
