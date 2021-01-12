@@ -1,0 +1,35 @@
+@startmindmap k8s-config-mindmap
+'Icons
+!include <cloudinsight/docker>
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome-5/user>
+title Two ways of mounting Config Maps into a pod
+<style>
+rootNode {
+    LineStyle 8.0;3.0
+    LineColor red
+    BackgroundColor white
+    LineThickness 1.0
+    RoundCorner 35
+    Shadowing 0.0
+    FontStyle bold
+}
+</style>
+
+* <$cm> & <$secret>\n    Mount Options
+**[#Lightgreen] <&folder> Volumes
+***[#Lightgreen] File created\nper key-value pair
+***[#Lightgreen] File name can be changed\nwith **path** option
+***[#Lightgreen] Pod Sections
+****[#Lightgreen] containers:\n   volumeMounts:\n    -name:\n     mountPath:
+****[#Lightgreen] volumes:\n   **configMap**:\n     name:
+
+left side
+
+**[#FFBBCC] <&cog> Environmental\n        Variables
+***[#FFBBCC] Whole file
+****[#FFBBCC] envFrom:\n- **configMapRef**:\n   name:
+***[#FFBBCC] Indivitual key-value pairs
+****[#FFBBCC] env:\n - name:\n    valueFrom:\n      **configMapKeyRef**:\n        name:\n        key:
+@endmindmap
