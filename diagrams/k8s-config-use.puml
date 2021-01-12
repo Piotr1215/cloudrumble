@@ -1,0 +1,29 @@
+@startyaml k8s-config-use
+#highlight "apiVersion"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: redis-cont
+    image: redis
+    volumeMounts:
+    - name: foo-secret
+      mountPath: "/etc/foo_sec"
+      readOnly: true
+  - name: nginx-cont
+    image: nginx
+    volumeMounts:
+    - name: foo-config
+      mountPath: "/etc/foo_conf"
+      readOnly: true
+  volumes:
+  - name: foo-secret
+    secret:
+      secretName: mysecret
+  -name: foo-config
+   configMap:
+     name: myconfigmap
+
+@endyaml
