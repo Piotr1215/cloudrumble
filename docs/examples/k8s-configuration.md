@@ -51,8 +51,26 @@ The examples however will work on any Kubernetes setup.
 > [!NOTE]
 > To work easier with kubectl we will create an alias `alias k=kubectl`
 
-Create deployment: `k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/deployment/1-create-deployment.yaml`
-This will create a simple nginx deployment.
+``` bash
+#Create deployment:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/deployment/1-create-deployment.yaml
+
+#Create config map:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/1-create-configmap.yaml
+
+#Create secret with pain text fields:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/2-create-secret-plain.yaml
+
+#Create secret with encoded fields:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/3-create-secret-encoded.yaml
+```
 
 > [!WARNING]
 > Always check content of the files before creating resources from remote source.
+
+### Let's experiment
+
+> [!TIP]
+> Each experiment has corresponding `asciinema` recording, you can follow along and also copy/paste commands directly from the recording.
+
+We are going to revisit scenarios from the section [What Problem does it solve?](#What-Problem-does-it-solve?) and validate that the statements are correct.
