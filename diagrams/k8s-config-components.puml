@@ -1,4 +1,4 @@
-@startuml kubernetes-config-components
+@startuml k8s-config-components
 'Icons
 !include <kubernetes/k8s-sprites-labeled-25pct>
 !include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
