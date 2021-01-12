@@ -7,3 +7,5 @@
 
 ## How does it work?
 
+
+![Kubernetes Storage Lifecycle](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-config-components.puml&fmt=png)

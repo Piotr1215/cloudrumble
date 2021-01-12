@@ -13,7 +13,7 @@ skinparam componentBackgroundColor white
 skinparam linetype poly
 skinparam rectangleShadowing true
 'skinparam monochrome false
-!define TITLE Kubernetes Configuration
+!define TITLE Kubernetes Pod Configuration
 
 title TITLE
 rectangle "<$pod>" as pod
@@ -35,6 +35,6 @@ TITLE
 |= Component |= Definition |
 |     <$vol> | **Volume** is a directory containing data,\n accesible to containers in a pod. |
 |     <$secret> | **Secret** i a special type of storage containing a small\n amount of sensitive data such as a password, a token, or a key |
-|     <$cm> | **Config Map** i a special type of storage that\n allows you to decouple environment-specific configuration from your container images |
+|     <$cm> | **Config Map** i a special type of storage that allows you to\n decouple environment-specific configuration from your container images |
 endlegend
 @enduml
