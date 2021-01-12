@@ -3,6 +3,7 @@
 * [Examples](examples.md)
   * [k8s Storage: pv & pvc](/examples/k8s-storage-pv-pvc.md)
   * [k8s Deployments](examples/k8s-deployments.md)
+  * [k8s Configuration](examples/k8s-configuration.md)
 * [Useful Commands](cheatsheets.md)
   * [k8s commands](k8scommands.md)
   * [k8s networking](k8snetworking.md)

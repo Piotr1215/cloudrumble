@@ -1,0 +1,38 @@
+@startyaml k8s-config-use
+#highlight "apiVersion"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: redis-cont
+    image: redis
+    env:
+      # Define the environment variable
+      - name: SPECIAL_LEVEL_KEY
+        valueFrom:
+          configMapKeyRef:
+            # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+            name: special-config
+            # Specify the key associated with the value
+            key: special.how
+    volumeMounts:
+    - name: foo-secret
+      mountPath: "/etc/foo_sec"
+      readOnly: true
+  - name: nginx-cont
+    image: nginx
+    volumeMounts:
+    - name: foo-config
+      mountPath: "/etc/foo_conf"
+      readOnly: true
+  volumes:
+  - name: foo-secret
+    secret:
+      secretName: mysecret
+  -name: foo-config
+   configMap:
+     name: myconfigmap
+
+@endyaml
