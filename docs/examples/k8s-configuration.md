@@ -18,3 +18,13 @@ Kubernetes natively supports 2 resources geared towards storing configuration co
 > Secrets in Kubernetes are actually not **encrypted**, but rather **base64 encoded**, so best for storing critical sensitive information, recommendation is to use key vaults such as [Hashicorp Vault](https://learn.hashicorp.com/vault) with Helm sidecar or native offerings from public cloud providers, like [Azure Key Vault](https://azure.microsoft.com/en-us/services/key-vault/).
 
 ![Kubernetes Configuration Components](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-config-components.puml&fmt=png)
+
+Both config maps and secrets can be mounted into pods in 2 ways:
+
+- As volumes
+- As environmental varibles
+
+> [!TIP]
+> Below diagram shows those options on the example of config map, same applies to secrets
+
+![Kubernetes Configuration Options](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-config-mindmap.puml&fmt=png)
