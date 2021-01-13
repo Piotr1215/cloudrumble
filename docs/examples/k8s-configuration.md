@@ -33,11 +33,8 @@ Both config maps and secrets can be mounted into pods in 2 ways:
 
 - enable separations of application code and configuration
 - enable ingestion of secrets and other security sensitive information
-- updates to config maps or secrets reflects in pods (applies to mount as volumes)
-  - only applies to configuration injected as env
-  - manual pod restart needed or metadata update
-  - Vote here to push up https://github.com/kubernetes/kubernetes/issues/22368
-  - https://github.com/xing/kubernetes-deployment-restart-controller
+- updates to config maps or secrets reflects in pods automatically
+
 
 ## How to implement it?
 
@@ -51,19 +48,7 @@ The examples however will work on any Kubernetes setup.
 > [!NOTE]
 > To work easier with kubectl we will create an alias `alias k=kubectl`
 
-``` bash
-#Create deployment:
-k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/deployment/1-create-deployment.yaml
-
-#Create config map:
-k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/1-create-configmap.yaml
-
-#Create secret with pain text fields:
-k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/2-create-secret-plain.yaml
-
-#Create secret with encoded fields:
-k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/3-create-secret-encoded.yaml
-```
+We will create separate Kubernetes resources per experiment
 
 > [!WARNING]
 > Always check content of the files before creating resources from remote source.
@@ -74,3 +59,114 @@ k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/
 > Each experiment has corresponding `asciinema` recording, you can follow along and also copy/paste commands directly from the recording.
 
 We are going to revisit scenarios from the section [What Problem does it solve?](#What-Problem-does-it-solve?) and validate that the statements are correct.
+
+#### Enable separations of application code and configuration
+
+1. Create config map
+2. Create deployment with config map mounted as volume
+3. Check how config map data is mounted into a folder specified in pod template
+
+Resources to create:
+
+``` bash
+#Create config map:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/1-create-configmap.yaml
+
+#Create deployment with config map mounted as volume:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/4-Create-deployment.yaml
+```
+
+[![Config and App Separation](https://asciinema.org/a/384410.svg)](https://asciinema.org/a/384410)
+
+Cleanup Resources:
+
+``` bash
+#Delete deployment:
+k delete -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/4-Create-deployment.yaml
+
+#Delete config map:
+k delete -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/1-create-configmap.yaml
+```
+
+**Conclusion:** We have successfully proven applications and configuration can be easily decoupled using confg maps
+
+#### Enable ingestion of secrets and other security sensitive information
+
+> [!TIP]
+> Secrets are by detaulf base64 encoded, but it's possible to create secret with plain text by using **stringData:** instead of **data** section of secret YAML
+
+Resources to create:
+
+``` bash
+#Create encoded secret:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/3-create-secret-encoded.yaml
+
+#Create deployment with secret mounted as volume:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/5-create-deployment-secret.yaml
+```
+
+1. Create secret
+2. Create deployment with secret mounted as volume
+3. Check if secret is correctly mounted to a pod
+4. Display secret *password* value using *describe* command
+5. Decode secret *password* value from base64 `echo 'dW5icmVha2FibGU=' | base64 --decode`
+
+[![Mounting Secret](https://asciinema.org/a/384412.svg)](https://asciinema.org/a/384412)
+
+Cleanup Resources:
+
+``` bash
+#Delete encoded secret:
+k delete -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/3-create-secret-encoded.yaml
+
+#Delete deployment:
+k delete -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/5-create-deployment-secret.yaml
+```
+
+> [!ATTENTION]
+> Kubernetes currently does not encrypt secrets in its data store *etcd*. Mounted secrets are only encoded, nevertheless, there are discussions to provide secrets encryption at rest and in transit, so it's considered best practice to use secrets whenever dealing with sensitive information.
+
+**Conclusion:** We have successfully proven that base64 encoded secrets can be ingested and consumed by pod and in turn containers
+
+#### Updates to config maps or secrets reflects in pods automatically
+
+> [!ATTENTION]
+>
+> - This functionality applies only to configuration or secrets **mounted to pods as volumes**
+> - If you would like to reflect changes in environmental variables injected from configs or secrets, manual pod restart is required
+> - You can vote here to push up https://github.com/kubernetes/kubernetes/issues/22368 to introduce auto restarts similar to configs and secrets mounted as volumes
+> - Alternatively [admission controller](https://github.com/xing/kubernetes-deployment-restart-controller) setup is possible, but this is out of scope for this exercise
+
+Create Resources:
+
+``` bash
+#Create config map:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/1-create-configmap.yaml
+
+#Create deployment with config map mounted as volume:
+k apply -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/4-Create-deployment.yaml
+```
+
+1. Create config map
+2. Create deployment with config map mounted as volume
+3. Check how config map data is mounted into a folder specified in pod template
+4. Edit config map and adjust one value
+5. Check how config map data is is updated in a folder pod specified in pod template as mount point
+
+[![Config Update](https://asciinema.org/a/384415.svg)](https://asciinema.org/a/384415)
+
+Cleanup Resources:
+
+``` bash
+#Delete deployment:
+k delete -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/4-Create-deployment.yaml
+
+#Delete config map:
+k delete -f https://raw.githubusercontent.com/Piotr1215/dca-exercises/master/k8s/configuration/1-create-configmap.yaml
+```
+
+**Conclusion:** We have successfully proven configuration values mounted to pod as volume are auto updated after config map changes
+
+### Challenge
+
+Is there anything you would like to test? Think about a scenario, test it and let us know in comments.
