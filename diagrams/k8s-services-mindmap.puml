@@ -1,0 +1,44 @@
+@startmindmap k8s-services-mindmap
+'Icons
+!include <cloudinsight/docker>
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome-5/user>
+title Types of Kubernetes Services
+<style>
+rootNode {
+    LineStyle 8.0;3.0
+    LineColor red
+    BackgroundColor white
+    LineThickness 1.0
+    RoundCorner 35
+    Shadowing 0.0
+    FontStyle bold
+}
+</style>
+
+* Kubernetes\n   <$svc>\n   Services
+**[#Lightgreen] <&cog> ClusterIP
+***[#Lightgreen] Internal to cluster only
+***[#Lightgreen] Default service type
+**[#Lightblue] <&cog> NodePort
+***[#Lightblue] Expose service on each node
+***[#Lightblue] Automatically creates ClusterIP service
+***[#Lightblue] Static port
+****[#Lightblue]_ Default port range: **30000-32767**
+***[#Lightblue]:Accessible via
+<code>
+NodeIP:NodePort
+</code>;
+left side
+**[#Lightgray] <&cog> LoadBalancer
+***[#Lightgray] <&cloud> Cloud Provider Specific
+***[#Lightgray] Automatically creates ClusterIP & NodePort services
+**[#Lightyellow] <&cog> ExternalName
+***[#Lightyellow] Maps to external service
+***[#Lightyellow] Returns CNAME record
+***[#Lightyellow] Requirements
+****[#Lightyellow]_ kube-dns v1.7
+****[#Lightyellow]_ OR CodeDNS v0.0.8
+
+@endmindmap

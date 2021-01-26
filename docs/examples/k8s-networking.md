@@ -21,6 +21,10 @@ Since this series is about exercising and practical examples, we will focus less
 
 ### Services
 
+There are 4 types of services in Kubernetes:
+
+![Services Types](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-services-mindmap.puml&fmt=png)
+
 ### Network Policies
 
 - CNI plugin required, only some support netpo
