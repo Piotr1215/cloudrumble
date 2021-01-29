@@ -23,18 +23,14 @@ There are 4 types of services in Kubernetes:
 
 ![Services Types](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-services-mindmap.puml&fmt=png)
 
+> [!NOTE]
 > Note on ports:
 > It is often confusing to understand what ports do what in Service manifest, so let's make sure to refresh the definitions:
-> **TargetPort** is the Port which the **application** is configured to **listen on**. **Port** is how the application will be **accessed from the outside**.
-
-> [!TIP]
-> If you would like to learn a few useful networking commands, I have created a gist with the ones that helped me pass my CKA certification
-> [Kubernetes related networking commands](https://gist.github.com/Piotr1215/23cf678d74079f98dc7be731e6a3f1d1)
+> **TargetPort** is the Port which the **application** is configured to **listen on**. **Port** is how the application will be **accessed from the outside**
 
 ## What Problem does it solve?
 
 - expose deployment on the network and enable communication between pods
-
 
 - enable service discovery via DNS
 - provide static IP to connect to and internally track all changes in workloads
@@ -43,15 +39,14 @@ There are 4 types of services in Kubernetes:
 
 We are going to revisit scenarios from the section [What Problem does it solve?](#What-Problem-does-it-solve?) and validate that the statements are correct.
 
+> [!TIP]
+> If you would like to learn a few useful networking commands, I have created a gist with the ones that helped me pass my CKA certification
+> [Kubernetes related networking commands](https://gist.github.com/Piotr1215/23cf678d74079f98dc7be731e6a3f1d1)
+
 ### Prerequisites
 
 Instead of asciinema recording, this time we are going to use [katacoda](https://www.katacoda.com/). You just need a web browser, inquisitive mindset and some spare time to learn new things, no other prerequisites needed :)
 
-The interactive learning sessions are divided into 3 separate scenarios:
-
-- Services
-- Ingress
-- Network Policies
 
 > [!TIP]
 > [Katacoda](https://www.katacoda.com/) is a great free service. Is is an "Interactive Learning and Training Platform for Software Engineers" that "enables learning new technologies using real
