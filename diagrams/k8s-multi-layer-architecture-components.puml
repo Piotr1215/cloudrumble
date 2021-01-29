@@ -30,7 +30,7 @@ frame "<$chrome>   " <<https://awesome-site.com>> as browser
 user <-> browser : <$mouse> <$keyboard>
 
 node "Node" as node1 {
-    component "Presentation Layer Service\n          <$svc>\nType **LoadBalancer**" as web_deploy_svc
+    component "Presentation Layer Service\n          <$svc>\nType **NodePort/LoadBalancer**" as web_deploy_svc
     rectangle "Web Server Deployment \n<$deploy>" as web_deploy {
         component "UI - pod1 \n<$pod>" as web_deploy_pod_1
         component "UI - pod2 \n<$pod>" as web_deploy_pod_2

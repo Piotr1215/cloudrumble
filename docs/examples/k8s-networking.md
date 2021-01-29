@@ -125,5 +125,26 @@ By introducing the *service* abstraction we have decoupled actual workloads from
 Let's setup our scenarios and head to Katacoda to perform experiments on your own!
 
 This time for each scenario we are going to use formalized notation called [Gherkin Syntax](https://docs.specflow.org/projects/specflow/en/latest/Gherkin/Gherkin-Reference.html). This will help us better express goals and conditions of our experiments.
-### Expose pods on the network and enable communication between pods
 
+> [!NOTE]
+> Typically we would use testing framework like [Specflow](https://docs.specflow.org/projects/specflow/en/latest/index.html) or [Cucumber](https://cucumber.io/),
+> but for the > purpose of learning we are going to execute steps in the Katacoda environment manually.
+
+### Expose deployment on the network and enable communication between pods
+
+
+```gherkin
+Feature: NodePort service
+
+    Expose service on each node on the
+    same static port. Accessible on each node IP:PORT combination
+
+    Scenario: Expose deployment on the network
+      Given there is nginx deployment present in the cluster
+      And it is in default namespace
+      When deployment is exposed using "NodePort" Service
+      Then pods of the deployment can be curled using "http://nginxsvc" name
+      And sample page correctly renders on the node port in "Katacoda"
+
+    Scenario:
+```
