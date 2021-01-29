@@ -106,11 +106,18 @@ A very common requirement in any system is ability to facilitate point to point 
 - Application layer (business logic, API, middleware)
 - Date Persistance layer (typically database, but can be disc etc)
 
-Below table shows connectivity between different layers of the multi-tier architecture application. We are going to see how communication part of this setup can be recreated using Kubernetes native resources.
+Below diagram shows connectivity between different layers of the multi-tier architecture application. We are going to see how communication part of this setup can be recreated using Kubernetes native resources.
 
 ![Multi-Tier-Architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/multi-layer-architecture-components.puml&fmt=png)
 
 > [!NOTE]
 > Modern architectures, especially microservices follow different architectural patterns. For example [The Twelve-Factor App](https://12factor.net/) approach where connectivity between application layer and data persistance layer is done via HTTPS and often UI part of the application is served as a static web app or SPA.
 
+One key difference in Kubernetes world and more broadly, in the era of infrastructure as code, servers are a resource like any other and are dynamically provisioned. Workloads can be reschedules on a different server any any time without notice and everything is expected to work just the same.
+So first change is that instead of fixed servers we have dynamic, flexible infrastructure. Those are **Kubernetes Cluster Nodes**.
 
+We are not going to focus on DNS resolution from URL in browser address which happens on public DNS.
+
+Using Kubernetes services, deployments, stateful sets and volumes our diagram architecture look like this
+
+![Multi-Tier-Architecture-k8s](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-multi-layer-architecture-components.puml&fmt=png)

@@ -1,0 +1,64 @@
+@startuml k8s-multi-layer-architecture-components
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <tupadr3/devicons/chrome>
+!include <tupadr3/font-awesome-5/keyboard>
+!include <tupadr3/font-awesome-5/mouse>
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include FONTAWESOME/user.puml
+!include <kubernetes/k8s-sprites-labeled-25pct>
+'!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+'left to right direction
+
+skinparam BackgroundColor white
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
+skinparam rectangleBackgroundColor white
+skinparam componentBackgroundColor white
+skinparam linetype poly
+skinparam rectangleShadowing true
+skinparam ActorBackgroundColor white
+skinparam ParticipantBackgroundColor transparent
+skinparam CollectionsBackgroundColor transparent
+skinparam ArrowColor black
+
+rectangle "<$user>" as user
+
+frame "<$chrome>   " <<https://awesome-site.com>> as browser
+
+user <-> browser : <$mouse> <$keyboard>
+
+node "Node" as node1 {
+    component "Presentation Layer Service\n          <$svc>\nType **LoadBalancer**" as web_deploy_svc
+    rectangle "Web Server Deployment \n<$deploy>" as web_deploy {
+        component "UI - pod1 \n<$pod>" as web_deploy_pod_1
+        component "UI - pod2 \n<$pod>" as web_deploy_pod_2
+        component "UI - pod3 \n<$pod>" as web_deploy_pod_3
+        component "UI - pod4 \n<$pod>" as web_deploy_pod_4
+    }
+    web_deploy_svc --> web_deploy : Forward external HTTPS traffic and \nload balance between pods
+    browser <.> web_deploy_svc : HTTPS
+}
+node "Node" as node2 {
+    component "Application Layer Service\n          <$svc>\nType **ClusterIP**" as api_deploy_svc
+    rectangle "Web Server Deployment \n<$deploy>" as api_deploy {
+        component "API - pod1 \n <$pod>" as api_deploy_pod_1
+        component "API - pod2 \n <$pod>" as api_deploy_pod_2
+        component "API - pod3 \n <$pod>" as api_deploy_pod_3
+        component "API - pod4 \n <$pod>" as api_deploy_pod_4
+    }
+    web_deploy ---> api_deploy_svc : Call API pods via service
+    api_deploy_svc --> api_deploy : Forward internal HTTPS traffic and \nload balance between pods
+    component "Data Peristance Layer Service\n          <$svc>\nType **ClusterIP**" as db_deploy_svc
+    rectangle "Web Server Stateful Set \n<$sts>" as db_deploy {
+        component "Database - pod1 \n       <$pod>" as db_deploy_pod_1
+        component "Database - pod2 \n       <$pod>" as db_deploy_pod_2
+        component "Database - pod3 \n       <$pod>" as db_deploy_pod_3
+        component "Database - pod4 \n       <$pod>" as db_deploy_pod_4
+    }
+    api_deploy --> db_deploy_svc : Call Database service
+    db_deploy_svc -> db_deploy : Forward internal TCP traffic and \nload balance between pods
+}
+
+@enduml
