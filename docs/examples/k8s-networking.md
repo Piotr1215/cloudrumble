@@ -98,8 +98,6 @@ The interactive learning sessions are divided into 3 separate scenarios:
 > Katacoda is a great free service. Is is an "Interactive Learning and Training Platform for Software Engineers" that "enables learning new technologies using real
 > environments right in your browser"
 
-### Expose pods on the network and enable communication between pods
-
 A very common requirement in any system is ability to facilitate point to point communication between deployed artifacts. One of the most common scenarios for this type of communication is client-server architecture or multi-tier architecture (3 tier layers being most common):
 
 - Presentation layer (UI)
@@ -121,3 +119,11 @@ We are not going to focus on DNS resolution from URL in browser address which ha
 Using Kubernetes services, deployments, stateful sets and volumes our diagram architecture look like this
 
 ![Multi-Tier-Architecture-k8s](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-multi-layer-architecture-components.puml&fmt=png)
+
+By introducing the *service* abstraction we have decoupled actual workloads from communication mechanism. This allows us to take advantage of the dynamic nature of Kubernetes infrastructure and unlocked additional possibilities like scaling, separation of layers etc. Kubernetes can now move pods to other nodes, scale them or destroy and re-create without causing disruption to our application.
+
+Let's setup our scenarios and head to Katacoda to perform experiments on your own!
+
+This time for each scenario we are going to use formalized notation called [Gherkin Syntax](https://docs.specflow.org/projects/specflow/en/latest/Gherkin/Gherkin-Reference.html). This will help us better express goals and conditions of our experiments.
+### Expose pods on the network and enable communication between pods
+
