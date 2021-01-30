@@ -16,12 +16,13 @@ skinparam rectangleRoundCorner 0
 skinparam rectangleBorderStyle default
 skinparam rectangleBackgroundColor white
 skinparam componentBackgroundColor white
-skinparam linetype poly
+skinparam linetype ortho
 skinparam rectangleShadowing true
 skinparam ActorBackgroundColor white
 skinparam ParticipantBackgroundColor transparent
 skinparam CollectionsBackgroundColor transparent
 skinparam ArrowColor black
+skinparam FrameBackgroundColor white
 
 rectangle "<$user>" as user
 
@@ -30,35 +31,26 @@ frame "<$chrome>   " <<https://awesome-site.com>> as browser
 user <-> browser : <$mouse> <$keyboard>
 
 node "Node" as node1 {
-    component "Presentation Layer Service\n          <$svc>\nType **NodePort/LoadBalancer**" as web_deploy_svc
+    component "Presentation Layer Service\n                  <$svc>\nType **NodePort/LoadBalancer**" as web_deploy_svc
     rectangle "Web Server Deployment \n<$deploy>" as web_deploy {
-        component "UI - pod1 \n<$pod>" as web_deploy_pod_1
-        component "UI - pod2 \n<$pod>" as web_deploy_pod_2
-        component "UI - pod3 \n<$pod>" as web_deploy_pod_3
-        component "UI - pod4 \n<$pod>" as web_deploy_pod_4
+        collections "UI - pods \n<$pod>" as web_deploy_pod
     }
-    web_deploy_svc --> web_deploy : Forward external HTTPS traffic and \nload balance between pods
-    browser <.> web_deploy_svc : HTTPS
 }
 node "Node" as node2 {
-    component "Application Layer Service\n          <$svc>\nType **ClusterIP**" as api_deploy_svc
+    component "Application Layer Service\n             <$svc>\nType **ClusterIP**" as api_deploy_svc
     rectangle "Web Server Deployment \n<$deploy>" as api_deploy {
-        component "API - pod1 \n <$pod>" as api_deploy_pod_1
-        component "API - pod2 \n <$pod>" as api_deploy_pod_2
-        component "API - pod3 \n <$pod>" as api_deploy_pod_3
-        component "API - pod4 \n <$pod>" as api_deploy_pod_4
+    collections "API - pods\n <$pod>" as api_deploy_pod
     }
-    web_deploy ---> api_deploy_svc : Call API pods via service
-    api_deploy_svc --> api_deploy : Forward internal HTTPS traffic and \nload balance between pods
-    component "Data Peristance Layer Service\n          <$svc>\nType **ClusterIP**" as db_deploy_svc
+    component "Data Peristance\n Layer Service\n      <$svc>\nType **ClusterIP**" as db_deploy_svc
     rectangle "Web Server Stateful Set \n<$sts>" as db_deploy {
-        component "Database - pod1 \n       <$pod>" as db_deploy_pod_1
-        component "Database - pod2 \n       <$pod>" as db_deploy_pod_2
-        component "Database - pod3 \n       <$pod>" as db_deploy_pod_3
-        component "Database - pod4 \n       <$pod>" as db_deploy_pod_4
+        collections "Database - pods \n       <$pod>" as db_deploy_pod
     }
-    api_deploy --> db_deploy_svc : Call Database service
-    db_deploy_svc -> db_deploy : Forward internal TCP traffic and \nload balance between pods
 }
-
+'node1 -[hidden]- node2
+browser <.> web_deploy_svc : HTTPS
+web_deploy_svc -> web_deploy : Forward external HTTPS traffic and \nload balance between pods
+web_deploy --> api_deploy_svc : Call API pods via service
+api_deploy_svc -> api_deploy : Forward internal HTTPS traffic and \nload balance between pods
+api_deploy --> db_deploy_svc : Call Database pods via service
+db_deploy_svc -> db_deploy : Forward internal TCP traffic and \nload balance between pods
 @enduml
