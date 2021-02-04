@@ -11,7 +11,7 @@ Since this series is about exercising and practical examples, we will focus less
 
 ## How does it work?
 
-In Kubernetes *service* i a resource that abstracts and encapsulates a way of exposing an application running in pods as a network service.
+In Kubernetes *service* is a resource that abstracts and encapsulates a way of exposing an application running in pods as a network service.
 
 > [!NOTE]
 > Although services do not require DNS to work, it is strongly recommended to setup DNS service on Kubernetes using an add-on. There are several DNS services compatible with [Kubernetes dns specification](https://github.com/kubernetes/dns/blob/master/docs/specification.md), 2 most popular are:

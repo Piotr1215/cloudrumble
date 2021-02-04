@@ -1,0 +1,63 @@
+@startwbs docker-components-tree
+'Icons
+!include <tupadr3/devicons/linux>
+!include <tupadr3/devicons/docker>
+!include <tupadr3/font-awesome/terminal>
+!include <tupadr3/font-awesome-5/network_wired>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/running>
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/sprites/master/rest-api.puml
+
+<style>
+wbsDiagram {
+    BackgroundColor White
+    :depth(0) {
+        // will target root node
+        RoundCorner 10
+        LineColor green
+        LineStyle 1
+    }
+    BackgroundColor white
+    :depth(1){
+        LineColor black
+
+    }
+    :depth(2){
+        LineColor blue
+        LineThickness 2.5
+
+    }
+
+    .your_style_name {
+        BackgroundColor SkyBlue
+    }
+}
+</style>
+* Docker engine\n     <$docker>
+** Docker REST API \n<$rest>
+** Docker Server\n    <$server>
+*** Contianer Runtime (containerD)\n             <$running>
+**** Snapshotter
+**** **runC**
+***** Namespaces
+*****< Cgroups
+*****< Filesystem
+***** Linux Kernel components
+***< Persistent Storage\n      <$database>
+**** Volumes
+**** Bind Mounts
+****< Tmpfs Mounts
+*** Networking\n  <$network_wired>
+**** Sandbox
+**** Endpoint
+****< Network Driver
+***** Host
+***** Bridge
+*****< Overlay
+*****< None
+*****< macvlan
+****> IPAM Driver
+** Docker CLI\n<$terminal>
+@endwbs
