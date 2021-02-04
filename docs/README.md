@@ -394,6 +394,10 @@ To change logging driver to for example splunk, update deamon.json, like so:
 
 ![Docker Core Networking](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-core-networking.puml&fmt=svg)
 
+### Docker server components
+
+![Docker Server Components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-components-tree.puml&fmt=svg)
+
 ### Kubernetes network policies
 
 ![Kubernetes Network Policy](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-network-policy.puml&fmt=svg)
