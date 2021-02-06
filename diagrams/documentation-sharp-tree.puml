@@ -1,0 +1,70 @@
+@startwbs docker-components-tree
+'Icons
+!include <tupadr3/devicons/linux>
+!include <tupadr3/devicons/docker>
+!include <tupadr3/font-awesome/terminal>
+!include <tupadr3/font-awesome-5/network_wired>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/running>
+!include <material/file_document>
+!include <material/all_inclusive>
+!include <material/robot>
+!include <material/account_switch>
+!include <material/folder_move>
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/sprites/master/rest-api.puml
+!include https://raw.githubusercontent.com/Piotr1215/sprites/master/language_markdown.puml
+
+<style>
+wbsDiagram {
+    BackgroundColor White
+    :depth(0) {
+        // will target root node
+        RoundCorner 10
+        LineColor green
+        LineStyle 1
+    }
+    BackgroundColor white
+    :depth(1){
+        LineColor black
+
+    }
+    :depth(2){
+        LineColor blue
+        LineThickness 2.5
+
+    }
+
+    .your_style_name {
+        BackgroundColor SkyBlue
+    }
+}
+</style>
+* Documentation\n     <$ma_file_document>
+** **S**imple \n  <$l_language_markdown>
+*** Markdown
+*** Naming Conventions
+*** Common Vocabulary
+** **H**ollistic \n <$ma_all_inclusive>
+*** Developers
+*** Architects
+*** Project Managers
+*** Auditors
+*** Sales
+** **A**utomated \n <$ma_robot>
+*** Diagrams Rendering
+*** API Specs Scaffolding
+*** Collaboration
+*** CI/CD Pipelines
+** **R**eusable  \n <$ma_account_switch>
+*** arc45
+*** TOGAF
+*** C4
+*** PlantUML
+** **P**ortable  \n <$ma_folder_move>
+*** Documentation Generators
+*** Self Hosting
+*** Developer Portals
+*** Integration
+@endwbs

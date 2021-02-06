@@ -1,0 +1,61 @@
+@startuml documentation-sharp-sequence
+
+!define LOGOS https://raw.githubusercontent.com/plantuml-stdlib/gilbarbara-plantuml-sprites/v1.0/sprites
+
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome-5/user>
+!include <material/file_document>
+!include <material/all_inclusive>
+!include <material/robot>
+!include <material/account_switch>
+!include <material/folder_move>
+!include <material/git>
+!include https://raw.githubusercontent.com/Piotr1215/sprites/master/language_markdown.puml
+!include LOGOS/netlify.puml
+
+'Styles
+skinparam BackgroundColor white
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
+skinparam rectangleBackgroundColor white
+skinparam componentBackgroundColor white
+skinparam linetype poly
+skinparam rectangleShadowing true
+skinparam ActorBackgroundColor white
+skinparam ParticipantBackgroundColor transparent
+skinparam CollectionsBackgroundColor transparent
+skinparam ArrowColor black
+'skinparam monochrome false
+!define TITLE Documentation Lifecycle
+
+title TITLE
+
+actor "Developers" as developer #green
+
+participant "<$ma_git>\nDocumentation Repository" as doc
+participant "<$l_language_markdown>\nMarkdown Files" as md
+box "Software Repositories"
+    participant "<$ma_git>\nAPI" as api_doc
+    participant "<$ma_git>\nUI" as ui_doc
+    participant "<$ma_git>\nDatabase" as db_doc
+end box
+participant "<$netlify>\nHosting Provider" as netlify
+
+actor "Other Stakeholders" as stakeholders #blue
+
+==Creating==
+developer -> doc : Creates
+activate doc #lightgray
+
+==Distributing==
+
+
+==Maintaining==
+
+
+==Achiving==
+
+@enduml
