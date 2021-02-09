@@ -1,3 +1,1 @@
-# Useful commands and Cheatsheets
-
-Cheatsheets and commands
+# Cheatsheets and Useful commands
