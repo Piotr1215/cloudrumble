@@ -1,0 +1,25 @@
+@startuml multicloud-multi-cloud
+!include multicloud-styles.puml
+scale 2
+'scale 1.5 | scale 200 width | scale 100 height | scale [max] 200x100
+'skinparam linetype ortho
+
+rectangle "Multi Cloud" {
+    cloud "<$azure>\nAzure" as azure_hybrid {
+
+        rectangle "<$ECScontainer>\nPortable Workloads" as portable{
+            rectangle "<$AzureWebApp>"
+            rectangle "<$database>"
+        }
+    }
+    cloud "<$google-cloud>\nGoogle Cloud Platform" as gcp_hybrid {
+        rectangle "<$ECScontainer>\nPortable Workloads" as portable_gcp{
+            rectangle "<$AzureWebApp>" as gcp_web
+            rectangle "<$database>" as gcp_database
+            rectangle "<$server>" as gcp_server
+        }
+    }
+
+}
+
+@enduml

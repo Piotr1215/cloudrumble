@@ -1,0 +1,26 @@
+@startuml multicloud-hybrid-cloud
+!include multicloud-styles.puml
+'scale 1.5
+'scale 1.5 | scale 200 width | scale 100 height | scale [max] 200x100
+'skinparam linetype ortho
+skinparam rectangleBorderStyle dashed
+skinparam rectangleBorderThickness .5
+
+rectangle "Hybrid Cloud" {
+    cloud "<$azure>\nAzure" as azure_hybrid{
+        rectangle "<$AzureFunction*0.5>" as azure_function
+    }
+    cloud "<$google-cloud>\nGoogle Cloud Platform" as gcp_hybrid{
+        database "<$database>" as gcp_database
+    }
+    rectangle "<$building>\nPrivate Cloud" as prem_hybrid
+    cloud "SaaS" as saas_hybrid
+
+}
+saas_hybrid <-[hidden]- gcp_hybrid : <$salesforce> \nsends events to
+gcp_hybrid --> saas_hybrid : <$salesforce> \nsends events to
+prem_hybrid -l-> saas_hybrid : stores files in\n<$dropbox>
+prem_hybrid ~> azure_function : trigger function
+azure_function <~~ gcp_database : retrieve data
+
+@enduml

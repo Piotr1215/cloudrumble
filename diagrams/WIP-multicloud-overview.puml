@@ -1,34 +1,5 @@
-@startuml MKE-UCP-Architecture
-'Icons
-!include https://raw.githubusercontent.com/Piotr1215/sprites/master/rest-api.puml
-!include <azure/AzureCommon.puml>
-!include <kubernetes/k8s-sprites-labeled-25pct>
-!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
-!include <tupadr3/devicons/docker>
-!include <azure/Web/AzureWebApp.puml>
-!include <azure/Compute/AzureFunction.puml>
-!include <tupadr3/font-awesome/server>
-!include <tupadr3/font-awesome/chrome>
-!include <tupadr3/font-awesome/terminal>
-!include <tupadr3/font-awesome/building>
-!include <tupadr3/font-awesome/database>
-!include <logos/azure.puml>
-!include <logos/google-cloud.puml>
-!include <logos/jenkins.puml>
-!include <logos/github.puml>
-!include <logos/salesforce.puml>
-!include <logos/kubernetes.puml>
-!include <logos/dropbox.puml>
-'Global Styles
-!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
-'Overrides
-'skinparam linetype default
-skinparam rectangleBorderStyle solid
-skinparam Shadowing true
-
-title Multi Cloud: vendor lockin
-
-!$ab = "foo1"
+@startuml multicloud-hybrid-cloud
+!include multicloud-styles.puml
 
 cloud "<$azure>\nPublic Cloud" as azure {
     rectangle "PaaS\n<$AzureWebApp*0.7>" as webapp_azure
@@ -49,10 +20,10 @@ cloud "<$google-cloud>\nPublic Cloud" as gcp {
 }
 
 rectangle "<$building>\nPrivate Cloud" as prem {
-    rectangle "<$server>" as vm_prem{
+    rectangle "<$server>\nSelf-Hosted" as vm_prem{
         rectangle "<$database>" as db_prem
     }
-    rectangle "<$kubernetes>" as k8s_prem {
+    rectangle "<$kubernetes>\nDedicated" as k8s_prem {
         rectangle "<$ECScontainer>" as container_prem
         rectangle "<$AzureFunction*0.75>" as function_prem
         rectangle "<$AzureWebApp*0.7>" as webapp_prem
@@ -64,5 +35,20 @@ cloud "SaaS" as saas {
     rectangle "<$dropbox>"
     rectangle "<$salesforce>"
 }
+
+rectangle "Hybrid Cloud" {
+    cloud "<$azure>\nAzure" as azure_hybrid
+    cloud "<$google-cloud>\nGoogle Cloud Platform" as gcp_hybrid
+    rectangle "<$building>\nPrivate Cloud" as prem_hybrid
+    cloud "SaaS" as saas_hybrid
+
+    azure_hybrid --> gcp_hybrid : calls <$rest*0.5>
+    prem_hybrid ~(0)~> saas_hybrid : stores files in\n<$dropbox>
+    gcp_hybrid ~r~> saas_hybrid : sends events to\n<$salesforce>
+}
+
+azure -[hidden]r--> gcp
+azure -[hidden]d--> prem
+saas -[hidden]d-> prem
 
 @enduml
