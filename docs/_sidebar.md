@@ -1,4 +1,5 @@
 * [DCA Guide](/)
+* [CKS Guide](/cks_guide.md)
 * [Docker Introduction](docker_intro.md)
 * [Examples](examples.md)
   * [K8s Storage](/examples/k8s-storage-pv-pvc.md)

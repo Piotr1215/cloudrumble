@@ -1,0 +1,24 @@
+@startmindmap
+
+* Flow
+** Service
+*** Contains data and methods
+*** User Intaraction points
+*** Prepares New Request
+****_ via client interface
+*** Runs DO to execute new request
+****_ via client interface
+*** Returns Responses
+
+left side
+
+** Client
+*** Interacts with API
+*** Has baseURL
+*** Has methods for
+****_ Preparing request
+**** Dispatching with Do method
+***** Do returns raw response
+***** Can return custom errors
+
+@endmindmap
