@@ -1,0 +1,35 @@
+@startmindmap cks-access-points
+'Imports
+!define SPRITES https://raw.githubusercontent.com/Piotr1215/sprites/master
+
+!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture-icons/master/OSA-Plantuml-Icons
+'Icons
+!include <logos/azure.puml>
+!include <logos/google-cloud.puml>
+!include osaPuml/User/all.puml
+!include <osa/device_usb/device_usb.puml>
+!include <osa/device_usb/device_usb.puml>
+!include <osa/desktop/desktop.puml>
+<style>
+mindmapDiagram {
+    node {
+        BackgroundColor white
+        LineColor green
+    }
+    rootNode {
+        LineStyle 8.0;3.0
+        LineColor blue
+        BackgroundColor white
+        LineThickness 1.0
+        RoundCorner 35
+        Shadowing 0.0
+        FontStyle bold
+    }
+}
+</style>
+
+* <$desktop>\n       Server
+** <$device_usb>\n Phisical Access
+** <$audit>\nRBAC Access
+
+@endmindmap
