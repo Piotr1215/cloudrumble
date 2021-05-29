@@ -8,3 +8,7 @@ rectangle "<$ECScontainer>\nRegular"
 rectangle "<$ECScontainer_Alt1>\nAlt 1"
 rectangle "<$ECScontainer_Alt2>\nAlt 2"
 @enduml
+
+@startuml
+listopeniconic
+@enduml
