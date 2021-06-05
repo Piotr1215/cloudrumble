@@ -2,57 +2,19 @@
 
 This documentation and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
 
-Sections below contain my notes and diagrams as well as docker commands and tips and tricks. This is by definition an opinionated learning material, but I hope you will find it useful on your journey to learning and passing Docker Certified Associate exam.
+Sections below contain my notes and diagrams as well as sample commands, cheat sheets and tips and tricks. This is by definition an opinionated learning material, but I hope you will find it useful on your journey to learning and passing Docker Certified Associate exam.
 
 Please let me know in comments if you spot an error and feel free to do a PR if you would like to contribute to the repo.
 
-I wish you best of luck on getting the Docker Certified Associate certification :)
+I wish you best of luck on getting all IT Certifications you set out to get :)
 
 Each section corresponds to exam topics. [`Plantuml` diagrams](https://plantuml.com/)  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams]([/diagrams](https://github.com/Piotr1215/dca-prep-kit/tree/master/diagrams)) folder.
 
 > [!NOTE]
 >
-> - Web version of this documentation can be accessed under https://dcaguide.net.
+> - Web version of this documentation can be accessed under https://itcertificationsguide.com
 >
 > - If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
-
-## Certification
-
-> [!NOTE]
->
-> - More details about certification and exam [available on Mirantis website](https://training.mirantis.com/dca-certification-exam/).
->
-> - [Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
-
-## Exam
-
-> [!ATTENTION]
->
-> - Unlike CKA or CKAD there is no free retake of the exam, each subsequent attempt must be separately paid for, so make sure to prepare well. Remember that you can reschedule the exam at any time.
->
-> - Exam is pretty challenging. Questions are very detailed and often revolve around obscure details about particular topic. My exam had a lot of questions around PVs, PVCs, StorageClasses as well as detailed configuration of DTR and UCP. Please remember that your exam might be different, as questions are changed often.
->
-> - This guide is based on official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
-
-### Exam topics
-
-| Topic                                    | % of exam questions |
-| ---------------------------------------- |:-------------------:|
-| Orchestration                            |         25%         |
-| Image Creation, Management, and Registry |         20%         |
-| Installation and Configuration           |         15%         |
-| Networking                               |         15%         |
-| Security                                 |         15%         |
-| Storage and Volumes                      |         10%         |
-
-### Exam Info
-
-- Exam can be taken remotely
-- **90** minutes to answer **55** questions
-- All questions are multiple choice
-  - 13 questions are *normal* multiple choice
-  - 52 questions are *Discrete Option Multiple Choice (DOMC)* where options are randomly presented, one at a time.
-      For each presented option, the examinee chooses YES or NO to indicate if the option is correct.
 
 ## Learning Plan
 
@@ -108,7 +70,6 @@ Or simpler version with volume mount
 # .kube/config is a symling to /etc/kubernetes/admin.conf
 docker run --network=host --name=kubectl-host -v /etc/kubernetes/admin.conf:/root/.kube/config --rm -it piotrzan/kubectl-comp:zsh
 ```
-
 
 ### 4. Know Docker/Mirantis documentation well
 
