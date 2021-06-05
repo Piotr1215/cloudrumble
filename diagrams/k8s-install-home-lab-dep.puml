@@ -1,0 +1,37 @@
+@startuml k8s-install-home-lab-dep
+!include <material/laptop>
+!include <material/desktop_mac>
+!include <material/ubuntu>
+!include <logos/kubernetes>
+!include <logos/nginx>
+!include <logos/rancher>
+!include <logos/chrome>
+!include <tupadr3/font-awesome/terminal>
+!theme cyborg
+skinparam linetype ortho
+rectangle "<$ma_desktop_mac>\nHome PC" as desktop {
+    rectangle "Cluster Management" as manage {
+    rectangle "kubectl" as cli
+    }
+    rectangle "Observability" as observe {
+        rectangle "<$chrome>\nOctant"
+        rectangle "<$terminal>\nK9S"
+    }
+}
+rectangle "<$ma_laptop>\nUbuntu Laptop" as laptop {
+    rectangle "<$nginx>\nLoadbalancer" as nginx
+    rectangle "<$ma_ubuntu>\nMultipass Ubuntu VMs" as ubuntu {
+        node "<$kubernetes>\nK3s-Server " as server {
+            rectangle "\t<$rancher>\nRacher Control Plane" as rancher
+        }
+        node "<$kubernetes>\nK3s-Agent" as agent
+    }
+}
+
+desktop <-> nginx
+nginx <-> server
+server <-> agent
+nginx <-l-> rancher
+'observe -[hidden]r-> manage
+
+@enduml
