@@ -1,6 +1,6 @@
 ![logo](_media/logo.png)
 
-# Docker Certified Associate <small>DCA</small>
+# IT Certifications Guide <small>Cloud Native</small>
 
 > Preparation notes and learning material
 >
