@@ -31,8 +31,9 @@ jobs:
       - name: Run a one-line script
         run: echo ${{ secrets.DOCKER_HUB_PW }}
       - name: Deploy Netlify
-        uses: danakim/gh-action-deploy-netlify@master
+        uses: jsmrcaga/action-netlify-deploy@v1.1.0
         with:
-          AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          DEPLOY_PROD: true
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_DEPLOY_MESSAGE: "Prod deploy v${{ github.ref }}"
+          NETLIFY_DEPLOY_TO_PROD: true
