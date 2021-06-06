@@ -14,5 +14,6 @@
 * [Cheatsheets & Commands](cheatsheets.md)
   * [K8s commands](k8scommands.md)
   * [K8s networking](k8snetworking.md)
+* [Resources](resources.md)
 * [About Me](about.md)
 * [FAQ](faq.md)
