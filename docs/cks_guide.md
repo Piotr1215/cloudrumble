@@ -24,4 +24,4 @@ Center for Internet Security
 
 ## Pod Decision Tree
 
-![POD Decision Tree](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/pods-decision-tree.puml&fmt=svg)
+![POD Decision Tree](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-pod-escalation.puml&fmt=svg)
