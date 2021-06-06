@@ -1,0 +1,31 @@
+@startuml pods-decision-tree
+!theme spacelab
+:<b>Pod has too many priviledges</b>;
+
+:                                          <b>Check Service Account
+<code>
+k get po <pod name> -oyaml | grep serviceAccount
+k get rolebindings
+k get rolebindings role-binding-name -o=jsonpath='{.metadata.name}{"\n"}'
+k describe rolebinding role-name
+</code> |
+
+if (SA has too many priviledges?) then (yes)
+    if (SA with less priviledges exist?) then (yes)
+        :Swap to the other SA;
+        end
+    else (no)
+        if (Role with less priviledges exist?) then (yes)
+            :Swap to a new role
+            <code>
+            kubectl other role
+            </code>;
+        else (no)
+            :Create a new role;
+        endif
+    endif
+
+else (no)
+    :Some other cause;
+endif
+@enduml
