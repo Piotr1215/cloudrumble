@@ -1,6 +1,8 @@
-# Docker Certified Associate (DCA)
+# IT Certifications Guide
 
-Preparation notes for DCA (Docker Certified Associate) exam.
+<span> Cloud Native</span>
+
+Preparation notes various IT Certifications exams.
 
 - Markdown [Documentation](docs/README.md)
-- Web [Documentation](https://dcaguide.net)
+- Web [Documentation](https://www.itcertificationsguide.com/)
