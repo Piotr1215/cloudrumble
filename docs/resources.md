@@ -18,3 +18,9 @@
 | [JSON Placeholder](https://jsonplaceholder.typicode.com/) | Fake API for testing  |::api |
 | [Good First Issue](https://goodfirstissue.dev/) | Find an open source project to contribute  |::open_source |
 | [Webhook Automate](https://webhook.site/#!/a2e14c9d-b4d4-438c-99da-c1a8f66e376e) | Test webhooks with fake webhook  |::api |
+| [Must read K8s resources](https://kubernetesreadme.com/) |  |::learning |
+| [Network policy editor](https://editor.cilium.io/?id=ueM67J8ZCNEb5iFZ) |  |::cka |
+| [Learnk8s - tools and resources](https://learnk8s.io/kubernetes-resources) |  |::learning |
+| [Kubernetes by example](https://kubernetesbyexample.com/) |  |::learning |
+| [StackRox](https://www.stackrox.com/) | Lots of great resources about K8s |::learning |
+| [K8s examples](https://github.com/kubernetes/examples) | Examples of apps in k8s for demos etc |::learning |
