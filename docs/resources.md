@@ -24,3 +24,7 @@
 | [Kubernetes by example](https://kubernetesbyexample.com/) |  |::learning |
 | [StackRox](https://www.stackrox.com/) | Lots of great resources about K8s |::learning |
 | [K8s examples](https://github.com/kubernetes/examples) | Examples of apps in k8s for demos etc |::learning |
+
+## Mindmaps
+
+<iframe src='https://www.xmind.net/embed/dy6DeH/' width='1024' height='768' frameborder='1' scrolling='no' allowfullscreen="true"></iframe>
