@@ -14,7 +14,30 @@ During the exam you are required to demonstrate practical knowledge of kubernete
 
 Make sure to setup alias for kubeclt and bash/zsh completion. This information is available on the kubernetes documentation page. It will help you be much faster with commands and most importantly completion sources pod and other kubernetes objects names that you don’t need to copy or type.
 
-![](https://miro.medium.com/max/2696/0*TyA2kZdqmXMSi99P.png)
+<!-- select:start -->
+<!-- select-menu-labels:Shell -->
+
+### --bash--
+
+```bash
+source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
+```
+
+### --zsh--
+
+```bash
+source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
+echo "[[ $commands[kubectl] ]] && source <(kubectl completion zsh)" >> ~/.zshrc # add autocomplete permanently to your zsh shell
+```
+<!-- select:end -->
+
+You can also use a shorthand alias for kubectl that also works with completion:
+
+```bash
+alias k=kubectl
+complete -F __start_kubectl k
+```
 
 During the exam you can have one additional chrome tab open with kubernetes documentation page, kubernetes blog and GitHub artifacts for the page. It helped me to prepare bookmarks to quickly locate part of YAML to copy and paste to terminal.
 
