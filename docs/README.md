@@ -12,8 +12,6 @@ Each section corresponds to exam topics. [`Plantuml` diagrams](https://plantuml.
 
 > [!NOTE]
 >
-> - Web version of this documentation can be accessed under <https://itcertificationsguide.com>
->
 > - If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
 
 For every exam I follow similar approach as outlined here below
