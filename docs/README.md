@@ -1,4 +1,4 @@
-## Introduction
+### Introduction
 
 This documentation and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
 
@@ -16,15 +16,13 @@ Each section corresponds to exam topics. [`Plantuml` diagrams](https://plantuml.
 >
 > - If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
 
-## Learning Plan
-
 For every exam I follow similar approach as outlined here below
 
 ### Find good training material
 
 This is a key step, preparation for every exam requires focus and commitment. In reality we rarely have unlimited time on our hands and often lean on weekends, so having a training material that is tailored to our needs is essential. In each exam section, i have selected a few training materials that I used and were helpful in passing the exam.
 
-### 2. Go though mock questions and exams
+### Go though mock questions and exams
 
 It is important to exercise as much as possible and go thought questions and mock exams. Take advantage of free online sandboxes or your own test environments to experiment and practice.
 Here are examples of Kubernetes and Docker sandboxes:
@@ -62,7 +60,7 @@ Or simpler version with volume mount
 docker run --network=host --name=kubectl-host -v /etc/kubernetes/admin.conf:/root/.kube/config --rm -it piotrzan/kubectl-comp:zsh
 ```
 
-### 4. Know documentation well
+### Know documentation well
 
 Knowing the documentation of product/system you are learning about is critical. I usually arrange all topics into self-describing bookmarks. Most of them are available online.
 
@@ -70,7 +68,7 @@ If you would like to have same bookmarks, please use my gist below and import th
 > [!NOTE]
 > [DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
 
-### 5. Make notes
+### Make notes
 
 Making notes is easy, making good notes a bit more difficult. To make best of learning notes, I follow this 5 step approach:
 
@@ -84,6 +82,6 @@ Making notes is easy, making good notes a bit more difficult. To make best of le
 
 ### Additional Resources
 
-Check out my blogs on Medium, I publish there on a regular basis, very often about certifications too.
+Check out my GitHub profile where you can find links to other content I create
 
-[medium blogs](https://piotrzan.medium.com/ ':include :type=iframe width=100% height=500px')
+[Other Content](https://raw.githubusercontent.com/Piotr1215/Piotr1215/main/README.md ':include')
