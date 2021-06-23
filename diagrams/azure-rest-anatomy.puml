@@ -1,0 +1,8 @@
+@startuml rest-request-anatomy
+user -> request
+request -> endpoint
+endpoint -> backend
+backend -> endpoint
+endpoint -> response
+response -> user
+@enduml

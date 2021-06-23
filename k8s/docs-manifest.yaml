@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-docs
+spec:
+  selector:
+    matchLabels:
+      app: cloud-docs
+  template:
+    metadata:
+      labels:
+        app: cloud-docs
+    spec:
+      containers:
+      - name: cloud-docs
+        image: piotrzan/dcaguide:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-docs-svc
+  namespace: default
+spec:
+  selector:
+    app: cloud-docs-svc
+  type: LoadBalancer
+  ports:
+  - name: cloud-docs-svc
+    protocol: TCP
+    port: 80
+    targetPort: 3000
+    nodePort: 30001
+---
