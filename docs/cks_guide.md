@@ -184,3 +184,21 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 #### Use Case
 
 AppArmor can be used to for example restrict access to a folder inside pod/container.
+
+## Linux Capabilities
+
+- [List of Linux Capabilities](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+- Capabilities are added and removed per container
+
+  ```yaml
+  securityContext:
+    capabilities:
+     add: ["CAP1"]
+     drop: ["CAP2"]
+  ```
+
+> [!TIP] To check what capabilities are needed for any give command run `getcap /<path>/<command>` or to check capabililties used by a running process run `getpcaps PID`
+
+## Containers Isolation
+
+![Container Isolaiton](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-container-isolation.puml&fmt=svg)
