@@ -177,5 +177,10 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 ### AppArmor in Kubernetes
 
 - support added in v 1.4, but still in beta
+- to load profile from default location use `apparmor_parser -q /etc/apparmor.d/{profile_name}`
 
 > [!TIP] to secure a pod an annotation in this format `container.apparmor.security.beta.kubernetes.io/<container_name>: localhost/profile_name OR runtime/default OR unconfined`
+
+#### Use Case
+
+AppArmor can be used to for example restrict access to a folder inside pod/container.
