@@ -25,3 +25,7 @@ Center for Internet Security
 ## Pod Decision Tree
 
 ![POD Decision Tree](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-pods-escalation.puml&fmt=svg)
+
+## Seccomp
+
+![Syscalls](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/linux-syscalls.puml&fmt=svg)
