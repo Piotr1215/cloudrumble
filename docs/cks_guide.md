@@ -133,3 +133,49 @@ spec:
 By default seccomp logs will be saved in **`/var/log/syslog`**
 
 You can easily tail logs for specific pod by `tail -f /var/log/syslog | grep {pod_name}`
+
+## AppArmor
+
+<def>AppArmor is a Linux security [module](https://uisapp2.iu.edu/confluence-prd/pages/viewpage.action?pageId=115540061)</def>
+
+- restrict access to specific objects in the system
+- determines what resources can be used by an application
+- more fine grained control than seccomp
+- installed in most systems
+- AppArmor profiles are stored under `/etc/apparmor.d/`
+
+### Example AppArmor Profile
+
+```c
+#include <tunables/global>
+
+profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
+  #include <abstractions/base>
+
+  file,
+
+  # Deny all file writes.
+  deny /** w,
+}
+```
+
+### Check if AppArmor is running
+
+- `systemctl status apparmor`
+- is AppArmor module enabled? `cat /sys/module/apparmor/parameters/enabled`
+- is AppArmor profile loaded into kernel? `cat /sys/kernel/security/apparmor/profiles`
+- use `aa-status` to check what profiles are loaded
+
+### AppArmor profiles load modes
+
+|Mode|Description|
+|---|---|
+|enforce|enforce and monitor on any app that fits the profile|
+|complain|log as events|
+|unconfined|any task allowed, no logging|
+
+### AppArmor in Kubernetes
+
+- support added in v 1.4, but still in beta
+
+> [!TIP] to secure a pod an annotation in this format `container.apparmor.security.beta.kubernetes.io/<container_name>: localhost/profile_name OR runtime/default OR unconfined`
