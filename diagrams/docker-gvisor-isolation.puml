@@ -1,0 +1,79 @@
+@startuml docker-gvisor-isolation
+
+title "Isolation with gVisor"
+
+skinparam Linetype ortho
+left to right direction
+
+skinparam nodesep 30
+skinparam ranksep 100
+
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <logos/ubuntu>
+!include <tupadr3/font-awesome-5/memory>
+
+skinparam rectangle {
+    BackgroundColor<<gVisor>> LightGreen
+    BackgroundColor<<syscall()>> LightBlue
+    BackgroundColor<<customer>> Orange
+}
+
+rectangle " " as b {
+    together {
+        rectangle "\t\t            Linux Kernel\n\t\t\t\t<$ubuntu>     \t\t\t\t" as kernel #Silver {
+
+        }
+        rectangle "\t\tHardware Infrastructure\t\t\t" as hard #Gray {
+        }
+
+    }
+
+
+}
+rectangle " " as a {
+    rectangle "Isolated Process" as one {
+        rectangle " " as cust1 <<gVisor>>
+        rectangle " " as sys1 <<syscall()>>
+        rectangle "<$ECScontainer>" as gvisor1 <<customer>>
+    }
+
+    cust1 -[hidden] sys1
+    sys1 -[hidden] gvisor1
+
+    rectangle "Isolated Process" as two {
+        rectangle " " as cust2  <<gVisor>>
+        rectangle " " as sys2 <<syscall()>>
+        rectangle "<$ECScontainer>" as gvisor2 <<customer>>
+    }
+
+    cust2 -[hidden] sys2
+    sys2 -[hidden] gvisor2
+
+    rectangle "Isolated Process" as three {
+        rectangle " " as cust3  <<gVisor>>
+        rectangle " " as sys3 <<syscall()>>
+        rectangle "<$ECScontainer>" as gvisor3 <<customer>>
+    }
+
+    cust3 -[hidden] sys3
+    sys3 -[hidden] gvisor3
+
+    cust1 -l->> kernel
+    cust2 -l->> kernel
+    cust3 -l->> kernel
+
+    cust1 -r->> sys1
+    cust2 -r->> sys2
+    cust3 -r->> sys3
+
+    sys1 <<->> gvisor1
+    sys2 <<->> gvisor2
+    sys3 <<->> gvisor3
+
+    hard <<->> kernel
+}
+
+a -[hidden]d- b
+one -[hidden]- two
+two -[hidden]- three
+@enduml
