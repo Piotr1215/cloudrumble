@@ -65,8 +65,71 @@ If the result is **2** it means that seccomp is enabled for the container
 
 ![Syscalls](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/linux-seccomp-profile.puml&fmt=svg)
 
+there are 2 profile types:
+
+- **whitelist**: only specified syscalls are allowed, all others are rejected
+- **blacklist**: all syscalls are allowed, unless specified in the file
+
 ### Docker seccomp filter
 
 By default Docker enables seccomp filter (mode 2).
 
+It blocks around *60* of the around *300* syscalls available with default profile
 
+> [!TIP] How to check what syscalls are blocked?
+> Run amicontained tool as container to see syscalls blocked by default docker profile
+>
+> `docker run r.j3ss.co/amicontained amicontained`
+>
+> Run amicontained tool as pod to see syscalls blocked by Kubernetes default profile
+>
+> `k run amicontained --image r.j3ss.co/amicontained amicontained -- amidontained`
+>
+> check pod logs
+>
+> `k logs amicontained`
+
+### Enable seccomp in Kubernetes
+
+Create a pod using yaml spec and enable *RuntimeDefault* profile under securityContext of pod
+
+```yaml
+spec:
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+```
+
+### Custom seccomp profile in Kubenetes
+
+> [!ATTENTION] default seccomp profile is located at **`/var/lib/kubelet/seccomp`**.
+> Custom seccomp profile path must be relative to this path
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: audit-pod
+  labels:
+    app: audit-pod
+spec:
+  securityContext:
+    seccompProfile:
+      type: Localhost
+      localhostProfile: profiles/audit.json
+  containers:
+  - name: test-container
+    image: hashicorp/http-echo:0.2.3
+    args:
+    - "-text=just made some syscalls!"
+    securityContext:
+      allowPrivilegeEscalation: false
+```
+
+> [!NOTE] In order to apply new seccomp profile, pod must be deleted and re-created. use `k recreate -f ` command
+
+### Seccomp logs
+
+By default seccomp logs will be saved in **`/var/log/syslog`**
+
+You can easily tail logs for specific pod by `tail -f /var/log/syslog | grep {pod_name}`

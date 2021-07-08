@@ -28,7 +28,7 @@
 | [Introduction to container terminology](https://developers.redhat.com/blog/2018/02/22/container-terminology-practical-introduction) | A Practical Introduction to Container Terminology                                    | containers  |
 | [UNIX Toolbox](http://cb.vu/unixtoolbox.xhtml)                                                                                      | Unix/Linux/BSD commands and tasks which are useful for IT work or for advanced users | linux       |
 | [Jsonnet](https://jsonnet.org/)                                                                                                     | A data templating language for app and tool developers                               | templates   |
-
+| [Genuine tools](https://genuinetools.org/)| No bullshit, no politics, all genuine. Made by hackers with love that were just having fun. |  tools|
 ## Mindmaps
 
 <iframe src='https://www.xmind.net/embed/dy6DeH/' width='1024' height='768' frameborder='1' scrolling='no' allowfullscreen="true"></iframe>
