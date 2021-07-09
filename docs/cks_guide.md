@@ -13,9 +13,31 @@ The 4C's of cloud native computing represent security in depth where each "C" st
 |Container|Docker containers. Running, for example in privilege mode.|
 |Code|Binaries, source code, code configuration, no TLS, variables in code, etc.|
 
-## CIS Benchmark
+## Admission controllers
 
-Center for Internet Security
+### Image policy webhook
+
+#### Admission configuration
+
+```yaml
+apiVersion: apiserver.config.k8s.io/v1
+kind: AdmissionConfiguration
+plugins:
+- name: ImagePolicyWebhook
+  configuration:
+    imagePolicy:
+      kubeConfigFile: <path-to-kubeconfig-file>
+      allowTTL: 50
+      denyTTL: 50
+      retryBackoff: 500
+      defaultAllow: true
+```
+
+> [!NOTE] `defaultAllow: true` if admission webhook server is not reachable, all request will be allowed
+
+#### Enable admission controller
+
+If Kubernetes components are deployed as daemons, edit service configuration file by `systemctl edit service_name`, else if Kubernetes has been deployed using `kubeadm`, simply edit pod manifest `vim /etc/kubernetes/manifests/kube-apiserver.yaml` and add `ImagePolicyWebhook` to `--enable-admission-plugins=` section as well as pass admission control config file via `--admission-control-config-file=`
 
 ## Pod Decision Tree
 
