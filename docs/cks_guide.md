@@ -200,4 +200,6 @@ AppArmor can be used to for example restrict access to a folder inside pod/conta
 
 ### gVisor
 
+<dev>[gVisor](https://gvisor.dev/) is an application kernel for containers that provides efficient defense-in-depth anywhere.</def>
+
 ![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-gvisor-isolation.puml&fmt=svg)
