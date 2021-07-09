@@ -1,0 +1,60 @@
+@startuml cks-containers-katacontainers-isolation
+
+title "Isolation with Kata Containers"
+'left to right direction
+!$tabs = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\\t\t\t\t\t"
+skinparam nodesep 10
+skinparam ranksep 20
+skinparam defaultTextAlignment center
+skinparam Linetype ortho
+
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <logos/docker>
+!include <logos/ubuntu>
+
+rectangle " " as b {
+    rectangle "Hardware Infrastructure $tabs" as hard #Gray {
+
+    }
+
+    rectangle "Host OS $tabs \t\t\t\t" as host_os #LightBlue {
+
+    }
+
+    rectangle "Docker Host $tabs\t\t\t" as hyper #Orange {
+
+    }
+}
+
+rectangle " " as a {
+    rectangle "Lightweight VM" as vm1 {
+        rectangle "Container\n<$ubuntu>\n<$docker>\t<$ECScontainer>" as cont1 #White {
+            rectangle " Libraries | Dependencies " as libs #LightGreen {
+
+            }
+            rectangle "\t\tApplications\t\t" as apps  #423F68
+        }
+        rectangle "VM Kernel" as vmkernel1 #silver
+    }
+    vmkernel1 <<- cont1
+    rectangle "Lightweight VM" as vm2 {
+        rectangle "Container\n<$ubuntu>\n<$docker>\t<$ECScontainer>" as cont2 #White {
+            rectangle " Libraries | Dependencies " as libs2 #LightGreen {
+
+            }
+            rectangle "\t\tApplications\t\t" as apps2  #423F68
+        }
+        rectangle "VM Kernel" as vmkernel2 #silver
+    }
+    vmkernel2 <<- cont2
+}
+
+host_os -[hidden]d- hard
+hyper -[hidden]d- host_os
+a -[hidden]d-- b
+
+hyper <|-[norank]-|> vm1
+hyper <|-[norank]-|> vm2
+
+
+@enduml

@@ -19,33 +19,33 @@ hide stereotypes
 ' entities
 
 Table(user, "user\n(User in our system)") {
-primary_key(id) INTEGER
-not_null(unique(username)) VARCHAR[32]
-not_null(password) VARCHAR[64]
+    primary_key(id) INTEGER
+    not_null(unique(username)) VARCHAR[32]
+    not_null(password) VARCHAR[64]
 }
 
 Table(session, "session\n(session for user)") {
-primary_key(id) INTEGER
-not_null(user_id) INTEGER
-not_null(unique(session_id)) VARCHAR[64]
+    primary_key(id) INTEGER
+    not_null(user_id) INTEGER
+    not_null(unique(session_id)) VARCHAR[64]
 }
 
 Table(user_profile, "user_profile\n(Some info of user)") {
-primary_key(user_id) INTEGER
-age SMALLINT
-gender SMALLINT
-birthday DATETIME
+    primary_key(user_id) INTEGER
+    age SMALLINT
+    gender SMALLINT
+    birthday DATETIME
 }
 
 Table(group, "group\n(group of users)") {
-primary_key(id) INTEGER
-not_null(name) VARCHAR[32]
+    primary_key(id) INTEGER
+    not_null(name) VARCHAR[32]
 }
 
 Table(user_group, "user_group\n(relationship of user and group)") {
-primary_key(user_id) INTEGER
-primary_key(group_id) INTEGER
-joined_at DATETIME
+    primary_key(user_id) INTEGER
+    primary_key(group_id) INTEGER
+    joined_at DATETIME
 }
 
 ' relationships
@@ -56,5 +56,54 @@ user --> session : "A user may have\n many sessions"
 ' many to many relationship
 ' Add mark if you like
 user "1" --> "*" user_group : "A user may be \nin many groups"
-group "1" --> "0..N" user_group : "A group may \ncontain many users"
+group
+    "1" --> "0..N" user_group : "A group may \ncontain many users"
+    @enduml
+
+    @startuml test
+    rectangle supC [
+    <b>CENTER Group
+    <b>CENTER CENTER CENTER CENTER
+    <b>CENTER CENTER
+    {{
+        skinparam defaultTextAlignment right
+        rectangle "RIGHT Component\rRIGHT RIGHT RIGHT RIGHT\rRIGHT RIGHT" as subR
+    }}
+    {{
+        skinparam defaultTextAlignment left
+        rectangle "LEFT Component\lLEFT LEFT LEFT LEFT LEFT\lLEFT LEFT" as subL
+    }}
+    {{
+        skinparam defaultTextAlignment center
+        rectangle "CENTER Component\nCENTER CENTER CENTER CENTER\nCENTER CENTER" as subC
+    }}
+    ]
+    @enduml
+
+    @startuml
+legend
+
+{{wbs
+* root
+** level1
+** level1
+}}
+
+{{mindmap
+* root
+** level1
+** level1
+}}
+
+'and
+
+{{
+salt
+{
+[Example button]
+[X] Checked box
+}
+}}
+
+end legend
 @enduml

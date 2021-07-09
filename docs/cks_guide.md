@@ -196,10 +196,16 @@ AppArmor can be used to for example restrict access to a folder inside pod/conta
 
 ## Containers Isolation
 
-![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-container-isolation.puml&fmt=svg)
+![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-container-isolation.puml&fmt=svg)
 
 ### gVisor
 
-<dev>[gVisor](https://gvisor.dev/) is an application kernel for containers that provides efficient defense-in-depth anywhere.</def>
+<def>[gVisor](https://gvisor.dev/) is an application kernel for containers that provides efficient defense-in-depth anywhere.</def>
 
-![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-gvisor-isolation.puml&fmt=svg)
+![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-gvisor-isolation.puml&fmt=svg)
+
+### Kata Containers
+
+<def>[Kata Containers](https://katacontainers.io/) Kata Containers is an open source container runtime, building lightweight virtual machines that seamlessly plug into the containers ecosystem.</def>
+
+![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-katacontainers-isolation.puml&fmt=svg)

@@ -1,4 +1,4 @@
-@startuml docker-container-isolation
+@startuml cks-container-isolation
 
 title "Containers Isolation"
 left to right direction

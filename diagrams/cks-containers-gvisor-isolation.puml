@@ -1,4 +1,4 @@
-@startuml docker-gvisor-isolation
+@startuml cks-containers-gvisor-isolation
 
 title "Isolation with gVisor"
 
