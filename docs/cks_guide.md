@@ -202,6 +202,8 @@ AppArmor can be used to for example restrict access to a folder inside pod/conta
 
 <def>[gVisor](https://gvisor.dev/) is an application kernel for containers that provides efficient defense-in-depth anywhere.</def>
 
+> [!NOTE] [Install gVisor](https://gvisor.dev/docs/user_guide/install/)
+
 ![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-gvisor-isolation.puml&fmt=svg)
 
 ### Kata Containers
@@ -209,3 +211,13 @@ AppArmor can be used to for example restrict access to a folder inside pod/conta
 <def>[Kata Containers](https://katacontainers.io/) Kata Containers is an open source container runtime, building lightweight virtual machines that seamlessly plug into the containers ecosystem.</def>
 
 ![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-katacontainers-isolation.puml&fmt=svg)
+
+> [!NOTE] this requires nested virtualization (in case of running workloads on VMs) and can degrade performance. Some cloud providers do not support nested virtualization.
+
+### Containers isolation in Kubernetes
+
+- run a container with kata container runtime: `docker run --runtime kata -d nginx`
+- run a container with gVisor runtime: `docker run --runtime runsc -d nginx`
+
+1. Create runtime object
+2. use `runtimeClassName` on pod definition level to use the runtime
