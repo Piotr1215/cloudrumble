@@ -1,0 +1,25 @@
+@startuml cks-4cs
+!include <material/common>
+!include <material/cloud>
+!include <cloudogu/tools/k8s>
+!include <aws/Compute/AmazonECS/ECScontainer_Alt1/ECScontainer_Alt1>
+!include <logos/go>
+
+!theme blueprint
+
+skinparam rectangle {
+    BackgroundColor Transparent
+}
+
+rectangle "cloud\n\n<color:#LightBlue><$ma_cloud></color>" as cloud {
+    rectangle "cluster\n\n<$k8s>" as cluster {
+        rectangle "container\n\n<$ECScontainer_Alt1>" as container{
+            rectangle "  **code**\n\n<$go*0.5>" as code
+
+        }
+
+    }
+}
+
+
+@enduml

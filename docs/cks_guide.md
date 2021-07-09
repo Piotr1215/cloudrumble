@@ -1,22 +1,17 @@
 # CKS Guide
 
-## The 4C's
+## The 4C's of cloud native computing
 
-### Cloud
+The 4C's of cloud native computing represent security in depth where each "C" stands for level of isolation from outside in.
 
-Security of entire infrastructure hosting the servers. Public/Private etc.
+![The 4 C's](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-4cs.puml&fmt=svg)
 
-### Cluster
-
-Kubernetes cluster
-
-### Container
-
-Docker containers. Running in privilege mode.
-
-### Code
-
-Code configuration, no TLS, variables in code, etc.
+|Layer| Description |
+|---|---|
+|Cloud|Security of entire infrastructure hosting the servers. Public/Private etc.|
+|Cluster|Kubernetes cluster|
+|Container|Docker containers. Running, for example in privilege mode.|
+|Code|Binaries, source code, code configuration, no TLS, variables in code, etc.|
 
 ## CIS Benchmark
 
