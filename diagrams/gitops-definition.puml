@@ -1,0 +1,23 @@
+@startuml GitOps Flow
+!theme bluegray
+autonumber
+actor "Developer" as dev
+
+participant "Pull Request" as pr
+actor "Code Reviewer" as rev
+participant "Git Repository" as git
+
+box "Kubernetes Cluster"
+    participant "GitOps Agent" as agent
+    participant "Deployed Software" as soft
+end box
+
+
+dev -> pr: Submit PR
+rev -> pr: Review and accept PR
+pr -> git: Merge changes with master
+agent -> git: Observer repository\n and pull changes from master
+agent -> soft: Ensure state\n consistent with master
+
+
+@enduml

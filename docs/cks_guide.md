@@ -39,6 +39,10 @@ plugins:
 
 If Kubernetes components are deployed as daemons, edit service configuration file by `systemctl edit service_name`, else if Kubernetes has been deployed using `kubeadm`, simply edit pod manifest `vim /etc/kubernetes/manifests/kube-apiserver.yaml` and add `ImagePolicyWebhook` to `--enable-admission-plugins=` section as well as pass admission control config file via `--admission-control-config-file=`
 
+## Secrets
+
+> [!TIP] to switch off auto-mounting secrets on the pod, use `automountServiceAccountToken: false`
+
 ## Pod Decision Tree
 
 ![POD Decision Tree](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-pods-escalation.puml&fmt=svg)
