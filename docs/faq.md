@@ -6,12 +6,13 @@
 
 A: This happens then `Plantuml` server is having a hiccup, simply refresh the page and diagrams will render.
 
-## Q: How to ling to always latest version of gist
+## Q: How to link to always latest version of gist
 
-A: Use this format: `https://gist.githubusercontent.com/user/raw/[ID]/[REVISION]/[FILE]`
+A: Use this format: `https://gist.githubusercontent.com/[GITHUB-USER]/[GIST-ID]/raw/[FILE]`
 
 Where:
 
-- ``[ID]`` is necessary
-- ``[REVISION]`` can be omitted to get the latest revision
-- ``[FILE]`` must be included for docsify to render
+- ``[GIST-ID]`` - GUID displayed on the gist URL as last element
+- ``[FILE]`` fill file name, including extension
+
+> [!TIP] Example: https://gist.githubusercontent.com/piotr1215/443fb83c89958139f0c67ec70b111da2/raw/kubectl-commands.md
