@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build and deploy to Docker Hub. Trigger deployment on Netlify side.
 
 # Controls when the action will run.
 on:
@@ -46,14 +46,3 @@ jobs:
         run: echo ${{ steps.docker_build.outputs.digest }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      # - name: Run a one-line script
-      #   run: echo "VERSION=$(git tag --sort=-v:refname --list "v[0-9]*" | head -n 1 | cut -c 2-)"
-      # - name: Deploy Netlify
-      #   uses: jsmrcaga/action-netlify-deploy@v1.1.0
-      #   with:
-      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-      #     NETLIFY_DEPLOY_MESSAGE: "Prod deploy v${{ github.ref }}"
-      #     NETLIFY_DEPLOY_TO_PROD: true
