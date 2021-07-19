@@ -1,5 +1,6 @@
 FROM node:14.17.0-alpine
-LABEL description="Docker Certified Associate Guide."
+LABEL description="IT Certifications Guide."
+LABEL org.opencontainers.image.source=https://github.com/Piotr1215/dca-prep-kit
 COPY ./docs ./docs
 RUN npm install -g docsify-cli@latest && \
   docsify init ./docs
