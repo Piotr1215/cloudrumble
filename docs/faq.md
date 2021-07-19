@@ -15,4 +15,4 @@ Where:
 - ``[GIST-ID]`` - GUID displayed on the gist URL as last element
 - ``[FILE]`` fill file name, including extension
 
-> [!TIP] Example: https://gist.githubusercontent.com/piotr1215/443fb83c89958139f0c67ec70b111da2/raw/kubectl-commands.md
+> [!NOTE] Example: https://gist.githubusercontent.com/piotr1215/443fb83c89958139f0c67ec70b111da2/raw/kubectl-commands.md
