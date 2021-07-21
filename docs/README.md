@@ -76,8 +76,8 @@ Making notes is easy, making good notes a bit more difficult. To make best of le
 |---|---|---|
 | 1. Regular notes | Typically copy and paste or direct link. | Use for low importance/easy to remember topics. |
 | 2. Highlight with formatting | Use highlighting or other formatting techniques. | Use for topics with large volume of material to highlight important bits. |
-| 3. Visual representation | Create diagrams, mindmaps and other visual representation of the topic. | Use for complex topics, typically architecture and high level design. |
-| 4. Visual representation with summary | Create diagrams, mindmaps and other visual representation of the topic with summary in your own words. | Use for complex topics that you need to understand on a deep level. |
+| 3. Visual representation | Create diagrams, mind-maps and other visual representation of the topic. | Use for complex topics, typically architecture and high level design. |
+| 4. Visual representation with summary | Create diagrams, mind-maps and other visual representation of the topic with summary in your own words. | Use for complex topics that you need to understand on a deep level. |
 | 5. Design to teach | Use all the above techniques, but always ask youself a question, how can I teach this topic to anyone in best possible way? Typically you would create a blog, youtube video or engage directly with community | Use for very complex topics or the ones you wish to became expert in. By far making notes and content in a way that is designed to teach someone is the best ways to learn. |
 
 ### Additional Resources
