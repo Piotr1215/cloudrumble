@@ -1,0 +1,35 @@
+@startuml azure-ci-cd
+hide footbox
+
+!theme materia
+
+collections "Source Code" as code
+'collections "adsdasd" as sdd
+box "Continous Integration <&queue>"
+[-> Pipeline : trigger CI/CD pipeline
+activate Pipeline
+Pipeline -> Pipeline : unit tests
+Pipeline -> Pipeline : static code analysis
+participant "Main Branch" as branch
+
+Pipeline -> branch : merge from feature branch \nmaybe using Pull Request
+branch -> Build
+activate Build
+Build -> Artifacts : create and store artifacts
+deactivate Build
+end box
+box "Continous Delivery"
+"Artifacts" -> "Artifacts Store" : store artifacts
+end box
+note over "Artifacts Store"
+Artifacts can be anything produced by buld process, for example:
+- binaries hosted in Azure Artifacts, Artifactory etc
+- docker images hosted in Azure Container Registry
+- else we want to release, like documents, etc
+end note
+box "Continous Deployment & Release"
+"Artifacts Store" -> "Hosting Environment" : Deploy
+"Hosting Environment" -> "Release" : use feature \ntoggles to control releases
+end box
+deactivate Pipeline
+@enduml
