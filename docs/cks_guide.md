@@ -1,17 +1,17 @@
 # CKS Guide
 
-## The 4C's of cloud native computing
+## The 4C's of cloud-native computing
 
-The 4C's of cloud native computing represent security in depth where each "C" stands for level of isolation from outside in.
+The 4C's of cloud-native computing represents security in depth where each "C" stands for level of isolation from outside in.
 
 ![The 4 C's](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-4cs.puml&fmt=svg)
 
-|Layer| Description |
-|---|---|
-|Cloud|Security of entire infrastructure hosting the servers. Public/Private etc.|
-|Cluster|Kubernetes cluster|
-|Container|Docker containers. Running, for example in privilege mode.|
-|Code|Binaries, source code, code configuration, no TLS, variables in code, etc.|
+| Layer     | Description                                                                |
+| --------- | -------------------------------------------------------------------------- |
+| Cloud     | Security of entire infrastructure hosting the servers. Public/Private etc. |
+| Cluster   | Kubernetes cluster                                                         |
+| Container | Docker containers. Running, for example in privilege mode.                 |
+| Code      | Binaries, source code, code configuration, no TLS, variables in code, etc. |
 
 ## Admission controllers
 
@@ -76,11 +76,11 @@ If the result is **2** it means that seccomp is enabled for the container
 
 ### Seccomp modes
 
-|Mode|Description|
-|---|---|
-|Mode 0| Disabled|
-|Mode 1| Strict - will block all calls except *read, write, exec, sigreadon*|
-|Mode 2| Filtered - filter selectively|
+| Mode   | Description                                                         |
+| ------ | ------------------------------------------------------------------- |
+| Mode 0 | Disabled                                                            |
+| Mode 1 | Strict - will block all calls except *read, write, exec, sigreadon* |
+| Mode 2 | Filtered - filter selectively                                       |
 
 ### Seccomp filter json file
 
@@ -189,11 +189,11 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 
 ### AppArmor profiles load modes
 
-|Mode|Description|
-|---|---|
-|enforce|enforce and monitor on any app that fits the profile|
-|complain|log as events|
-|unconfined|any task allowed, no logging|
+| Mode       | Description                                          |
+| ---------- | ---------------------------------------------------- |
+| enforce    | enforce and monitor on any app that fits the profile |
+| complain   | log as events                                        |
+| unconfined | any task allowed, no logging                         |
 
 ### AppArmor in Kubernetes
 
@@ -206,7 +206,7 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 
 AppArmor can be used to for example restrict access to a folder inside pod/container.
 
-## Linux Capabilities
+### Linux Capabilities
 
 - [List of Linux Capabilities](https://man7.org/linux/man-pages/man7/capabilities.7.html)
 - Capabilities are added and removed per container
@@ -219,6 +219,17 @@ AppArmor can be used to for example restrict access to a folder inside pod/conta
   ```
 
 > [!TIP] To check what capabilities are needed for any give command run `getcap /<path>/<command>` or to check capabililties used by a running process run `getpcaps PID`
+
+### When to choose which
+
+When should which tool be selected? Here is list of use cases and corresponding tools.
+
+| Scenario                                                                          | Tool               |
+| --------------------------------------------------------------------------------- | ------------------ |
+| Reduce risk of exploiting kernel vulnerability                                    | Seccomp            |
+| Prevent app/container from accessing unwanted resources (files, directories, etc) | AppArmor           |
+| Reduce the risk of what compromised process can do to a system (coarse-grained)   | Linux Capabilities |
+
 
 ## Containers Isolation
 
