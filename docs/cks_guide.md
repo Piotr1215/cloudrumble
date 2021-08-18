@@ -258,3 +258,8 @@ When should which tool be selected? Here is list of use cases and corresponding 
 
 1. Create runtime object
 2. use `runtimeClassName` on pod definition level to use the runtime
+
+## Links and Resources
+
+- [Sysdig Blog: Manage AppArmor profiles in Kubernetes with kube-apparmor-manager](https://sysdig.com/blog/manage-apparmor-profiles-in-kubernetes-with-kube-apparmor-manager/)
+- [Kubernetes Docs: Restrict a Container's Access to Resources with AppArmor](https://kubernetes.io/docs/tutorials/clusters/apparmor/)
