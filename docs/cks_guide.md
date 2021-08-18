@@ -268,7 +268,6 @@ Secure and monitor linux system using eBPF probes.
 Falco comes with pre-defined set of rules (bolded ones are more relevant to containerized workloads):
 
 ![Falco Ruleset](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
-
 <sub><sup>*source: https://falco.org/docs/#what-does-falco-check-for*</sup></sub>
 
 ### Containers isolation in Kubernetes
