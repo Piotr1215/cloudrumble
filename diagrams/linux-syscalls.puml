@@ -1,7 +1,7 @@
 @startuml linux-syscalls
 
 skinparam linetype ortho
-!theme united
+!theme toy
 'top to bottom direction
 'skinparam nodesep 36
 'skinparam ranksep 50
@@ -10,7 +10,7 @@ left to right direction
 
 together {
     rectangle "\t\t\t\t\t\tuser space\t\t\t\t\t\t\t" as uspace {
-        rectangle "Applications/Processes" as apps #Green
+        rectangle "Applications/Processes" as apps
     }
 
     rectangle "syscalls" as syscalls {
@@ -22,7 +22,7 @@ together {
 
     rectangle "\\t\t\t\t\t\thardware\t\t\t\t\t\t\t" as hardware {
         left to right direction
-        rectangle "CPU\t| memory | devices" as cpu #Red
+        rectangle "CPU\t| memory | devices" as cpu
     }
 }
 hardware <-> kspace

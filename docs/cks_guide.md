@@ -64,7 +64,7 @@ grep -i seccomp /boot/config-$(uname -r)
 ### Check seccomp status on the process
 
 ```bash
-# 1. ssh into container
+# 1. ssh into the container
 # 2. list processes
 ps -ef
 
@@ -72,7 +72,7 @@ ps -ef
 grep -i seccomp /proc/{PID}/status
 ```
 
-If the result is **2** it means that seccomp is enabled for the container
+If the result is **2** meaning that seccomp is enabled for the container
 
 ### Seccomp modes
 
@@ -89,11 +89,11 @@ If the result is **2** it means that seccomp is enabled for the container
 there are 2 profile types:
 
 - **whitelist**: only specified syscalls are allowed, all others are rejected
-- **blacklist**: all syscalls are allowed, unless specified in the file
+- **blacklist**: all syscalls are allowed unless specified in the file
 
 ### Docker seccomp filter
 
-By default Docker enables seccomp filter (mode 2).
+By default, Docker enables seccomp filter (mode 2).
 
 It blocks around *60* of the around *300* syscalls available with default profile
 
