@@ -251,6 +251,26 @@ When should which tool be selected? Here is list of use cases and corresponding 
 
 > [!NOTE] this requires nested virtualization (in case of running workloads on VMs) and can degrade performance. Some cloud providers do not support nested virtualization.
 
+## Falco
+
+Project created by Sysdig and donated to CNCF.
+
+Secure and monitor linux system using eBPF probes.
+
+### Main usecases
+
+- runtime observability and security
+- rules engine for filtering
+- notifications and alerting (remedy is possible with additional tools)
+
+### Falco rules
+
+Falco comes with pre-defined set of rules (bolded ones are more relevant to containerized workloads):
+
+![Falco Ruleset](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
+
+<sub><sup>*source: https://falco.org/docs/#what-does-falco-check-for*</sup></sub>
+
 ### Containers isolation in Kubernetes
 
 - run a container with kata container runtime: `docker run --runtime kata -d nginx`
