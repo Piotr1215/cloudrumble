@@ -10,7 +10,10 @@ mindmapDiagram {
         BackgroundColor lightGreen
     }
     :depth(1) {
-      BackGroundColor white
+        BackGroundColor white
+    }
+    :depth(2) {
+        BackGroundColor white
     }
 }
 </style>
@@ -19,22 +22,22 @@ mindmapDiagram {
 ** **proviledge escalation (priviledged containers)**
 ** **namespace changing**
 ** r/w to well-known directories
-***_ <i>/etc, /usr/bin, /usr/sbin, etc</i>
+*** <i>/etc, /usr/bin, /usr/sbin, etc</i>
 ** <&external-link> creating symlinks
 ** chown usage
 ** <&wifi> **network connections**
-***_ socket mutations
+*** socket mutations
 left side
 ** **processes spawning**
-***_ <i>execve</i>
+*** <i>execve</i>
 ** **executing shells <&terminal>**
-***_ <i>sh, bash, csh, zsh, fish, etc</i>
+*** <i>sh, bash, csh, zsh, fish, etc</i>
 ** **executing ssh**
-***_ <i>ssh, scp, sftp, etc</i>
+*** <i>ssh, scp, sftp, etc</i>
 ** mutating <i>coreutils</i> executables
 ** mutating login binaries <&account-login>
 ** mutating <i>shadowutil</i> or <i>passwd</i> executables
-***_ <i>shadowconfig, pwck, chpasswd, \n<i>getpasswd, change, useradd, etc</i>
+*** <i>shadowconfig, pwck, chpasswd, \n<i>getpasswd, change, useradd, etc</i>
 
 
 @endmindmap
