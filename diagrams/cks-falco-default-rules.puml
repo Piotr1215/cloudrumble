@@ -1,43 +1,51 @@
 @startmindmap cks-falco-default-rules
+!include https://raw.githubusercontent.com/Piotr1215/sprites/master/falco.puml
 
-title "\t\t\t\t\t\tFalco default ruleset"
+title "Falco ruleset and alerts"
 
 !theme metal
 
 <style>
 mindmapDiagram {
     node {
-        BackgroundColor lightGreen
+        BackgroundColor white
     }
     :depth(1) {
-        BackGroundColor white
+        BackGroundColor pink
     }
     :depth(2) {
-        BackGroundColor white
+        BackGroundColor lightblue
     }
 }
 </style>
 
-* rules
-** **proviledge escalation (priviledged containers)**
-** **namespace changing**
-** r/w to well-known directories
-*** <i>/etc, /usr/bin, /usr/sbin, etc</i>
-** <&external-link> creating symlinks
-** chown usage
-** <&wifi> **network connections**
-*** socket mutations
+* <$cks_falco,color=#00B3C7>
+** <&book> rules
+*** **proviledge escalation (priviledged containers)**
+*** **namespace changing**
+*** r/w to well-known directories
+**** <i>/etc, /usr/bin, /usr/sbin, etc</i>
+*** <&external-link> creating symlinks
+*** chown usage
+*** <&wifi> **network connections**
+**** socket mutations
+*** **processes spawning**
+**** <i>execve</i>
+*** **executing shells <&terminal>**
+**** <i>sh, bash, csh, zsh, fish, etc</i>
+*** **executing ssh**
+**** <i>ssh, scp, sftp, etc</i>
+*** mutating <i>coreutils</i> executables
+*** mutating login binaries <&account-login>
+*** mutating <i>shadowutil</i> or <i>passwd</i> executables
+**** <i>shadowconfig, pwck, chpasswd, \n<i>getpasswd, change, useradd, etc</i>
 left side
-** **processes spawning**
-*** <i>execve</i>
-** **executing shells <&terminal>**
-*** <i>sh, bash, csh, zsh, fish, etc</i>
-** **executing ssh**
-*** <i>ssh, scp, sftp, etc</i>
-** mutating <i>coreutils</i> executables
-** mutating login binaries <&account-login>
-** mutating <i>shadowutil</i> or <i>passwd</i> executables
-*** <i>shadowconfig, pwck, chpasswd, \n<i>getpasswd, change, useradd, etc</i>
-
+** alerts & actions <&bolt>
+*** standard output
+*** file <&file>
+*** syslog
+*** spawned program
+*** **http(s) endpoint**
+*** gRCP API call
 
 @endmindmap
