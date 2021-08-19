@@ -1,0 +1,6 @@
+@startuml cks-falco-components
+!include https://raw.githubusercontent.com/Piotr1215/sprites/master/falco.puml
+
+'!skinparam RectangleBackgroundColor #White
+folder "<$cks_falco>"
+@enduml
