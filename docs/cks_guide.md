@@ -263,9 +263,16 @@ Secure and monitor linux system using eBPF probes.
 - rules engine for filtering
 - notifications and alerting (remedy is possible with additional tools)
 
-### Falco rules
+### Falco components
 
-Falco comes with pre-defined set of rules (bolded ones are more relevant to containerized workloads):
+High-level overview of falco components:
+
+![Falco Components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-components.puml&fmt=svg)
+<sup><sub>source: https://falco.org/docs/#what-are-the-components-of-falco</sub></sup>
+
+### Falco rules & alerts
+
+Falco comes with pre-defined set of rules and alerts/actions that can be triggered by those rules (bolded ones are more relevant to containerized workloads):
 
 ![Falco Ruleset](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
 <sub><sup>*source: https://falco.org/docs/#what-does-falco-check-for*</sup></sub>
