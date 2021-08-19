@@ -251,6 +251,14 @@ When should which tool be selected? Here is list of use cases and corresponding 
 
 > [!NOTE] this requires nested virtualization (in case of running workloads on VMs) and can degrade performance. Some cloud providers do not support nested virtualization.
 
+### Containers isolation in Kubernetes
+
+- run a container with kata container runtime: `docker run --runtime kata -d nginx`
+- run a container with gVisor runtime: `docker run --runtime runsc -d nginx`
+
+1. Create runtime object
+2. use `runtimeClassName` on pod definition level to use the runtime
+
 ## Falco
 
 Project created by Sysdig and donated to CNCF.
@@ -296,13 +304,6 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 
 `journalctl -fu falco`
 
-### Containers isolation in Kubernetes
-
-- run a container with kata container runtime: `docker run --runtime kata -d nginx`
-- run a container with gVisor runtime: `docker run --runtime runsc -d nginx`
-
-1. Create runtime object
-2. use `runtimeClassName` on pod definition level to use the runtime
 
 ## Links and Resources
 
