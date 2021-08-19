@@ -268,6 +268,7 @@ Secure and monitor linux system using eBPF probes.
 High-level overview of falco components:
 
 ![Falco Components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-components.puml&fmt=svg)
+
 <sup><sub>source: https://falco.org/docs/#what-are-the-components-of-falco</sub></sup>
 
 ### Falco rules & alerts
@@ -275,7 +276,25 @@ High-level overview of falco components:
 Falco comes with pre-defined set of rules and alerts/actions that can be triggered by those rules (bolded ones are more relevant to containerized workloads):
 
 ![Falco Ruleset](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
+
 <sub><sup>*source: https://falco.org/docs/#what-does-falco-check-for*</sup></sub>
+
+## Falco configuration
+
+- configuration is stored in **/etc/falco/falco.yaml**
+- default rule set is stored in **falco_rules.yaml**
+- file to override rules is **falco_fules.local.yaml**
+
+
+## Using Falco
+
+### Start Falco as a service
+
+`systemctrl start falco`
+
+### Check Falco logs
+
+`journalctl -fu falco`
 
 ### Containers isolation in Kubernetes
 
