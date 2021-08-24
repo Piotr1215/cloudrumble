@@ -51,5 +51,5 @@ wbsDiagram {
 ***< Load balance and route traffic
 ***< Monitor and health checks
 ***< Configure
-***< Secure intra-cluster communication
+***< Security and secure communication
 @endwbs
