@@ -7,12 +7,6 @@
 
 scale 1920x1080
 
-skinparam SequenceBoxFontName MesloLGS NF
-skinparam ParticipantFontName MesloLGS NF
-skinparam ArrowFontName MesloLGS NF
-skinparam BoxFontName MesloLGS NF
-skinparam NoteFontName MesloLGS NF
-
 !include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MesloLGS.iuml
 
 box "Development"
