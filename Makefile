@@ -1,4 +1,4 @@
-.PHONY: run build
+.PHONY: run build docs
 
 default: run
 
@@ -7,3 +7,6 @@ run:
 
 build:
 	docker build -f Dockerfile -t piotrzan/dcaguide .
+
+docs:
+	docsify serve docs
