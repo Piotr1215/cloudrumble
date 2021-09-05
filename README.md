@@ -6,3 +6,4 @@ Preparation notes various IT Certifications exams.
 
 - Markdown [Documentation](docs/README.md)
 - Web [Documentation](https://www.itcertificationsguide.com/)
+- [PlantUML tips & tricks](PLANTUML.md)

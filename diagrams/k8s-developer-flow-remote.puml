@@ -1,0 +1,85 @@
+@startuml k8s-developer-flow-remote
+'!theme bluegray
+'!theme crt-amber
+'!theme crt-green
+'!theme plain
+
+!theme vibrant
+
+title "Remote development on Kubernetes"
+
+scale 1920x1080
+
+skinparam defaultTextAlignment center
+skinparam NoteTextAlignment left
+skinparam SequenceGroupBodyBackgroundColor #dddddd
+skinparam BoxPadding 10
+
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MesloLGS.iuml
+
+box "Local development"
+actor "Developer" as dev
+participant "IDE" as vscode
+participant "Local source code" as file
+participant "K8s yaml files" as k8sfiles
+dev -> vscode : Let's develop some YAML!
+
+end box
+
+box "CI/CD system"
+participant "Git repository" as repo
+
+participant "CI" as CI
+participant "CD" as CD
+participant "Image registry" as registry
+
+end box
+
+box "Kubernetes Cluster\nRemote Development"
+group Development loop
+participant "Remote source code" as remotefile
+participant "Deployment" as Medium
+participant "Service" as Service
+vscode -> Medium: Substitute image for your development image
+file <-> remotefile : Synchronize
+vscode -> remotefile: Develop and run tests on
+Service --> vscode : Redirect traffic to your IDE for debugging
+end
+
+note right of vscode
+    No local kubernetes installation is required
+end note
+Medium --> dev: Instant feedback
+vscode -> repo : Push
+CI <- repo : Trigger build
+group Continous Integration
+    CI -> CI: Source code scanning
+    CI -> CI: Run automated tests
+    CI -> CI: Build image
+    CI -> CI: Image scannning
+end
+CI -> CD : Trigger deployment
+CD -> registry: Push image
+CD -> Medium: Trigger image update
+note left of CD
+    New image can be pushed to the cluster
+    (imperative way)
+    or it can be pulled by using GitOps
+    (declarative way)
+end note
+Service <- Medium : Serve content
+note right of Medium
+    Deployment can be a web page  or
+    an API, this can also be a
+    aron job or other workload.
+end note
+end box
+box Cluster Management
+Logs -> Logs: Observability
+Rancher -> Rancher: Cluster management
+note left of Rancher
+    In this example cluster is managed with Rancher
+    on prem or managed service (for example Azure AKS)
+end note
+end box
+@enduml
