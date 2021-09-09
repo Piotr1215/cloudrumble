@@ -4,6 +4,7 @@
 | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------- |
 | [Build Ingress yaml easily](https://ingressbuilder.jetstack.io/)                                                          |                                                                                             | ckad        |
 | [Checkov](https://github.com/bridgecrewio/checkov)                                                                        | Terraform security tool                                                                     | security    |
+| [Copy Paste in VIM](https://www.barbarianmeetscoding.com/blog/5-minutes-vim-copy-pasting-and-registers)                   | Vim commands for copy and paste                                                             | api         |
 | [DevOps Bookmarks](https://www.devopsbookmarks.org/linux+open-source?utm_source=share&utm_medium=ios_app&utm_name=iossmf) |                                                                                             | containers  |
 | [Genuine tools](https://genuinetools.org/)                                                                                | No bullshit, no politics, all genuine. Made by hackers with love that were just having fun. | tools       |
 | [Good First Issue](https://goodfirstissue.dev/)                                                                           | Find an open source project to contribute                                                   | open_source |
@@ -29,7 +30,7 @@
 | [Useful K8s commands](https://iceburn.medium.com/kubectl-useful-commands-f5f47c0773f)                                     |                                                                                             | cka         |
 | [Various K8s tools](https://caylent.com/50-useful-kubernetes-tools-for-2020)                                              |                                                                                             | tools       |
 | [Webhook Automate](https://webhook.site/#!/a2e14c9d-b4d4-438c-99da-c1a8f66e376e)                                          | Test webhooks with fake webhook                                                             | api         |
-| [Copy Paste in VIM](https://www.barbarianmeetscoding.com/blog/5-minutes-vim-copy-pasting-and-registers)                   | Vim commands for copy and paste                                                             | api         |
+| [K8s instance calculator](https://learnk8s.io/kubernetes-instance-calculator)                                          | Calculate cost of kubernetes instances                                                             | k8s         |
 
 ## Mindmaps
 
