@@ -3,9 +3,9 @@ name: Publish to GH Container Registry
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ maintenance ]
   pull_request:
-    branches: [ master ]
+    branches: [ maintenance ]
 
 jobs:
   build_and_publish:
