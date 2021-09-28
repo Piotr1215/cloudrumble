@@ -20,4 +20,5 @@ jobs:
       with:
         github-token: ${{ secrets.GH_TOKEN_PACKAGES }} # Provide GITHUB_TOKEN to login into the GitHub Packages
         image-name: itcerts-guide # Provide only Docker image name, tag will be automatically set to latest
+        extract-git-tag: true
         dockerfile: Dockerfile
