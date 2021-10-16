@@ -80,7 +80,6 @@ group
     ]
     @enduml
 
-    @startuml
 legend
 
 {{wbs
@@ -107,3 +106,18 @@ salt
 
 end legend
 @enduml
+
+@startuml
+split
+   -[hidden]->
+   :A;
+split again
+   -[hidden]->
+   :B;
+split again
+   -[hidden]->
+   :B;
+end split
+:D;
+@enduml
+

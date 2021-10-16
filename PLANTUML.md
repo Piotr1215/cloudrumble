@@ -48,3 +48,5 @@ hello->World : I am a triangle <$tux>, who are you?
 ```
 
 **IMPORTANT** this will NOT render correctly in VS Code Plugin Preview.
+
+https://www.augmentedmind.de/2021/01/17/plantuml-layout-tutorial-styles/

@@ -1,0 +1,38 @@
+@startuml cloud-architecture
+!include <tupadr3/font-awesome-5/server>
+left to right direction
+
+<style>
+{
+    componentDiagram {
+        actor {
+            FileFontSize 18
+        }
+        .myStyle {
+            skinparam nodesep 5
+            skinparam ranksep 5
+        }
+    }
+}
+</style>
+
+rectangle "Resources Manager" as resmanager {
+
+}
+
+rectangle "Control Plane" as plane {
+    component "Azure - Servive Fabric" as fab
+    component "Google - Borg" as borg
+    fab -[hidden]- borg
+}
+
+rectangle "Virtualization Manager" as virmanager {
+
+}
+
+rectangle "Phisical Infrastructure"  as infra  {
+
+        actor "aa" <<myStyle>>
+}
+
+@enduml
