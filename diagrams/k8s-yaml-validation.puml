@@ -1,0 +1,41 @@
+@startmindmap k8s-yaml-validation
+<style>
+mindmapDiagram {
+    node {
+        BackgroundColor lightGreen
+    }
+    :depth(1) {
+      BackGroundColor white
+    }
+}
+</style>
+* Validate
+** Security
+** Styling - linting
+** Schema
+** Policy
+
+@endmindmap
+
+@startmindmap k8s-yaml-validation-tools
+<style>
+mindmapDiagram {
+    node {
+        BackgroundColor lightGreen
+    }
+    :depth(1) {
+      BackGroundColor white
+    }
+}
+</style>
+* Validate
+** Security
+***_ trivy
+** Styling - linting
+***_ VS Code
+** Schema
+***_ kubeval
+** Policy
+***_ datree
+
+@endmindmap
