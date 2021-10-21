@@ -19,6 +19,7 @@
     - [Registering a domain](#registering-a-domain)
   - [RDS](#rds)
     - [RDS Backup & Restore](#rds-backup--restore)
+    - [Data Security](#data-security)
   - [ECS](#ecs)
   - [S3](#s3)
   - [KMS (Key Management Service)](#kms-key-management-service)
@@ -1246,6 +1247,20 @@ Stored every 5 minitest (lowers RPO)
         <li>In case of a failure, read replica can be promoted to read-write database. This is only useful for database failures, not data corruption</li>
     </ul>
     </details>
+
+### Data Security
+
+* How is encryption at rest supported?
+    <details>
+    <summary>click to see the answer</summary>
+    Handled by host
+    <ul>
+        <li>EBS Volume Encryption</li>
+        <li>KMS</li>
+        <li>TDE: Only MS SQL and Oracle</li>
+    </ul>
+    </details>
+
 
 
 
