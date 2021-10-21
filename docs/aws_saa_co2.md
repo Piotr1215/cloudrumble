@@ -20,6 +20,9 @@
   - [RDS](#rds)
     - [RDS Backup & Restore](#rds-backup--restore)
     - [Data Security](#data-security)
+  - [Aurora](#aurora)
+    - [Database Migration Service](#database-migration-service)
+  - [EFS](#efs)
   - [ECS](#ecs)
   - [S3](#s3)
   - [KMS (Key Management Service)](#kms-key-management-service)
@@ -1260,6 +1263,22 @@ Stored every 5 minitest (lowers RPO)
         <li>TDE: Only MS SQL and Oracle</li>
     </ul>
     </details>
+
+## Aurora
+
+* What is Aurora Global Database?
+
+### Database Migration Service
+
+## EFS
+
+* What standard EFS implements
+    <details>
+    <summary>click to see the answer</summary>
+    NFSv4
+    </details>
+
+
 
 
 TODO: pick up here
