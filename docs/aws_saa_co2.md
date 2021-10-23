@@ -66,7 +66,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 Easiest way to to learn yourself is to:
 
 - clone [this repository](https://github.com/Piotr1215/dca-prep-kit)
-- make a copy of [docs/aws_saa_co2.md]
+- make a copy of [this file](aws_saa_co2.md)
 - use this [regex expression](https://stackoverflow.com/a/16880892) to select and remove (replace with empty) all the `<details>` tags (they contain the answers to the questions) `<(details)>(.|\n)*?</details>`, remember to toggle "use regular expressions" in the search box if you are using VS Code
 - save the file as a learning session, grade yourself for answers
 - IMPORTANT: **lookup in the original file if you don't know the answer at all**
