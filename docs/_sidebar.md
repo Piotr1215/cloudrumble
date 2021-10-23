@@ -29,3 +29,4 @@
 * [Resources](resources.md)
 * [About Me](about.md)
 * [FAQ](faq.md)
+* [Impressum/Legal Notice](_impressum.md)
