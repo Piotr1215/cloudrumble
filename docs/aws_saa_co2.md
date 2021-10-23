@@ -1651,13 +1651,11 @@ TODO: pick up here
 * **What objects cannot be replicated?**
     <details>
     <summary>click to see the answer</summary>
-
     <ul>
         <li>System events</li>
         <li>Glacier</li>
         <li>Glacier Deep Archive</li>
     </ul>
-
     </details>
 
 * **Are deletes replicated?**
