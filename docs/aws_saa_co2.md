@@ -1534,9 +1534,9 @@ TODO: pick up here
     <details>
     <summary>click to see the answer</summary>
 
-    - GB/moth fee for data stored </BR>
-    - USD/GB fee for data transferred OUT of AWS </BR>
-    - Fixed price per 100 requests to S3 (GET, PUT, POST etc)
+        - GB/moth fee for data stored </BR>
+        - USD/GB fee for data transferred OUT of AWS </BR>
+        - Fixed price per 100 requests to S3 (GET, PUT, POST etc)
 
     </details>
 
