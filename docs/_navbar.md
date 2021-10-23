@@ -1,1 +1,1 @@
-* [ My blogs on Medium](https://piotrzan.medium.com/)
+* [My blogs on Medium](https://piotrzan.medium.com/)
