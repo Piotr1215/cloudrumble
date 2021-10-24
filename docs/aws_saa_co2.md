@@ -2022,7 +2022,3 @@ TODO: pick up here
 ### Tip #2
 
 ### Tip #3
-
-
-
-
