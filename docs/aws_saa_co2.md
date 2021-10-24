@@ -1442,6 +1442,19 @@ Stored every 5 minitest (lowers RPO)
 
   </details>
 
+
+## Lambda
+
+* What resource can you allocate to lambda?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  Memory
+
+  </details>
+
+
+
 TODO: pick up here
 
 
