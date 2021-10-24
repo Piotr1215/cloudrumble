@@ -1407,6 +1407,41 @@ Stored every 5 minitest (lowers RPO)
 * What layer is NLB on?
 * Is NLB a performance-oriented load balancer?
 
+### Gateway Load Balancer
+
+* What is the usecase for a gateway load balancer?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  Load balances between multiple security appliances
+
+  </details>
+
+* What are 2 components of a GWLB?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  GWLB endpoints
+  GWLB instances
+  
+  </details>
+
+* What protocol is used by GWLB?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  GENEVE
+
+  </details>
+
+* How does GWLB endpoint integrates with the existing VPC traffic?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  It is added to a route table as a nex hop in the traffic
+
+  </details>
+
 TODO: pick up here
 
 ## ECS
