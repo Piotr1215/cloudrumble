@@ -1368,6 +1368,26 @@ Stored every 5 minitest (lowers RPO)
         <li>C(lassic)LB</li>
     </ul>
     </details>
+* How can load balancer handle SSL offloading?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    <ul>
+        <li><strong>Bridging</strong> - connection terminated on the ELB. Second connection is created to target services (http). EC2 instances also need copy of the same certificate</li>
+        <li><strong>Pass-through</strong> - connection encryption is maintained by the client. Listener is configured for TCP.</li>
+        <li><strong>Offload</strong> - backend connections use http </li>
+    </ul>
+
+    </details>
+
+* What is session stickiness?
+* How does a load balancer enable session stickiness?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  Cookie 1s to 7 days. It is generally better to use stateless servers and host the state somewhere else, either in a database of on the client side in the case of SPA.
+
+  </details>
 
 ### Application Load Balancer (ALB)
 
@@ -1947,4 +1967,6 @@ TODO: pick up here
 
 ### Tip #3
 
-### Tip #4
+
+
+
