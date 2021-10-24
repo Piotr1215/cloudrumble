@@ -23,6 +23,8 @@
   - [Aurora](#aurora)
     - [Database Migration Service](#database-migration-service)
   - [EFS](#efs)
+  - [Load Balancers](#load-balancers)
+    - [Application Load Balancer (ALB)](#application-load-balancer-alb)
   - [ECS](#ecs)
   - [S3](#s3)
   - [KMS (Key Management Service)](#kms-key-management-service)
@@ -1015,6 +1017,8 @@ This is data about runtime environment of the instance
 
     </details>
 
+* What is launch configuration and launch template
+
 ## Route 53
 
 * What is the difference between a hosted zone and a hosted zone group?
@@ -1278,7 +1282,60 @@ Stored every 5 minitest (lowers RPO)
     NFSv4
     </details>
 
+* What command would you use to mount a file system on Linux?
+    <details>
+    <summary>click to see the answer</summary>
+    `sudo mount /folder /device_name`
+    </details>
 
+* Can you mount an EFS storage on multiple EC2 instances?
+* How to access EFS via VPC peering?
+* What do you use to mount EFS onto a target machine?
+    <details>
+    <summary>click to see the answer</summary>
+    Mount points
+    </details>
+* Is EBS available for Linux and Windows servers?
+    <details>
+    <summary>click to see the answer</summary>
+    Only for Linux
+    </details>
+* What throughput modes are available in EFS?
+* What storage classes are available in EFS?
+
+## Load Balancers
+
+* What is a listener configuration?
+* What types of load balancers are there?
+    <details>
+    <summary>click to see the answer</summary>
+    <ul>
+        <li>A(pplication)LB</li>
+        <li>N(etwork)LB</li>
+        <li>C(lassic)LB</li>
+    </ul>
+    </details>
+
+### Application Load Balancer (ALB)
+
+* What layer is ALB on?
+    <details>
+    <summary>click to see the answer</summary>
+    7
+    </details>
+* What makes ALB internet facing?
+    <details>
+    <summary>click to see the answer</summary>
+    Presence of public IP
+    </details>
+
+* What is LCU?
+* How load balancer is priced?
+* Describe briefly ALB architecture
+* How many load balancing nodes does ALB have as a minimum?
+* What is the default distribution algorithm?
+* What is cross zone load balancing?
+* 
 
 
 TODO: pick up here
