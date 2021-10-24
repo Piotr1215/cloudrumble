@@ -1017,7 +1017,54 @@ This is data about runtime environment of the instance
 
     </details>
 
-* What is launch configuration and launch template
+* What is launch configuration and launch template?
+* Are launch configurations editable?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    No
+
+    </details>
+
+### Auto Scaling Groups
+
+* Where are auto scaling groups defined?
+* What are the 3 characteristics of an auto scaling group?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    <ul>
+        <li>Minimum</li>
+        <li>Desired - lways will be set</li>
+        <li>Maximum</li>
+    </ul>
+
+    </details>
+
+* Are auto scaling groups regional?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    Auto scaling group will try to provision an EC2 instance in a different AZ.
+
+    </details>
+
+* What are scaling policies?
+* What are sub types of dynamic scaling?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    <ul>
+        <li>Simple</li>
+        <li>Stepped - almost always preferred</li>
+        <li>Target tracking</li>
+    </ul>
+
+    </details>
+
+* What is a cool down period?
+* How to integrate auto scaling group with a load balancer?
+* 
 
 ## Route 53
 
@@ -1305,6 +1352,12 @@ Stored every 5 minitest (lowers RPO)
 
 ## Load Balancers
 
+* What is LCU?
+* How load balancer is priced?
+* Describe briefly ALB architecture
+* How many load balancing nodes does ALB have as a minimum?
+* What is the default distribution algorithm?
+* What is cross zone load balancing?
 * What is a listener configuration?
 * What types of load balancers are there?
     <details>
@@ -1329,14 +1382,10 @@ Stored every 5 minitest (lowers RPO)
     Presence of public IP
     </details>
 
-* What is LCU?
-* How load balancer is priced?
-* Describe briefly ALB architecture
-* How many load balancing nodes does ALB have as a minimum?
-* What is the default distribution algorithm?
-* What is cross zone load balancing?
-* 
+### Network Load Balancer (NLB)
 
+* What layer is NLB on?
+* Is NLB a performance-oriented load balancer?
 
 TODO: pick up here
 
