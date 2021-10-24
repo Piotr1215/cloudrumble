@@ -65,7 +65,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 * thumbs down: `:-1:`
 * hand: `:hand:`
 
-Easiest way to to learn yourself is to:
+    Easiest way to to learn yourself is to:
 
 - clone [this repository](https://github.com/Piotr1215/dca-prep-kit)
 - make a copy of [this file](aws_saa_co2.md)
@@ -91,14 +91,14 @@ Easiest way to to learn yourself is to:
 
 ## Networking Basics
 
-* 👍 How many layers are there in OSI model?
-* ✋ What groups are OSI layers divided into?
-* 👍 Does the device on a higher layer include the capabilities of the devices in layers below it? Why?
-* 👍 If a network consists of 5 participants and a HUB, when participant 1 broadcasts a signal, how many participants will receive it?
-* 👍 In a network with a HUB, what happens when participants transmit a broadcast at once?
-* Describe on a high level frame components
-* What is a backoff period?
-* What does MAC stands for?
+* How many layers are there in OSI model? :+1: 
+* What groups are OSI layers divided into? :+1: 
+* Does the device on a higher layer include the capabilities of the devices in layers below it? Why? :+1: 
+* If a network consists of 5 participants and a HUB, when participant 1 broadcasts a signal, how many participants will receive it? :+1: 
+* In a network with a HUB, what happens when participants transmit a broadcast at once? :+1: 
+* Describe on a high level frame components :+1: 
+* What is a backoff period? :-1: 
+* What does MAC stands for? :hand: 
 * What layer switch belongs to?
 * What layer does router belong to?
 * What are the two components of an IP address?
@@ -116,14 +116,14 @@ Easiest way to to learn yourself is to:
     <summary>click to see the answer</summary>
 
     <p>
-        Class A through E, A is the biggest, D, E are reserved.
-        <em>Important note</em>: network classes are replaced by <strong>CIDR</strong>
-        <ul>
-            <li>Class A: <b>10</b>.0.0.0    - <b>10</b>.255.255.255 - single network</li>
-            <li>Class B: <b>172.16</b>.0.0. - <b>172.19</b>.255.255 - 16 networks</li>
-                <mark>This is also the default VPC range.</mark>
-            <li>Class C: <b>192.168.0</b>.0 - <b>192.168.255</b>.0  - 256 networks</li>
-        </ul>
+    Class A through E, A is the biggest, D, E are reserved.
+    <em>Important note</em>: network classes are replaced by <strong>CIDR</strong>
+    <ul>
+    <li>Class A: <b>10</b>.0.0.0    - <b>10</b>.255.255.255 - single network</li>
+    <li>Class B: <b>172.16</b>.0.0. - <b>172.19</b>.255.255 - 16 networks</li>
+    <mark>This is also the default VPC range.</mark>
+    <li>Class C: <b>192.168.0</b>.0 - <b>192.168.255</b>.0  - 256 networks</li>
+    </ul>
     </p>
 
     </details>
@@ -133,10 +133,10 @@ Easiest way to to learn yourself is to:
     <summary>click to see the answer</summary>
 
     <p>
-        <ul>
-            <li>/16 networks have fixed value in first and second octet</li>
-            <li>To create two networks from 10.0.0.0/16 use 2x 10.0.0.0/17 by halving the third and fourth octets.</li>
-        </ul>
+    <ul>
+    <li>/16 networks have fixed value in first and second octet</li>
+    <li>To create two networks from 10.0.0.0/16 use 2x 10.0.0.0/17 by halving the third and fourth octets.</li>
+    </ul>
     </p>
 
     </details>
@@ -179,9 +179,9 @@ Easiest way to to learn yourself is to:
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>user</li>
-        <li>group</li>
-        <li>role</li>
+    <li>user</li>
+    <li>group</li>
+    <li>role</li>
     </ul>
 
     </details>
@@ -197,7 +197,7 @@ Easiest way to to learn yourself is to:
     <summary>click to see the answer</summary>
 
     ```bash
-        export AWS_DEFAULT_PROFILE=
+    export AWS_DEFAULT_PROFILE=
     ```
 
     </details>
@@ -237,12 +237,12 @@ Easiest way to to learn yourself is to:
     - arn:aws:s3:::bucket
     - arn:aws:s3:::bucket/*
 
-<details>
-<summary>click to see the answer</summary>
+        <details>
+        <summary>click to see the answer</summary>
 
-First one refers to a bucket itself and second one to its contents.
+        First one refers to a bucket itself and second one to its contents.
 
-</details>
+        </details>
 
 * How many IAM users can be created in an account?
     <details>
@@ -323,10 +323,10 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <p>
-        <ul>
-            <li>minimum /28</li>
-            <li>maximum /16</li>
-        </ul>
+    <ul>
+    <li>minimum /28</li>
+    <li>maximum /16</li>
+    </ul>
     </p>
 
     </details>
@@ -344,8 +344,8 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>4 is a good number because it will cover most of the AZs.</li>
-        <li>/16 network subdivided into 16 subnets gives 16 subnets of CIDR size /20 - 4091 IPs per subnet</li>
+    <li>4 is a good number because it will cover most of the AZs.</li>
+    <li>/16 network subdivided into 16 subnets gives 16 subnets of CIDR size /20 - 4091 IPs per subnet</li>
     </ul>
 
     </details>
@@ -371,9 +371,9 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>Default - shared hardware</li>
-        <li>Dedicated tenancy - dedicated hardware</li>
-        <mark>Comes with a cost premium and all resources also must be on the dedicated hardware</mark>
+    <li>Default - shared hardware</li>
+    <li>Dedicated tenancy - dedicated hardware</li>
+    <mark>Comes with a cost premium and all resources also must be on the dedicated hardware</mark>
     </ul>
 
     </details>
@@ -383,8 +383,8 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>enableDnsHostnames</li>
-        <li>enableDnsSupport</li>
+    <li>enableDnsHostnames</li>
+    <li>enableDnsSupport</li>
     </ul>
 
     </details>
@@ -427,11 +427,11 @@ First one refers to a bucket itself and second one to its contents.
 
     No, there are 5 that are reserved.
     <ul>
-        <li>first address cannot be used</li>
-        <li>second address cannot be used (used by VPC router)</li>
-        <li>third address cannot be used (used for DNS)</li>
-        <li>fourth address cannot be used (reserved)</li>
-        <li>last IP address cannot b used (broadcast address)</li>
+    <li>first address cannot be used</li>
+    <li>second address cannot be used (used by VPC router)</li>
+    <li>third address cannot be used (used for DNS)</li>
+    <li>fourth address cannot be used (reserved)</li>
+    <li>last IP address cannot b used (broadcast address)</li>
     </ul>
 
     </details>
@@ -505,12 +505,12 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ol>
-        <li>Create IGW</li>
-        <li>Attach IGW to the VPC</li>
-        <li>Create a custom route table</li>
-        <li>Associate the route table with the VPC</li>
-        <li>Configure default routes in the route table to point to IGW</li>
-        <li>Configure VPC to auto-allocate IPv4 and optionally IPv6 addresses withing the subnet</li>
+    <li>Create IGW</li>
+    <li>Attach IGW to the VPC</li>
+    <li>Create a custom route table</li>
+    <li>Associate the route table with the VPC</li>
+    <li>Configure default routes in the route table to point to IGW</li>
+    <li>Configure VPC to auto-allocate IPv4 and optionally IPv6 addresses withing the subnet</li>
     </ol>
 
     </details>
@@ -638,7 +638,7 @@ First one refers to a bucket itself and second one to its contents.
     <details>
     <summary>click to see the answer</summary>
 
-        3389
+    3389
 
     </details>
 
@@ -673,11 +673,11 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ol>
-        <li>General Purpose</li>
-        <li>Compute optimized - ML, Games, HPC</li>
-        <li>Memory optimized - some databases</li>
-        <li>Accelerated computing - custom programmable hardware</li>
-        <li>Storage optimized - transactional databases, data warehouses, data analytics</li>
+    <li>General Purpose</li>
+    <li>Compute optimized - ML, Games, HPC</li>
+    <li>Memory optimized - some databases</li>
+    <li>Accelerated computing - custom programmable hardware</li>
+    <li>Storage optimized - transactional databases, data warehouses, data analytics</li>
     </ol>
     <img src="./_media/ec2-instance-types.png" alt="EC2 Instance Types"></img>
     <a href="https://aws.amazon.com/ec2/instance-types/">https://aws.amazon.com/ec2/instance-types/</a>
@@ -717,8 +717,8 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>GP2</li>
-        <li>GP3</li>
+    <li>GP2</li>
+    <li>GP3</li>
     </ul>
 
     </details>
@@ -746,8 +746,8 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>ST1 - throughput optimized</li>
-        <li>SC1 - cold</li>
+    <li>ST1 - throughput optimized</li>
+    <li>SC1 - cold</li>
     </ul>
 
     </details>
@@ -757,11 +757,11 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>Block Storage Devices</li>
-        <li>Physically connected to one EC2 Host</li>
-        <li>Highest storage performance</li>
-        <li>Included in the instance price</li>
-        <li>Need to be attached at launch time</li>
+    <li>Block Storage Devices</li>
+    <li>Physically connected to one EC2 Host</li>
+    <li>Highest storage performance</li>
+    <li>Included in the instance price</li>
+    <li>Need to be attached at launch time</li>
     </ul>
 
     </details>
@@ -773,8 +773,8 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ol>
-        <li>Full data is copied</li>
-        <li>Following snapshots are incremental</li>
+    <li>Full data is copied</li>
+    <li>Following snapshots are incremental</li>
     </ol>
 
     </details>
@@ -833,9 +833,9 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>Public Access <- default</li>
-        <li>Owner only</li>
-        <li>Specific AWS Accounts</li>
+    <li>Public Access <- default</li>
+    <li>Owner only</li>
+    <li>Specific AWS Accounts</li>
     </ul>
 
     </details>
@@ -854,10 +854,10 @@ First one refers to a bucket itself and second one to its contents.
     <summary>click to see the answer</summary>
 
     <ol>
-        <li>Launch</li>
-        <li>Configure -> this also includes volumes</li>
-        <li>Create Image</li>
-        <li>Launch</li>
+    <li>Launch</li>
+    <li>Configure -> this also includes volumes</li>
+    <li>Create Image</li>
+    <li>Launch</li>
     </ol>
 
     </details>
@@ -887,7 +887,7 @@ First one refers to a bucket itself and second one to its contents.
     </details>
 
 * What is EC2 Instance Metadata
-This is data about runtime environment of the instance
+    This is data about runtime environment of the instance
 
 * **What IP do you need to access to see the Instance Metadata information?**
     <details>
@@ -918,9 +918,9 @@ This is data about runtime environment of the instance
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>http://169.254.169.254/latest/user-data</li>
-        <li>Executes only once at the initial launch time</li>
-        <li>runs as a root user</li>
+    <li>http://169.254.169.254/latest/user-data</li>
+    <li>Executes only once at the initial launch time</li>
+    <li>runs as a root user</li>
     </ul>
 
     </details>
@@ -955,9 +955,9 @@ This is data about runtime environment of the instance
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>Strings</li>
-        <li>StringLists</li>
-        <li>SecureStrings</li>
+    <li>Strings</li>
+    <li>StringLists</li>
+    <li>SecureStrings</li>
     </ul>
 
     </details>
@@ -975,36 +975,36 @@ This is data about runtime environment of the instance
     <summary>click to see the answer</summary>
 
     <ul>
-        <li><strong>Cluster</strong> physical proximity.
-            <ul>
-                <li>Designed for best performance.</li>
-                <li>Cannot span AZs</li>
-                <li>Can span VPC peers</li>
-                <li>Not all instance types support this type of placement</li>
-                <li>Best practice is to use the same type of instance and launch them in the same time</li>
-                <li>All members have direct connection to each other</li>
-                <li>Up to 10GB/s transfer rate in single stream performance</li>
-                <li>Very low resilience</li>
-            </ul>
-        </li>
-        <li><strong>Spread</strong> - physical distance</li>
-            <ul>
-                <li>Provides the highest level of resilience and availability</li>
-                <li>Can span multiple AZ</li>
-                <li>Located on separate racks with isolated network and power supply</li>
-                <li>Limit of 7 instances per AZ</li>
-            </ul>
-        <li><strong>Partition</strong> - each group on different hardware</li>
-            <ul>
-                <li>7 partitions max per AZ</li>
-                <li>Not supported on dedicated hosts</li>
-                <li>Separate fault domains are required</li>
-                <li>Each partition has a separate physical infrastructure</li>
-                <li>Partitions don't have limits</li>
-                <li>Partition placements give you an ability to decide where each instance will go</li>
-                <li>Partitions are single failover groups</li>
-                <li>Useful when using topology aware applications</li>
-            </ul>
+    <li><strong>Cluster</strong> physical proximity.
+    <ul>
+    <li>Designed for best performance.</li>
+    <li>Cannot span AZs</li>
+    <li>Can span VPC peers</li>
+    <li>Not all instance types support this type of placement</li>
+    <li>Best practice is to use the same type of instance and launch them in the same time</li>
+    <li>All members have direct connection to each other</li>
+    <li>Up to 10GB/s transfer rate in single stream performance</li>
+    <li>Very low resilience</li>
+    </ul>
+    </li>
+    <li><strong>Spread</strong> - physical distance</li>
+    <ul>
+    <li>Provides the highest level of resilience and availability</li>
+    <li>Can span multiple AZ</li>
+    <li>Located on separate racks with isolated network and power supply</li>
+    <li>Limit of 7 instances per AZ</li>
+    </ul>
+    <li><strong>Partition</strong> - each group on different hardware</li>
+    <ul>
+    <li>7 partitions max per AZ</li>
+    <li>Not supported on dedicated hosts</li>
+    <li>Separate fault domains are required</li>
+    <li>Each partition has a separate physical infrastructure</li>
+    <li>Partitions don't have limits</li>
+    <li>Partition placements give you an ability to decide where each instance will go</li>
+    <li>Partitions are single failover groups</li>
+    <li>Useful when using topology aware applications</li>
+    </ul>
     </ul>
 
     </details>
@@ -1021,7 +1021,7 @@ This is data about runtime environment of the instance
 * Are launch configurations editable?
     <details>
     <summary>click to see the answer</summary>
-    
+
     No
 
     </details>
@@ -1032,11 +1032,11 @@ This is data about runtime environment of the instance
 * What are the 3 characteristics of an auto scaling group?
     <details>
     <summary>click to see the answer</summary>
-    
+
     <ul>
-        <li>Minimum</li>
-        <li>Desired - lways will be set</li>
-        <li>Maximum</li>
+    <li>Minimum</li>
+    <li>Desired - lways will be set</li>
+    <li>Maximum</li>
     </ul>
 
     </details>
@@ -1044,7 +1044,7 @@ This is data about runtime environment of the instance
 * Are auto scaling groups regional?
     <details>
     <summary>click to see the answer</summary>
-    
+
     Auto scaling group will try to provision an EC2 instance in a different AZ.
 
     </details>
@@ -1053,11 +1053,11 @@ This is data about runtime environment of the instance
 * What are sub types of dynamic scaling?
     <details>
     <summary>click to see the answer</summary>
-    
+
     <ul>
-        <li>Simple</li>
-        <li>Stepped - almost always preferred</li>
-        <li>Target tracking</li>
+    <li>Simple</li>
+    <li>Stepped - almost always preferred</li>
+    <li>Target tracking</li>
     </ul>
 
     </details>
@@ -1074,8 +1074,8 @@ This is data about runtime environment of the instance
     <details>
     <summary>click to see the answer</summary>
     <ul>
-        <li>CNAME maps a name to another name in the same domain (naked domain)</li>
-        <li>ALIAS maps a name to AWS resource - default for the exam. AWS specific implementation</li>
+    <li>CNAME maps a name to another name in the same domain (naked domain)</li>
+    <li>ALIAS maps a name to AWS resource - default for the exam. AWS specific implementation</li>
     </ul>
     </details>
 * What does CNAME stand for?
@@ -1255,8 +1255,8 @@ This is data about runtime environment of the instance
 ### RDS Backup & Restore
 
 * What are RTO and RPO?
-RP(oint)O - time  between last working backup and data loss event
-RT(ime)O - time between data loss event and full recovery
+    RP(oint)O - time  between last working backup and data loss event
+    RT(ime)O - time between data loss event and full recovery
 
 * Do manual snapshots expire?
     <details>
@@ -1265,7 +1265,7 @@ RT(ime)O - time between data loss event and full recovery
     </details>
 
 * What are transaction logs?
-Stored every 5 minitest (lowers RPO)
+    Stored every 5 minitest (lowers RPO)
 
 * Do automated backups expire?
     <details>
@@ -1295,10 +1295,10 @@ Stored every 5 minitest (lowers RPO)
     <details>
     <summary>click to see the answer</summary>
     <ul>
-        <li>Improved performance</li>
-        <li>Makes CQRS pattern possible</li>
-        <li>Use read only data in different regions to improve access performance</li>
-        <li>In case of a failure, read replica can be promoted to read-write database. This is only useful for database failures, not data corruption</li>
+    <li>Improved performance</li>
+    <li>Makes CQRS pattern possible</li>
+    <li>Use read only data in different regions to improve access performance</li>
+    <li>In case of a failure, read replica can be promoted to read-write database. This is only useful for database failures, not data corruption</li>
     </ul>
     </details>
 
@@ -1309,9 +1309,9 @@ Stored every 5 minitest (lowers RPO)
     <summary>click to see the answer</summary>
     Handled by host
     <ul>
-        <li>EBS Volume Encryption</li>
-        <li>KMS</li>
-        <li>TDE: Only MS SQL and Oracle</li>
+    <li>EBS Volume Encryption</li>
+    <li>KMS</li>
+    <li>TDE: Only MS SQL and Oracle</li>
     </ul>
     </details>
 
@@ -1363,31 +1363,31 @@ Stored every 5 minitest (lowers RPO)
     <details>
     <summary>click to see the answer</summary>
     <ul>
-        <li>A(pplication)LB</li>
-        <li>N(etwork)LB</li>
-        <li>C(lassic)LB</li>
+    <li>A(pplication)LB</li>
+    <li>N(etwork)LB</li>
+    <li>C(lassic)LB</li>
     </ul>
     </details>
 * How can load balancer handle SSL offloading?
     <details>
     <summary>click to see the answer</summary>
-    
+
     <ul>
-        <li><strong>Bridging</strong> - connection terminated on the ELB. Second connection is created to target services (http). EC2 instances also need copy of the same certificate</li>
-        <li><strong>Pass-through</strong> - connection encryption is maintained by the client. Listener is configured for TCP.</li>
-        <li><strong>Offload</strong> - backend connections use http </li>
+    <li><strong>Bridging</strong> - connection terminated on the ELB. Second connection is created to target services (http). EC2 instances also need copy of the same certificate</li>
+    <li><strong>Pass-through</strong> - connection encryption is maintained by the client. Listener is configured for TCP.</li>
+    <li><strong>Offload</strong> - backend connections use http </li>
     </ul>
 
     </details>
 
 * What is session stickiness?
 * How does a load balancer enable session stickiness?
-  <details>
-  <summary>click to see the answer</summary>
-  
-  Cookie 1s to 7 days. It is generally better to use stateless servers and host the state somewhere else, either in a database of on the client side in the case of SPA.
+    <details>
+    <summary>click to see the answer</summary>
 
-  </details>
+    Cookie 1s to 7 days. It is generally better to use stateless servers and host the state somewhere else, either in a database of on the client side in the case of SPA.
+
+    </details>
 
 ### Application Load Balancer (ALB)
 
@@ -1410,60 +1410,60 @@ Stored every 5 minitest (lowers RPO)
 ### Gateway Load Balancer
 
 * What is the usecase for a gateway load balancer?
-  <details>
-  <summary>click to see the answer</summary>
-  
-  Load balances between multiple security appliances
+    <details>
+    <summary>click to see the answer</summary>
 
-  </details>
+    Load balances between multiple security appliances
+
+    </details>
 
 * What are 2 components of a GWLB?
-  <details>
-  <summary>click to see the answer</summary>
-  
-  GWLB endpoints
-  GWLB instances
-  
-  </details>
+    <details>
+    <summary>click to see the answer</summary>
+
+    GWLB endpoints
+    GWLB instances
+
+    </details>
 
 * What protocol is used by GWLB?
-  <details>
-  <summary>click to see the answer</summary>
-  
-  GENEVE
+    <details>
+    <summary>click to see the answer</summary>
 
-  </details>
+    GENEVE
+
+    </details>
 
 * How does GWLB endpoint integrates with the existing VPC traffic?
-  <details>
-  <summary>click to see the answer</summary>
-  
-  It is added to a route table as a nex hop in the traffic
+    <details>
+    <summary>click to see the answer</summary>
 
-  </details>
+    It is added to a route table as a nex hop in the traffic
+
+    </details>
 
 
 ## Lambda
 
 *  What resource can you allocate to lambda? :+1: 
-  <details>
-  <summary>click to see the answer</summary>
-  
-  Memory
+    <details>
+    <summary>click to see the answer</summary>
 
-  </details>
+    Memory
+
+    </details>
 
 * **What is the execution time limit on a lambda function?** :+1: 
-  <details>
-  <summary>click to see the answer</summary>
-  
-  15 min
+    <details>
+    <summary>click to see the answer</summary>
 
-  </details>
+    15 min
+
+    </details>
 
 * What are cloud watch events and EventBdirge?
 
-TODO: pick up here
+    TODO: pick up here
 
 ## ECS
 
@@ -1472,21 +1472,21 @@ TODO: pick up here
     <summary>click to see the answer</summary>
 
     <ul>
-        <li><strong>Fargate:</strong></li>
-            <ul>
-                <li>Infra is abstracted away</li>
-                <li>Hosted on shared platform</li>
-                <li>Each task and service is injected into your VPC</li>
-                <li>Only pay for use as containers run</li>
-                <li>Use for small or burst style workloads, batch, periodic</li>
-            </ul>
-        <li><strong>EC2</strong></li>
-            <ul>
-                <li>Created inside a VPC</li>
-                <li>Uses ASG for EC2 instances scaling</li>
-                <li>You manage the instances</li>
-                <li>Good if you want to manage infra</li>
-            </ul>
+    <li><strong>Fargate:</strong></li>
+    <ul>
+    <li>Infra is abstracted away</li>
+    <li>Hosted on shared platform</li>
+    <li>Each task and service is injected into your VPC</li>
+    <li>Only pay for use as containers run</li>
+    <li>Use for small or burst style workloads, batch, periodic</li>
+    </ul>
+    <li><strong>EC2</strong></li>
+    <ul>
+    <li>Created inside a VPC</li>
+    <li>Uses ASG for EC2 instances scaling</li>
+    <li>You manage the instances</li>
+    <li>Good if you want to manage infra</li>
+    </ul>
     </ul>
 
     </details>
@@ -1685,27 +1685,27 @@ TODO: pick up here
 
     <p><b>S3 Glacier</b> - about 1/5th of the price of Standard Storage. First need to be retrieved, fee for retrieval. You can change class back. There are 3 different types of retrieval:
     <ul>
-        <li>Expedited: 1-5 min</li>
-        <li>Standard: 3-5 hours</li>
-        <li>Bulk: 5-12 hours</li>
+    <li>Expedited: 1-5 min</li>
+    <li>Standard: 3-5 hours</li>
+    <li>Bulk: 5-12 hours</li>
     </ul>
     It has first byte latency of minutes or hours. Objects cannot be made public. 40kb min billable object size, 90 days min billable duration of storage. Use for storing archival data with no need to access frequently.
     </p>
 
     <p><b>Glacier Deep Archive</b> - 1/4th of the price of regular Glacier. 180 days min billable duration.
     <ul>
-        <li>Standard: 12 hours</li>
-        <li>Bulk: up to 48 hours</li>
+    <li>Standard: 12 hours</li>
+    <li>Bulk: up to 48 hours</li>
     </ul>
     Use only for archival data that doesn't need to be accessed.
     </p>
 
     <p><b>Intelligent Tiering</b> - has 4 tiers:
     <ul>
-        <li>Frequent Access</li>
-        <li>Infrequent Access</li>
-        <li>Archive</li>
-        <li>Deep Archive</li>
+    <li>Frequent Access</li>
+    <li>Infrequent Access</li>
+    <li>Archive</li>
+    <li>Deep Archive</li>
     </ul>
     Here system monitors the usage of the object and swaps to different storage tiers by itself. Management fee on top. Use for long lived data where the usage patterns are unknown, changing.
     </p>
@@ -1720,7 +1720,7 @@ TODO: pick up here
         - USD/GB fee for data transferred OUT of AWS </BR>
         - Fixed price per 100 requests to S3 (GET, PUT, POST etc)
 
-    </details>
+        </details>
 
 * What is the HTTP Status Code that S3 responds with upon successfully upload?
     <details>
@@ -1774,8 +1774,8 @@ TODO: pick up here
 
     <p>This generally works by replicating from source bucket to a destination bucket. It uses IAM role with read + replicate permissions. Replication is encrypted.</p>
     <ul>
-        <li>CRR - Cross Region</li>
-        <li>SRR - Same Region</li>
+    <li>CRR - Cross Region</li>
+    <li>SRR - Same Region</li>
     </ul>
 
     </details>
@@ -1834,9 +1834,9 @@ TODO: pick up here
     <details>
     <summary>click to see the answer</summary>
     <ul>
-        <li>System events</li>
-        <li>Glacier</li>
-        <li>Glacier Deep Archive</li>
+    <li>System events</li>
+    <li>Glacier</li>
+    <li>Glacier Deep Archive</li>
     </ul>
     </details>
 
@@ -1853,11 +1853,11 @@ TODO: pick up here
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>Log Aggregation</li>
-        <li>PROD and TEST accounts sync (test data)</li>
-        <li>Resiliency with strict sovereignty</li>
-        <li>Improve global resilience</li>
-        <li>Reduce latency for instance when hosting web apps static files</li>
+    <li>Log Aggregation</li>
+    <li>PROD and TEST accounts sync (test data)</li>
+    <li>Resiliency with strict sovereignty</li>
+    <li>Improve global resilience</li>
+    <li>Reduce latency for instance when hosting web apps static files</li>
     </ul>
 
     </details>
@@ -1875,8 +1875,8 @@ TODO: pick up here
     <summary>click to see the answer</summary>
 
     <ul>
-        <li>Offloading website media to S3 bucket</li>
-        <li>Serverless architecture with external data</li>
+    <li>Offloading website media to S3 bucket</li>
+    <li>Serverless architecture with external data</li>
     </ul>
 
     </details>
@@ -1911,10 +1911,10 @@ TODO: pick up here
 
     It allows retrieving parts of object by providing SQL-like statements. Some supported formats:
     <ul>
-        <li>CSV</li>
-        <li>JSON</li>
-        <li>Parquet</li>
-        <li>BZIP2</li>
+    <li>CSV</li>
+    <li>JSON</li>
+    <li>Parquet</li>
+    <li>BZIP2</li>
     </ul>
 
     </details>
@@ -1949,10 +1949,10 @@ TODO: pick up here
 ### CloudWatch & Observability
 
 * What are the 3 components of CloudWatch?
-        <details>
-        <summary>click to see the answer</summary>
-        Metrics, Logs, Events
-        </details>
+    <details>
+    <summary>click to see the answer</summary>
+    Metrics, Logs, Events
+    </details>
 
 * What is a Cloud Trail Event
 * How long does Cloud Trail store events?
