@@ -1445,7 +1445,7 @@ Stored every 5 minitest (lowers RPO)
 
 ## Lambda
 
-* What resource can you allocate to lambda?
+*  What resource can you allocate to lambda? :+1: 
   <details>
   <summary>click to see the answer</summary>
   
@@ -1453,10 +1453,17 @@ Stored every 5 minitest (lowers RPO)
 
   </details>
 
+* **What is the execution time limit on a lambda function?** :+1: 
+  <details>
+  <summary>click to see the answer</summary>
+  
+  15 min
 
+  </details>
+
+* What are cloud watch events and EventBdirge?
 
 TODO: pick up here
-
 
 ## ECS
 
