@@ -1477,6 +1477,69 @@ You can easily add emojis to markdown by typing \:emojiname\:
       </p>
   </details>
 
+* What does API Gateway allow to do?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    Create, Monitor, Secure and Expose APIs. Managed service.
+
+    </details>
+
+* Can you pull data directly from Dynamo DB using API Gateway?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    Yes
+
+    </details>
+
+## SNS
+
+* What messaging pattern does SNS support?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    Pub Sub
+
+    </details>
+
+* Where do publishers send messages to?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    Topic
+
+    </details>
+
+* How to apply filter to a subscriber's topic?
+* What is fanout?
+* What infomration SNS retunrs?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    Delivery Status
+    Delivery Retries
+
+    </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 TODO: pick up here
 
 ## ECS
