@@ -1513,7 +1513,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
 * How to apply filter to a subscriber's topic?
 * What is fanout?
-* What infomration SNS retunrs?
+* What information SNS retunrns?
     <details>
     <summary>click to see the answer</summary>
     
@@ -1522,12 +1522,45 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
     </details>
 
+* What are step functions?
+* How step functions use state machines?
+* How to support long running order flow?
+* What is the maximum duration of the state machine?
 
+## SQS
 
+* What SQS stand for?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    Similar to Azure queue service in storage account. Either FIFO or standard, in standard delivery order is not guaranteed.
 
+    </details>
 
+* What is a visibility timeout?
+* What is a dead letter queue?
+* What are the differences between SNS and SQS?
 
+## Kinesis
 
+* What are kinesis streams?
+* What are good use cases for kinesis?
+* Kinesis is like Azure IoT Hub
+
+## Cognito
+
+* What functionality does cognito provide?
+    <details>
+    <summary>click to see the answer</summary>
+    
+    For web applications. This looks a bit like Okta/Auth0
+    <ul>
+        <li>Authentication</li>
+        <li>Authorization</li>
+        <li>User management</li>
+    </ul>
+
+    </details>
 
 
 
