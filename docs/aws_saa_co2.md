@@ -1463,7 +1463,21 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
 * What are cloud watch events and EventBdirge?
 
-    TODO: pick up here
+## API Gateway
+
+* How do we connect to AWS services?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  Each service has its own endpoint. For example:
+      <p><code>
+      <code>
+          https://[service_type].[region].amazonaws.com  </code>
+      </code>
+      </p>
+  </details>
+
+TODO: pick up here
 
 ## ECS
 
