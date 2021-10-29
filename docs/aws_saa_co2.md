@@ -281,10 +281,10 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
 
 
+## ACM (AWS Certificate Manager)
 
-
-
-
+* What is origin access identit?
+* <b>Can/Should you reuse one OAI?</b>
 
 
 
@@ -684,8 +684,16 @@ TODO: pick up here
 
     </details>
 
+* What are VPC flow logs?
+* Do VPC flow logs capture metadata or contents of a request?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  Only metadata
 
-AWS Identity & Governance
+  </details>
+
+
 
 ### Route 53
 
@@ -917,6 +925,13 @@ AWS Identity & Governance
 
     </details>
 
+### Cloud Front
+
+* What does CDN stand for?
+
+### Global Accelerator
+
+* What are anycast IP addresses?
 
 ## Compute
 ### RDS
@@ -1568,6 +1583,17 @@ AWS Identity & Governance
     </details>
 
 * What are cloud watch events and EventBdirge?
+* What is Lambda edge?
+* What languages do lambda edge support?
+  <details>
+  <summary>click to see the answer</summary>
+  
+  <ul>
+    <li>Ptyhon</li>
+    <li>Node.js</li>
+  </ul>
+
+  </details>
 
 ## Storage
 
