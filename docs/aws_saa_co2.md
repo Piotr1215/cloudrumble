@@ -260,7 +260,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 * What functionality does cognito provide?
     <details>
     <summary>click to see the answer</summary>
-    
+
     For web applications. This looks a bit like Okta/Auth0
     <ul>
         <li>Authentication</li>
@@ -274,19 +274,15 @@ You can easily add emojis to markdown by typing \:emojiname\:
 * Can the JWT tokens be used to access AWS resources?
   <details>
   <summary>click to see the answer</summary>
-  
+
   No
 
   </details>
-
-
 
 ## ACM (AWS Certificate Manager)
 
 * What is origin access identit?
 * <b>Can/Should you reuse one OAI?</b>
-
-
 
 TODO: pick up here
 
@@ -321,14 +317,14 @@ TODO: pick up here
 ## Networking
 ### Networking Fundamentals
 
-* How many layers are there in OSI model? :+1: 
-* What groups are OSI layers divided into? :+1: 
-* Does the device on a higher layer include the capabilities of the devices in layers below it? Why? :+1: 
-* If a network consists of 5 participants and a HUB, when participant 1 broadcasts a signal, how many participants will receive it? :+1: 
-* In a network with a HUB, what happens when participants transmit a broadcast at once? :+1: 
-* Describe on a high level frame components :+1: 
-* What is a backoff period? :-1: 
-* What does MAC stands for? :hand: 
+* How many layers are there in OSI model? :+1:
+* What groups are OSI layers divided into? :+1:
+* Does the device on a higher layer include the capabilities of the devices in layers below it? Why? :+1:
+* If a network consists of 5 participants and a HUB, when participant 1 broadcasts a signal, how many participants will receive it? :+1:
+* In a network with a HUB, what happens when participants transmit a broadcast at once? :+1:
+* Describe on a high level frame components :+1:
+* What is a backoff period? :-1:
+* What does MAC stands for? :hand:
 * What layer switch belongs to?
 * What layer does router belong to?
 * What are the two components of an IP address?
@@ -688,12 +684,10 @@ TODO: pick up here
 * Do VPC flow logs capture metadata or contents of a request?
   <details>
   <summary>click to see the answer</summary>
-  
+
   Only metadata
 
   </details>
-
-
 
 ### Route 53
 
@@ -1504,7 +1498,7 @@ TODO: pick up here
 
 * What is a cool down period?
 * How to integrate auto scaling group with a load balancer?
-* 
+*
 
 ### ECS
 
@@ -1566,7 +1560,7 @@ TODO: pick up here
 
 ### Lambda
 
-*  What resource can you allocate to lambda? :+1: 
+*  What resource can you allocate to lambda? :+1:
     <details>
     <summary>click to see the answer</summary>
 
@@ -1574,7 +1568,7 @@ TODO: pick up here
 
     </details>
 
-* **What is the execution time limit on a lambda function?** :+1: 
+* **What is the execution time limit on a lambda function?** :+1:
     <details>
     <summary>click to see the answer</summary>
 
@@ -1587,7 +1581,7 @@ TODO: pick up here
 * What languages do lambda edge support?
   <details>
   <summary>click to see the answer</summary>
-  
+
   <ul>
     <li>Ptyhon</li>
     <li>Node.js</li>
@@ -2009,7 +2003,7 @@ AWS Databases
 * What does EFS stand for?
   <details>
   <summary>click to see the answer</summary>
-  
+
   Elastic file system
 
   </details>
@@ -2053,7 +2047,7 @@ AWS Databases
 * How do we connect to AWS services?
   <details>
   <summary>click to see the answer</summary>
-  
+
   Each service has its own endpoint. For example:
       <p><code>
       <code>
@@ -2065,7 +2059,7 @@ AWS Databases
 * What does API Gateway allow to do?
     <details>
     <summary>click to see the answer</summary>
-    
+
     Create, Monitor, Secure and Expose APIs. Managed service.
 
     </details>
@@ -2073,7 +2067,7 @@ AWS Databases
 * Can you pull data directly from Dynamo DB using API Gateway?
     <details>
     <summary>click to see the answer</summary>
-    
+
     Yes
 
     </details>
@@ -2083,7 +2077,7 @@ AWS Databases
 * What messaging pattern does SNS support?
     <details>
     <summary>click to see the answer</summary>
-    
+
     Pub Sub
 
     </details>
@@ -2091,7 +2085,7 @@ AWS Databases
 * Where do publishers send messages to?
     <details>
     <summary>click to see the answer</summary>
-    
+
     Topic
 
     </details>
@@ -2101,7 +2095,7 @@ AWS Databases
 * What information SNS retunrns?
     <details>
     <summary>click to see the answer</summary>
-    
+
     Delivery Status
     Delivery Retries
 
@@ -2117,7 +2111,7 @@ AWS Databases
 * What SQS stand for?
     <details>
     <summary>click to see the answer</summary>
-    
+
     Similar to Azure queue service in storage account. Either FIFO or standard, in standard delivery order is not guaranteed.
 
     </details>
