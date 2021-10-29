@@ -721,6 +721,14 @@ TODO: pick up here
 
   </details>
 
+#### VPC Peering
+
+* Can you peer more than one VPC together?
+    <details>
+    <summary>click to see the answer</summary>
+     No
+    </details>
+
 ### Route 53
 
 * What is the difference between a hosted zone and a hosted zone group?
