@@ -1,41 +1,60 @@
 # AWS Certified Solutions Architect Associate
 
-- [AWS Certified Solutions Architect Associate](#aws-certified-solutions-architect-associate)
-  - [About the exam](#about-the-exam)
-  - [Learning resources](#learning-resources)
-  - [Active learning](#active-learning)
-  - [Fundamentals](#fundamentals)
-    - [Cloud Environment](#cloud-environment)
-    - [AWS Fundamentals](#aws-fundamentals)
-  - [Networking Basics](#networking-basics)
-  - [Accounts](#accounts)
-  - [IAM](#iam)
-  - [VPC](#vpc)
-  - [EC2](#ec2)
-  - [Route 53](#route-53)
-    - [Public Hosted Zones](#public-hosted-zones)
-    - [Private Hosted Zones](#private-hosted-zones)
-    - [Routing Types](#routing-types)
-    - [Registering a domain](#registering-a-domain)
-  - [RDS](#rds)
-    - [RDS Backup & Restore](#rds-backup--restore)
-    - [Data Security](#data-security)
-  - [Aurora](#aurora)
-    - [Database Migration Service](#database-migration-service)
-  - [EFS](#efs)
-  - [Load Balancers](#load-balancers)
-    - [Application Load Balancer (ALB)](#application-load-balancer-alb)
-  - [ECS](#ecs)
-  - [S3](#s3)
-  - [KMS (Key Management Service)](#kms-key-management-service)
-  - [Cloud Formation](#cloud-formation)
-    - [CloudWatch & Observability](#cloudwatch--observability)
-  - [Policies](#policies)
-  - [Tips](#tips)
-    - [Tip #1](#tip-1)
-    - [Tip #2](#tip-2)
-    - [Tip #3](#tip-3)
-    - [Tip #4](#tip-4)
+## Table of content
+
+
+ 1. [Table of content](#table-of-content)
+ 2. [About the exam](#about-the-exam)
+ 3. [Learning resources](#learning-resources)
+ 4. [Active learning](#active-learning)
+ 5. [Fundamentals](#fundamentals)
+    * [Cloud Environment](#cloud-environment)
+    * [AWS Fundamentals](#aws-fundamentals)
+ 6. [Identity & Governance](#identity-&-governance)
+    * [Accounts](#accounts)
+    * [IAM](#iam)
+    * [Cognito](#cognito)
+ 7. [ACM (AWS Certificate Manager)](#acm-(aws-certificate-manager))
+    * [Policies](#policies)
+ 8. [Networking](#networking)
+    * [Networking Fundamentals](#networking-fundamentals)
+    * [VPC](#vpc)
+    * [Route 53](#route-53)
+      * [Public Hosted Zones](#public-hosted-zones)
+      * [Private Hosted Zones](#private-hosted-zones)
+      * [Routing Types](#routing-types)
+      * [Registering a domain](#registering-a-domain)
+    * [Load Balancers](#load-balancers)
+      * [Application Load Balancer (ALB)](#application-load-balancer-(alb))
+      * [Network Load Balancer (NLB)](#network-load-balancer-(nlb))
+      * [Gateway Load Balancer](#gateway-load-balancer)
+    * [Cloud Front](#cloud-front)
+    * [Global Accelerator](#global-accelerator)
+ 9. [Compute](#compute)
+    * [RDS](#rds)
+      * [RDS Backup & Restore](#rds-backup-&-restore)
+      * [Data Security](#data-security)
+    * [EC2](#ec2)
+      * [Auto Scaling Groups](#auto-scaling-groups)
+    * [ECS](#ecs)
+    * [Lambda](#lambda)
+10. [Storage](#storage)
+    * [S3](#s3)
+    * [EFS](#efs)
+    * [Aurora](#aurora)
+      * [Database Migration Service](#database-migration-service)
+11. [Integration](#integration)
+    * [API Gateway](#api-gateway)
+    * [SNS](#sns)
+    * [SQS](#sqs)
+    * [Kinesis](#kinesis)
+12. [KMS (Key Management Service)](#kms-(key-management-service))
+13. [Cloud Formation](#cloud-formation)
+14. [CloudWatch & Observability](#cloudwatch-&-observability)
+15. [Tips](#tips)
+    * [Tip #1](#tip-#1)
+    * [Tip #2](#tip-#2)
+    * [Tip #3](#tip-#3)
 
 ## About the exam
 
@@ -75,7 +94,6 @@ You can easily add emojis to markdown by typing \:emojiname\:
 - leave the files with dates of each learning session and start next session from the ones you didn't know the answers for
 
 ## Fundamentals
-
 ### Cloud Environment
 
 1. On-Demand Self Service
@@ -89,75 +107,8 @@ You can easily add emojis to markdown by typing \:emojiname\:
 * What is the difference between public and private services?
 * Describe different types of high availability (regional, zonal, etc)
 
-## Networking Basics
-
-* How many layers are there in OSI model? :+1: 
-* What groups are OSI layers divided into? :+1: 
-* Does the device on a higher layer include the capabilities of the devices in layers below it? Why? :+1: 
-* If a network consists of 5 participants and a HUB, when participant 1 broadcasts a signal, how many participants will receive it? :+1: 
-* In a network with a HUB, what happens when participants transmit a broadcast at once? :+1: 
-* Describe on a high level frame components :+1: 
-* What is a backoff period? :-1: 
-* What does MAC stands for? :hand: 
-* What layer switch belongs to?
-* What layer does router belong to?
-* What are the two components of an IP address?
-* How does subnet mask and its prefix indicate which octets describe network?
-* What does ARP stand for?
-* What is the high level structure of a TCP packet?
-* How does TCP ensures packets delivery reliability?
-* What does NAT do?
-* What is static NAT?
-* What is dynamic NAT?
-* What does PAT stand for?
-* The larger the CIDR value the .... the network.
-* Explain briefly what are network classes
-    <details>
-    <summary>click to see the answer</summary>
-
-    <p>
-    Class A through E, A is the biggest, D, E are reserved.
-    <em>Important note</em>: network classes are replaced by <strong>CIDR</strong>
-    <ul>
-    <li>Class A: <b>10</b>.0.0.0    - <b>10</b>.255.255.255 - single network</li>
-    <li>Class B: <b>172.16</b>.0.0. - <b>172.19</b>.255.255 - 16 networks</li>
-    <mark>This is also the default VPC range.</mark>
-    <li>Class C: <b>192.168.0</b>.0 - <b>192.168.255</b>.0  - 256 networks</li>
-    </ul>
-    </p>
-
-    </details>
-
-* Explain what are CIDR networks and how to calculate CIDR
-    <details>
-    <summary>click to see the answer</summary>
-
-    <p>
-    <ul>
-    <li>/16 networks have fixed value in first and second octet</li>
-    <li>To create two networks from 10.0.0.0/16 use 2x 10.0.0.0/17 by halving the third and fourth octets.</li>
-    </ul>
-    </p>
-
-    </details>
-
-* What CIDR represents all IP addresses
-    <details>
-    <summary>click to see the answer</summary>
-
-    0.0.0.0/0
-
-    </details>
-
-* What CIDR represents 1 IP address
-    <details>
-    <summary>click to see the answer</summary>
-
-    1.2.3.4/32
-
-    </details>
-
-## Accounts
+## Identity & Governance
+### Accounts
 
 * An account is a container, what it can contain?
 * How are resources grouped?
@@ -171,7 +122,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 * What are the 3 alarm states?
 * How/where to allow IAM user access to billing information?
 
-## IAM
+### IAM
 
 * How is IAM resilient?
 * What identity objects IAM let us create?
@@ -308,7 +259,135 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
     </details>
 
-## VPC
+### Cognito
+
+* What functionality does cognito provide?
+    <details>
+    <summary>click to see the answer</summary>
+
+    For web applications. This looks a bit like Okta/Auth0
+    <ul>
+        <li>Authentication</li>
+        <li>Authorization</li>
+        <li>User management</li>
+    </ul>
+
+    </details>
+
+* What are identity pools?
+* Can the JWT tokens be used to access AWS resources?
+  <details>
+  <summary>click to see the answer</summary>
+
+  No
+
+  </details>
+
+## ACM (AWS Certificate Manager)
+
+* What is origin access identit?
+* <b>Can/Should you reuse one OAI?</b>
+
+TODO: pick up here
+
+### Policies
+
+* What are policy priorities
+    <details>
+    <summary>click to see the answer</summary>
+
+    1. Explicit Deny - always takes priority </br>
+    2. Explicit Allow </br>
+    3. Default implicit deny
+
+    </details>
+
+* What are 2 main types of policies?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Inline, Managed
+
+    </details>
+
+* When to use inline policy?
+    <details>
+    <summary>click to see the answer</summary>
+
+    For exceptions to the managed policy.
+
+    </details>
+
+## Networking
+### Networking Fundamentals
+
+* How many layers are there in OSI model? :+1:
+* What groups are OSI layers divided into? :+1:
+* Does the device on a higher layer include the capabilities of the devices in layers below it? Why? :+1:
+* If a network consists of 5 participants and a HUB, when participant 1 broadcasts a signal, how many participants will receive it? :+1:
+* In a network with a HUB, what happens when participants transmit a broadcast at once? :+1:
+* Describe on a high level frame components :+1:
+* What is a backoff period? :-1:
+* What does MAC stands for? :hand:
+* What layer switch belongs to?
+* What layer does router belong to?
+* What are the two components of an IP address?
+* How does subnet mask and its prefix indicate which octets describe network?
+* What does ARP stand for?
+* What is the high level structure of a TCP packet?
+* How does TCP ensures packets delivery reliability?
+* What does NAT do?
+* What is static NAT?
+* What is dynamic NAT?
+* What does PAT stand for?
+* The larger the CIDR value the .... the network.
+* Explain briefly what are network classes
+    <details>
+    <summary>click to see the answer</summary>
+
+    <p>
+    Class A through E, A is the biggest, D, E are reserved.
+    <em>Important note</em>: network classes are replaced by <strong>CIDR</strong>
+    <ul>
+    <li>Class A: <b>10</b>.0.0.0    - <b>10</b>.255.255.255 - single network</li>
+    <li>Class B: <b>172.16</b>.0.0. - <b>172.19</b>.255.255 - 16 networks</li>
+    <mark>This is also the default VPC range.</mark>
+    <li>Class C: <b>192.168.0</b>.0 - <b>192.168.255</b>.0  - 256 networks</li>
+    </ul>
+    </p>
+
+    </details>
+
+* Explain what are CIDR networks and how to calculate CIDR
+    <details>
+    <summary>click to see the answer</summary>
+
+    <p>
+    <ul>
+    <li>/16 networks have fixed value in first and second octet</li>
+    <li>To create two networks from 10.0.0.0/16 use 2x 10.0.0.0/17 by halving the third and fourth octets.</li>
+    </ul>
+    </p>
+
+    </details>
+
+* What CIDR represents all IP addresses
+    <details>
+    <summary>click to see the answer</summary>
+
+    0.0.0.0/0
+
+    </details>
+
+* What CIDR represents 1 IP address
+    <details>
+    <summary>click to see the answer</summary>
+
+    1.2.3.4/32
+
+    </details>
+
+### VPC
 
 * How many default VPCs per region/per account are there?
     <details>
@@ -624,7 +703,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
      end box
      box "Public Internet"
      participant "Customer Gateway" as cgw
-     cgw -> 
+     cgw ->
      end box
      "AWS Public zone" -> "Public internet"
 
@@ -634,8 +713,366 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
     </details>
 
+* What are VPC flow logs?
+* Do VPC flow logs capture metadata or contents of a request?
+  <details>
+  <summary>click to see the answer</summary>
 
-## EC2
+  Only metadata
+
+  </details>
+
+### Route 53
+
+* What is the difference between a hosted zone and a hosted zone group?
+* Which DNS record points to IPv6 address?
+* What is the difference between a CNAME and an ALIAS?
+    <details>
+    <summary>click to see the answer</summary>
+    <ul>
+    <li>CNAME maps a name to another name in the same domain (naked domain)</li>
+    <li>ALIAS maps a name to AWS resource - default for the exam. AWS specific implementation</li>
+    </ul>
+    </details>
+* What does CNAME stand for?
+* Can CNAMEs point to an IP address?
+* How many DNS root servers exist?
+    <details>
+    <summary>click to see the answer</summary>
+    13
+    </details>
+
+#### Public Hosted Zones
+
+* What are R53 public hosted zones?
+* How many name servers does R53 alocate?
+* What records to use to point at the hosted name servers?
+* What is the DNS resolver in a VPC instance?
+    <details>
+    <summary>click to see the answer</summary>
+    VPC+2 IP
+    </details>
+
+#### Private Hosted Zones
+
+* Can you access the zone in the VPC?
+* How to run intranet and public facing web page on the same DNS?
+    <details>
+    <summary>click to see the answer</summary>
+    Split-View
+    </details>
+
+#### Routing Types
+
+* What is simple routing?
+* What are health checkers?
+* Can health checks be performed on targets outside of AWS resources?
+* What protocols are supported by health checkers?
+* What checks are supported?
+    <details>
+    <summary>click to see the answer</summary>
+    Endpoint, CloudWatch Alarm, Checks of Checks
+    </details>
+* What is failover routing?
+* What is a multivalue routing
+    <details>
+    <summary>click to see the answer</summary>
+    Can create many records with the same name
+    Up to 8 healthy records are returned to the client
+    Improves availability
+    </details>
+
+* What is a weighted routing
+* What is the weight formula
+    <details>
+    <summary>click to see the answer</summary>
+    Record weight vs total weight, each of the 3 records.
+    Use when u want to control the distribution of the DNS queries
+    </details>
+* When to use latency based routing
+* When to use geo-location based routing
+    <details>
+    <summary>click to see the answer</summary>
+    It returns relevant locations only, NOT based on goe-proximity
+    </details>
+* When to use geo-proximity routing?
+* What is a geo-proximity bias?
+    <details>
+    <summary>click to see the answer</summary>
+    Expands or shrinks the location of the routing zone
+    </details>
+
+* What is the difference between Route 53 routing policies and load balancing?
+    <details>
+    <summary>click to see the answer</summary>
+    Load balancer is actually routing traffic to the backend services whereas DNS routing returns a DNS resolver server location.
+    </details>
+
+#### Registering a domain
+
+* What are different scenarios for registering a domain
+    <details>
+    <summary>click to see the answer</summary>
+    <ul>
+    <li>Registrar and Public DNS Hosting role</li>
+
+    ```plantuml
+    @startuml domain-registration-traditional
+    !theme materia-outline
+    actor Developer as user
+    participant "Route53\nRegistrar Role" as r53_registrar
+    participant "Route53\nDNS Hosting Role" as r53_dns_hosting
+    participant "TLD Server for *.domain" as tld_server
+    user -> r53_registrar: Requests domain registration\nand pays 1 time fee
+    r53_registrar -> r53_dns_hosting : Requests cretion of public hosted zone
+    return 4x Name Servers
+
+    r53_registrar -> tld_server : Passes the Name Servers to
+
+    tld_server -> tld_server : Creates entries\nfor the Name Servers
+
+    tld_server -> r53_dns_hosting : Points to 4 NS Servers in Public Hosted Zone
+
+    @enduml
+    ```
+
+    <li>Hosting only role</li>
+
+    ```plantuml
+    @startuml domain-registration-traditional
+    !theme materia-outline
+    actor Developer as user
+    participant "Route53\nRegistrar Role" as r53_registrar
+    participant "3rd Party Domain Hosting" as r53_dns_hosting
+    participant "TLD Server for *.domain" as tld_server
+    user -> r53_registrar: Requests domain registration\nand pays 1 time fee
+    r53_registrar -> r53_dns_hosting : Requests cretion of public hosted zone
+    return 4x Name Servers
+
+    r53_registrar -> tld_server : Passes the Name Servers to
+
+    tld_server -> tld_server : Creates entries\nfor the Name Servers
+
+    tld_server -> r53_dns_hosting : Points to 4 NS Servers in Public Hosted Zone
+
+    @enduml
+    ```
+    </ul>
+    </details>
+
+### Load Balancers
+
+* What is LCU?
+* How load balancer is priced?
+* Describe briefly ALB architecture
+* How many load balancing nodes does ALB have as a minimum?
+* What is the default distribution algorithm?
+* What is cross zone load balancing?
+* What is a listener configuration?
+* What types of load balancers are there?
+    <details>
+    <summary>click to see the answer</summary>
+    <ul>
+    <li>A(pplication)LB</li>
+    <li>N(etwork)LB</li>
+    <li>C(lassic)LB</li>
+    </ul>
+    </details>
+* How can load balancer handle SSL offloading?
+    <details>
+    <summary>click to see the answer</summary>
+
+    <ul>
+    <li><strong>Bridging</strong> - connection terminated on the ELB. Second connection is created to target services (http). EC2 instances also need copy of the same certificate</li>
+    <li><strong>Pass-through</strong> - connection encryption is maintained by the client. Listener is configured for TCP.</li>
+    <li><strong>Offload</strong> - backend connections use http </li>
+    </ul>
+
+    </details>
+
+* What is session stickiness?
+* How does a load balancer enable session stickiness?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Cookie 1s to 7 days. It is generally better to use stateless servers and host the state somewhere else, either in a database of on the client side in the case of SPA.
+
+    </details>
+
+#### Application Load Balancer (ALB)
+
+* What layer is ALB on?
+    <details>
+    <summary>click to see the answer</summary>
+    7
+    </details>
+* What makes ALB internet facing?
+    <details>
+    <summary>click to see the answer</summary>
+    Presence of public IP
+    </details>
+
+#### Network Load Balancer (NLB)
+
+* What layer is NLB on?
+* Is NLB a performance-oriented load balancer?
+
+#### Gateway Load Balancer
+
+* What is the usecase for a gateway load balancer?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Load balances between multiple security appliances
+
+    </details>
+
+* What are 2 components of a GWLB?
+    <details>
+    <summary>click to see the answer</summary>
+
+    GWLB endpoints
+    GWLB instances
+
+    </details>
+
+* What protocol is used by GWLB?
+    <details>
+    <summary>click to see the answer</summary>
+
+    GENEVE
+
+    </details>
+
+* How does GWLB endpoint integrates with the existing VPC traffic?
+    <details>
+    <summary>click to see the answer</summary>
+
+    It is added to a route table as a nex hop in the traffic
+
+    </details>
+
+### Cloud Front
+
+* What does CDN stand for?
+
+### Global Accelerator
+
+* What are anycast IP addresses?
+
+## Compute
+### RDS
+
+* What are some of the downsides of putting a database on EC2 instnace?
+* What is an RDS Instance?
+* Can you connect to RDS instance using IP?
+    <details>
+    <summary>click to see the answer</summary>
+    No, you have to use CNAME DNS record
+    </details>
+
+* What is the resiliency level of an RDS instance?
+    <details>
+    <summary>click to see the answer</summary>
+    AZ, also storage (EBS)
+    </details>
+
+* Explain pricing model of RDS
+    <details>
+    <summary>click to see the answer</summary>
+    ALlocated GM/month
+    Additional storage charges if applicable
+    </details>
+
+* Can you reuse an security group with RDS?
+    <details>
+    <summary>click to see the answer</summary>
+    Yes
+    </details>
+
+* Why do we need to configure subnet groups when provisioning an RDS database instance?
+* Is the multi AZ feature available in the free tier?
+    <details>
+    <summary>click to see the answer</summary>
+    No
+    </details>
+
+* Can the standby replica be accessed directly?
+    <details>
+    <summary>click to see the answer</summary>
+    No, it's just an availability improvement.
+    </details>
+
+* What is synchronous Replication
+    <details>
+    <summary>click to see the answer</summary>
+    Multi AZ, same AWS region
+    </details>
+
+#### RDS Backup & Restore
+
+* What are RTO and RPO?
+    RP(oint)O - time  between last working backup and data loss event
+    RT(ime)O - time between data loss event and full recovery
+
+* Do manual snapshots expire?
+    <details>
+    <summary>click to see the answer</summary>
+    No
+    </details>
+
+* What are transaction logs?
+    Stored every 5 minitest (lowers RPO)
+
+* Do automated backups expire?
+    <details>
+    <summary>click to see the answer</summary>
+    Yes, you can set up to 35 days.
+    </details>
+
+* **How does the restore process work?**
+    <details>
+    <summary>click to see the answer</summary>
+    Backups are restored from the closest snapshot (from S3) and than transaction logs are replayed on top of the backup. Restoring snapshots can be a long time.
+    </details>
+
+* Can read replicas be created in a different regions?
+    <details>
+    <summary>click to see the answer</summary>
+    Yes
+    </details>
+
+* **How many read replicas can you have per RDS DB Instance?**
+    <details>
+    <summary>click to see the answer</summary>
+    5
+    </details>
+
+* **Why do read replicas matter?**
+    <details>
+    <summary>click to see the answer</summary>
+    <ul>
+    <li>Improved performance</li>
+    <li>Makes CQRS pattern possible</li>
+    <li>Use read only data in different regions to improve access performance</li>
+    <li>In case of a failure, read replica can be promoted to read-write database. This is only useful for database failures, not data corruption</li>
+    </ul>
+    </details>
+
+#### Data Security
+
+* How is encryption at rest supported?
+    <details>
+    <summary>click to see the answer</summary>
+    Handled by host
+    <ul>
+    <li>EBS Volume Encryption</li>
+    <li>KMS</li>
+    <li>TDE: Only MS SQL and Oracle</li>
+    </ul>
+    </details>
+
+### EC2
 
 * 👍 What does EC2 stand for?
     <details>
@@ -1056,7 +1493,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
     </details>
 
-### Auto Scaling Groups
+#### Auto Scaling Groups
 
 * Where are auto scaling groups defined?
 * What are the 3 characteristics of an auto scaling group?
@@ -1091,407 +1528,6 @@ You can easily add emojis to markdown by typing \:emojiname\:
     </ul>
 
     </details>
-
-* What is a cool down period?
-* How to integrate auto scaling group with a load balancer?
-* 
-
-## Route 53
-
-* What is the difference between a hosted zone and a hosted zone group?
-* Which DNS record points to IPv6 address?
-* What is the difference between a CNAME and an ALIAS?
-    <details>
-    <summary>click to see the answer</summary>
-    <ul>
-    <li>CNAME maps a name to another name in the same domain (naked domain)</li>
-    <li>ALIAS maps a name to AWS resource - default for the exam. AWS specific implementation</li>
-    </ul>
-    </details>
-* What does CNAME stand for?
-* Can CNAMEs point to an IP address?
-* How many DNS root servers exist?
-    <details>
-    <summary>click to see the answer</summary>
-    13
-    </details>
-
-### Public Hosted Zones
-
-* What are R53 public hosted zones?
-* How many name servers does R53 alocate?
-* What records to use to point at the hosted name servers?
-* What is the DNS resolver in a VPC instance?
-    <details>
-    <summary>click to see the answer</summary>
-    VPC+2 IP
-    </details>
-
-### Private Hosted Zones
-
-* Can you access the zone in the VPC?
-* How to run intranet and public facing web page on the same DNS?
-    <details>
-    <summary>click to see the answer</summary>
-    Split-View
-    </details>
-
-### Routing Types
-
-* What is simple routing?
-* What are health checkers?
-* Can health checks be performed on targets outside of AWS resources?
-* What protocols are supported by health checkers?
-* What checks are supported?
-    <details>
-    <summary>click to see the answer</summary>
-    Endpoint, CloudWatch Alarm, Checks of Checks
-    </details>
-* What is failover routing?
-* What is a multivalue routing
-    <details>
-    <summary>click to see the answer</summary>
-    Can create many records with the same name
-    Up to 8 healthy records are returned to the client
-    Improves availability
-    </details>
-
-* What is a weighted routing
-* What is the weight formula
-    <details>
-    <summary>click to see the answer</summary>
-    Record weight vs total weight, each of the 3 records.
-    Use when u want to control the distribution of the DNS queries
-    </details>
-* When to use latency based routing
-* When to use geo-location based routing
-    <details>
-    <summary>click to see the answer</summary>
-    It returns relevant locations only, NOT based on goe-proximity
-    </details>
-* When to use geo-proximity routing?
-* What is a geo-proximity bias?
-    <details>
-    <summary>click to see the answer</summary>
-    Expands or shrinks the location of the routing zone
-    </details>
-
-* What is the difference between Route 53 routing policies and load balancing?
-    <details>
-    <summary>click to see the answer</summary>
-    Load balancer is actually routing traffic to the backend services whereas DNS routing returns a DNS resolver server location.
-    </details>
-
-### Registering a domain
-
-* What are different scenarios for registering a domain
-    <details>
-    <summary>click to see the answer</summary>
-    <ul>
-    <li>Registrar and Public DNS Hosting role</li>
-
-    ```plantuml
-    @startuml domain-registration-traditional
-    !theme materia-outline
-    actor Developer as user
-    participant "Route53\nRegistrar Role" as r53_registrar
-    participant "Route53\nDNS Hosting Role" as r53_dns_hosting
-    participant "TLD Server for *.domain" as tld_server
-    user -> r53_registrar: Requests domain registration\nand pays 1 time fee
-    r53_registrar -> r53_dns_hosting : Requests cretion of public hosted zone
-    return 4x Name Servers
-
-    r53_registrar -> tld_server : Passes the Name Servers to
-
-    tld_server -> tld_server : Creates entries\nfor the Name Servers
-
-    tld_server -> r53_dns_hosting : Points to 4 NS Servers in Public Hosted Zone
-
-    @enduml
-    ```
-
-    <li>Hosting only role</li>
-
-    ```plantuml
-    @startuml domain-registration-traditional
-    !theme materia-outline
-    actor Developer as user
-    participant "Route53\nRegistrar Role" as r53_registrar
-    participant "3rd Party Domain Hosting" as r53_dns_hosting
-    participant "TLD Server for *.domain" as tld_server
-    user -> r53_registrar: Requests domain registration\nand pays 1 time fee
-    r53_registrar -> r53_dns_hosting : Requests cretion of public hosted zone
-    return 4x Name Servers
-
-    r53_registrar -> tld_server : Passes the Name Servers to
-
-    tld_server -> tld_server : Creates entries\nfor the Name Servers
-
-    tld_server -> r53_dns_hosting : Points to 4 NS Servers in Public Hosted Zone
-
-    @enduml
-    ```
-    </ul>
-    </details>
-
-## RDS
-
-* What are some of the downsides of putting a database on EC2 instnace?
-* What is an RDS Instance?
-* Can you connect to RDS instance using IP?
-    <details>
-    <summary>click to see the answer</summary>
-    No, you have to use CNAME DNS record
-    </details>
-
-* What is the resiliency level of an RDS instance?
-    <details>
-    <summary>click to see the answer</summary>
-    AZ, also storage (EBS)
-    </details>
-
-* Explain pricing model of RDS
-    <details>
-    <summary>click to see the answer</summary>
-    ALlocated GM/month
-    Additional storage charges if applicable
-    </details>
-
-* Can you reuse an security group with RDS?
-    <details>
-    <summary>click to see the answer</summary>
-    Yes
-    </details>
-
-* Why do we need to configure subnet groups when provisioning an RDS database instance?
-* Is the multi AZ feature available in the free tier?
-    <details>
-    <summary>click to see the answer</summary>
-    No
-    </details>
-
-* Can the standby replica be accessed directly?
-    <details>
-    <summary>click to see the answer</summary>
-    No, it's just an availability improvement.
-    </details>
-
-* What is synchronous Replication
-    <details>
-    <summary>click to see the answer</summary>
-    Multi AZ, same AWS region
-    </details>
-
-### RDS Backup & Restore
-
-* What are RTO and RPO?
-    RP(oint)O - time  between last working backup and data loss event
-    RT(ime)O - time between data loss event and full recovery
-
-* Do manual snapshots expire?
-    <details>
-    <summary>click to see the answer</summary>
-    No
-    </details>
-
-* What are transaction logs?
-    Stored every 5 minitest (lowers RPO)
-
-* Do automated backups expire?
-    <details>
-    <summary>click to see the answer</summary>
-    Yes, you can set up to 35 days.
-    </details>
-
-* **How does the restore process work?**
-    <details>
-    <summary>click to see the answer</summary>
-    Backups are restored from the closest snapshot (from S3) and than transaction logs are replayed on top of the backup. Restoring snapshots can be a long time.
-    </details>
-
-* Can read replicas be created in a different regions?
-    <details>
-    <summary>click to see the answer</summary>
-    Yes
-    </details>
-
-* **How many read replicas can you have per RDS DB Instance?**
-    <details>
-    <summary>click to see the answer</summary>
-    5
-    </details>
-
-* **Why do read replicas matter?**
-    <details>
-    <summary>click to see the answer</summary>
-    <ul>
-    <li>Improved performance</li>
-    <li>Makes CQRS pattern possible</li>
-    <li>Use read only data in different regions to improve access performance</li>
-    <li>In case of a failure, read replica can be promoted to read-write database. This is only useful for database failures, not data corruption</li>
-    </ul>
-    </details>
-
-### Data Security
-
-* How is encryption at rest supported?
-    <details>
-    <summary>click to see the answer</summary>
-    Handled by host
-    <ul>
-    <li>EBS Volume Encryption</li>
-    <li>KMS</li>
-    <li>TDE: Only MS SQL and Oracle</li>
-    </ul>
-    </details>
-
-## Aurora
-
-* What is Aurora Global Database?
-
-### Database Migration Service
-
-## EFS
-
-* What standard EFS implements
-    <details>
-    <summary>click to see the answer</summary>
-    NFSv4
-    </details>
-
-* What command would you use to mount a file system on Linux?
-    <details>
-    <summary>click to see the answer</summary>
-    `sudo mount /folder /device_name`
-    </details>
-
-* Can you mount an EFS storage on multiple EC2 instances?
-* How to access EFS via VPC peering?
-* What do you use to mount EFS onto a target machine?
-    <details>
-    <summary>click to see the answer</summary>
-    Mount points
-    </details>
-* Is EBS available for Linux and Windows servers?
-    <details>
-    <summary>click to see the answer</summary>
-    Only for Linux
-    </details>
-* What throughput modes are available in EFS?
-* What storage classes are available in EFS?
-
-## Load Balancers
-
-* What is LCU?
-* How load balancer is priced?
-* Describe briefly ALB architecture
-* How many load balancing nodes does ALB have as a minimum?
-* What is the default distribution algorithm?
-* What is cross zone load balancing?
-* What is a listener configuration?
-* What types of load balancers are there?
-    <details>
-    <summary>click to see the answer</summary>
-    <ul>
-    <li>A(pplication)LB</li>
-    <li>N(etwork)LB</li>
-    <li>C(lassic)LB</li>
-    </ul>
-    </details>
-* How can load balancer handle SSL offloading?
-    <details>
-    <summary>click to see the answer</summary>
-
-    <ul>
-    <li><strong>Bridging</strong> - connection terminated on the ELB. Second connection is created to target services (http). EC2 instances also need copy of the same certificate</li>
-    <li><strong>Pass-through</strong> - connection encryption is maintained by the client. Listener is configured for TCP.</li>
-    <li><strong>Offload</strong> - backend connections use http </li>
-    </ul>
-
-    </details>
-
-* What is session stickiness?
-* How does a load balancer enable session stickiness?
-    <details>
-    <summary>click to see the answer</summary>
-
-    Cookie 1s to 7 days. It is generally better to use stateless servers and host the state somewhere else, either in a database of on the client side in the case of SPA.
-
-    </details>
-
-### Application Load Balancer (ALB)
-
-* What layer is ALB on?
-    <details>
-    <summary>click to see the answer</summary>
-    7
-    </details>
-* What makes ALB internet facing?
-    <details>
-    <summary>click to see the answer</summary>
-    Presence of public IP
-    </details>
-
-### Network Load Balancer (NLB)
-
-* What layer is NLB on?
-* Is NLB a performance-oriented load balancer?
-
-### Gateway Load Balancer
-
-* What is the usecase for a gateway load balancer?
-    <details>
-    <summary>click to see the answer</summary>
-
-    Load balances between multiple security appliances
-
-    </details>
-
-* What are 2 components of a GWLB?
-    <details>
-    <summary>click to see the answer</summary>
-
-    GWLB endpoints
-    GWLB instances
-
-    </details>
-
-* What protocol is used by GWLB?
-    <details>
-    <summary>click to see the answer</summary>
-
-    GENEVE
-
-    </details>
-
-* How does GWLB endpoint integrates with the existing VPC traffic?
-    <details>
-    <summary>click to see the answer</summary>
-
-    It is added to a route table as a nex hop in the traffic
-
-    </details>
-
-
-## Lambda
-
-*  What resource can you allocate to lambda? :+1: 
-    <details>
-    <summary>click to see the answer</summary>
-
-    Memory
-
-    </details>
-
-* **What is the execution time limit on a lambda function?** :+1: 
-    <details>
-    <summary>click to see the answer</summary>
-
-    15 min
-
-    </details>
-
-* What are cloud watch events and EventBdirge?
 
 ## ECS
 
@@ -1551,7 +1587,42 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
     </details>
 
-## S3
+### Lambda
+
+*  What resource can you allocate to lambda? :+1:
+    <details>
+    <summary>click to see the answer</summary>
+
+    Memory
+
+    </details>
+
+* **What is the execution time limit on a lambda function?** :+1:
+    <details>
+    <summary>click to see the answer</summary>
+
+    15 min
+
+    </details>
+
+* What are cloud watch events and EventBdirge?
+* What is Lambda edge?
+* What languages do lambda edge support?
+  <details>
+  <summary>click to see the answer</summary>
+
+  <ul>
+    <li>Ptyhon</li>
+    <li>Node.js</li>
+  </ul>
+
+  </details>
+
+## Storage
+
+AWS Databases
+
+### S3
 
 * What are the 2 constituent parts of S3 object?
 * What is the size limit of a single object?
@@ -1956,6 +2027,134 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
     </details>
 
+### EFS
+
+* What does EFS stand for?
+  <details>
+  <summary>click to see the answer</summary>
+
+  Elastic file system
+
+  </details>
+
+* What standard EFS implements
+    <details>
+    <summary>click to see the answer</summary>
+    NFSv4
+    </details>
+
+* What command would you use to mount a file system on Linux?
+    <details>
+    <summary>click to see the answer</summary>
+    `sudo mount /folder /device_name`
+    </details>
+
+* Can you mount an EFS storage on multiple EC2 instances?
+* How to access EFS via VPC peering?
+* What do you use to mount EFS onto a target machine?
+    <details>
+    <summary>click to see the answer</summary>
+    Mount points
+    </details>
+* Is EBS available for Linux and Windows servers?
+    <details>
+    <summary>click to see the answer</summary>
+    Only for Linux
+    </details>
+* What throughput modes are available in EFS?
+* What storage classes are available in EFS?
+
+### Aurora
+
+* What is Aurora Global Database?
+
+#### Database Migration Service
+
+## Integration
+### API Gateway
+
+* How do we connect to AWS services?
+  <details>
+  <summary>click to see the answer</summary>
+
+  Each service has its own endpoint. For example:
+      <p><code>
+      <code>
+          https://[service_type].[region].amazonaws.com  </code>
+      </code>
+      </p>
+  </details>
+
+* What does API Gateway allow to do?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Create, Monitor, Secure and Expose APIs. Managed service.
+
+    </details>
+
+* Can you pull data directly from Dynamo DB using API Gateway?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Yes
+
+    </details>
+
+### SNS
+
+* What messaging pattern does SNS support?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Pub Sub
+
+    </details>
+
+* Where do publishers send messages to?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Topic
+
+    </details>
+
+* How to apply filter to a subscriber's topic?
+* What is fanout?
+* What information SNS retunrns?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Delivery Status
+    Delivery Retries
+
+    </details>
+
+* What are step functions?
+* How step functions use state machines?
+* How to support long running order flow?
+* What is the maximum duration of the state machine?
+
+### SQS
+
+* What SQS stand for?
+    <details>
+    <summary>click to see the answer</summary>
+
+    Similar to Azure queue service in storage account. Either FIFO or standard, in standard delivery order is not guaranteed.
+
+    </details>
+
+* What is a visibility timeout?
+* What is a dead letter queue?
+* What are the differences between SNS and SQS?
+
+### Kinesis
+
+* What are kinesis streams?
+* What are good use cases for kinesis?
+* Kinesis is like Azure IoT Hub
+
 ## KMS (Key Management Service)
 
 * What security standard does KMS comply with?
@@ -1974,7 +2173,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 * Template > Stack > Logical Resources. What happens when stack is deleted?
 * What field is referenced by default when using *! Ref* function?
 
-### CloudWatch & Observability
+## CloudWatch & Observability
 
 * What are the 3 components of CloudWatch?
     <details>
@@ -2012,34 +2211,6 @@ You can easily add emojis to markdown by typing \:emojiname\:
     <summary>click to see the answer</summary>
 
     Regional. For global services, a setting must be enabled.
-
-    </details>
-
-## Policies
-
-* What are policy priorities
-    <details>
-    <summary>click to see the answer</summary>
-
-    1. Explicit Deny - always takes priority </br>
-    2. Explicit Allow </br>
-    3. Default implicit deny
-
-    </details>
-
-* What are 2 main types of policies?
-    <details>
-    <summary>click to see the answer</summary>
-
-    Inline, Managed
-
-    </details>
-
-* When to use inline policy?
-    <details>
-    <summary>click to see the answer</summary>
-
-    For exceptions to the managed policy.
 
     </details>
 
