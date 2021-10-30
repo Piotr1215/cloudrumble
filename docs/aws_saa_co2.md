@@ -603,7 +603,37 @@ You can easily add emojis to markdown by typing \:emojiname\:
     SSH Agent Forwarding
     <p><code>ssh -A</code></p>
 
+
     </details>
+* What are points of failure for VPN site-to-site connection?
+    <details>
+    <summary>click to see the answer</summary>
+
+     ```plantuml
+     @startuml
+     box "AWS VPC"
+     "router" -> "AWS Public zone"
+     end box
+     box "AWS Public Zone"
+     participant "Virtual Gateway" as vgw
+     participant "VPN" as vpn
+     vgw <-> vpn
+
+     vpn -> "Endpoint1"
+     vpn -> "Endpoint2"
+     end box
+     box "Public Internet"
+     participant "Customer Gateway" as cgw
+     cgw -> 
+     end box
+     "AWS Public zone" -> "Public internet"
+
+     "Public internet" -> "On prem router"
+     @enduml
+     ```
+
+    </details>
+
 
 ## EC2
 
@@ -1462,8 +1492,6 @@ You can easily add emojis to markdown by typing \:emojiname\:
     </details>
 
 * What are cloud watch events and EventBdirge?
-
-    TODO: pick up here
 
 ## ECS
 
