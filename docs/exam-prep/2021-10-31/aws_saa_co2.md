@@ -87,7 +87,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
 - clone [this repository](https://github.com/Piotr1215/dca-prep-kit)
 - make a copy of [this file](aws_saa_co2.md)
-- use this [regex expression](https://stackoverflow.com/a/16880892) to select and remove (replace with empty) all the `<details>` tags (they contain the answers to the questions) `<(details)>(.|\n)*?</details>`, remember to toggle "use regular expressions" in the search box if you are using VS Code. If you are using vim/nvim use this command instead `:g/<details>/,/<\/details>/d _`
+- use this [regex expression](https://stackoverflow.com/a/16880892) to select and remove (replace with empty) all the `<details>` tags (they contain the answers to the questions) `<(details)>(.|\n)*?</details>`, remember to toggle "use regular expressions" in the search box if you are using VS Code
 - save the file as a learning session, grade yourself for answers
 - IMPORTANT: **lookup in the original file if you don't know the answer at all**
 - leave the files with dates of each learning session and start next session from the ones you didn't know the answers for
@@ -187,12 +187,12 @@ You can easily add emojis to markdown by typing \:emojiname\:
     - arn:aws:s3:::bucket
     - arn:aws:s3:::bucket/*
 
-   <details>
-   <summary>click to see the answer</summary>
+        <details>
+        <summary>click to see the answer</summary>
 
-   First one refers to a bucket itself and second one to its contents.
+        First one refers to a bucket itself and second one to its contents.
 
-   </details>
+        </details>
 
 * How many IAM users can be created in an account?
     <details>
@@ -1616,6 +1616,7 @@ TODO: pick up here
   </ul>
 
   </details>
+
 ## Storage
 
 AWS Databases
