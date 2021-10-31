@@ -1,31 +1,17 @@
 # AWS Certified Solutions Architect Associate
 
-## Fundamentals
-### Cloud Environment
-
-1. On-Demand Self Service
-2. Broad Network Access
-3. Resource Pooling (multi-tenancy)
-4. **Rapid elasticity**
-5. Measured Service (pay as you go)
-
-### AWS Fundamentals
-
-* What is the difference between public and private services?
-* Describe different types of high availability (regional, zonal, etc)
-
 ## Identity & Governance
 ### Accounts
 
-* An account is a container, what it can contain?
-* How are resources grouped?
-* What are required information you need to provide in order to create an account?
-* Can the same email address be used with multiple accounts?
-* Can account root user login into multiple accounts?
-* What are called the things that you can create inside of the account?
-* Can accounts be used to create separate environments?
-* What is the default access mode for an account for external actors?
-* What service is used to configure billing alerts?
+* An account is a container, what it can contain? :+1: 
+* How are resources grouped? :+1: 
+* What are required information you need to provide in order to create an account? :+1: 
+* Can the same email address be used with multiple accounts? :+1: 
+* Can account root user login into multiple accounts? :+1: 
+* What are called the things that you can create inside of the account? :hand: 
+* Can accounts be used to create separate environments? :+1: 
+* What is the default access mode for an account for external actors? :+1: 
+* What service is used to configure billing alerts? :+1: 
 * What are the 3 alarm states?
 * How/where to allow IAM user access to billing information?
 
