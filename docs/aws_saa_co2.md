@@ -71,11 +71,11 @@ Basic questions for active learning. Start the session by answering all the ques
 
 **Bolded items** are either important to understand or there is high likelihood that they will appear on the exam.
 
-|Answer Status    | Description   |
-|---|---|
-| 👍 | You've answered correctly first time, skip repetition for the next session   |
-| ✋  | You've answered the question only partially right, include the question in the next session  |
-| 👎  | You've answered the question wrong and had to lookup the answer. Start from those questions in the next session  |
+| Answer Status | Description                                                                                                     |
+|---------------|-----------------------------------------------------------------------------------------------------------------|
+| 👍            | You've answered correctly first time, skip repetition for the next session                                      |
+| ✋            | You've answered the question only partially right, include the question in the next session                     |
+| 👎            | You've answered the question wrong and had to lookup the answer. Start from those questions in the next session |
 
 You can easily add emojis to markdown by typing \:emojiname\:
 
