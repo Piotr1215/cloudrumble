@@ -112,19 +112,65 @@ You can easily add emojis to markdown by typing \:emojiname\:
 ### Accounts
 
 * An account is a container, what it can contain?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>identities (users)</li>
+       <li>resources</li>
+     </ul>
+    </details>
+* What is required to create AWS account?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>email</li>
+       <li>payment method</li>
+     </ul>
+    </details>
 * How are resources grouped?
-* What are required information you need to provide in order to create an account?
+    <details>
+    <summary>click to see the answer</summary>
+     Into accounts
+    </details>
 * Can the same email address be used with multiple accounts?
+    <details>
+    <summary>click to see the answer</summary>
+     No
+    </details>
 * Can account root user login into multiple accounts?
 * What are called the things that you can create inside of the account?
-* Can accounts be used to create separate environments?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>Users</li>
+       <li>Groups</li>
+       <li>Roles</li>
+     </ul>
+    </details>
 * What is the default access mode for an account for external actors?
-* What service is used to configure billing alerts?
+    <details>
+    <summary>click to see the answer</summary>
+     Only identies created inside an account can be granted access to the resources in this account.
+     Cross-permissions are possible with IAM roles
+    </details>
+* What set of permissons does new IAM Identity starts with?
+    <details>
+    <summary>click to see the answer</summary>
+     None, every new identity starts with zero permissions until granted.
+    </details>
 * What are the 3 alarm states?
-* How/where to allow IAM user access to billing information?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>OK</li>
+       <li>ALARM</li>
+       <li>INSUFFICIENT DATA</li>
+     </ul>
+    </details>
 
 ### IAM
 
+* How/where to allow IAM user access to billing information?
 * How is IAM resilient?
 * What identity objects IAM let us create?
     <details>
