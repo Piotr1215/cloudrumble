@@ -18,6 +18,7 @@
  8. [Networking](#networking)
     * [Networking Fundamentals](#networking-fundamentals)
     * [VPC](#vpc)
+      * [VPC Peering](#vpc-peering)
     * [Route 53](#route-53)
       * [Public Hosted Zones](#public-hosted-zones)
       * [Private Hosted Zones](#private-hosted-zones)
@@ -78,6 +79,7 @@ Basic questions for active learning. Start the session by answering all the ques
 | 👎            | You've answered the question wrong and had to lookup the answer. Start from those questions in the next session |
 
 You can easily add emojis to markdown by typing \:emojiname\:
+
 
 * thumbs up: `:+1:`
 * thumbs down: `:-1:`
