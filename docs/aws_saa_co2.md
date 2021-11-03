@@ -85,7 +85,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 * thumbs down: `:-1:`
 * hand: `:hand:`
 
-    Easiest way to to learn yourself is to:
+Easiest way to to learn yourself is to:
 
 - clone [this repository](https://github.com/Piotr1215/dca-prep-kit)
 - make a copy of [this file](aws_saa_co2.md)
@@ -138,6 +138,10 @@ You can easily add emojis to markdown by typing \:emojiname\:
      No
     </details>
 * Can account root user login into multiple accounts?
+    <details>
+    <summary>click to see the answer</summary>
+     No
+    </details>
 * What are called the things that you can create inside of the account?
     <details>
     <summary>click to see the answer</summary>
