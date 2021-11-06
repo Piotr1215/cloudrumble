@@ -2,58 +2,59 @@
 
 ## Table of content
 
- 1. [Table of content](#table-of-content)
- 2. [About the exam](#about-the-exam)
- 3. [Learning resources](#learning-resources)
- 4. [Active learning](#active-learning)
- 5. [Fundamentals](#fundamentals)
-    * [Cloud Environment](#cloud-environment)
-    * [AWS Fundamentals](#aws-fundamentals)
- 6. [Identity & Governance](#identity-&-governance)
-    * [Accounts](#accounts)
-    * [IAM](#iam)
-    * [Cognito](#cognito)
- 7. [ACM (AWS Certificate Manager)](#acm-(aws-certificate-manager))
-    * [Policies](#policies)
- 8. [Networking](#networking)
-    * [Networking Fundamentals](#networking-fundamentals)
-    * [VPC](#vpc)
-    * [Route 53](#route-53)
-      * [Public Hosted Zones](#public-hosted-zones)
-      * [Private Hosted Zones](#private-hosted-zones)
-      * [Routing Types](#routing-types)
-      * [Registering a domain](#registering-a-domain)
-    * [Load Balancers](#load-balancers)
-      * [Application Load Balancer (ALB)](#application-load-balancer-(alb))
-      * [Network Load Balancer (NLB)](#network-load-balancer-(nlb))
-      * [Gateway Load Balancer](#gateway-load-balancer)
-    * [Cloud Front](#cloud-front)
-    * [Global Accelerator](#global-accelerator)
- 9. [Compute](#compute)
-    * [RDS](#rds)
-      * [RDS Backup & Restore](#rds-backup-&-restore)
-      * [Data Security](#data-security)
-    * [EC2](#ec2)
-      * [Auto Scaling Groups](#auto-scaling-groups)
+1.  [Table of content](#table-of-content)
+2.  [About the exam](#about-the-exam)
+3.  [Learning resources](#learning-resources)
+4.  [Active learning](#active-learning)
+5.  [Fundamentals](#fundamentals)
+    - [Cloud Environment](#cloud-environment)
+    - [AWS Fundamentals](#aws-fundamentals)
+6.  [Identity & Governance](#identity-&-governance)
+    - [Accounts](#accounts)
+    - [IAM](#iam)
+    - [Cognito](#cognito)
+7.  [ACM (AWS Certificate Manager)](<#acm-(aws-certificate-manager)>)
+    - [Policies](#policies)
+8.  [Networking](#networking)
+    - [Networking Fundamentals](#networking-fundamentals)
+    - [VPC](#vpc)
+      - [VPC Peering](#vpc-peering)
+    - [Route 53](#route-53)
+      - [Public Hosted Zones](#public-hosted-zones)
+      - [Private Hosted Zones](#private-hosted-zones)
+      - [Routing Types](#routing-types)
+      - [Registering a domain](#registering-a-domain)
+    - [Load Balancers](#load-balancers)
+      - [Application Load Balancer (ALB)](<#application-load-balancer-(alb)>)
+      - [Network Load Balancer (NLB)](<#network-load-balancer-(nlb)>)
+      - [Gateway Load Balancer](#gateway-load-balancer)
+    - [Cloud Front](#cloud-front)
+    - [Global Accelerator](#global-accelerator)
+9.  [Compute](#compute)
+    - [RDS](#rds)
+      - [RDS Backup & Restore](#rds-backup-&-restore)
+      - [Data Security](#data-security)
+    - [EC2](#ec2)
+      - [Auto Scaling Groups](#auto-scaling-groups)
 10. [ECS](#ecs)
-    * [Lambda](#lambda)
+    - [Lambda](#lambda)
 11. [Storage](#storage)
-    * [S3](#s3)
-    * [EFS](#efs)
-    * [Aurora](#aurora)
-      * [Database Migration Service](#database-migration-service)
+    - [S3](#s3)
+    - [EFS](#efs)
+    - [Aurora](#aurora)
+      - [Database Migration Service](#database-migration-service)
 12. [Integration](#integration)
-    * [API Gateway](#api-gateway)
-    * [SNS](#sns)
-    * [SQS](#sqs)
-    * [Kinesis](#kinesis)
-13. [KMS (Key Management Service)](#kms-(key-management-service))
+    - [API Gateway](#api-gateway)
+    - [SNS](#sns)
+    - [SQS](#sqs)
+    - [Kinesis](#kinesis)
+13. [KMS (Key Management Service)](<#kms-(key-management-service)>)
 14. [Cloud Formation](#cloud-formation)
 15. [CloudWatch & Observability](#cloudwatch-&-observability)
 16. [Tips](#tips)
-    * [Tip #1](#tip-#1)
-    * [Tip #2](#tip-#2)
-    * [Tip #3](#tip-#3)
+    - [Tip #1](#tip-#1)
+    - [Tip #2](#tip-#2)
+    - [Tip #3](#tip-#3)
 
 ## About the exam
 
@@ -71,19 +72,19 @@ Basic questions for active learning. Start the session by answering all the ques
 
 **Bolded items** are either important to understand or there is high likelihood that they will appear on the exam.
 
-|Answer Status    | Description   |
-|---|---|
-| 👍 | You've answered correctly first time, skip repetition for the next session   |
-| ✋  | You've answered the question only partially right, include the question in the next session  |
-| 👎  | You've answered the question wrong and had to lookup the answer. Start from those questions in the next session  |
+| Answer Status | Description                                                                                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------- |
+| 👍            | You've answered correctly first time, skip repetition for the next session                                      |
+| ✋            | You've answered the question only partially right, include the question in the next session                     |
+| 👎            | You've answered the question wrong and had to lookup the answer. Start from those questions in the next session |
 
 You can easily add emojis to markdown by typing \:emojiname\:
 
-* thumbs up: `:+1:`
-* thumbs down: `:-1:`
-* hand: `:hand:`
+- thumbs up: `:+1:`
+- thumbs down: `:-1:`
+- hand: `:hand:`
 
-    Easiest way to to learn yourself is to:
+Easiest way to to learn yourself is to:
 
 - clone [this repository](https://github.com/Piotr1215/dca-prep-kit)
 - make a copy of [this file](aws_saa_co2.md)
@@ -93,6 +94,7 @@ You can easily add emojis to markdown by typing \:emojiname\:
 - leave the files with dates of each learning session and start next session from the ones you didn't know the answers for
 
 ## Fundamentals
+
 ### Cloud Environment
 
 1. On-Demand Self Service
@@ -103,28 +105,79 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
 ### AWS Fundamentals
 
-* What is the difference between public and private services?
-* Describe different types of high availability (regional, zonal, etc)
+- What is the difference between public and private services?
+- Describe different types of high availability (regional, zonal, etc)
 
 ## Identity & Governance
+
 ### Accounts
 
-* An account is a container, what it can contain?
-* How are resources grouped?
-* What are required information you need to provide in order to create an account?
-* Can the same email address be used with multiple accounts?
-* Can account root user login into multiple accounts?
-* What are called the things that you can create inside of the account?
-* Can accounts be used to create separate environments?
-* What is the default access mode for an account for external actors?
-* What service is used to configure billing alerts?
-* What are the 3 alarm states?
-* How/where to allow IAM user access to billing information?
+- An account is a container, what it can contain?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>identities (users)</li>
+       <li>resources</li>
+     </ul>
+    </details>
+- What is required to create AWS account?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>email</li>
+       <li>payment method</li>
+     </ul>
+    </details>
+- How are resources grouped?
+    <details>
+    <summary>click to see the answer</summary>
+     Into accounts
+    </details>
+- Can the same email address be used with multiple accounts?
+    <details>
+    <summary>click to see the answer</summary>
+     No
+    </details>
+- Can account root user login into multiple accounts?
+    <details>
+    <summary>click to see the answer</summary>
+     No
+    </details>
+- What are called the things that you can create inside of the account?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>Users</li>
+       <li>Groups</li>
+       <li>Roles</li>
+     </ul>
+    </details>
+- What is the default access mode for an account for external actors?
+    <details>
+    <summary>click to see the answer</summary>
+     Only identies created inside an account can be granted access to the resources in this account.
+     Cross-permissions are possible with IAM roles
+    </details>
+- What set of permissons does new IAM Identity starts with?
+    <details>
+    <summary>click to see the answer</summary>
+     None, every new identity starts with zero permissions until granted.
+    </details>
+- What are the 3 alarm states?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>OK</li>
+       <li>ALARM</li>
+       <li>INSUFFICIENT DATA</li>
+     </ul>
+    </details>
 
 ### IAM
 
-* How is IAM resilient?
-* What identity objects IAM let us create?
+- How/where to allow IAM user access to billing information?
+- How is IAM resilient?
+- What identity objects IAM let us create?
     <details>
     <summary>click to see the answer</summary>
 
@@ -136,135 +189,136 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
     </details>
 
-* Does **users** type represents only human users?
-* What is the necessary condition for a policy to have an effect?
-* Is IAM authentication service as well as identity management and authorization?
-* How much does IAM cost?
-* Why IAM account aliases must be globally uniq?
-* How many access keys can IAM user have?
-* What variable to setup for the *aws* cli to designate a default profile?
+- Does **users** type represents only human users?
+- What is the necessary condition for a policy to have an effect?
+- Is IAM authentication service as well as identity management and authorization?
+- How much does IAM cost?
+- Why IAM account aliases must be globally uniq?
+- How many access keys can IAM user have?
+- What variable to setup for the _aws_ cli to designate a default profile?
     <details>
     <summary>click to see the answer</summary>
 
-    ```bash
-    export AWS_DEFAULT_PROFILE=
-    ```
+  ```bash
+  export AWS_DEFAULT_PROFILE=
+  ```
 
     </details>
 
-* Can external identiy be used to access AWS resources?
-* When to use IAM Role?
-* When does principal became authenticated identity?
-* How can you login into an IAM group?
+- Can external identiy be used to access AWS resources?
+- When to use IAM Role?
+- When does principal became authenticated identity?
+- How can you login into an IAM group?
     <details>
     <summary>click to see the answer</summary>
 
-    No, IAM groups are for helping with organizing IAM user access to AWS resources.
+  No, IAM groups are for helping with organizing IAM user access to AWS resources.
 
     </details>
 
-* Can IAM groups be nested?
-* Can IAM user be a member of more than one group?
-* Can you reference an IAM Group from a resource policy?
-* What are the two types of authentication for IAM?
+- Can IAM groups be nested?
+- Can IAM user be a member of more than one group?
+- Can you reference an IAM Group from a resource policy?
+- What are the two types of authentication for IAM?
     <details>
     <summary>click to see the answer</summary>
 
-    Username/password or Access Keys
+  Username/password or Access Keys
 
     </details>
 
-* What does ARN stand for?
-* What is the ARN structure?
+- What does ARN stand for?
+- What is the ARN structure?
     <details>
     <summary>click to see the answer</summary>
 
-    arn:partition:service:region:account-id:resource-type:resource-id
+  arn:partition:service:region:account-id:resource-type:resource-id
 
     </details>
 
-* What is the difference between those ARNs:
-    - arn:aws:s3:::bucket
-    - arn:aws:s3:::bucket/*
+- What is the difference between those ARNs:
+
+  - arn:aws:s3:::bucket
+  - arn:aws:s3:::bucket/\*
 
    <details>
    <summary>click to see the answer</summary>
 
-   First one refers to a bucket itself and second one to its contents.
+  First one refers to a bucket itself and second one to its contents.
 
    </details>
 
-* How many IAM users can be created in an account?
+- How many IAM users can be created in an account?
     <details>
     <summary>click to see the answer</summary>
 
-    5000
+  5000
 
     </details>
 
-* How many IAM groups can a user be a member of?
+- How many IAM groups can a user be a member of?
     <details>
     <summary>click to see the answer</summary>
 
-    10
+  10
 
     </details>
 
-* What does SCP stand for
+- What does SCP stand for
     <details>
     <summary>click to see the answer</summary>
 
-    Service Control Policies
+  Service Control Policies
 
     </details>
 
-* How do you call a nested grouping within an organization?
+- How do you call a nested grouping within an organization?
     <details>
     <summary>click to see the answer</summary>
 
-    Organization Units
+  Organization Units
 
     </details>
 
-* Is the root "management" account of an organization affected by SCP?
+- Is the root "management" account of an organization affected by SCP?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* What is the main role of an SCP?
+- What is the main role of an SCP?
     <details>
     <summary>click to see the answer</summary>
 
-    To limit what an account can do. Only Deny.
+  To limit what an account can do. Only Deny.
 
     </details>
 
-* Can you attach an identity policy to someone's else account?
+- Can you attach an identity policy to someone's else account?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* What is more preferable, Roles or IAM User?
+- What is more preferable, Roles or IAM User?
     <details>
     <summary>click to see the answer</summary>
 
-    Always prefer IAM roles if possible.
+  Always prefer IAM roles if possible.
 
     </details>
 
 ### Cognito
 
-* What functionality does cognito provide?
+- What functionality does cognito provide?
     <details>
     <summary>click to see the answer</summary>
 
-    For web applications. This looks a bit like Okta/Auth0
+  For web applications. This looks a bit like Okta/Auth0
     <ul>
         <li>Authentication</li>
         <li>Authorization</li>
@@ -273,8 +327,8 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
     </details>
 
-* What are identity pools?
-* Can the JWT tokens be used to access AWS resources?
+- What are identity pools?
+- Can the JWT tokens be used to access AWS resources?
   <details>
   <summary>click to see the answer</summary>
 
@@ -284,63 +338,64 @@ You can easily add emojis to markdown by typing \:emojiname\:
 
 ## ACM (AWS Certificate Manager)
 
-* What is origin access identit?
-* <b>Can/Should you reuse one OAI?</b>
+- What is origin access identit?
+- <b>Can/Should you reuse one OAI?</b>
 
 TODO: pick up here
 
 ### Policies
 
-* What are policy priorities
+- What are policy priorities
     <details>
     <summary>click to see the answer</summary>
 
-    1. Explicit Deny - always takes priority </br>
-    2. Explicit Allow </br>
-    3. Default implicit deny
+  1. Explicit Deny - always takes priority </br>
+  2. Explicit Allow </br>
+  3. Default implicit deny
 
     </details>
 
-* What are 2 main types of policies?
+- What are 2 main types of policies?
     <details>
     <summary>click to see the answer</summary>
 
-    Inline, Managed
+  Inline, Managed
 
     </details>
 
-* When to use inline policy?
+- When to use inline policy?
     <details>
     <summary>click to see the answer</summary>
 
-    For exceptions to the managed policy.
+  For exceptions to the managed policy.
 
     </details>
 
 ## Networking
+
 ### Networking Fundamentals
 
-* How many layers are there in OSI model? :+1:
-* What groups are OSI layers divided into? :+1:
-* Does the device on a higher layer include the capabilities of the devices in layers below it? Why? :+1:
-* If a network consists of 5 participants and a HUB, when participant 1 broadcasts a signal, how many participants will receive it? :+1:
-* In a network with a HUB, what happens when participants transmit a broadcast at once? :+1:
-* Describe on a high level frame components :+1:
-* What is a backoff period? :-1:
-* What does MAC stands for? :hand:
-* What layer switch belongs to?
-* What layer does router belong to?
-* What are the two components of an IP address?
-* How does subnet mask and its prefix indicate which octets describe network?
-* What does ARP stand for?
-* What is the high level structure of a TCP packet?
-* How does TCP ensures packets delivery reliability?
-* What does NAT do?
-* What is static NAT?
-* What is dynamic NAT?
-* What does PAT stand for?
-* The larger the CIDR value the .... the network.
-* Explain briefly what are network classes
+- How many layers are there in OSI model? :+1:
+- What groups are OSI layers divided into? :+1:
+- Does the device on a higher layer include the capabilities of the devices in layers below it? Why? :+1:
+- If a network consists of 5 participants and a HUB, when participant 1 broadcasts a signal, how many participants will receive it? :+1:
+- In a network with a HUB, what happens when participants transmit a broadcast at once? :+1:
+- Describe on a high level frame components :+1:
+- What is a backoff period? :-1:
+- What does MAC stands for? :hand:
+- What layer switch belongs to?
+- What layer does router belong to?
+- What are the two components of an IP address?
+- How does subnet mask and its prefix indicate which octets describe network?
+- What does ARP stand for?
+- What is the high level structure of a TCP packet?
+- How does TCP ensures packets delivery reliability?
+- What does NAT do?
+- What is static NAT?
+- What is dynamic NAT?
+- What does PAT stand for?
+- The larger the CIDR value the .... the network.
+- Explain briefly what are network classes
     <details>
     <summary>click to see the answer</summary>
 
@@ -357,7 +412,7 @@ TODO: pick up here
 
     </details>
 
-* Explain what are CIDR networks and how to calculate CIDR
+- Explain what are CIDR networks and how to calculate CIDR
     <details>
     <summary>click to see the answer</summary>
 
@@ -370,33 +425,33 @@ TODO: pick up here
 
     </details>
 
-* What CIDR represents all IP addresses
+- What CIDR represents all IP addresses
     <details>
     <summary>click to see the answer</summary>
 
-    0.0.0.0/0
+  0.0.0.0/0
 
     </details>
 
-* What CIDR represents 1 IP address
+- What CIDR represents 1 IP address
     <details>
     <summary>click to see the answer</summary>
 
-    1.2.3.4/32
+  1.2.3.4/32
 
     </details>
 
 ### VPC
 
-* How many default VPCs per region/per account are there?
+- How many default VPCs per region/per account are there?
     <details>
     <summary>click to see the answer</summary>
 
-    1
+  1
 
     </details>
 
-* What are the CIDR limits for AWS VPC
+- What are the CIDR limits for AWS VPC
     <details>
     <summary>click to see the answer</summary>
 
@@ -409,15 +464,15 @@ TODO: pick up here
 
     </details>
 
-* Can you launch an AWS service directly into a VPC?
+- Can you launch an AWS service directly into a VPC?
     <details>
     <summary>click to see the answer</summary>
 
-    No, services use subnets to be launched from
+  No, services use subnets to be launched from
 
     </details>
 
-* What is a good default number or VPCs subnets and why?
+- What is a good default number or VPCs subnets and why?
     <details>
     <summary>click to see the answer</summary>
 
@@ -428,23 +483,23 @@ TODO: pick up here
 
     </details>
 
-* What is the level of isolation & resiliency for a VPC?
+- What is the level of isolation & resiliency for a VPC?
     <details>
     <summary>click to see the answer</summary>
 
-    Regional
+  Regional
 
     </details>
 
-* What is the default setting for the in and outgoing traffic in a VPC?
+- What is the default setting for the in and outgoing traffic in a VPC?
     <details>
     <summary>click to see the answer</summary>
 
-    IN and OUT traffic is blocked by default
+  IN and OUT traffic is blocked by default
 
     </details>
 
-* What are the VPC's tenancy models?
+- What are the VPC's tenancy models?
     <details>
     <summary>click to see the answer</summary>
 
@@ -456,7 +511,7 @@ TODO: pick up here
 
     </details>
 
-* What settings to use to enable DNS hostnames for entities with public IP addresses in a VPC and switch on DNS support?
+- What settings to use to enable DNS hostnames for entities with public IP addresses in a VPC and switch on DNS support?
     <details>
     <summary>click to see the answer</summary>
 
@@ -467,43 +522,43 @@ TODO: pick up here
 
     </details>
 
-* What is the subnet resiliency level?
+- What is the subnet resiliency level?
     <details>
     <summary>click to see the answer</summary>
 
-    AZ resilient
+  AZ resilient
 
     </details>
 
-* Can a subnet be in multiple AZs?
+- Can a subnet be in multiple AZs?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* Can the subnet be moved into another AZ?
+- Can the subnet be moved into another AZ?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* **Can a subnet overlap with other subnets?**
+- **Can a subnet overlap with other subnets?**
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* Can you use all the available IP addresses in a subnet?
+- Can you use all the available IP addresses in a subnet?
     <details>
     <summary>click to see the answer</summary>
 
-    No, there are 5 that are reserved.
+  No, there are 5 that are reserved.
     <ul>
     <li>first address cannot be used</li>
     <li>second address cannot be used (used by VPC router)</li>
@@ -514,71 +569,71 @@ TODO: pick up here
 
     </details>
 
-* Are there any charges for creating VPCs and Subnets?
+- Are there any charges for creating VPCs and Subnets?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* How to get VPC router into your VPC?
+- How to get VPC router into your VPC?
     <details>
     <summary>click to see the answer</summary>
 
-    VPC router is a global service available by default in every VPC, so no need to configure anything.
+  VPC router is a global service available by default in every VPC, so no need to configure anything.
 
     </details>
 
-* What is the role of VCP Router
+- What is the role of VCP Router
     <details>
     <summary>click to see the answer</summary>
 
-    It routes traffic between subnets of a VPC
+  It routes traffic between subnets of a VPC
 
     </details>
 
-* How many route tables can a subnet have associated with it?
+- How many route tables can a subnet have associated with it?
     <details>
     <summary>click to see the answer</summary>
 
-    1
+  1
 
     </details>
 
-* What does the route table control?
+- What does the route table control?
     <details>
     <summary>click to see the answer</summary>
 
-    Route table controls the destination of the data leaving the subnet. In can be within a subnet or a gateway address.
+  Route table controls the destination of the data leaving the subnet. In can be within a subnet or a gateway address.
 
     </details>
 
-* What is the resiliency mode of an internet gateway?
+- What is the resiliency mode of an internet gateway?
     <details>
     <summary>click to see the answer</summary>
 
-    Regionally resilient
+  Regionally resilient
 
     </details>
 
-* How many IGW can a VPC have?
+- How many IGW can a VPC have?
     <details>
     <summary>click to see the answer</summary>
 
-    0 or 1
+  0 or 1
 
     </details>
 
-* What happens is a VPC has an IGW?
+- What happens is a VPC has an IGW?
     <details>
     <summary>click to see the answer</summary>
 
-    This VPC is publicly available.
+  This VPC is publicly available.
 
     </details>
 
-* List actions required to make a subnet public
+- List actions required to make a subnet public
     <details>
     <summary>click to see the answer</summary>
 
@@ -593,127 +648,127 @@ TODO: pick up here
 
     </details>
 
-* Where is the public IP of a service (for example EC2) running in a VPC maintained?
+- Where is the public IP of a service (for example EC2) running in a VPC maintained?
     <details>
     <summary>click to see the answer</summary>
 
-    In the IGW, NOT in the VPC where the service is located
+  In the IGW, NOT in the VPC where the service is located
 
     </details>
 
-* What does NACL stand for?
+- What does NACL stand for?
     <details>
     <summary>click to see the answer</summary>
 
-    Network Access Control List. Works similar as Azure security group.
-    Once it matches it stops.
+  Network Access Control List. Works similar as Azure security group.
+  Once it matches it stops.
 
     </details>
 
-* Is Security Group stateless or stateful?
+- Is Security Group stateless or stateful?
     <details>
     <summary>click to see the answer</summary>
 
-    Stateful. Security group is more like Azure private endpoint.
+  Stateful. Security group is more like Azure private endpoint.
 
     </details>
 
-* **What is the implicit setting for a security group?**
+- **What is the implicit setting for a security group?**
     <details>
     <summary>click to see the answer</summary>
 
-    Implicit deny - everything is denied by default and only things you allow are allowed.
+  Implicit deny - everything is denied by default and only things you allow are allowed.
 
     </details>
 
-* In a security group is traffic and response separate?
+- In a security group is traffic and response separate?
     <details>
     <summary>click to see the answer</summary>
 
-    No, a security group is stateful, so traffic and response to it is covered by the same rule.
+  No, a security group is stateful, so traffic and response to it is covered by the same rule.
 
     </details>
 
-* Why would you use NACL in combination with an SG?
+- Why would you use NACL in combination with an SG?
     <details>
     <summary>click to see the answer</summary>
 
-    NACL allows for adding an explicit DENY rule
+  NACL allows for adding an explicit DENY rule
 
     </details>
 
-* If the traffic is not crossing the boundary of a subnet, would you use NACL or SG?
+- If the traffic is not crossing the boundary of a subnet, would you use NACL or SG?
     <details>
     <summary>click to see the answer</summary>
 
-    Use SG, NACL has no effect within subnet
+  Use SG, NACL has no effect within subnet
 
     </details>
 
-* What does IP masquerading do?
+- What does IP masquerading do?
     <details>
     <summary>click to see the answer</summary>
 
-    Hides whole private CIDR IP block behind a single public IP
+  Hides whole private CIDR IP block behind a single public IP
 
     </details>
 
-* What is the resiliency level of a NAT Gateway?
+- What is the resiliency level of a NAT Gateway?
     <details>
     <summary>click to see the answer</summary>
 
-    AZ
+  AZ
 
     </details>
 
-* Does a NAT Gateway work with IPv6?
+- Does a NAT Gateway work with IPv6?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* What SSH option is used to connect secrely to a Bastion server?
+- What SSH option is used to connect secrely to a Bastion server?
     <details>
     <summary>click to see the answer</summary>
 
-    SSH Agent Forwarding
+  SSH Agent Forwarding
     <p><code>ssh -A</code></p>
 
-
     </details>
-* What are points of failure for VPN site-to-site connection?
+
+- What are points of failure for VPN site-to-site connection?
     <details>
     <summary>click to see the answer</summary>
 
-     ```plantuml
-     @startuml
-     box "AWS VPC"
-     "router" -> "AWS Public zone"
-     end box
-     box "AWS Public Zone"
-     participant "Virtual Gateway" as vgw
-     participant "VPN" as vpn
-     vgw <-> vpn
+  ```plantuml
+  @startuml
+  box "AWS VPC"
+  "router" -> "AWS Public zone"
+  end box
+  box "AWS Public Zone"
+  participant "Virtual Gateway" as vgw
+  participant "VPN" as vpn
+  vgw <-> vpn
 
-     vpn -> "Endpoint1"
-     vpn -> "Endpoint2"
-     end box
-     box "Public Internet"
-     participant "Customer Gateway" as cgw
-     cgw ->
-     end box
-     "AWS Public zone" -> "Public internet"
+  vpn -> "Endpoint1"
+  vpn -> "Endpoint2"
+  end box
+  box "Public Internet"
+  participant "Customer Gateway" as cgw
+  cgw ->
+  end box
+  "AWS Public zone" -> "Public internet"
 
-     "Public internet" -> "On prem router"
-     @enduml
-     ```
+  "Public internet" -> "On prem router"
+  @enduml
+  ```
 
     </details>
 
-* What are VPC flow logs?
-* Do VPC flow logs capture metadata or contents of a request?
+- What are VPC flow logs?
+- Do VPC flow logs capture metadata or contents of a request?
   <details>
   <summary>click to see the answer</summary>
 
@@ -721,11 +776,19 @@ TODO: pick up here
 
   </details>
 
+#### VPC Peering
+
+- Can you peer more than one VPC together?
+    <details>
+    <summary>click to see the answer</summary>
+     No
+    </details>
+
 ### Route 53
 
-* What is the difference between a hosted zone and a hosted zone group?
-* Which DNS record points to IPv6 address?
-* What is the difference between a CNAME and an ALIAS?
+- What is the difference between a hosted zone and a hosted zone group?
+- Which DNS record points to IPv6 address?
+- What is the difference between a CNAME and an ALIAS?
     <details>
     <summary>click to see the answer</summary>
     <ul>
@@ -733,9 +796,9 @@ TODO: pick up here
     <li>ALIAS maps a name to AWS resource - default for the exam. AWS specific implementation</li>
     </ul>
     </details>
-* What does CNAME stand for?
-* Can CNAMEs point to an IP address?
-* How many DNS root servers exist?
+- What does CNAME stand for?
+- Can CNAMEs point to an IP address?
+- How many DNS root servers exist?
     <details>
     <summary>click to see the answer</summary>
     13
@@ -743,10 +806,10 @@ TODO: pick up here
 
 #### Public Hosted Zones
 
-* What are R53 public hosted zones?
-* How many name servers does R53 alocate?
-* What records to use to point at the hosted name servers?
-* What is the DNS resolver in a VPC instance?
+- What are R53 public hosted zones?
+- How many name servers does R53 alocate?
+- What records to use to point at the hosted name servers?
+- What is the DNS resolver in a VPC instance?
     <details>
     <summary>click to see the answer</summary>
     VPC+2 IP
@@ -754,8 +817,8 @@ TODO: pick up here
 
 #### Private Hosted Zones
 
-* Can you access the zone in the VPC?
-* How to run intranet and public facing web page on the same DNS?
+- Can you access the zone in the VPC?
+- How to run intranet and public facing web page on the same DNS?
     <details>
     <summary>click to see the answer</summary>
     Split-View
@@ -763,17 +826,17 @@ TODO: pick up here
 
 #### Routing Types
 
-* What is simple routing?
-* What are health checkers?
-* Can health checks be performed on targets outside of AWS resources?
-* What protocols are supported by health checkers?
-* What checks are supported?
+- What is simple routing?
+- What are health checkers?
+- Can health checks be performed on targets outside of AWS resources?
+- What protocols are supported by health checkers?
+- What checks are supported?
     <details>
     <summary>click to see the answer</summary>
     Endpoint, CloudWatch Alarm, Checks of Checks
     </details>
-* What is failover routing?
-* What is a multivalue routing
+- What is failover routing?
+- What is a multivalue routing
     <details>
     <summary>click to see the answer</summary>
     Can create many records with the same name
@@ -781,27 +844,27 @@ TODO: pick up here
     Improves availability
     </details>
 
-* What is a weighted routing
-* What is the weight formula
+- What is a weighted routing
+- What is the weight formula
     <details>
     <summary>click to see the answer</summary>
     Record weight vs total weight, each of the 3 records.
     Use when u want to control the distribution of the DNS queries
     </details>
-* When to use latency based routing
-* When to use geo-location based routing
+- When to use latency based routing
+- When to use geo-location based routing
     <details>
     <summary>click to see the answer</summary>
     It returns relevant locations only, NOT based on goe-proximity
     </details>
-* When to use geo-proximity routing?
-* What is a geo-proximity bias?
+- When to use geo-proximity routing?
+- What is a geo-proximity bias?
     <details>
     <summary>click to see the answer</summary>
     Expands or shrinks the location of the routing zone
     </details>
 
-* What is the difference between Route 53 routing policies and load balancing?
+- What is the difference between Route 53 routing policies and load balancing?
     <details>
     <summary>click to see the answer</summary>
     Load balancer is actually routing traffic to the backend services whereas DNS routing returns a DNS resolver server location.
@@ -809,66 +872,67 @@ TODO: pick up here
 
 #### Registering a domain
 
-* What are different scenarios for registering a domain
+- What are different scenarios for registering a domain
     <details>
     <summary>click to see the answer</summary>
     <ul>
     <li>Registrar and Public DNS Hosting role</li>
 
-    ```plantuml
-    @startuml domain-registration-traditional
-    !theme materia-outline
-    actor Developer as user
-    participant "Route53\nRegistrar Role" as r53_registrar
-    participant "Route53\nDNS Hosting Role" as r53_dns_hosting
-    participant "TLD Server for *.domain" as tld_server
-    user -> r53_registrar: Requests domain registration\nand pays 1 time fee
-    r53_registrar -> r53_dns_hosting : Requests cretion of public hosted zone
-    return 4x Name Servers
+  ```plantuml
+  @startuml domain-registration-traditional
+  !theme materia-outline
+  actor Developer as user
+  participant "Route53\nRegistrar Role" as r53_registrar
+  participant "Route53\nDNS Hosting Role" as r53_dns_hosting
+  participant "TLD Server for *.domain" as tld_server
+  user -> r53_registrar: Requests domain registration\nand pays 1 time fee
+  r53_registrar -> r53_dns_hosting : Requests cretion of public hosted zone
+  return 4x Name Servers
 
-    r53_registrar -> tld_server : Passes the Name Servers to
+  r53_registrar -> tld_server : Passes the Name Servers to
 
-    tld_server -> tld_server : Creates entries\nfor the Name Servers
+  tld_server -> tld_server : Creates entries\nfor the Name Servers
 
-    tld_server -> r53_dns_hosting : Points to 4 NS Servers in Public Hosted Zone
+  tld_server -> r53_dns_hosting : Points to 4 NS Servers in Public Hosted Zone
 
-    @enduml
-    ```
+  @enduml
+  ```
 
     <li>Hosting only role</li>
 
-    ```plantuml
-    @startuml domain-registration-traditional
-    !theme materia-outline
-    actor Developer as user
-    participant "Route53\nRegistrar Role" as r53_registrar
-    participant "3rd Party Domain Hosting" as r53_dns_hosting
-    participant "TLD Server for *.domain" as tld_server
-    user -> r53_registrar: Requests domain registration\nand pays 1 time fee
-    r53_registrar -> r53_dns_hosting : Requests cretion of public hosted zone
-    return 4x Name Servers
+  ```plantuml
+  @startuml domain-registration-traditional
+  !theme materia-outline
+  actor Developer as user
+  participant "Route53\nRegistrar Role" as r53_registrar
+  participant "3rd Party Domain Hosting" as r53_dns_hosting
+  participant "TLD Server for *.domain" as tld_server
+  user -> r53_registrar: Requests domain registration\nand pays 1 time fee
+  r53_registrar -> r53_dns_hosting : Requests cretion of public hosted zone
+  return 4x Name Servers
 
-    r53_registrar -> tld_server : Passes the Name Servers to
+  r53_registrar -> tld_server : Passes the Name Servers to
 
-    tld_server -> tld_server : Creates entries\nfor the Name Servers
+  tld_server -> tld_server : Creates entries\nfor the Name Servers
 
-    tld_server -> r53_dns_hosting : Points to 4 NS Servers in Public Hosted Zone
+  tld_server -> r53_dns_hosting : Points to 4 NS Servers in Public Hosted Zone
 
-    @enduml
-    ```
+  @enduml
+  ```
+
     </ul>
     </details>
 
 ### Load Balancers
 
-* What is LCU?
-* How load balancer is priced?
-* Describe briefly ALB architecture
-* How many load balancing nodes does ALB have as a minimum?
-* What is the default distribution algorithm?
-* What is cross zone load balancing?
-* What is a listener configuration?
-* What types of load balancers are there?
+- What is LCU?
+- How load balancer is priced?
+- Describe briefly ALB architecture
+- How many load balancing nodes does ALB have as a minimum?
+- What is the default distribution algorithm?
+- What is cross zone load balancing?
+- What is a listener configuration?
+- What types of load balancers are there?
     <details>
     <summary>click to see the answer</summary>
     <ul>
@@ -877,7 +941,7 @@ TODO: pick up here
     <li>C(lassic)LB</li>
     </ul>
     </details>
-* How can load balancer handle SSL offloading?
+- How can load balancer handle SSL offloading?
     <details>
     <summary>click to see the answer</summary>
 
@@ -889,23 +953,23 @@ TODO: pick up here
 
     </details>
 
-* What is session stickiness?
-* How does a load balancer enable session stickiness?
+- What is session stickiness?
+- How does a load balancer enable session stickiness?
     <details>
     <summary>click to see the answer</summary>
 
-    Cookie 1s to 7 days. It is generally better to use stateless servers and host the state somewhere else, either in a database of on the client side in the case of SPA.
+  Cookie 1s to 7 days. It is generally better to use stateless servers and host the state somewhere else, either in a database of on the client side in the case of SPA.
 
     </details>
 
 #### Application Load Balancer (ALB)
 
-* What layer is ALB on?
+- What layer is ALB on?
     <details>
     <summary>click to see the answer</summary>
     7
     </details>
-* What makes ALB internet facing?
+- What makes ALB internet facing?
     <details>
     <summary>click to see the answer</summary>
     Presence of public IP
@@ -913,96 +977,97 @@ TODO: pick up here
 
 #### Network Load Balancer (NLB)
 
-* What layer is NLB on?
-* Is NLB a performance-oriented load balancer?
+- What layer is NLB on?
+- Is NLB a performance-oriented load balancer?
 
 #### Gateway Load Balancer
 
-* What is the usecase for a gateway load balancer?
+- What is the usecase for a gateway load balancer?
     <details>
     <summary>click to see the answer</summary>
 
-    Load balances between multiple security appliances
+  Load balances between multiple security appliances
 
     </details>
 
-* What are 2 components of a GWLB?
+- What are 2 components of a GWLB?
     <details>
     <summary>click to see the answer</summary>
 
-    GWLB endpoints
-    GWLB instances
+  GWLB endpoints
+  GWLB instances
 
     </details>
 
-* What protocol is used by GWLB?
+- What protocol is used by GWLB?
     <details>
     <summary>click to see the answer</summary>
 
-    GENEVE
+  GENEVE
 
     </details>
 
-* How does GWLB endpoint integrates with the existing VPC traffic?
+- How does GWLB endpoint integrates with the existing VPC traffic?
     <details>
     <summary>click to see the answer</summary>
 
-    It is added to a route table as a nex hop in the traffic
+  It is added to a route table as a nex hop in the traffic
 
     </details>
 
 ### Cloud Front
 
-* What does CDN stand for?
+- What does CDN stand for?
 
 ### Global Accelerator
 
-* What are anycast IP addresses?
+- What are anycast IP addresses?
 
 ## Compute
+
 ### RDS
 
-* What are some of the downsides of putting a database on EC2 instnace?
-* What is an RDS Instance?
-* Can you connect to RDS instance using IP?
+- What are some of the downsides of putting a database on EC2 instnace?
+- What is an RDS Instance?
+- Can you connect to RDS instance using IP?
     <details>
     <summary>click to see the answer</summary>
     No, you have to use CNAME DNS record
     </details>
 
-* What is the resiliency level of an RDS instance?
+- What is the resiliency level of an RDS instance?
     <details>
     <summary>click to see the answer</summary>
     AZ, also storage (EBS)
     </details>
 
-* Explain pricing model of RDS
+- Explain pricing model of RDS
     <details>
     <summary>click to see the answer</summary>
     ALlocated GM/month
     Additional storage charges if applicable
     </details>
 
-* Can you reuse an security group with RDS?
+- Can you reuse an security group with RDS?
     <details>
     <summary>click to see the answer</summary>
     Yes
     </details>
 
-* Why do we need to configure subnet groups when provisioning an RDS database instance?
-* Is the multi AZ feature available in the free tier?
+- Why do we need to configure subnet groups when provisioning an RDS database instance?
+- Is the multi AZ feature available in the free tier?
     <details>
     <summary>click to see the answer</summary>
     No
     </details>
 
-* Can the standby replica be accessed directly?
+- Can the standby replica be accessed directly?
     <details>
     <summary>click to see the answer</summary>
     No, it's just an availability improvement.
     </details>
 
-* What is synchronous Replication
+- What is synchronous Replication
     <details>
     <summary>click to see the answer</summary>
     Multi AZ, same AWS region
@@ -1010,44 +1075,44 @@ TODO: pick up here
 
 #### RDS Backup & Restore
 
-* What are RTO and RPO?
-    RP(oint)O - time  between last working backup and data loss event
-    RT(ime)O - time between data loss event and full recovery
+- What are RTO and RPO?
+  RP(oint)O - time between last working backup and data loss event
+  RT(ime)O - time between data loss event and full recovery
 
-* Do manual snapshots expire?
+- Do manual snapshots expire?
     <details>
     <summary>click to see the answer</summary>
     No
     </details>
 
-* What are transaction logs?
-    Stored every 5 minitest (lowers RPO)
+- What are transaction logs?
+  Stored every 5 minitest (lowers RPO)
 
-* Do automated backups expire?
+- Do automated backups expire?
     <details>
     <summary>click to see the answer</summary>
     Yes, you can set up to 35 days.
     </details>
 
-* **How does the restore process work?**
+- **How does the restore process work?**
     <details>
     <summary>click to see the answer</summary>
     Backups are restored from the closest snapshot (from S3) and than transaction logs are replayed on top of the backup. Restoring snapshots can be a long time.
     </details>
 
-* Can read replicas be created in a different regions?
+- Can read replicas be created in a different regions?
     <details>
     <summary>click to see the answer</summary>
     Yes
     </details>
 
-* **How many read replicas can you have per RDS DB Instance?**
+- **How many read replicas can you have per RDS DB Instance?**
     <details>
     <summary>click to see the answer</summary>
     5
     </details>
 
-* **Why do read replicas matter?**
+- **Why do read replicas matter?**
     <details>
     <summary>click to see the answer</summary>
     <ul>
@@ -1060,7 +1125,7 @@ TODO: pick up here
 
 #### Data Security
 
-* How is encryption at rest supported?
+- How is encryption at rest supported?
     <details>
     <summary>click to see the answer</summary>
     Handled by host
@@ -1073,68 +1138,68 @@ TODO: pick up here
 
 ### EC2
 
-* 👍 What does EC2 stand for?
+- 👍 What does EC2 stand for?
     <details>
     <summary>click to see the answer</summary>
 
-    Elastic Compute 2
+  Elastic Compute 2
 
     </details>
 
-* Is EC2 going to fail when az (zone) fails?
-* 👍 Are you still getting charged when EC2 instance is stopped? If yes for what component?
+- Is EC2 going to fail when az (zone) fails?
+- 👍 Are you still getting charged when EC2 instance is stopped? If yes for what component?
     <details>
     <summary>click to see the answer</summary>
 
-    Yes, for storage
+  Yes, for storage
 
     </details>
 
-* 👍 Is deleting an EC2 instance a reversible operation?
+- 👍 Is deleting an EC2 instance a reversible operation?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* What does AMI stand for?
-* What kinds of permissions are on the AMI?
-* What port number RDP service runs on?
+- What does AMI stand for?
+- What kinds of permissions are on the AMI?
+- What port number RDP service runs on?
     <details>
     <summary>click to see the answer</summary>
 
-    3389
+  3389
 
     </details>
 
-* How many times can you download private key for linux EC2 instance?
-* Can a single security group apply to multiple EC2 instances?
-* What is the resiliency model of EC2
+- How many times can you download private key for linux EC2 instance?
+- Can a single security group apply to multiple EC2 instances?
+- What is the resiliency model of EC2
     <details>
     <summary>click to see the answer</summary>
 
-    AZ, all things connected to EC2, like networking or storage run in the same AZ.
+  AZ, all things connected to EC2, like networking or storage run in the same AZ.
 
     </details>
 
-* After restarting EC2 instance, will it move to another random host?
+- After restarting EC2 instance, will it move to another random host?
     <details>
     <summary>click to see the answer</summary>
 
-    No, after restarting the EC2 instance boots up on the same host.
+  No, after restarting the EC2 instance boots up on the same host.
 
     </details>
 
-* What are the two conditions under which the instance can be relocated to another EC2 host?
+- What are the two conditions under which the instance can be relocated to another EC2 host?
     <details>
     <summary>click to see the answer</summary>
 
-    Host taken down for maintenance by AWE, EC2 instance stopped and started (not jus restarted)
+  Host taken down for maintenance by AWE, EC2 instance stopped and started (not jus restarted)
 
     </details>
 
-* What are the 5 EC2 instance types
+- What are the 5 EC2 instance types
     <details>
     <summary>click to see the answer</summary>
 
@@ -1151,34 +1216,34 @@ TODO: pick up here
 
     </details>
 
-* Explain storage types that can be attached to EC2
+- Explain storage types that can be attached to EC2
     <details>
     <summary>click to see the answer</summary>
 
-    Directly attached (hadrware)
-    Network attached
+  Directly attached (hadrware)
+  Network attached
 
     </details>
 
-* Explain key differences between Block, Volume and Object Storage
+- Explain key differences between Block, Volume and Object Storage
 
-* **Can you attach EBS storage between availability zones?**
+- **Can you attach EBS storage between availability zones?**
     <details>
     <summary>click to see the answer</summary>
 
-    <mark>No</mark>
+  <mark>No</mark>
 
     </details>
 
-* What mechanism can be used to create snapshots of EBS volumes between AZs?
+- What mechanism can be used to create snapshots of EBS volumes between AZs?
     <details>
     <summary>click to see the answer</summary>
 
-    S3 replication
+  S3 replication
 
     </details>
 
-* What are 2 volume types available?
+- What are 2 volume types available?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1189,25 +1254,25 @@ TODO: pick up here
 
     </details>
 
-* What is an IO Credit and how big is it?
+- What is an IO Credit and how big is it?
     <details>
     <summary>click to see the answer</summary>
 
-    IO Credit is a single chunk of data and is 16kb in size
+  IO Credit is a single chunk of data and is 16kb in size
 
     </details>
 
-* What is an IOPS?
+- What is an IOPS?
     <details>
     <summary>click to see the answer</summary>
 
-    1 IOPS is 1 IO Credit in 1 second
+  1 IOPS is 1 IO Credit in 1 second
 
     </details>
 
-* What EBS drives are designed for max performance?
+- What EBS drives are designed for max performance?
 
-* What are 2 types of HDD drives?
+- What are 2 types of HDD drives?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1218,7 +1283,7 @@ TODO: pick up here
 
     </details>
 
-* What are Instances Store Volumes?
+- What are Instances Store Volumes?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1232,9 +1297,9 @@ TODO: pick up here
 
     </details>
 
-* When to choose EBS vs Instance Store Volumes
+- When to choose EBS vs Instance Store Volumes
 
-* How does incremental copy work in S3 snapshots
+- How does incremental copy work in S3 snapshots
     <details>
     <summary>click to see the answer</summary>
 
@@ -1245,15 +1310,15 @@ TODO: pick up here
 
     </details>
 
-* What happens when incremental snapshot is deleted
+- What happens when incremental snapshot is deleted
     <details>
     <summary>click to see the answer</summary>
 
-    All prior snapshots are still kept safely
+  All prior snapshots are still kept safely
 
     </details>
 
-* Explain what it means that the EBS snapshot volume restores lazily
+- Explain what it means that the EBS snapshot volume restores lazily
     <details>
     <summary>click to see the answer</summary>
 
@@ -1262,39 +1327,39 @@ TODO: pick up here
 
     </details>
 
-* How many FRS you can have per region?
+- How many FRS you can have per region?
     <details>
     <summary>click to see the answer</summary>
 
-    50
+  50
 
     </details>
 
-* How does snapshot pricing work?
+- How does snapshot pricing work?
     <details>
     <summary>click to see the answer</summary>
 
-    Gigabyte-month, paid only for <mark>used</mark> data
+  Gigabyte-month, paid only for <mark>used</mark> data
 
     </details>
 
-* Can EC2 network interfaces be in different AZs?
+- Can EC2 network interfaces be in different AZs?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* What does AMI stand for?
+- What does AMI stand for?
     <details>
     <summary>click to see the answer</summary>
 
-    Amazon Machine Image
+  Amazon Machine Image
 
     </details>
 
-* What permission options does AMI have?
+- What permission options does AMI have?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1306,16 +1371,16 @@ TODO: pick up here
 
     </details>
 
-* **Are AMIs global?**
+- **Are AMIs global?**
     <details>
     <summary>click to see the answer</summary>
 
-    No, each region will have their own AMI for a given image.
-    AMI in a given region will work only in this region.
+  No, each region will have their own AMI for a given image.
+  AMI in a given region will work only in this region.
 
     </details>
 
-* Explain briefly lifecycle of AMI
+- Explain briefly lifecycle of AMI
     <details>
     <summary>click to see the answer</summary>
 
@@ -1328,58 +1393,58 @@ TODO: pick up here
 
     </details>
 
-* **What is "AMI baking"?**
+- **What is "AMI baking"?**
     <details>
     <summary>click to see the answer</summary>
 
-    It is a process of creating an AMI from an EC2 instance with all the dependencies and applications pre-installed.
+  It is a process of creating an AMI from an EC2 instance with all the dependencies and applications pre-installed.
 
     </details>
 
-* **Can AMI be edited/updated?**
+- **Can AMI be edited/updated?**
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* **What are you paying for when using AMI**
+- **What are you paying for when using AMI**
     <details>
     <summary>click to see the answer</summary>
 
-    You are billed for using EBS snapshots. Remember, snapshots are <mark>charged by space actually used by data</mark> not allocated.
+  You are billed for using EBS snapshots. Remember, snapshots are <mark>charged by space actually used by data</mark> not allocated.
 
     </details>
 
-* What is EC2 Instance Metadata
-    This is data about runtime environment of the instance
+- What is EC2 Instance Metadata
+  This is data about runtime environment of the instance
 
-* **What IP do you need to access to see the Instance Metadata information?**
+- **What IP do you need to access to see the Instance Metadata information?**
     <details>
     <summary>click to see the answer</summary>
 
-    (http) <mark>169.254.169.254</mark> /latest/metadata
+  (http) <mark>169.254.169.254</mark> /latest/metadata
 
     </details>
 
-* Is the metadata service encrypted?
+- Is the metadata service encrypted?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* Does the metadata service require authentication?
+- Does the metadata service require authentication?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* How to access user data for EC2 build automation?
+- How to access user data for EC2 build automation?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1391,32 +1456,32 @@ TODO: pick up here
 
     </details>
 
-* What metric measures how much time does it take to get a service in a ready state?
+- What metric measures how much time does it take to get a service in a ready state?
     <details>
     <summary>click to see the answer</summary>
 
-    Boot-Time-To-Service-Time
+  Boot-Time-To-Service-Time
 
     </details>
 
-* What is an instance profile?
+- What is an instance profile?
     <details>
     <summary>click to see the answer</summary>
 
-    It is a wrapper around an IAM role and is attached to an EC2 instance. Credentials are automatically renewed.
+  It is a wrapper around an IAM role and is attached to an EC2 instance. Credentials are automatically renewed.
 
     </details>
 
-* Can you use parameter store to store secrets?
+- Can you use parameter store to store secrets?
     <details>
     <summary>click to see the answer</summary>
 
-    Yes, is also supports versioning. Any changes to parameters can trigger events.
+  Yes, is also supports versioning. Any changes to parameters can trigger events.
     <p>You can also establish hierarchy by adding / in the name.</p>
 
     </details>
 
-* What types of parameters can be stored in PS?
+- What types of parameters can be stored in PS?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1428,15 +1493,15 @@ TODO: pick up here
 
     </details>
 
-* How to capture logs inside of an EC2 instance?
+- How to capture logs inside of an EC2 instance?
     <details>
     <summary>click to see the answer</summary>
 
-    Install CloudWatch agent
+  Install CloudWatch agent
 
     </details>
 
-* What are the 3 types of placement groups?
+- What are the 3 types of placement groups?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1475,27 +1540,27 @@ TODO: pick up here
 
     </details>
 
-* What technology is used in enhanced networking?
+- What technology is used in enhanced networking?
     <details>
     <summary>click to see the answer</summary>
 
-    SR-IVO - logical cards, higher PPS, better bandwidth. Most EC2 instance types have this available by default.
+  SR-IVO - logical cards, higher PPS, better bandwidth. Most EC2 instance types have this available by default.
 
     </details>
 
-* What is launch configuration and launch template?
-* Are launch configurations editable?
+- What is launch configuration and launch template?
+- Are launch configurations editable?
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
 #### Auto Scaling Groups
 
-* Where are auto scaling groups defined?
-* What are the 3 characteristics of an auto scaling group?
+- Where are auto scaling groups defined?
+- What are the 3 characteristics of an auto scaling group?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1507,16 +1572,16 @@ TODO: pick up here
 
     </details>
 
-* Are auto scaling groups regional?
+- Are auto scaling groups regional?
     <details>
     <summary>click to see the answer</summary>
 
-    Auto scaling group will try to provision an EC2 instance in a different AZ.
+  Auto scaling group will try to provision an EC2 instance in a different AZ.
 
     </details>
 
-* What are scaling policies?
-* What are sub types of dynamic scaling?
+- What are scaling policies?
+- What are sub types of dynamic scaling?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1530,7 +1595,7 @@ TODO: pick up here
 
 ## ECS
 
-* What modes does ECS run in
+- What modes does ECS run in
     <details>
     <summary>click to see the answer</summary>
 
@@ -1554,59 +1619,59 @@ TODO: pick up here
 
     </details>
 
-* What is task?
+- What is task?
     <details>
     <summary>click to see the answer</summary>
 
-    Container for containers (same as ACI group) - self contained app
+  Container for containers (same as ACI group) - self contained app
 
     </details>
 
-* What is task role?
+- What is task role?
     <details>
     <summary>click to see the answer</summary>
 
-    It is an IAM role that the task can assume to gain the credentials to interact with AWS resources
+  It is an IAM role that the task can assume to gain the credentials to interact with AWS resources
 
     </details>
 
-* What is service definition?
+- What is service definition?
     <details>
     <summary>click to see the answer</summary>
 
-    Defines task scalability and HA options.
+  Defines task scalability and HA options.
 
     </details>
 
-* What are the main ECS concepts
+- What are the main ECS concepts
     <details>
     <summary>click to see the answer</summary>
 
-    <img src="_media/ecs-concepts.png" alt="ECS concepts"></img>
+  <img src="_media/ecs-concepts.png" alt="ECS concepts"></img>
 
     </details>
 
 ### Lambda
 
-*  What resource can you allocate to lambda? :+1:
+- What resource can you allocate to lambda? :+1:
     <details>
     <summary>click to see the answer</summary>
 
-    Memory
+  Memory
 
     </details>
 
-* **What is the execution time limit on a lambda function?** :+1:
+- **What is the execution time limit on a lambda function?** :+1:
     <details>
     <summary>click to see the answer</summary>
 
-    15 min
+  15 min
 
     </details>
 
-* What are cloud watch events and EventBdirge?
-* What is Lambda edge?
-* What languages do lambda edge support?
+- What are cloud watch events and EventBdirge?
+- What is Lambda edge?
+- What languages do lambda edge support?
   <details>
   <summary>click to see the answer</summary>
 
@@ -1616,161 +1681,160 @@ TODO: pick up here
   </ul>
 
   </details>
-## Storage
 
-AWS Databases
+## Storage
 
 ### S3
 
-* What are the 2 constituent parts of S3 object?
-* What is the size limit of a single object?
-* Are buckets regional?
-* **Does a bucket name have to be globally uniq?**
-* How many objects can be stored in 1 bucket?
-* Can objects be nested in the bucket?
-* How can you simulate a folder name in a bucket?
-* What is another name that folders are refereed as?
-* What are the naming rules for a bucket?
+- What are the 2 constituent parts of S3 object?
+- What is the size limit of a single object?
+- Are buckets regional?
+- **Does a bucket name have to be globally uniq?**
+- How many objects can be stored in 1 bucket?
+- Can objects be nested in the bucket?
+- How can you simulate a folder name in a bucket?
+- What is another name that folders are refereed as?
+- What are the naming rules for a bucket?
     <details>
     <summary>click to see the answer</summary>
 
-    3 - 63 chars, all lowercase, no underscores </br>
-    have to start from a lowercase, letter or a number </br>
-    can't be IP formatted
+  3 - 63 chars, all lowercase, no underscores </br>
+  have to start from a lowercase, letter or a number </br>
+  can't be IP formatted
 
     </details>
 
-* How many buckets can you have in an account?
+- How many buckets can you have in an account?
     <details>
     <summary>click to see the answer</summary>
 
-    100 soft limit, 1000 hard limit
+  100 soft limit, 1000 hard limit
 
     </details>
 
-* Can you mount an S3 bucket like a block storage?
-* **Are S3s public by default?**
+- Can you mount an S3 bucket like a block storage?
+- **Are S3s public by default?**
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* What is the difference between S3 resource policy and identity policy?
-* What is an anonymous principal?
+- What is the difference between S3 resource policy and identity policy?
+- What is an anonymous principal?
     <details>
     <summary>click to see the answer</summary>
 
-    An principal that is not authenticated against AWS
+  An principal that is not authenticated against AWS
 
     </details>
 
-* How many policies can there be assigned to an S3 bucket?
+- How many policies can there be assigned to an S3 bucket?
     <details>
     <summary>click to see the answer</summary>
 
-    1
+  1
 
     </details>
 
-* What name requirement is there in an S3 bucket when you want to use it as static page hosting with a custom domain?
-* **Can you disable object versioning in an S3 bucket once it was enabled?**
+- What name requirement is there in an S3 bucket when you want to use it as static page hosting with a custom domain?
+- **Can you disable object versioning in an S3 bucket once it was enabled?**
     <details>
     <summary>click to see the answer</summary>
 
-    No. Accepted states: Disabled -> Enabled <-> Suspend
+  No. Accepted states: Disabled -> Enabled <-> Suspend
 
     </details>
 
-* What field is used to identify a version of an object?
+- What field is used to identify a version of an object?
     <details>
     <summary>click to see the answer</summary>
 
-    Id
+  Id
 
     </details>
 
-* How to fully delete a versioned object?
+- How to fully delete a versioned object?
     <details>
     <summary>click to see the answer</summary>
 
-    By specifying its version in the delete command
+  By specifying its version in the delete command
 
     </details>
 
-* **What is MFA delete**
-* What are the two main methods of encryption in S3
+- **What is MFA delete**
+- What are the two main methods of encryption in S3
     <details>
     <summary>click to see the answer</summary>
 
-    Client-Side & </br>
-    Server-Side
+  Client-Side & </br>
+  Server-Side
 
     </details>
 
-* What does SSE-C stand for?
+- What does SSE-C stand for?
     <details>
     <summary>click to see the answer</summary>
 
-    Server-Side Encryption with Customer-Provided Keys.
-    S3 encrypts data with keys provided by the customer.
-    Key is discarded after encryption, only key hash is stored.
+  Server-Side Encryption with Customer-Provided Keys.
+  S3 encrypts data with keys provided by the customer.
+  Key is discarded after encryption, only key hash is stored.
 
     </details>
 
-* What are the benefits of SSE-C model?
+- What are the benefits of SSE-C model?
     <details>
     <summary>click to see the answer</summary>
 
-    Save on CPU, more control over the encryption process (you hold the keys).
+  Save on CPU, more control over the encryption process (you hold the keys).
 
     </details>
 
-* What does SSE-S3 stand for?
+- What does SSE-S3 stand for?
     <details>
     <summary>click to see the answer</summary>
 
-    Server-Side Encryption with AWS S2-Managed Keys.
-    S3 creates a master key and a key for each object.
-    Master key is encrypted with object key and master key is discarded.
-    We have encrypted object, encrypted master key and public key used to encrypt the object.
+  Server-Side Encryption with AWS S2-Managed Keys.
+  S3 creates a master key and a key for each object.
+  Master key is encrypted with object key and master key is discarded.
+  We have encrypted object, encrypted master key and public key used to encrypt the object.
 
     </details>
 
-* What are the benefits of SSE-S3 model?
+- What are the benefits of SSE-S3 model?
     <details>
     <summary>click to see the answer</summary>
 
-    Key are managed by AWS, very low admin overhead.
+  Key are managed by AWS, very low admin overhead.
 
     </details>
 
-* What algorithm does SSE-S3 uses by default?
+- What algorithm does SSE-S3 uses by default?
     <details>
     <summary>click to see the answer</summary>
 
-    AES256
+  AES256
 
     </details>
 
-* What does SSE-KMS stand for?
+- What does SSE-KMS stand for?
     <details>
     <summary>click to see the answer</summary>
 
-    Server-Side Encryption with Customer-Managed Keys stored in AWS Key Management Service (KMS).
+  Server-Side Encryption with Customer-Managed Keys stored in AWS Key Management Service (KMS).
 
     </details>
 
-* What are the benefits of SSE-KMS model?
+- What are the benefits of SSE-KMS model?
     <details>
     <summary>click to see the answer</summary>
 
-    Someone else can manage the KMS, role separation. Key rotation control.
+  Someone else can manage the KMS, role separation. Key rotation control.
 
     </details>
 
-* What are storage classes types, compare main characteristics
+- What are storage classes types, compare main characteristics
     <details>
     <summary>click to see the answer</summary>
 
@@ -1809,7 +1873,7 @@ AWS Databases
 
     </details>
 
-* Explain the components of S3 storage pricing model
+- Explain the components of S3 storage pricing model
     <details>
     <summary>click to see the answer</summary>
 
@@ -1819,17 +1883,17 @@ AWS Databases
 
         </details>
 
-* What is the HTTP Status Code that S3 responds with upon successfully upload?
+- What is the HTTP Status Code that S3 responds with upon successfully upload?
     <details>
     <summary>click to see the answer</summary>
 
-    HTTP/1.1 200
+  HTTP/1.1 200
 
     </details>
 
-* What is a lifecycle configuration in S3
+- What is a lifecycle configuration in S3
 
-* Lifecycle configuration can apply to:
+- Lifecycle configuration can apply to:
     <details>
     <summary>click to see the answer</summary>
 
@@ -1838,7 +1902,7 @@ AWS Databases
 
     </details>
 
-* What are the types of lifecycle actions
+- What are the types of lifecycle actions
     <details>
     <summary>click to see the answer</summary>
 
@@ -1847,25 +1911,25 @@ AWS Databases
 
     </details>
 
-* When using transitions, how many days must an object remain in the Standard tier before moving automatically to lower tiers?
+- When using transitions, how many days must an object remain in the Standard tier before moving automatically to lower tiers?
     <details>
     <summary>click to see the answer</summary>
 
-    30 days
+  30 days
 
     </details>
 
-* When using transitions, how many days must an object remain in the lower tiers than standard before moving automatically to glacier or glacier deep archive?
+- When using transitions, how many days must an object remain in the lower tiers than standard before moving automatically to glacier or glacier deep archive?
     <details>
     <summary>click to see the answer</summary>
 
-    30 days
+  30 days
 
     </details>
 
-* Explain how would you use an expiration transition rule to save cost on storing old versions of objects?
+- Explain how would you use an expiration transition rule to save cost on storing old versions of objects?
 
-* What are the two types of replication supported by S3?
+- What are the two types of replication supported by S3?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1877,57 +1941,57 @@ AWS Databases
 
     </details>
 
-* How to choose a subset of objects to replicate
+- How to choose a subset of objects to replicate
 
-* Can you override a storage class in the replication destination bucket?
+- Can you override a storage class in the replication destination bucket?
     <details>
     <summary>click to see the answer</summary>
 
-    yes
+  yes
 
     </details>
 
-* How to observe and put time constraints on the replication process
+- How to observe and put time constraints on the replication process
     <details>
     <summary>click to see the answer</summary>
 
-    Use RTC (Replication Time Constraints)
+  Use RTC (Replication Time Constraints)
 
     </details>
 
-* **Is the replication retroactive**
+- **Is the replication retroactive**
     <details>
     <summary>click to see the answer</summary>
 
-    No, it only works on the objects created after the replication was switched on
+  No, it only works on the objects created after the replication was switched on
 
     </details>
 
-* **What feature must be enabled on both source and destination buckets for the replication to work?**
+- **What feature must be enabled on both source and destination buckets for the replication to work?**
     <details>
     <summary>click to see the answer</summary>
 
-    Versioning, can be activated when setting up the replication process.
+  Versioning, can be activated when setting up the replication process.
 
     </details>
 
-* **Does the replication process work both ways?**
+- **Does the replication process work both ways?**
     <details>
     <summary>click to see the answer</summary>
 
-    No, replication only works from the source -> destination.
+  No, replication only works from the source -> destination.
 
     </details>
 
-* **Can encrypted objects be replicated?**
+- **Can encrypted objects be replicated?**
     <details>
     <summary>click to see the answer</summary>
 
-    Yes, only with SSE-S3 and SSE-KMS
+  Yes, only with SSE-S3 and SSE-KMS
 
     </details>
 
-* **What objects cannot be replicated?**
+- **What objects cannot be replicated?**
     <details>
     <summary>click to see the answer</summary>
     <ul>
@@ -1937,15 +2001,15 @@ AWS Databases
     </ul>
     </details>
 
-* **Are deletes replicated?**
+- **Are deletes replicated?**
     <details>
     <summary>click to see the answer</summary>
 
-    No
+  No
 
     </details>
 
-* What are the potential scenarios when replication should be used?
+- What are the potential scenarios when replication should be used?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1959,15 +2023,15 @@ AWS Databases
 
     </details>
 
-* What can you use to provide the ability to upload (PUT) or download (GET) S3 objects in a secure way for non-authenticated users?
+- What can you use to provide the ability to upload (PUT) or download (GET) S3 objects in a secure way for non-authenticated users?
     <details>
     <summary>click to see the answer</summary>
 
-    S3 Presigned URLs
+  S3 Presigned URLs
 
     </details>
 
-* What are some architectures when using pre signed urls makes sense?
+- What are some architectures when using pre signed urls makes sense?
     <details>
     <summary>click to see the answer</summary>
 
@@ -1978,35 +2042,35 @@ AWS Databases
 
     </details>
 
-* Can you create a pre signed URL for an object you don't have access to?
+- Can you create a pre signed URL for an object you don't have access to?
     <details>
     <summary>click to see the answer</summary>
 
-    Yes, it will not work, but it's possible to create one.
+  Yes, it will not work, but it's possible to create one.
 
     </details>
 
-* How are pre signed URL permissions calculated?
+- How are pre signed URL permissions calculated?
     <details>
     <summary>click to see the answer</summary>
 
-    They match the identity that generated it but <b>at the time of generation</b>.
+  They match the identity that generated it but <b>at the time of generation</b>.
 
     </details>
 
-* Is it better to use IAM Role or IAM Identity when generating pre signed URL?
+- Is it better to use IAM Role or IAM Identity when generating pre signed URL?
     <details>
     <summary>click to see the answer</summary>
 
-    Use IAM Identity, because role credentials expire too soon.
+  Use IAM Identity, because role credentials expire too soon.
 
     </details>
 
-* How does S3 Select and S3 Glacier Select work and what does it provide?
+- How does S3 Select and S3 Glacier Select work and what does it provide?
     <details>
     <summary>click to see the answer</summary>
 
-    It allows retrieving parts of object by providing SQL-like statements. Some supported formats:
+  It allows retrieving parts of object by providing SQL-like statements. Some supported formats:
     <ul>
     <li>CSV</li>
     <li>JSON</li>
@@ -2016,18 +2080,18 @@ AWS Databases
 
     </details>
 
-* What are the two services to help you implement an event driven architecture based on S3?
+- What are the two services to help you implement an event driven architecture based on S3?
     <details>
     <summary>click to see the answer</summary>
 
-    S3 event Notifications
-    Event Bridge <- prefer to use this one
+  S3 event Notifications
+  Event Bridge <- prefer to use this one
 
     </details>
 
 ### EFS
 
-* What does EFS stand for?
+- What does EFS stand for?
   <details>
   <summary>click to see the answer</summary>
 
@@ -2035,180 +2099,192 @@ AWS Databases
 
   </details>
 
-* What standard EFS implements
+- What standard EFS implements
     <details>
     <summary>click to see the answer</summary>
     NFSv4
     </details>
 
-* What command would you use to mount a file system on Linux?
+- What command would you use to mount a file system on Linux?
     <details>
     <summary>click to see the answer</summary>
     `sudo mount /folder /device_name`
     </details>
 
-* Can you mount an EFS storage on multiple EC2 instances?
-* How to access EFS via VPC peering?
-* What do you use to mount EFS onto a target machine?
+- Can you mount an EFS storage on multiple EC2 instances?
+- How to access EFS via VPC peering?
+- What do you use to mount EFS onto a target machine?
     <details>
     <summary>click to see the answer</summary>
     Mount points
     </details>
-* Is EBS available for Linux and Windows servers?
+- Is EBS available for Linux and Windows servers?
     <details>
     <summary>click to see the answer</summary>
     Only for Linux
     </details>
-* What throughput modes are available in EFS?
-* What storage classes are available in EFS?
+- What throughput modes are available in EFS?
+- What storage classes are available in EFS?
 
 ### Aurora
 
-* What is Aurora Global Database?
+- What is Aurora Global Database?
 
 #### Database Migration Service
 
+### DynamoDB
+
+- What is the typicall usecase for DynamoDB?
+    <details>
+    <summary>click to see the answer</summary>
+    <ul>
+    <li>Serverless</li>
+    <li>Web apps</li>
+    </ul>
+    </details>
+
 ## Integration
+
 ### API Gateway
 
-* How do we connect to AWS services?
+- How do we connect to AWS services?
   <details>
   <summary>click to see the answer</summary>
 
   Each service has its own endpoint. For example:
-      <p><code>
-      <code>
-          https://[service_type].[region].amazonaws.com  </code>
-      </code>
-      </p>
+  <p><code>
+  <code>
+  https://[service_type].[region].amazonaws.com  </code>
+  </code>
+  </p>
   </details>
 
-* What does API Gateway allow to do?
+- What does API Gateway allow to do?
     <details>
     <summary>click to see the answer</summary>
 
-    Create, Monitor, Secure and Expose APIs. Managed service.
+  Create, Monitor, Secure and Expose APIs. Managed service.
 
     </details>
 
-* Can you pull data directly from Dynamo DB using API Gateway?
+- Can you pull data directly from Dynamo DB using API Gateway?
     <details>
     <summary>click to see the answer</summary>
 
-    Yes
+  Yes
 
     </details>
 
 ### SNS
 
-* What messaging pattern does SNS support?
+- What messaging pattern does SNS support?
     <details>
     <summary>click to see the answer</summary>
 
-    Pub Sub
+  Pub Sub
 
     </details>
 
-* Where do publishers send messages to?
+- Where do publishers send messages to?
     <details>
     <summary>click to see the answer</summary>
 
-    Topic
+  Topic
 
     </details>
 
-* How to apply filter to a subscriber's topic?
-* What is fanout?
-* What information SNS retunrns?
+- How to apply filter to a subscriber's topic?
+- What is fanout?
+- What information SNS retunrns?
     <details>
     <summary>click to see the answer</summary>
 
-    Delivery Status
-    Delivery Retries
+  Delivery Status
+  Delivery Retries
 
     </details>
 
-* What are step functions?
-* How step functions use state machines?
-* How to support long running order flow?
-* What is the maximum duration of the state machine?
+- What are step functions?
+- How step functions use state machines?
+- How to support long running order flow?
+- What is the maximum duration of the state machine?
 
 ### SQS
 
-* What SQS stand for?
+- What SQS stand for?
     <details>
     <summary>click to see the answer</summary>
 
-    Similar to Azure queue service in storage account. Either FIFO or standard, in standard delivery order is not guaranteed.
+  Similar to Azure queue service in storage account. Either FIFO or standard, in standard delivery order is not guaranteed.
 
     </details>
 
-* What is a visibility timeout?
-* What is a dead letter queue?
-* What are the differences between SNS and SQS?
+- What is a visibility timeout?
+- What is a dead letter queue?
+- What are the differences between SNS and SQS?
 
 ### Kinesis
 
-* What are kinesis streams?
-* What are good use cases for kinesis?
-* Kinesis is like Azure IoT Hub
+- What are kinesis streams?
+- What are good use cases for kinesis?
+- Kinesis is like Azure IoT Hub
 
 ## KMS (Key Management Service)
 
-* What security standard does KMS comply with?
+- What security standard does KMS comply with?
     <details>
     <summary>click to see the answer</summary>
 
-    FIPS-140-2
+  FIPS-140-2
 
     </details>
 
 ## Cloud Formation
 
-* What YAML tag need to follow if *AWSTemplateFromatVersion* is present in the file?
-* What tag controls the UI aspects of the service?
-* The ... section enables adding options selectable by users.
-* Template > Stack > Logical Resources. What happens when stack is deleted?
-* What field is referenced by default when using *! Ref* function?
+- What YAML tag need to follow if _AWSTemplateFromatVersion_ is present in the file?
+- What tag controls the UI aspects of the service?
+- The ... section enables adding options selectable by users.
+- Template > Stack > Logical Resources. What happens when stack is deleted?
+- What field is referenced by default when using _! Ref_ function?
 
 ## CloudWatch & Observability
 
-* What are the 3 components of CloudWatch?
+- What are the 3 components of CloudWatch?
     <details>
     <summary>click to see the answer</summary>
     Metrics, Logs, Events
     </details>
 
-* What is a Cloud Trail Event
-* How long does Cloud Trail store events?
+- What is a Cloud Trail Event
+- How long does Cloud Trail store events?
     <details>
     <summary>click to see the answer</summary>
 
-    Cloud Trail records events for up to 90 days.
+  Cloud Trail records events for up to 90 days.
 
     </details>
 
-* How much does Cloud Trail service cost
+- How much does Cloud Trail service cost
     <details>
     <summary>click to see the answer</summary>
 
-    Free
+  Free
 
     </details>
 
-* What are two types of cloud trail events?
+- What are two types of cloud trail events?
     <details>
     <summary>click to see the answer</summary>
 
-    Management and Data
+  Management and Data
 
     </details>
 
-* What is the default scope of cloud trail service?
+- What is the default scope of cloud trail service?
     <details>
     <summary>click to see the answer</summary>
 
-    Regional. For global services, a setting must be enabled.
+  Regional. For global services, a setting must be enabled.
 
     </details>
 
