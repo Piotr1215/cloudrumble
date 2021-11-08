@@ -43,6 +43,7 @@
     - [EFS](#efs)
     - [Aurora](#aurora)
       - [Database Migration Service](#database-migration-service)
+    - [DynamoDB](#dynamodb)
 12. [Integration](#integration)
     - [API Gateway](#api-gateway)
     - [SNS](#sns)
@@ -831,11 +832,11 @@ TODO: pick up here
 - Can health checks be performed on targets outside of AWS resources?
 - What protocols are supported by health checkers?
 - What checks are supported?
-    <details>
-    <summary>click to see the answer</summary>
-    Endpoint, CloudWatch Alarm, Checks of Checks
-    </details>
-- What is failover routing?
+  <details>
+  <summary>click to see the answer</summary>
+  Endpoint, CloudWatch Alarm, Checks of Checks
+  </details>
+  -What is failover routing?
 - What is a multivalue routing
     <details>
     <summary>click to see the answer</summary>
