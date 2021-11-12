@@ -30,6 +30,10 @@ two --> one
 - skinparam nodesep 10
 - skinparam ranksep 20
 
+## Controlling Layout
+
+c4 -[norank]-> c2
+
 ## Embedding images into diagrams
 
 ``` PlantUML
