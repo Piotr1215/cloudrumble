@@ -36,6 +36,7 @@
   * [Linux commands](linuxcommands.md)
   * [Tmux commands](tmuxcommands.md)
   * [Vim commands](vimcommands.md)
+  * [Sed commands by @adrianscheff](sedcommands.md)
 * **Other**
 * [Resources](resources.md)
 * [About Me](about.md)
