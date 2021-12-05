@@ -32,7 +32,8 @@ two --> one
 
 ## Controlling Layout
 
-c4 -[norank]-> c2
+- c4 -[norank]-> c2
+- use `!pragma layout elk` to simplify layout with [Eclipse Layout Kernel](https://www.eclipse.org/elk/)
 
 ## Embedding images into diagrams
 
