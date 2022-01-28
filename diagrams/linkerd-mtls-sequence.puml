@@ -1,0 +1,36 @@
+@startuml linkerd-mtls-sequence
+
+!define LOGOS https://raw.githubusercontent.com/plantuml-stdlib/gilbarbara-plantuml-sprites/v1.0/sprites
+
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <tupadr3/font-awesome-5/certificate>
+!include LOGOS/linkerd.puml
+
+'Styles
+!theme plain
+skinparam TitleBackgroundColor transparent
+
+'Title
+!define TITLE mTLS with linkerd
+title TITLE
+
+box "Control Plane\n<$linkerd>"
+    participant "<$certificate>\nCertificate Authority" as ca
+end box
+
+box "Data Plane\n<$linkerd>"
+    participant "<$certificate>\nData Plane Certificate" as da
+    participant "<$sa>\nServiceAccount" as sa
+    participant "<$pod>\nPod" as pod
+end box
+
+ca -> da : Issues
+    note right
+        Certificate expires after 24h
+        and is automatically rotated
+    end note
+da -> sa : Bound to
+sa -> pod : One per pod
+
+@enduml
