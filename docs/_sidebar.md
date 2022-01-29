@@ -7,7 +7,6 @@
     * [Introduction to Docker](/docker_intro.md)
     * [Containers Development](/containers.md)
   * [GitOps](/gitops_intro.md)
-  * [IaC - TACOS](/tacos.md)
 * **Certificates**
   * Azure
     * [AZ-303](/az_303_guide.md)
