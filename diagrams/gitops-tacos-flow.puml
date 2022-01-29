@@ -1,6 +1,6 @@
 @startuml gitops-tacos-flow
 !theme bluegray
-!include default-font.iuml
+''!include default-font.iuml
 
 mainframe **TACOS flow with GitOps**
 hide footbox
@@ -8,8 +8,8 @@ autonumber
 
 skinparam DefaultFontSize 16
 
-scale 800 width
-scale 600 height
+scale 1920 width
+scale 1078 height
 
 actor "QA Person A" as dev
 [-> dev : receives request to create a\nnew QA environment
