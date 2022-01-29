@@ -1,4 +1,4 @@
-# Spice up your Infrastructure as Code with some TACOS
+# Spice up your Infrastructure as Code with TACOS
 
 ## Introduction
 
@@ -10,21 +10,23 @@ IaC enables automated, repeatable and reliable creation and maintenance of any v
 
 Hashicorp's [terraform](https://www.terraform.io/) and the open source ecosystem built around it is nowadays de facto a standard for Infrastructure as Code IaC. Standalone terraform workflow is great, but quickly becomes unmanageable when used at scale.
 
+> If you want to learn about alternative tools moving towards Infrastructure as Data, check out [my recent blog](https://medium.com/itnext/infrastructure-as-code-the-next-big-shift-is-here-9215f0bda7ce) about [Crossplane](https://crossplane.io/).
+
 A typical simple implementation of a standard terraform workflow could consist of:
 
-- integrating terraform CLI into CI/CD pipelines by utilizing GitLab terraform runner or a standalone container
-- configuring terraform remote backend (also possible with GitLab) to store state enabling collaboration between different teams
-  - as a side note, state file needs to be locked if concurrent runs are enabled to avoid overrides when running in a single environment
+- integrating terraform CLI into CI/CD pipelines by utilizing a terraform runner or a standalone container
+- configuring terraform remote backend to store state enabling collaboration between different teams
+  - state file needs to be locked if concurrent runs are enabled to avoid overrides when running in a single environment
 
 The above steps are possible with the standard terraform tooling, but there are challenges that need to be addressed along the way too:
 
 - integration with common development best practices, like code reviews, updates via Merge Request, handling Feature Branches
 - RBAC; as the solution matures, different roles are able to perform different tasks in different environments, such as apply only, deletion etc
 - Audit history - who runs what, what was the result, ability to revert to previous state
-- Infrastructure governance & policies for example using OPA
+- Infrastructure governance & policies for example using OPA or Kyverno
 - Enabling of efficient self-service for Dev/QA teams, like creation and destruction of testing environments
 
-Doing IaC at scale in the right way is hard! Since we are not in a cloud environment, this is even harder. Doing so means investing significant time and resources to design, develop and maintain the solution.
+Doing IaC at scale in the right way is hard! This is even harder if done on prem. Doing so means investing significant time and resources to design, develop and maintain the solution.
 
 ## Time for TACOS
 
@@ -49,7 +51,8 @@ Typically a SaaS product providing a uniform layer of abstraction by integrating
 
 #### Remote operation mode
 
-One benefit come from the **remote operation mode** of the runtime concerns. Important to note is that any vendor that offers cloud workspaces also typically offers on prem dedicated runners, so ony the runtime and UI part are on the cloud. The actual deployments and configuration/data can be safely managed on prem behind a firewall.
+One benefit come from the **remote operation mode** of the runtime concerns.
+Important to note is that any vendor that offers cloud workspaces also typically offers on prem dedicated runners, so ony the runtime and UI part are on the cloud. The actual deployments and configuration/data can be safely managed on prem behind a firewall.
 
 #### Remote State management
 
@@ -59,11 +62,13 @@ Another benefit comes from the ability to manage different environments created 
 
 #### RBAC
 
-# Infrastructure as Code platform & workflow
+TODO: Fill RBAC
 
 #### Observability
 
-TACOS provide better **visibility** on what has happened in the environment in regards to changes made by terraform during the whole lifespan. With self-made approach we usually need to search through many runs of pipelines to see what resources were added, modified, deleted. This info is easily accessible in TACOS also with information who or what triggered that action. We can also see history of terraform plans.
+TACOS provide better **visibility** on what has happened in the environment in regards to changes made by terraform during the whole lifespan.
+Searching through many runs of pipelines to see what resources were added, modified, deleted becames easier.
+This info is easily accessible in TACOS also with information who or what triggered that action. We can also see history of terraform plans.
 
 #### Policy as Code
 
@@ -75,7 +80,7 @@ The below diagram shows a recommended TACOS flow with GitOps principles.
 
 ![TacosFlow](../diagrams/rendered/gitops-tacos-flow.png)
 
-It is worth pointing out that instead of communicating with TACOS provider directly via Web UI, it is also possible to use CLI or REST API.
+It is worth pointing out that instead of communicating with TACOS provider directly via Web UI, it is also possible to use CLI or REST API webhooks.
 
 The diagram captures only the infrastructure provisioning part. Once the VMs or other infrastructure are ready, the workload deployments can start. Applications deployment can be triggered by the TACOS provides, but it should be a separate pipeline.
 
@@ -92,48 +97,40 @@ Most of the TACOS providers offer a self-hosting option with TACOS runners behin
 ### Atlantis
 
 <https://www.runatlantis.io/> It’s also not a full TACOS but it was a first open source tool which tries to add terraform automation to PRs. Webhooks from PRs with terraform code change can be configured to communicate with Atlantis binary (which must be hosted within the infrastructure) where terraform plan and eventually apply can be run. It gives output back to PR for visibility and the process can be also configured that only PR with successful terraform plan can be merged.
-This functionality is currently available in all TACOS (via VCS flow), btw. original Atlantis developers are currently working in HashiCorp I think it would make sense to use it only if we want to create our flow without TACOS.
+
+This functionality is currently available in all TACOS (via VCS flow). Interesting fact, developers who designed Atlantis currently work in HashiCorp.
 
 ### Terraform Cloud TFC/Terraform Enterprise TFE
 
 <https://www.hashicorp.com/products/terraform>
 An offer from terraform original inventors - HashiCorp. Both of them can provide same functionality, the main difference is in the hosting schema. TFE is a private installation, where TFC is a classic multi-tenant SaaS offering.
-It covers all areas mentioned at the beginning of this article. I am going to use it as reference solution and I will mention differences in other products. But only the highest (business tier) in TFC supports private agents, so I think we can’t consider any other tier.
+It covers all areas mentioned at the beginning of this article. I am going to use it as reference solution and I will mention differences in other products.
+
 Useful concept here is also Notifications <https://www.terraform.io/docs/cloud/workspaces/notifications.html> it can trigger webhooks, send emails or notify slack channel after various events in a workspace.
 
 > HashiCorp is infamous for not having a clear pricing policy. Other companies are using that in their advertisements for competing solutions.
 
- I was trying to use TFC (didn’t want to host anything) where I wanted to have agents within my infrastructure, so only TFC for business was applicable there. They had a combination of number of users, number of concurrent runs and number of successful applies. It could be purchased only in advance for 1 year. They told me that it’s very important to choose parameters of contract right as they can’t be changed during the contract. If I remember it correctly they wanted around 12k USD per year for 5 users, 1 concurrent run and 100 applies per month. I also have heard from other people that they are trying to propose other schema based only just on a number of applies, something like 4$ for each.
-
-I am giving them credit for creating terraform and practically starting this industry but I don’t like their unfriendly business approach to customers. They also don’t offer any additional features in comparison to competitors.
+I am giving them credit for creating terraform and practically starting this industry, but they don’t offer any additional features in comparison to competitors.
 
 ### Scalr
 
-<https://www.scalr.com/> has a very comparable offering to TFC/TFE, all main features are included. They were openly advertising themselves as a replacement for TFC/TFE but with fair price policy, but I can’t find that statement on their website anymore
+<https://www.scalr.com/> has a very comparable offering to TFC/TFE, all main features are included. They were openly advertising themselves as a replacement for TFC/TFE but with fair price policy.
 They provide multi-tenant SaaS and self-managed solution (for higher volumes, minimal contract per year 30k USD, charged 40 USD per workspace monthly) as well.
 
 Scalr has a concept of Custom Hooks <https://docs.scalr.com/en/latest/workspaces.html#custom-hooks> which can enhance terraform workflow. It can run other terraform commands (like fmt), shell scripts and API calls before and after terraform plan or apply respectively.
 
 Scalr also has classic webhooks <https://docs.scalr.com/en/latest/webhooks.html> which can be triggered after various events. Configuration is split between webhooks and endpoints internally. It also has integration with Zapier.
 
-They used to have billing based on number of users and concurrent runs a few months back, when I compared it to TFC it was 2-3 times cheaper without rigid contract restrictions. If I remember it correctly they charged 500 USD per additional concurrent run monthly. Now they have pure consumption based plans with some form of prepaid credits and environment limitations.
-
-Due to private agents feature (which is necessary in my opinion) we can only consider the highest “Pro” tier. They are including 5 concurrent runs right away there. We can start small and easily grow with that plan. It has a concept of number of available runs and minutes in the plan and over usage is just added on the top of the main fee.
-We can disregard available minutes completely as we would use self-hosted agents.
-The only minor concern I have is that they are counting terraform plans and applies as same. Hard to estimate how much plans we will have during development to see if it would be a problem or not. It starts on $299 per month with 100 runs.
-<https://www.scalr.com/pricing>
-
-Regarding compliance and certifications they are referring to SOC2 on their website but it’s not clear there. They are advertising that they have customers on Azure Federal Cloud.
-
 Scalr has a concept of RBAC layers and inheritance (also for credentials, etc.). It can serve eg. as distinction between prod and non-prod or between projects. Cloud credentials can be defined in the top layer and then propagated down to particular workspaces. The same with authorization configuration.
 
 We can use Workspace state sharing <https://docs.scalr.com/en/latest/state_sharing.html> to share information between “platform” and “project scoped” environments. It’s actually more a matter of terraform itself, Scalr is helping with accessibility.
+
 In my opinion Scalr has better UI with more information about terraform runs. Eg. a view with number of added, changed, deleted resources per resource type with option to drill down into details. Compare that with plain terraform plan output when trying to see something particular in lengthy list.
-I have also a good experience with their support, they are helpful and reacting fast.
 
 ### Env0
 
-<https://www.env0.com/> has TACOS capabilities but it’s pretty different kind of beast than TFC or Scalr. It’s closer to general purpose CI/CD system as they are focusing a lot on Custom Flows <https://docs.env0.com/docs/custom-flows> where any kind of script, ansible, etc. can be added into terraform workflow (before and after apply, etc.). They support terraform and Terragrunt (I think it’s not important anymore) templates.
+<https://www.env0.com/> has TACOS capabilities but it’s pretty different than TFC or Scalr. It’s closer to general purpose CI/CD system as they are focusing a lot on Custom Flows <https://docs.env0.com/docs/custom-flows> where any kind of script, ansible, etc. can be added into terraform workflow (before and after apply, etc.). They support terraform and Terragrunt (I think it’s not important anymore) templates.
+
 It has capability to do automatic drift detection <https://docs.env0.com/docs/drift-detection> where Env0 can notify or take action after some external process or user is changing Cloud environment from outside of terraform.
 
 Env0 has an interesting concept of costs management. It can monitor real costs and correlate them with terraform deployments, it can also setup limits for teams and users on spending.
@@ -142,11 +139,9 @@ It can also work with TTL for whole environments and delete them automatically. 
 
 Besides interesting features mentioned above I also have a quite a lot concerns with other things. There is no support for PR automation with AzDO yet <https://docs.env0.com/docs/plan-on-pull-request> . It doesn’t provide access to statefiles, they are being managed somehow behind the scene. I also haven’t found any option to integrate with terraform CLI, so it seems it doesn’t support classic remote run like TFC or Scalr. Documentation is not providing enough details.
 
-Pricing model <https://www.env0.com/pricing> is going from charging per environment in basic tier to charging per maximum amount of applies per month in the business tier. Only that tier supports self-hosted agents, but it looks quite pricey and inflexible to me. With 200 applies per month it costs 1199 USD.
-
 ### Spacelift
 
-<https://spacelift.io/> same as Env0 has TACOS capabilities but it’s also pretty different than TFC or Scalr, but in different way than Env0. It’s also somehow closer to general purpose CI/CD systems and it’s probably the most customizable TACOS. Beside terraform it also supports Pulumi and plan to support also CloudFormation, Ansible and ARM templates was announced. It wants to provide wrapper and similar user experience regardless to chosen “backend” technology.
+<https://spacelift.io/> same as Env0 has TACOS capabilities but it’s also pretty different than TFC or Scalr, but in different way than Env0. It’s also somehow closer to general purpose CI/CD systems and it’s probably the most customizable TACOS. Beside terraform it also supports Pulumi and plan to support also CloudFormation, Ansible and ARM templates were announced. It wants to provide wrapper and similar user experience regardless to chosen “backend” technology.
 
 Regarding customizations it also offers Custom workflows <https://docs.spacelift.io/concepts/stack/stack-settings#customizing-workflow> where shell scripts can be added before and after terraform plan, destroy, etc. But it also supports Customized runner image <https://docs.spacelift.io> /integrations/docker#customizing-the-runner-image where practically anything can be added to Docker image. Also arbitrary files can be mounted to the run container. But these files must be uploaded to Spacelift first.
 
@@ -157,10 +152,6 @@ In addition to classic sharing of remote state between cloud workspaces (they ar
 It seems that Spacelift is also going forward with private module registry and provides like CI/CD for modules with tests <https://docs.spacelift.io> /vendors/terraform/module-registry#tests <https://docs.spacelift.io/concepts/run/test-case> against short-lived environments.
 
 Spacelift also has the most customizable options to work with OPA policies <https://www.youtube.com/watch?v=GWWybopkyko&t=2s>
-
-Spacelift uses a different pricing than competitors. Again we should consider only the highest tier “Enterprise SaaS” due private agents. But in that tier there are no environment/applies related restrictions, only number of users. Pricing for more users or agents is uncertain. Dedicated onboarding, training and support are included in the highest tier. It’s starting on $2000 per month.
-
-Spacelift is very different guy than others, it brings really interesting concepts to the table. Maybe higher price from the beginning can problematic.
 
 ## TACOS Providers Comparison Matrix
 

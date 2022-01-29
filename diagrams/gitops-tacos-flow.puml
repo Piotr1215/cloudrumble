@@ -61,7 +61,7 @@ This will contain login credentials etc.
 TACOS could initiate the pipeline process
 of deploying apps the the new infra.
 
-From TACOS API call to GitLab to trigger CI/CD.
+From TACOS API call to GitHub to trigger CI/CD.
 
 Spacelift does "destroy" at the end of env lifecycle.
 end note
