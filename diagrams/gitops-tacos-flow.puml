@@ -8,8 +8,9 @@ autonumber
 
 skinparam DefaultFontSize 16
 
-scale 1920 width
-scale 1078 height
+skinparam dpi 600
+'scale .2 
+'scale 600 height
 
 actor "QA Person A" as dev
 [-> dev : receives request to create a\nnew QA environment

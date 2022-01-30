@@ -2,13 +2,20 @@
 
 ## Introduction
 
-[Infrastructure as Code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) is a common pattern where virtualized infrastructure and auxiliary services can be managed using configuration expressed in almost any language, usually hosted in a source code repository.
+This article will help you understand what TACOS are and select a provider based on their capabilities.
+SREs, Ops Engineers or Architects will find this content useful.
+
+If you are a passionate cook or like to know how your cooking skills can help you with Infrastructure as Code, you will be disappointed.
+
+## Infrastructure as Code
+
+[IaC](https://en.wikipedia.org/wiki/Infrastructure_as_code) is a common pattern where virtualized infrastructure and auxiliary services can be managed using configuration expressed in almost any language, usually hosted in a source code repository.
 
 IaC enables automated, repeatable and reliable creation and maintenance of any virtualized infrastructure. This is especially important with creating environments on demand as well as managing infrastructure on multiple providers.
 
 ## Terraform fundamentals
 
-Hashicorp's [terraform](https://www.terraform.io/) and the open source ecosystem built around it is nowadays de facto a standard for Infrastructure as Code IaC. Standalone terraform workflow is great, but quickly becomes unmanageable when used at scale.
+Hashicorp's [terraform](https://www.terraform.io/) and the open source ecosystem built around it is nowadays the de facto a standard for Infrastructure as Code IaC. Standalone terraform workflow is great, but quickly becomes unmanageable when used at scale.
 
 > If you want to learn about alternative tools moving towards Infrastructure as Data, check out [my recent blog](https://medium.com/itnext/infrastructure-as-code-the-next-big-shift-is-here-9215f0bda7ce) about [Crossplane](https://crossplane.io/).
 
@@ -26,7 +33,7 @@ The above steps are possible with the standard terraform tooling, but there are 
 - Infrastructure governance & policies for example using OPA or Kyverno
 - Enabling of efficient self-service for Dev/QA teams, like creation and destruction of testing environments
 
-Doing IaC at scale in the right way is hard! This is even harder if done on prem. Doing so means investing significant time and resources to design, develop and maintain the solution.
+Doing IaC at scale in the right way is hard! This is even harder if done on prem or hybrid scenarios. Doing so means investing significant time and resources to design, develop and maintain the solution.
 
 ## Time for TACOS
 
@@ -52,17 +59,17 @@ Typically a SaaS product providing a uniform layer of abstraction by integrating
 #### Remote operation mode
 
 One benefit come from the **remote operation mode** of the runtime concerns.
-Important to note is that any vendor that offers cloud workspaces also typically offers on prem dedicated runners, so ony the runtime and UI part are on the cloud. The actual deployments and configuration/data can be safely managed on prem behind a firewall.
+Important to note is that any vendor that offers cloud workspaces also typically offers ability to setup runners in your environment (on prem or cloud), so only the runtime and UI part are on the cloud. The actual deployments and configuration/data can be safely managed behind a firewall.
 
 #### Remote State management
 
 Another benefit comes from the ability to manage different environments created with different versions of terraform
 
-**Remote state management** is optional. We can store the remote state in GitLab and only use the cloud workspace.
+**Remote state management** is optional. We can store the remote state in a cloud provider such as an S3 bucket or on prem and only use the cloud workspace.
 
 #### RBAC
 
-TODO: Fill RBAC
+Roles based access control for who can plan and apply terraform runs on project or group level. Ability to manage access on the worskpace level.
 
 #### Observability
 
@@ -72,7 +79,7 @@ This info is easily accessible in TACOS also with information who or what trigge
 
 #### Policy as Code
 
-**Policy as Code** can be also leveraged by TACOS which would improve governance and security. TACOS can utilize tools like Open Policy Agent where it would work by blocking a Merge Request of non-compliant terraform code to the main branch. These policies can be reused between an on-prem Kubernetes cluster policies .
+**Policy as Code** can be also leveraged by TACOS which would improve governance and security. TACOS can utilize tools like Open Policy Agent where it would work by blocking a Merge Request of non-compliant terraform code to the main branch. These policies can be reused between Kubernetes cluster policies.
 
 ### Recommended TACOS flow
 
@@ -80,13 +87,15 @@ The below diagram shows a recommended TACOS flow with GitOps principles.
 
 ![TacosFlow](../diagrams/rendered/gitops-tacos-flow.png)
 
+![TacosFlow](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/gitops-tacos-flow.puml&fmt=png)
+
 It is worth pointing out that instead of communicating with TACOS provider directly via Web UI, it is also possible to use CLI or REST API webhooks.
 
 The diagram captures only the infrastructure provisioning part. Once the VMs or other infrastructure are ready, the workload deployments can start. Applications deployment can be triggered by the TACOS provides, but it should be a separate pipeline.
 
 ### Security considerations
 
-Most of the TACOS providers offer a self-hosting option with TACOS runners behind a firewall. Storing variables and secrets for pipeline triggering, SSH credentials etc can be done either in on-prem vault or TACOs provider vaults.
+Most of the TACOS providers offer a self-hosting option with TACOS runners behind a firewall. Storing variables and secrets for pipeline triggering, SSH credentials etc can be done either in a self-hosted vault or TACOs provider vaults.
 
 ## TACOS Providers Overview
 
