@@ -121,7 +121,6 @@ I am giving them credit for creating terraform and practically starting this ind
 ### Scalr
 
 [Scalr](https://www.scalr.com/) has a very comparable offering to TFC/TFE, all main features are included. They were openly advertising themselves as a replacement for TFC/TFE but with fair price policy.
-They provide multi-tenant SaaS and self-managed solution (for higher volumes, minimal contract per year 30k USD, charged 40 USD per workspace monthly) as well.
 
 Scalr has a concept of [Custom Hooks](https://docs.scalr.com/en/latest/workspaces.html#custom-hooks) which can enhance terraform workflow. It can run other terraform commands (like fmt), shell scripts and API calls before and after terraform plan or apply respectively.
 
