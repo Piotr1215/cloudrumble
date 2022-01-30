@@ -114,10 +114,6 @@ It covers all areas mentioned at the beginning of this article. I am going to us
 
 Useful concept here is also [Notifications](https://www.terraform.io/docs/cloud/workspaces/notifications.html) which can trigger webhooks, send emails or notify slack channel after various events in a workspace.
 
-> HashiCorp is infamous for not having a clear pricing policy. Other companies are using that in their advertisements for competing solutions.
-
-I am giving them credit for creating terraform and practically starting this industry, but they don’t offer any additional features in comparison to competitors.
-
 ### Scalr
 
 [Scalr](https://www.scalr.com/) has a very comparable offering to TFC/TFE, all main features are included. They were openly advertising themselves as a replacement for TFC/TFE but with fair price policy.
