@@ -8,7 +8,7 @@ autonumber
 
 skinparam DefaultFontSize 16
 
-skinparam dpi 600
+'skinparam dpi 300
 'scale .2 
 'scale 600 height
 
