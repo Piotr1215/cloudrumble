@@ -17,7 +17,7 @@ IaC enables automated, repeatable and reliable creation and maintenance of any v
 
 Hashicorp's [terraform](https://www.terraform.io/) and the open source ecosystem built around it is nowadays the de facto a standard for Infrastructure as Code IaC. Standalone terraform workflow is great, but quickly becomes unmanageable when used at scale.
 
-> If you want to learn about alternative tools moving towards Infrastructure as Data, check out [my recent blog](https://medium.com/itnext/infrastructure-as-code-the-next-big-shift-is-here-9215f0bda7ce) about [Crossplane](https://crossplane.io/).
+> If you want to learn about alternative cloud-native, Kubernetes powered tool moving towards Infrastructure as Data, check out [my recent blog](https://medium.com/itnext/infrastructure-as-code-the-next-big-shift-is-here-9215f0bda7ce) about [Crossplane](https://crossplane.io/).
 
 A typical simple implementation of a standard terraform workflow could consist of:
 
@@ -85,8 +85,6 @@ This info is easily accessible in TACOS also with information who or what trigge
 
 The below diagram shows a recommended TACOS flow with GitOps principles.
 
-![TacosFlow](../diagrams/rendered/gitops-tacos-flow.png)
-
 ![TacosFlow](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/gitops-tacos-flow.puml&fmt=png)
 
 It is worth pointing out that instead of communicating with TACOS provider directly via Web UI, it is also possible to use CLI or REST API webhooks.
@@ -101,21 +99,20 @@ Most of the TACOS providers offer a self-hosting option with TACOS runners behin
 
 ### Terragrunt
 
-<https://terragrunt.gruntwork.io/> It’s not a TACOS but it’s probably the first open source thing we would found trying to search for terraform automation. It’s another binary which adds a testing layer on the top of plain terraform. The main goal of Terragrunt is to keep terraform code DRY. Not only in my opinion it was a relevant tool where terraform itself wasn’t mature enough. Good usage of terraform modules and having a good infrastructure setup structure and configuration are solving these concerns.
+[Terragrunt](https://terragrunt.gruntwork.io/) is not a TACOS but it’s probably the first open source thing we would found trying to search for terraform automation. It’s another binary which adds a testing layer on the top of plain terraform. The main goal of Terragrunt is to keep terraform code DRY. Not only in my opinion it was a relevant tool where terraform itself wasn’t mature enough. Good usage of terraform modules and having a good infrastructure setup structure and configuration are solving these concerns.
 
 ### Atlantis
 
-<https://www.runatlantis.io/> It’s also not a full TACOS but it was a first open source tool which tries to add terraform automation to PRs. Webhooks from PRs with terraform code change can be configured to communicate with Atlantis binary (which must be hosted within the infrastructure) where terraform plan and eventually apply can be run. It gives output back to PR for visibility and the process can be also configured that only PR with successful terraform plan can be merged.
+[Atlantis](https://www.runatlantis.io/) is also not a full TACOS but it was a first open source tool which tries to add terraform automation to PRs. Webhooks from PRs with terraform code change can be configured to communicate with Atlantis binary (which must be hosted within the infrastructure) where terraform plan and eventually apply can be run. It gives output back to PR for visibility and the process can be also configured that only PR with successful terraform plan can be merged.
 
 This functionality is currently available in all TACOS (via VCS flow). Interesting fact, developers who designed Atlantis currently work in HashiCorp.
 
 ### Terraform Cloud TFC/Terraform Enterprise TFE
 
-<https://www.hashicorp.com/products/terraform>
-An offer from terraform original inventors - HashiCorp. Both of them can provide same functionality, the main difference is in the hosting schema. TFE is a private installation, where TFC is a classic multi-tenant SaaS offering.
+An offer from [terraform](https://www.hashicorp.com/products/terraform) original inventors - HashiCorp. Both of them can provide same functionality, the main difference is in the hosting schema. TFE is a private installation, where TFC is a classic multi-tenant SaaS offering.
 It covers all areas mentioned at the beginning of this article. I am going to use it as reference solution and I will mention differences in other products.
 
-Useful concept here is also Notifications <https://www.terraform.io/docs/cloud/workspaces/notifications.html> it can trigger webhooks, send emails or notify slack channel after various events in a workspace.
+Useful concept here is also [Notifications](https://www.terraform.io/docs/cloud/workspaces/notifications.html) which can trigger webhooks, send emails or notify slack channel after various events in a workspace.
 
 > HashiCorp is infamous for not having a clear pricing policy. Other companies are using that in their advertisements for competing solutions.
 
@@ -123,44 +120,44 @@ I am giving them credit for creating terraform and practically starting this ind
 
 ### Scalr
 
-<https://www.scalr.com/> has a very comparable offering to TFC/TFE, all main features are included. They were openly advertising themselves as a replacement for TFC/TFE but with fair price policy.
+[Scalr](https://www.scalr.com/) has a very comparable offering to TFC/TFE, all main features are included. They were openly advertising themselves as a replacement for TFC/TFE but with fair price policy.
 They provide multi-tenant SaaS and self-managed solution (for higher volumes, minimal contract per year 30k USD, charged 40 USD per workspace monthly) as well.
 
-Scalr has a concept of Custom Hooks <https://docs.scalr.com/en/latest/workspaces.html#custom-hooks> which can enhance terraform workflow. It can run other terraform commands (like fmt), shell scripts and API calls before and after terraform plan or apply respectively.
+Scalr has a concept of [Custom Hooks](https://docs.scalr.com/en/latest/workspaces.html#custom-hooks) which can enhance terraform workflow. It can run other terraform commands (like fmt), shell scripts and API calls before and after terraform plan or apply respectively.
 
-Scalr also has classic webhooks <https://docs.scalr.com/en/latest/webhooks.html> which can be triggered after various events. Configuration is split between webhooks and endpoints internally. It also has integration with Zapier.
+Scalr also has classic [webhooks](https://docs.scalr.com/en/latest/webhooks.html) which can be triggered after various events. Configuration is split between webhooks and endpoints internally. It also has integration with Zapier.
 
 Scalr has a concept of RBAC layers and inheritance (also for credentials, etc.). It can serve eg. as distinction between prod and non-prod or between projects. Cloud credentials can be defined in the top layer and then propagated down to particular workspaces. The same with authorization configuration.
 
-We can use Workspace state sharing <https://docs.scalr.com/en/latest/state_sharing.html> to share information between “platform” and “project scoped” environments. It’s actually more a matter of terraform itself, Scalr is helping with accessibility.
+We can use Workspace [state sharing](https://docs.scalr.com/en/latest/state_sharing.html) to share information between “platform” and “project scoped” environments. It’s actually more a matter of terraform itself, Scalr is helping with accessibility.
 
 In my opinion Scalr has better UI with more information about terraform runs. Eg. a view with number of added, changed, deleted resources per resource type with option to drill down into details. Compare that with plain terraform plan output when trying to see something particular in lengthy list.
 
 ### Env0
 
-<https://www.env0.com/> has TACOS capabilities but it’s pretty different than TFC or Scalr. It’s closer to general purpose CI/CD system as they are focusing a lot on Custom Flows <https://docs.env0.com/docs/custom-flows> where any kind of script, ansible, etc. can be added into terraform workflow (before and after apply, etc.). They support terraform and Terragrunt (I think it’s not important anymore) templates.
+[Env0](https://www.env0.com/) has TACOS capabilities but it’s pretty different than TFC or Scalr. It’s closer to general purpose CI/CD system as they are focusing a lot on [Custom Flows](https://docs.env0.com/docs/custom-flows) where any kind of script, ansible, etc. can be added into terraform workflow (before and after apply, etc.). They support terraform and Terragrunt (I think it’s not important anymore) templates.
 
-It has capability to do automatic drift detection <https://docs.env0.com/docs/drift-detection> where Env0 can notify or take action after some external process or user is changing Cloud environment from outside of terraform.
+It has capability to do automatic [drift detection](https://docs.env0.com/docs/drift-detection) where Env0 can notify or take action after some external process or user is changing Cloud environment from outside of terraform.
 
 Env0 has an interesting concept of costs management. It can monitor real costs and correlate them with terraform deployments, it can also setup limits for teams and users on spending.
 
-It can also work with TTL for whole environments and delete them automatically. <https://docs.env0.com/docs/policy-ttl> It can help with feature environments setup.
+It can also work with TTL for whole environments and delete them automatically. [Policy TTL](https://docs.env0.com/docs/policy-ttl) can help with feature environments setup.
 
-Besides interesting features mentioned above I also have a quite a lot concerns with other things. There is no support for PR automation with AzDO yet <https://docs.env0.com/docs/plan-on-pull-request> . It doesn’t provide access to statefiles, they are being managed somehow behind the scene. I also haven’t found any option to integrate with terraform CLI, so it seems it doesn’t support classic remote run like TFC or Scalr. Documentation is not providing enough details.
+Besides interesting features mentioned above I also have a quite a lot concerns with other things. It does’t provide access to state files, they are being managed somehow behind the scene. I also haven’t found any option to integrate with terraform CLI, so it seems it doesn’t support classic remote run like TFC or Scalr. Documentation is not providing enough details.
 
 ### Spacelift
 
-<https://spacelift.io/> same as Env0 has TACOS capabilities but it’s also pretty different than TFC or Scalr, but in different way than Env0. It’s also somehow closer to general purpose CI/CD systems and it’s probably the most customizable TACOS. Beside terraform it also supports Pulumi and plan to support also CloudFormation, Ansible and ARM templates were announced. It wants to provide wrapper and similar user experience regardless to chosen “backend” technology.
+[Spacelift](https://spacelift.io/) same as Env0 has TACOS capabilities but it’s also pretty different than TFC or Scalr, but in different way than Env0. It’s also somehow closer to general purpose CI/CD systems and it’s probably the most customizable TACOS. Beside terraform it also supports Pulumi and plan to support also CloudFormation, Ansible and ARM templates were announced. It wants to provide wrapper and similar user experience regardless to chosen “backend” technology.
 
-Regarding customizations it also offers Custom workflows <https://docs.spacelift.io/concepts/stack/stack-settings#customizing-workflow> where shell scripts can be added before and after terraform plan, destroy, etc. But it also supports Customized runner image <https://docs.spacelift.io> /integrations/docker#customizing-the-runner-image where practically anything can be added to Docker image. Also arbitrary files can be mounted to the run container. But these files must be uploaded to Spacelift first.
+Regarding customizations it also offers [Custom workflows](https://docs.spacelift.io/concepts/stack/stack-settings#customizing-workflow) where shell scripts can be added before and after terraform plan, destroy, etc. But it also supports [Customized runner image](https://docs.spacelift.io/integrations/docker#customizing-the-runner-image) where practically anything can be added to Docker image. Also arbitrary files can be mounted to the run container. But these files must be uploaded to Spacelift first.
 
-It has capability to do automatic drift detection <https://docs.spacelift.io/concepts/stack/drift-detection> where Spacelift can notify or take action after some external process or user is changing Cloud environment from outside of terraform.
+It has capability to do automatic [drift detection](https://docs.spacelift.io/concepts/stack/drift-detection) where Spacelift can notify or take action after some external process or user is changing Cloud environment from outside of terraform.
 
-In addition to classic sharing of remote state between cloud workspaces (they are called stacks in Spacelift) it also allows to share internal context <https://docs.spacelift.io/concepts/configuration/context#introduction> it actually looks like better approach but it would need more research.
+In addition to classic sharing of remote state between cloud workspaces (they are called stacks in Spacelift) it also allows to share [internal context](https://docs.spacelift.io/concepts/configuration/context#introduction) it actually looks like better approach but it would need more research.
 
-It seems that Spacelift is also going forward with private module registry and provides like CI/CD for modules with tests <https://docs.spacelift.io> /vendors/terraform/module-registry#tests <https://docs.spacelift.io/concepts/run/test-case> against short-lived environments.
+It seems that Spacelift is also going forward with private module registry and provides like CI/CD for modules with [tests](https://docs.spacelift.io/vendors/terraform/module-registry#tests).
 
-Spacelift also has the most customizable options to work with OPA policies <https://www.youtube.com/watch?v=GWWybopkyko&t=2s>
+Spacelift also has the most customizable options to work with [OPA policies](https://www.youtube.com/watch?v=GWWybopkyko&t=2s)
 
 ## TACOS Providers Comparison Matrix
 
