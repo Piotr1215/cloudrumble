@@ -5,7 +5,7 @@
 This article will help you understand what TACOS are and select a provider based on their capabilities.
 SREs, Ops Engineers or Architects will find this content useful.
 
-If you are a passionate cook or like to know how your cooking skills can help you with Infrastructure as Code, you will be disappointed.
+> If you are a passionate cook or like to know how your cooking skills can help you with Infrastructure as Code, you will be disappointed.
 
 ## Infrastructure as Code
 
@@ -17,7 +17,7 @@ IaC enables automated, repeatable and reliable creation and maintenance of any v
 
 Hashicorp's [terraform](https://www.terraform.io/) and the open source ecosystem built around it is nowadays the de facto a standard for Infrastructure as Code IaC. Standalone terraform workflow is great, but quickly becomes unmanageable when used at scale.
 
-> If you want to learn about alternative cloud-native, Kubernetes powered tool moving towards Infrastructure as Data, check out [my recent blog](https://medium.com/itnext/infrastructure-as-code-the-next-big-shift-is-here-9215f0bda7ce) about [Crossplane](https://crossplane.io/).
+> If you want to learn about an alternative cloud-native, Kubernetes powered tool moving towards Infrastructure as Data, check out [my recent blog](https://medium.com/itnext/infrastructure-as-code-the-next-big-shift-is-here-9215f0bda7ce) about [Crossplane](https://crossplane.io/).
 
 A typical simple implementation of a standard terraform workflow could consist of:
 
