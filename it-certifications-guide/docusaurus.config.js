@@ -27,9 +27,6 @@ const config = {
           // Please change this to your repo.
           editUrl :
               'https://github.com/Piotr1215/dca-prep-kit/tree/master/docs',
-          remarkPlugins : [
-            [ require('@docusaurus/remark-plugin-npm2yarn'), {sync : true} ],
-          ],
         },
         blog : {
           showReadingTime : true,

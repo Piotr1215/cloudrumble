@@ -38,7 +38,7 @@ Developing with Kubernetes in mind means developing Cloud Native applications.
 
 > These techniques enable **loosely coupled systems** that are **resilient, manageable, and observable**. Combined with **robust automation**, they allow engineers to **make high-impact changes frequently** and predictably with minimal toil.
 
-*Source*: https://github.com/cncf/foundation/blob/master/charter.md
+*Source*: <https://github.com/cncf/foundation/blob/master/charter.md>
 
 ### The role of Kubernetes
 
@@ -73,7 +73,7 @@ Each service, API or application must have set of Kubernetes configuration files
 - Pods
 - HPAs
 - Config Maps
-- Secrets
+categories: ['guide']
 
 Kubernetes config files should be part of the same repository as App or Service.
 
@@ -241,7 +241,7 @@ spec:
       allowPrivilegeEscalation: false
 ```
 
-> [!NOTE] In order to apply new seccomp profile, pod must be deleted and re-created. use `k recreate -f ` command
+> [!NOTE] In order to apply new seccomp profile, pod must be deleted and re-created. use `k recreate -f` command
 
 #### Seccomp logs
 
@@ -328,7 +328,6 @@ When should which tool be selected? Here is list of use cases and corresponding 
 | Prevent app/container from accessing unwanted resources (files, directories, etc) | AppArmor           |
 | Reduce the risk of what compromised process can do to a system (coarse-grained)   | Linux Capabilities |
 
-
 ### Containers Isolation
 
 ![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-container-isolation.puml&fmt=svg)
@@ -375,22 +374,17 @@ High-level overview of falco components:
 
 ![Falco Components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-components.puml&fmt=svg)
 
-<sup><sub>source: https://falco.org/docs/#what-are-the-components-of-falco</sub></sup>
-
 #### Falco rules & alerts
 
 Falco comes with pre-defined set of rules and alerts/actions that can be triggered by those rules (bolded ones are more relevant to containerized workloads):
 
 ![Falco Ruleset](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
 
-<sub><sup>*source: https://falco.org/docs/#what-does-falco-check-for*</sup></sub>
-
 ### Falco configuration
 
 - configuration is stored in **/etc/falco/falco.yaml**
 - default rule set is stored in **falco_rules.yaml**
 - file to override rules is **falco_fules.local.yaml**
-
 
 ### Using Falco
 
@@ -401,7 +395,6 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 #### Check Falco logs
 
 `journalctl -fu falco`
-
 
 ### Links and Resources
 
