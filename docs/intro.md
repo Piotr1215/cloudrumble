@@ -8,7 +8,7 @@ Please let me know in comments if you spot an error and feel free to do a PR if 
 
 I wish you best of luck on getting all IT Certifications you set out to get :)
 
-Each section corresponds to exam topics. [`Plantuml` diagrams](https://plantuml.com/)  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams]([/diagrams](https://github.com/Piotr1215/dca-prep-kit/tree/master/diagrams)) folder.
+Each section corresponds to exam topics. [`Plantuml` diagrams](https://plantuml.com/)  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams](https://github.com/Piotr1215/dca-prep-kit/tree/master/diagrams) folder.
 
 > [!NOTE]
 >

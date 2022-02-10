@@ -133,7 +133,7 @@ When creating a *Dockerfile*, each new command such as RUN, ADD, COPY etc create
 
 #### Steps to debug Dockefile build process using legacy build
 
-- clone [test repository](git@ssh.dev.azure.com:v3/GRD-EMEA/Cloud%20Native%20Platform/debug-containers-dotnet) or create a new one with Dockerfile that contains error
+- clone  or create a new one with Dockerfile that contains error
 - run legacy build command `DOCKER_BUILDKIT=0 docker build --rm=false -t wrongimage -f Dockerfile.bad .`
 - this Dockefile produces an error, the folder is missing
 
