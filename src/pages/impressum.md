@@ -1,11 +1,15 @@
+---
+title: Impressum and Legal Notice
+hide_table_of_contents: true
+---
 # Legal Notice / Impressum
 
 ## Information (§ 5 TMG)
 
-Piotr Zaniewski \
-c/o Grosch Postflex #1841 \
-Emsdettener Str. 10 \
-48268 Greven
+Piotr Zaniewski<br></br>
+c/o Grosch Postflex #1841<br></br>
+Emsdettener Str. 10<br></br>
+48268 Greven<br></br>
 
 **No packages or parcels - deliveries won't be accepted.**
 

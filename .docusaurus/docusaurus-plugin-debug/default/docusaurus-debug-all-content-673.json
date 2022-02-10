@@ -2044,9 +2044,12 @@
         "type": "mdx",
         "permalink": "/impressum",
         "source": "@site/src/pages/impressum.md",
-        "title": "Legal Notice / Impressum",
+        "title": "Impressum and Legal Notice",
         "description": "Information (§ 5 TMG)",
-        "frontMatter": {}
+        "frontMatter": {
+          "title": "Impressum and Legal Notice",
+          "hide_table_of_contents": true
+        }
       },
       {
         "type": "jsx",
