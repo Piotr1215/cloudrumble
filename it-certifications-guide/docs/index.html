@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-203696223-1"></script> -->
+  <!-- <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-203696223-1');
+  </script> -->
+
+  <meta charset="UTF-8">
+  <title>IT Certifications Guide</title>
+  <link rel="icon" href="_media/favicon.ico" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/style.min.css"
+    type="text/css">
+
+  <!-- docsify-themeable styles-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"
+    title="light">
+  <link rel="stylesheet alternative"
+    href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css" title="dark">
+  <!-- Custom theme styles -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+  <style>
+    /* Content
+    ============================================================================= */
+    :root {
+      --sidebar-width: 20em;
+      --content-max-width: 80em;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4.12.1"></script>
+
+  <!-- docsify-themeable (latest v0.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-gherkin.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js" data-ga="UA-203696223-1"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
+
+  <script>
+    window.$docsify = {
+      alias: {
+        '.*?/k8scommands': 'https://gist.githubusercontent.com/piotr1215/443fb83c89958139f0c67ec70b111da2/raw/kubectl-commands.md',
+        '.*?/k8snetworking': 'https://gist.githubusercontent.com/Piotr1215/23cf678d74079f98dc7be731e6a3f1d1/raw/CKA-networking-commands.md',
+        '.*?/vimcommands': 'https://gist.githubusercontent.com/Piotr1215/0a1ccd30efe38ed2de829c315a0fc355/raw/vim-commands.md',
+        '.*?/tmuxcommands': 'https://gist.githubusercontent.com/Piotr1215/e15d4fdbe2a4d24e61b3a1b6701f0df8/raw/tmux-cheatsheet.md',
+        '.*?/linuxcommands': 'https://gist.githubusercontent.com/Piotr1215/43796f441dcb74a40e4c1a567b1b1176/raw/linux-commands.md'
+      },
+      loadNavbar :true,
+      mergeNavbar: true,
+      // load from _footer.md
+      //loadFooter: true,
+
+      // Or load from _footer.md
+      // loadFooter: '_footer.md',
+      // ga: 'UA-203696223-1',
+      copyCode: {
+        buttonText: 'Copy to clipboard',
+        errorText: 'Error',
+        successText: 'Copied'
+      },
+      remoteMarkdown: {
+        tag: 'remoteMarkdownUrl',
+      },
+      coverpage: true,
+      'flexible-alerts': {
+        style: 'callout'
+      },
+      share: {
+        reddit: true,
+        linkedin: true,
+        facebook: true,
+        twitter: true
+      },
+      logo: '/_media/logo.png',
+      loadSidebar: '_sidebar.md',
+      subMaxLevel: 2,
+      pathToDocsifyEntryPoint: './docs',
+      name: 'IT Certifications Guide and Notes',
+      repo: 'Piotr1215/dca-prep-kit',
+      themeable: {
+        readyTransition: true, // default
+        responsiveTables: true // default
+      },
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        paths: 'auto',
+        placeholder: 'Type to search',
+        noData: 'No Results!',
+        depth: 6,
+        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+      },
+      select: {
+        detectOperatingSystem: {
+          enabled: false,
+          menuId: "operating-system"
+        },
+        sync: false,
+        theme: "classic"
+      }
+    }
+  </script>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/main.min.js"
+  type="text/javascript">
+  </script>
+
+<script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/index.min.js"
+  type="text/javascript">
+  </script>
+<script src="https://unpkg.com/docsify-copy-code@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-select@1"></script>
+<script src="//unpkg.com/docsify-remote-markdown/dist/docsify-remote-markdown.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+<script src="//unpkg.com/docsify-share/build/index.min.js"></script>
+<script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+<script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
+</html>
