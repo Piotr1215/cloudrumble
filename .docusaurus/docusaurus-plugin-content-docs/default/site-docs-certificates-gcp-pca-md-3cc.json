@@ -1,0 +1,23 @@
+{
+  "unversionedId": "CERTIFICATES/gcp_pca",
+  "id": "CERTIFICATES/gcp_pca",
+  "title": "GCP Cloud Architect Professional",
+  "description": "About the exam",
+  "source": "@site/docs/CERTIFICATES/gcp_pca.md",
+  "sourceDirName": "CERTIFICATES",
+  "slug": "/CERTIFICATES/gcp_pca",
+  "permalink": "/docs/CERTIFICATES/gcp_pca",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/gcp_pca.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "dca_guide",
+    "permalink": "/docs/CERTIFICATES/dca_guide"
+  },
+  "next": {
+    "title": "Hashicorp Terraform Associate",
+    "permalink": "/docs/CERTIFICATES/terraform"
+  }
+}

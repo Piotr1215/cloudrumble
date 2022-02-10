@@ -1,0 +1,44 @@
+{
+  "permalink": "/blog/cloud-native-developer-workflow",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/cloud-native-developer-workflow.md",
+  "source": "@site/blog/cloud-native-developer-workflow.md",
+  "title": "Cloud Native Developer Workflow",
+  "description": "Photo by Hack Capital on [Unsplash](https://cdn-images-1.medium.com/max/10944/1*vJY3xQeFfVqL1UNlqQVVzg.jpeg)",
+  "date": "2020-11-09T19:01:56.000Z",
+  "formattedDate": "November 9, 2020",
+  "tags": [
+    {
+      "label": "docker",
+      "permalink": "/blog/tags/docker"
+    },
+    {
+      "label": "kubernetes",
+      "permalink": "/blog/tags/kubernetes"
+    }
+  ],
+  "readingTime": 6.61,
+  "truncated": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "Cloud Native Developer Workflow",
+    "date": "2020-11-09T19:01:56.000Z",
+    "draft": false,
+    "tags": [
+      "docker",
+      "kubernetes"
+    ],
+    "categories": [
+      "software development"
+    ],
+    "show_in_homepage": false,
+    "show_description": false
+  },
+  "prevItem": {
+    "title": "How to Good Sofware Documentatiion",
+    "permalink": "/blog/how-to-good-sofware-documentatiion"
+  },
+  "nextItem": {
+    "title": "5 Static Websites Deployment Options",
+    "permalink": "/blog/5-static-websites-deployment-options"
+  }
+}

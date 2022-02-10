@@ -1,0 +1,44 @@
+{
+  "permalink": "/blog/5-static-websites-deployment-options",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/5-static-websites-deployment-options.md",
+  "source": "@site/blog/5-static-websites-deployment-options.md",
+  "title": "5 Static Websites Deployment Options",
+  "description": "intro-pic",
+  "date": "2020-11-09T19:01:19.000Z",
+  "formattedDate": "November 9, 2020",
+  "tags": [
+    {
+      "label": "devops",
+      "permalink": "/blog/tags/devops"
+    },
+    {
+      "label": "deployment",
+      "permalink": "/blog/tags/deployment"
+    }
+  ],
+  "readingTime": 3.215,
+  "truncated": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "5 Static Websites Deployment Options",
+    "date": "2020-11-09T19:01:19.000Z",
+    "draft": false,
+    "tags": [
+      "devops",
+      "deployment"
+    ],
+    "categories": [
+      "devops"
+    ],
+    "show_in_homepage": false,
+    "show_description": false
+  },
+  "prevItem": {
+    "title": "Cloud Native Developer Workflow",
+    "permalink": "/blog/cloud-native-developer-workflow"
+  },
+  "nextItem": {
+    "title": "Expose Kubernetes Service Using Ngrok",
+    "permalink": "/blog/expose-kubernetes-service-using-ngrok"
+  }
+}

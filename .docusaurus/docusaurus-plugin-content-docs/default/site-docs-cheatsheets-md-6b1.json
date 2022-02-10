@@ -1,0 +1,23 @@
+{
+  "unversionedId": "cheatsheets",
+  "id": "cheatsheets",
+  "title": "Cheatsheets and Useful commands",
+  "description": "",
+  "source": "@site/docs/cheatsheets.md",
+  "sourceDirName": ".",
+  "slug": "/cheatsheets",
+  "permalink": "/docs/cheatsheets",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/cheatsheets.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tutorial Intro",
+    "permalink": "/docs/intro"
+  },
+  "next": {
+    "title": "Coming soon",
+    "permalink": "/docs/coming_soon"
+  }
+}

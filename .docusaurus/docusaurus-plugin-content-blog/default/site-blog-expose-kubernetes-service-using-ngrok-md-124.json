@@ -1,0 +1,44 @@
+{
+  "permalink": "/blog/expose-kubernetes-service-using-ngrok",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/expose-kubernetes-service-using-ngrok.md",
+  "source": "@site/blog/expose-kubernetes-service-using-ngrok.md",
+  "title": "Expose Kubernetes Service Using Ngrok",
+  "description": "Photo by Product School on [Unsplash](https://cdn-images-1.medium.com/max/8064/1*trEH_iYn7WBWUAz6DVto1Q.jpeg)",
+  "date": "2020-02-08T19:00:45.000Z",
+  "formattedDate": "February 8, 2020",
+  "tags": [
+    {
+      "label": "kubernetes",
+      "permalink": "/blog/tags/kubernetes"
+    },
+    {
+      "label": "ngrok",
+      "permalink": "/blog/tags/ngrok"
+    }
+  ],
+  "readingTime": 3.51,
+  "truncated": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "Expose Kubernetes Service Using Ngrok",
+    "date": "2020-02-08T19:00:45.000Z",
+    "draft": false,
+    "tags": [
+      "kubernetes",
+      "ngrok"
+    ],
+    "categories": [
+      "learning"
+    ],
+    "show_in_homepage": false,
+    "show_description": false
+  },
+  "prevItem": {
+    "title": "5 Static Websites Deployment Options",
+    "permalink": "/blog/5-static-websites-deployment-options"
+  },
+  "nextItem": {
+    "title": "A Gentle Introduction to Docker and Containers",
+    "permalink": "/blog/a-gentle-introduction-to-docker-and-containers"
+  }
+}

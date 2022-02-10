@@ -1,0 +1,23 @@
+{
+  "unversionedId": "CERTIFICATES/ckad_guide",
+  "id": "CERTIFICATES/ckad_guide",
+  "title": "ckad_guide",
+  "description": "Introduction",
+  "source": "@site/docs/CERTIFICATES/ckad_guide.md",
+  "sourceDirName": "CERTIFICATES",
+  "slug": "/CERTIFICATES/ckad_guide",
+  "permalink": "/docs/CERTIFICATES/ckad_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/ckad_guide.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "cka_guide",
+    "permalink": "/docs/CERTIFICATES/cka_guide"
+  },
+  "next": {
+    "title": "CKS Guide",
+    "permalink": "/docs/CERTIFICATES/cks_guide"
+  }
+}

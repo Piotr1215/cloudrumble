@@ -1,0 +1,1032 @@
+{
+  "blogPosts": [
+    {
+      "id": "/software-development-in-kubernetes-a-cookbook",
+      "metadata": {
+        "permalink": "/blog/software-development-in-kubernetes-a-cookbook",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/software-development-in-kubernetes-a-cookbook.md",
+        "source": "@site/blog/software-development-in-kubernetes-a-cookbook.md",
+        "title": "Software Development in Kubernetes a Cookbook",
+        "description": "Overview",
+        "date": "2021-09-26T15:50:43.000Z",
+        "formattedDate": "September 26, 2021",
+        "tags": [
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          },
+          {
+            "label": "guide",
+            "permalink": "/blog/tags/guide"
+          }
+        ],
+        "readingTime": 13.33,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Software Development in Kubernetes a Cookbook",
+          "date": "2021-09-26T15:50:43.000Z",
+          "draft": false,
+          "tags": [
+            "kubernetes",
+            "guide"
+          ],
+          "categories": [
+            "guide"
+          ],
+          "show_in_homepage": true,
+          "show_description": false
+        },
+        "nextItem": {
+          "title": "Welcome",
+          "permalink": "/blog/welcome"
+        }
+      },
+      "content": "## Overview\n\nThis documentation assumes basic knowledge of Kubernetes and kubectl. To learn or refresh on container orchestration related concepts, please refer to the official documentation:\n\n- [Kubernetes Docs](https://kubernetes.io/)\n\n:::info\n [Kubernetes is part of CNCF](https://www.cncf.io/)\n:::\n\n## Basic Concepts\n\n![Kubernetes Architecture](_media/k8s-architecture.png)\n\n## Development\n\n### Understanding Pod Lifecycle\n\n![Kubernetes Deployment Lifecycle](_media/k8s-deployment-seq.png)\n\nDeveloping with Kubernetes in mind means developing Cloud Native applications.\n\n[CNCF](https://www.cncf.io/) defines cloud native as (emphasis mine):\n\n> Cloud native technologies empower organizations to build and run **scalable applications** in modern, dynamic environments such as **public, private, and hybrid clouds**. **Containers, service meshes, microservices, immutable infrastructure**, and **declarative APIs** exemplify this approach.\n\n> These techniques enable **loosely coupled systems** that are **resilient, manageable, and observable**. Combined with **robust automation**, they allow engineers to **make high-impact changes frequently** and predictably with minimal toil.\n\n*Source*: <https://github.com/cncf/foundation/blob/master/charter.md>\n\n### The role of Kubernetes\n\nKubernetes is a **container orchestrator**. It is a system that manages the lifecycle of a collection of containers. Think of it as an underlying *fabric* that allows you to deploy and manage your applications.\n\n### Cloud Native Development Workflow with Containers/Kubernetes\n\nThe development process for cloud native applications covers the same steps as in inner development loop, but with a few differences:\n\n 1. **Development Tools and IDEs:** Use service like [Gitpod](https://www.gitpod.io/) or [GitHub Codespaces](https://visualstudio.microsoft.com/services//github-codespaces/) or simply encapsulate your development environment in an image and run a docker container to quickly spin up your development environment. This is independent from your local setup. Now you are ready to start developing in VS Code Electron Client, VC Code in browser or Visual Studio 2019 in a remote environment. Your machine does not need any SDKs, frameworks, linters, IDE plugins and addons or any tooling installed locally. Everything is pre-packaged in a containerized, repeatable environment.\n\n 2. **Setup Development Environment:** Use tools like [Okteto](https://okteto.com/), [DevSpace](https://devspace.sh/), [Skaffold](https://github.com/GoogleContainerTools/skaffold) or many others to bring your development and debugging into remote Kubernetes clusters without needing to install Docker or Kubernetes locally.\n\n 3. **Run code to see if it works:** Let your tools work for you and run and debug code directly in remote Kubernetes cluster. Nothing needs to be installed locally, in some cases not even docker engine.\n\n 4. **Inner Development Loop.** Inner development loop now can look like regular 4 step development loop!\n\n- **Code** directly in container instance or Kubernetes\n\n- **Build** is done remotely in a container instance or Kubernetes\n\n- **Test** can be done equally seamlessly as everything is already in a container instance or Kubernetes\n\n- **Commit** once committed, a new image version will be uploaded to artifacts repository and either docker instance or Kubernetes pod will be updated with new content\n\n### Create and maintain Kubernetes configuration files\n\nEach service, API or application must have set of Kubernetes configuration files such as:\n\n- Deployments\n- Services\n- Pods\n- HPAs\n- Config Maps\ncategories: ['guide']\n\nKubernetes config files should be part of the same repository as App or Service.\n\n![Repos](_media/k8s-terraform-setup.png)\n\n*Recommended repository setup*\n\n### Define Liveness and readiness probes\n\n- performance metrics and resources quotas\n- in case of APIs/web implement `health`, `version` endpoints\n- define conditions to determine if the application or service is ready to accept traffic (readiness probe)\n- define conditions to determine if the application or service is responsive, health-check (liveliness probe)\n\n## Security\n\n### The 4C's of cloud-native computing\n\nThe 4C's of cloud-native computing represents security in depth where each \"C\" stands for level of isolation from outside in.\n\n![The 4 C's](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-4cs.puml&fmt=svg)\n\n| Layer     | Description                                                                |\n| --------- | -------------------------------------------------------------------------- |\n| Cloud     | Security of entire infrastructure hosting the servers. Public/Private etc. |\n| Cluster   | Kubernetes cluster                                                         |\n| Container | Docker containers. Running, for example in privilege mode.                 |\n| Code      | Binaries, source code, code configuration, no TLS, variables in code, etc. |\n\n### Admission controllers\n\n#### Image policy webhook\n\n##### Admission configuration\n\n```yaml\napiVersion: apiserver.config.k8s.io/v1\nkind: AdmissionConfiguration\nplugins:\n- name: ImagePolicyWebhook\n  configuration:\n    imagePolicy:\n      kubeConfigFile: <path-to-kubeconfig-file>\n      allowTTL: 50\n      denyTTL: 50\n      retryBackoff: 500\n      defaultAllow: true\n```\n\n> [!NOTE] `defaultAllow: true` if admission webhook server is not reachable, all request will be allowed\n\n##### Enable admission controller\n\nIf Kubernetes components are deployed as daemons, edit service configuration file by `systemctl edit service_name`, else if Kubernetes has been deployed using `kubeadm`, simply edit pod manifest `vim /etc/kubernetes/manifests/kube-apiserver.yaml` and add `ImagePolicyWebhook` to `--enable-admission-plugins=` section as well as pass admission control config file via `--admission-control-config-file=`\n\n### Secrets\n\n:::tip\n to switch off auto-mounting secrets on the pod, use `automountServiceAccountToken: false`\n:::\n\n### Pod Decision Tree\n\n![POD Decision Tree](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-pods-escalation.puml&fmt=svg)\n\n### Seccomp\n\n<def>Seccomp: Secure Computing</def>\n\n#### How syscalls work\n\n![Syscalls](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/linux-syscalls.puml&fmt=svg)\n\n#### How to check if Seccomp is enabled\n\n```bash\ngrep -i seccomp /boot/config-$(uname -r)\n```\n\n#### Check seccomp status on the process\n\n```bash\n# 1. ssh into the container\n# 2. list processes\nps -ef\n\n# 3. grep for seccomp status\ngrep -i seccomp /proc/{PID}/status\n```\n\nIf the result is **2** meaning that seccomp is enabled for the container\n\n#### Seccomp modes\n\n| Mode   | Description                                                         |\n| ------ | ------------------------------------------------------------------- |\n| Mode 0 | Disabled                                                            |\n| Mode 1 | Strict - will block all calls except *read, write, exec, sigreadon* |\n| Mode 2 | Filtered - filter selectively                                       |\n\n#### Seccomp filter json file\n\n![Syscalls](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/linux-seccomp-profile.puml&fmt=svg)\n\nthere are 2 profile types:\n\n- **whitelist**: only specified syscalls are allowed, all others are rejected\n- **blacklist**: all syscalls are allowed unless specified in the file\n\n#### Docker seccomp filter\n\nBy default, Docker enables seccomp filter (mode 2).\n\nIt blocks around *60* of the around *300* syscalls available with default profile\n\n:::tip\n How to check what syscalls are blocked?\n:::\n> Run amicontained tool as container to see syscalls blocked by default docker profile\n>\n> `docker run r.j3ss.co/amicontained amicontained`\n>\n> Run amicontained tool as pod to see syscalls blocked by Kubernetes default profile\n>\n> `k run amicontained --image r.j3ss.co/amicontained amicontained -- amidontained`\n>\n> check pod logs\n>\n> `k logs amicontained`\n\n#### Enable seccomp in Kubernetes\n\nCreate a pod using yaml spec and enable *RuntimeDefault* profile under securityContext of pod\n\n```yaml\nspec:\n  securityContext:\n    seccompProfile:\n      type: RuntimeDefault\n```\n\n#### Custom seccomp profile in Kubenetes\n\n> [!ATTENTION] default seccomp profile is located at **`/var/lib/kubelet/seccomp`**.\n> Custom seccomp profile path must be relative to this path\n\n```yaml\napiVersion: v1\nkind: Pod\nmetadata:\n  name: audit-pod\n  labels:\n    app: audit-pod\nspec:\n  securityContext:\n    seccompProfile:\n      type: Localhost\n      localhostProfile: profiles/audit.json\n  containers:\n  - name: test-container\n    image: hashicorp/http-echo:0.2.3\n    args:\n    - \"-text=just made some syscalls!\"\n    securityContext:\n      allowPrivilegeEscalation: false\n```\n\n> [!NOTE] In order to apply new seccomp profile, pod must be deleted and re-created. use `k recreate -f` command\n\n#### Seccomp logs\n\nBy default seccomp logs will be saved in **`/var/log/syslog`**\n\nYou can easily tail logs for specific pod by `tail -f /var/log/syslog | grep {pod_name}`\n\n### AppArmor\n\n<def>AppArmor is a Linux security [module](https://uisapp2.iu.edu/confluence-prd/pages/viewpage.action?pageId=115540061)</def>\n\n- restrict access to specific objects in the system\n- determines what resources can be used by an application\n- more fine grained control than seccomp\n- installed in most systems\n- AppArmor profiles are stored under `/etc/apparmor.d/`\n\n#### Example AppArmor Profile\n\n```c\n#include <tunables/global>\n\nprofile k8s-apparmor-example-deny-write flags=(attach_disconnected) {\n  #include <abstractions/base>\n\n  file,\n\n  # Deny all file writes.\n  deny //** w,\n}\n```\n\n#### Check if AppArmor is running\n\n- `systemctl status apparmor`\n- is AppArmor module enabled? `cat /sys/module/apparmor/parameters/enabled`\n- is AppArmor profile loaded into kernel? `cat /sys/kernel/security/apparmor/profiles`\n- use `aa-status` to check what profiles are loaded\n\n#### AppArmor profiles load modes\n\n| Mode       | Description                                          |\n| ---------- | ---------------------------------------------------- |\n| enforce    | enforce and monitor on any app that fits the profile |\n| complain   | log as events                                        |\n| unconfined | any task allowed, no logging                         |\n\n#### AppArmor in Kubernetes\n\n- support added in v 1.4, but still in beta\n- to load profile from default location use `apparmor_parser -q /etc/apparmor.d/{profile_name}`\n\n:::tip\n to secure a pod an annotation in this format `container.apparmor.security.beta.kubernetes.io/<container_name>: localhost/profile_name OR runtime/default OR unconfined`\n:::\n\n##### Use Case\n\nAppArmor can be used to for example restrict access to a folder inside pod/container.\n\n#### Linux Capabilities\n\n- [List of Linux Capabilities](https://man7.org/linux/man-pages/man7/capabilities.7.html)\n- Capabilities are added and removed per container\n\n  ```yaml\n  securityContext:\n    capabilities:\n     add: [\"CAP1\"]\n     drop: [\"CAP2\"]\n  ```\n\n:::tip\n To check what capabilities are needed for any give command run `getcap /<path>/<command>` or to check capabililties used by a running process run `getpcaps PID`\n:::\n\n#### When to choose which\n\nWhen should which tool be selected? Here is list of use cases and corresponding tools.\n\n| Scenario                                                                          | Tool               |\n| --------------------------------------------------------------------------------- | ------------------ |\n| Reduce risk of exploiting kernel vulnerability                                    | Seccomp            |\n| Prevent app/container from accessing unwanted resources (files, directories, etc) | AppArmor           |\n| Reduce the risk of what compromised process can do to a system (coarse-grained)   | Linux Capabilities |\n\n### Containers Isolation\n\n![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-container-isolation.puml&fmt=svg)\n\n#### gVisor\n\n<def>[gVisor](https://gvisor.dev/) is an application kernel for containers that provides efficient defense-in-depth anywhere.</def>\n\n> [!NOTE] [Install gVisor](https://gvisor.dev/docs/user_guide/install/)\n\n![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-gvisor-isolation.puml&fmt=svg)\n\n#### Kata Containers\n\n<def>[Kata Containers](https://katacontainers.io/) Kata Containers is an open source container runtime, building lightweight virtual machines that seamlessly plug into the containers ecosystem.</def>\n\n![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-katacontainers-isolation.puml&fmt=svg)\n\n> [!NOTE] this requires nested virtualization (in case of running workloads on VMs) and can degrade performance. Some cloud providers do not support nested virtualization.\n\n#### Containers isolation in Kubernetes\n\n- run a container with kata container runtime: `docker run --runtime kata -d nginx`\n- run a container with gVisor runtime: `docker run --runtime runsc -d nginx`\n\n1. Create runtime object\n2. use `runtimeClassName` on pod definition level to use the runtime\n\n### Falco\n\nProject created by Sysdig and donated to CNCF.\n\nSecure and monitor linux system using eBPF probes.\n\n#### Main usecases\n\n- runtime observability and security\n- rules engine for filtering\n- notifications and alerting (remedy is possible with additional tools)\n\n#### Falco components\n\nHigh-level overview of falco components:\n\n![Falco Components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-components.puml&fmt=svg)\n\n#### Falco rules & alerts\n\nFalco comes with pre-defined set of rules and alerts/actions that can be triggered by those rules (bolded ones are more relevant to containerized workloads):\n\n![Falco Ruleset](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)\n\n### Falco configuration\n\n- configuration is stored in **/etc/falco/falco.yaml**\n- default rule set is stored in **falco_rules.yaml**\n- file to override rules is **falco_fules.local.yaml**\n\n### Using Falco\n\n#### Start Falco as a service\n\n`systemctrl start falco`\n\n#### Check Falco logs\n\n`journalctl -fu falco`\n\n### Links and Resources\n\n- [Sysdig Blog: Manage AppArmor profiles in Kubernetes with kube-apparmor-manager](https://sysdig.com/blog/manage-apparmor-profiles-in-kubernetes-with-kube-apparmor-manager/)\n- [Kubernetes Docs: Restrict a Container's Access to Resources with AppArmor](https://kubernetes.io/docs/tutorials/clusters/apparmor/)\n\n## Build & Ship\n\n### Build Applications with Helm charts\n\n- applications are going to be packaged and deployed using [Helm](https://helm.sh/). Helm is Kubernetes native package manager\n\n### Deployment Overview\n\n![K8s terraform](_media/k8s-terraform-envs.png)\n\n## Operations\n\n### Projects and Teams Tenancy\n\n- each project/product should have their own AKS cluster instead of co-hosting products on the same cluster to avoid namespace collisions.\n- each environment (DEV, Test, etc) will have its own dedicated cluster per project/product\n\n:::tip\n consider using [Capsule](https://github.com/clastix/capsule) if you want to make your clusters multi-tenant.\n:::\n\n### Additional tools on the cluster\n\n- after cluster is up wa want to install and configure additional components\n- use [Atrifact Hub](https://artifacthub.io/packages/search?page=1) to deploy well known components\n\n> [!WARNING] Only Install tools from verified or trusted sources\n\n#### List of tools that should be installed\n\n- [Open Policy Agent](https://www.openpolicyagent.org/) enables usage and enforcing of Azure Policies in the cluster as part of centralized governance\n- [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) enables auto scling of Kubernetes pods based on the resources usage patterns\n- [Azure RBAC for managing access to Kubernetes resources](https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac)\n- [Falco](https://falco.org/) Falco, the cloud-native runtime security project, is the de facto Kubernetes threat detection engine\n\n:::tip\n [Guide to setup runtime security on AKS with Falco and sysdig](https://sysdig.com/blog/runtime-security-in-azure-kubernetes-service/)\n:::\n\n### Roles and Access\n\n- use Azure RBAC integrated with K8s roles to manage access to cluster\n- access to cluster via roles/etc\n\n### Security\n\n- enable [Azure Defender for AKS](https://docs.microsoft.com/en-us/azure/security-center/defender-for-kubernetes-introduction)\n- use [Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-introduction) for security monitoring\n- use service accounts mapped to K8s service accounts to manage access for workloads\n- use [App pod identity](https://github.com/Azure/aad-pod-identity), *this might not be needed*\n- ask about OPA Gatekeeper/Azure Policies implementation for OPA\n\n### Observability\n\n- use Azure native tools (Azure Monitor)\n\n## Useful Commands & Aliases\n\n### Check last 10 events on pod\n\n**Command:** `k describe pod <pod-name> | grep -i events -A 10`\n\n**When is it useful:** after creating/modyfing pod or during troubleshooting exercise check quickly if there are no errors in pod\n\n**Result:** List of events in given pod\n\n### Determine proper api_group/version for a resource\n\n**Command1:** `k api-resources | grep -i \"resource name\"`\n\n**Command2:** `k api-versions | grep -i \"api_group name\"`\n\n**Example:**\n\n`k api-resources | grep -i deploy` -> produces *apps* in APIGROUPS collumn\n\n`k api-versions | grep -i apps` -> produces *apps/v1*\n\n### Switch to namespace as default\n\n**Command:** `kubectl config set-context --current --namespace=new namespace`\n\n**When is it useful:** sometimes it is easier to switch to change namespace to default instead of appending namespace all the time\n\n**Result:** kubeclt commands will be executed in new namespace by default\n\n:::tip\n: Sometimes it is difficult to see what namespace is currently active, use [kube-ps1 plugin](https://github.com/jonmosco/kube-ps1) to show namespace and cluster in command line prompt\n:::\n\n### Get help for different k8s resources\n\n**Command:** `kubectl explain pods.spec.containers | less`\n\n**Command variation 1:** `kubectl explain pods.spec.containers --recursive | less` (use to include info about all child resources as well)\n\n### Display all k8s resources\n\n**Command:** `kubectl api-resources -owide`\n\n**When is it useful:** check which resources are namespaced and also see what shortcuts to use to refer to a resource to save up on typing\n\n**Result:** list of all resources available in the cluster\n\n### Use busybox for running utilities\n\n[Busybox page](https://busybox.net/about.html)\n\n>BusyBox: The Swiss Army Knife of Embedded Linux\nBusyBox combines tiny versions of many common UNIX utilities into a single small executable. It provides replacements for most of the utilities you usually find in GNU fileutils, shellutils, etc. The utilities in BusyBox generally have fewer options than their full-featured GNU cousins; however, the options that are included provide the expected functionality and behave very much like their GNU counterparts. BusyBox provides a fairly complete environment for any small or embedded system.\n\n>BusyBox has been written with size-optimization and limited resources in mind. It is also extremely modular so you can easily include or exclude commands (or features) at compile time. This makes it easy to customize your embedded systems. To create a working system, just add some device nodes in /dev, a few configuration files in /etc, and a Linux kernel.\n\n**Command:** `kubectl run -it --rm debug --image=busybox --restart=Never -- sh`\n\n**When is it useful:** this command will create temporary busybox pod (--rm option tells k8s to delete it after exiting shell). Busybox contains lots of [utility commands](https://busybox.net/downloads/BusyBox.html)\n\n### Verify pod connectivity\n\n**Command:**\n`kubectl run -it --rm debug --image=radial/busyboxplus:curl --restart=Never -- curl http://servicename`\n\n**When it is useful:** when making changes to a pod, it is very important to veryify if it works. One of the best wayst to verify is to check pod connectivity. If succesfull this command will return a response.\n\n### Retrieve token from secret to access dashboard\n\n**Command:**\n\n```bash\nkubectl -n kubernetes-dashboard get secret \\\n$(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath=\"{.secrets[0].name}\") \\\n-o go-template=\"{{.data.token | base64decode}}\"\n```\n\n**When is it useful:** when logging in to Kubernetes dashboard.\n\n**Result:** token ready to be pasted in the token field of Kubernetes dashboard.\n\n### Create k8s resource on the fly from copied YAML\n\n**Command:**\n\n```bash\ncat <<EOF | kubectl create -f -\n<YAML content goes here>\nEOF\n```\n\n**Command alternative:** alternatively use `cat > filename.yaml [enter] [Ctrl + Shift - to paste file content] [enter - adds one line to the file] [Ctrl + C - exit]` after that use vim/nano to edit the file and create resource based on it\n\n**When is it useful:** sometimes it's quicker to just grab YAML from k8s documentation page and create a resource much quicker than writing YAML yourself\n\n### Useful Aliases\n\n``` bash\nalias k=kubectl\nalias ks='k -n kube-system'\n```\n\n## Links & Resources\n\n- [Containerized Docker Application Lifecycle with Microsoft Platform and Tools](https://docs.microsoft.com/en-us/dotnet/architecture/containerized-lifecycle/)\n- [Dapr for .NET Developers](https://docs.microsoft.com/en-us/dotnet/architecture/dapr-for-net-developers/)"
+    },
+    {
+      "id": "welcome",
+      "metadata": {
+        "permalink": "/blog/welcome",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/2021-08-26-welcome/index.md",
+        "source": "@site/blog/2021-08-26-welcome/index.md",
+        "title": "Welcome",
+        "description": "Docusaurus blogging features are powered by the blog plugin.",
+        "date": "2021-08-26T00:00:00.000Z",
+        "formattedDate": "August 26, 2021",
+        "tags": [
+          {
+            "label": "facebook",
+            "permalink": "/blog/tags/facebook"
+          },
+          {
+            "label": "hello",
+            "permalink": "/blog/tags/hello"
+          },
+          {
+            "label": "docusaurus",
+            "permalink": "/blog/tags/docusaurus"
+          }
+        ],
+        "readingTime": 0.405,
+        "truncated": false,
+        "authors": [
+          {
+            "name": "Sébastien Lorber",
+            "title": "Docusaurus maintainer",
+            "url": "https://sebastienlorber.com",
+            "imageURL": "https://github.com/slorber.png",
+            "key": "slorber"
+          },
+          {
+            "name": "Yangshun Tay",
+            "title": "Front End Engineer @ Facebook",
+            "url": "https://github.com/yangshun",
+            "imageURL": "https://github.com/yangshun.png",
+            "key": "yangshun"
+          }
+        ],
+        "frontMatter": {
+          "slug": "welcome",
+          "title": "Welcome",
+          "authors": [
+            "slorber",
+            "yangshun"
+          ],
+          "tags": [
+            "facebook",
+            "hello",
+            "docusaurus"
+          ]
+        },
+        "prevItem": {
+          "title": "Software Development in Kubernetes a Cookbook",
+          "permalink": "/blog/software-development-in-kubernetes-a-cookbook"
+        },
+        "nextItem": {
+          "title": "5 Unusual Docker Usecases",
+          "permalink": "/blog/5-unusual-docker-usecases"
+        }
+      },
+      "content": "[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).\n\nSimply add Markdown files (or folders) to the `blog` directory.\n\nRegular blog authors can be added to `authors.yml`.\n\nThe blog post date can be extracted from filenames, such as:\n\n- `2019-05-30-welcome.md`\n- `2019-05-30-welcome/index.md`\n\nA blog post folder can be convenient to co-locate blog post images:\n\n![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)\n\nThe blog supports tags as well!\n\n**And if you don't want a blog**: just delete this directory, and use `blog: false` in your Docusaurus config."
+    },
+    {
+      "id": "/5-unusual-docker-usecases",
+      "metadata": {
+        "permalink": "/blog/5-unusual-docker-usecases",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/5-unusual-docker-usecases.md",
+        "source": "@site/blog/5-unusual-docker-usecases.md",
+        "title": "5 Unusual Docker Usecases",
+        "description": "intro-pic",
+        "date": "2021-08-01T23:09:18.000Z",
+        "formattedDate": "August 1, 2021",
+        "tags": [
+          {
+            "label": "docker",
+            "permalink": "/blog/tags/docker"
+          },
+          {
+            "label": "linux",
+            "permalink": "/blog/tags/linux"
+          }
+        ],
+        "readingTime": 4.96,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "5 Unusual Docker Usecases",
+          "date": "2021-08-01T23:09:18.000Z",
+          "draft": false,
+          "tags": [
+            "docker",
+            "linux"
+          ],
+          "categories": [
+            "devops"
+          ],
+          "show_in_homepage": true,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "Welcome",
+          "permalink": "/blog/welcome"
+        },
+        "nextItem": {
+          "title": "5 Common Pitfalls in Iac",
+          "permalink": "/blog/5-common-pitfalls-in-iac"
+        }
+      },
+      "content": "![intro-pic](https://cdn-images-1.medium.com/max/6032/1*8NKs9ODk9gzzFbvEcivMGQ.jpeg)\n*Photo by [Antoine Petitteville](https://unsplash.com/@ant0ine?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*\n\n## Introduction\n\n[Docker ](https://www.docker.com/)introduced containers technology as mainstream around 2013. Since then, containerization became an integral part of the cloud and digital transformations. Nowadays most of the traditional server workloads such as web APIs, web apps (broadly speaking server side workloads), are containerized. Heck, even Microsoft saw the writing on the wall and since 2016 windows containers are also there (albeit a bit on the heavy side). 2017 saw the introduction of Kubernetes, a container orchestration, which even more cemented already strong position of containers as compute workhorses.\n\n## Basic use cases\n\nWe are living in a golden age of containerization, so much so, that container start to move from more traditional server workload scenarios to more exotic use cases.\n\nBefore we jump into those, let’s answer a question as to why containers and related technologies are so popular. In my opinion, it boils down to those 3 factors:\n\n* **Portability**: No more “but it runs on my computer” problems. If it runs, it will run on any [OCI compliant container runtime](https://opencontainers.org/).\n\n* **Ease of configuration**: Docker images (blueprints for containers) package not only application/service binaries, but also all its dependencies. No more complicated, error-prone configuration word documents send back and forth between Dev and Ops.\n\n* **Standardized Tooling**: Images and containers are fully standardized packaging and runtime mechanism, meaning that tool chains will work everywhere. No more proprietary, complex deployment and development tools that differs from company to company. It can all now be standardized.\n\n## Prerequisites\n\nIf you would like to follow along, please install those prerequisites. Please note that I’m using Windows with WLS2, so some installation steps might be different for your OS.\n\n[Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) will install docker host on our machine and enable us to run the workloads. Once docker is up and running, you might want to make sure that you are running Linux and not Windows containers (right click Docker icon in tray). Once done, proceed to step two, installing Portainer.\n\n![Docker Desktop](https://cdn-images-1.medium.com/max/3788/1*LZlsfD4Mg7fh9wwjG5FRSA.png)\n\nPortainer, a lightweight web UI for managing docker host (and more). To install portainer on Linux, Windows or Mac, [follow this link](https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/). Portainer will help us quickly deploy docker workloads.\n\nTo quickly install portainer on Windows WSL2 run the following:\n\n    docker volume create portainer_data\n\n    docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-c\n\nNavigate to localhost:9000set username and password, connect to docker host, and off we go.\n\n![Portainer UI](https://cdn-images-1.medium.com/max/7626/1*KkkHtNj1ozwFc4tr1lS7mg.png)\n\nIn order to deploy docker containers we are not going to use imperative docker CLI but rather will be using docker compose to describe and run our applications. Docker compose introduces a declarative way of running containers.\n>  To learn more about docker-compose, check [docker compose spec](https://compose-spec.io/)\n\n### #1 Run a UI app in a container\n\nFor our first use case we will run a UI app in a container and connect to it via a web browser! Deployment is very easy. We are using Open Source software called [digikam ](https://www.digikam.org/)as an example, but this can be almost anything, like web browsers, Libre Office etc. Follow the instructions form the container page [https://docs.linuxserver.io/images/docker-digikam](https://docs.linuxserver.io/images/docker-digikam)\n\n![Portainer Deployment](https://cdn-images-1.medium.com/max/3038/1*FAT-0ZhSx6QC0ge4TnPFeg.png)\n\n 1. Navigate to Stacks -> Add Stack\n\n 2. Give a name for your app (stack)\n\n 3. Adjust config settings\n\n 4. PUID and GUID are the respective user ID and group ID that runs docker host. You can check it by opening WSL console and typing id\n\n 5. Adjust TZ to yours\n\n 6. Create a folder for configuration, I create folder in my home directory with a quick command mkdir -p /directory/config\n\n 7. Choose a port that is not taken or blocked by firewall. Remember ports are always from outside into container so 3001(port on host):3000(port in container)\n\n### #2 Run a Linux desktop environment in a container\n\nWhat, what? Linux in a container? Indeed and although practical applications of this approach might be questionable, it’s definitely fun :). So to “clarify ”, **we are running a Linux desktop in a container, that runs in a program, that runs on Linux, which in turn runs on Windows… and we will access the Linux server via a browser! Phew.**\n\n[https://docs.linuxserver.io/images/docker-webtop](https://docs.linuxserver.io/images/docker-webtop)\n\n![Photo by [Yogi Purnama](https://unsplash.com/@yogipurnama?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/superman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/9216/1*K9On-N9UwhoN8vYeUDJzQQ.jpeg)\n\nOne possible use case of running fully fledged Linux desktop as a containers is that you can test various Linux distribution and desktop environments (DE) before installing Linux on your machine.\n\n### #3 Run a CLI tool in a container\n\nVery often a CLI tool or set of tools are needed to diagnose or perform some tasks. Linux provides an easy way to install tools, but if you want to add some customization, aliases etc, it is time consuming. Containers to the rescue!\n\nI have created and blogged about one such tool that enables Kubernetes management in a highly customizable way with kubectl running in a docker container. [Check it out](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) if u are interested.\n\n### #4 Run your programming environment in a container\n\nIf you are a software developer, you definitely know the pain of installing all kinds of dependencies that your project needs to compile or start. This is no longer the case if you move your development into a container!\n\nCheck out [Visual Studio Code remote containers](https://code.visualstudio.com/docs/remote/containers) extension as well as [GitPod ](https://www.gitpod.io/)project. You can also run tests inside containers!\n\n### #5 Run Kubernetes in a container\n\nWith a KIND project (Kubernetes IN Docker) you can run whole kubernetes cluster in a Docker container.\n\n![KIND](https://cdn-images-1.medium.com/max/2000/1*Y8KbXGe_-hhFeJx2jGN02Q.png)\n\nThis enables us to quickly create disposable clusters for development or running tests or CI/CD processes.\n\n## Conclusion\n\nContainers can be used for much more than just server side workloads. Some of the use cases are more of a fun way to play with containers (like webtop), but some are very useful (like developing in containers or KIND).\n\nCheck out [awesome docker](https://github.com/veggiemonk/awesome-docker) list to learn more about Docker resources.\n\nAlso big shoutout to the team behind [linuxserver containers](https://www.linuxserver.io/). Lots of great content and ideas."
+    },
+    {
+      "id": "/5-common-pitfalls-in-iac",
+      "metadata": {
+        "permalink": "/blog/5-common-pitfalls-in-iac",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/5-common-pitfalls-in-iac.md",
+        "source": "@site/blog/5-common-pitfalls-in-iac.md",
+        "title": "5 Common Pitfalls in Iac",
+        "description": "Image by Elchinator from [Pixabay](https://cdn-images-1.medium.com/max/3840/1*7RTz2NJPVuxU8b7gNSKg.jpeg)",
+        "date": "2021-08-01T23:07:36.000Z",
+        "formattedDate": "August 1, 2021",
+        "tags": [
+          {
+            "label": "terraform",
+            "permalink": "/blog/tags/terraform"
+          },
+          {
+            "label": "iac",
+            "permalink": "/blog/tags/iac"
+          }
+        ],
+        "readingTime": 5.84,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "5 Common Pitfalls in Iac",
+          "date": "2021-08-01T23:07:36.000Z",
+          "draft": false,
+          "tags": [
+            "terraform",
+            "iac"
+          ],
+          "categories": [
+            "IAC",
+            "devops"
+          ],
+          "show_in_homepage": true,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "5 Unusual Docker Usecases",
+          "permalink": "/blog/5-unusual-docker-usecases"
+        },
+        "nextItem": {
+          "title": "Intro to Azure ACI",
+          "permalink": "/blog/intro-to-azure-ACI"
+        }
+      },
+      "content": "![Image by [Elchinator](https://pixabay.com/users/elchinator-10722855/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4280758) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4280758)](https://cdn-images-1.medium.com/max/3840/1*7RTz2NJ_PVuxU8_b7gNSKg.jpeg)\n\n## 5 common pitfalls in Infrastructure as Code\n\n## Introduction\n\nModern, cloud-native infrastructure can be created and destroyed within minutes. It can be scaled up and down depending on load and usage patterns.\n\n**Infrastructure as Code (IaC) **is a common pattern where virtualized infrastructure and auxiliary services can be managed using configuration expressed in almost any language, usually hosted in a source code repository.\n\n### Why is this important?\n\nIaC enables automated, repeatable and reliable creation and maintenance of any virtualized infrastructure. If you are interested to learn more about available tools and practices, here is a list to get you started:\n\nTerraform, Pulumi and Crossplane all support multiple providers and are great for operating cross-cloud.\n\nCrossplane takes a very interesting approach to IaC and leverages native Kubernetes constructs and automatically “inherits” rich Kubernetes ecosystem and tooling. Oh and it also has the coolest logo :).\n[**Introduction - Terraform by HashiCorp**\n*Welcome to the intro guide to Terraform! This guide is the best place to start with Terraform. We cover what Terraform…*www.terraform.io](https://www.terraform.io/intro/index.html)\n[**Pulumi - Modern Infrastructure as Code**\n*Setting up the infrastructure to serve a static website is often harder than it seems - but fortunately, this is a task…*www.pulumi.com](https://www.pulumi.com/)\n[**Crossplane**\n*Crossplane brings Kubernetes-styled declarative and API-driven configuration and management to any piece of…*crossplane.io](https://crossplane.io/)\n\nThere are also cloud vendor specific tools and standards\n\nAzure:\n[**ARM template documentation**\n*Learn how to develop Azure Resource Manager templates and use them to deploy Azure resources*docs.microsoft.com](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/)\n[**Farmer :: Farmer**\n*Farmer is an easy-to-learn library for rapidly authoring and deploying entire Azure architectures…*compositionalit.github.io](https://compositionalit.github.io/farmer/)\n[**Bicep language for Azure Resource Manager templates - Azure Resource Manager**\n*Bicep is a language for declaratively deploying Azure resources. You can use Bicep instead of JSON for developing your…*docs.microsoft.com](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/bicep-overview#get-started)\n\nAWS:\n[**AWS CloudFormation - Infrastructure as Code & AWS Resource Provisioning**\n*Speed up cloud provisioning with infrastructure as code AWS CloudFormation gives you an easy way to model a collection…*aws.amazon.com](https://aws.amazon.com/cloudformation/)\n\nGCP:\n[**Cloud Deployment Manager | Google Cloud**\n*Create and manage cloud resources with simple templates. View documentation for this product. Google Cloud Deployment…*cloud.google.com](https://cloud.google.com/deployment-manager)\n\n## Common Mistakes\n\nAs with every new paradigm shift, it takes time before industry as a whole comes up with set of patterns and adoption strategies. Often times, a lot of companies will try to apply IaC principles in their organization and fail due to common mistakes.\n\nAlmost all the mistakes come from lack of mindset change and insufficient cultural shift within the organization. Simply put, we all have a tendency to fall back into well known tracks the moment things became complicated or overwhelming.\n\n### #1 Pets vs Cattle\n\nThis mistake happens when servers and other infrastructure assets are treated like fixed resources, tended to, typically with names and IP addresses somewhere in an obscure excel file.\n\nTo make the most of cloud native infrastructure consider treating your infrastructure like cattle instead. This way infrastructure becomes an asset or artifact more resembling applications than physical servers.\n\n### #2 Virtualized Data Center\n\nIf you have worked previously with physical data centers, you might be tempted to port the same concept to IaC. This is a mistake as data centers are something that cloud providers are worrying about. The abstraction you should be working with is 100% virtualized.\n\nThe mental model of data center is very limiting in what could be accomplished with IaC. For example:\n\n* split into multiple providers\n\n* scale compute down to lower cost\n\n* offloading cross cutting concerns to 3rd party services\n\n### #3 Not understanding relation between infrastructure and data\n\nData is the the most important commodity in modern world, so naturally securing it is at the center of focus for all organizations.\n\nThis mistake often results in low IaC adoption due to fear of losing/corrupting data. Here is a very simple step-by-step scenario to show how IaC can be used safely with live, production data.\n\n![](https://cdn-images-1.medium.com/max/2000/1*T9h8DfgPxUPJD_fXopoltA.png)\n\nUnderstanding that infrastructure can be created and destroyed all the time is the key concept.\n\n### #4 Breaking Dev and Ops\n\nDevOps movement promises faster and reliable software delivery once Dev and Ops are not silos, but rather part of the same continuous, uninterrupted, automated process.\n\nCompanies in highly regulated business domains tend to drift towards siloed mentality as it appear to offload and distribute responsibilities and often in practice gives a clear targets in the “blame game”. This is obviously backwards thinking and applies not only to IaC, but also other areas.\n\nIn IaC specifically it often means separating development teams and operations.\n\n### #5 Using IaC as fancy deployment scripts\n\nDon’t try to use IaC as a fancy script, like PowerShell or bash to automate creation of the infrastructure. To get most benefits, try to think about your configuration files in the same way as software. It should be properly versioned, has its own CI/CD pipeline, it should be tested and secure. Great benefit of IaC is that you can use same developer workflows as you are used to for software development process.\n\nAlso do try to parametrize your IaC code to be more reusable. Configuration tends to increase in complexity and as with any other code, strive to apply DRY principle (Don’t Repeat Yourself).\n\n### #6 Bonus Point: Using IaC as configuration management\n\nThis antipattern is likely to come up in day 2 operations with IaC. Once the infrastructure is provisioned and everything is up and running, a request pops up to make a change in the configuration of provisioned resources.\n\nLet’s imagine that your infrastructure is in Azure and want to add a new rule to a network security group (NSG) for your VMs. It is easy enough to achieve with tool like Terraform. This might sound like a good practice at first glance, but in reality creates problems around state reconciliation and drift management. Using IaC tools to manage existing infrastructure’s configuration and settings violates the **immutability principle. **Instead think about the provisioned infrastructure as fully immutable, you can either provision new infrastructure or destroy it and create new one in its place.\n\nThis approach simplifies greatly reasoning about the state of infrastructure and helps maintain clear operational model. This of course doesn’t mean that configuration changes are impossible, but instead use dedicated set of tools to manage configuration changes. Tools like Ansible paired with GitOps practices (Flux, ArgoCD, etc) will ensure correct, idempotent change process.\n\nIn short, use IaC tools to provision your infrastructure into a desired state. Use tools like Ansible or Consul to manage existing infrastructure’s configuration, detect and remediate configuration drift.\n\n## Final Thoughts\n\nIaC is not a silver bullet and comes with its own challenges, but in the modern era of cloud native computing, there is no better alternative as of yet to manage infrastructure.\n\nSteadily progressing containerization of all workloads and increasing presence of orchestrators like Kubernetes, drives most of the organizations towards more complex software and ever faster rate of changes.\n\nIf you are still thinking of adopting some IaC practices within your organization, the time is yesterday."
+    },
+    {
+      "id": "/intro-to-azure-ACI",
+      "metadata": {
+        "permalink": "/blog/intro-to-azure-ACI",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/intro-to-azure-ACI.md",
+        "source": "@site/blog/intro-to-azure-ACI.md",
+        "title": "Intro to Azure ACI",
+        "description": "Photo by Christopher Gower on [Unsplash](https://cdn-images-1.medium.com/max/7764/1*h4TLlisFk7XvtREAsS7C7Q.jpeg)",
+        "date": "2021-08-01T19:02:39.000Z",
+        "formattedDate": "August 1, 2021",
+        "tags": [
+          {
+            "label": "azure",
+            "permalink": "/blog/tags/azure"
+          },
+          {
+            "label": "container",
+            "permalink": "/blog/tags/container"
+          }
+        ],
+        "readingTime": 3.585,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Intro to Azure ACI",
+          "date": "2021-08-01T19:02:39.000Z",
+          "draft": false,
+          "tags": [
+            "azure",
+            "container"
+          ],
+          "categories": [
+            "learning",
+            "azure"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "5 Common Pitfalls in Iac",
+          "permalink": "/blog/5-common-pitfalls-in-iac"
+        },
+        "nextItem": {
+          "title": "MDX Blog Post",
+          "permalink": "/blog/mdx-blog-post"
+        }
+      },
+      "content": "![Photo by [Christopher Gower](https://unsplash.com/@cgower?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/desktop?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/7764/1*h4TLlisFk7XvtREAsS7C7Q.jpeg)\n\n## Easily Deploy Containers to Azure directly from your Desktop\n\n## Introduction\n\nContainers are now a mature solution providing an additional level of infrastructure abstraction. In many cases, containers can replace workloads traditionally powered by virtual machines.\n\nIn this blog, we are going to look at [Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/) and showcase how fast and easy it is to deploy containers directly from your docker CLI to Azure.\n\n## Prerequisites\n\nIf you would like to follow along, you will need to have Azure subscription, Azure CLI and Docker Desktop instance.\n\n* [Get free Azure Subscription](https://azure.microsoft.com/en-us/free/)\n\n* [Install Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)\n\n* [Install Docker Desktop](https://www.docker.com/products/docker-desktop)\n\n## What are Azure Container Instances\n\nAzure Container Instances is a compute offering that bridges the gap between lightweight Azure Functions and more complex, but fully fledged Azure Kubernetes Service.\n\n![[https://docs.microsoft.com/en-us/azure/container-instances/container-instances-container-groups](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-container-groups)](https://cdn-images-1.medium.com/max/2220/1*Hy7vemcwEjIpzQI3LyrX3w.png)\n\n## Use Cases & Characteristics\n\nACI is best suited for containerized workloads that can operate in isolation, simple apps, batch jobs including data science models, all kinds of tasks automation and integration scenarios.\n\n* **Fast startup: **Launch containers in seconds.\n\n* **Per second billing:** Incur costs only while the container is running.\n\n* **Hypervisor-level security:** Isolate your application as completely as it would be in a VM.\n\n* **Custom sizes:** Specify exact values for CPU cores and memory.\n\n* **Persistent storage:** Mount Azure Files shares directly to a container to retrieve and persist state.\n\n* **Linux and Windows:** Schedule both Windows and Linux containers using the same API.\n\n## Workflow\n\nWe are going to deploy a sample web page. The idea is that with docker CLI and ACI we can rapidly prototype, test and deploy directly from docker command line!\n>  *Important node: this flow is only for testing purposes, in real code scenario you would have CI/CD pipeline deploying your app for you.*\n\nWe are going to use bash, but the same is of course possible with powershell.\n>  *Docker CLI contains now build-in integration with Azure Container Instances through a **context **command. When using Azure CLI, you cat activate **Azure Interactive **by typing az interactive. This is an experimental feature of Azure CLI which gives you parameters completion and more!*\n\nFirst let’s setup variables and authenticate with Azure using docker CLI\n\n* setup variable for *tenant* to enable login: TENANT=$(az account show --query tenantId -o tsv)\n\n* Finally let’s login to Azure docker login azure --tenant-id $TENANT. You will be prompted to login via AD or paste authentication code.\n\n* Create context docker context create aci azure-context\n>  *This command is interactive and will prompt you to select **subscription, resource group (create or select existing one) and location**. Make sure to note resource group name if you create a new one, so later it’s easy to cleanup resources.*\n\nNow let’s deploy a test container!\n\n 1. Switch to new context docker context use azure-context\n\n 2. Run [ACI hello world image](https://hub.docker.com/r/microsoft/aci-helloworld) docker run -d --name helloworld -p 80:80 microsoft/aci-helloworld\n\n 3. Great! Now grep for host IP and navigate to it in a browser: docker inspect helloworld | grep HostIP You should see “Welcome to Azure Container Instances!” as below.\n\n 4. Cleanup resources\n\n* Run docker stop helloworld to stop the container\n\n* Run docker rm helloworld to remove container group. Running this command completely removes container group so there are no charges.\n\n* Optionally remove resource group if you’ve created it only for the purpose of this demo\n\n![Success!](https://cdn-images-1.medium.com/max/2298/1*8cz8mDNbxDofR59gv_VXug.png)\n\n* Switch back to docker desktop context: docker context use default\n\n## Summary\n\nWe’ve see how easy it is to deploy a container group directly to Azure Container Instances. This could be very useful for testing purposes and quick inner development loop.\n\nThis blog barely scratches the surface of what Azure Container Instances can do and how to integrate developer workflow. In my opinion Azure Container Instances is one of the most flexible and powerful serverless offerings in Azure.\n\n## Links and Resources\n\nThere are a lot of great blogs and tutorials to check if you are interested to learn more.\n\n* [Compose CLI ACI Integration Now Available](https://www.docker.com/blog/compose-cli-aci-integration-now-available/)\n\n* [ACI pricing](https://azure.microsoft.com/en-gb/pricing/details/container-instances/)\n\n* [Docker documentation](https://docs.docker.com/engine/context/aci-integration/)\n\n* [Deploy minecraft](https://www.docker.com/blog/deploying-a-minecraft-docker-server-to-the-cloud/)\n\n* [Compose Spec](https://www.compose-spec.io/)\n\n* [VS Code integration](https://cloudblogs.microsoft.com/opensource/2020/07/22/vs-code-docker-extension-azure-containers-instances/)\n\n* [Azure ACI Quickstart](https://docs.microsoft.com/en-us/azure/container-instances/quickstart-docker-cli)\n\n* [Microsoft Learn](https://docs.microsoft.com/en-us/learn/modules/run-docker-with-azure-container-instances/)\n\n* [Git repo as volume](https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-volume-gitrepo)\n\n* [Very cool demo with Mark Russinovich and Scott Hanselman on Azure Friday](https://www.youtube.com/watch?v=7G_oDLON7Us&ab_channel=MicrosoftAzure)"
+    },
+    {
+      "id": "mdx-blog-post",
+      "metadata": {
+        "permalink": "/blog/mdx-blog-post",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/2021-08-01-mdx-blog-post.mdx",
+        "source": "@site/blog/2021-08-01-mdx-blog-post.mdx",
+        "title": "MDX Blog Post",
+        "description": "Blog posts support Docusaurus Markdown features, such as MDX.",
+        "date": "2021-08-01T00:00:00.000Z",
+        "formattedDate": "August 1, 2021",
+        "tags": [
+          {
+            "label": "docusaurus",
+            "permalink": "/blog/tags/docusaurus"
+          }
+        ],
+        "readingTime": 0.175,
+        "truncated": false,
+        "authors": [
+          {
+            "name": "Sébastien Lorber",
+            "title": "Docusaurus maintainer",
+            "url": "https://sebastienlorber.com",
+            "imageURL": "https://github.com/slorber.png",
+            "key": "slorber"
+          }
+        ],
+        "frontMatter": {
+          "slug": "mdx-blog-post",
+          "title": "MDX Blog Post",
+          "authors": [
+            "slorber"
+          ],
+          "tags": [
+            "docusaurus"
+          ]
+        },
+        "prevItem": {
+          "title": "Intro to Azure ACI",
+          "permalink": "/blog/intro-to-azure-ACI"
+        },
+        "nextItem": {
+          "title": "Gitops With Kubernetes",
+          "permalink": "/blog/gitops-with-kubernetes"
+        }
+      },
+      "content": "Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).\n\n:::tip\n\nUse the power of React to create interactive blog posts.\n\n```js\n<button onClick={() => alert('button clicked!')}>Click me!</button>\n```\n\n<button onClick={() => alert('button clicked!')}>Click me!</button>\n\n:::"
+    },
+    {
+      "id": "/gitops-with-kubernetes",
+      "metadata": {
+        "permalink": "/blog/gitops-with-kubernetes",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/gitops-with-kubernetes.md",
+        "source": "@site/blog/gitops-with-kubernetes.md",
+        "title": "Gitops With Kubernetes",
+        "description": "Photo by Timelab Pro on [Unsplash](https://cdn-images-1.medium.com/max/12032/1*bZYRUC186rFiox2B9OVD9g.jpeg)",
+        "date": "2021-07-14T13:29:15.000Z",
+        "formattedDate": "July 14, 2021",
+        "tags": [
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          },
+          {
+            "label": "gitops",
+            "permalink": "/blog/tags/gitops"
+          }
+        ],
+        "readingTime": 4.63,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Gitops With Kubernetes",
+          "date": "2021-07-14T13:29:15.000Z",
+          "draft": false,
+          "tags": [
+            "kubernetes",
+            "gitops"
+          ],
+          "categories": [
+            "gitops"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "MDX Blog Post",
+          "permalink": "/blog/mdx-blog-post"
+        },
+        "nextItem": {
+          "title": "How to Create Kubernetes Homelab",
+          "permalink": "/blog/how-to-create-kubernetes-homelab"
+        }
+      },
+      "content": "![Photo by [Timelab Pro](https://unsplash.com/@timelabpro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/container?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/12032/1*bZYRUC186rFiox2B9OVD9g.jpeg)\n\n## GitOps with Kubernetes\n\n### Introduction\n\nIn 2017, a cloud-native company [Weaveworks ](https://www.weave.works/)release a blog post called “[GitOps — Operations by Pull Request](https://www.weave.works/blog/gitops-operations-by-pull-request)”. The post introduces the term **GitOps** defining it as *using Git as a source of truth to operate almost anything. *Since then GitOps movement has been growing and gaining in popularity.\n\nWe are going to take a closer look at what GitOps is and how it applies to Kubernetes. What are the benefits we can gain from applying GitOps principles? What is the difference between simply using Git to deploy stuff and GitOps? Can we use GitOps at scale?\n\n### Git\n\nGitOps, as the name suggests, has something to do with Git. Fun fact, GitOps doesn’t have to be really (Git)Ops, it could also be (SVN)Ops or (Mercurial)Ops or even (Version Control System)Ops…, but well GitOps just rolls better off the tongue ;)\n\nAnyway, we all know and love Git (when it just works) or hate it (when we need to resolve a merge conflict). Let’s have a quick refresher, how modern Git-based developer workflow looks like. Obviously, features like Pull Requests are not part of Git the version control system, but rather GitHub, GitLab etc. In the diagram we are looking at activities developers perform that include pull requests as good practices around managing code changes.\n\n![Sample Git workflow](https://cdn-images-1.medium.com/max/2678/1*iPXGlE7tk_UEBAYixcMqXw.png)\n\nThe above example shows developer workflow in a simplified way, but taking into consideration how most of the work is done with Git repositories nowadays.\n\n### Wait, haven’t we’ve been doing GitOps all this time?\n\nYou might ask yourself if you haven’t been doing GitOps all the time anyway? What’s all the fuss? You have been using Git and committing/pushing changes every day! The key difference is the **reconciliation loop** that happens continuously making sure whatever is defined in your Git repos is **reflected on the infrastructure side **using the automated agent on your Kubernetes cluster.\n\nIn other words; **GitOps = Continuous Delivery + Continuous Operations.**\n\nLet’s look at how GitOps principles could work with Kubernetes. Imagine your app runs in a Kubernetes cluster and you want to update its deployment manifest increasing CPU resources allowance. In a “traditional” way you would:\n\n* modify a helm chart, kustomize file or plain deployment YAML, changing CPU request and limits for a particular deployment\n\n* use kubectl to apply changed YAML to your cluster\n\nIn the GitOps world, instead of applying resources to your cluster manually (or via script or pipeline), a dedicated agent would pull changes into the cluster and apply them on your behalf.\n\n![GitOps Flow with Kubernetes](https://cdn-images-1.medium.com/max/2310/1*oOx3_hScga5SDb5yafjWKw.png)\n\n### Benefits of GitOps in Kubernetes\n\nKubernetes brings enormous power to managing workloads at scale, but this power comes with a cost of complexity. The less manual intervention and the higher the automation, the better. GitOps enables a very high degree of automation which is in my opinion its most significant benefit.\n\nThis is what [Kelsey Hightower](https://twitter.com/kelseyhightower) had to say about GitOps.\n\n![](https://cdn-images-1.medium.com/max/2000/1*Lo55hzX30yntB6NN296xHg.png)\n\n### GitOps Tooling\n\nGitOps Tools are maturing rapidly and offering a broad spectrum of features, covering security and Day2 operations. The tool I’m familiar with and can highly recommend is [Flux](https://www.weave.works/oss/flux/) as well as [GitOps Core](https://www.weave.works/product/gitops-core/) (both tools from Weaveworks). There is also a very popular tool [ArgoCD](https://argoproj.github.io/argo-cd/) in the same category, but I’m less familiar with it.\n\nCloud providers develop their own GitOps related tooling as well. For example Azure uses [Azure Arc](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/conceptual-configurations) with Azure Arc enabled Kubernetes and Google Cloud uses [Cloud Build](https://cloud.google.com/kubernetes-engine/docs/tutorials/gitops-cloud-build).\n\n### Kubernetes manifests in-app repo or a dedicated repo\n\nSomehow related to GitOps, a question that often pops up is: Should I put my Kubernetes YAML manifests in the same repo as my app (microservice) or in a dedicated repo?\n\nThe answer depends on what your app is doing, how many clusters do you have and how mature your Platform Team is. If you are a small team and have only a handful of apps deployed on a single Kubernetes cluster, then having your Kubernetes manifests in the same repo as your app makes sense.\n\nIf you are a bigger team with multiple clusters, then splitting cluster-specific YAML files from your app files into a separate repo might be a better choice.\n\nIn the end, remember, all YAML files, helm charts or other ways to apply changes to your cluster will be managed from those Git repos, so make sure that your branching strategy is correct and you will be fine.\n\n### What if I have 100+ clusters\n\nKubernetes on the edge, at scale, is becoming the norm, but how do I manage multiple Kubernetes clusters with only 2 team members? Obviously, automation is the key. A very interesting solution is [Rancher Fleet.](https://fleet.rancher.io/)\n\n![Rancher Fleet](https://cdn-images-1.medium.com/max/2000/1*74uCX__UgyVWob844FqdlA.png)\n\nUsing GitOps principles and Rancher amazing function of managing any Kubernetes cluster at scale, we can now apply GitOps principles to a lot of clusters at the same time.\n\n### Where can I learn more\n\nThe best way to learn more about GitOps is to check Weaveworks blogs and resources, for example, [Guide To GitOps](https://www.weave.works/technologies/gitops/), you can also get involved in [GitOps Working Group](https://github.com/gitops-working-group/gitops-working-group).\n\nWould you like to convince your team or boss to give GitOps a try? Check out [GitOps Conversation Kit](https://gitops-community.github.io/kit/#need-help-or-want-updates).\n\n### Conclusion\n\nWe have just scratched the surface of how GitOps practices can be used with Kubernetes apps and infrastructure. GitOps is a trend gaining in popularity in Cloud Native space. It is worth your time to investigate it a bit and see what benefits might it bring to you and your team."
+    },
+    {
+      "id": "/how-to-create-kubernetes-homelab",
+      "metadata": {
+        "permalink": "/blog/how-to-create-kubernetes-homelab",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/how-to-create-kubernetes-homelab.md",
+        "source": "@site/blog/how-to-create-kubernetes-homelab.md",
+        "title": "How to Create Kubernetes Homelab",
+        "description": "Photo by Clay Banks on [Unsplash](https://cdn-images-1.medium.com/max/5600/1*GQqxnCRzFQ9hr6ZiZCki0Q.jpeg)",
+        "date": "2021-06-04T13:24:24.000Z",
+        "formattedDate": "June 4, 2021",
+        "tags": [
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          },
+          {
+            "label": "homelab",
+            "permalink": "/blog/tags/homelab"
+          }
+        ],
+        "readingTime": 6.415,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "How to Create Kubernetes Homelab",
+          "date": "2021-06-04T13:24:24.000Z",
+          "draft": false,
+          "tags": [
+            "kubernetes",
+            "homelab"
+          ],
+          "categories": [
+            "homelab"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "Gitops With Kubernetes",
+          "permalink": "/blog/gitops-with-kubernetes"
+        },
+        "nextItem": {
+          "title": "How to Learn Devops",
+          "permalink": "/blog/how-to-learn-devops"
+        }
+      },
+      "content": "![Photo by [Clay Banks](https://unsplash.com/@claybanks?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/5600/1*GQqxnCRzFQ9hr6ZiZCki0Q.jpeg)\n\n## How to create Kubernetes home lab on an old laptop\n\n### Introduction\n\nI’ve recently “discovered” and old laptop forgotten somewhere in the depths of my basement and decided to create a mini home lab with it where I could play around with Kubernetes.\n\nHere are the specs:\n\n![Laptop spec](https://cdn-images-1.medium.com/max/2524/1*RsS5POpGvdn7g5b55MJGOg.png)\n\nIn this blog, we are going to go through the whole setup process and end up with usable Kubernetes setup. The goal is to create a simple but fully fledged Kubernetes setup that we can quickly spin up and keep alive for some time to run simple workloads and learn/test.\n\nThe end architecture would like like this:\n\n![](https://cdn-images-1.medium.com/max/2384/1*GthS7MIlOhcGItArCpp4BA.png)\n\n### Install ubuntu\n\nStart by downloading ubuntu and burning it to a USB. I have used [etcher](https://www.balena.io/etcher/) and downloaded ubuntu 20.04.2 LTS from official page using [torrent link](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso.torrent). For torrents download I recommend [qBittorrent](https://www.qbittorrent.org/download.php) but use whatever you are comfortable with.\n\nOnce everything is ready, plug in the USB with Ubuntu image to your laptop and follow installation instructions on the Ubuntu page. You can also find a YouTube vid to help you thought the process. Here is one [https://www.youtube.com/watch?v=K2m52F0S2w8](https://www.youtube.com/watch?v=K2m52F0S2w8).\n\nSelect following additional packages:\n\n* openssh\n\n* docker\n\nDuring the “SSH Setup” phase, make sure to select “Allow Password Authentication over SSH”. This will allow for a quick login without setting up PKI. Once you are happy with the setup and will want to keep it running, it is easy to disable it and swap to key based authentication mode.\n\n### Enable Wi-Fi [Optional]\n\nAfter first boot I have decided to enable Wi-Fi since I only have one Lan cable. This is optional if you have dedicated cable for your laptop.\n\n### Disable default lid actions\n\nTypically laptops are used as desktop devices and are configured with screen/power saving options. One of such options is powering off or hibernating when laptop lid is closed. Let’s change it to make sure our laptop stays on even when lid is closed.\n\n### Create virtual machines with Multipass\n\n> Multipass is a lightweight VM manager for Linux, Windows and macOS. It’s designed for developers who want a fresh Ubuntu environment with a single command. It uses KVM on Linux, Hyper-V on Windows and HyperKit on macOS to run the VM with minimal overhead. It can also use VirtualBox on Windows and macOS. Multipass will fetch images for you and keep them up to date.\n> Since it supports metadata for cloud-init, you can simulate a small cloud deployment on your laptop or workstation.\n[**canonical/multipass**\n*Multipass is a lightweight VM manager for Linux, Windows and macOS. It's designed for developers who want a fresh…*github.com](https://github.com/canonical/multipass)\n\n### Install k3s server and agent\n\nSince the laptop spec is pretty low, especially on memory side, we need a Kubernetes distribution that works well on low end hardware.\n\nThere are two choices:\n\n* Rancher [k3s](https://k3s.io/)\n\n* Mirantis [k0s](https://www.mirantis.com/software/k0s/)\n\nI have selected k3s as I’m familiar with it and at the end I want to be able to manage my cluster with Rancher Management.\n\n*If you are interested in reading more about comparison between k3s and k0s here is a good blog: [https://saiyampathak.medium.com/k0s-yet-another-kubernetes-distro-7201ea425165](https://saiyampathak.medium.com/k0s-yet-another-kubernetes-distro-7201ea425165)*\n\nAfter installation, let’s make sure that our cluster is up and running\n\n    # Login to ks3 server vm\n    multipass shell ks3-server\n\n    # Check if the nodes are up and running\n    kubeclt get nodes\n\nThe output should be similar to this:\n\n![Running nodes](https://cdn-images-1.medium.com/max/2000/1*5Z52IiDT_A-p5xzRZBQ-1A.png)\n\nA quick note on taints. Normally we wouldn’t want our workloads running on master node and use taints and tolerations to make sure pods are scheduled only on a worker node. In our case, since the setup is not HA (Highly Available) due to hardware resources constrains, we are going to allow pods scheduling on a master node.\n\n### Setup Load Balancer\n\nOur setup so far consists of bare metal “server” with 2 vms on it. In order to establish traffic between host pc (windows 10 in my case) and the Kubernetes cluster, we need to make sure that all requests sent to the server are forwarded to Kubernetes IP or our k3s-server vm.\n\nTo do this, we will use nginx and replace default config with load balancing to our cluster.\n\n[https://ubuntu.com/tutorials/install-and-configure-nginx#4-setting-up-virtual-host](https://ubuntu.com/tutorials/install-and-configure-nginx#4-setting-up-virtual-host)\n\n    sudo apt install nginx\n\n    sudo cat >/etc/nginx/nginx.conf<< EOF\n\n    events {}\n\n    stream {\n     upstream k3s_servers {\n      server ${K3S_NODEIP_SERVER}:6443;\n     }\n\n    server {\n     listen 6443;\n      proxy_pass k3s_servers;\n     }\n    }\n    EOF\n\n### Connect to the cluster from your PC\n\nWe have a running 2 nodes cluster. Now, let’s connect to it from our home PC.\n\nBefore connecting from our PC, we need to copy kube config setup from the vm and merge it with our kube config file on home PC.\n\n*I advise upgrading kubectl to latest version beforehand, follow the installation steps from [Kubernetes page](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/).*\n\n    # Login to k3s-server vm\n    multipass shell k3s-server\n\n    # Copy content of the kube config\n    kubectl config view --raw\n\n    # Create a new file on your machine in the ~./kube directory and copy content\n    cat > config_k3s [enter]\n    <paste content>\n    [enter — adds one line to the file]\n    [Ctrl + C — exit]\n\n    # Merge two config files using KUBECONFIG variable\n    KUBECONFIG=/root/.kube/config:/root/.kube/config_k3s\n\nIf you want to learn more about managing kube config, please visit [Kubectl context and Configuration](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-context-and-configuration) on Kubernetes.io\n\nMake sure you swapped to a newly created context.\n\n    # Check all contexts\n    kubectl config get-contexts\n\n    # Swap to \"default\" (this is the name in my case)\n    kubectl config use-context default\n\nNow running the **kubectl get nodes** command form your home PC terminal should result in the same output.\n\n### Install cluster visualization tools\n\nFinally let’s install 2 of my favorite cluster visualization tools:\n\n* [Octant](https://octant.dev/) is a VMWare open source cluster visualizer, running in a browser so no local installation is required.\n\n* [k9s](https://github.com/derailed/k9s) is a really amazing console based cluster visualization tool.\n\n### Install Rancher to manage your cluster [Optional]\n\nThere are many options to install Rancher on any Kubernetes platform. Since this example is for testing purposes, we will follow the installation steps using [Rancher in docker](https://rancher.com/docs/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/#option-a-default-rancher-generated-self-signed-certificate).\n\n### Run a sample workload\n\nLet’s make sure our cluster can accept and serve simple workloads\n\nSince we have exposed a deployment on NodePort, we need to see what port was assigned by Kubernetes:\n\n    # Check node port\n    kubectl get svc\n\n![](https://cdn-images-1.medium.com/max/2000/1*Fzb3ZGEVf97zSe8c8MaoDQ.png)\n\n### Summary\n\nThis installation should serve as introduction to setting up home lab even with old laptop and starting to play around with Kubernetes. There are many things we haven’t tried or tested and I encourage you to try on your own and share your experiences.\n\n### Additional resources\n\nHere is a list of additional resources and some materials I used when creating this blog.\n\nK3s can be installed much easier using a tool called k3sup, check out repo from Alex Ellis on GitHub:\n[**alexellis/k3sup**\n*k3sup is a light-weight utility to get from zero to KUBECONFIG with k3s on any local or remote VM. All you need is ssh…*github.com](https://github.com/alexellis/k3sup)\n\nIf you would like to learn how to script some of the manual operations, check out this repo from [Sebastiaan van Steenis](https://github.com/superseb) working in Rancher\n[**superseb/multipass-k3s**\n*Use multipass instances to create your k3s cluster - superseb/multipass-k3s*github.com](https://github.com/superseb/multipass-k3s/blob/master/multipass-k3s.sh)\n\nIf you would like to go through similar setup, but with video, I highly recommend checking out Techno Tim’s YouTube channel.\n\nFinally if you are interested in learning more about k3s, here is a good overview:\n\nSo far this setup was done mostly manually, in next blogs I will look into automating the rancher deployment using terraform provider for Rancher 2\n\n[https://registry.terraform.io/providers/rancher/rancher2/latest/docs](https://registry.terraform.io/providers/rancher/rancher2/latest/docs)\n\nIf you encounter any issues along the way, found a bug or simply want to share your ideas, please drop a comment and have fun experimenting with your home lab :)"
+    },
+    {
+      "id": "/how-to-learn-devops",
+      "metadata": {
+        "permalink": "/blog/how-to-learn-devops",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/how-to-learn-devops.md",
+        "source": "@site/blog/how-to-learn-devops.md",
+        "title": "How to Learn Devops",
+        "description": "Image by Gerd Altmann from [Pixabay](https://cdn-images-1.medium.com/max/3840/1*6LAwAqbSiOgFVZXi7aD0bQ.jpeg)",
+        "date": "2021-05-03T13:22:46.000Z",
+        "formattedDate": "May 3, 2021",
+        "tags": [
+          {
+            "label": "devops",
+            "permalink": "/blog/tags/devops"
+          },
+          {
+            "label": "learning",
+            "permalink": "/blog/tags/learning"
+          }
+        ],
+        "readingTime": 6.145,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "How to Learn Devops",
+          "date": "2021-05-03T13:22:46.000Z",
+          "draft": false,
+          "tags": [
+            "devops",
+            "learning"
+          ],
+          "categories": [
+            "learning"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "How to Create Kubernetes Homelab",
+          "permalink": "/blog/how-to-create-kubernetes-homelab"
+        },
+        "nextItem": {
+          "title": "How to Good Sofware Documentatiion",
+          "permalink": "/blog/how-to-good-sofware-documentatiion"
+        }
+      },
+      "content": "![Image by [Gerd Altmann](https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1023846) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1023846)](https://cdn-images-1.medium.com/max/3840/1*6LAwAqbSiOgFVZXi7aD0bQ.jpeg)\n\n## How to learn and stay up to date with DevOps and Cloud Native technologies\n> # Tell me and I forget. Teach me and I remember. Involve me and I learn.\n> # Bejnamin Franklin\n\n### Know what is important to know\n\nA famous Greek philosopher *Aristotle (384 BC — 322 BC)* has been called the last person to know everything there was to know in the science. Since than science grown exponentially, became divided and subdivided into specialized, narrow disciplines.\n\nSimilarly modern technology landscape is evolving in neck breaking pace and unlike Aristotle, we don’t have a luxury to know “all there is to know”. In modern day, especially in the field of practical application of technology, the problem moves from “how to know all there is to know”, to “how to filter information efficiently and know what is important to know”.\n\n### Learn and stay up to date\n\nIn the context of DevOps and Cloud Native technologies, there are two types of activities:\n\n* Learning new skills/technologies\n\n* Staying up to date with industry trends\n\n### Learn\n\nIt is important to relay on proven information sources and find the ones that resonate with you the most. Here is a very abbreviated list of resources that I tend to come back to over and over to hone my practical skills.\n\nDevOps Toolkit is a relatively new YouTube channel, but the person behind it is a very experience DevOps engineer. This is my go to channel to learn about new trends and tools.\n[**DevOps Toolkit**\n*We want to help you learn the tools and the processes that you should be using and applying in your day-to-day job. We…*www.youtube.com](https://www.youtube.com/channel/UCfz8x0lVzJpb_dgWm9kPVrw)\n\nJust me and Open Source is a great YouTube channel with lots of practical examples especially around Kubernetes and Cloud Native technologies.\n[**Just me and Opensource**\n*Learn and share opensource software tools and technologies. Online tutorial for Linux administrators, DevOps, SysOps…*www.youtube.com](https://www.youtube.com/c/wenkatn-justmeandopensource/featured)\n\nAzure specific channel with very clear explanations.\n[**Geert Baeke**\n*I post tech videos on all things cloud and cloud-native. Focus on Azure and Kubernetes! The videos are usually recorded…*www.youtube.com](https://www.youtube.com/channel/UC1VZZPIhEaYfwx9mn258iAw)\n\nIn my experience one of the best learning platforms for Cloud Native technologies\n[**Learn DevOps with Kode Kloud**\n*The True Learn-By-Doing platform! Mumshad is passionate about sharing his knowledge and teaches over 180,000 students…*kodekloud.com](https://kodekloud.com/)\n\nExplore awesome lists on GitHub. An awesome list is a list of awesome things curated by the community. There are awesome lists about everything from [CLI applications](https://github.com/agarrharr/awesome-cli-apps) to [fantasy books](https://github.com/RichardLitt/awesome-fantasy). The [main repository](https://github.com/sindresorhus/awesome) serves as a curated list of awesome lists.\n[**Build software better, together**\n*GitHub is where people build software. More than 65 million people use GitHub to discover, fork, and contribute to over…*github.com](https://github.com/topics/awesome)\n\n### Stay up to date\n\nStaying up to date means knowing what is happening in the industry, what are new trends and changes that we should be aware of.\n\nFollow CNCF YouTube channel\n[**CNCF [Cloud Native Computing Foundation]**\n*To provide educational and informative content on cloud native computing, which uses an open source software stack to…*www.youtube.com](https://www.youtube.com/channel/UCvqbFHwN-nwalWPjPUKpvTA)\n\nSubscribe to DevOps and Cloud Native mailing lists:\n\n# Cloud Native News.\n[**nativecloud.dev**\n*A curated weekly portion of links, tools and news shared by the cloud native community.*blog.nativecloud.dev](https://blog.nativecloud.dev/)\n\n# DevOps’ish.\n[**DevOps'ish**\n*DevOps, Cloud Native, Hybrid Cloud, Open Source, industry news, culture, and the 'ish between.*devopsish.com](https://devopsish.com/)\n\n# CNCF newsletter about Kubernetes\n[**KubeWeekly | Cloud Native Computing Foundation**\n*KubeWeekly is curated by Saiyam Pathak, L Körbes, Alison Dowdney, Chris Short, Craig Box, Daniel Oh, Kristi Tan, Bill…*www.cncf.io](https://www.cncf.io/kubeweekly/)\n\n### Learn what is important\n\nAt the end getting access to information is almost trivial nowadays. The only prerequisites are having access to internet and curiosity to learn.\n\nWhat is difficult is how to discriminate important information from less relevant.\n\nHere are is an example process and tools that I use on a daily basis to great success.\n\n### # Have a plan\n\nLearning must be directed towards a goal. Having a clear plan helps a lot. If you don’t have a plan yet, don’t worry, discover what is interesting you and start researching until you can formulate a plan.\n\nPlan must have a goal, it can be for example\n\n* Obtaining certain skill\n\n* Passing a certification\n\n* Changing careers\n\nOnce you have a plan, follow any system to organize your tasks and work. I like the PARA method:\n[**The PARA Method: A Universal System for Organizing Digital Information - Forte Labs**\n*Series Navigation: The P.A.R.A. MethodPARA Part 2: Operations Manual >> This article is also available in Dutch Imagine…*fortelabs.co](https://fortelabs.co/blog/para/)\n\nAnother simple and useful method is OKRs (Objective Key Results), popularized by Google\n[**OKR - Wikipedia**\n*Objectives and key results ( OKR) is a goal-setting framework for defining and tracking objectives and their outcomes…*en.wikipedia.org](https://en.wikipedia.org/wiki/OKR)\n\nUse simple mechanisms to track your progress. For this Trello works really well.\n[**Trello**\n*Infinitely flexible. Incredibly productive for teams of all sizes. Trello manages everything, from big project details…*trello.com](https://trello.com/)\n\n### # Gather information\n\nGathering information is first step. On top of the above mentioned resources, I use Weava to highlight passages of text and images on web pages. Think about it as an intelligent clipboard that helps you organize initial information.\n[**Weava Highlighter - Free Research Tool for PDFs & Webpages**\n*Students and researchers rely on Weava to organize their academic research and studies Keep track of what is important…*www.weavatools.com](https://www.weavatools.com/)\n\n### # Expand your knowledge base\n\nInformation acquisition and retention happens naturally by association and linking new information to existing structures. This is best represented by graph data models. Unfortunately, most of the available software like One Note or Ever Note etc does not offer this type of experience.\n\nOnce such tool I found recently and I’m really happy with is Obsidian\n[**Obsidian: A knowledge base that works on local Markdown files.**\n*In our age when cloud services can shut down, get bought, or change privacy policy any day, the last thing you want is…*obsidian.md](https://obsidian.md/)\n\nObsidian is described on their web site as\n>  A second brain,\nfor you, forever.\n>  Obsidian is a powerful knowledge base that works on top of\na local folder of plain text Markdown files.\n\nOne of the key aspects of how Obsidian and similar software is different is a concept of backlinks. Backlinks associate information bi-directionally and thus mimic how brain works and acquire information.\n\nThe goal of this part is to keep adding new information in an associative manner and expand you DevOps and Cloud Native knowledge base.\n\nThose tools are of course not DevOps or Cloud Native specific and can be used in any context.\n\n### Get Involved\n\nWhat we’ve done so far:\n\n 1. Discovered useful high quality resources for learning and staying up to date.\n\n 2. Learned how to acquire and retain information in an efficient way.\n\n 3. Have a plan for learning.\n\n 4. Grow and expand your knowledge base.\n\nLast, but I think most important point of learning is purpose. For me the purpose of learning Cloud Native technologies and DevOps is to enrich the community and give back.\n\nGet involved and share what you learn/work on. Teaching someone is the best ways to learn. Start writing blogs, make content on YouTube or engage with open source community on GitHub or GitLab.\n\nThis way learning will not only improve chances for getting better job, but will became part of your daily routine and will benefit everyone around you."
+    },
+    {
+      "id": "/how-to-good-sofware-documentatiion",
+      "metadata": {
+        "permalink": "/blog/how-to-good-sofware-documentatiion",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/how-to-good-sofware-documentatiion.md",
+        "source": "@site/blog/how-to-good-sofware-documentatiion.md",
+        "title": "How to Good Sofware Documentatiion",
+        "description": "I have given a talk about this topic at the WorldWide Architecture Summit 2 on the 3rd of August 2021. You can find the talk recording here.",
+        "date": "2021-02-09T13:25:48.000Z",
+        "formattedDate": "February 9, 2021",
+        "tags": [
+          {
+            "label": "documentation",
+            "permalink": "/blog/tags/documentation"
+          },
+          {
+            "label": "automation",
+            "permalink": "/blog/tags/automation"
+          },
+          {
+            "label": "devops",
+            "permalink": "/blog/tags/devops"
+          }
+        ],
+        "readingTime": 10.365,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "How to Good Sofware Documentatiion",
+          "date": "2021-02-09T13:25:48.000Z",
+          "draft": false,
+          "tags": [
+            "documentation",
+            "automation",
+            "devops"
+          ],
+          "categories": [
+            "documentation"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "How to Learn Devops",
+          "permalink": "/blog/how-to-learn-devops"
+        },
+        "nextItem": {
+          "title": "Cloud Native Developer Workflow",
+          "permalink": "/blog/cloud-native-developer-workflow"
+        }
+      },
+      "content": "I have given a talk about this topic at the WorldWide Architecture Summit 2 on the 3rd of August 2021. You can find the [talk recording here](https://www.youtube.com/watch?v=-YmLFMDUzv0&t=1525s).\n\n![Photo by [Maarten van den Heuvel](https://unsplash.com/@mvdheuvel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/9796/1*0X-pNeFVsj_4w0nC1qKC8Q.jpeg)\n\n## How to create and maintain good software documentation\n\n## Introduction\n\nIn this blog we will focus on software documentation, namely the documentation produced by teams and individuals involved in defining and developing software (architects and developers). There are other complementing types of documentation like requirements, business analysis, etc which we will not be focusing on.\n\nHow many times we jump into an existing active project or take on maintenance of “legacy” software, only to find out that documentation is either missing or not sufficient.\n\nThis is unfortunately a very common experience for many development teams. Why is this happening? There are a few reasons:\n\n* The pace of software development is constantly increasing to respond to more and more complex market demands. Activities deemed as “non-essential” like documentation and sometimes even testing(sic!) are brushed aside in favor of increasing output of features.\n\n* Documentation is hard to maintain over time as more complex software leads to more complex documentation.\n\n* Diagrams and drawings tend to be very brittle and as software evolves, they too became outdated.\n\n* Developing documentation is also well … boring, most developers prefer to focus on interesting features, improving efficiency, coding.\n\n### Software documentation goals\n\nKnowing all the effort and time required to address the above points, let’s ask ourselves: why even bother? Why is software documentation important? Good documentation plays critical role in following scenarios:\n\n* Onboarding of new team members. Every time new developer joins the team, good documentation will help in fast orientation and will not require extensive time investment from other team members to teach good fundamental level of the project knowledge.\n\n* Regulatory requirements and audit. If the software you are developing must undergo external or internal audits or is influenced by any regulatory requirements, then good documentation makes it much easier to work with auditors. Sometimes documentation is even a strict requirement for audit.\n\n* Communication with all stakeholders. Good documentation enables all types of stakeholders to understand software in the context they are interested in. If documentation takes into consideration different types of stakeholders and carefully adjusts wording to be less or more technical, then it saves the team a lot of time otherwise spent on explaining and translating software system properties to everyone.\n\n### Software documentation characteristics\n\nLet’s define desired characteristics of software documentation to fit into modern, rapid pace of development.\n\n**Simple**. Documentation should be simple and minimalistic to decrease maintenance effort and make sure all stakeholders (including new developers) can understand the core concepts.\n\n**Holistic. **Different types of documentation consumers will require different contexts. Good documentation should account for all stakeholders and make sure everyone can participate and understand. Enabling real time collaboration is another important goal.\n\n**Automated**. In order to make sure that documentation is maintained over time and there is only minimal impact on development teams, most of the diagrams, charts and specifications should be as automated as possible.\n\n**Reusable**. Software documentation structure, vocabulary and model should be reusable for any new software projects, so having a structured but in the same time flexible documentation model is very useful.\n\n**Portable**. It should be easy to generate and distribute documentation independently on any hosting medium. Like with any other software, avoiding vendor lockin might be a concern for your company, so designing the core of your documentation in a way that is portable is a good practice.\n\n## Implementation\n\nIn this section we will look at different tools, frameworks and documentation models to fulfill documentation characteristics requirements. We are going to focus mostly on open source tools and standards.\n\nBelow diagrams shows tools, frameworks and standards we will use to implement our documentation strategy later on.\n\n![SHARP](https://cdn-images-1.medium.com/max/2062/1*3ZizAdNny__yu-ciHR4ysQ.png)\n\n### Tools and Standards\n\nNow, we will focus on specific tools and standards that can be used to implement our strategy. Please note that there are almost always alternatives to each tool, framework or standard. For simplicity I’m recommending the ones I’m familiar with that I know work well together. You can think about it as a starter pack for good software documentation.\n\n### Simple\n\nTo keep documentation simple, we need a suitable medium. Most documentations nowadays are either in MS Word or pdf, but I believe that Markdown is a better choice. Markdown is a lightweight, HTML-like markup language that is very common in software projects (README.md files etc). It is more scalable and easy for developers to use markdown rather than complex text editors like MS Word. Added bonus is that markdown files can be directly edited in IDEs or code editors like Visual Studio, Visual Studio Code, Atom or WebSharper etc.\n[**Markdown Guide**\n*A free and open-source reference guide that explains how to use Markdown.*www.markdownguide.org](https://www.markdownguide.org/)\n\n### Holistic\n\nThere is no specific tool that I know of that will make your documentation understandable by all stakeholders ;). You will need to make an effort to do so. Defining common vocabulary as well as logical naming conventions is a good first step!\n\n### Automated\n\nPlantUML is one of my favorite tools for rendering diagrams. Diagrams in PlantUML follow “…as code” movement. Where diagram is generated on the fly from simple domain specific language.\n\nOne important characteristics of PlantUML is ability to render diagrams on the fly without converting them into pictures. This is very useful and allows all online documentation that links to centralized diagrams repository to be updated automatically\n[**Open-source tool that uses simple textual descriptions to draw beautiful UML diagrams.**\n*PlantUML is a component that allows to quickly write : The following non-UML diagrams are also supported: Diagrams are…*plantuml.com](https://plantuml.com/)\n\nIn order to document API resources (REST) or methods (RPC) in an automated way, we can use documentation generators like Swagger that generate documentation from code comments or from API Spec.\n[**API Documentation**\n*Swagger takes the manual work out of API documentation, with a range of solutions for generating, visualizing, and…*swagger.io](https://swagger.io/solutions/api-documentation/)\n\nEach separate markdown file or whole documentation repository can be imported into HackMD where all stakeholders can participate in a live collaboration session to add notes and develop documentation together. HackMD in and of itself is a very powerful tool with other useful features, check it out! After importing particular markdown file, it can be exported back to a repository.\n[**HackMD - Collaborative Markdown Knowledge Base**\n*We've looked for ways to make our team discussions and process more visible and accessible to all users. We recently…*hackmd.io](https://hackmd.io/)\n\nFinally, documentation for particular software project should be encapsulated in its own repository, linking markdown files and other artifacts from other repositories belonging to the same software project. Part of CI/CD pipeline should be automated building and deployment of the documentation artifacts.\n\nAutomating as much as possible will ensure that documentation is maintained over time.\n\n### Reusable\n\nTo make documentation reusable we need to agree and follow on standards and best practices that all software projects will adhere to.\n\nHere are some standards and models that I find helpful in defining documentation outline.\n\nTOGAF is and Enterprise Architecture Methodology and is mostly aimed at enterprise architects, providing guidelines and models for high level enterprise architectures.\n\nFor development teams, documentation following TOGAF standard will likely be and upstream reference that allows alignment with global company architecture standards.\n[**TOGAF**\n*The TOGAF Standard, Version 9.2, is an update to the TOGAF 9.1 standard providing improved guidance, correcting errors…*www.opengroup.org](https://www.opengroup.org/togaf)\n\narc42 is a template for communication and documentation. It creates scaffolding and structure helping place topics in right context appropriately addressing various stakeholders.\n[**arc42 Template Overview**\n*arc42 answers the following two questions in a pragmatic way, but can be tailored to your specific needs: What should…*arc42.org](https://arc42.org/overview/)\n\nC4 model helps with putting structure around diagrams and visual artifacts for software documentation. It fits very well with arc42 approach.\n[**The C4 model for visualising software architecture**\n*A person represents one of the human users of your software system (e.g. actors, roles, personas, etc). A software…*c4model.com](https://c4model.com/)\n\nPlantUML was mentioned before in context of diagrams automation rendering, but it is an amazing tool for visualizing software in an “…as code” way.\n\nPlantUML has a lot of plugins for different programming languages allowing for quick diagrams generation based on source code. There are also plugins that can do reverse operation, namely g[enerate code based on planUML class diagram](https://github.com/bafolts/plantuml-code-generator).\n\nWe are not going to dive deeper into different software diagram types and their usage, but suffice to say they are all supported by PlantUML.\n[**Open-source tool that uses simple textual descriptions to draw beautiful UML diagrams.**\n*PlantUML is a component that allows to quickly write : The following non-UML diagrams are also supported: Diagrams are…*plantuml.com](https://plantuml.com/)\n\n### Portable\n\nOur documentation so far is based on open standards, uses open source flexible and powerful tools. Now it’s time to make it available to all stakeholders.\n\nIn order to make documentation portable, we need to be able to generate it based on our markdown files and present in an easily consumable form. Best way to do it is deliver documentation as a web page based on static files or HTML generated on the fly.\n\nDocsify is one of my favorite tools for serving documentation transformed to HTML from markdown files based on a few simple configuration files. You can see results of this transformation [on my website](https://dcaguide.net/#/) dedicated to preparation for Docker Certified Associate.\n[**docsify**\n*A magical documentation generator.*docsify.js.org](https://docsify.js.org/#/)\n\nAnother approach is to serve documentation a static website that is build during build process (part of CI/CD pipeline). There are plenty of static site generators, which by the way are useful in many more scenarios than generated documentation. One of my favorite generators is Hugo\n[***The world's fastest framework for building websites***\nThe world's fastest framework for building websitesgohugo.io](https://gohugo.io/)\n\nOnce our documentation is ready and CI/CD pipeline is created, we can deploy it to a hosting provider. One such provider is Netlify, but there are many others. If you are interested in how static sites can be deployed, check out [my blog about this topic](https://itnext.io/5-static-websites-deployment-options-d0aac1570331).\n[**Netlify: Develop & deploy the best web experiences in record time**\n*A powerful serverless platform with an intuitive git-based workflow. Automated deployments, shareable previews, and…*www.netlify.com](https://www.netlify.com/)\n\n### Advanced topics\n\nThere are three additional topics that are more advanced, but I think it’s worth discussing them briefly. If you are interested, please study further, links are provided.\n\n* Developer Portals\n\n* Automated Deployment Diagrams\n\n* File conversion\n\nDeveloper portals enable development teams to not only share common documentation but much more. Spotify recently [donated to CNFC ](https://backstage.io/blog/2020/09/23/backstage-cncf-sandbox)their home grown developer portal that has smart documentation as part of its offering.\n[**Backstage Service Catalog and Developer Platform · An open platform for building developer portals**\n*At Spotify, we've always believed in the speed and ingenuity that comes from having autonomous development teams. But…*backstage.io](https://backstage.io/)\n\nDeployment diagrams, especially on public cloud providers should represent actual state of the infrastructure. Such automation is possible with Hava (please note that this is a commercial product). There was also a tool called Arcentry which was open source, but is since discontinued.\n[**Azure, GCP and AWS Diagrams Automated | Hava**\n*If you would like a chat about how hava.io can help your team document, monitor and diagnose your cloud infrastructure…*www.hava.io](https://www.hava.io/)\n\nFinally, to satisfy corporate requirements around document formats, like pdf or docx, you can use Pandoc to quickly convert between different document types. Pandoc has rich support for various formats, not only pdf or docx, but those are most common.\n[**About pandoc**\n*If you need to convert files from one markup format into another, pandoc is your swiss-army knife.*pandoc.org](https://pandoc.org/)\n\n### Putting it all together\n\nBelow diagram shows how one centralized documentation repository per product or project could be used to maintain software documentation including files from different repositories compose software (for example with microservices architecture).\n\n![](https://cdn-images-1.medium.com/max/2608/1*z5b5d7bCPn5hG5e4aakqzg.png)\n\n### Summary\n\nSoftware documentation is very important, but its creation and maintenance can be problematic. In this blog, we have learned what constitutes good documentation using SHARP acronym (Simple, Holistic, Automated, Reusable, Portable).\n\nWe have defined what constitutes good documentation and what are goals that software documentation fulfills.\n\nFinally we have reviewed different open source tools that can help us create, maintain and publish high quality software documentation.\n\nHopefully this is a good start on your journey to high quality, sustainable software documentation. There is much to explore!"
+    },
+    {
+      "id": "/cloud-native-developer-workflow",
+      "metadata": {
+        "permalink": "/blog/cloud-native-developer-workflow",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/cloud-native-developer-workflow.md",
+        "source": "@site/blog/cloud-native-developer-workflow.md",
+        "title": "Cloud Native Developer Workflow",
+        "description": "Photo by Hack Capital on [Unsplash](https://cdn-images-1.medium.com/max/10944/1*vJY3xQeFfVqL1UNlqQVVzg.jpeg)",
+        "date": "2020-11-09T19:01:56.000Z",
+        "formattedDate": "November 9, 2020",
+        "tags": [
+          {
+            "label": "docker",
+            "permalink": "/blog/tags/docker"
+          },
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          }
+        ],
+        "readingTime": 6.61,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Cloud Native Developer Workflow",
+          "date": "2020-11-09T19:01:56.000Z",
+          "draft": false,
+          "tags": [
+            "docker",
+            "kubernetes"
+          ],
+          "categories": [
+            "software development"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "How to Good Sofware Documentatiion",
+          "permalink": "/blog/how-to-good-sofware-documentatiion"
+        },
+        "nextItem": {
+          "title": "5 Static Websites Deployment Options",
+          "permalink": "/blog/5-static-websites-deployment-options"
+        }
+      },
+      "content": "![Photo by [Hack Capital](https://unsplash.com/@hackcapital?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/software?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/10944/1*vJY3xQeFfVqL1UNlqQVVzg.jpeg)\n\n## Cloud Native - Developer Workflow\n\n### Software Development Lifecycle with Kubernetes and Docker\n\n### Introduction\n\nSoftware development tooling and processes have evolved rapidly in last decade to meet growing needs of developers. On top of mastering, often a few, programing languages and paradigms, software developers must learn to navigate increasingly complex landscape of tools and processes.\n\nMy motivation for writing this blog was an introduction to a concept of software development in the Cloud Native ecosystem. I’m going to be focusing more in depth on software development for containerized workloads orchestrated by Kubernetes.\n\n### Programming languages\n\nAccording to Stack Overflow Developer Survey for 2020 there is a high chance that if you are reading this, you use JavaScript, HTML and CSS. Most of you will also use SQL, Python, Java or C# and number of scripting languages. There is also a high chance that some of you will use mix of frontends and backend languages.\n\n![Source Stack Overflow [Developer Survey 2020](https://insights.stackoverflow.com/survey/2020#technology-programming-scripting-and-markup-languages)](https://cdn-images-1.medium.com/max/4456/1*dotSyt4LayI2f-kybAVr4g.png)\n\nThis is already a lot to learn and keep track of, as the languages evolve. Most of the languages grow their own ecosystem of reusable code packages, SaaS offerings, IDEs, etc. As developers you need to keep track of all this to deliver value to customers faster and faster.\n\n### Cloud Native Bazaar\n\nIn order to support growing complexity of distributed systems development and operationalization, cloud native ecosystem developed amazing open source projects to move faster and help IT professionals benefit from cloud native paradigm.\n\nWhat is cloud native? CNCF gives us an [official definition](https://github.com/cncf/toc/blob/master/DEFINITION.md):\n>  Cloud native technologies empower organizations to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid clouds. Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach.\n>  These techniques enable loosely coupled systems that are resilient, manageable, and observable. Combined with robust automation, they allow engineers to make high-impact changes frequently and predictably with minimal toil.\n\n![[CNCF Cloud Native Landscape](https://landscape.cncf.io/)](https://cdn-images-1.medium.com/max/15840/1*JNKMVA3xxtdT5OLcO_NiAw.png)\n\nThe above list of products is constantly growing and evolving. It is an extremely busy space and it’s hard to keep up the pace.\n\nLet’s refocus on the role of developer in this environment. Now developers not only focus on programming languages, but also need to take under consideration a lot of other tools. One of the most prominent tools from CNCF landscape that reshaped how software is hosted, operated and delivered is Kubernetes.\n\nI encourage developers to learn about Kubernetes and Docker, but very often thigh schedules and deliverables prevent this. For those people who do not want or cannot get in depth into Kubernetes but need to develop apps that run on it, there are tools to help maintain developer workflow and minimize the need to interact with Kubernetes.\n\n### “Standard” Developer Workflow with Containers/Kubernetes\n\nOn a high level each software developer will follow those basic steps:\n\n 1. **Development Tools and IDEs:** Install and configure your favorite code editor or IDE (VS Code, Eclipse, Visual Studio, Atom, Notepad++, etc). This often includes installing plugins, linters, syntax highlining and other addons. IDE’s plugins and addons might vary from project to project so updates and tweaks are required.\n\n 2. **Setup Development Environment :**Install locally hosting environment for whatever you are developing. If you are developing Web App, most likely web browser is already installed on your machine, but if you develop database you might need to install it too.\n\n 3. **Run code to see if it works: **Run code locally and make sure everything is working. Maybe use tools like Postman or Insomnia to test calls to your API. Maybe you need to install SQL Express or other database tools. If whatever you are developing needs to interact with other services, they must be ran or installed too.\n\n 4. **Inner Development Loop. **Running your code locally, debugging and making sure everything works as intended is the core of every developer’s activity. This loop must be fast, efficient and provide instant feedback. There are plenty of patterns that help in this area, like hot reloading after source code changes, running your unit tests automatically on file save, etc. In ideal scenario, the loop should consist of 3 steps: **Code -> Build -> Test -> Commit. **Let’s look closer how this loop looks like for cloud native workloads.\n\n* **Code**\n\n* **Build**\n\n* Build docker container\n\n* Optional 1: Deploy to local docker host or Kubernetes cluster (minikube, Docker on Windows, Microk8s, etc)\n\n* Option 2: Pull Image, Push Image to remote image repository, apply Kubernetes deployment, wait for CI/CD pipeline, verify that it works\n\n* **Test**\n\n* Need to wait for all artifacts to move into place before doing integration tests\n\n* **Commit **once committed, a new image version will be uploaded to artifacts repository and either docker instance or Kubernetes pod will be updated with new content\n\nFrom there we are far from “done”. Hopefully there are end to end tests, security checks and other steps running as part of your deployment pipeline.\n\nAs long as hosting environment can be easily emulated on local developer machine and system is monolithic, the above workflow is fine, but what if you are working with a modern distributed system built using [microservices-oriented architecture](https://itnext.io/the-fundamentals-of-microservices-oriented-architecture-8779d756f70f), service oriented architecture or serverless approach(or combination of all).\n\nIn fact modern software development moves towards Cloud Native model. Most of the workloads run in containers and Kubernetes. So, do you need to download and configure half of the internet on your local machine ;) to develop a simple app just because it’s running in docker container and in Kubernetes?! Well you surely can and many developers still do, but there is a better way!\n\n### Cloud Native Development Workflow with Containers/Kubernetes\n\nLet’s try to revisit the “standard” software development workflow and see how we can adjust it to take advantage of Cloud Native paradigm:\n\n 1. **Development Tools and IDEs: **Use service like [Gitpod](https://www.gitpod.io/) or [GitHub Codespaces](https://visualstudio.microsoft.com/services//github-codespaces/) or simply encapsulate your development environment in an image and run a docker container to quickly spin up your development environment. This is independent from your local setup. Now you are ready to start developing in VS Code Electron Client, VC Code in browser or Visual Studio 2019 in a remote environment. Your machine does not need any SDKs, frameworks, linters, IDE plugins and addons or any tooling installed locally. Everything is pre-packaged in a containerized, repeatable environment.\n\n 2. **Setup Development Environment: **Use tools like [Okteto](https://okteto.com/), [DevSpace](https://devspace.sh/), [Skaffold](https://github.com/GoogleContainerTools/skaffold) or many others to bring your development and debugging into remote Kubernetes clusters without needing to install Docker or Kubernetes locally.\n\n 3. **Run code to see if it works:** Let your tools work for you and run and debug code directly in remote Kubernetes cluster. Nothing needs to be installed locally, in some cases not even docker engine.\n\n 4. **Inner Development Loop. **Inner development loop now can look like regular 4 step development loop!\n\n* **Code **directly in container instance or Kubernetes\n\n* **Build **is done remotely in a container instance or Kubernetes\n\n* **Test **can be done equally seamlessly as everything is already in a container instance or Kubernetes\n\n* **Commit **once committed, a new image version will be uploaded to artifacts repository and either docker instance or Kubernetes pod will be updated with new content\n\nEssential steps of the workflow stay the same, but now we can improve each step by taking advantage of what Cloud Native paradigm has to offer.\n\n### Closing thoughts\n\nSoftware development workflow is something that every developer is very familiar with. We follow same proven steps from project to project often not realizing that there are better, more optimized ways of adjusting our workflow especially when working with modern, Cloud Native projects.\n\nIn next blogs we will take a closer look at some of the tools and learn how we can benefit from Cloud Native paradigm and modernize development workflow to develop software faster and with less friction."
+    },
+    {
+      "id": "/5-static-websites-deployment-options",
+      "metadata": {
+        "permalink": "/blog/5-static-websites-deployment-options",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/5-static-websites-deployment-options.md",
+        "source": "@site/blog/5-static-websites-deployment-options.md",
+        "title": "5 Static Websites Deployment Options",
+        "description": "intro-pic",
+        "date": "2020-11-09T19:01:19.000Z",
+        "formattedDate": "November 9, 2020",
+        "tags": [
+          {
+            "label": "devops",
+            "permalink": "/blog/tags/devops"
+          },
+          {
+            "label": "deployment",
+            "permalink": "/blog/tags/deployment"
+          }
+        ],
+        "readingTime": 3.215,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "5 Static Websites Deployment Options",
+          "date": "2020-11-09T19:01:19.000Z",
+          "draft": false,
+          "tags": [
+            "devops",
+            "deployment"
+          ],
+          "categories": [
+            "devops"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "Cloud Native Developer Workflow",
+          "permalink": "/blog/cloud-native-developer-workflow"
+        },
+        "nextItem": {
+          "title": "Expose Kubernetes Service Using Ngrok",
+          "permalink": "/blog/expose-kubernetes-service-using-ngrok"
+        }
+      },
+      "content": "![intro-pic](https://cdn-images-1.medium.com/max/12032/1*T1tAElaHDl_mwUOSvdguTw.jpeg)\n*Photo by [Christina @ wocintechchat.com](https://unsplash.com/@wocintechchat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/server?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*\n\nStatic websites have become a mainstream content delivery medium consumed by modern browsers. In this blog, we will look at different ways of deploying a sample static website using automated CI/CD pipelines and different hosting providers.\n\nThe sample website is designed using [Blazor ](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)and compiled using [Web Assembly](https://en.wikipedia.org/wiki/WebAssembly) with [PWA](https://en.wikipedia.org/wiki/Progressive_web_application) option on. This shows that not only simple websites can be delivered as static content but also potentially complex web apps benefit from this delivery mechanism.\n\n## Prerequisites\n\nIf you want to follow along you can check out [my git repository](https://github.com/Piotr1215/pwa-sample) with GitHub actions and [Docker Hub](https://hub.docker.com/repository/docker/piotrzan/blazorindocker) with deployment scripts.\n\nAll builds and deployments are automated and triggered based on a commit to the master branch of a GitHub repository. For deployment to Netlify and Surge. You will need to create accounts in both hosting providers and use GitHub actions templating feature to substitute variables in deployment manifests with content from Secrets. To access and set up secrets go to the Project Settings page and find the Secrets tab.\n\n![GitHub Secrets Management in a Project](https://cdn-images-1.medium.com/max/3148/1*7cONnbGKXAvpWeOTgHRtjA.png)\n\n## Motivation\n\nMy motivation to write this blog was to present different deployment options for static content and introducing the topic of modern content delivery mechanisms available for free.\n\nEvery build and deployment is fully automated and takes advantage of the “pipelines as code” concept where each step within the CI/CD pipeline is represented as a section of a YAML file. This file can be checked into a repository alongside your source code and versioned and maintained as one of the artifacts.\n\nLet’s look at different deployment options in more detail. Each option has a corresponding yaml file details steps needed to build and deploy the site.\n\n## Deployment options\n\n### 1. Deploying to GitHub Pages\n\n[GitHub pages](https://pages.github.com/) is a build-in deployment option in GitHub.\n\n {{< gist 93e9333199b5d2a6bd5f320506c9c1e6 >}}\n\n### 2. Deploying to Netlify\n\n[Netlify](https://www.netlify.com/) is championing a development model called [JAM Stack](https://jamstack.org/) which is a pre-built static website using APIs for personalized content. JAM Stack stands for **JavaScript APIs Markup.**\n\nNeflity guide to deploying static sites: [https://docs.netlify.com/site-deploys/create-deploys/](https://docs.netlify.com/site-deploys/create-deploys/)\n\n{{< gist e9ca0731eeeadafcbb4b7373ff29a0a0 >}}\n\n### 3. Deploying to Docker Hub\n\nWhy would we want to deploy a web page to a docker container? Portability is one answer, once content has been packaged into a docker image it is easy to run on any OS with no external configuration needed. It is also a first step towards running the workload on a Kubernetes cluster.\n\n {{< gist 89d5da366a3a69e7a8b36a87140a386b >}}\n\n {{< gist edcaef537a14c35617e097bdd2b2c5bb >}}\n\n### 4. Deploying to Public Cloud (Azure)\n\nAzure Storage Account offers an interesting feature for hosting static websites directly in a blob container, it is easy to add custom domain or CDN on top of the container.\n\n {{< gist 60fcebf1373a76d969f1d4225751c0b0 >}}\n\n### 5. Deploying to Surge\n\nDeployment to Surge is very similar to the deployment to Netlify. One additional step is installation of node. Surge offers a very quick user onboarding and a simple CLI to deploy pages quickly even without CI/CD. Just to be clear, Netlify offers same functionality but is a bit more involving as far as account creation is concerned.\n\nGetting started with Surge: [https://surge.sh/help/getting-started-with-surge](https://surge.sh/help/getting-started-with-surge)\n\n {{< gist 739a058cc124cefdb81b18e1c20fd448 >}}\n\n## Conclusion\n\nWe have seen how different hosting platforms can be easily integrated with fully automated CI/CD pipeline triggered on commit to our GitHub Project. Of course each deployment can be triggered manually and each hosting provider offers free tiers. It is worth noting that CI/CD pipelines do not require GitHub actions, in fact the Azure pipeline is triggered from within Azure DevOps.\n\nAll of the providers offer additional services such as custom domains, SSL certificates and analytics.\n\nRapid content delivery becomes one of the fundamental modern DevOps practices and it is very easy to take advantage of many offerings in the space of hosting and delivering static content."
+    },
+    {
+      "id": "/expose-kubernetes-service-using-ngrok",
+      "metadata": {
+        "permalink": "/blog/expose-kubernetes-service-using-ngrok",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/expose-kubernetes-service-using-ngrok.md",
+        "source": "@site/blog/expose-kubernetes-service-using-ngrok.md",
+        "title": "Expose Kubernetes Service Using Ngrok",
+        "description": "Photo by Product School on [Unsplash](https://cdn-images-1.medium.com/max/8064/1*trEH_iYn7WBWUAz6DVto1Q.jpeg)",
+        "date": "2020-02-08T19:00:45.000Z",
+        "formattedDate": "February 8, 2020",
+        "tags": [
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          },
+          {
+            "label": "ngrok",
+            "permalink": "/blog/tags/ngrok"
+          }
+        ],
+        "readingTime": 3.51,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Expose Kubernetes Service Using Ngrok",
+          "date": "2020-02-08T19:00:45.000Z",
+          "draft": false,
+          "tags": [
+            "kubernetes",
+            "ngrok"
+          ],
+          "categories": [
+            "learning"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "5 Static Websites Deployment Options",
+          "permalink": "/blog/5-static-websites-deployment-options"
+        },
+        "nextItem": {
+          "title": "A Gentle Introduction to Docker and Containers",
+          "permalink": "/blog/a-gentle-introduction-to-docker-and-containers"
+        }
+      },
+      "content": "![Photo by [Product School](https://unsplash.com/@productschool?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/office?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/8064/1*trEH_iYn7WBWUAz6DVto1Q.jpeg)\n\n## **Expose local Kubernetes service on internet using ngrok**\n\nWorking with local Kubernetes cluster such as minikube, k3s, microk8s or others is great for testing new features, experimenting and running POCs. Once you are ready with a cool new functionality or just want to share quickly results of your work with colleagues or customers, well you have to push everything to an online cluster. It might not be an issue if you have good CI/CD pipeline setup, but most of the time it’s simply too much effort for a simple one-off demo.\n\nNgrok is an online, free service that enables you (among other things) to create an SSL tunnel to expose your local http traffic to the internet and it takes just a few moments to setup! You can read more about ngrok on their [home page](https://dashboard.ngrok.com/get-started), it’s a great product and can be very useful not only in the scenario we are looking at right now but in broader scope.\n\n### Setup and prerequisites\n\nIn order to follow along with thus tutorial you need a few prerequisites.\n\nA local Kubernetes cluster (I’m using minikube on Windows 10 and accessing it via WSL). Local installations that are easy to setup that I can recommend are:\n\n* [Minikube](https://github.com/kubernetes/minikube): Part of Kubernetes repository\n\n* [K3D](https://github.com/rancher/k3d): Helper binary for a small and very fast distribution by Rancher called k3s\n\n* [Microk8s](https://github.com/ubuntu/microk8s): Maintained by Ubuntu\n\nFollow this [installation steps](https://dashboard.ngrok.com/get-started) from ngrok page to setup the cli (you will need to create free account).\n\nYou will need **kubectl cli**. Follow official guide from [Kubernetes home page](https://kubernetes.io/docs/tasks/tools/install-kubectl/) or you can also use [my docker image](https://hub.docker.com/repository/docker/piotrzan/kubectl-comp) that hosts kubectl cli as well as bash/zsh completion and a few useful aliases.\n\n### Setup\n\nOnce all the prerequisites are installed it’s time to create a few resources in your Kubernetes cluster that we will later expose on internet via ngrok.\n\nWe are going to create a simple nginx pod and expose it in Kubernetes via service of type nodePort. Kubernetes services create internal load balancing layer for the pods they target. You can read more about services in [official Kubernetes documentation page](https://kubernetes.io/docs/concepts/services-networking/service/). Once we’ve exposed the service locally, we will use ngrok to create a tunnel between our local service and auto-generated internet address.\n\n### Step by step instructions\n\n1. Set alias for **kubectl **to easier run commands. This step is optional.\n\n    alias k=kubectl\n\n2. Create nginx pod in your local cluster.\n\n    k run nginx — image nginx — restart Never\n\n3. Expose nginx pod via a NodePort service.\n\n    k expose pod nginx — port 80 — target-port 80 — type NodePort — name nginx-service\n\n4. Create variable with the node port of the service. Here we are using **jsonpath **which is kubectl feature allowing to select arbitrary values from api-server. We are checking what nodePort has been automatically assigned by Kubernetes for our service.\n\n    NODE_PORT=$(k get svc nginx-service -o=jsonpath=”{$.spec.ports[0].nodePort}{‘\\n’}”)\n\n5. Use curl to check if nginx is available on the port of the host. You should see HTML content of the nginx default welcome page.\n\nIf you are running Kubernetes in minikube:\n\n    curl [http://{minikube](http://{minikube) ip}:$NODE_PORT\n\nHint: you can check host ip by running **mikikube ip**\n\nIf you are running local Kubernetes installation that supports localhost, just type\n\n    curl [http://localhost:$NODE_PORT](http://localhost:$NODE_PORT`)\n\n6. Expose your service on the internet using ngrok. Ngrok will generate for us http and https addresses where we will be able to access our service.\n\nIf you are running Kubernetes in minikube:\n\n    ngrok http [http://{minikube](http://{minikube) ip}:$NODE_PORT\n\nIf you are running local Kubernetes installation that supports localhost, just type\n\n    ngrok http [http://localhost:$NODE_PORT](http://localhost:$NODE_PORT`)\n\nThis will open ngrok session showing generated addresses:\n\n![](https://cdn-images-1.medium.com/max/2854/1*M6TsBA-AE-uHSS59t2gN6Q.png)\n\nGo ahead and follow the “Web Interface” address to see ngrok’s dashboard: [http://127.0.0.1:4040](http://127.0.0.1:4040) and explore the interface. Click on one of the auto-generated links and you should see nginx welcome page!\n\n### Conclusion\n\nWe have seen how easy it is to expose Kubernetes service using ngrok. No need to deploy to any online cluster, just use local Kubernetes setup that you know works and be able to share with anyone the results of your work.\n\nThis is of course intended only for testing/demo purposes and is not suitable for running production grade workloads."
+    },
+    {
+      "id": "/a-gentle-introduction-to-docker-and-containers",
+      "metadata": {
+        "permalink": "/blog/a-gentle-introduction-to-docker-and-containers",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/a-gentle-introduction-to-docker-and-containers.md",
+        "source": "@site/blog/a-gentle-introduction-to-docker-and-containers.md",
+        "title": "A Gentle Introduction to Docker and Containers",
+        "description": "Continue reading if you are interested in learning about Docker architecture and how containers work.",
+        "date": "2020-02-06T18:57:35.000Z",
+        "formattedDate": "February 6, 2020",
+        "tags": [
+          {
+            "label": "docker",
+            "permalink": "/blog/tags/docker"
+          },
+          {
+            "label": "containers",
+            "permalink": "/blog/tags/containers"
+          }
+        ],
+        "readingTime": 3.205,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "A Gentle Introduction to Docker and Containers",
+          "date": "2020-02-06T18:57:35.000Z",
+          "draft": true,
+          "tags": [
+            "docker",
+            "containers"
+          ],
+          "categories": [
+            "learning"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "Expose Kubernetes Service Using Ngrok",
+          "permalink": "/blog/expose-kubernetes-service-using-ngrok"
+        },
+        "nextItem": {
+          "title": "Portable Kubernetes Management With Kubectl in Docker Container",
+          "permalink": "/blog/portable-kubernetes-management-with-kubectl-in-docker-container"
+        }
+      },
+      "content": "Continue reading if you are interested in learning about Docker architecture and how containers work.\n\n## Docker Architecture\n\nLet’s introduce a few definitions:\n\n**Images** are blueprints of our application which describe containers content and behavior. Images are immutable with a thin writable layer, this characteristics is one of the most appealing features of containerized workloads.\n\n**Containers are** created based on Docker images and represent the actual instance of an app/service/etc. If you come from OOP programming background you can think about containers as instances of classes and images as classes themselves.\n\n**Docker Daemon** is a Linux background service running on Docker host machine and manages life cycle of Docker containers (creating, running, deleting, etc). In Linux terminology daemon is a process that runs in the operating system usually as a service.\n\n**Docker Client** is Docker’s command line interface (CLI) and facilitates communication between the user and docker daemon using REST API calls. Docker CLI is not the only client, there are plenty of UI implementations such as Portainer of Kinematic.\n\n**Docker Hub or Docker Registry** is simply a registry of Docker images. This registry can be public ( [https://hub.docker.com/](https://hub.docker.com/)) or private hosted on public or private cloud.\n\nBelow graphic from docker.com shows how docker architecture works on a high level.\n\n![](https://miro.medium.com/max/1400/1*LRruRBxQ4BhoqdZVDhBlHA.png)\n\ndocs.docker.com\n\n## Docker flow\n\nTypically using Docker revolves around consuming images from either public or private repositories and running containers. Another direction is to create Docker images based off of [Dockerfile](https://docs.docker.com/engine/reference/builder/) (other options are also available, for example [using Ansible to create docker images](https://opensolitude.com/2015/05/26/building-docker-images-with-ansible.html)).\n\n![](https://miro.medium.com/max/1400/1*IB2D5DttkabZncd0LndDMg.gif)\n\n## Image Layers\n\nAs mentioned before, Docker images are immutable and are constructed by using layers (union file system on Linux). Each layer represents new image put on top of the previous one.\n\n![](https://miro.medium.com/max/1350/1*kkC4rSzgUt148WO136Zy5A.jpeg)\n\n[https://www.docker.com/](https://www.docker.com/)\n\n## VM and Containers\n\nIt is worth point out that containers are not a replacement for virtual machines. Both have their uses and strength/weaknesses. In fact it is often beneficial to run containers on virtual machines for maximum flexibility.\n\nThe main difference is that containers share underlying OS resources directly without a need for a hypervisor.\n\n![](https://miro.medium.com/max/1400/1*M9PBipNCSsWpS9QfBT1G8Q.png)\n\n[https://www.docker.com/](https://www.docker.com/)\n\n## Learning Resources\n\nThere is a lot of great learning resources, but I had most success using below 4:\n\n-   [KodeKloud free Docker for beginners course](https://kodekloud.com/p/docker-for-the-absolute-beginner-hands-on). Excellent FREE training from Mumshad Monnambeth.\n-   [Docker curriculum](https://docker-curriculum.com/). If you prefer reading, this is comprehensive and in-depth resource.\n-   [Plularsight Courses from Nigel Poulton](https://www.pluralsight.com/authors/nigel-poulton). If you happen to have Plularsight subscription or even want to try for free (10 days). Nigel is a great trainer and his Docker courses are one of the best I ever seen.\n-   [Official Docker documentation getting started](https://docs.docker.com/get-started/). Last but not least, what is better than going directly to the source and exploring Docker home page.\n\n## Workshop and hands on labs\n\nIf you would like to play with Docker and containers, there is no need to install anything on your machine nor spin up infrastructure in public cloud providers! Below resources enable you to play with Docker directly in your browser\n\n-   [https://www.katacoda.com/loodse/courses/docker](https://www.katacoda.com/loodse/courses/docker). Dedicated Docker workshops and hands on guided labs\n-   [https://labs.play-with-docker.com/](https://labs.play-with-docker.com/). Interactive environment with Docker installed where you can explore and experiment for free. Environment is active for 4 hours)\n\n## Conclusion\n\nThis introduction to Docker and containerized workloads was intended to be just that, an introduction. We haven’t talked about developer experience when developing software using containers, which will be a good subject for next blog and lots of other important topics. Most of the paragraphs were intentionally kept short. I hope to encourage you to explore how using Docker and developing containerized workloads can help you become better software developer, architect or IT professional.\n\nDocker has a lot to offer and space around it is very mature, but most of all it has a very friendly and welcoming community that you could be part of."
+    },
+    {
+      "id": "/portable-kubernetes-management-with-kubectl-in-docker-container",
+      "metadata": {
+        "permalink": "/blog/portable-kubernetes-management-with-kubectl-in-docker-container",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/portable-kubernetes-management-with-kubectl-in-docker-container.md",
+        "source": "@site/blog/portable-kubernetes-management-with-kubectl-in-docker-container.md",
+        "title": "Portable Kubernetes Management With Kubectl in Docker Container",
+        "description": "Image by Julius Silver from [Pixabay](https://cdn-images-1.medium.com/max/3840/1*FpbN0Vh5rTCtJnj-cBAs1g.jpeg)",
+        "date": "2020-01-25T18:11:05.000Z",
+        "formattedDate": "January 25, 2020",
+        "tags": [
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          },
+          {
+            "label": "docker",
+            "permalink": "/blog/tags/docker"
+          },
+          {
+            "label": "CLI",
+            "permalink": "/blog/tags/cli"
+          }
+        ],
+        "readingTime": 6.04,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Portable Kubernetes Management With Kubectl in Docker Container",
+          "date": "2020-01-25T18:11:05.000Z",
+          "draft": false,
+          "tags": [
+            "kubernetes",
+            "docker",
+            "CLI"
+          ],
+          "categories": [
+            "kubernetes"
+          ],
+          "show_in_homepage": true,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "A Gentle Introduction to Docker and Containers",
+          "permalink": "/blog/a-gentle-introduction-to-docker-and-containers"
+        },
+        "nextItem": {
+          "title": "The Fundamentals of Microservices Oriented Architecture",
+          "permalink": "/blog/the-fundamentals-of-microservices-oriented-architecture"
+        }
+      },
+      "content": "![Image by [Julius Silver](https://pixabay.com/users/Julius_Silver-4371822/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3021820) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3021820)](https://cdn-images-1.medium.com/max/3840/1*FpbN0Vh5rTCtJnj-cBAs1g.jpeg)\n\n## Portable Kubernetes management with kubectl in Docker container\n\nSaying that Kubernetes is becoming mainstream would be an understatement. In fact, it has influenced how modern distributed systems are designed and operated. By abstracting away infrastructure concerns we are able to leverage Kubernetes as a “platform to build platforms” or “cloud operating system” with lots of obvious benefits, but also development and operational challenges.\n\nA whole ecosystem around Kubernetes is blooming and nowadays there are plenty of amazing tools and projects from the open source community, some of them under CNCF umbrella and some designed by enthusiasts or companies of various sizes and influence. Suffice to say, there is a lot going on and it’s harder to keep pace with this ever-changing landscape.\n\nToday we’re focusing on an area that is specific and also very practical: namely Kubernetes management with kubectl. [Kubectl](https://kubectl.docs.kubernetes.io/)is a command line tool (CLI) used to manage Kubernetes clusters. A well-known debate within the Kubernetes community is: “how is kubectl even pronounced?”. There are plenty of opinions and [this page](http://www.howtopronounce.cc/kubectl) provides a sample of the most common ones, so feel free to choose or even create your own.\n\nWhen we’re not busy figuring out world hunger or kubectl pronunciation, we often spend a lot of time to hand-craft our environments where kubectl is running, we create aliases, add auto-completion, install plugins and other diagnostic and cluster management tools. What if we were able to carry around this diagnostic/management environment with us and use the same tools, scripts, aliases and shortcuts with every cluster?\n\nFor me the motivation for creating image with kubectl was the fact that I had to work with a new Kubernetes cluster from within Windows Server VM running on Azure without [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-on-server)(Windows Subsystem for Lunix) and I didn’t want to use cygwin or git-bash. Being used to my environment running on Ubuntu, recreating in withing an image was a quick solution to this challenge.\n\nIn the second part of this blog I explain how to use customized and personalized kubectl from within a Docker container. You can use my existing kubectl image or clone my [GitHub repository](https://github.com/Piotr1215/kubectl-container) and change it to your liking. After all, Kubernetes is designed to manage containers so it’s only fair to manage Kubernetes from a container!\n\n## Create and use your own image with kubectl\n\nThis and next chapter are not intended to be Docker tutorials, but rather practical instructions. There are plenty of great resources about Docker if you are interested. Good starting point is [https://www.docker.com/](https://www.docker.com/).\n\nIf you would like to try creating your own customized kubectl container, here are the steps to follow. You can also clone/fork my GitHub repository [https://github.com/Piotr1215/kubectl-container](https://github.com/Piotr1215/kubectl-container).\n\nYou can also use my image from Docker Hub directly, if you would like to test how it works: [https://hub.docker.com/repository/docker/piotrzan/kubectl-comp](https://hub.docker.com/repository/docker/piotrzan/kubectl-comp).\n\n### Create Dockerfile\n\nCreate a new git repository and add Dockerfile to it. Here is example file based on my repository.\n\nYou can add all into one Dockerfile, I choose to split provisioning part into a bootstrap.sh. Provisioning script is copied to image directory and ran as one of the RUN steps. Another common practice is to use provisioning scripts as Dockerfile ENTRYPOINT.\n\n### Build and publish image\n\nOnce all the programs and configuration are ready, build the image and tag it with your docker user name so you can publish it.\n\n    **docker build --rm -f “Dockerfile” -t dockeruser/image-name “.”**\n\nPublish the image to your docker repository.\n\n    **docker publish dockeruser/image-name**\n\n### Pull and run your image on any environment\n\nWhen you need to work with a new cluster, just run your image. Notice that we are naming the container to easier manage it and setting *network to “host”* which will enable kubectl to access host network and the clusters through it.\n\n    **docker run --network=host --name=kubectl-host --rm -it piotrzan/kubectl-comp**\n\n## Diving Deeper\n\nKeep reading if you would like to learn more and understand what is included in my image as well as design choices I made.\n\n### What is included in the image\n\n* **kubectl**v 1.17.2 with bash/zsh completion\n\n* **zsh-autosuggestions** for zsh shell\n\n* **k9s** great cluster observability and management terminal based tool\n\n* popular tools: **curl, wget, git**\n\n* useful .bashrc/.zshrc aliases\n\n# Instead of typing kubectl all the time, abbreviate it to just “k”\n\n    **alias k=kubectl**\n\n# Check what is running on the cluster\n\n    **alias kdump=’kubectl get all — all-namespaces’**\n\n# Display helpful info for creating k8s resources imperatively\n\n    **alias krun=’k run -h | grep “# “ -A2'**\n\n# Quickly spin up busybox pod for diagnostic purposes\n\n    **alias kdiag=’kubectl run -it — rm debug — image=busybox — restart=Never — sh’**\n\n### How to use it\n\n[My repository](https://github.com/Piotr1215/kubectl-container) contains all scripts and commands described below, so you can just use it instead of copying from here.\n\nEasiest way to use the image is to run it with following command. You can choose to run either bash shell\n\n    **docker run --network=host --name=kubectl-host --rm -it piotrzan/kubectl-comp**\n\nor if you like zsh shell, there is another image\n\n    **docker run --network=host --name=kubectl-host --rm -it piotrzan/kubectl-comp:zsh**\n\nThis will spin up a new container named *kubectl-host* and enable you to use kubectl, but it will not contain information from about your clusters. In order to do this you need to make sure that .kube/config file is available in the container. Easiest way to do it is to run the container in detached mode, copy over the file and attach back to the container, like so:\n\n    *# Run container with pass-through to local network*\n\n    **docker run -d — network=host — name=kubectl-host — rm -it piotrzan/kubectl-comp**\n\n    *# Generate raw config from kubectl on localhost and copy the config to the container*\n\n    **kubectl config view — raw > config**\n\n    **docker cp config kubectl-host:./root/.kube**\n\n    **docker attach kubectl-host**\n\nAlternatively you can use docker-compose to spin up the container and attach a volume\n\n### Extending the image\n\nLet’s say you want to add your own aliases or install additional software, etc. Docker enables easy image extension by using docker commit command.\n\n 1. Run the container\n\n 2. Configure and customize\n\n 3. Open another shell session and run:\n\n    docker commit CONTAINER_ID new-contianer-tag\n\nAfter this when you run docker images you will see your new image listed as well with changes that you’ve made. You can publish it to Docker Hub or just use it as it with your own modifications.\n\n### Conclusion\n\nKubernetes and containerized workloads offer great flexibility and open up new possibilities that were previously very hard to accomplish. I hope that with the example of creating a dedicated, fully portable and customized image of kubectl, I have inspired you to try and creating a Docker image with your favorite command line tool.\n\nWe have ended up creating a customized and personalized fully portable kubectl CLI experience. By any means is my image the only one, there are plenty of great ideas. One image worth mentioning is Bitnami curated image for kubectl, you can find it here: [https://hub.docker.com/r/bitnami/kubectl](https://hub.docker.com/r/bitnami/kubectl)\n\nAs always there is much more to be said, we haven’t talked about building automated CI/CD pipeline, making the image smaller, implementing best practices around security and much more. Some of those topics are complex enough to have their own blogs.\n\nThank your for reading and see you in next blog!"
+    },
+    {
+      "id": "/the-fundamentals-of-microservices-oriented-architecture",
+      "metadata": {
+        "permalink": "/blog/the-fundamentals-of-microservices-oriented-architecture",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/the-fundamentals-of-microservices-oriented-architecture.md",
+        "source": "@site/blog/the-fundamentals-of-microservices-oriented-architecture.md",
+        "title": "The Fundamentals of Microservices Oriented Architecture",
+        "description": "The fundamentals of microservices-oriented architecture",
+        "date": "2020-01-19T18:08:44.000Z",
+        "formattedDate": "January 19, 2020",
+        "tags": [
+          {
+            "label": "architecture",
+            "permalink": "/blog/tags/architecture"
+          },
+          {
+            "label": "design",
+            "permalink": "/blog/tags/design"
+          }
+        ],
+        "readingTime": 6.215,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "The Fundamentals of Microservices Oriented Architecture",
+          "date": "2020-01-19T18:08:44.000Z",
+          "draft": false,
+          "tags": [
+            "architecture",
+            "design"
+          ],
+          "categories": [
+            "software architecture"
+          ],
+          "show_in_homepage": true,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "Portable Kubernetes Management With Kubectl in Docker Container",
+          "permalink": "/blog/portable-kubernetes-management-with-kubectl-in-docker-container"
+        },
+        "nextItem": {
+          "title": "Preparation and Resources for CKA Exam",
+          "permalink": "/blog/preparation-and-resources-for-CKA-exam"
+        }
+      },
+      "content": "## The fundamentals of microservices-oriented architecture\n\n![Photo by [Kevin Ku](https://unsplash.com/@ikukevk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/code?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/6706/1*xPN1TMIK_kHoVBcQLKErYA.jpeg)\n\nMicroservices architecture has gained popularity in recent years; and for a good reason: implemented correctly, microservices can bring numerous advantages that are particularly important in our modern, cloud computing era.\n\nIn this blog we focus on a few important architecture foundations that underpin microservices-oriented architecture. A deep understanding of these underlying principles can help create better software architectures that are resilient, extensible, well-aging and, of course, microservices-oriented.\n\n### Consider the fallacies of Distributed Computing\n\n[Distributed computing](https://en.wikipedia.org/wiki/Distributed_computing) is not a new concept; in fact internet itself is a huge distributed computing system. Microservices by definition fall under the category of a Distributed System.\n>  **The appeal of distributed computing lies in the ability to harness the power of multiple, often parallel compute resources and take advantage of modern cloud computing offerings to enable almost unlimited scaling.**\n\nYet distributed systems, by nature, function in an unpredictable environment where a lot of things can go wrong. A very common pitfall is to treat distributed computing systems with the same degree of trust we have for local, non-distributed environments.\n>  **The [Fallacies of Distributed Computing](https://medium.com/baseds/foraging-for-the-fallacies-of-distributed-computing-part-1-1b35c3b85b53) help us understand the most common false assumptions we tend to make about distributed systems.**\n\nThe below list would be true in an ideal world, but in our imperfect reality making these assumptions can prove dangerous:\n\n* The network is reliable\n\n* Latency is zero\n\n* Bandwidth is infinite\n\n* The network is secure\n\n* Topology doesn’t change\n\n* There is only one administrator\n\n* Transport cost is zero\n\n* The network is homogeneous\n\nThe above applies especially in microservices-based systems that are by definition distributed.\n\n### Promise Theory\n\nMicroservices often benefit from asynchronous communication via:\n\n* queuing mechanisms like Kafka, RabbitMQ or cloud provider native service bus offerings\n\n* asynchronous calls over HTTP, TCP, with most popular being REST API model and gRPC calls.\n\n[Promise Theory](https://www.youtube.com/watch?v=2TPsB5WuZgk)’s main contribution to microservices architecture is the ability to move away from the *obligations concept *of communication — in which both sender and receiver are dependent on each other and must be active during the process of communication — towards the *promises concept*.\n>  **Promises concept postulates autonomy and independence of the systems and services collaborating with each other as part of a distributed system.**\n\n### Actor Model\n\nThe [Actor model](https://en.wikipedia.org/wiki/Actor_model) tries to model a domain by introducing concept of “Actors”, similar to Object Oriented Programming (OOP) using “Objects” and Functional Programming (FP) using “Functions” as base first-class citizens building blocks of any given domain.\n\nAn actor is a computational entity that, in response to a message it receives, can concurrently:\n\n* send a finite number of messages to other actors;\n\n* create a finite number of new actors;\n\n* designate the behavior to be used for the next message it receives.\n\nThe actor model is also a method of describing interactions between autonomous actors in a distributed system. This pattern allows for fault tolerance and resiliency by embracing the uncertainty of autonomy (actor A cannot compel actor B). Promise Theory introduced the concept of autonomy of communication participants.\n>  **The Actor model helps us understand how to address challenges around concurrency, state management and consistency.**\n\n### Event Driven Architecture\n\n[Event Driven Architecture](https://microservices.io/patterns/data/event-driven-architecture.html) further promotes asynchronous and decoupled communication by introducing the concept of “event” or, simply put, an important change of state.\n>  **Microservices collaborating with each other can react to an event in their own time and fully autonomously**.\n\nIt brings to the table a deeper understanding of the dynamic nature of data exchange and the influence it has on the architecture.\n\nThis type of communication has a few very well-known implementations, like serverless computing, event sourcing or CQRS.\n\n### CAP Theorem\n\nThe [CAP Theorem](https://www.ibm.com/cloud/learn/cap-theorem) states that in a distributed system it is impossible to provide more than two of the following three guarantees when it comes to data management:\n\n* Consistency: All clients have the same representation of the data\n\n* Availability: Each client can read and write the data at any point in time\n\n* Partition tolerance: Physical data partitioning does not affect the functionality of the system\n>  **Having the CAP Theorem in mind helps us choose the best combination based on requirements and use cases.**\n\n### UNIX Philosophy\n\nGreat software architectures are often judged by how well they age. One of the oldest architectures and still very relevant to this day is the [Unix Philosophy](https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch01s06.html).\n>  **Core idea of UNIX Philosophy is that every program should do one thing well and collaborate with other programs through well-defined interfaces.**\n\nUNIX Philosophy guidelines are nicely summarized by Peter H. Salus. in *A Quarter-Century of Unix*:\n\nThis is the Unix philosophy: Write programs that **do one thing and do it well**. Write programs to **work together**. Write programs to handle text streams, because that is a **universal interface**.\n\n### Twelve-Factor App Methodology\n\nThe [Twelve-Factor App Methodology](https://12factor.net/) is a very useful set of principles and guidance for developing microservices-based architectures, which helps avoid most common pitfalls and problems during software design. Here are the 12 factors:\n\n* Codebase: One codebase tracked in revision control, many deploys\n\n* Dependencies: Explicitly declare and isolate dependencies\n\n* Config: Store config in the environment\n\n* Backing services: Treat backing services as attached resources\n\n* Build, release, run: Strictly separate build and run stages\n\n* Processes: Execute the app as one or more stateless processes\n\n* Port binding: Export services via port binding\n\n* Concurrency: Scale out via the process model\n\n* Disposability: Maximize robustness with fast startup and graceful shutdown\n\n* Dev/prod parity: Keep development, staging, and production as similar as possible\n\n* Logs: Treat logs as event streams\n\n* Admin processes: Run admin/management tasks as one-off processes\n>  **The 12-Factor App Methodology helps us design software and supporting DevOps processes in a manner consistent with modern microservices-based architecture.**\n\n### Putting it all together\n\nDesigning a good architecture using microservices approach is pretty challenging. Applying the knowledge from the theories and models above can help create a first draft of any architecture:\n\n 1. Start by understanding requirements in the context of Distributed Systems and its fallacies. Will the system need to span multiple data centers? How do you plan to address the eight fallacies of distributed computing? Will your system take advantage of public cloud offering?\n\n 2. Think about how services will communicate. Is there a need to manage state as a result of communication (actor model)? Is there a need to react to events (event-based architectures)?\n\n 3. What are the requirements around data management? Which two elements of the CAP Theorem should be satisfied by which microservice?\n\n 4. How can you support developers by providing and helping introduce microservices-oriented design patterns and practices (Twelve-Factor App and UNIX Philosophy)?\n\n### Conclusion\n\nThe architecture of microservices-based distributed systems is a complex task involving much more than mentioned in this blog; we haven’t talked about security, testing, DevOps, infrastructure as code just to mention a few important topics.\n\nThe goal was to expose aspiring software architects to theoretical foundations of microservices-based systems and maybe give some food for thought to more experienced architects. In my opinion, it is worth the effort to familiarize yourself with these theories and know when to apply which.\n\nYou can find me on [GitHub](https://github.com/Piotr1215?tab=repositories) or leave a comment in the responses section. I would love to hear about your experiences with designing microservices-based architectures and what helped you make your architecture great."
+    },
+    {
+      "id": "/preparation-and-resources-for-CKA-exam",
+      "metadata": {
+        "permalink": "/blog/preparation-and-resources-for-CKA-exam",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/preparation-and-resources-for-CKA-exam.md",
+        "source": "@site/blog/preparation-and-resources-for-CKA-exam.md",
+        "title": "Preparation and Resources for CKA Exam",
+        "description": "Preparation and resources for CKA exam",
+        "date": "2020-01-12T18:07:14.000Z",
+        "formattedDate": "January 12, 2020",
+        "tags": [
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          },
+          {
+            "label": "certification",
+            "permalink": "/blog/tags/certification"
+          }
+        ],
+        "readingTime": 3.44,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Preparation and Resources for CKA Exam",
+          "date": "2020-01-12T18:07:14.000Z",
+          "draft": false,
+          "tags": [
+            "kubernetes",
+            "certification"
+          ],
+          "categories": [
+            "certification"
+          ],
+          "show_in_homepage": true,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "The Fundamentals of Microservices Oriented Architecture",
+          "permalink": "/blog/the-fundamentals-of-microservices-oriented-architecture"
+        },
+        "nextItem": {
+          "title": "Try Kubernetes in Cloud for Free",
+          "permalink": "/blog/try-kubernetes-in-cloud-for-free"
+        }
+      },
+      "content": "## Preparation and resources for CKA exam\n\n![](https://cdn-images-1.medium.com/max/3458/1*1j_YO66Y-ZieVTtUkjSZxg.png)\n\nRecently I have successfully passed exam for [Certified Kubernetes Administrator (CKA)](https://www.cncf.io/certification/cka/) and I would like to share learning tips and tricks as well as resources that helped me prepare and pass the exam.\n\n## Resources\n\nThe only resource needed to pass the exam was [Certified Kubernetes Administrator (CKA) with Practice Tests](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests). Very comprehensive and in depth course that contains all needed information and practice labs to pass the exam! Mumshad, the author of the course and owner of [KodeKloud](https://kodekloud.com/)did really great work designing it.\n\nThere is also one more resource I would like to mention, it is not needed to pass or prepare for the exam, but content is really great and it deserves a shout out. Videos from [Just me and Opensource](https://www.youtube.com/user/wenkatn/featured) YouTube channel. Author does really great work creating hands on practical videos tackling various kubernetes related topics.\n\n## Tip #1: Create your own kubernetes cluster to play around\n>  ‍I wish you best of luck in getting your CKA certification!\nPractice is very important for the exam, so use every opportunity to get familiar with kubectl command line tool and YAML files. One option is to setup local kubernetes cluster using for example: [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/), [microk8s](https://microk8s.io/docs/)or [kind](https://kind.sigs.k8s.io/). All of those are great options to quickly spin up kubernetes cluster on your machine.\n\nIf your machine does not have enough resources or you simply do not want to install anything locally, you can quickly spin up kubernetes cluster in any cloud provider. You can check out my blog where I describe how to setup AKS cluster [https://medium.com/@piotrzan/try-kubernetes-in-cloud-for-free-e5e431c507a7](https://medium.com/@piotrzan/try-kubernetes-in-cloud-for-free-e5e431c507a7), check my GitHub repos with instructions how to deploy managed kubernetes on [Azure](https://github.com/Piotr1215/terraform-aks)or [GCP](https://github.com/Piotr1215/terraform-gcp)\n\n## Tip #2: Kubectl alias and bash/zsh completion\n\nDuring the exam you are required to demonstrate practical knowledge of kubernetes and all this under time pressure. Each second counts, so one of the most important tips that helped me were those about speed.\n\nMake sure to setup alias for kubeclt and bash/zsh completion. This information is available on the kubernetes documentation page. It will help you be much faster with commands and most importantly completion sources pod and other kubernetes objects names that you don’t need to copy or type.\n\n![](https://cdn-images-1.medium.com/max/2696/0*TyA2kZdqmXMSi99P.png)\n\n## Tip #3: Take advantage of kubernetes documentation\n\nDuring the exam you can have one additional chrome tab open with kubernetes documentation page, kubernetes blog and GitHub artifacts for the page. It helped me to prepare bookmarks to quickly locate part of YAML to copy and paste to terminal.\n\nYou can get the bookmarks from [my GitHub gist](https://gist.github.com/Piotr1215/016ba7218a1a949574786fb9b92382c1) and import them into your browser! Best way is to clone the gist as I’m making minor updates.\n\n## Tip #4: Know vim (or nano) editors well\n\nA lot of exam tasks required editing existing YAML files and ability to use vim (in my case) or nano text editors quickly and efficiently is very important. There are plenty of pages with keyboard shortcuts.\n\n## ‍Tip #5: Questions priority\n\nEach question is “weighted” and for CKA you have on average 6 minutes per question. If you find yourself stuck, it’s better to note question number in notepad available within the environment and come back to it later.\n\n## ‍Tip #6: Get very familiar with those kubectl tricks\n\n## ‍Tip #7: Stay calm\n\nI’m not sure about you, but performance based exams always make me nervous and stress often gets best of me. It is helpful to remember that CKA gives you one free retry, so even if you don’t pass first time, don’t worry.\n\n## Bonus\n\nThis is not strictly needed for the exam (at least I didn’t need to use the below commands), but it might be useful:\n\n> ‍I wish you best of luck in getting your CKA certification!\n\n![](https://cdn-images-1.medium.com/max/2000/0*Piks8Tu6xUYpF4DU)\n\n**Follow us on [Twitter](https://twitter.com/joinfaun)**🐦**and [Facebook](https://www.facebook.com/faun.dev/)**👥 **and [Instagram](https://instagram.com/fauncommunity/)**📷 **and join our [Facebook](https://www.facebook.com/groups/364904580892967/) and [Linkedin](https://www.linkedin.com/company/faundev) Groups**💬**.**\n\n**To join our community Slack team chat**🗣️ **read our weekly Faun topics**🗞️, **and connect with the community**📣 **click here⬇**\n\n![](https://cdn-images-1.medium.com/max/3000/1*6P3WpLjGv5v1ucm5dgkucg.png)\n\n### If this post was helpful, please click the clap 👏 button below a few times to show your support for the author! ⬇"
+    },
+    {
+      "id": "/try-kubernetes-in-cloud-for-free",
+      "metadata": {
+        "permalink": "/blog/try-kubernetes-in-cloud-for-free",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/try-kubernetes-in-cloud-for-free.md",
+        "source": "@site/blog/try-kubernetes-in-cloud-for-free.md",
+        "title": "Try Kubernetes in Cloud for Free",
+        "description": "If you are interested in cloud computing you have and maybe even read a few blogs about this cool thing called “Kubernetes”. It’s all good and fancy, but it’s best to actually lay your hands on it and experiment with that it has to offer.",
+        "date": "2019-12-28T18:05:46.000Z",
+        "formattedDate": "December 28, 2019",
+        "tags": [
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          },
+          {
+            "label": "azure",
+            "permalink": "/blog/tags/azure"
+          }
+        ],
+        "readingTime": 2.79,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Try Kubernetes in Cloud for Free",
+          "date": "2019-12-28T18:05:46.000Z",
+          "draft": false,
+          "tags": [
+            "kubernetes",
+            "azure"
+          ],
+          "categories": [
+            "cloud native"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "Preparation and Resources for CKA Exam",
+          "permalink": "/blog/preparation-and-resources-for-CKA-exam"
+        },
+        "nextItem": {
+          "title": "8 Tips to Prepare for Az 301 Exam",
+          "permalink": "/blog/8-tips-to-prepare-for-az-301-exam"
+        }
+      },
+      "content": "If you are interested in cloud computing you have and maybe even read a few blogs about this cool thing called “Kubernetes”. It’s all good and fancy, but it’s best to actually lay your hands on it and experiment with that it has to offer.\n\nA quick search for “try out Kubernetes” doesn’t really help, so what can you do to get Kubernetes out for a spin without installing lots of software on your machine and not paying a penny? Well, there is an easy way! Take advantage of cloud computing and see how it is to be at the helm of everyone’s favorite containers’ orchestrator!\n\n1.  Create [free Azure subscription](https://azure.microsoft.com/en-us/free/). This will give you access to [Azure Kubernetes Service](https://azure.microsoft.com/en-us/services/kubernetes-service/) where you can get your hands dirty with Kubernetes. You can do the same creating Kubernetes clusters in Google Cloud (GCP) or Amazon Web Services (AWS).\n2.  Install [Terraform CLI](https://www.terraform.io/downloads.html). This is required to create and **destroy** resources you will need to check out Kubernetes.\n3.  [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/). This will enable you to communicate with your kubernetes cluster.\n\n1.  Create Azure resources. Please note that commands assume Linux bash/zsh, so if you are on windows use WSL or git bash.\n\n\\# Create general purpose V2 storage accountaccountName=fancyaccountmanemustbeunique123\nrg=uniquergname123az group create — name $rg — location westeurope — output jsonaz storage account create \\\\\n     -- name $accountName \\\\\n     -- resource-group $rg \\\\\n     -- location westeurope \\\\\n     -- sku Standard\\_RAGRS \\\\\n     -- kind StorageV2 \\# Create container to host terraform state\n\\# Retrieve storage account key:accountKey=$(az storage account keys list — account-name $accountName — resource-group $rg \\\\\n      -- query “\\[?keyName == ‘key1’\\].value” -o tsv)az storage container create -n tfstate — account-name $accountName — account-key $accountKeyterraform init -backend-config=”storage\\_account\\_name=$accountName” \\\\\n\\- backend-config=”container\\_name=tfstate” \\\\\n\\- backend-config=”access\\_key=$accountKey” \\\\\n\\- backend-config=”key=dev.tfstate”\n\n2\\. Run `terraform plan -out out.plan` - prepare terraform deployment\n\n3\\. Run `terraform apply out.plan` - deploy AKS and store terraform state in the storage container created in step 1\n\n4\\. Run `az aks get-credentials -g azure-k8stest -n k8stest` to merge newly created config with local kubectl config file and switch to the new cluster\n\n5\\. Run `kubectl get nodes` - verify that the cluster is selected and you can access it\n\nOnce cluster deployment is done and you can access your cluster via kubeclt, there are a few fun things you can try out before you get rid of the cluster\n\n-   create a deployment and scale it up/down\n-   check out AKS (Azure Kubernetes Service) metrics on Azure portal\n-   deploy nginx pod and expose a service that you can access from outside\n-   deploy job and see it complete\n\n## Play with official “Guestbook” example\n\nKubernetes docs site has a very easy to follow sample called “Guestbook” which allows you to test a few k8s features and have a running sample in minutes. [Follow the tutorial here](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/).\n\nSo now let’s get back to the “.. for free” part! In order not go get any costs, it is important to **destroy** all the resources. Follow those steps to do so:\n\n1.  Run `terraform destroy` - cleanup all AKS related resources\n2.  Run `az group delete -n \\<resource group name created earlier>` - remove storage account and terraform state\n3.  Run `rm -Rf .terraform`\\- run locally, this is needed to reset the state which is gone when removing the storage account and container"
+    },
+    {
+      "id": "/8-tips-to-prepare-for-az-301-exam",
+      "metadata": {
+        "permalink": "/blog/8-tips-to-prepare-for-az-301-exam",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/8-tips-to-prepare-for-az-301-exam.md",
+        "source": "@site/blog/8-tips-to-prepare-for-az-301-exam.md",
+        "title": "8 Tips to Prepare for Az 301 Exam",
+        "description": "Microsoft Certified: Azure Solutions Architect Expert certification — learning path",
+        "date": "2019-12-28T18:04:23.000Z",
+        "formattedDate": "December 28, 2019",
+        "tags": [
+          {
+            "label": "azure",
+            "permalink": "/blog/tags/azure"
+          },
+          {
+            "label": "certification",
+            "permalink": "/blog/tags/certification"
+          }
+        ],
+        "readingTime": 6.685,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "8 Tips to Prepare for Az 301 Exam",
+          "date": "2019-12-28T18:04:23.000Z",
+          "draft": false,
+          "tags": [
+            "azure",
+            "certification"
+          ],
+          "categories": [
+            "certification"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "Try Kubernetes in Cloud for Free",
+          "permalink": "/blog/try-kubernetes-in-cloud-for-free"
+        },
+        "nextItem": {
+          "title": "8 Tips to Prepare for Az 300 Exam",
+          "permalink": "/blog/8-tips-to-prepare-for-az-300-exam"
+        }
+      },
+      "content": "![](https://miro.medium.com/max/1400/1*XgjNqx3rsImpoYzifqnx8w.png)\n\nMicrosoft Certified: Azure Solutions Architect Expert certification — learning path\n\nThis blog is a second part of preparation for **Microsoft Certified: Azure Solutions Architect Expert** certification**.** Here I talk about how I prepared for AZ-301 Exam. You can find second part, preparation for AZ-300 [here](https://medium.com/@piotrzan/8-tips-to-prepare-for-az-300-exam-cadff5532394).\n\nI also created a GitHub repository with links to documentation and detailed description of learning progress.\n\n[https://github.com/Piotr1215/az-301-prep-kit](https://github.com/Piotr1215/az-301-prep-kit)\n\nExam curriculum is based on material update from **December 4, 2019.**.\n\nSee below announcement from exam page:\n\n> _Exam AZ-301: Microsoft Azure Architect Design The content of this exam was updated on_ **_December 4, 2019._** _Please download the Skills measured document below to see what changed._\n\n-   Determine workload requirements (10–15%)\n-   Design for identity and security (20–25%)\n-   Design a data platform solution (15–20%)\n-   Design a business continuity strategy (15–20%)\n-   Design for deployment, migration, and integration (10–15%)\n-   Design an infrastructure strategy (15–20%)\n\nThis exam is different than AZ-300, questions are geared towards design and architecture best practices in Azure rather than concrete implementations. Still, it’s important to practice yourself in the portal, but not as essential as for AZ-300.\n\nResources also contain recommendations how to make best use of each one. At least this was how I was using each resource and it yielded good results.\n\n> Resources are ordered from used least often to used most often (please note that this is purely subjective on my part and something else might work better for you)\n\n1.  [Video from MS Ignite with tips on taking the exam](https://myignite.techcommunity.microsoft.com/sessions/78629?source=sessions), **how to use:** watch one time to understand exam requirements and learn about varioius tips and tricks.\n2.  [Cloud Design Patterns](https://docs.microsoft.com/en-us/azure/architecture/patterns/), **how to use**: use as support resource if you want to know more about any given topic.\n3.  [Azure Architecture Center](https://docs.microsoft.com/en-gb/azure/architecture/), **how to use**: if you are interested in learning more about given topic, look it up on the architecture center and study.\n4.  [Self paced Azure labs](https://www.microsoft.com/HandsOnLabs/SelfPacedLabs), **how to use**: perform labs and/or read the documentation: Links are scattered across README files.\n5.  [Azure Tips and Tricks Youtube playlist curated by Microsoft](https://www.youtube.com/playlist?list=PLLasX02E8BPCNCK8Thcxu-Y-XcBUbhFWC), **how to use**: choose videos you are interested in and watch, most of the videos are very short and have enough info to help you understand the topic.\n6.  [Pluralsight Courses](https://app.pluralsight.com/paths/certificate/microsoft-azure-architect-design-az-301), **how to use**: View while learning certain topic: Links to videos from [Pluralsight](https://app.pluralsight.com/paths/certificate/microsoft-azure-architect-design-az-301) are scattered across README files or watch on demand.\n7.  [LinkedIn Learning](https://www.linkedin.com/learning/me), **how to use**:\n\n-   There are plenty of detailed short videos describing many topics needed to pass the exam in detail.\n-   You will need to start free month with LinkedIn, but you can cancell afterwards\n-   Search topic you are interested in (copy/paste from exam topics) and watch videos\n-   Content is detailed and almost always has a lot of Azure Portal print screens\n\n[8\\. Udemy “AZ-301 Azure Architect Design Exam Prep” by Scott Duffy](https://www.udemy.com/course/az301-azure/), **how to use**: Watch relevant section and try to follow along on Azure Portal.\n\n[9\\. Azure Landing Page](https://azure.microsoft.com/en-ca/), **how to use**:\n\n-   This is main resource I was working with most of the time\n-   Select “Products” and what you want to learn about. From there you will have access to full documentation and other areas. I highly recommend checking out the “Pricing” section as well as “FAQ”, they both contain information useful during the exam.\n\n![](https://miro.medium.com/max/1400/0*jZvUvQCjN3ICzcL_.png)\n\n-   Another very useful resource are Solutions -> Solution Architectures. This gives you a good overview how reference architectures are setup on Azure and helps a lot with the exam. Some of them have even source code and ARM templates on GitHub as well as Visio and other diagrams to help better understand the solution. For example, it’s much easier to learn about Web Apps with a [reference architecture to play with](https://docs.microsoft.com/en-gb/azure/architecture/reference-architectures/app-service-web-app/basic-web-app).\n\n![](https://miro.medium.com/max/1400/0*8a95sRZv0dAyEePi)\n\n10\\. [My repository](https://github.com/Piotr1215/az-301-prep-kit) where I gathered useful links and info. Use GitHub search functionality to find quickly what you need or simply navigate through README files.\n\nAZ-301 is focusing on design strategies and architecture using Azure services and technologies. Exam has following characteristics:\n\n1.  Questions: **40–60** questions\n\n-   Some questions are worth 1 point\n-   Some questions cannot be skipped\n-   There are different types of questions: multiple-choice, build list, hot area, drag and drop, reorder etc\n-   There are also Performance based questions (labs) to be done in Azure portal\n-   Questions are often in context of Case Studies where you need to gather and understand information across multiple sources\n\n2\\. Duration: **3,5** hours\n\n-   Schedule 30 minutes for reading and understanding instructions and rest for actual exam.\n-   Take your time with the questions, it is important to read carefully with understanding. I have finished the exam more than 1 hour before end time, so there is plenty of time.\n\nI had no questions where I had to use powershell or Azure CLI , but of course each exam is different, so it’s best to stay safe and learn this as well.\n\n-   Use `az interactive` to enable CLI auto completion and helpful tips\n-   Use `powershell`, get help on commands and understand the order of command-lets (first create resource group, etc)\n\nPreview features are not included, but you should keep an eye on the exam page and check for updates. For example, while I was preparing for the exam it has been updated and some preview features are now GA.\n\n-   [Exam with retake](https://eu1.mindhub.com/microsoft-exam-replay-mcp-exam-plus-retake/p/Microsoft-Exam-Replay?utm_source=msftmarketing&utm_medium=msft_offers&utm_campaign=ExamReplayFY20&utm_term=ERFY20&utm_content=weblink3)\n-   [Exam with retake and practice test](https://eu1.mindhub.com/microsoft-exam-replay-with-practice-test-mcp-exam/p/Microsoft-Exam-Replay-PT?utm_source=msftmarketing&utm_medium=msft_offers&utm_campaign=ExamReplayFY20&utm_term=ERFY20&utm_content=weblink)\n\nThere are labs, but you just navigate through portal and identify information or fix problems. You need to be very familiar with Azure Portal, but it’s not as critical as for AZ-300. Know how to search for resources and create them quickly. Make use of tool tips (usually under small “?” icon), they often explain details you will need to finish the lab in case you don’t remember details for a service or resource.\n\n-   [Create free account on Azure and practice!](https://azure.microsoft.com/en-us/free/)\n\nWhen I was confident I have enough preparation and understand the material, it was time to schedule the exam. Scheduling exam was important to set a date in calendar and make sure I stay focus and plan my time well.\n\n10 days from exam I scheduled final preparation plan focusing on each section as below. Each time I would use the links, refresh core info, do a lab and most importantly go to Azure Portal and try to perform given task myself. I also used mind-maps and OneNote to keep the learning material organized.\n\n-   Day 1: Determine workload requirements (10–15%)\n-   Days 2–3: Design for identity and security (20–25%)\n-   Day 4: Design a data platform solution (15–20%)\n-   Day 5: Design a business continuity strategy (15–20%)\n-   Day 6: Design for deployment, migration, and integration (10–15%)\n-   Day 7: Design an infrastructure strategy (15–20%)\n-   Day 8–9: Practice exams and mock questions, final review. Please **don’t** use so called braindumps. I used [AZ-301: The complete practice test, Azure Architect Design](https://www.udemy.com/course/exam-az-301-microsoft-azure-architect-design-test/) (bought cheap on Udemy during Cyber Week)\n-   **Day 10: EXAM!** Make sure to get plenty of sleep and schedule the exam in the time when you are most active (for me it is late morning)\n\nThe exam questions spread was pretty much as advertised, I felt that there were too many questions about SQL Databases, but it could be just perception. There are labs in this exam (I got 2 labs, 6 questions each). The labs are different than AZ-300 in a sense that you don’t need to create or change any Azure resources but rather identify problems and find information needed to answer lab questions. Still, good knowledge of Azure portal is required.\n\nSimilarly to AZ-300 exam, it was important to know details of Azure offerings, for example types of premium disks, compute SKUs for App Service Plans, difference between redundancy options or exact differences between storage type V1 and V2. It is important to memorize those details as it is needed during the exam.\n\nAt the end the knowledge of those details made all the difference."
+    },
+    {
+      "id": "/8-tips-to-prepare-for-az-300-exam",
+      "metadata": {
+        "permalink": "/blog/8-tips-to-prepare-for-az-300-exam",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/8-tips-to-prepare-for-az-300-exam.md",
+        "source": "@site/blog/8-tips-to-prepare-for-az-300-exam.md",
+        "title": "8 Tips to Prepare for Az 300 Exam",
+        "description": "AZ-300 Certification Badge",
+        "date": "2019-12-12T16:37:33.000Z",
+        "formattedDate": "December 12, 2019",
+        "tags": [
+          {
+            "label": "azure",
+            "permalink": "/blog/tags/azure"
+          },
+          {
+            "label": "certification",
+            "permalink": "/blog/tags/certification"
+          }
+        ],
+        "readingTime": 4.185,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "8 Tips to Prepare for Az 300 Exam",
+          "date": "2019-12-12T16:37:33.000Z",
+          "tags": [
+            "azure",
+            "certification"
+          ],
+          "categories": [
+            "certification"
+          ],
+          "show_in_homepage": true
+        },
+        "prevItem": {
+          "title": "8 Tips to Prepare for Az 301 Exam",
+          "permalink": "/blog/8-tips-to-prepare-for-az-301-exam"
+        },
+        "nextItem": {
+          "title": "Preparation and Resources for CKAD Exam",
+          "permalink": "/blog/preparation-and-resources-for-CKAD-exam"
+        }
+      },
+      "content": "![](https://miro.medium.com/max/1000/1*wXeXxddbjKQdj8-f07Kc4Q.png)\n\nAZ-300 Certification Badge\n\nI recently passed [Exam: AZ-300: Microsoft Azure Architect Technologies](https://docs.microsoft.com/en-gb/learn/certifications/exams/az-300). This exam is one of two to earn Microsoft Certified: Azure Solutions Architect Expert certification.\n\nI also created a GitHub repository with links to documentation and detailed description of learning progress.\n\n[https://github.com/Piotr1215/az-300-prep-kit](https://github.com/Piotr1215/az-300-prep-kit)\n\nExam curriculum is based on material update from **December 4, 2019.**\n\nThe most significant change is increasing infrastructure related questions to almost half of the exam questions and reducing section dedicated for development in cloud. After the update the exam leans very heavily towards infrastructure and workloads (networking, load balancing, backup&migration, server-less, storage accounts, VMs, infrastructure as code, active directory, MFA, RBAC).\n\nSee below announcement from exam page\n\n> _Exam AZ-300: Microsoft Azure Architect Technologies The content of this exam was updated on December 4, 2019. Please download the Skills measured document below to see what changed._\n\nBest resource is to practice yourself what you learn in the portal, especially in the area of networking, virtual machines and active directory. Most of the resources listed below do not go deep enough into details and only way to understand the nuances of each topic is to practice it until “aha” moment is achieved.\n\n1. [Plularsight Courses](https://app.pluralsight.com/paths/certificate/microsoft-azure-architect-technologies-az-300)\n2. [Udemy “AZ-300 Azure Architecture Technologies Certification Exam” by Scott Duffy](https://www.udemy.com/course/70534-azure/)\n3. [Official Microsoft exam page with free learning materials](https://docs.microsoft.com/en-gb/learn/certifications/exams/az-300)\n4. [Video from MS Ignite with tips on taking the exam](https://myignite.techcommunity.microsoft.com/sessions/80470?source=sessions)\n5. [Self paced Azure labs](https://www.microsoft.com/HandsOnLabs/SelfPacedLabs)\n6. [Azure documentation](https://docs.microsoft.com/en-us/azure/)\n7. [Quick-start ARM and Powershell templates](https://github.com/Azure/AzureStack-QuickStart-Templates)\n\nAz-300 is focusing on practical use cases of Azure technologies. Exam has following characteristics:\n\n1. Questions: **40–60** questions\n\n- Some questions are worth 1 point\n- Some questions cannot be skipped\n- There are different types of questions: multiple-choice, build list, hot area, drag and drop, reorder etc\n- There are also Performance based questions (labs) to be done in Azure portal\n- Questions are often in context of Case Studies where you need to gather and understand information across multiple sources\n\n2\\. Duration: **3,5** hours\n\n- Schedule 30 minutes for reading and understanding instructions and rest for actual exam.\n- Take your time with the questions, it is important to read carefully with understanding. I have finished the exam more than 1 hour before end time, so there is plenty of time.\n\nshow_in_homepage: true\n\n- Use `az interactive` to enable CLI auto completion and helpful tips\n- Use `powershell`, get help on commands and understand the order of command-lets (first create resource group, etc)\n\nPreview features are not included, but you should keep an eye on the exam page and check for updates. For example, while I was preparing for the exam it has been updated and some preview features are now GA.\n\n- [Exam with retake](https://eu1.mindhub.com/microsoft-exam-replay-mcp-exam-plus-retake/p/Microsoft-Exam-Replay?utm_source=msftmarketing&utm_medium=msft_offers&utm_campaign=ExamReplayFY20&utm_term=ERFY20&utm_content=weblink3)\n- [Exam with retake and practice test](https://eu1.mindhub.com/microsoft-exam-replay-with-practice-test-mcp-exam/p/Microsoft-Exam-Replay-PT?utm_source=msftmarketing&utm_medium=msft_offers&utm_campaign=ExamReplayFY20&utm_term=ERFY20&utm_content=weblink)\n\nYou need to be very familiar with Azure Portal, know how to search for resources and create them quickly. Make use of tool tips (usually under small “?” icon), they often explain details you will need to finish the lab in case you don’t remember details for a service or resource.\n\n- [Create free account on Azure and practice!](https://azure.microsoft.com/en-us/free/)\n\nWhen I was confident I have enough preparation and understand the material, it was time to schedule the exam. Scheduling exam was important to set a date in calendar and make sure I stay focus and plan my time well.\n\n10 days from exam I scheduled final preparation plan focusing on each section as below. Each time I would use the links, refresh core info, do a lab and most importantly go to Azure Portal and try to perform given task myself. I also used mind-maps and OneNote to keep the learning material organized.\n\n- Days 1–3: Deploy and configure infrastructure (40–45%)\n- Days 4–5: Implement workloads and security (25–35%)\n- Day 6: Create and deploy apps (5–10%)\n- Day 7: Implement authentication and secure data (5–10%)\n- Day 8: Develop for the cloud and for Azure storage (15–20%)\n- Day 9: Practice exams and mock questions, final review. Please don’t use so called braindumps. I used “Microsoft Azure AZ-300 Architecture Technologies Practice Exams” (bought cheap on Udemy during Cyber Week)\n- **Day 10: EXAM!**\n\nThe exam focuses heavily on networking and VMs. Questions are really tricky with multiple layers of indirection and broad knowledge of even small properties of different Azure managed services is required to answer majority of the questions. Questions around virtual networks were most difficult for me, setting up load balances, connecting networks and all this under often complex and tricky requirements.\n\nThere is separate section for case study and separate section for labs. Case study requires good understanding of problem domain and requirements, so read each question very carefully, there is plenty of time.\n\nLabs are not that difficult, but once or twice remote sessions hanged on me and exam was rebooted.\n\nAt the end what helped me pass was experience with Azure and trying everything on my own in Azure Portal, creating and solving problems and experimenting with virtual network and VMs."
+    },
+    {
+      "id": "/preparation-and-resources-for-CKAD-exam",
+      "metadata": {
+        "permalink": "/blog/preparation-and-resources-for-CKAD-exam",
+        "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/preparation-and-resources-for-CKAD-exam.md",
+        "source": "@site/blog/preparation-and-resources-for-CKAD-exam.md",
+        "title": "Preparation and Resources for CKAD Exam",
+        "description": "Preparation and resources for CKAD exam",
+        "date": "2019-11-22T18:07:14.000Z",
+        "formattedDate": "November 22, 2019",
+        "tags": [
+          {
+            "label": "kubernetes",
+            "permalink": "/blog/tags/kubernetes"
+          },
+          {
+            "label": "certification",
+            "permalink": "/blog/tags/certification"
+          }
+        ],
+        "readingTime": 2.94,
+        "truncated": false,
+        "authors": [],
+        "frontMatter": {
+          "title": "Preparation and Resources for CKAD Exam",
+          "date": "2019-11-22T18:07:14.000Z",
+          "draft": false,
+          "tags": [
+            "kubernetes",
+            "certification"
+          ],
+          "categories": [
+            "certification"
+          ],
+          "show_in_homepage": false,
+          "show_description": false
+        },
+        "prevItem": {
+          "title": "8 Tips to Prepare for Az 300 Exam",
+          "permalink": "/blog/8-tips-to-prepare-for-az-300-exam"
+        }
+      },
+      "content": "## Preparation and resources for CKAD exam\n\n![](https://cdn-images-1.medium.com/max/5402/1*SAm8bL78n0uQl8DCbKipmA.png)\n\nRecently I have successfully passed exam for Certified Kubernetes Application Developer (CKAD) and I would like to share learning tips and tricks as well as resources that helped me prepare and pass the exam.\n\n## Resources\n\nLet’s start by looking at resources. I used 3 resource to learn:\n\n* ‍[Kubernetes Certified Application Developer (CKAD) with Tests.](https://www.udemy.com/course/certified-kubernetes-application-developer/) The course is on Udemy and is designed and delivered by Mumshad Mannambeth. Very well done with lots of hands on exercises that prepare very well for real exam.[‍](https://github.com/lucassha/CKAD-resources)\n\n* [Exercises available on GitHub designed by Dimitris-Ilias Gkanatsios.](https://github.com/lucassha/CKAD-resources)[‍](https://www.katacoda.com/courses/kubernetes)\n\n* [Katakoda with ready environments to spin and play around.](https://www.katacoda.com/courses/kubernetes)‍\n\n* [Justmeandopensource youtube channel of with very informative short videos all things kubernetes, including basics.](https://www.youtube.com/user/wenkatn/videos)\n\nAs always, google around and see what you can find for yourself, but I can definitely recommend those as good starting points. Ok, let’s look at some tips that I found especially useful.\n\n## Tip #1: Kubectl alias and bash/zsh completion\n\nDuring the exam you are required to demonstrate practical knowledge of kubernetes and all this under time pressure. Each second counts, so one of the most important tips that helped me were those about speed.\n\nMake sure to setup alias for kubeclt and bash/zsh completion. This information is available on the kubernetes documentation page. It will help you be much faster with commands and most importantly completion sources pod and other kubernetes objects names that you don’t need to copy or type.\n\n![](https://cdn-images-1.medium.com/max/2696/0*TyA2kZdqmXMSi99P.png)\n\n## Tip #2: Take advantage of kubernetes documentation\n\nDuring the exam you can have one additional chrome tab open with kubernetes documentation page, kubernetes blog and GitHub artifacts for the page. It helped me to prepare bookmarks to quickly locate part of YAML to copy and paste to terminal.\n\nYou can get the bookmarks from [my GitHub gist](https://gist.github.com/Piotr1215/016ba7218a1a949574786fb9b92382c1) and import them into your browser! Best way is to clone the gist as I’m making minor updates.\n\n![](https://cdn-images-1.medium.com/max/2000/0*jrubR1KKJHuN9i_z.png)\n\n## Tip #3: Know vim (or nano) editors well\n\nA lot of exam tasks required editing existing YAML files and ability to use vim (in my case) or nano text editors quickly and efficiently is very important. There are plenty of pages with keyboard shortcuts.\n\n## ‍Tip #4: Questions priority\n\nEach question is “weighted” and for CKAD you have on average 6 minutes per question. If you find yourself stuck, it’s better to note question number in notepad available within the environment and come back to it later\n\n## ‍Tip #5: My personal “dang it, why didn’t I learn it more?!” moments.\n\nIt’s not as much a tip, but rather a reflection on the exam content that made me realize that I should have put more emphasis on certain topics. For me those were:\n\n* Network policies, I got stuck on this one.\n\n* Different ways of mounting config maps and secrets to pods. I think during the exam I saw all possible ways of mounting those objects to pods, volume mounts with hostPath, using environmental variables, mounts of whole objects, just values etc. It was pretty confusing and I spent a lot on the documentation page to look things up.\n\n## ‍Tip #6: Stay calm\n\nI’m not sure about you, but performance based exams always make me nervous and stress often gets best of me. It is helpful to remember that CKAD gives you one free retry, so even if you don’t pass first time, don’t worry.\n>  ‍I wish you best of luck in getting your CKAD certification!"
+    }
+  ]
+}

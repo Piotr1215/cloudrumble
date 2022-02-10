@@ -1,0 +1,23 @@
+{
+  "unversionedId": "CERTIFICATES/cka_guide",
+  "id": "CERTIFICATES/cka_guide",
+  "title": "cka_guide",
+  "description": "Introduction",
+  "source": "@site/docs/CERTIFICATES/cka_guide.md",
+  "sourceDirName": "CERTIFICATES",
+  "slug": "/CERTIFICATES/cka_guide",
+  "permalink": "/docs/CERTIFICATES/cka_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/cka_guide.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "az_304_guide",
+    "permalink": "/docs/CERTIFICATES/az_304_guide"
+  },
+  "next": {
+    "title": "ckad_guide",
+    "permalink": "/docs/CERTIFICATES/ckad_guide"
+  }
+}

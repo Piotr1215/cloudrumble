@@ -1,0 +1,8 @@
+{
+  "type": "mdx",
+  "permalink": "/impressum",
+  "source": "@site/src/pages/impressum.md",
+  "title": "Legal Notice / Impressum",
+  "description": "Information (§ 5 TMG)",
+  "frontMatter": {}
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "FUNDAMENTALS/GitOps/gitops_intro",
+  "id": "FUNDAMENTALS/GitOps/gitops_intro",
+  "title": "Introduction to GitOps",
+  "description": "Resources",
+  "source": "@site/docs/FUNDAMENTALS/GitOps/gitops_intro.md",
+  "sourceDirName": "FUNDAMENTALS/GitOps",
+  "slug": "/FUNDAMENTALS/GitOps/gitops_intro",
+  "permalink": "/docs/FUNDAMENTALS/GitOps/gitops_intro",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/GitOps/gitops_intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "A gentle introduction to Docker and containers",
+    "permalink": "/docs/FUNDAMENTALS/Containers/docker_intro"
+  },
+  "next": {
+    "title": "Kubernetes",
+    "permalink": "/docs/FUNDAMENTALS/Kubernetes/"
+  }
+}

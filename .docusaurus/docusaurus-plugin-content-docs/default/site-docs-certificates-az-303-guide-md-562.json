@@ -1,0 +1,23 @@
+{
+  "unversionedId": "CERTIFICATES/az_303_guide",
+  "id": "CERTIFICATES/az_303_guide",
+  "title": "az_303_guide",
+  "description": "Introduction",
+  "source": "@site/docs/CERTIFICATES/az_303_guide.md",
+  "sourceDirName": "CERTIFICATES",
+  "slug": "/CERTIFICATES/az_303_guide",
+  "permalink": "/docs/CERTIFICATES/az_303_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/az_303_guide.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "AWS Certified Solutions Architect Associate",
+    "permalink": "/docs/CERTIFICATES/aws_saa_co2"
+  },
+  "next": {
+    "title": "az_304_guide",
+    "permalink": "/docs/CERTIFICATES/az_304_guide"
+  }
+}

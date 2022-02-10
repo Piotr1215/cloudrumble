@@ -1,0 +1,23 @@
+{
+  "unversionedId": "FUNDAMENTALS/Kubernetes/kubernetes",
+  "id": "FUNDAMENTALS/Kubernetes/kubernetes",
+  "title": "Kubernetes",
+  "description": "Overview",
+  "source": "@site/docs/FUNDAMENTALS/Kubernetes/kubernetes.md",
+  "sourceDirName": "FUNDAMENTALS/Kubernetes",
+  "slug": "/FUNDAMENTALS/Kubernetes/",
+  "permalink": "/docs/FUNDAMENTALS/Kubernetes/",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/Kubernetes/kubernetes.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to GitOps",
+    "permalink": "/docs/FUNDAMENTALS/GitOps/gitops_intro"
+  },
+  "next": {
+    "title": "Kubernetes Introduction",
+    "permalink": "/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro"
+  }
+}

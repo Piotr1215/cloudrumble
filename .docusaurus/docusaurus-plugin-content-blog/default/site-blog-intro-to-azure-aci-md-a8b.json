@@ -1,0 +1,45 @@
+{
+  "permalink": "/blog/intro-to-azure-ACI",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/intro-to-azure-ACI.md",
+  "source": "@site/blog/intro-to-azure-ACI.md",
+  "title": "Intro to Azure ACI",
+  "description": "Photo by Christopher Gower on [Unsplash](https://cdn-images-1.medium.com/max/7764/1*h4TLlisFk7XvtREAsS7C7Q.jpeg)",
+  "date": "2021-08-01T19:02:39.000Z",
+  "formattedDate": "August 1, 2021",
+  "tags": [
+    {
+      "label": "azure",
+      "permalink": "/blog/tags/azure"
+    },
+    {
+      "label": "container",
+      "permalink": "/blog/tags/container"
+    }
+  ],
+  "readingTime": 3.585,
+  "truncated": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "Intro to Azure ACI",
+    "date": "2021-08-01T19:02:39.000Z",
+    "draft": false,
+    "tags": [
+      "azure",
+      "container"
+    ],
+    "categories": [
+      "learning",
+      "azure"
+    ],
+    "show_in_homepage": false,
+    "show_description": false
+  },
+  "prevItem": {
+    "title": "5 Common Pitfalls in Iac",
+    "permalink": "/blog/5-common-pitfalls-in-iac"
+  },
+  "nextItem": {
+    "title": "MDX Blog Post",
+    "permalink": "/blog/mdx-blog-post"
+  }
+}

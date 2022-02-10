@@ -1,0 +1,19 @@
+{
+  "unversionedId": "FUNDAMENTALS/Kubernetes/kubernetes_intro",
+  "id": "FUNDAMENTALS/Kubernetes/kubernetes_intro",
+  "title": "Kubernetes Introduction",
+  "description": "Theory",
+  "source": "@site/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro.md",
+  "sourceDirName": "FUNDAMENTALS/Kubernetes",
+  "slug": "/FUNDAMENTALS/Kubernetes/kubernetes_intro",
+  "permalink": "/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes",
+    "permalink": "/docs/FUNDAMENTALS/Kubernetes/"
+  }
+}

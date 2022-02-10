@@ -1,0 +1,23 @@
+{
+  "unversionedId": "resources",
+  "id": "resources",
+  "title": "Cherry picked tools & resources",
+  "description": "| Resource                                                                                                                  | Description                                                                                 | Category    |",
+  "source": "@site/docs/resources.md",
+  "sourceDirName": ".",
+  "slug": "/resources",
+  "permalink": "/docs/resources",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/resources.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Frequently asked questions and troubleshooting <!--",
+    "permalink": "/docs/faq"
+  },
+  "next": {
+    "title": "AWS Certified Solutions Architect Associate",
+    "permalink": "/docs/CERTIFICATES/aws_saa_co2"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "CERTIFICATES/cks_guide",
+  "id": "CERTIFICATES/cks_guide",
+  "title": "CKS Guide",
+  "description": "The 4C's of cloud-native computing",
+  "source": "@site/docs/CERTIFICATES/cks_guide.md",
+  "sourceDirName": "CERTIFICATES",
+  "slug": "/CERTIFICATES/cks_guide",
+  "permalink": "/docs/CERTIFICATES/cks_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/cks_guide.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ckad_guide",
+    "permalink": "/docs/CERTIFICATES/ckad_guide"
+  },
+  "next": {
+    "title": "dca_guide",
+    "permalink": "/docs/CERTIFICATES/dca_guide"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "title": "Recent posts",
+  "items": [
+    {
+      "title": "Software Development in Kubernetes a Cookbook",
+      "permalink": "/blog/software-development-in-kubernetes-a-cookbook"
+    },
+    {
+      "title": "Welcome",
+      "permalink": "/blog/welcome"
+    },
+    {
+      "title": "5 Unusual Docker Usecases",
+      "permalink": "/blog/5-unusual-docker-usecases"
+    },
+    {
+      "title": "5 Common Pitfalls in Iac",
+      "permalink": "/blog/5-common-pitfalls-in-iac"
+    },
+    {
+      "title": "Intro to Azure ACI",
+      "permalink": "/blog/intro-to-azure-ACI"
+    }
+  ]
+}

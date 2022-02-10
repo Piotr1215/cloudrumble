@@ -1,0 +1,156 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "CERTIFICATES/aws_saa_co2",
+              "path": "/docs/CERTIFICATES/aws_saa_co2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "CERTIFICATES/az_303_guide",
+              "path": "/docs/CERTIFICATES/az_303_guide",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "CERTIFICATES/az_304_guide",
+              "path": "/docs/CERTIFICATES/az_304_guide",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "CERTIFICATES/cka_guide",
+              "path": "/docs/CERTIFICATES/cka_guide",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "CERTIFICATES/ckad_guide",
+              "path": "/docs/CERTIFICATES/ckad_guide",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "CERTIFICATES/cks_guide",
+              "path": "/docs/CERTIFICATES/cks_guide",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "CERTIFICATES/dca_guide",
+              "path": "/docs/CERTIFICATES/dca_guide",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "CERTIFICATES/gcp_pca",
+              "path": "/docs/CERTIFICATES/gcp_pca",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "CERTIFICATES/terraform",
+              "path": "/docs/CERTIFICATES/terraform",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "cheatsheets",
+              "path": "/docs/cheatsheets",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "coming_soon",
+              "path": "/docs/coming_soon",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs",
+              "path": "/docs/docs",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "EXAMPLES/examples",
+              "path": "/docs/EXAMPLES/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "EXAMPLES/k8s-configuration",
+              "path": "/docs/EXAMPLES/k8s-configuration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "EXAMPLES/k8s-deployments",
+              "path": "/docs/EXAMPLES/k8s-deployments",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "EXAMPLES/k8s-jobs-cronjobs",
+              "path": "/docs/EXAMPLES/k8s-jobs-cronjobs",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "EXAMPLES/k8s-services",
+              "path": "/docs/EXAMPLES/k8s-services",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "EXAMPLES/k8s-storage-pv-pvc",
+              "path": "/docs/EXAMPLES/k8s-storage-pv-pvc",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "faq",
+              "path": "/docs/faq",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "FUNDAMENTALS/Containers/containers",
+              "path": "/docs/FUNDAMENTALS/Containers/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "FUNDAMENTALS/Containers/docker_intro",
+              "path": "/docs/FUNDAMENTALS/Containers/docker_intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "FUNDAMENTALS/GitOps/gitops_intro",
+              "path": "/docs/FUNDAMENTALS/GitOps/gitops_intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "FUNDAMENTALS/Kubernetes/kubernetes",
+              "path": "/docs/FUNDAMENTALS/Kubernetes/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "FUNDAMENTALS/Kubernetes/kubernetes_intro",
+              "path": "/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "resources",
+              "path": "/docs/resources",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

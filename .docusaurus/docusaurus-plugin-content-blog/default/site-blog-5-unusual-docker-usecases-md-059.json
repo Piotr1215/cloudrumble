@@ -1,0 +1,44 @@
+{
+  "permalink": "/blog/5-unusual-docker-usecases",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/5-unusual-docker-usecases.md",
+  "source": "@site/blog/5-unusual-docker-usecases.md",
+  "title": "5 Unusual Docker Usecases",
+  "description": "intro-pic",
+  "date": "2021-08-01T23:09:18.000Z",
+  "formattedDate": "August 1, 2021",
+  "tags": [
+    {
+      "label": "docker",
+      "permalink": "/blog/tags/docker"
+    },
+    {
+      "label": "linux",
+      "permalink": "/blog/tags/linux"
+    }
+  ],
+  "readingTime": 4.96,
+  "truncated": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "5 Unusual Docker Usecases",
+    "date": "2021-08-01T23:09:18.000Z",
+    "draft": false,
+    "tags": [
+      "docker",
+      "linux"
+    ],
+    "categories": [
+      "devops"
+    ],
+    "show_in_homepage": true,
+    "show_description": false
+  },
+  "prevItem": {
+    "title": "Welcome",
+    "permalink": "/blog/welcome"
+  },
+  "nextItem": {
+    "title": "5 Common Pitfalls in Iac",
+    "permalink": "/blog/5-common-pitfalls-in-iac"
+  }
+}
