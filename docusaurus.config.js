@@ -14,7 +14,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
   organizationName: 'Piotr1215',           // Usually your GitHub org/user name.
   projectName: 'it-certifications-guide',  // Usually your repo name.
 
