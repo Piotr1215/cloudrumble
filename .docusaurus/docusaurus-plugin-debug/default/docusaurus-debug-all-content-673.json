@@ -746,7 +746,7 @@
   },
   "docusaurus-plugin-content-blog": {
     "default": {
-      "blogSidebarTitle": "Recent posts",
+      "blogSidebarTitle": "All posts",
       "blogPosts": [
         {
           "id": "/software-development-in-kubernetes-a-cookbook",
