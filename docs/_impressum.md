@@ -1,3 +1,9 @@
+---
+id: impressum
+title: Impressum
+slug: /impressum
+---
+
 # Legal Notice / Impressum
 
 ## Information (§ 5 TMG)
