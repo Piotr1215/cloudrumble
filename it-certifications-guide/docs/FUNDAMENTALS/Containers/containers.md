@@ -41,7 +41,7 @@ Docker CLI has following syntax:
 
 ### Docker Components
 
-![Docker Architecture](_media/docker-architecture.png)
+![Docker Architecture](/_media/docker-architecture.png)
 
 _Sources_:
 
@@ -85,7 +85,7 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 
 This document covers best practices and DOs & DONTs for whole lifecycle of containerized workloads.
 
-![Docker Lifecycle](_media/docker-lifecycle.png)
+![Docker Lifecycle](/_media/docker-lifecycle.png)
 
 | Stage                 | Area         | Description                                                               |
 | --------------------- | ------------ | ------------------------------------------------------------------------- |
@@ -124,7 +124,7 @@ To build an image you can use a docker CLI `docker build --progress=plain -t ima
 
 > [!NOTE] the `--progress=plain` flag creates verbose output to stdout and is enabled by default when using Docker extension.
 
-![Example output](_media/docker-image-build.png)
+![Example output](/_media/docker-image-build.png)
 
 When creating a *Dockerfile*, each new command such as RUN, ADD, COPY etc creates a new intermediate container that you can exec into and debug.
 
@@ -165,7 +165,7 @@ Applications running in containers can be directly debugged from an IDE when a `
 - Select `Docker .NET Launch`
 - set breakpoint in the controller
 
-![Dotnet Docker App Debug](_media/debug-docker-app.png)
+![Dotnet Docker App Debug](/_media/debug-docker-app.png)
 
 ### Use Multistage builds
 
@@ -275,7 +275,7 @@ Docker run commands can quickly represent imperative style of interacting with c
 
 Here is an example of convering a docker run command form one of my images:
 
-![composerize](_media/composerize.png)
+![composerize](/_media/composerize.png)
 
 ### Control resources utilization by a container
 
@@ -312,13 +312,13 @@ When using open source images, it is critical to scan for security vulnerabiliti
 
 Using trivy is trivial ;) `trivy image nginx` reveals list of vulnerabilities with links to CVEs
 
-![trivy](_media/trivy.png)
+![trivy](/_media/trivy.png)
 
 Additionally to scanning images trivy can also search for misconfigurations and vulnerabilities in Dockerfiles and other configuration.
 
 Here is a result of trivy scan over a sample project:
 
-![trivy](_media/trivy-fs.png)
+![trivy](/_media/trivy-fs.png)
 
 ### Use linters on Dockerfile
 
@@ -328,7 +328,7 @@ A good example is a simple tool called [FROM:Latest](https://www.fromlatest.io/#
 
 Below screenshot of the tool with recommendations:
 
-![Linter](_media/Dockerfile-linting.png)
+![Linter](/_media/Dockerfile-linting.png)
 
 > [!TIP] Consider installing linting plugins to your editor of choice as well as run linting as part of your CI process.
 
@@ -446,7 +446,7 @@ Once docker host is installed you can use [Portainer](https://www.portainer.io/)
 
 Choose [installation option](https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/) depending on the environment you are in.
 
-![Portainer Dashboard](_media/portainer.png)
+![Portainer Dashboard](/_media/portainer.png)
 *Sample Portainer dashboard*
 
 > [!INFO] Once installed, docker creates a folder under `/var/lib/docker/` where all the containers, images, volumes and configurations are stored.

@@ -16,13 +16,13 @@ GitOps Principles are set of guiding directions and rules put together by the [G
 
 GitOps approach follows 5 principles:
 
-![GitOps Principles](_media/diagrams/gitops-principles.png)
+![GitOps Principles](/_media/diagrams/gitops-principles.png)
 
 ### Standard Git Flow
 
 Before exploring GitOps further, let's make sure that we have good grasp on the git workflow.
 
-![Standard Git Flow](_media/diagrams/simplified-git-workflow.png)
+![Standard Git Flow](/_media/diagrams/simplified-git-workflow.png)
 <p style="text-align: center;"><small>Simplified Git workflow</small></p>
 
 The above example shows developer workflow in a simplified way, but taking into consideration how most of the work is done with Git repositories nowadays.
@@ -40,4 +40,4 @@ Let’s look at how GitOps principles could work with Kubernetes. Imagine your a
 
 In the GitOps world, instead of applying resources to your cluster manually (or via script or pipeline), a dedicated agent would pull changes into the cluster and apply them on your behalf.
 
-![GitOps Flow](_media/diagrams/gitops-flow.png)
+![GitOps Flow](/_media/diagrams/gitops-flow.png)

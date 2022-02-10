@@ -10,13 +10,13 @@ This documentation assumes basic knowledge of Kubernetes and kubectl. To learn o
 
 ## Basic Concepts
 
-![Kubernetes Architecture](_media/k8s-architecture.png)
+![Kubernetes Architecture](/img/k8s-architecture.png)
 
 ## Development
 
 ### Understanding Pod Lifecycle
 
-![Kubernetes Deployment Lifecycle](_media/k8s-deployment-seq.png)
+![Kubernetes Deployment Lifecycle](/img/k8s-deployment-seq.png)
 
 Developing with Kubernetes in mind means developing Cloud Native applications.
 
@@ -26,7 +26,7 @@ Developing with Kubernetes in mind means developing Cloud Native applications.
 
 > These techniques enable **loosely coupled systems** that are **resilient, manageable, and observable**. Combined with **robust automation**, they allow engineers to **make high-impact changes frequently** and predictably with minimal toil.
 
-*Source*: https://github.com/cncf/foundation/blob/master/charter.md
+*Source*: <https://github.com/cncf/foundation/blob/master/charter.md>
 
 ### The role of Kubernetes
 
@@ -65,7 +65,7 @@ Each service, API or application must have set of Kubernetes configuration files
 
 Kubernetes config files should be part of the same repository as App or Service.
 
-![Repos](_media/k8s-terraform-setup.png)
+![Repos](/_media/k8s-terraform-setup.png)
 
 *Recommended repository setup*
 
@@ -225,7 +225,7 @@ spec:
       allowPrivilegeEscalation: false
 ```
 
-> [!NOTE] In order to apply new seccomp profile, pod must be deleted and re-created. use `k recreate -f ` command
+> [!NOTE] In order to apply new seccomp profile, pod must be deleted and re-created. use `k recreate -f` command
 
 #### Seccomp logs
 
@@ -254,7 +254,7 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
   file,
 
   # Deny all file writes.
-  deny /** w,
+  deny //** w,
 }
 ```
 
@@ -308,7 +308,6 @@ When should which tool be selected? Here is list of use cases and corresponding 
 | Prevent app/container from accessing unwanted resources (files, directories, etc) | AppArmor           |
 | Reduce the risk of what compromised process can do to a system (coarse-grained)   | Linux Capabilities |
 
-
 ### Containers Isolation
 
 ![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-container-isolation.puml&fmt=svg)
@@ -355,7 +354,7 @@ High-level overview of falco components:
 
 ![Falco Components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-components.puml&fmt=svg)
 
-<sup><sub>source: https://falco.org/docs/#what-are-the-components-of-falco</sub></sup>
+source: <https://falco.org/docs/#what-are-the-components-of-falco>
 
 #### Falco rules & alerts
 
@@ -363,14 +362,13 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 
 ![Falco Ruleset](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
 
-<sub><sup>*source: https://falco.org/docs/#what-does-falco-check-for*</sup></sub>
+source: <https://falco.org/docs/#what-does-falco-check-for>
 
 ### Falco configuration
 
 - configuration is stored in **/etc/falco/falco.yaml**
 - default rule set is stored in **falco_rules.yaml**
 - file to override rules is **falco_fules.local.yaml**
-
 
 ### Using Falco
 
@@ -381,7 +379,6 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 #### Check Falco logs
 
 `journalctl -fu falco`
-
 
 ### Links and Resources
 
@@ -398,7 +395,7 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 
 Here is a sample overview of deploying infrastructure and utilizing terraform modules and TACOS provider (in this case Terraform Cloud) to deploy the infrastructure to on-prem/cloud providers.
 
-![K8s terraform](_media/k8s-terraform-envs.png)
+![K8s terraform](/_media/k8s-terraform-envs.png)
 
 ## Operations
 
@@ -538,3 +535,4 @@ alias ks='k -n kube-system'
 
 - [Containerized Docker Application Lifecycle with Microsoft Platform and Tools](https://docs.microsoft.com/en-us/dotnet/architecture/containerized-lifecycle/)
 - [Dapr for .NET Developers](https://docs.microsoft.com/en-us/dotnet/architecture/dapr-for-net-developers/)
+
