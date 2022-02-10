@@ -11,7 +11,7 @@ const config = {
       'IT Certifications learning notes, blogs and cloud native related ramblings',
   url: 'https://frosty-babbage-3125a3.netlify.app',
   //url: 'https://www.itcertificationsguide.com/',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
