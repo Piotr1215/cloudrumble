@@ -16,7 +16,9 @@ This documentation assumes basic knowledge of Kubernetes and kubectl. To learn o
 
 - [Kubernetes Docs](https://kubernetes.io/)
 
-> [!INFO] [Kubernetes is part of CNCF](https://www.cncf.io/)
+:::info
+ [Kubernetes is part of CNCF](https://www.cncf.io/)
+:::
 
 ## Basic Concepts
 
@@ -129,7 +131,9 @@ If Kubernetes components are deployed as daemons, edit service configuration fil
 
 ### Secrets
 
-> [!TIP] to switch off auto-mounting secrets on the pod, use `automountServiceAccountToken: false`
+:::tip
+ to switch off auto-mounting secrets on the pod, use `automountServiceAccountToken: false`
+:::
 
 ### Pod Decision Tree
 
@@ -185,7 +189,9 @@ By default, Docker enables seccomp filter (mode 2).
 
 It blocks around *60* of the around *300* syscalls available with default profile
 
-> [!TIP] How to check what syscalls are blocked?
+:::tip
+ How to check what syscalls are blocked?
+:::
 > Run amicontained tool as container to see syscalls blocked by default docker profile
 >
 > `docker run r.j3ss.co/amicontained amicontained`
@@ -264,7 +270,7 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
   file,
 
   # Deny all file writes.
-  deny /** w,
+  deny //** w,
 }
 ```
 
@@ -288,7 +294,9 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 - support added in v 1.4, but still in beta
 - to load profile from default location use `apparmor_parser -q /etc/apparmor.d/{profile_name}`
 
-> [!TIP] to secure a pod an annotation in this format `container.apparmor.security.beta.kubernetes.io/<container_name>: localhost/profile_name OR runtime/default OR unconfined`
+:::tip
+ to secure a pod an annotation in this format `container.apparmor.security.beta.kubernetes.io/<container_name>: localhost/profile_name OR runtime/default OR unconfined`
+:::
 
 ##### Use Case
 
@@ -306,7 +314,9 @@ AppArmor can be used to for example restrict access to a folder inside pod/conta
      drop: ["CAP2"]
   ```
 
-> [!TIP] To check what capabilities are needed for any give command run `getcap /<path>/<command>` or to check capabililties used by a running process run `getpcaps PID`
+:::tip
+ To check what capabilities are needed for any give command run `getcap /<path>/<command>` or to check capabililties used by a running process run `getpcaps PID`
+:::
 
 #### When to choose which
 
@@ -415,7 +425,9 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 - each project/product should have their own AKS cluster instead of co-hosting products on the same cluster to avoid namespace collisions.
 - each environment (DEV, Test, etc) will have its own dedicated cluster per project/product
 
-> [!TIP] consider using [Capsule](https://github.com/clastix/capsule) if you want to make your clusters multi-tenant.
+:::tip
+ consider using [Capsule](https://github.com/clastix/capsule) if you want to make your clusters multi-tenant.
+:::
 
 ### Additional tools on the cluster
 
@@ -431,7 +443,9 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 - [Azure RBAC for managing access to Kubernetes resources](https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac)
 - [Falco](https://falco.org/) Falco, the cloud-native runtime security project, is the de facto Kubernetes threat detection engine
 
-> [!TIP] [Guide to setup runtime security on AKS with Falco and sysdig](https://sysdig.com/blog/runtime-security-in-azure-kubernetes-service/)
+:::tip
+ [Guide to setup runtime security on AKS with Falco and sysdig](https://sysdig.com/blog/runtime-security-in-azure-kubernetes-service/)
+:::
 
 ### Roles and Access
 
@@ -480,7 +494,9 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 
 **Result:** kubeclt commands will be executed in new namespace by default
 
-> [!TIP]: Sometimes it is difficult to see what namespace is currently active, use [kube-ps1 plugin](https://github.com/jonmosco/kube-ps1) to show namespace and cluster in command line prompt
+:::tip
+: Sometimes it is difficult to see what namespace is currently active, use [kube-ps1 plugin](https://github.com/jonmosco/kube-ps1) to show namespace and cluster in command line prompt
+:::
 
 ### Get help for different k8s resources
 
