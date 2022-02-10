@@ -8,7 +8,7 @@
           "label": "Next",
           "isLast": true,
           "path": "/docs",
-          "mainDocId": "intro",
+          "mainDocId": "cheatsheets",
           "docs": [
             {
               "id": "CERTIFICATES/aws_saa_co2",
@@ -63,11 +63,6 @@
             {
               "id": "coming_soon",
               "path": "/docs/coming_soon",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "docs",
-              "path": "/docs/docs",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -144,8 +139,8 @@
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/intro",
-                "label": "intro"
+                "path": "/docs/cheatsheets",
+                "label": "cheatsheets"
               }
             }
           }

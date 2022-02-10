@@ -239,10 +239,6 @@
               "version": "current",
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Tutorial Intro",
-                "permalink": "/docs/intro"
-              },
               "next": {
                 "title": "Coming soon",
                 "permalink": "/docs/coming_soon"
@@ -265,29 +261,6 @@
               "previous": {
                 "title": "Cheatsheets and Useful commands",
                 "permalink": "/docs/cheatsheets"
-              },
-              "next": {
-                "title": "docs",
-                "permalink": "/docs/docs"
-              }
-            },
-            {
-              "unversionedId": "docs",
-              "id": "docs",
-              "title": "docs",
-              "description": "Introduction",
-              "source": "@site/docs/docs.md",
-              "sourceDirName": ".",
-              "slug": "/docs",
-              "permalink": "/docs/docs",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/docs.md",
-              "tags": [],
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Coming soon",
-                "permalink": "/docs/coming_soon"
               },
               "next": {
                 "title": "Frequently asked questions and troubleshooting <!--",
@@ -447,12 +420,12 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "docs",
-                "permalink": "/docs/docs"
+                "title": "Coming soon",
+                "permalink": "/docs/coming_soon"
               },
               "next": {
-                "title": "Cherry picked tools & resources",
-                "permalink": "/docs/resources"
+                "title": "intro",
+                "permalink": "/docs/intro"
               }
             },
             {
@@ -569,8 +542,8 @@
             {
               "unversionedId": "intro",
               "id": "intro",
-              "title": "Tutorial Intro",
-              "description": "Let's discover Docusaurus in less than 5 minutes.",
+              "title": "intro",
+              "description": "Introduction",
               "source": "@site/docs/intro.md",
               "sourceDirName": ".",
               "slug": "/intro",
@@ -578,14 +551,15 @@
               "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/intro.md",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 1,
-              "frontMatter": {
-                "sidebar_position": 1
-              },
+              "frontMatter": {},
               "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Frequently asked questions and troubleshooting <!--",
+                "permalink": "/docs/faq"
+              },
               "next": {
-                "title": "Cheatsheets and Useful commands",
-                "permalink": "/docs/cheatsheets"
+                "title": "Cherry picked tools & resources",
+                "permalink": "/docs/resources"
               }
             },
             {
@@ -603,8 +577,8 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Frequently asked questions and troubleshooting <!--",
-                "permalink": "/docs/faq"
+                "title": "intro",
+                "permalink": "/docs/intro"
               },
               "next": {
                 "title": "AWS Certified Solutions Architect Associate",
@@ -616,10 +590,6 @@
             "tutorialSidebar": [
               {
                 "type": "doc",
-                "id": "intro"
-              },
-              {
-                "type": "doc",
                 "id": "cheatsheets"
               },
               {
@@ -628,11 +598,11 @@
               },
               {
                 "type": "doc",
-                "id": "docs"
+                "id": "faq"
               },
               {
                 "type": "doc",
-                "id": "faq"
+                "id": "intro"
               },
               {
                 "type": "doc",
@@ -768,7 +738,7 @@
               }
             ]
           },
-          "mainDocId": "intro",
+          "mainDocId": "cheatsheets",
           "categoryGeneratedIndices": []
         }
       ]

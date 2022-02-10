@@ -300,7 +300,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs','21d'),
+    component: ComponentCreator('/docs','0ef'),
     routes: [
       {
         path: '/docs/CERTIFICATES/aws_saa_co2',
@@ -365,12 +365,6 @@ export default [
       {
         path: '/docs/coming_soon',
         component: ComponentCreator('/docs/coming_soon','aea'),
-        exact: true,
-        'sidebar': "tutorialSidebar"
-      },
-      {
-        path: '/docs/docs',
-        component: ComponentCreator('/docs/docs','650'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },

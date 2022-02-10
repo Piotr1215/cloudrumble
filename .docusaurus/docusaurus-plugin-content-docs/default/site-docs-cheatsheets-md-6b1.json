@@ -12,10 +12,6 @@
   "version": "current",
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Tutorial Intro",
-    "permalink": "/docs/intro"
-  },
   "next": {
     "title": "Coming soon",
     "permalink": "/docs/coming_soon"

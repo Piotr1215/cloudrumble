@@ -13,8 +13,8 @@
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Frequently asked questions and troubleshooting <!--",
-    "permalink": "/docs/faq"
+    "title": "intro",
+    "permalink": "/docs/intro"
   },
   "next": {
     "title": "AWS Certified Solutions Architect Associate",

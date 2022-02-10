@@ -23,7 +23,7 @@ GitOps approach follows 5 principles:
 Before exploring GitOps further, let's make sure that we have good grasp on the git workflow.
 
 ![Standard Git Flow](/_media/diagrams/simplified-git-workflow.png)
-<p style="text-align: center;"><small>Simplified Git workflow</small></p>
+<small>Simplified Git workflow</small>
 
 The above example shows developer workflow in a simplified way, but taking into consideration how most of the work is done with Git repositories nowadays.
 

@@ -13,11 +13,11 @@
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "docs",
-    "permalink": "/docs/docs"
+    "title": "Coming soon",
+    "permalink": "/docs/coming_soon"
   },
   "next": {
-    "title": "Cherry picked tools & resources",
-    "permalink": "/docs/resources"
+    "title": "intro",
+    "permalink": "/docs/intro"
   }
 }

@@ -10,12 +10,6 @@
     "tutorialSidebar": [
       {
         "type": "link",
-        "label": "Tutorial Intro",
-        "href": "/docs/intro",
-        "docId": "intro"
-      },
-      {
-        "type": "link",
         "label": "Cheatsheets and Useful commands",
         "href": "/docs/cheatsheets",
         "docId": "cheatsheets"
@@ -28,15 +22,15 @@
       },
       {
         "type": "link",
-        "label": "docs",
-        "href": "/docs/docs",
-        "docId": "docs"
-      },
-      {
-        "type": "link",
         "label": "Frequently asked questions and troubleshooting <!--",
         "href": "/docs/faq",
         "docId": "faq"
+      },
+      {
+        "type": "link",
+        "label": "intro",
+        "href": "/docs/intro",
+        "docId": "intro"
       },
       {
         "type": "link",
@@ -266,12 +260,6 @@
       "description": "Asciinema recordings",
       "sidebar": "tutorialSidebar"
     },
-    "docs": {
-      "id": "docs",
-      "title": "docs",
-      "description": "Introduction",
-      "sidebar": "tutorialSidebar"
-    },
     "EXAMPLES/examples": {
       "id": "EXAMPLES/examples",
       "title": "Examples and Exercises Setup <!--",
@@ -346,8 +334,8 @@
     },
     "intro": {
       "id": "intro",
-      "title": "Tutorial Intro",
-      "description": "Let's discover Docusaurus in less than 5 minutes.",
+      "title": "intro",
+      "description": "Introduction",
       "sidebar": "tutorialSidebar"
     },
     "resources": {
