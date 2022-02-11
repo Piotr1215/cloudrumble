@@ -100,11 +100,6 @@
               "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/fundamentals-intro",
-              "path": "/docs/FUNDAMENTALS/fundamentals-intro",
-              "sidebar": "mainSidebar"
-            },
-            {
               "id": "FUNDAMENTALS/gitops_intro",
               "path": "/docs/FUNDAMENTALS/gitops_intro",
               "sidebar": "mainSidebar"

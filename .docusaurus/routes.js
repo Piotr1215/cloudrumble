@@ -349,11 +349,6 @@ export default [
     exact: true
   },
   {
-    path: '/docs/tags/tag-1',
-    component: ComponentCreator('/docs/tags/tag-1','25d'),
-    exact: true
-  },
-  {
     path: '/docs/tags/terraform',
     component: ComponentCreator('/docs/tags/terraform','cc4'),
     exact: true
@@ -375,7 +370,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs','719'),
+    component: ComponentCreator('/docs','dd1'),
     routes: [
       {
         path: '/docs/CERTIFICATES/AWS/aws_saa_co2',
@@ -481,12 +476,6 @@ export default [
       {
         path: '/docs/FUNDAMENTALS/docker_intro',
         component: ComponentCreator('/docs/FUNDAMENTALS/docker_intro','9b0'),
-        exact: true,
-        'sidebar': "mainSidebar"
-      },
-      {
-        path: '/docs/FUNDAMENTALS/fundamentals-intro',
-        component: ComponentCreator('/docs/FUNDAMENTALS/fundamentals-intro','977'),
         exact: true,
         'sidebar': "mainSidebar"
       },

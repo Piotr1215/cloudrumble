@@ -13,8 +13,8 @@
   "frontMatter": {},
   "sidebar": "mainSidebar",
   "previous": {
-    "title": "Fundamentals Intro",
-    "permalink": "/docs/FUNDAMENTALS/fundamentals-intro"
+    "title": "A gentle introduction to Docker and containers",
+    "permalink": "/docs/FUNDAMENTALS/docker_intro"
   },
   "next": {
     "title": "Kubernetes",
