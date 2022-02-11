@@ -1,15 +1,15 @@
 @startuml simplified-azure-git-workflow
-!theme bluegray
+''!theme bluegray
 
 'title "Fundamentals of working with git in Azure DevOps"
-mainframe **Fundamentals of working with git**
+'mainframe **Fundamentals of working with git**
 hide footbox
 autonumber
 
 skinparam DefaultFontSize 16
 
-scale 1024 width
-scale 768 height
+'scale 1024 width
+'scale 768 height
 
 actor "Developer A" as dev
 

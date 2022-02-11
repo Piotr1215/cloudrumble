@@ -30,6 +30,11 @@ two --> one
 - skinparam nodesep 10
 - skinparam ranksep 20
 
+## Controlling Layout
+
+- c4 -[norank]-> c2
+- use `!pragma layout elk` to simplify layout with [Eclipse Layout Kernel](https://www.eclipse.org/elk/)
+
 ## Embedding images into diagrams
 
 ``` PlantUML

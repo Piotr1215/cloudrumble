@@ -817,11 +817,19 @@ TODO: pick up here
 - Can health checks be performed on targets outside of AWS resources?
 - What protocols are supported by health checkers?
 - What checks are supported?
+<<<<<<< HEAD:docs/CERTIFICATES/AWS/aws_saa_co2.md
     <details>
     <summary>click to see the answer</summary>
     Endpoint, CloudWatch Alarm, Checks of Checks
   </details>
 - What is failover routing?
+=======
+  <details>
+  <summary>click to see the answer</summary>
+  Endpoint, CloudWatch Alarm, Checks of Checks
+  </details>
+  -What is failover routing?
+>>>>>>> master:docs/aws_saa_co2.md
 - What is a multivalue routing
     <details>
     <summary>click to see the answer</summary>

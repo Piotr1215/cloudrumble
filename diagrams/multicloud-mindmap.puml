@@ -6,7 +6,7 @@
 !include <logos/google-cloud.puml>
 !include <logos/linode.puml>
 !include <logos/aws.puml>
-!include SPRITES/logo-alibaba.puml
+'!include SPRITES/logo-alibaba.puml
 !include <logos/ibm.puml>
 <style>
 mindmapDiagram {
@@ -29,10 +29,11 @@ mindmapDiagram {
 * Public Cloud\n   Providers
 ** Microsoft Azure\n      <$azure>
 ** Google Cloud Platform\n            <$google-cloud>
+left side
 ** Amazon Web Services\n             <$aws>
 left side
-** IBM Cloud\n  <$ibm*0.5>
-** Alibaba Cloud\n     <$alibaba_logo*0.5>
-** Linode\n<$linode>
+'** IBM Cloud\n  <$ibm*0.5>
+'** Alibaba Cloud\n     <$alibaba_logo*0.5>
+'** Linode\n<$linode>
 
 @endmindmap
