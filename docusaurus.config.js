@@ -6,9 +6,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'IT Certifications Guide',
+  title: 'Cloud Rumble',
   tagline:
-      'IT Certifications learning notes, blogs and cloud native related ramblings',
+      'IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings',
   url: 'https://frosty-babbage-3125a3.netlify.app',
   // url: 'https://www.itcertificationsguide.com/',
   baseUrl: '/',
@@ -49,7 +49,7 @@ const config = {
           defaultMode: 'dark',
         },
         navbar: {
-          title: 'IT Certifications Guide',
+          title: 'Cloud Rumble',
           logo: {
             alt: 'IT Certifications Guide',
             src: 'img/logo.png',

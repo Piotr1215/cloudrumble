@@ -4,8 +4,8 @@ Your edits in this file will be overwritten in the next build!
 Modify the docusaurus.config.js file at your site's root instead.
 */
 export default {
-  "title": "IT Certifications Guide",
-  "tagline": "IT Certifications learning notes, blogs and cloud native related ramblings",
+  "title": "Cloud Rumble",
+  "tagline": "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
   "url": "https://frosty-babbage-3125a3.netlify.app",
   "baseUrl": "/",
   "onBrokenLinks": "warn",
@@ -46,7 +46,7 @@ export default {
       }
     },
     "navbar": {
-      "title": "IT Certifications Guide",
+      "title": "Cloud Rumble",
       "logo": {
         "alt": "IT Certifications Guide",
         "src": "img/logo.png"

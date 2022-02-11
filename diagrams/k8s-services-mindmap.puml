@@ -16,7 +16,7 @@ rootNode {
     FontStyle bold
 }
 </style>
-
+skinparam BackgroundColor transparent
 * Kubernetes\n   <$svc>\n   Services
 **[#Lightgreen] <&cog> ClusterIP
 ***[#Lightgreen] Internal to cluster only

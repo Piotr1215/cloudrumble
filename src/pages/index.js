@@ -16,7 +16,7 @@ function HomepageHeader() {
         <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
         <hr></hr>
-        <img className="src" src="/img/logo.png" alt="" />
+        <img className="src" src="/img/k8s-services-mindmap.svg" alt="" />
       </div>
     </header>
   );
