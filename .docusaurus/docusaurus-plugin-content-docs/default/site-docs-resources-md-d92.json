@@ -26,14 +26,5 @@
       "Links",
       "Info"
     ]
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "FAQ",
-    "permalink": "/docs/faq"
-  },
-  "next": {
-    "title": "Examples and Exercises Setup <!--",
-    "permalink": "/docs/EXAMPLES/"
   }
 }

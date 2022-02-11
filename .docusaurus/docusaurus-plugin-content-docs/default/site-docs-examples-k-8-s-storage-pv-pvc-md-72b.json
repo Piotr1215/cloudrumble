@@ -11,13 +11,9 @@
   "tags": [],
   "version": "current",
   "frontMatter": {},
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "Kubernetes Services: Exposing pods, communication <!--",
     "permalink": "/docs/EXAMPLES/k8s-services"
-  },
-  "next": {
-    "title": "AWS SAA",
-    "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
   }
 }

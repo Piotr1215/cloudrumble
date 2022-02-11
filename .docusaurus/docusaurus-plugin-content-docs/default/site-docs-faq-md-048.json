@@ -28,14 +28,5 @@
       "FAQ",
       "Info"
     ]
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Introduction",
-    "permalink": "/docs/intro"
-  },
-  "next": {
-    "title": "Resources",
-    "permalink": "/docs/resources"
   }
 }

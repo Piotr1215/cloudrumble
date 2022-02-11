@@ -11,13 +11,13 @@
   "tags": [],
   "version": "current",
   "frontMatter": {},
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
-    "title": "A gentle introduction to Docker and containers",
-    "permalink": "/docs/FUNDAMENTALS/Containers/docker_intro"
-  },
-  "next": {
     "title": "Kubernetes",
     "permalink": "/docs/FUNDAMENTALS/Kubernetes/"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/docs/intro"
   }
 }

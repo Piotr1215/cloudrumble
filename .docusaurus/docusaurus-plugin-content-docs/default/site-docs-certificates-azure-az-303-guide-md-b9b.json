@@ -27,7 +27,7 @@
       "Certification"
     ]
   },
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "AWS SAA",
     "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"

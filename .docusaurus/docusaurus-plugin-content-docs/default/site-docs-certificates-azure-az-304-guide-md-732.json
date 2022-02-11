@@ -27,7 +27,7 @@
       "Certification"
     ]
   },
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "AZ 303",
     "permalink": "/docs/CERTIFICATES/Azure/az_303_guide"

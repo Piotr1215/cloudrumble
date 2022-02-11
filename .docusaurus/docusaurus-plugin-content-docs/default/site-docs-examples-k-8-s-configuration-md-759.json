@@ -11,7 +11,7 @@
   "tags": [],
   "version": "current",
   "frontMatter": {},
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "Examples and Exercises Setup <!--",
     "permalink": "/docs/EXAMPLES/"

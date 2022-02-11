@@ -29,9 +29,9 @@
       "Info"
     ]
   },
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "next": {
-    "title": "FAQ",
-    "permalink": "/docs/faq"
+    "title": "Containers",
+    "permalink": "/docs/FUNDAMENTALS/containers"
   }
 }

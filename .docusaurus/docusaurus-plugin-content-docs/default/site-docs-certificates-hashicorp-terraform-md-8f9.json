@@ -27,7 +27,7 @@
       "Certification"
     ]
   },
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "GCP PCA",
     "permalink": "/docs/CERTIFICATES/GCP/gcp_pca"

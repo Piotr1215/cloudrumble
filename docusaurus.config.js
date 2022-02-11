@@ -10,13 +10,13 @@ const config = {
   tagline:
       'IT Certifications learning notes, blogs and cloud native related ramblings',
   url: 'https://frosty-babbage-3125a3.netlify.app',
-  //url: 'https://www.itcertificationsguide.com/',
+  // url: 'https://www.itcertificationsguide.com/',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
-  organizationName: 'Piotr1215',           // Usually your GitHub org/user name.
-  projectName: 'it-certifications-guide',  // Usually your repo name.
+  organizationName: 'Piotr1215',  // Usually your GitHub org/user name.
+  projectName: 'dca-prep-kit',    // Usually your repo name.
 
   presets: [
     [
@@ -45,6 +45,9 @@ const config = {
   themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
+        colorMode: {
+          defaultMode: 'dark',
+        },
         navbar: {
           title: 'IT Certifications Guide',
           logo: {

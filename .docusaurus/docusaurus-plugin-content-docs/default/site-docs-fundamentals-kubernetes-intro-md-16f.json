@@ -1,0 +1,23 @@
+{
+  "unversionedId": "FUNDAMENTALS/kubernetes_intro",
+  "id": "FUNDAMENTALS/kubernetes_intro",
+  "title": "Kubernetes Introduction",
+  "description": "Theory",
+  "source": "@site/docs/FUNDAMENTALS/kubernetes_intro.md",
+  "sourceDirName": "FUNDAMENTALS",
+  "slug": "/FUNDAMENTALS/kubernetes_intro",
+  "permalink": "/docs/FUNDAMENTALS/kubernetes_intro",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/kubernetes_intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Kubernetes",
+    "permalink": "/docs/FUNDAMENTALS/kubernetes"
+  },
+  "next": {
+    "title": "AWS SAA",
+    "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
+  }
+}

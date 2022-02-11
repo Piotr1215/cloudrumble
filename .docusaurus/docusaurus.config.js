@@ -8,11 +8,11 @@ export default {
   "tagline": "IT Certifications learning notes, blogs and cloud native related ramblings",
   "url": "https://frosty-babbage-3125a3.netlify.app",
   "baseUrl": "/",
-  "onBrokenLinks": "throw",
+  "onBrokenLinks": "warn",
   "onBrokenMarkdownLinks": "warn",
   "favicon": "img/favicon.svg",
   "organizationName": "Piotr1215",
-  "projectName": "it-certifications-guide",
+  "projectName": "dca-prep-kit",
   "presets": [
     [
       "classic",
@@ -34,6 +34,17 @@ export default {
     ]
   ],
   "themeConfig": {
+    "colorMode": {
+      "defaultMode": "dark",
+      "disableSwitch": false,
+      "respectPrefersColorScheme": false,
+      "switchConfig": {
+        "darkIcon": "🌜",
+        "darkIconStyle": {},
+        "lightIcon": "🌞",
+        "lightIconStyle": {}
+      }
+    },
     "navbar": {
       "title": "IT Certifications Guide",
       "logo": {
@@ -298,17 +309,6 @@ export default {
         ]
       },
       "additionalLanguages": []
-    },
-    "colorMode": {
-      "defaultMode": "light",
-      "disableSwitch": false,
-      "respectPrefersColorScheme": false,
-      "switchConfig": {
-        "darkIcon": "🌜",
-        "darkIconStyle": {},
-        "lightIcon": "🌞",
-        "lightIconStyle": {}
-      }
     },
     "docs": {
       "versionPersistence": "localStorage"

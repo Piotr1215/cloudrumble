@@ -27,7 +27,7 @@
       "Certification"
     ]
   },
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "Terraform Associate",
     "permalink": "/docs/CERTIFICATES/Hashicorp/terraform"

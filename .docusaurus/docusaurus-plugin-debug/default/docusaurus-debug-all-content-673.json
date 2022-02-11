@@ -47,10 +47,10 @@
                   "Certificates"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
-                "title": "Kubernetes Storage: pv & pvc <!--",
-                "permalink": "/docs/EXAMPLES/k8s-storage-pv-pvc"
+                "title": "Kubernetes Introduction",
+                "permalink": "/docs/FUNDAMENTALS/kubernetes_intro"
               },
               "next": {
                 "title": "AZ 303",
@@ -86,7 +86,7 @@
                   "Certification"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "AWS SAA",
                 "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
@@ -125,7 +125,7 @@
                   "Certification"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "AZ 303",
                 "permalink": "/docs/CERTIFICATES/Azure/az_303_guide"
@@ -164,7 +164,7 @@
                   "Certification"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "AZ 304",
                 "permalink": "/docs/CERTIFICATES/Azure/az_304_guide"
@@ -203,7 +203,7 @@
                   "Certification"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "DCA",
                 "permalink": "/docs/CERTIFICATES/Docker/dca_guide"
@@ -242,7 +242,7 @@
                   "Certification"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "GCP PCA",
                 "permalink": "/docs/CERTIFICATES/GCP/gcp_pca"
@@ -281,7 +281,7 @@
                   "Certification"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Terraform Associate",
                 "permalink": "/docs/CERTIFICATES/Hashicorp/terraform"
@@ -320,7 +320,7 @@
                   "Certification"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "CKA",
                 "permalink": "/docs/CERTIFICATES/Kubernetes/cka_guide"
@@ -359,14 +359,14 @@
                   "Certification"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "CKAD",
                 "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide"
               },
               "next": {
-                "title": "Containers",
-                "permalink": "/docs/FUNDAMENTALS/Containers/"
+                "title": "Examples and Exercises Setup <!--",
+                "permalink": "/docs/EXAMPLES/"
               }
             },
             {
@@ -382,10 +382,10 @@
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
-                "title": "Resources",
-                "permalink": "/docs/resources"
+                "title": "CKS",
+                "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
               },
               "next": {
                 "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
@@ -405,7 +405,7 @@
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Examples and Exercises Setup <!--",
                 "permalink": "/docs/EXAMPLES/"
@@ -428,7 +428,7 @@
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
                 "permalink": "/docs/EXAMPLES/k8s-configuration"
@@ -451,7 +451,7 @@
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Kubernetes Deployments: scaling, rollouts, rollbacks <!--",
                 "permalink": "/docs/EXAMPLES/k8s-deployments"
@@ -474,7 +474,7 @@
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Kubernetes Jobs & CronJobs: batch processing <!--",
                 "permalink": "/docs/EXAMPLES/k8s-jobs-cronjobs"
@@ -497,14 +497,10 @@
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Kubernetes Services: Exposing pods, communication <!--",
                 "permalink": "/docs/EXAMPLES/k8s-services"
-              },
-              "next": {
-                "title": "AWS SAA",
-                "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
               }
             },
             {
@@ -537,126 +533,156 @@
                   "FAQ",
                   "Info"
                 ]
-              },
-              "sidebar": "tutorialSidebar",
+              }
+            },
+            {
+              "unversionedId": "FUNDAMENTALS/containers",
+              "id": "FUNDAMENTALS/containers",
+              "title": "Containers",
+              "description": "This document describes containerization best practices throughout the full lifecycle of a containerized workload:",
+              "source": "@site/docs/FUNDAMENTALS/containers.md",
+              "sourceDirName": "FUNDAMENTALS",
+              "slug": "/FUNDAMENTALS/containers",
+              "permalink": "/docs/FUNDAMENTALS/containers",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/containers.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Introduction",
                 "permalink": "/docs/intro"
               },
               "next": {
-                "title": "Resources",
-                "permalink": "/docs/resources"
-              }
-            },
-            {
-              "unversionedId": "FUNDAMENTALS/Containers/containers",
-              "id": "FUNDAMENTALS/Containers/containers",
-              "title": "Containers",
-              "description": "This document describes containerization best practices throughout the full lifecycle of a containerized workload:",
-              "source": "@site/docs/FUNDAMENTALS/Containers/containers.md",
-              "sourceDirName": "FUNDAMENTALS/Containers",
-              "slug": "/FUNDAMENTALS/Containers/",
-              "permalink": "/docs/FUNDAMENTALS/Containers/",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/Containers/containers.md",
-              "tags": [],
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "CKS",
-                "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
-              },
-              "next": {
                 "title": "A gentle introduction to Docker and containers",
-                "permalink": "/docs/FUNDAMENTALS/Containers/docker_intro"
+                "permalink": "/docs/FUNDAMENTALS/docker_intro"
               }
             },
             {
-              "unversionedId": "FUNDAMENTALS/Containers/docker_intro",
-              "id": "FUNDAMENTALS/Containers/docker_intro",
+              "unversionedId": "FUNDAMENTALS/docker_intro",
+              "id": "FUNDAMENTALS/docker_intro",
               "title": "A gentle introduction to Docker and containers",
               "description": "Photo by frank mckenna on Unsplash",
-              "source": "@site/docs/FUNDAMENTALS/Containers/docker_intro.md",
-              "sourceDirName": "FUNDAMENTALS/Containers",
-              "slug": "/FUNDAMENTALS/Containers/docker_intro",
-              "permalink": "/docs/FUNDAMENTALS/Containers/docker_intro",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/Containers/docker_intro.md",
+              "source": "@site/docs/FUNDAMENTALS/docker_intro.md",
+              "sourceDirName": "FUNDAMENTALS",
+              "slug": "/FUNDAMENTALS/docker_intro",
+              "permalink": "/docs/FUNDAMENTALS/docker_intro",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/docker_intro.md",
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Containers",
-                "permalink": "/docs/FUNDAMENTALS/Containers/"
+                "permalink": "/docs/FUNDAMENTALS/containers"
+              },
+              "next": {
+                "title": "Fundamentals Intro",
+                "permalink": "/docs/FUNDAMENTALS/fundamentals-intro"
+              }
+            },
+            {
+              "unversionedId": "FUNDAMENTALS/fundamentals-intro",
+              "id": "FUNDAMENTALS/fundamentals-intro",
+              "title": "Fundamentals Intro",
+              "description": "",
+              "source": "@site/docs/FUNDAMENTALS/fundamentals-intro.md",
+              "sourceDirName": "FUNDAMENTALS",
+              "slug": "/FUNDAMENTALS/fundamentals-intro",
+              "permalink": "/docs/FUNDAMENTALS/fundamentals-intro",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/fundamentals-intro.md",
+              "tags": [
+                {
+                  "label": "tag1",
+                  "permalink": "/docs/tags/tag-1"
+                }
+              ],
+              "version": "current",
+              "frontMatter": {
+                "id": "fundamentals-intro",
+                "title": "Fundamentals Intro",
+                "tags": [
+                  "tag1",
+                  "tag1"
+                ]
+              },
+              "sidebar": "mainSidebar",
+              "previous": {
+                "title": "A gentle introduction to Docker and containers",
+                "permalink": "/docs/FUNDAMENTALS/docker_intro"
               },
               "next": {
                 "title": "Introduction to GitOps",
-                "permalink": "/docs/FUNDAMENTALS/GitOps/gitops_intro"
+                "permalink": "/docs/FUNDAMENTALS/gitops_intro"
               }
             },
             {
-              "unversionedId": "FUNDAMENTALS/GitOps/gitops_intro",
-              "id": "FUNDAMENTALS/GitOps/gitops_intro",
+              "unversionedId": "FUNDAMENTALS/gitops_intro",
+              "id": "FUNDAMENTALS/gitops_intro",
               "title": "Introduction to GitOps",
               "description": "Resources",
-              "source": "@site/docs/FUNDAMENTALS/GitOps/gitops_intro.md",
-              "sourceDirName": "FUNDAMENTALS/GitOps",
-              "slug": "/FUNDAMENTALS/GitOps/gitops_intro",
-              "permalink": "/docs/FUNDAMENTALS/GitOps/gitops_intro",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/GitOps/gitops_intro.md",
+              "source": "@site/docs/FUNDAMENTALS/gitops_intro.md",
+              "sourceDirName": "FUNDAMENTALS",
+              "slug": "/FUNDAMENTALS/gitops_intro",
+              "permalink": "/docs/FUNDAMENTALS/gitops_intro",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/gitops_intro.md",
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
-                "title": "A gentle introduction to Docker and containers",
-                "permalink": "/docs/FUNDAMENTALS/Containers/docker_intro"
+                "title": "Fundamentals Intro",
+                "permalink": "/docs/FUNDAMENTALS/fundamentals-intro"
               },
               "next": {
                 "title": "Kubernetes",
-                "permalink": "/docs/FUNDAMENTALS/Kubernetes/"
+                "permalink": "/docs/FUNDAMENTALS/kubernetes"
               }
             },
             {
-              "unversionedId": "FUNDAMENTALS/Kubernetes/kubernetes",
-              "id": "FUNDAMENTALS/Kubernetes/kubernetes",
+              "unversionedId": "FUNDAMENTALS/kubernetes",
+              "id": "FUNDAMENTALS/kubernetes",
               "title": "Kubernetes",
               "description": "Overview",
-              "source": "@site/docs/FUNDAMENTALS/Kubernetes/kubernetes.md",
-              "sourceDirName": "FUNDAMENTALS/Kubernetes",
-              "slug": "/FUNDAMENTALS/Kubernetes/",
-              "permalink": "/docs/FUNDAMENTALS/Kubernetes/",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/Kubernetes/kubernetes.md",
+              "source": "@site/docs/FUNDAMENTALS/kubernetes.md",
+              "sourceDirName": "FUNDAMENTALS",
+              "slug": "/FUNDAMENTALS/kubernetes",
+              "permalink": "/docs/FUNDAMENTALS/kubernetes",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/kubernetes.md",
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Introduction to GitOps",
-                "permalink": "/docs/FUNDAMENTALS/GitOps/gitops_intro"
+                "permalink": "/docs/FUNDAMENTALS/gitops_intro"
               },
               "next": {
                 "title": "Kubernetes Introduction",
-                "permalink": "/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro"
+                "permalink": "/docs/FUNDAMENTALS/kubernetes_intro"
               }
             },
             {
-              "unversionedId": "FUNDAMENTALS/Kubernetes/kubernetes_intro",
-              "id": "FUNDAMENTALS/Kubernetes/kubernetes_intro",
+              "unversionedId": "FUNDAMENTALS/kubernetes_intro",
+              "id": "FUNDAMENTALS/kubernetes_intro",
               "title": "Kubernetes Introduction",
               "description": "Theory",
-              "source": "@site/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro.md",
-              "sourceDirName": "FUNDAMENTALS/Kubernetes",
-              "slug": "/FUNDAMENTALS/Kubernetes/kubernetes_intro",
-              "permalink": "/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro.md",
+              "source": "@site/docs/FUNDAMENTALS/kubernetes_intro.md",
+              "sourceDirName": "FUNDAMENTALS",
+              "slug": "/FUNDAMENTALS/kubernetes_intro",
+              "permalink": "/docs/FUNDAMENTALS/kubernetes_intro",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/kubernetes_intro.md",
               "tags": [],
               "version": "current",
               "frontMatter": {},
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "previous": {
                 "title": "Kubernetes",
-                "permalink": "/docs/FUNDAMENTALS/Kubernetes/"
+                "permalink": "/docs/FUNDAMENTALS/kubernetes"
+              },
+              "next": {
+                "title": "AWS SAA",
+                "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
               }
             },
             {
@@ -690,10 +716,10 @@
                   "Info"
                 ]
               },
-              "sidebar": "tutorialSidebar",
+              "sidebar": "mainSidebar",
               "next": {
-                "title": "FAQ",
-                "permalink": "/docs/faq"
+                "title": "Containers",
+                "permalink": "/docs/FUNDAMENTALS/containers"
               }
             },
             {
@@ -724,72 +750,50 @@
                   "Links",
                   "Info"
                 ]
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "FAQ",
-                "permalink": "/docs/faq"
-              },
-              "next": {
-                "title": "Examples and Exercises Setup <!--",
-                "permalink": "/docs/EXAMPLES/"
               }
             }
           ],
           "sidebars": {
-            "tutorialSidebar": [
+            "mainSidebar": [
               {
                 "type": "doc",
-                "id": "intro",
-                "label": "Introduction"
-              },
-              {
-                "type": "doc",
-                "id": "faq",
-                "label": "FAQ"
-              },
-              {
-                "type": "doc",
-                "id": "resources",
-                "label": "Resources"
+                "id": "intro"
               },
               {
                 "type": "category",
-                "label": "EXAMPLES",
-                "collapsible": true,
-                "collapsed": true,
+                "label": "FUNDAMENTALS",
                 "items": [
                   {
                     "type": "doc",
-                    "id": "EXAMPLES/k8s-configuration"
+                    "id": "FUNDAMENTALS/containers"
                   },
                   {
                     "type": "doc",
-                    "id": "EXAMPLES/k8s-deployments"
+                    "id": "FUNDAMENTALS/docker_intro"
                   },
                   {
                     "type": "doc",
-                    "id": "EXAMPLES/k8s-jobs-cronjobs"
+                    "id": "FUNDAMENTALS/fundamentals-intro"
                   },
                   {
                     "type": "doc",
-                    "id": "EXAMPLES/k8s-services"
+                    "id": "FUNDAMENTALS/gitops_intro"
                   },
                   {
                     "type": "doc",
-                    "id": "EXAMPLES/k8s-storage-pv-pvc"
+                    "id": "FUNDAMENTALS/kubernetes"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "FUNDAMENTALS/kubernetes_intro"
                   }
                 ],
-                "link": {
-                  "type": "doc",
-                  "id": "EXAMPLES/examples"
-                }
+                "collapsible": true,
+                "collapsed": true
               },
               {
                 "type": "category",
                 "label": "CERTIFICATES",
-                "collapsible": true,
-                "collapsed": true,
                 "items": [
                   {
                     "type": "category",
@@ -884,59 +888,41 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "collapsible": true,
+                "collapsed": true
               },
               {
                 "type": "category",
-                "label": "FUNDAMENTALS",
-                "collapsible": true,
-                "collapsed": true,
+                "label": "EXAMPLES",
                 "items": [
                   {
-                    "type": "category",
-                    "label": "Containers",
-                    "collapsible": true,
-                    "collapsed": true,
-                    "items": [
-                      {
-                        "type": "doc",
-                        "id": "FUNDAMENTALS/Containers/docker_intro"
-                      }
-                    ],
-                    "link": {
-                      "type": "doc",
-                      "id": "FUNDAMENTALS/Containers/containers"
-                    }
+                    "type": "doc",
+                    "id": "EXAMPLES/examples"
                   },
                   {
-                    "type": "category",
-                    "label": "GitOps",
-                    "collapsible": true,
-                    "collapsed": true,
-                    "items": [
-                      {
-                        "type": "doc",
-                        "id": "FUNDAMENTALS/GitOps/gitops_intro"
-                      }
-                    ]
+                    "type": "doc",
+                    "id": "EXAMPLES/k8s-configuration"
                   },
                   {
-                    "type": "category",
-                    "label": "Kubernetes",
-                    "collapsible": true,
-                    "collapsed": true,
-                    "items": [
-                      {
-                        "type": "doc",
-                        "id": "FUNDAMENTALS/Kubernetes/kubernetes_intro"
-                      }
-                    ],
-                    "link": {
-                      "type": "doc",
-                      "id": "FUNDAMENTALS/Kubernetes/kubernetes"
-                    }
+                    "type": "doc",
+                    "id": "EXAMPLES/k8s-deployments"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "EXAMPLES/k8s-jobs-cronjobs"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "EXAMPLES/k8s-services"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "EXAMPLES/k8s-storage-pv-pvc"
                   }
-                ]
+                ],
+                "collapsible": true,
+                "collapsed": true
               }
             ]
           },

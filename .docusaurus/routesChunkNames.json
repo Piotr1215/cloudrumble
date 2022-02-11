@@ -567,6 +567,10 @@
     "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
     "tag": "tag---docs-tags-links-749-8e9"
   },
+  "/docs/tags/tag-1-25d": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-tag-16-cf-d26"
+  },
   "/docs/tags/terraform-cc4": {
     "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
     "tag": "tag---docs-tags-terraform-230-db5"
@@ -583,99 +587,103 @@
     "component": "component---theme-mdx-page-1-f-3-b90",
     "content": "content---markdown-page-393-028"
   },
-  "/docs-229": {
+  "/docs-719": {
     "component": "component---theme-doc-page-1-be-9be",
     "versionMetadata": "versionMetadata---docs-935-398"
   },
-  "/docs/CERTIFICATES/AWS/aws_saa_co2-fa0": {
+  "/docs/CERTIFICATES/AWS/aws_saa_co2-0c7": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-aws-aws-saa-co-294-f-0d8"
   },
-  "/docs/CERTIFICATES/Azure/az_303_guide-efc": {
+  "/docs/CERTIFICATES/Azure/az_303_guide-3d7": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-azure-az-303-guideb-9-b-423"
   },
-  "/docs/CERTIFICATES/Azure/az_304_guide-c90": {
+  "/docs/CERTIFICATES/Azure/az_304_guide-c2c": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-azure-az-304-guide-732-eea"
   },
-  "/docs/CERTIFICATES/Docker/dca_guide-1c5": {
+  "/docs/CERTIFICATES/Docker/dca_guide-939": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-docker-dca-guidecd-2-d45"
   },
-  "/docs/CERTIFICATES/GCP/gcp_pca-709": {
+  "/docs/CERTIFICATES/GCP/gcp_pca-18a": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-gcp-gcp-pcaa-89-530"
   },
-  "/docs/CERTIFICATES/Hashicorp/terraform-592": {
+  "/docs/CERTIFICATES/Hashicorp/terraform-8ee": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-hashicorp-terraform-8-f-9-420"
   },
-  "/docs/CERTIFICATES/Kubernetes/cka_guide-d7e": {
+  "/docs/CERTIFICATES/Kubernetes/cka_guide-20a": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-kubernetes-cka-guide-338-1ad"
   },
-  "/docs/CERTIFICATES/Kubernetes/ckad_guide-b62": {
+  "/docs/CERTIFICATES/Kubernetes/ckad_guide-fb6": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-kubernetes-ckad-guidea-1-a-bc3"
   },
-  "/docs/CERTIFICATES/Kubernetes/cks_guide-0cc": {
+  "/docs/CERTIFICATES/Kubernetes/cks_guide-782": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-kubernetes-cks-guided-6-d-726"
   },
-  "/docs/EXAMPLES/-e28": {
+  "/docs/EXAMPLES/-c8e": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-examples-643-797"
   },
-  "/docs/EXAMPLES/k8s-configuration-006": {
+  "/docs/EXAMPLES/k8s-configuration-cdc": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-examples-k-8-s-configuration-759-515"
   },
-  "/docs/EXAMPLES/k8s-deployments-beb": {
+  "/docs/EXAMPLES/k8s-deployments-b8a": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-examples-k-8-s-deployments-10-e-403"
   },
-  "/docs/EXAMPLES/k8s-jobs-cronjobs-b3c": {
+  "/docs/EXAMPLES/k8s-jobs-cronjobs-ec7": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-examples-k-8-s-jobs-cronjobs-60-c-433"
   },
-  "/docs/EXAMPLES/k8s-services-a33": {
+  "/docs/EXAMPLES/k8s-services-c2e": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-examples-k-8-s-servicesb-1-f-d50"
   },
-  "/docs/EXAMPLES/k8s-storage-pv-pvc-802": {
+  "/docs/EXAMPLES/k8s-storage-pv-pvc-f74": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-examples-k-8-s-storage-pv-pvc-72-b-409"
   },
-  "/docs/faq-e79": {
+  "/docs/faq-e60": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-faq-048-db5"
   },
-  "/docs/FUNDAMENTALS/Containers/-a2f": {
+  "/docs/FUNDAMENTALS/containers-41e": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-fundamentals-containers-455-2e8"
+    "content": "content---docs-fundamentals-containers-38-d-9e6"
   },
-  "/docs/FUNDAMENTALS/Containers/docker_intro-9ce": {
+  "/docs/FUNDAMENTALS/docker_intro-9b0": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-fundamentals-containers-docker-intro-697-3be"
+    "content": "content---docs-fundamentals-docker-intro-0-be-99b"
   },
-  "/docs/FUNDAMENTALS/GitOps/gitops_intro-948": {
+  "/docs/FUNDAMENTALS/fundamentals-intro-977": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-fundamentals-git-ops-gitops-introd-98-01c"
+    "content": "content---docs-fundamentals-fundamentals-intro-747-acf"
   },
-  "/docs/FUNDAMENTALS/Kubernetes/-5d2": {
+  "/docs/FUNDAMENTALS/gitops_intro-082": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-fundamentals-kubernetes-c-4-e-6db"
+    "content": "content---docs-fundamentals-gitops-intro-095-ddd"
   },
-  "/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro-0b7": {
+  "/docs/FUNDAMENTALS/kubernetes-4b2": {
     "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-fundamentals-kubernetes-kubernetes-intro-0-ae-715"
+    "content": "content---docs-fundamentals-kubernetes-6-ba-666"
   },
-  "/docs/intro-aed": {
+  "/docs/FUNDAMENTALS/kubernetes_intro-0b2": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-kubernetes-intro-16-f-a23"
+  },
+  "/docs/intro-194": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-intro-0-e-3-be1"
   },
-  "/docs/resources-8be": {
+  "/docs/resources-5c1": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-resourcesd-92-d12"
   },

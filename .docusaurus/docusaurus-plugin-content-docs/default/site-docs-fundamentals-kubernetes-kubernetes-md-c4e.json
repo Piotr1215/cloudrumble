@@ -11,10 +11,10 @@
   "tags": [],
   "version": "current",
   "frontMatter": {},
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
-    "title": "Introduction to GitOps",
-    "permalink": "/docs/FUNDAMENTALS/GitOps/gitops_intro"
+    "title": "Fundamentals Intro",
+    "permalink": "/docs/FUNDAMENTALS/fundamentals-intro"
   },
   "next": {
     "title": "Kubernetes Introduction",

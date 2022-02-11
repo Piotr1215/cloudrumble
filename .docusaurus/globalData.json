@@ -13,124 +13,127 @@
             {
               "id": "CERTIFICATES/AWS/aws_saa_co2",
               "path": "/docs/CERTIFICATES/AWS/aws_saa_co2",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "CERTIFICATES/Azure/az_303_guide",
               "path": "/docs/CERTIFICATES/Azure/az_303_guide",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "CERTIFICATES/Azure/az_304_guide",
               "path": "/docs/CERTIFICATES/Azure/az_304_guide",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "CERTIFICATES/Docker/dca_guide",
               "path": "/docs/CERTIFICATES/Docker/dca_guide",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "CERTIFICATES/GCP/gcp_pca",
               "path": "/docs/CERTIFICATES/GCP/gcp_pca",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "CERTIFICATES/Hashicorp/terraform",
               "path": "/docs/CERTIFICATES/Hashicorp/terraform",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "CERTIFICATES/Kubernetes/cka_guide",
               "path": "/docs/CERTIFICATES/Kubernetes/cka_guide",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "CERTIFICATES/Kubernetes/ckad_guide",
               "path": "/docs/CERTIFICATES/Kubernetes/ckad_guide",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "CERTIFICATES/Kubernetes/cks_guide",
               "path": "/docs/CERTIFICATES/Kubernetes/cks_guide",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "EXAMPLES/examples",
               "path": "/docs/EXAMPLES/",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "EXAMPLES/k8s-configuration",
               "path": "/docs/EXAMPLES/k8s-configuration",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "EXAMPLES/k8s-deployments",
               "path": "/docs/EXAMPLES/k8s-deployments",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "EXAMPLES/k8s-jobs-cronjobs",
               "path": "/docs/EXAMPLES/k8s-jobs-cronjobs",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "EXAMPLES/k8s-services",
               "path": "/docs/EXAMPLES/k8s-services",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "EXAMPLES/k8s-storage-pv-pvc",
               "path": "/docs/EXAMPLES/k8s-storage-pv-pvc",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "faq",
-              "path": "/docs/faq",
-              "sidebar": "tutorialSidebar"
+              "path": "/docs/faq"
             },
             {
-              "id": "FUNDAMENTALS/Containers/containers",
-              "path": "/docs/FUNDAMENTALS/Containers/",
-              "sidebar": "tutorialSidebar"
+              "id": "FUNDAMENTALS/containers",
+              "path": "/docs/FUNDAMENTALS/containers",
+              "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/Containers/docker_intro",
-              "path": "/docs/FUNDAMENTALS/Containers/docker_intro",
-              "sidebar": "tutorialSidebar"
+              "id": "FUNDAMENTALS/docker_intro",
+              "path": "/docs/FUNDAMENTALS/docker_intro",
+              "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/GitOps/gitops_intro",
-              "path": "/docs/FUNDAMENTALS/GitOps/gitops_intro",
-              "sidebar": "tutorialSidebar"
+              "id": "FUNDAMENTALS/fundamentals-intro",
+              "path": "/docs/FUNDAMENTALS/fundamentals-intro",
+              "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/Kubernetes/kubernetes",
-              "path": "/docs/FUNDAMENTALS/Kubernetes/",
-              "sidebar": "tutorialSidebar"
+              "id": "FUNDAMENTALS/gitops_intro",
+              "path": "/docs/FUNDAMENTALS/gitops_intro",
+              "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/Kubernetes/kubernetes_intro",
-              "path": "/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro",
-              "sidebar": "tutorialSidebar"
+              "id": "FUNDAMENTALS/kubernetes",
+              "path": "/docs/FUNDAMENTALS/kubernetes",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "FUNDAMENTALS/kubernetes_intro",
+              "path": "/docs/FUNDAMENTALS/kubernetes_intro",
+              "sidebar": "mainSidebar"
             },
             {
               "id": "intro",
               "path": "/docs/intro",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "mainSidebar"
             },
             {
               "id": "resources",
-              "path": "/docs/resources",
-              "sidebar": "tutorialSidebar"
+              "path": "/docs/resources"
             }
           ],
           "sidebars": {
-            "tutorialSidebar": {
+            "mainSidebar": {
               "link": {
                 "path": "/docs/intro",
-                "label": "Introduction"
+                "label": "intro"
               }
             }
           }

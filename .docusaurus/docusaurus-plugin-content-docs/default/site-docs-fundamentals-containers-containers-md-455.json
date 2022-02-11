@@ -11,10 +11,10 @@
   "tags": [],
   "version": "current",
   "frontMatter": {},
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
-    "title": "CKS",
-    "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
+    "title": "Kubernetes",
+    "permalink": "/docs/FUNDAMENTALS/Kubernetes/"
   },
   "next": {
     "title": "A gentle introduction to Docker and containers",

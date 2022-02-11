@@ -7,7 +7,7 @@
   "className": "docs-version-current",
   "isLast": true,
   "docsSidebars": {
-    "tutorialSidebar": [
+    "mainSidebar": [
       {
         "type": "link",
         "label": "Introduction",
@@ -15,61 +15,52 @@
         "docId": "intro"
       },
       {
-        "type": "link",
-        "label": "FAQ",
-        "href": "/docs/faq",
-        "docId": "faq"
-      },
-      {
-        "type": "link",
-        "label": "Resources",
-        "href": "/docs/resources",
-        "docId": "resources"
-      },
-      {
         "type": "category",
-        "label": "EXAMPLES",
-        "collapsible": true,
-        "collapsed": true,
+        "label": "FUNDAMENTALS",
         "items": [
           {
             "type": "link",
-            "label": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
-            "href": "/docs/EXAMPLES/k8s-configuration",
-            "docId": "EXAMPLES/k8s-configuration"
+            "label": "Containers",
+            "href": "/docs/FUNDAMENTALS/containers",
+            "docId": "FUNDAMENTALS/containers"
           },
           {
             "type": "link",
-            "label": "Kubernetes Deployments: scaling, rollouts, rollbacks <!--",
-            "href": "/docs/EXAMPLES/k8s-deployments",
-            "docId": "EXAMPLES/k8s-deployments"
+            "label": "A gentle introduction to Docker and containers",
+            "href": "/docs/FUNDAMENTALS/docker_intro",
+            "docId": "FUNDAMENTALS/docker_intro"
           },
           {
             "type": "link",
-            "label": "Kubernetes Jobs & CronJobs: batch processing <!--",
-            "href": "/docs/EXAMPLES/k8s-jobs-cronjobs",
-            "docId": "EXAMPLES/k8s-jobs-cronjobs"
+            "label": "Fundamentals Intro",
+            "href": "/docs/FUNDAMENTALS/fundamentals-intro",
+            "docId": "FUNDAMENTALS/fundamentals-intro"
           },
           {
             "type": "link",
-            "label": "Kubernetes Services: Exposing pods, communication <!--",
-            "href": "/docs/EXAMPLES/k8s-services",
-            "docId": "EXAMPLES/k8s-services"
+            "label": "Introduction to GitOps",
+            "href": "/docs/FUNDAMENTALS/gitops_intro",
+            "docId": "FUNDAMENTALS/gitops_intro"
           },
           {
             "type": "link",
-            "label": "Kubernetes Storage: pv & pvc <!--",
-            "href": "/docs/EXAMPLES/k8s-storage-pv-pvc",
-            "docId": "EXAMPLES/k8s-storage-pv-pvc"
+            "label": "Kubernetes",
+            "href": "/docs/FUNDAMENTALS/kubernetes",
+            "docId": "FUNDAMENTALS/kubernetes"
+          },
+          {
+            "type": "link",
+            "label": "Kubernetes Introduction",
+            "href": "/docs/FUNDAMENTALS/kubernetes_intro",
+            "docId": "FUNDAMENTALS/kubernetes_intro"
           }
         ],
-        "href": "/docs/EXAMPLES/"
+        "collapsible": true,
+        "collapsed": true
       },
       {
         "type": "category",
         "label": "CERTIFICATES",
-        "collapsible": true,
-        "collapsed": true,
         "items": [
           {
             "type": "category",
@@ -173,59 +164,53 @@
               }
             ]
           }
-        ]
+        ],
+        "collapsible": true,
+        "collapsed": true
       },
       {
         "type": "category",
-        "label": "FUNDAMENTALS",
-        "collapsible": true,
-        "collapsed": true,
+        "label": "EXAMPLES",
         "items": [
           {
-            "type": "category",
-            "label": "Containers",
-            "collapsible": true,
-            "collapsed": true,
-            "items": [
-              {
-                "type": "link",
-                "label": "A gentle introduction to Docker and containers",
-                "href": "/docs/FUNDAMENTALS/Containers/docker_intro",
-                "docId": "FUNDAMENTALS/Containers/docker_intro"
-              }
-            ],
-            "href": "/docs/FUNDAMENTALS/Containers/"
+            "type": "link",
+            "label": "Examples and Exercises Setup <!--",
+            "href": "/docs/EXAMPLES/",
+            "docId": "EXAMPLES/examples"
           },
           {
-            "type": "category",
-            "label": "GitOps",
-            "collapsible": true,
-            "collapsed": true,
-            "items": [
-              {
-                "type": "link",
-                "label": "Introduction to GitOps",
-                "href": "/docs/FUNDAMENTALS/GitOps/gitops_intro",
-                "docId": "FUNDAMENTALS/GitOps/gitops_intro"
-              }
-            ]
+            "type": "link",
+            "label": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
+            "href": "/docs/EXAMPLES/k8s-configuration",
+            "docId": "EXAMPLES/k8s-configuration"
           },
           {
-            "type": "category",
-            "label": "Kubernetes",
-            "collapsible": true,
-            "collapsed": true,
-            "items": [
-              {
-                "type": "link",
-                "label": "Kubernetes Introduction",
-                "href": "/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro",
-                "docId": "FUNDAMENTALS/Kubernetes/kubernetes_intro"
-              }
-            ],
-            "href": "/docs/FUNDAMENTALS/Kubernetes/"
+            "type": "link",
+            "label": "Kubernetes Deployments: scaling, rollouts, rollbacks <!--",
+            "href": "/docs/EXAMPLES/k8s-deployments",
+            "docId": "EXAMPLES/k8s-deployments"
+          },
+          {
+            "type": "link",
+            "label": "Kubernetes Jobs & CronJobs: batch processing <!--",
+            "href": "/docs/EXAMPLES/k8s-jobs-cronjobs",
+            "docId": "EXAMPLES/k8s-jobs-cronjobs"
+          },
+          {
+            "type": "link",
+            "label": "Kubernetes Services: Exposing pods, communication <!--",
+            "href": "/docs/EXAMPLES/k8s-services",
+            "docId": "EXAMPLES/k8s-services"
+          },
+          {
+            "type": "link",
+            "label": "Kubernetes Storage: pv & pvc <!--",
+            "href": "/docs/EXAMPLES/k8s-storage-pv-pvc",
+            "docId": "EXAMPLES/k8s-storage-pv-pvc"
           }
-        ]
+        ],
+        "collapsible": true,
+        "collapsed": true
       }
     ]
   },
@@ -234,139 +219,143 @@
       "id": "CERTIFICATES/AWS/aws_saa_co2",
       "title": "AWS Certified Solutions Architect Associate",
       "description": "Table of content",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "CERTIFICATES/Azure/az_303_guide": {
       "id": "CERTIFICATES/Azure/az_303_guide",
       "title": "AZ-303 Certification Guide",
       "description": "Introduction",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "CERTIFICATES/Azure/az_304_guide": {
       "id": "CERTIFICATES/Azure/az_304_guide",
       "title": "AZ-304 Certification Guide",
       "description": "Introduction",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "CERTIFICATES/Docker/dca_guide": {
       "id": "CERTIFICATES/Docker/dca_guide",
       "title": "Docker Certified Associate Certification Guide",
       "description": "Certification",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "CERTIFICATES/GCP/gcp_pca": {
       "id": "CERTIFICATES/GCP/gcp_pca",
       "title": "GCP Cloud Architect Professional Certification Guide",
       "description": "About the exam",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "CERTIFICATES/Hashicorp/terraform": {
       "id": "CERTIFICATES/Hashicorp/terraform",
       "title": "Terraform Certification Guide",
       "description": "About the exam",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "CERTIFICATES/Kubernetes/cka_guide": {
       "id": "CERTIFICATES/Kubernetes/cka_guide",
       "title": "CKA Certification Guide",
       "description": "Introduction",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "CERTIFICATES/Kubernetes/ckad_guide": {
       "id": "CERTIFICATES/Kubernetes/ckad_guide",
       "title": "CKAD Certification Guide",
       "description": "Introduction",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "CERTIFICATES/Kubernetes/cks_guide": {
       "id": "CERTIFICATES/Kubernetes/cks_guide",
       "title": "CKS Certification Guide",
       "description": "The 4C's of cloud-native computing",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "EXAMPLES/examples": {
       "id": "EXAMPLES/examples",
       "title": "Examples and Exercises Setup <!--",
       "description": "The goal is to explain Kubernetes and Docker Swarm topics in a practical way, like storage, deployments, services etc and provide exercises scenarios for everyone to follow along.",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "EXAMPLES/k8s-configuration": {
       "id": "EXAMPLES/k8s-configuration",
       "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
       "description": "[!NOTE]",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "EXAMPLES/k8s-deployments": {
       "id": "EXAMPLES/k8s-deployments",
       "title": "Kubernetes Deployments: scaling, rollouts, rollbacks <!--",
       "description": "[!NOTE]",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "EXAMPLES/k8s-jobs-cronjobs": {
       "id": "EXAMPLES/k8s-jobs-cronjobs",
       "title": "Kubernetes Jobs & CronJobs: batch processing <!--",
       "description": "[!NOTE]",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "EXAMPLES/k8s-services": {
       "id": "EXAMPLES/k8s-services",
       "title": "Kubernetes Services: Exposing pods, communication <!--",
       "description": "This blog is a little bit longer than other parts of Kubernetes explained deep enough. Kubernetes networking is a very complex topic and trying to write about all nuances of different services and mechanisms would probably take a few blogs on it's own. Instead we will focus on specific areas of Kubernetes Networking: services and look at their practical applications.",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "EXAMPLES/k8s-storage-pv-pvc": {
       "id": "EXAMPLES/k8s-storage-pv-pvc",
       "title": "Kubernetes Storage: pv & pvc <!--",
       "description": "[!NOTE]",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "faq": {
       "id": "faq",
       "title": "FAQ",
-      "description": "Q: I see 500 error instead of diagram",
-      "sidebar": "tutorialSidebar"
+      "description": "Q: I see 500 error instead of diagram"
     },
-    "FUNDAMENTALS/Containers/containers": {
-      "id": "FUNDAMENTALS/Containers/containers",
+    "FUNDAMENTALS/containers": {
+      "id": "FUNDAMENTALS/containers",
       "title": "Containers",
       "description": "This document describes containerization best practices throughout the full lifecycle of a containerized workload:",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
-    "FUNDAMENTALS/Containers/docker_intro": {
-      "id": "FUNDAMENTALS/Containers/docker_intro",
+    "FUNDAMENTALS/docker_intro": {
+      "id": "FUNDAMENTALS/docker_intro",
       "title": "A gentle introduction to Docker and containers",
       "description": "Photo by frank mckenna on Unsplash",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
-    "FUNDAMENTALS/GitOps/gitops_intro": {
-      "id": "FUNDAMENTALS/GitOps/gitops_intro",
+    "FUNDAMENTALS/fundamentals-intro": {
+      "id": "FUNDAMENTALS/fundamentals-intro",
+      "title": "Fundamentals Intro",
+      "description": "",
+      "sidebar": "mainSidebar"
+    },
+    "FUNDAMENTALS/gitops_intro": {
+      "id": "FUNDAMENTALS/gitops_intro",
       "title": "Introduction to GitOps",
       "description": "Resources",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
-    "FUNDAMENTALS/Kubernetes/kubernetes": {
-      "id": "FUNDAMENTALS/Kubernetes/kubernetes",
+    "FUNDAMENTALS/kubernetes": {
+      "id": "FUNDAMENTALS/kubernetes",
       "title": "Kubernetes",
       "description": "Overview",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
-    "FUNDAMENTALS/Kubernetes/kubernetes_intro": {
-      "id": "FUNDAMENTALS/Kubernetes/kubernetes_intro",
+    "FUNDAMENTALS/kubernetes_intro": {
+      "id": "FUNDAMENTALS/kubernetes_intro",
       "title": "Kubernetes Introduction",
       "description": "Theory",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "intro": {
       "id": "intro",
       "title": "Introduction",
       "description": "Introduction",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "mainSidebar"
     },
     "resources": {
       "id": "resources",
       "title": "Links and Resources",
-      "description": "| Resource                                                                                                                  | Description                                                                                 | Category    |",
-      "sidebar": "tutorialSidebar"
+      "description": "| Resource                                                                                                                  | Description                                                                                 | Category    |"
     }
   }
 }

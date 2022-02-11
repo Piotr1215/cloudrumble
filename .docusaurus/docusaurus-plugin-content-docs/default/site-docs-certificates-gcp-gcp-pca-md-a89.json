@@ -27,7 +27,7 @@
       "Certification"
     ]
   },
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "DCA",
     "permalink": "/docs/CERTIFICATES/Docker/dca_guide"

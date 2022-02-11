@@ -27,7 +27,7 @@
       "Certification"
     ]
   },
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "AZ 304",
     "permalink": "/docs/CERTIFICATES/Azure/az_304_guide"

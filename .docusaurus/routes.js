@@ -349,6 +349,11 @@ export default [
     exact: true
   },
   {
+    path: '/docs/tags/tag-1',
+    component: ComponentCreator('/docs/tags/tag-1','25d'),
+    exact: true
+  },
+  {
     path: '/docs/tags/terraform',
     component: ComponentCreator('/docs/tags/terraform','cc4'),
     exact: true
@@ -370,145 +375,149 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs','229'),
+    component: ComponentCreator('/docs','719'),
     routes: [
       {
         path: '/docs/CERTIFICATES/AWS/aws_saa_co2',
-        component: ComponentCreator('/docs/CERTIFICATES/AWS/aws_saa_co2','fa0'),
+        component: ComponentCreator('/docs/CERTIFICATES/AWS/aws_saa_co2','0c7'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/CERTIFICATES/Azure/az_303_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Azure/az_303_guide','efc'),
+        component: ComponentCreator('/docs/CERTIFICATES/Azure/az_303_guide','3d7'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/CERTIFICATES/Azure/az_304_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Azure/az_304_guide','c90'),
+        component: ComponentCreator('/docs/CERTIFICATES/Azure/az_304_guide','c2c'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/CERTIFICATES/Docker/dca_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Docker/dca_guide','1c5'),
+        component: ComponentCreator('/docs/CERTIFICATES/Docker/dca_guide','939'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/CERTIFICATES/GCP/gcp_pca',
-        component: ComponentCreator('/docs/CERTIFICATES/GCP/gcp_pca','709'),
+        component: ComponentCreator('/docs/CERTIFICATES/GCP/gcp_pca','18a'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/CERTIFICATES/Hashicorp/terraform',
-        component: ComponentCreator('/docs/CERTIFICATES/Hashicorp/terraform','592'),
+        component: ComponentCreator('/docs/CERTIFICATES/Hashicorp/terraform','8ee'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/CERTIFICATES/Kubernetes/cka_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cka_guide','d7e'),
+        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cka_guide','20a'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/CERTIFICATES/Kubernetes/ckad_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/ckad_guide','b62'),
+        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/ckad_guide','fb6'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/CERTIFICATES/Kubernetes/cks_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cks_guide','0cc'),
+        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cks_guide','782'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/EXAMPLES/',
-        component: ComponentCreator('/docs/EXAMPLES/','e28'),
+        component: ComponentCreator('/docs/EXAMPLES/','c8e'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/EXAMPLES/k8s-configuration',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-configuration','006'),
+        component: ComponentCreator('/docs/EXAMPLES/k8s-configuration','cdc'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/EXAMPLES/k8s-deployments',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-deployments','beb'),
+        component: ComponentCreator('/docs/EXAMPLES/k8s-deployments','b8a'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/EXAMPLES/k8s-jobs-cronjobs',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-jobs-cronjobs','b3c'),
+        component: ComponentCreator('/docs/EXAMPLES/k8s-jobs-cronjobs','ec7'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/EXAMPLES/k8s-services',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-services','a33'),
+        component: ComponentCreator('/docs/EXAMPLES/k8s-services','c2e'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/EXAMPLES/k8s-storage-pv-pvc',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-storage-pv-pvc','802'),
+        component: ComponentCreator('/docs/EXAMPLES/k8s-storage-pv-pvc','f74'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/faq',
-        component: ComponentCreator('/docs/faq','e79'),
-        exact: true,
-        'sidebar': "tutorialSidebar"
+        component: ComponentCreator('/docs/faq','e60'),
+        exact: true
       },
       {
-        path: '/docs/FUNDAMENTALS/Containers/',
-        component: ComponentCreator('/docs/FUNDAMENTALS/Containers/','a2f'),
+        path: '/docs/FUNDAMENTALS/containers',
+        component: ComponentCreator('/docs/FUNDAMENTALS/containers','41e'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/FUNDAMENTALS/Containers/docker_intro',
-        component: ComponentCreator('/docs/FUNDAMENTALS/Containers/docker_intro','9ce'),
+        path: '/docs/FUNDAMENTALS/docker_intro',
+        component: ComponentCreator('/docs/FUNDAMENTALS/docker_intro','9b0'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/FUNDAMENTALS/GitOps/gitops_intro',
-        component: ComponentCreator('/docs/FUNDAMENTALS/GitOps/gitops_intro','948'),
+        path: '/docs/FUNDAMENTALS/fundamentals-intro',
+        component: ComponentCreator('/docs/FUNDAMENTALS/fundamentals-intro','977'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/FUNDAMENTALS/Kubernetes/',
-        component: ComponentCreator('/docs/FUNDAMENTALS/Kubernetes/','5d2'),
+        path: '/docs/FUNDAMENTALS/gitops_intro',
+        component: ComponentCreator('/docs/FUNDAMENTALS/gitops_intro','082'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro',
-        component: ComponentCreator('/docs/FUNDAMENTALS/Kubernetes/kubernetes_intro','0b7'),
+        path: '/docs/FUNDAMENTALS/kubernetes',
+        component: ComponentCreator('/docs/FUNDAMENTALS/kubernetes','4b2'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
+      },
+      {
+        path: '/docs/FUNDAMENTALS/kubernetes_intro',
+        component: ComponentCreator('/docs/FUNDAMENTALS/kubernetes_intro','0b2'),
+        exact: true,
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/intro',
-        component: ComponentCreator('/docs/intro','aed'),
+        component: ComponentCreator('/docs/intro','194'),
         exact: true,
-        'sidebar': "tutorialSidebar"
+        'sidebar': "mainSidebar"
       },
       {
         path: '/docs/resources',
-        component: ComponentCreator('/docs/resources','8be'),
-        exact: true,
-        'sidebar': "tutorialSidebar"
+        component: ComponentCreator('/docs/resources','5c1'),
+        exact: true
       }
     ]
   },

@@ -11,8 +11,12 @@
   "tags": [],
   "version": "current",
   "frontMatter": {},
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
+    "title": "Kubernetes",
+    "permalink": "/docs/FUNDAMENTALS/Kubernetes/"
+  },
+  "next": {
     "title": "Kubernetes",
     "permalink": "/docs/FUNDAMENTALS/Kubernetes/"
   }

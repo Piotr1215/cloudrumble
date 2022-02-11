@@ -27,10 +27,10 @@
       "Certificates"
     ]
   },
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
-    "title": "Kubernetes Storage: pv & pvc <!--",
-    "permalink": "/docs/EXAMPLES/k8s-storage-pv-pvc"
+    "title": "Kubernetes Introduction",
+    "permalink": "/docs/FUNDAMENTALS/kubernetes_intro"
   },
   "next": {
     "title": "AZ 303",

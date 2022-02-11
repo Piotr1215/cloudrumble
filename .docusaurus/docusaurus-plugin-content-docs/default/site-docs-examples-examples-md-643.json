@@ -11,10 +11,10 @@
   "tags": [],
   "version": "current",
   "frontMatter": {},
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
-    "title": "Resources",
-    "permalink": "/docs/resources"
+    "title": "CKS",
+    "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
   },
   "next": {
     "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",

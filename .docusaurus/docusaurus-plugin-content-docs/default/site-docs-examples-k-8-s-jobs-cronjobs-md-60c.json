@@ -11,7 +11,7 @@
   "tags": [],
   "version": "current",
   "frontMatter": {},
-  "sidebar": "tutorialSidebar",
+  "sidebar": "mainSidebar",
   "previous": {
     "title": "Kubernetes Deployments: scaling, rollouts, rollbacks <!--",
     "permalink": "/docs/EXAMPLES/k8s-deployments"
