@@ -28,7 +28,7 @@ const FeatureList = [
     Svg: require('../../static/img/git.svg').default,
     description: (
       <>
-        Over 100 repos on <a href="https://github.com/Piotr1215">GitHub</a>.
+        Lots of useful repos on <a href="https://github.com/Piotr1215">GitHub</a>.
         Learning material and tools, for example: Go, REST API, Containers, Kubernetes, Public Cloud.
       </>
     ),
