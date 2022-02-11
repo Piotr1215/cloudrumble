@@ -1,13 +1,13 @@
 {
-  "unversionedId": "CERTIFICATES/az_304_guide",
-  "id": "CERTIFICATES/az_304_guide",
+  "unversionedId": "CERTIFICATES/Azure/az_304_guide",
+  "id": "CERTIFICATES/Azure/az_304_guide",
   "title": "AZ-304 Certification Guide",
   "description": "Introduction",
-  "source": "@site/docs/CERTIFICATES/az_304_guide.md",
-  "sourceDirName": "CERTIFICATES",
-  "slug": "/CERTIFICATES/az_304_guide",
-  "permalink": "/docs/CERTIFICATES/az_304_guide",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/az_304_guide.md",
+  "source": "@site/docs/CERTIFICATES/Azure/az_304_guide.md",
+  "sourceDirName": "CERTIFICATES/Azure",
+  "slug": "/CERTIFICATES/Azure/az_304_guide",
+  "permalink": "/docs/CERTIFICATES/Azure/az_304_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Azure/az_304_guide.md",
   "tags": [
     {
       "label": "Azure",
@@ -30,10 +30,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "AZ 303",
-    "permalink": "/docs/CERTIFICATES/az_303_guide"
+    "permalink": "/docs/CERTIFICATES/Azure/az_303_guide"
   },
   "next": {
     "title": "DCA",
-    "permalink": "/docs/CERTIFICATES/dca_guide"
+    "permalink": "/docs/CERTIFICATES/Docker/dca_guide"
   }
 }

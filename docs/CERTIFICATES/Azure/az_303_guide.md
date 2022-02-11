@@ -1,3 +1,11 @@
+---
+title: AZ-303 Certification Guide
+sidebar_label: AZ 303
+tags:
+    - Azure
+    - Certification
+---
+
 ## Introduction
 
 ![](https://miro.medium.com/max/1200/1*wXeXxddbjKQdj8-f07Kc4Q.png)

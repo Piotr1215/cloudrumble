@@ -19,210 +19,354 @@
           "contentPathLocalized": "/home/decoder/dev/dca-docosaurus/i18n/en/docusaurus-plugin-content-docs/current",
           "docs": [
             {
-              "unversionedId": "CERTIFICATES/aws_saa_co2",
-              "id": "CERTIFICATES/aws_saa_co2",
+              "unversionedId": "CERTIFICATES/AWS/aws_saa_co2",
+              "id": "CERTIFICATES/AWS/aws_saa_co2",
               "title": "AWS Certified Solutions Architect Associate",
               "description": "Table of content",
-              "source": "@site/docs/CERTIFICATES/aws_saa_co2.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/aws_saa_co2",
-              "permalink": "/docs/CERTIFICATES/aws_saa_co2",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/aws_saa_co2.md",
-              "tags": [],
+              "source": "@site/docs/CERTIFICATES/AWS/aws_saa_co2.md",
+              "sourceDirName": "CERTIFICATES/AWS",
+              "slug": "/CERTIFICATES/AWS/aws_saa_co2",
+              "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/AWS/aws_saa_co2.md",
+              "tags": [
+                {
+                  "label": "AWS",
+                  "permalink": "/docs/tags/aws"
+                },
+                {
+                  "label": "Certificates",
+                  "permalink": "/docs/tags/certificates"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Cherry picked tools & resources",
-                "permalink": "/docs/resources"
-              },
-              "next": {
-                "title": "az_303_guide",
-                "permalink": "/docs/CERTIFICATES/az_303_guide"
-              }
-            },
-            {
-              "unversionedId": "CERTIFICATES/az_303_guide",
-              "id": "CERTIFICATES/az_303_guide",
-              "title": "az_303_guide",
-              "description": "Introduction",
-              "source": "@site/docs/CERTIFICATES/az_303_guide.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/az_303_guide",
-              "permalink": "/docs/CERTIFICATES/az_303_guide",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/az_303_guide.md",
-              "tags": [],
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
+              "frontMatter": {
                 "title": "AWS Certified Solutions Architect Associate",
-                "permalink": "/docs/CERTIFICATES/aws_saa_co2"
+                "sidebar_label": "AWS SAA",
+                "tags": [
+                  "AWS",
+                  "Certificates"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Kubernetes Storage: pv & pvc <!--",
+                "permalink": "/docs/EXAMPLES/k8s-storage-pv-pvc"
               },
               "next": {
-                "title": "az_304_guide",
-                "permalink": "/docs/CERTIFICATES/az_304_guide"
+                "title": "AZ 303",
+                "permalink": "/docs/CERTIFICATES/Azure/az_303_guide"
               }
             },
             {
-              "unversionedId": "CERTIFICATES/az_304_guide",
-              "id": "CERTIFICATES/az_304_guide",
-              "title": "az_304_guide",
+              "unversionedId": "CERTIFICATES/Azure/az_303_guide",
+              "id": "CERTIFICATES/Azure/az_303_guide",
+              "title": "AZ-303 Certification Guide",
               "description": "Introduction",
-              "source": "@site/docs/CERTIFICATES/az_304_guide.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/az_304_guide",
-              "permalink": "/docs/CERTIFICATES/az_304_guide",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/az_304_guide.md",
-              "tags": [],
+              "source": "@site/docs/CERTIFICATES/Azure/az_303_guide.md",
+              "sourceDirName": "CERTIFICATES/Azure",
+              "slug": "/CERTIFICATES/Azure/az_303_guide",
+              "permalink": "/docs/CERTIFICATES/Azure/az_303_guide",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Azure/az_303_guide.md",
+              "tags": [
+                {
+                  "label": "Azure",
+                  "permalink": "/docs/tags/azure"
+                },
+                {
+                  "label": "Certification",
+                  "permalink": "/docs/tags/certification"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
+              "frontMatter": {
+                "title": "AZ-303 Certification Guide",
+                "sidebar_label": "AZ 303",
+                "tags": [
+                  "Azure",
+                  "Certification"
+                ]
+              },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "az_303_guide",
-                "permalink": "/docs/CERTIFICATES/az_303_guide"
+                "title": "AWS SAA",
+                "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
               },
               "next": {
-                "title": "cka_guide",
-                "permalink": "/docs/CERTIFICATES/cka_guide"
+                "title": "AZ 304",
+                "permalink": "/docs/CERTIFICATES/Azure/az_304_guide"
               }
             },
             {
-              "unversionedId": "CERTIFICATES/cka_guide",
-              "id": "CERTIFICATES/cka_guide",
-              "title": "cka_guide",
+              "unversionedId": "CERTIFICATES/Azure/az_304_guide",
+              "id": "CERTIFICATES/Azure/az_304_guide",
+              "title": "AZ-304 Certification Guide",
               "description": "Introduction",
-              "source": "@site/docs/CERTIFICATES/cka_guide.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/cka_guide",
-              "permalink": "/docs/CERTIFICATES/cka_guide",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/cka_guide.md",
-              "tags": [],
+              "source": "@site/docs/CERTIFICATES/Azure/az_304_guide.md",
+              "sourceDirName": "CERTIFICATES/Azure",
+              "slug": "/CERTIFICATES/Azure/az_304_guide",
+              "permalink": "/docs/CERTIFICATES/Azure/az_304_guide",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Azure/az_304_guide.md",
+              "tags": [
+                {
+                  "label": "Azure",
+                  "permalink": "/docs/tags/azure"
+                },
+                {
+                  "label": "Certification",
+                  "permalink": "/docs/tags/certification"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
+              "frontMatter": {
+                "title": "AZ-304 Certification Guide",
+                "sidebar_label": "AZ 304",
+                "tags": [
+                  "Azure",
+                  "Certification"
+                ]
+              },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "az_304_guide",
-                "permalink": "/docs/CERTIFICATES/az_304_guide"
+                "title": "AZ 303",
+                "permalink": "/docs/CERTIFICATES/Azure/az_303_guide"
               },
               "next": {
-                "title": "ckad_guide",
-                "permalink": "/docs/CERTIFICATES/ckad_guide"
+                "title": "DCA",
+                "permalink": "/docs/CERTIFICATES/Docker/dca_guide"
               }
             },
             {
-              "unversionedId": "CERTIFICATES/ckad_guide",
-              "id": "CERTIFICATES/ckad_guide",
-              "title": "ckad_guide",
-              "description": "Introduction",
-              "source": "@site/docs/CERTIFICATES/ckad_guide.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/ckad_guide",
-              "permalink": "/docs/CERTIFICATES/ckad_guide",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/ckad_guide.md",
-              "tags": [],
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "cka_guide",
-                "permalink": "/docs/CERTIFICATES/cka_guide"
-              },
-              "next": {
-                "title": "CKS Guide",
-                "permalink": "/docs/CERTIFICATES/cks_guide"
-              }
-            },
-            {
-              "unversionedId": "CERTIFICATES/cks_guide",
-              "id": "CERTIFICATES/cks_guide",
-              "title": "CKS Guide",
-              "description": "The 4C's of cloud-native computing",
-              "source": "@site/docs/CERTIFICATES/cks_guide.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/cks_guide",
-              "permalink": "/docs/CERTIFICATES/cks_guide",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/cks_guide.md",
-              "tags": [],
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "ckad_guide",
-                "permalink": "/docs/CERTIFICATES/ckad_guide"
-              },
-              "next": {
-                "title": "dca_guide",
-                "permalink": "/docs/CERTIFICATES/dca_guide"
-              }
-            },
-            {
-              "unversionedId": "CERTIFICATES/dca_guide",
-              "id": "CERTIFICATES/dca_guide",
-              "title": "dca_guide",
+              "unversionedId": "CERTIFICATES/Docker/dca_guide",
+              "id": "CERTIFICATES/Docker/dca_guide",
+              "title": "Docker Certified Associate Certification Guide",
               "description": "Certification",
-              "source": "@site/docs/CERTIFICATES/dca_guide.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/dca_guide",
-              "permalink": "/docs/CERTIFICATES/dca_guide",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/dca_guide.md",
-              "tags": [],
+              "source": "@site/docs/CERTIFICATES/Docker/dca_guide.md",
+              "sourceDirName": "CERTIFICATES/Docker",
+              "slug": "/CERTIFICATES/Docker/dca_guide",
+              "permalink": "/docs/CERTIFICATES/Docker/dca_guide",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Docker/dca_guide.md",
+              "tags": [
+                {
+                  "label": "Docker",
+                  "permalink": "/docs/tags/docker"
+                },
+                {
+                  "label": "Certification",
+                  "permalink": "/docs/tags/certification"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
+              "frontMatter": {
+                "title": "Docker Certified Associate Certification Guide",
+                "sidebar_label": "DCA",
+                "tags": [
+                  "Docker",
+                  "Certification"
+                ]
+              },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "CKS Guide",
-                "permalink": "/docs/CERTIFICATES/cks_guide"
+                "title": "AZ 304",
+                "permalink": "/docs/CERTIFICATES/Azure/az_304_guide"
               },
               "next": {
-                "title": "GCP Cloud Architect Professional",
-                "permalink": "/docs/CERTIFICATES/gcp_pca"
+                "title": "GCP PCA",
+                "permalink": "/docs/CERTIFICATES/GCP/gcp_pca"
               }
             },
             {
-              "unversionedId": "CERTIFICATES/gcp_pca",
-              "id": "CERTIFICATES/gcp_pca",
-              "title": "GCP Cloud Architect Professional",
+              "unversionedId": "CERTIFICATES/GCP/gcp_pca",
+              "id": "CERTIFICATES/GCP/gcp_pca",
+              "title": "GCP Cloud Architect Professional Certification Guide",
               "description": "About the exam",
-              "source": "@site/docs/CERTIFICATES/gcp_pca.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/gcp_pca",
-              "permalink": "/docs/CERTIFICATES/gcp_pca",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/gcp_pca.md",
-              "tags": [],
+              "source": "@site/docs/CERTIFICATES/GCP/gcp_pca.md",
+              "sourceDirName": "CERTIFICATES/GCP",
+              "slug": "/CERTIFICATES/GCP/gcp_pca",
+              "permalink": "/docs/CERTIFICATES/GCP/gcp_pca",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/GCP/gcp_pca.md",
+              "tags": [
+                {
+                  "label": "GCP",
+                  "permalink": "/docs/tags/gcp"
+                },
+                {
+                  "label": "Certification",
+                  "permalink": "/docs/tags/certification"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
+              "frontMatter": {
+                "title": "GCP Cloud Architect Professional Certification Guide",
+                "sidebar_label": "GCP PCA",
+                "tags": [
+                  "GCP",
+                  "Certification"
+                ]
+              },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "dca_guide",
-                "permalink": "/docs/CERTIFICATES/dca_guide"
+                "title": "DCA",
+                "permalink": "/docs/CERTIFICATES/Docker/dca_guide"
               },
               "next": {
-                "title": "Hashicorp Terraform Associate",
-                "permalink": "/docs/CERTIFICATES/terraform"
+                "title": "Terraform Associate",
+                "permalink": "/docs/CERTIFICATES/Hashicorp/terraform"
               }
             },
             {
-              "unversionedId": "CERTIFICATES/terraform",
-              "id": "CERTIFICATES/terraform",
-              "title": "Hashicorp Terraform Associate",
+              "unversionedId": "CERTIFICATES/Hashicorp/terraform",
+              "id": "CERTIFICATES/Hashicorp/terraform",
+              "title": "Terraform Certification Guide",
               "description": "About the exam",
-              "source": "@site/docs/CERTIFICATES/terraform.md",
-              "sourceDirName": "CERTIFICATES",
-              "slug": "/CERTIFICATES/terraform",
-              "permalink": "/docs/CERTIFICATES/terraform",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/terraform.md",
-              "tags": [],
+              "source": "@site/docs/CERTIFICATES/Hashicorp/terraform.md",
+              "sourceDirName": "CERTIFICATES/Hashicorp",
+              "slug": "/CERTIFICATES/Hashicorp/terraform",
+              "permalink": "/docs/CERTIFICATES/Hashicorp/terraform",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Hashicorp/terraform.md",
+              "tags": [
+                {
+                  "label": "Terraform",
+                  "permalink": "/docs/tags/terraform"
+                },
+                {
+                  "label": "Certification",
+                  "permalink": "/docs/tags/certification"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
+              "frontMatter": {
+                "title": "Terraform Certification Guide",
+                "sidebar_label": "Terraform Associate",
+                "tags": [
+                  "Terraform",
+                  "Certification"
+                ]
+              },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "GCP Cloud Architect Professional",
-                "permalink": "/docs/CERTIFICATES/gcp_pca"
+                "title": "GCP PCA",
+                "permalink": "/docs/CERTIFICATES/GCP/gcp_pca"
               },
               "next": {
-                "title": "Examples and Exercises Setup <!--",
-                "permalink": "/docs/EXAMPLES/"
+                "title": "CKA",
+                "permalink": "/docs/CERTIFICATES/Kubernetes/cka_guide"
+              }
+            },
+            {
+              "unversionedId": "CERTIFICATES/Kubernetes/cka_guide",
+              "id": "CERTIFICATES/Kubernetes/cka_guide",
+              "title": "CKA Certification Guide",
+              "description": "Introduction",
+              "source": "@site/docs/CERTIFICATES/Kubernetes/cka_guide.md",
+              "sourceDirName": "CERTIFICATES/Kubernetes",
+              "slug": "/CERTIFICATES/Kubernetes/cka_guide",
+              "permalink": "/docs/CERTIFICATES/Kubernetes/cka_guide",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Kubernetes/cka_guide.md",
+              "tags": [
+                {
+                  "label": "Kubernetes",
+                  "permalink": "/docs/tags/kubernetes"
+                },
+                {
+                  "label": "Certification",
+                  "permalink": "/docs/tags/certification"
+                }
+              ],
+              "version": "current",
+              "frontMatter": {
+                "title": "CKA Certification Guide",
+                "sidebar_label": "CKA",
+                "tags": [
+                  "Kubernetes",
+                  "Certification"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Terraform Associate",
+                "permalink": "/docs/CERTIFICATES/Hashicorp/terraform"
+              },
+              "next": {
+                "title": "CKAD",
+                "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide"
+              }
+            },
+            {
+              "unversionedId": "CERTIFICATES/Kubernetes/ckad_guide",
+              "id": "CERTIFICATES/Kubernetes/ckad_guide",
+              "title": "CKAD Certification Guide",
+              "description": "Introduction",
+              "source": "@site/docs/CERTIFICATES/Kubernetes/ckad_guide.md",
+              "sourceDirName": "CERTIFICATES/Kubernetes",
+              "slug": "/CERTIFICATES/Kubernetes/ckad_guide",
+              "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Kubernetes/ckad_guide.md",
+              "tags": [
+                {
+                  "label": "ubernetes",
+                  "permalink": "/docs/tags/ubernetes"
+                },
+                {
+                  "label": "Certification",
+                  "permalink": "/docs/tags/certification"
+                }
+              ],
+              "version": "current",
+              "frontMatter": {
+                "title": "CKAD Certification Guide",
+                "sidebar_label": "CKAD",
+                "tags": [
+                  "ubernetes",
+                  "Certification"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "CKA",
+                "permalink": "/docs/CERTIFICATES/Kubernetes/cka_guide"
+              },
+              "next": {
+                "title": "CKS",
+                "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
+              }
+            },
+            {
+              "unversionedId": "CERTIFICATES/Kubernetes/cks_guide",
+              "id": "CERTIFICATES/Kubernetes/cks_guide",
+              "title": "CKS Certification Guide",
+              "description": "The 4C's of cloud-native computing",
+              "source": "@site/docs/CERTIFICATES/Kubernetes/cks_guide.md",
+              "sourceDirName": "CERTIFICATES/Kubernetes",
+              "slug": "/CERTIFICATES/Kubernetes/cks_guide",
+              "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Kubernetes/cks_guide.md",
+              "tags": [
+                {
+                  "label": "Kubernetes",
+                  "permalink": "/docs/tags/kubernetes"
+                },
+                {
+                  "label": "Certification",
+                  "permalink": "/docs/tags/certification"
+                }
+              ],
+              "version": "current",
+              "frontMatter": {
+                "title": "CKS Certification Guide",
+                "sidebar_label": "CKS",
+                "tags": [
+                  "Kubernetes",
+                  "Certification"
+                ]
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "CKAD",
+                "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide"
+              },
+              "next": {
+                "title": "Containers",
+                "permalink": "/docs/FUNDAMENTALS/Containers/"
               }
             },
             {
@@ -282,8 +426,8 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Hashicorp Terraform Associate",
-                "permalink": "/docs/CERTIFICATES/terraform"
+                "title": "Cherry picked tools & resources",
+                "permalink": "/docs/resources"
               },
               "next": {
                 "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
@@ -401,8 +545,8 @@
                 "permalink": "/docs/EXAMPLES/k8s-services"
               },
               "next": {
-                "title": "Containers",
-                "permalink": "/docs/FUNDAMENTALS/Containers/"
+                "title": "AWS SAA",
+                "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
               }
             },
             {
@@ -443,8 +587,8 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Kubernetes Storage: pv & pvc <!--",
-                "permalink": "/docs/EXAMPLES/k8s-storage-pv-pvc"
+                "title": "CKS",
+                "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
               },
               "next": {
                 "title": "A gentle introduction to Docker and containers",
@@ -581,8 +725,8 @@
                 "permalink": "/docs/intro"
               },
               "next": {
-                "title": "AWS Certified Solutions Architect Associate",
-                "permalink": "/docs/CERTIFICATES/aws_saa_co2"
+                "title": "Examples and Exercises Setup <!--",
+                "permalink": "/docs/EXAMPLES/"
               }
             }
           ],
@@ -607,50 +751,6 @@
               {
                 "type": "doc",
                 "id": "resources"
-              },
-              {
-                "type": "category",
-                "label": "CERTIFICATES",
-                "collapsible": true,
-                "collapsed": true,
-                "items": [
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/aws_saa_co2"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/az_303_guide"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/az_304_guide"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/cka_guide"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/ckad_guide"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/cks_guide"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/dca_guide"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/gcp_pca"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "CERTIFICATES/terraform"
-                  }
-                ]
               },
               {
                 "type": "category",
@@ -683,6 +783,107 @@
                   "type": "doc",
                   "id": "EXAMPLES/examples"
                 }
+              },
+              {
+                "type": "category",
+                "label": "CERTIFICATES",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "category",
+                    "label": "AWS",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/AWS/aws_saa_co2",
+                        "label": "AWS SAA"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "Azure",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/Azure/az_303_guide",
+                        "label": "AZ 303"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/Azure/az_304_guide",
+                        "label": "AZ 304"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "Docker",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/Docker/dca_guide",
+                        "label": "DCA"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "GCP",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/GCP/gcp_pca",
+                        "label": "GCP PCA"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "Hashicorp",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/Hashicorp/terraform",
+                        "label": "Terraform Associate"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "Kubernetes",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/Kubernetes/cka_guide",
+                        "label": "CKA"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/Kubernetes/ckad_guide",
+                        "label": "CKAD"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "CERTIFICATES/Kubernetes/cks_guide",
+                        "label": "CKS"
+                      }
+                    ]
+                  }
+                ]
               },
               {
                 "type": "category",

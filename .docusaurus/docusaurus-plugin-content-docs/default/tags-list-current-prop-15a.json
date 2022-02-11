@@ -1,0 +1,47 @@
+[
+  {
+    "name": "AWS",
+    "permalink": "/docs/tags/aws",
+    "count": 1
+  },
+  {
+    "name": "Certificates",
+    "permalink": "/docs/tags/certificates",
+    "count": 1
+  },
+  {
+    "name": "Azure",
+    "permalink": "/docs/tags/azure",
+    "count": 2
+  },
+  {
+    "name": "Certification",
+    "permalink": "/docs/tags/certification",
+    "count": 8
+  },
+  {
+    "name": "Docker",
+    "permalink": "/docs/tags/docker",
+    "count": 1
+  },
+  {
+    "name": "GCP",
+    "permalink": "/docs/tags/gcp",
+    "count": 1
+  },
+  {
+    "name": "Terraform",
+    "permalink": "/docs/tags/terraform",
+    "count": 1
+  },
+  {
+    "name": "Kubernetes",
+    "permalink": "/docs/tags/kubernetes",
+    "count": 2
+  },
+  {
+    "name": "ubernetes",
+    "permalink": "/docs/tags/ubernetes",
+    "count": 1
+  }
+]

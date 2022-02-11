@@ -13,8 +13,8 @@
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Kubernetes Storage: pv & pvc <!--",
-    "permalink": "/docs/EXAMPLES/k8s-storage-pv-pvc"
+    "title": "CKS",
+    "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
   },
   "next": {
     "title": "A gentle introduction to Docker and containers",

@@ -1,3 +1,11 @@
+---
+title: GCP Cloud Architect Professional Certification Guide
+sidebar_label: GCP PCA
+tags:
+    - GCP
+    - Certification
+---
+
 # GCP Cloud Architect Professional
 
 ## About the exam

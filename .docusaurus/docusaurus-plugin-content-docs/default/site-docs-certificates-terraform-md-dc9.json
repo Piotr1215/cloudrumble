@@ -1,23 +1,39 @@
 {
   "unversionedId": "CERTIFICATES/terraform",
   "id": "CERTIFICATES/terraform",
-  "title": "Hashicorp Terraform Associate",
+  "title": "Terraform Certification Guide",
   "description": "About the exam",
   "source": "@site/docs/CERTIFICATES/terraform.md",
   "sourceDirName": "CERTIFICATES",
   "slug": "/CERTIFICATES/terraform",
   "permalink": "/docs/CERTIFICATES/terraform",
   "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/terraform.md",
-  "tags": [],
+  "tags": [
+    {
+      "label": "Terraform",
+      "permalink": "/docs/tags/terraform"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
   "version": "current",
-  "frontMatter": {},
+  "frontMatter": {
+    "title": "Terraform Certification Guide",
+    "sidebar_label": "Terraform Associate",
+    "tags": [
+      "Terraform",
+      "Certification"
+    ]
+  },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "GCP Cloud Architect Professional",
-    "permalink": "/docs/CERTIFICATES/gcp_pca"
+    "title": "Cherry picked tools & resources",
+    "permalink": "/docs/resources"
   },
   "next": {
-    "title": "Examples and Exercises Setup <!--",
-    "permalink": "/docs/EXAMPLES/"
+    "title": "AWS SAA",
+    "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
   }
 }

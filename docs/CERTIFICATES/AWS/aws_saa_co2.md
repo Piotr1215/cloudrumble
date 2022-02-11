@@ -1,3 +1,11 @@
+---
+title: AWS Certified Solutions Architect Associate
+sidebar_label: AWS SAA
+tags:
+  - AWS
+  - Certificates
+---
+
 # AWS Certified Solutions Architect Associate
 
 ## Table of content

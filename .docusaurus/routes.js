@@ -289,6 +289,56 @@ export default [
     exact: true
   },
   {
+    path: '/docs/tags',
+    component: ComponentCreator('/docs/tags','0cc'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/aws',
+    component: ComponentCreator('/docs/tags/aws','856'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/azure',
+    component: ComponentCreator('/docs/tags/azure','dc9'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/certificates',
+    component: ComponentCreator('/docs/tags/certificates','d1a'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/certification',
+    component: ComponentCreator('/docs/tags/certification','7eb'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/docker',
+    component: ComponentCreator('/docs/tags/docker','8ce'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/gcp',
+    component: ComponentCreator('/docs/tags/gcp','79f'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/kubernetes',
+    component: ComponentCreator('/docs/tags/kubernetes','fbb'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/terraform',
+    component: ComponentCreator('/docs/tags/terraform','cc4'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/ubernetes',
+    component: ComponentCreator('/docs/tags/ubernetes','2f7'),
+    exact: true
+  },
+  {
     path: '/impressum',
     component: ComponentCreator('/impressum','e2a'),
     exact: true
@@ -300,59 +350,59 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs','0ef'),
+    component: ComponentCreator('/docs','f5d'),
     routes: [
       {
-        path: '/docs/CERTIFICATES/aws_saa_co2',
-        component: ComponentCreator('/docs/CERTIFICATES/aws_saa_co2','eef'),
+        path: '/docs/CERTIFICATES/AWS/aws_saa_co2',
+        component: ComponentCreator('/docs/CERTIFICATES/AWS/aws_saa_co2','fa0'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/az_303_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/az_303_guide','fe7'),
+        path: '/docs/CERTIFICATES/Azure/az_303_guide',
+        component: ComponentCreator('/docs/CERTIFICATES/Azure/az_303_guide','efc'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/az_304_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/az_304_guide','351'),
+        path: '/docs/CERTIFICATES/Azure/az_304_guide',
+        component: ComponentCreator('/docs/CERTIFICATES/Azure/az_304_guide','c90'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/cka_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/cka_guide','470'),
+        path: '/docs/CERTIFICATES/Docker/dca_guide',
+        component: ComponentCreator('/docs/CERTIFICATES/Docker/dca_guide','1c5'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/ckad_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/ckad_guide','fa1'),
+        path: '/docs/CERTIFICATES/GCP/gcp_pca',
+        component: ComponentCreator('/docs/CERTIFICATES/GCP/gcp_pca','709'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/cks_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/cks_guide','976'),
+        path: '/docs/CERTIFICATES/Hashicorp/terraform',
+        component: ComponentCreator('/docs/CERTIFICATES/Hashicorp/terraform','592'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/dca_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/dca_guide','cfe'),
+        path: '/docs/CERTIFICATES/Kubernetes/cka_guide',
+        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cka_guide','d7e'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/gcp_pca',
-        component: ComponentCreator('/docs/CERTIFICATES/gcp_pca','517'),
+        path: '/docs/CERTIFICATES/Kubernetes/ckad_guide',
+        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/ckad_guide','b62'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/terraform',
-        component: ComponentCreator('/docs/CERTIFICATES/terraform','15f'),
+        path: '/docs/CERTIFICATES/Kubernetes/cks_guide',
+        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cks_guide','0cc'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },

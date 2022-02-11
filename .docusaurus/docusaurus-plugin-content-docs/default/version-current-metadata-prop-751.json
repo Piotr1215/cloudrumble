@@ -40,68 +40,6 @@
       },
       {
         "type": "category",
-        "label": "CERTIFICATES",
-        "collapsible": true,
-        "collapsed": true,
-        "items": [
-          {
-            "type": "link",
-            "label": "AWS Certified Solutions Architect Associate",
-            "href": "/docs/CERTIFICATES/aws_saa_co2",
-            "docId": "CERTIFICATES/aws_saa_co2"
-          },
-          {
-            "type": "link",
-            "label": "az_303_guide",
-            "href": "/docs/CERTIFICATES/az_303_guide",
-            "docId": "CERTIFICATES/az_303_guide"
-          },
-          {
-            "type": "link",
-            "label": "az_304_guide",
-            "href": "/docs/CERTIFICATES/az_304_guide",
-            "docId": "CERTIFICATES/az_304_guide"
-          },
-          {
-            "type": "link",
-            "label": "cka_guide",
-            "href": "/docs/CERTIFICATES/cka_guide",
-            "docId": "CERTIFICATES/cka_guide"
-          },
-          {
-            "type": "link",
-            "label": "ckad_guide",
-            "href": "/docs/CERTIFICATES/ckad_guide",
-            "docId": "CERTIFICATES/ckad_guide"
-          },
-          {
-            "type": "link",
-            "label": "CKS Guide",
-            "href": "/docs/CERTIFICATES/cks_guide",
-            "docId": "CERTIFICATES/cks_guide"
-          },
-          {
-            "type": "link",
-            "label": "dca_guide",
-            "href": "/docs/CERTIFICATES/dca_guide",
-            "docId": "CERTIFICATES/dca_guide"
-          },
-          {
-            "type": "link",
-            "label": "GCP Cloud Architect Professional",
-            "href": "/docs/CERTIFICATES/gcp_pca",
-            "docId": "CERTIFICATES/gcp_pca"
-          },
-          {
-            "type": "link",
-            "label": "Hashicorp Terraform Associate",
-            "href": "/docs/CERTIFICATES/terraform",
-            "docId": "CERTIFICATES/terraform"
-          }
-        ]
-      },
-      {
-        "type": "category",
         "label": "EXAMPLES",
         "collapsible": true,
         "collapsed": true,
@@ -138,6 +76,116 @@
           }
         ],
         "href": "/docs/EXAMPLES/"
+      },
+      {
+        "type": "category",
+        "label": "CERTIFICATES",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "category",
+            "label": "AWS",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "AWS SAA",
+                "href": "/docs/CERTIFICATES/AWS/aws_saa_co2",
+                "docId": "CERTIFICATES/AWS/aws_saa_co2"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Azure",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "AZ 303",
+                "href": "/docs/CERTIFICATES/Azure/az_303_guide",
+                "docId": "CERTIFICATES/Azure/az_303_guide"
+              },
+              {
+                "type": "link",
+                "label": "AZ 304",
+                "href": "/docs/CERTIFICATES/Azure/az_304_guide",
+                "docId": "CERTIFICATES/Azure/az_304_guide"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Docker",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "DCA",
+                "href": "/docs/CERTIFICATES/Docker/dca_guide",
+                "docId": "CERTIFICATES/Docker/dca_guide"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "GCP",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "GCP PCA",
+                "href": "/docs/CERTIFICATES/GCP/gcp_pca",
+                "docId": "CERTIFICATES/GCP/gcp_pca"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Hashicorp",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "Terraform Associate",
+                "href": "/docs/CERTIFICATES/Hashicorp/terraform",
+                "docId": "CERTIFICATES/Hashicorp/terraform"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Kubernetes",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "CKA",
+                "href": "/docs/CERTIFICATES/Kubernetes/cka_guide",
+                "docId": "CERTIFICATES/Kubernetes/cka_guide"
+              },
+              {
+                "type": "link",
+                "label": "CKAD",
+                "href": "/docs/CERTIFICATES/Kubernetes/ckad_guide",
+                "docId": "CERTIFICATES/Kubernetes/ckad_guide"
+              },
+              {
+                "type": "link",
+                "label": "CKS",
+                "href": "/docs/CERTIFICATES/Kubernetes/cks_guide",
+                "docId": "CERTIFICATES/Kubernetes/cks_guide"
+              }
+            ]
+          }
+        ]
       },
       {
         "type": "category",
@@ -194,58 +242,58 @@
     ]
   },
   "docs": {
-    "CERTIFICATES/aws_saa_co2": {
-      "id": "CERTIFICATES/aws_saa_co2",
+    "CERTIFICATES/AWS/aws_saa_co2": {
+      "id": "CERTIFICATES/AWS/aws_saa_co2",
       "title": "AWS Certified Solutions Architect Associate",
       "description": "Table of content",
       "sidebar": "tutorialSidebar"
     },
-    "CERTIFICATES/az_303_guide": {
-      "id": "CERTIFICATES/az_303_guide",
-      "title": "az_303_guide",
+    "CERTIFICATES/Azure/az_303_guide": {
+      "id": "CERTIFICATES/Azure/az_303_guide",
+      "title": "AZ-303 Certification Guide",
       "description": "Introduction",
       "sidebar": "tutorialSidebar"
     },
-    "CERTIFICATES/az_304_guide": {
-      "id": "CERTIFICATES/az_304_guide",
-      "title": "az_304_guide",
+    "CERTIFICATES/Azure/az_304_guide": {
+      "id": "CERTIFICATES/Azure/az_304_guide",
+      "title": "AZ-304 Certification Guide",
       "description": "Introduction",
       "sidebar": "tutorialSidebar"
     },
-    "CERTIFICATES/cka_guide": {
-      "id": "CERTIFICATES/cka_guide",
-      "title": "cka_guide",
-      "description": "Introduction",
-      "sidebar": "tutorialSidebar"
-    },
-    "CERTIFICATES/ckad_guide": {
-      "id": "CERTIFICATES/ckad_guide",
-      "title": "ckad_guide",
-      "description": "Introduction",
-      "sidebar": "tutorialSidebar"
-    },
-    "CERTIFICATES/cks_guide": {
-      "id": "CERTIFICATES/cks_guide",
-      "title": "CKS Guide",
-      "description": "The 4C's of cloud-native computing",
-      "sidebar": "tutorialSidebar"
-    },
-    "CERTIFICATES/dca_guide": {
-      "id": "CERTIFICATES/dca_guide",
-      "title": "dca_guide",
+    "CERTIFICATES/Docker/dca_guide": {
+      "id": "CERTIFICATES/Docker/dca_guide",
+      "title": "Docker Certified Associate Certification Guide",
       "description": "Certification",
       "sidebar": "tutorialSidebar"
     },
-    "CERTIFICATES/gcp_pca": {
-      "id": "CERTIFICATES/gcp_pca",
-      "title": "GCP Cloud Architect Professional",
+    "CERTIFICATES/GCP/gcp_pca": {
+      "id": "CERTIFICATES/GCP/gcp_pca",
+      "title": "GCP Cloud Architect Professional Certification Guide",
       "description": "About the exam",
       "sidebar": "tutorialSidebar"
     },
-    "CERTIFICATES/terraform": {
-      "id": "CERTIFICATES/terraform",
-      "title": "Hashicorp Terraform Associate",
+    "CERTIFICATES/Hashicorp/terraform": {
+      "id": "CERTIFICATES/Hashicorp/terraform",
+      "title": "Terraform Certification Guide",
       "description": "About the exam",
+      "sidebar": "tutorialSidebar"
+    },
+    "CERTIFICATES/Kubernetes/cka_guide": {
+      "id": "CERTIFICATES/Kubernetes/cka_guide",
+      "title": "CKA Certification Guide",
+      "description": "Introduction",
+      "sidebar": "tutorialSidebar"
+    },
+    "CERTIFICATES/Kubernetes/ckad_guide": {
+      "id": "CERTIFICATES/Kubernetes/ckad_guide",
+      "title": "CKAD Certification Guide",
+      "description": "Introduction",
+      "sidebar": "tutorialSidebar"
+    },
+    "CERTIFICATES/Kubernetes/cks_guide": {
+      "id": "CERTIFICATES/Kubernetes/cks_guide",
+      "title": "CKS Certification Guide",
+      "description": "The 4C's of cloud-native computing",
       "sidebar": "tutorialSidebar"
     },
     "cheatsheets": {

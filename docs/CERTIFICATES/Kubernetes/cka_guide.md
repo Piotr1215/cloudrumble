@@ -1,3 +1,11 @@
+---
+title: CKA Certification Guide
+sidebar_label: CKA
+tags:
+    - Kubernetes
+    - Certification
+---
+
 ## Introduction
 
 Recently I have successfully passed exam for [Certified Kubernetes Administrator (CKA)](https://www.cncf.io/certification/cka/) and I would like to share learning tips and tricks as well as resources that helped me prepare and pass the exam.

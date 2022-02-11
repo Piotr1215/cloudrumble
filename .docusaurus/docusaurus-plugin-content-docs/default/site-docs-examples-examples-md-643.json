@@ -13,8 +13,8 @@
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Hashicorp Terraform Associate",
-    "permalink": "/docs/CERTIFICATES/terraform"
+    "title": "Cherry picked tools & resources",
+    "permalink": "/docs/resources"
   },
   "next": {
     "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",

@@ -1,3 +1,11 @@
+---
+title: Terraform Certification Guide
+sidebar_label: Terraform Associate
+tags:
+    - Terraform
+    - Certification
+---
+
 # Hashicorp Terraform Associate
 
 ## About the exam

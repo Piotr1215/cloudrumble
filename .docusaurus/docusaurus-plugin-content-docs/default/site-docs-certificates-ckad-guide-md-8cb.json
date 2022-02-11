@@ -1,23 +1,39 @@
 {
   "unversionedId": "CERTIFICATES/ckad_guide",
   "id": "CERTIFICATES/ckad_guide",
-  "title": "ckad_guide",
+  "title": "CKAD Certification Guide",
   "description": "Introduction",
   "source": "@site/docs/CERTIFICATES/ckad_guide.md",
   "sourceDirName": "CERTIFICATES",
   "slug": "/CERTIFICATES/ckad_guide",
   "permalink": "/docs/CERTIFICATES/ckad_guide",
   "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/ckad_guide.md",
-  "tags": [],
+  "tags": [
+    {
+      "label": "ubernetes",
+      "permalink": "/docs/tags/ubernetes"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
   "version": "current",
-  "frontMatter": {},
+  "frontMatter": {
+    "title": "CKAD Certification Guide",
+    "sidebar_label": "CKAD",
+    "tags": [
+      "ubernetes",
+      "Certification"
+    ]
+  },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "cka_guide",
+    "title": "CKA",
     "permalink": "/docs/CERTIFICATES/cka_guide"
   },
   "next": {
-    "title": "CKS Guide",
+    "title": "CKS",
     "permalink": "/docs/CERTIFICATES/cks_guide"
   }
 }

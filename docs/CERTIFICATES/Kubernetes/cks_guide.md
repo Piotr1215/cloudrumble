@@ -1,3 +1,11 @@
+---
+title: CKS Certification Guide
+sidebar_label: CKS
+tags:
+    - Kubernetes
+    - Certification
+---
+
 # CKS Guide
 
 ## The 4C's of cloud-native computing

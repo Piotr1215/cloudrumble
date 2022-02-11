@@ -1,13 +1,13 @@
 {
-  "unversionedId": "CERTIFICATES/gcp_pca",
-  "id": "CERTIFICATES/gcp_pca",
+  "unversionedId": "CERTIFICATES/GCP/gcp_pca",
+  "id": "CERTIFICATES/GCP/gcp_pca",
   "title": "GCP Cloud Architect Professional Certification Guide",
   "description": "About the exam",
-  "source": "@site/docs/CERTIFICATES/gcp_pca.md",
-  "sourceDirName": "CERTIFICATES",
-  "slug": "/CERTIFICATES/gcp_pca",
-  "permalink": "/docs/CERTIFICATES/gcp_pca",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/gcp_pca.md",
+  "source": "@site/docs/CERTIFICATES/GCP/gcp_pca.md",
+  "sourceDirName": "CERTIFICATES/GCP",
+  "slug": "/CERTIFICATES/GCP/gcp_pca",
+  "permalink": "/docs/CERTIFICATES/GCP/gcp_pca",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/GCP/gcp_pca.md",
   "tags": [
     {
       "label": "GCP",
@@ -29,11 +29,11 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Cherry picked tools & resources",
-    "permalink": "/docs/resources"
+    "title": "DCA",
+    "permalink": "/docs/CERTIFICATES/Docker/dca_guide"
   },
   "next": {
     "title": "Terraform Associate",
-    "permalink": "/docs/CERTIFICATES/terraform"
+    "permalink": "/docs/CERTIFICATES/Hashicorp/terraform"
   }
 }

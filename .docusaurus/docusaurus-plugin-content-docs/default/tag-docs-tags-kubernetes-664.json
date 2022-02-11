@@ -1,0 +1,19 @@
+{
+  "name": "Kubernetes",
+  "permalink": "/docs/tags/kubernetes",
+  "docs": [
+    {
+      "id": "CERTIFICATES/Kubernetes/cka_guide",
+      "title": "CKA Certification Guide",
+      "description": "Introduction",
+      "permalink": "/docs/CERTIFICATES/Kubernetes/cka_guide"
+    },
+    {
+      "id": "CERTIFICATES/Kubernetes/cks_guide",
+      "title": "CKS Certification Guide",
+      "description": "The 4C's of cloud-native computing",
+      "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

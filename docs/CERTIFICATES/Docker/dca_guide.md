@@ -1,3 +1,11 @@
+---
+title: Docker Certified Associate Certification Guide
+sidebar_label: DCA
+tags:
+    - Docker
+    - Certification
+---
+
 ## Certification
 
 > [!NOTE]

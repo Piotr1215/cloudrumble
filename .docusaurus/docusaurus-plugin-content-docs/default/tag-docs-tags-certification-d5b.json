@@ -1,0 +1,55 @@
+{
+  "name": "Certification",
+  "permalink": "/docs/tags/certification",
+  "docs": [
+    {
+      "id": "CERTIFICATES/Azure/az_303_guide",
+      "title": "AZ-303 Certification Guide",
+      "description": "Introduction",
+      "permalink": "/docs/CERTIFICATES/Azure/az_303_guide"
+    },
+    {
+      "id": "CERTIFICATES/Azure/az_304_guide",
+      "title": "AZ-304 Certification Guide",
+      "description": "Introduction",
+      "permalink": "/docs/CERTIFICATES/Azure/az_304_guide"
+    },
+    {
+      "id": "CERTIFICATES/Kubernetes/cka_guide",
+      "title": "CKA Certification Guide",
+      "description": "Introduction",
+      "permalink": "/docs/CERTIFICATES/Kubernetes/cka_guide"
+    },
+    {
+      "id": "CERTIFICATES/Kubernetes/ckad_guide",
+      "title": "CKAD Certification Guide",
+      "description": "Introduction",
+      "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide"
+    },
+    {
+      "id": "CERTIFICATES/Kubernetes/cks_guide",
+      "title": "CKS Certification Guide",
+      "description": "The 4C's of cloud-native computing",
+      "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
+    },
+    {
+      "id": "CERTIFICATES/Docker/dca_guide",
+      "title": "Docker Certified Associate Certification Guide",
+      "description": "Certification",
+      "permalink": "/docs/CERTIFICATES/Docker/dca_guide"
+    },
+    {
+      "id": "CERTIFICATES/GCP/gcp_pca",
+      "title": "GCP Cloud Architect Professional Certification Guide",
+      "description": "About the exam",
+      "permalink": "/docs/CERTIFICATES/GCP/gcp_pca"
+    },
+    {
+      "id": "CERTIFICATES/Hashicorp/terraform",
+      "title": "Terraform Certification Guide",
+      "description": "About the exam",
+      "permalink": "/docs/CERTIFICATES/Hashicorp/terraform"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

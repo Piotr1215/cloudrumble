@@ -8,16 +8,32 @@
   "slug": "/CERTIFICATES/aws_saa_co2",
   "permalink": "/docs/CERTIFICATES/aws_saa_co2",
   "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/aws_saa_co2.md",
-  "tags": [],
+  "tags": [
+    {
+      "label": "AWS",
+      "permalink": "/docs/tags/aws"
+    },
+    {
+      "label": "Certificates",
+      "permalink": "/docs/tags/certificates"
+    }
+  ],
   "version": "current",
-  "frontMatter": {},
+  "frontMatter": {
+    "title": "AWS Certified Solutions Architect Associate",
+    "sidebar_label": "AWS SAA",
+    "tags": [
+      "AWS",
+      "Certificates"
+    ]
+  },
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Cherry picked tools & resources",
     "permalink": "/docs/resources"
   },
   "next": {
-    "title": "az_303_guide",
-    "permalink": "/docs/CERTIFICATES/az_303_guide"
+    "title": "DCA",
+    "permalink": "/docs/CERTIFICATES/dca_guide"
   }
 }

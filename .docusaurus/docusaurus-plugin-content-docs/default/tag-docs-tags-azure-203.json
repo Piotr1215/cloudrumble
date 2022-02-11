@@ -1,0 +1,19 @@
+{
+  "name": "Azure",
+  "permalink": "/docs/tags/azure",
+  "docs": [
+    {
+      "id": "CERTIFICATES/Azure/az_303_guide",
+      "title": "AZ-303 Certification Guide",
+      "description": "Introduction",
+      "permalink": "/docs/CERTIFICATES/Azure/az_303_guide"
+    },
+    {
+      "id": "CERTIFICATES/Azure/az_304_guide",
+      "title": "AZ-304 Certification Guide",
+      "description": "Introduction",
+      "permalink": "/docs/CERTIFICATES/Azure/az_304_guide"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

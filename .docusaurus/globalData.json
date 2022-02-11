@@ -11,48 +11,48 @@
           "mainDocId": "cheatsheets",
           "docs": [
             {
-              "id": "CERTIFICATES/aws_saa_co2",
-              "path": "/docs/CERTIFICATES/aws_saa_co2",
+              "id": "CERTIFICATES/AWS/aws_saa_co2",
+              "path": "/docs/CERTIFICATES/AWS/aws_saa_co2",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "CERTIFICATES/az_303_guide",
-              "path": "/docs/CERTIFICATES/az_303_guide",
+              "id": "CERTIFICATES/Azure/az_303_guide",
+              "path": "/docs/CERTIFICATES/Azure/az_303_guide",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "CERTIFICATES/az_304_guide",
-              "path": "/docs/CERTIFICATES/az_304_guide",
+              "id": "CERTIFICATES/Azure/az_304_guide",
+              "path": "/docs/CERTIFICATES/Azure/az_304_guide",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "CERTIFICATES/cka_guide",
-              "path": "/docs/CERTIFICATES/cka_guide",
+              "id": "CERTIFICATES/Docker/dca_guide",
+              "path": "/docs/CERTIFICATES/Docker/dca_guide",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "CERTIFICATES/ckad_guide",
-              "path": "/docs/CERTIFICATES/ckad_guide",
+              "id": "CERTIFICATES/GCP/gcp_pca",
+              "path": "/docs/CERTIFICATES/GCP/gcp_pca",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "CERTIFICATES/cks_guide",
-              "path": "/docs/CERTIFICATES/cks_guide",
+              "id": "CERTIFICATES/Hashicorp/terraform",
+              "path": "/docs/CERTIFICATES/Hashicorp/terraform",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "CERTIFICATES/dca_guide",
-              "path": "/docs/CERTIFICATES/dca_guide",
+              "id": "CERTIFICATES/Kubernetes/cka_guide",
+              "path": "/docs/CERTIFICATES/Kubernetes/cka_guide",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "CERTIFICATES/gcp_pca",
-              "path": "/docs/CERTIFICATES/gcp_pca",
+              "id": "CERTIFICATES/Kubernetes/ckad_guide",
+              "path": "/docs/CERTIFICATES/Kubernetes/ckad_guide",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "CERTIFICATES/terraform",
-              "path": "/docs/CERTIFICATES/terraform",
+              "id": "CERTIFICATES/Kubernetes/cks_guide",
+              "path": "/docs/CERTIFICATES/Kubernetes/cks_guide",
               "sidebar": "tutorialSidebar"
             },
             {

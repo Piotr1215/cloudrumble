@@ -1,3 +1,11 @@
+---
+title: AZ-304 Certification Guide
+sidebar_label: AZ 304
+tags:
+    - Azure
+    - Certification
+---
+
 ## Introduction
 
 ![](https://miro.medium.com/max/2752/1*XgjNqx3rsImpoYzifqnx8w.png)

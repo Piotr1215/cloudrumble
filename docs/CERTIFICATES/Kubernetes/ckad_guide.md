@@ -1,3 +1,11 @@
+---
+title: CKAD Certification Guide
+sidebar_label: CKAD
+tags:
+    - ubernetes
+    - Certification
+---
+
 ## Introduction
 
 Recently I have successfully passed exam for Certified Kubernetes Application Developer (CKAD) and I would like to share learning tips and tricks as well as resources that helped me prepare and pass the exam.
