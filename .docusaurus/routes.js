@@ -370,7 +370,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs','dd1'),
+    component: ComponentCreator('/docs','63c'),
     routes: [
       {
         path: '/docs/CERTIFICATES/AWS/aws_saa_co2',
@@ -506,6 +506,11 @@ export default [
       {
         path: '/docs/resources',
         component: ComponentCreator('/docs/resources','5c1'),
+        exact: true
+      },
+      {
+        path: '/docs/tacos',
+        component: ComponentCreator('/docs/tacos','c8a'),
         exact: true
       }
     ]

@@ -583,7 +583,7 @@
     "component": "component---theme-mdx-page-1-f-3-b90",
     "content": "content---markdown-page-393-028"
   },
-  "/docs-dd1": {
+  "/docs-63c": {
     "component": "component---theme-doc-page-1-be-9be",
     "versionMetadata": "versionMetadata---docs-935-398"
   },
@@ -678,6 +678,10 @@
   "/docs/resources-5c1": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-resourcesd-92-d12"
+  },
+  "/docs/tacos-c8a": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-tacosf-52-4a4"
   },
   "/-deb": {
     "component": "component---site-src-pages-index-jsc-4-f-f99",

@@ -716,6 +716,20 @@
                   "Info"
                 ]
               }
+            },
+            {
+              "unversionedId": "tacos",
+              "id": "tacos",
+              "title": "Spice up your Infrastructure as Code with TACOS",
+              "description": "Introduction",
+              "source": "@site/docs/tacos.md",
+              "sourceDirName": ".",
+              "slug": "/tacos",
+              "permalink": "/docs/tacos",
+              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/tacos.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {}
             }
           ],
           "sidebars": {

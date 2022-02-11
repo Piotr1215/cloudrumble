@@ -122,6 +122,10 @@
             {
               "id": "resources",
               "path": "/docs/resources"
+            },
+            {
+              "id": "tacos",
+              "path": "/docs/tacos"
             }
           ],
           "sidebars": {
