@@ -1,3 +1,11 @@
+---
+title: Links and Resources
+sidebar_label: Resources
+tags:
+    - Links
+    - Info
+---
+
 # Cherry picked tools & resources
 
 | Resource                                                                                                                  | Description                                                                                 | Category    |

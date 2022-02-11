@@ -13,11 +13,11 @@
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Cheatsheets and Useful commands",
-    "permalink": "/docs/cheatsheets"
+    "title": "Introduction",
+    "permalink": "/docs/intro"
   },
   "next": {
-    "title": "Frequently asked questions and troubleshooting <!--",
+    "title": "FAQ",
     "permalink": "/docs/faq"
   }
 }

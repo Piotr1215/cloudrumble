@@ -1,3 +1,12 @@
+---
+title: Introduction
+sidebar_label: Introduction
+sidebar_position: 0
+tags:
+    - Intro
+    - Info
+---
+
 ### Introduction
 
 This documentation and accompanying [GtiHub Repo](https://github.com/Piotr1215/dca-prep-kit) is my way of learning, making notes and in the same time giving back to great open source community. Try it yourself, just a few markdown files and you will have a useful handbook for learning and reference later on.
@@ -10,9 +19,9 @@ I wish you best of luck on getting all IT Certifications you set out to get :)
 
 Each section corresponds to exam topics. [`Plantuml` diagrams](https://plantuml.com/)  (component, sequence, minimap) help visualize and better understand architectural concepts in Docker, Docker Swarm and Kubernetes. All diagrams are available in [Diagrams](https://github.com/Piotr1215/dca-prep-kit/tree/master/diagrams) folder.
 
-> [!NOTE]
->
-> - If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
+:::note
+If you are new to Docker, check my post about [Docker basics](https://medium.com/faun/a-gentle-introduction-to-docker-and-containers-2e67b1832918)
+:::
 
 For every exam I follow similar approach as outlined here below
 
@@ -36,8 +45,9 @@ Here are examples of Kubernetes and Docker sandboxes:
 - **Remote** cluster [PWK — Play With Kubernetes](https://labs.play-with-k8s.com/)
 - **Remote** docker [Interactive online docker environments on demand: docker](https://labs.play-with-docker.com/)
 
-> [!TIP]
-> Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
+:::tip
+ Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
+:::
 
 Here are easy steps to run the container:
 
@@ -65,8 +75,10 @@ docker run --network=host --name=kubectl-host -v /etc/kubernetes/admin.conf:/roo
 Knowing the documentation of product/system you are learning about is critical. I usually arrange all topics into self-describing bookmarks. Most of them are available online.
 
 If you would like to have same bookmarks, please use my gist below and import them from file. Bookmarks are arranged in subfolder corresponding to exam topics:
-> [!NOTE]
-> [DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
+
+:::note
+ [DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
+:::
 
 ### Make notes
 

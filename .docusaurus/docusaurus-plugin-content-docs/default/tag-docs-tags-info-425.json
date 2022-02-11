@@ -1,0 +1,25 @@
+{
+  "name": "Info",
+  "permalink": "/docs/tags/info",
+  "docs": [
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "description": "Q: I see 500 error instead of diagram",
+      "permalink": "/docs/faq"
+    },
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "description": "Introduction",
+      "permalink": "/docs/intro"
+    },
+    {
+      "id": "resources",
+      "title": "Links and Resources",
+      "description": "| Resource                                                                                                                  | Description                                                                                 | Category    |",
+      "permalink": "/docs/resources"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

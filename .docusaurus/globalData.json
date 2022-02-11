@@ -8,7 +8,7 @@
           "label": "Next",
           "isLast": true,
           "path": "/docs",
-          "mainDocId": "cheatsheets",
+          "mainDocId": "intro",
           "docs": [
             {
               "id": "CERTIFICATES/AWS/aws_saa_co2",
@@ -53,16 +53,6 @@
             {
               "id": "CERTIFICATES/Kubernetes/cks_guide",
               "path": "/docs/CERTIFICATES/Kubernetes/cks_guide",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "cheatsheets",
-              "path": "/docs/cheatsheets",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "coming_soon",
-              "path": "/docs/coming_soon",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -139,8 +129,8 @@
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/cheatsheets",
-                "label": "cheatsheets"
+                "path": "/docs/intro",
+                "label": "Introduction"
               }
             }
           }

@@ -1,20 +1,36 @@
 {
   "unversionedId": "resources",
   "id": "resources",
-  "title": "Cherry picked tools & resources",
+  "title": "Links and Resources",
   "description": "| Resource                                                                                                                  | Description                                                                                 | Category    |",
   "source": "@site/docs/resources.md",
   "sourceDirName": ".",
   "slug": "/resources",
   "permalink": "/docs/resources",
   "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/resources.md",
-  "tags": [],
+  "tags": [
+    {
+      "label": "Links",
+      "permalink": "/docs/tags/links"
+    },
+    {
+      "label": "Info",
+      "permalink": "/docs/tags/info"
+    }
+  ],
   "version": "current",
-  "frontMatter": {},
+  "frontMatter": {
+    "title": "Links and Resources",
+    "sidebar_label": "Resources",
+    "tags": [
+      "Links",
+      "Info"
+    ]
+  },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "intro",
-    "permalink": "/docs/intro"
+    "title": "FAQ",
+    "permalink": "/docs/faq"
   },
   "next": {
     "title": "Examples and Exercises Setup <!--",

@@ -1,0 +1,13 @@
+{
+  "name": "Intro",
+  "permalink": "/docs/tags/intro",
+  "docs": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "description": "Introduction",
+      "permalink": "/docs/intro"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

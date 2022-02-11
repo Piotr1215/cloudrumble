@@ -543,13 +543,29 @@
     "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
     "tag": "tag---docs-tags-docker-036-383"
   },
+  "/docs/tags/faq-3c2": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-faq-35-a-d80"
+  },
   "/docs/tags/gcp-79f": {
     "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
     "tag": "tag---docs-tags-gcp-77-c-483"
   },
+  "/docs/tags/info-e9d": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-infof-57-d2e"
+  },
+  "/docs/tags/intro-b42": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-intro-516-4cb"
+  },
   "/docs/tags/kubernetes-fbb": {
     "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
     "tag": "tag---docs-tags-kubernetes-796-cf8"
+  },
+  "/docs/tags/links-33c": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-links-749-8e9"
   },
   "/docs/tags/terraform-cc4": {
     "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
@@ -567,7 +583,7 @@
     "component": "component---theme-mdx-page-1-f-3-b90",
     "content": "content---markdown-page-393-028"
   },
-  "/docs-f5d": {
+  "/docs-229": {
     "component": "component---theme-doc-page-1-be-9be",
     "versionMetadata": "versionMetadata---docs-935-398"
   },
@@ -606,14 +622,6 @@
   "/docs/CERTIFICATES/Kubernetes/cks_guide-0cc": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-certificates-kubernetes-cks-guided-6-d-726"
-  },
-  "/docs/cheatsheets-1cd": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-cheatsheets-6-b-1-448"
-  },
-  "/docs/coming_soon-aea": {
-    "component": "component---theme-doc-item-178-a40",
-    "content": "content---docs-coming-soon-2-fb-235"
   },
   "/docs/EXAMPLES/-e28": {
     "component": "component---theme-doc-item-178-a40",

@@ -370,48 +370,6 @@
               }
             },
             {
-              "unversionedId": "cheatsheets",
-              "id": "cheatsheets",
-              "title": "Cheatsheets and Useful commands",
-              "description": "",
-              "source": "@site/docs/cheatsheets.md",
-              "sourceDirName": ".",
-              "slug": "/cheatsheets",
-              "permalink": "/docs/cheatsheets",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/cheatsheets.md",
-              "tags": [],
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "next": {
-                "title": "Coming soon",
-                "permalink": "/docs/coming_soon"
-              }
-            },
-            {
-              "unversionedId": "coming_soon",
-              "id": "coming_soon",
-              "title": "Coming soon",
-              "description": "Asciinema recordings",
-              "source": "@site/docs/coming_soon.md",
-              "sourceDirName": ".",
-              "slug": "/coming_soon",
-              "permalink": "/docs/coming_soon",
-              "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/coming_soon.md",
-              "tags": [],
-              "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Cheatsheets and Useful commands",
-                "permalink": "/docs/cheatsheets"
-              },
-              "next": {
-                "title": "Frequently asked questions and troubleshooting <!--",
-                "permalink": "/docs/faq"
-              }
-            },
-            {
               "unversionedId": "EXAMPLES/examples",
               "id": "EXAMPLES/examples",
               "title": "Examples and Exercises Setup <!--",
@@ -426,7 +384,7 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Cherry picked tools & resources",
+                "title": "Resources",
                 "permalink": "/docs/resources"
               },
               "next": {
@@ -552,24 +510,42 @@
             {
               "unversionedId": "faq",
               "id": "faq",
-              "title": "Frequently asked questions and troubleshooting <!--",
+              "title": "FAQ",
               "description": "Q: I see 500 error instead of diagram",
               "source": "@site/docs/faq.md",
               "sourceDirName": ".",
               "slug": "/faq",
               "permalink": "/docs/faq",
               "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/faq.md",
-              "tags": [],
+              "tags": [
+                {
+                  "label": "FAQ",
+                  "permalink": "/docs/tags/faq"
+                },
+                {
+                  "label": "Info",
+                  "permalink": "/docs/tags/info"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "title": "FAQ",
+                "sidebar_label": "FAQ",
+                "sidebar_position": 3,
+                "tags": [
+                  "FAQ",
+                  "Info"
+                ]
+              },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Coming soon",
-                "permalink": "/docs/coming_soon"
+                "title": "Introduction",
+                "permalink": "/docs/intro"
               },
               "next": {
-                "title": "intro",
-                "permalink": "/docs/intro"
+                "title": "Resources",
+                "permalink": "/docs/resources"
               }
             },
             {
@@ -686,43 +662,73 @@
             {
               "unversionedId": "intro",
               "id": "intro",
-              "title": "intro",
+              "title": "Introduction",
               "description": "Introduction",
               "source": "@site/docs/intro.md",
               "sourceDirName": ".",
               "slug": "/intro",
               "permalink": "/docs/intro",
               "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/intro.md",
-              "tags": [],
+              "tags": [
+                {
+                  "label": "Intro",
+                  "permalink": "/docs/tags/intro"
+                },
+                {
+                  "label": "Info",
+                  "permalink": "/docs/tags/info"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Frequently asked questions and troubleshooting <!--",
-                "permalink": "/docs/faq"
+              "sidebarPosition": 0,
+              "frontMatter": {
+                "title": "Introduction",
+                "sidebar_label": "Introduction",
+                "sidebar_position": 0,
+                "tags": [
+                  "Intro",
+                  "Info"
+                ]
               },
+              "sidebar": "tutorialSidebar",
               "next": {
-                "title": "Cherry picked tools & resources",
-                "permalink": "/docs/resources"
+                "title": "FAQ",
+                "permalink": "/docs/faq"
               }
             },
             {
               "unversionedId": "resources",
               "id": "resources",
-              "title": "Cherry picked tools & resources",
+              "title": "Links and Resources",
               "description": "| Resource                                                                                                                  | Description                                                                                 | Category    |",
               "source": "@site/docs/resources.md",
               "sourceDirName": ".",
               "slug": "/resources",
               "permalink": "/docs/resources",
               "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/resources.md",
-              "tags": [],
+              "tags": [
+                {
+                  "label": "Links",
+                  "permalink": "/docs/tags/links"
+                },
+                {
+                  "label": "Info",
+                  "permalink": "/docs/tags/info"
+                }
+              ],
               "version": "current",
-              "frontMatter": {},
+              "frontMatter": {
+                "title": "Links and Resources",
+                "sidebar_label": "Resources",
+                "tags": [
+                  "Links",
+                  "Info"
+                ]
+              },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "intro",
-                "permalink": "/docs/intro"
+                "title": "FAQ",
+                "permalink": "/docs/faq"
               },
               "next": {
                 "title": "Examples and Exercises Setup <!--",
@@ -734,23 +740,18 @@
             "tutorialSidebar": [
               {
                 "type": "doc",
-                "id": "cheatsheets"
+                "id": "intro",
+                "label": "Introduction"
               },
               {
                 "type": "doc",
-                "id": "coming_soon"
+                "id": "faq",
+                "label": "FAQ"
               },
               {
                 "type": "doc",
-                "id": "faq"
-              },
-              {
-                "type": "doc",
-                "id": "intro"
-              },
-              {
-                "type": "doc",
-                "id": "resources"
+                "id": "resources",
+                "label": "Resources"
               },
               {
                 "type": "category",
@@ -939,7 +940,7 @@
               }
             ]
           },
-          "mainDocId": "cheatsheets",
+          "mainDocId": "intro",
           "categoryGeneratedIndices": []
         }
       ]

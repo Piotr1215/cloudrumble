@@ -319,13 +319,33 @@ export default [
     exact: true
   },
   {
+    path: '/docs/tags/faq',
+    component: ComponentCreator('/docs/tags/faq','3c2'),
+    exact: true
+  },
+  {
     path: '/docs/tags/gcp',
     component: ComponentCreator('/docs/tags/gcp','79f'),
     exact: true
   },
   {
+    path: '/docs/tags/info',
+    component: ComponentCreator('/docs/tags/info','e9d'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/intro',
+    component: ComponentCreator('/docs/tags/intro','b42'),
+    exact: true
+  },
+  {
     path: '/docs/tags/kubernetes',
     component: ComponentCreator('/docs/tags/kubernetes','fbb'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/links',
+    component: ComponentCreator('/docs/tags/links','33c'),
     exact: true
   },
   {
@@ -350,7 +370,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs','f5d'),
+    component: ComponentCreator('/docs','229'),
     routes: [
       {
         path: '/docs/CERTIFICATES/AWS/aws_saa_co2',
@@ -403,18 +423,6 @@ export default [
       {
         path: '/docs/CERTIFICATES/Kubernetes/cks_guide',
         component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cks_guide','0cc'),
-        exact: true,
-        'sidebar': "tutorialSidebar"
-      },
-      {
-        path: '/docs/cheatsheets',
-        component: ComponentCreator('/docs/cheatsheets','1cd'),
-        exact: true,
-        'sidebar': "tutorialSidebar"
-      },
-      {
-        path: '/docs/coming_soon',
-        component: ComponentCreator('/docs/coming_soon','aea'),
         exact: true,
         'sidebar': "tutorialSidebar"
       },

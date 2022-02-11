@@ -10,31 +10,19 @@
     "tutorialSidebar": [
       {
         "type": "link",
-        "label": "Cheatsheets and Useful commands",
-        "href": "/docs/cheatsheets",
-        "docId": "cheatsheets"
-      },
-      {
-        "type": "link",
-        "label": "Coming soon",
-        "href": "/docs/coming_soon",
-        "docId": "coming_soon"
-      },
-      {
-        "type": "link",
-        "label": "Frequently asked questions and troubleshooting <!--",
-        "href": "/docs/faq",
-        "docId": "faq"
-      },
-      {
-        "type": "link",
-        "label": "intro",
+        "label": "Introduction",
         "href": "/docs/intro",
         "docId": "intro"
       },
       {
         "type": "link",
-        "label": "Cherry picked tools & resources",
+        "label": "FAQ",
+        "href": "/docs/faq",
+        "docId": "faq"
+      },
+      {
+        "type": "link",
+        "label": "Resources",
         "href": "/docs/resources",
         "docId": "resources"
       },
@@ -296,18 +284,6 @@
       "description": "The 4C's of cloud-native computing",
       "sidebar": "tutorialSidebar"
     },
-    "cheatsheets": {
-      "id": "cheatsheets",
-      "title": "Cheatsheets and Useful commands",
-      "description": "",
-      "sidebar": "tutorialSidebar"
-    },
-    "coming_soon": {
-      "id": "coming_soon",
-      "title": "Coming soon",
-      "description": "Asciinema recordings",
-      "sidebar": "tutorialSidebar"
-    },
     "EXAMPLES/examples": {
       "id": "EXAMPLES/examples",
       "title": "Examples and Exercises Setup <!--",
@@ -346,7 +322,7 @@
     },
     "faq": {
       "id": "faq",
-      "title": "Frequently asked questions and troubleshooting <!--",
+      "title": "FAQ",
       "description": "Q: I see 500 error instead of diagram",
       "sidebar": "tutorialSidebar"
     },
@@ -382,13 +358,13 @@
     },
     "intro": {
       "id": "intro",
-      "title": "intro",
+      "title": "Introduction",
       "description": "Introduction",
       "sidebar": "tutorialSidebar"
     },
     "resources": {
       "id": "resources",
-      "title": "Cherry picked tools & resources",
+      "title": "Links and Resources",
       "description": "| Resource                                                                                                                  | Description                                                                                 | Category    |",
       "sidebar": "tutorialSidebar"
     }

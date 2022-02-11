@@ -43,5 +43,25 @@
     "name": "ubernetes",
     "permalink": "/docs/tags/ubernetes",
     "count": 1
+  },
+  {
+    "name": "FAQ",
+    "permalink": "/docs/tags/faq",
+    "count": 1
+  },
+  {
+    "name": "Info",
+    "permalink": "/docs/tags/info",
+    "count": 3
+  },
+  {
+    "name": "Intro",
+    "permalink": "/docs/tags/intro",
+    "count": 1
+  },
+  {
+    "name": "Links",
+    "permalink": "/docs/tags/links",
+    "count": 1
   }
 ]

@@ -1,0 +1,13 @@
+{
+  "name": "FAQ",
+  "permalink": "/docs/tags/faq",
+  "docs": [
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "description": "Q: I see 500 error instead of diagram",
+      "permalink": "/docs/faq"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

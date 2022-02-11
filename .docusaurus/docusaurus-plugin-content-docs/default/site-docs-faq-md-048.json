@@ -1,23 +1,41 @@
 {
   "unversionedId": "faq",
   "id": "faq",
-  "title": "Frequently asked questions and troubleshooting <!--",
+  "title": "FAQ",
   "description": "Q: I see 500 error instead of diagram",
   "source": "@site/docs/faq.md",
   "sourceDirName": ".",
   "slug": "/faq",
   "permalink": "/docs/faq",
   "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/faq.md",
-  "tags": [],
+  "tags": [
+    {
+      "label": "FAQ",
+      "permalink": "/docs/tags/faq"
+    },
+    {
+      "label": "Info",
+      "permalink": "/docs/tags/info"
+    }
+  ],
   "version": "current",
-  "frontMatter": {},
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "FAQ",
+    "sidebar_label": "FAQ",
+    "sidebar_position": 3,
+    "tags": [
+      "FAQ",
+      "Info"
+    ]
+  },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Coming soon",
-    "permalink": "/docs/coming_soon"
+    "title": "Introduction",
+    "permalink": "/docs/intro"
   },
   "next": {
-    "title": "intro",
-    "permalink": "/docs/intro"
+    "title": "Resources",
+    "permalink": "/docs/resources"
   }
 }
