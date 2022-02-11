@@ -7,7 +7,7 @@
 **[#lightgray] <&spreadsheet>Prerequisites <&spreadsheet>
 ***[#lightgray] Network plugin supporting\n Network Policies
 ****[#lightgray] Calico
-****[#lightgray] Cilium
+****[#lightgray] **Cilium**
 ****[#lightgray] Kube-router
 ****[#lightgray] Romana
 ****[#lightgray] Weave Net

@@ -6,18 +6,17 @@ mainframe **TACOS flow with GitOps**
 hide footbox
 autonumber
 
-skinparam DefaultFontSize 16
-
-'skinparam dpi 300
-'scale .2 
+skinparam dpi 250
+'scale max 1024 width
+'scale .5 
 'scale 600 height
 
-actor "QA Person A" as dev
-[-> dev : receives request to create a\nnew QA environment
+actor "Developer" as dev
+[-> dev : creates a\nnew dev environment
 
 box "Git Repository with terraform"
     collections "Feature branch" as feature
-    dev -> feature : creates a feature branch for new\n **QA environment**
+    dev -> feature : creates a feature branch for new\n **DEV environment**
     collections "Main branch" as master
 end box
 
@@ -27,7 +26,7 @@ group Merge Request
     deactivate feature
 end
 
-box On-Prem Infrastructure
+box On-Prem/Cloud Infrastructure
     control "Flux GitOps Agent" as agent
     control "TACOS Infrastructure Agent" as tacos_agent
     control "TACOS Git Agent" as tacos_git_agent

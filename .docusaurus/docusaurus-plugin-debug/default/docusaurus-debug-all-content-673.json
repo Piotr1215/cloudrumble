@@ -14,9 +14,9 @@
           "versionClassName": "docs-version-current",
           "isLast": true,
           "routePriority": -1,
-          "sidebarFilePath": "/home/decoder/dev/dca-docosaurus/sidebars.js",
-          "contentPath": "/home/decoder/dev/dca-docosaurus/docs",
-          "contentPathLocalized": "/home/decoder/dev/dca-docosaurus/i18n/en/docusaurus-plugin-content-docs/current",
+          "sidebarFilePath": "/home/decoder/dev/dca-prep-kit/sidebars.js",
+          "contentPath": "/home/decoder/dev/dca-prep-kit/docs",
+          "contentPathLocalized": "/home/decoder/dev/dca-prep-kit/i18n/en/docusaurus-plugin-content-docs/current",
           "docs": [
             {
               "unversionedId": "CERTIFICATES/AWS/aws_saa_co2",

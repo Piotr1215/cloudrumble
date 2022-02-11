@@ -18,7 +18,7 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "/home/decoder/dev/dca-docosaurus/sidebars.js",
+          "sidebarPath": "/home/decoder/dev/dca-prep-kit/sidebars.js",
           "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs"
         },
         "blog": {
@@ -28,7 +28,7 @@ export default {
           "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs"
         },
         "theme": {
-          "customCss": "/home/decoder/dev/dca-docosaurus/src/css/custom.css"
+          "customCss": "/home/decoder/dev/dca-prep-kit/src/css/custom.css"
         }
       }
     ]
