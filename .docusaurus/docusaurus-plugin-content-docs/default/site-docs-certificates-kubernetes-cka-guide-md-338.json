@@ -1,0 +1,39 @@
+{
+  "unversionedId": "CERTIFICATES/Kubernetes/cka_guide",
+  "id": "CERTIFICATES/Kubernetes/cka_guide",
+  "title": "CKA Certification Guide",
+  "description": "Introduction",
+  "source": "@site/docs/CERTIFICATES/Kubernetes/cka_guide.md",
+  "sourceDirName": "CERTIFICATES/Kubernetes",
+  "slug": "/CERTIFICATES/Kubernetes/cka_guide",
+  "permalink": "/docs/CERTIFICATES/Kubernetes/cka_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Kubernetes/cka_guide.md",
+  "tags": [
+    {
+      "label": "Kubernetes",
+      "permalink": "/docs/tags/kubernetes"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "CKA Certification Guide",
+    "sidebar_label": "CKA",
+    "tags": [
+      "Kubernetes",
+      "Certification"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Terraform Associate",
+    "permalink": "/docs/CERTIFICATES/Hashicorp/terraform"
+  },
+  "next": {
+    "title": "CKAD",
+    "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide"
+  }
+}

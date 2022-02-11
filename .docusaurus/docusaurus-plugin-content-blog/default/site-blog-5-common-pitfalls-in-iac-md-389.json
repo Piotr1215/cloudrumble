@@ -1,0 +1,45 @@
+{
+  "permalink": "/blog/5-common-pitfalls-in-iac",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/5-common-pitfalls-in-iac.md",
+  "source": "@site/blog/5-common-pitfalls-in-iac.md",
+  "title": "5 Common Pitfalls in Iac",
+  "description": "Image by Elchinator from [Pixabay](https://cdn-images-1.medium.com/max/3840/1*7RTz2NJPVuxU8b7gNSKg.jpeg)",
+  "date": "2021-08-01T23:07:36.000Z",
+  "formattedDate": "August 1, 2021",
+  "tags": [
+    {
+      "label": "terraform",
+      "permalink": "/blog/tags/terraform"
+    },
+    {
+      "label": "iac",
+      "permalink": "/blog/tags/iac"
+    }
+  ],
+  "readingTime": 5.84,
+  "truncated": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "5 Common Pitfalls in Iac",
+    "date": "2021-08-01T23:07:36.000Z",
+    "draft": false,
+    "tags": [
+      "terraform",
+      "iac"
+    ],
+    "categories": [
+      "IAC",
+      "devops"
+    ],
+    "show_in_homepage": true,
+    "show_description": false
+  },
+  "prevItem": {
+    "title": "5 Unusual Docker Usecases",
+    "permalink": "/blog/5-unusual-docker-usecases"
+  },
+  "nextItem": {
+    "title": "Intro to Azure ACI",
+    "permalink": "/blog/intro-to-azure-ACI"
+  }
+}

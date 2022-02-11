@@ -1,0 +1,13 @@
+{
+  "name": "Docker",
+  "permalink": "/docs/tags/docker",
+  "docs": [
+    {
+      "id": "CERTIFICATES/Docker/dca_guide",
+      "title": "Docker Certified Associate Certification Guide",
+      "description": "Certification",
+      "permalink": "/docs/CERTIFICATES/Docker/dca_guide"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

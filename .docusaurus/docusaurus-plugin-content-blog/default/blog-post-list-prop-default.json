@@ -1,0 +1,89 @@
+{
+  "title": "All posts",
+  "items": [
+    {
+      "title": "Software Development in Kubernetes a Cookbook",
+      "permalink": "/blog/software-development-in-kubernetes-a-cookbook"
+    },
+    {
+      "title": "Welcome",
+      "permalink": "/blog/welcome"
+    },
+    {
+      "title": "5 Unusual Docker Usecases",
+      "permalink": "/blog/5-unusual-docker-usecases"
+    },
+    {
+      "title": "5 Common Pitfalls in Iac",
+      "permalink": "/blog/5-common-pitfalls-in-iac"
+    },
+    {
+      "title": "Intro to Azure ACI",
+      "permalink": "/blog/intro-to-azure-ACI"
+    },
+    {
+      "title": "MDX Blog Post",
+      "permalink": "/blog/mdx-blog-post"
+    },
+    {
+      "title": "Gitops With Kubernetes",
+      "permalink": "/blog/gitops-with-kubernetes"
+    },
+    {
+      "title": "How to Create Kubernetes Homelab",
+      "permalink": "/blog/how-to-create-kubernetes-homelab"
+    },
+    {
+      "title": "How to Learn Devops",
+      "permalink": "/blog/how-to-learn-devops"
+    },
+    {
+      "title": "How to Good Sofware Documentatiion",
+      "permalink": "/blog/how-to-good-sofware-documentatiion"
+    },
+    {
+      "title": "Cloud Native Developer Workflow",
+      "permalink": "/blog/cloud-native-developer-workflow"
+    },
+    {
+      "title": "5 Static Websites Deployment Options",
+      "permalink": "/blog/5-static-websites-deployment-options"
+    },
+    {
+      "title": "Expose Kubernetes Service Using Ngrok",
+      "permalink": "/blog/expose-kubernetes-service-using-ngrok"
+    },
+    {
+      "title": "A Gentle Introduction to Docker and Containers",
+      "permalink": "/blog/a-gentle-introduction-to-docker-and-containers"
+    },
+    {
+      "title": "Portable Kubernetes Management With Kubectl in Docker Container",
+      "permalink": "/blog/portable-kubernetes-management-with-kubectl-in-docker-container"
+    },
+    {
+      "title": "The Fundamentals of Microservices Oriented Architecture",
+      "permalink": "/blog/the-fundamentals-of-microservices-oriented-architecture"
+    },
+    {
+      "title": "Preparation and Resources for CKA Exam",
+      "permalink": "/blog/preparation-and-resources-for-CKA-exam"
+    },
+    {
+      "title": "Try Kubernetes in Cloud for Free",
+      "permalink": "/blog/try-kubernetes-in-cloud-for-free"
+    },
+    {
+      "title": "8 Tips to Prepare for Az 301 Exam",
+      "permalink": "/blog/8-tips-to-prepare-for-az-301-exam"
+    },
+    {
+      "title": "8 Tips to Prepare for Az 300 Exam",
+      "permalink": "/blog/8-tips-to-prepare-for-az-300-exam"
+    },
+    {
+      "title": "Preparation and Resources for CKAD Exam",
+      "permalink": "/blog/preparation-and-resources-for-CKAD-exam"
+    }
+  ]
+}

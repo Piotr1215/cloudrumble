@@ -1,0 +1,39 @@
+{
+  "unversionedId": "CERTIFICATES/gcp_pca",
+  "id": "CERTIFICATES/gcp_pca",
+  "title": "GCP Cloud Architect Professional Certification Guide",
+  "description": "About the exam",
+  "source": "@site/docs/CERTIFICATES/gcp_pca.md",
+  "sourceDirName": "CERTIFICATES",
+  "slug": "/CERTIFICATES/gcp_pca",
+  "permalink": "/docs/CERTIFICATES/gcp_pca",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/gcp_pca.md",
+  "tags": [
+    {
+      "label": "GCP",
+      "permalink": "/docs/tags/gcp"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "GCP Cloud Architect Professional Certification Guide",
+    "sidebar_label": "GCP PCA",
+    "tags": [
+      "GCP",
+      "Certification"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cherry picked tools & resources",
+    "permalink": "/docs/resources"
+  },
+  "next": {
+    "title": "Terraform Associate",
+    "permalink": "/docs/CERTIFICATES/terraform"
+  }
+}

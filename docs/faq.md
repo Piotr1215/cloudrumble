@@ -1,4 +1,13 @@
-# Frequently asked questions and troubleshooting <!-- {docsify-ignore-all} -->
+---
+title: FAQ
+sidebar_label: FAQ
+sidebar_position: 3 
+tags:
+    - FAQ
+    - Info
+---
+
+# Frequently asked questions and troubleshooting
 
 ## Q: I see 500 error instead of diagram
 
@@ -15,4 +24,6 @@ Where:
 - ``[GIST-ID]`` - GUID displayed on the gist URL as last element
 - ``[FILE]`` fill file name, including extension
 
-> [!NOTE] Example: https://gist.githubusercontent.com/piotr1215/443fb83c89958139f0c67ec70b111da2/raw/kubectl-commands.md
+:::note
+ Example: https://gist.githubusercontent.com/piotr1215/443fb83c89958139f0c67ec70b111da2/raw/kubectl-commands.md
+:::

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "EXAMPLES/k8s-configuration",
+  "id": "EXAMPLES/k8s-configuration",
+  "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
+  "description": "[!NOTE]",
+  "source": "@site/docs/EXAMPLES/k8s-configuration.md",
+  "sourceDirName": "EXAMPLES",
+  "slug": "/EXAMPLES/k8s-configuration",
+  "permalink": "/docs/EXAMPLES/k8s-configuration",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-configuration.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Examples and Exercises Setup <!--",
+    "permalink": "/docs/EXAMPLES/"
+  },
+  "next": {
+    "title": "Kubernetes Deployments: scaling, rollouts, rollbacks <!--",
+    "permalink": "/docs/EXAMPLES/k8s-deployments"
+  }
+}

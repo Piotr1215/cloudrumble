@@ -1,0 +1,23 @@
+{
+  "unversionedId": "EXAMPLES/k8s-deployments",
+  "id": "EXAMPLES/k8s-deployments",
+  "title": "Kubernetes Deployments: scaling, rollouts, rollbacks <!--",
+  "description": "[!NOTE]",
+  "source": "@site/docs/EXAMPLES/k8s-deployments.md",
+  "sourceDirName": "EXAMPLES",
+  "slug": "/EXAMPLES/k8s-deployments",
+  "permalink": "/docs/EXAMPLES/k8s-deployments",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-deployments.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
+    "permalink": "/docs/EXAMPLES/k8s-configuration"
+  },
+  "next": {
+    "title": "Kubernetes Jobs & CronJobs: batch processing <!--",
+    "permalink": "/docs/EXAMPLES/k8s-jobs-cronjobs"
+  }
+}

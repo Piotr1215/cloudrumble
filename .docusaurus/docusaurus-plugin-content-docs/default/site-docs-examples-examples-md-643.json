@@ -1,0 +1,23 @@
+{
+  "unversionedId": "EXAMPLES/examples",
+  "id": "EXAMPLES/examples",
+  "title": "Examples and Exercises Setup <!--",
+  "description": "The goal is to explain Kubernetes and Docker Swarm topics in a practical way, like storage, deployments, services etc and provide exercises scenarios for everyone to follow along.",
+  "source": "@site/docs/EXAMPLES/examples.md",
+  "sourceDirName": "EXAMPLES",
+  "slug": "/EXAMPLES/",
+  "permalink": "/docs/EXAMPLES/",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/examples.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "CKS",
+    "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide"
+  },
+  "next": {
+    "title": "Kubernetes Configuration: configMaps, secrets, volumes <!--",
+    "permalink": "/docs/EXAMPLES/k8s-configuration"
+  }
+}

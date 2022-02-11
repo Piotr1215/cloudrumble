@@ -1,0 +1,13 @@
+{
+  "name": "GCP",
+  "permalink": "/docs/tags/gcp",
+  "docs": [
+    {
+      "id": "CERTIFICATES/GCP/gcp_pca",
+      "title": "GCP Cloud Architect Professional Certification Guide",
+      "description": "About the exam",
+      "permalink": "/docs/CERTIFICATES/GCP/gcp_pca"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

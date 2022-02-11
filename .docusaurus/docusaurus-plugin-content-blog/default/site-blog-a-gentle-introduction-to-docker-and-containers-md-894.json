@@ -1,0 +1,44 @@
+{
+  "permalink": "/blog/a-gentle-introduction-to-docker-and-containers",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/a-gentle-introduction-to-docker-and-containers.md",
+  "source": "@site/blog/a-gentle-introduction-to-docker-and-containers.md",
+  "title": "A Gentle Introduction to Docker and Containers",
+  "description": "Continue reading if you are interested in learning about Docker architecture and how containers work.",
+  "date": "2020-02-06T18:57:35.000Z",
+  "formattedDate": "February 6, 2020",
+  "tags": [
+    {
+      "label": "docker",
+      "permalink": "/blog/tags/docker"
+    },
+    {
+      "label": "containers",
+      "permalink": "/blog/tags/containers"
+    }
+  ],
+  "readingTime": 3.205,
+  "truncated": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "A Gentle Introduction to Docker and Containers",
+    "date": "2020-02-06T18:57:35.000Z",
+    "draft": true,
+    "tags": [
+      "docker",
+      "containers"
+    ],
+    "categories": [
+      "learning"
+    ],
+    "show_in_homepage": false,
+    "show_description": false
+  },
+  "prevItem": {
+    "title": "Expose Kubernetes Service Using Ngrok",
+    "permalink": "/blog/expose-kubernetes-service-using-ngrok"
+  },
+  "nextItem": {
+    "title": "Portable Kubernetes Management With Kubectl in Docker Container",
+    "permalink": "/blog/portable-kubernetes-management-with-kubectl-in-docker-container"
+  }
+}

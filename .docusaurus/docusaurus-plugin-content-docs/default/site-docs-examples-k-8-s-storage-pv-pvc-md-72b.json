@@ -1,0 +1,19 @@
+{
+  "unversionedId": "EXAMPLES/k8s-storage-pv-pvc",
+  "id": "EXAMPLES/k8s-storage-pv-pvc",
+  "title": "Kubernetes Storage: pv & pvc <!--",
+  "description": "[!NOTE]",
+  "source": "@site/docs/EXAMPLES/k8s-storage-pv-pvc.md",
+  "sourceDirName": "EXAMPLES",
+  "slug": "/EXAMPLES/k8s-storage-pv-pvc",
+  "permalink": "/docs/EXAMPLES/k8s-storage-pv-pvc",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-storage-pv-pvc.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Kubernetes Services: Exposing pods, communication <!--",
+    "permalink": "/docs/EXAMPLES/k8s-services"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "/blog/tags/kubernetes": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/kubernetes",
+    "name": "kubernetes",
+    "count": 9,
+    "permalink": "/blog/tags/kubernetes"
+  },
+  "/blog/tags/guide": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/guide",
+    "name": "guide",
+    "count": 1,
+    "permalink": "/blog/tags/guide"
+  },
+  "/blog/tags/facebook": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/facebook",
+    "name": "facebook",
+    "count": 1,
+    "permalink": "/blog/tags/facebook"
+  },
+  "/blog/tags/hello": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/hello",
+    "name": "hello",
+    "count": 1,
+    "permalink": "/blog/tags/hello"
+  },
+  "/blog/tags/docusaurus": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/docusaurus",
+    "name": "docusaurus",
+    "count": 2,
+    "permalink": "/blog/tags/docusaurus"
+  },
+  "/blog/tags/docker": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/docker",
+    "name": "docker",
+    "count": 4,
+    "permalink": "/blog/tags/docker"
+  },
+  "/blog/tags/linux": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/linux",
+    "name": "linux",
+    "count": 1,
+    "permalink": "/blog/tags/linux"
+  },
+  "/blog/tags/terraform": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/terraform",
+    "name": "terraform",
+    "count": 1,
+    "permalink": "/blog/tags/terraform"
+  },
+  "/blog/tags/iac": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/iac",
+    "name": "iac",
+    "count": 1,
+    "permalink": "/blog/tags/iac"
+  },
+  "/blog/tags/azure": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/azure",
+    "name": "azure",
+    "count": 4,
+    "permalink": "/blog/tags/azure"
+  },
+  "/blog/tags/container": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/container",
+    "name": "container",
+    "count": 1,
+    "permalink": "/blog/tags/container"
+  },
+  "/blog/tags/gitops": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/gitops",
+    "name": "gitops",
+    "count": 1,
+    "permalink": "/blog/tags/gitops"
+  },
+  "/blog/tags/homelab": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/homelab",
+    "name": "homelab",
+    "count": 1,
+    "permalink": "/blog/tags/homelab"
+  },
+  "/blog/tags/devops": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/devops",
+    "name": "devops",
+    "count": 3,
+    "permalink": "/blog/tags/devops"
+  },
+  "/blog/tags/learning": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/learning",
+    "name": "learning",
+    "count": 1,
+    "permalink": "/blog/tags/learning"
+  },
+  "/blog/tags/documentation": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/documentation",
+    "name": "documentation",
+    "count": 1,
+    "permalink": "/blog/tags/documentation"
+  },
+  "/blog/tags/automation": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/automation",
+    "name": "automation",
+    "count": 1,
+    "permalink": "/blog/tags/automation"
+  },
+  "/blog/tags/deployment": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/deployment",
+    "name": "deployment",
+    "count": 1,
+    "permalink": "/blog/tags/deployment"
+  },
+  "/blog/tags/ngrok": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/ngrok",
+    "name": "ngrok",
+    "count": 1,
+    "permalink": "/blog/tags/ngrok"
+  },
+  "/blog/tags/containers": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/containers",
+    "name": "containers",
+    "count": 1,
+    "permalink": "/blog/tags/containers"
+  },
+  "/blog/tags/cli": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/cli",
+    "name": "CLI",
+    "count": 1,
+    "permalink": "/blog/tags/cli"
+  },
+  "/blog/tags/architecture": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/architecture",
+    "name": "architecture",
+    "count": 1,
+    "permalink": "/blog/tags/architecture"
+  },
+  "/blog/tags/design": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/design",
+    "name": "design",
+    "count": 1,
+    "permalink": "/blog/tags/design"
+  },
+  "/blog/tags/certification": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/certification",
+    "name": "certification",
+    "count": 4,
+    "permalink": "/blog/tags/certification"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "docs",
+  "id": "docs",
+  "title": "docs",
+  "description": "Introduction",
+  "source": "@site/docs/docs.md",
+  "sourceDirName": ".",
+  "slug": "/docs",
+  "permalink": "/docs/docs",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/docs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Coming soon",
+    "permalink": "/docs/coming_soon"
+  },
+  "next": {
+    "title": "Frequently asked questions and troubleshooting <!--",
+    "permalink": "/docs/faq"
+  }
+}

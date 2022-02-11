@@ -1,0 +1,39 @@
+{
+  "unversionedId": "CERTIFICATES/Kubernetes/cks_guide",
+  "id": "CERTIFICATES/Kubernetes/cks_guide",
+  "title": "CKS Certification Guide",
+  "description": "The 4C's of cloud-native computing",
+  "source": "@site/docs/CERTIFICATES/Kubernetes/cks_guide.md",
+  "sourceDirName": "CERTIFICATES/Kubernetes",
+  "slug": "/CERTIFICATES/Kubernetes/cks_guide",
+  "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Kubernetes/cks_guide.md",
+  "tags": [
+    {
+      "label": "Kubernetes",
+      "permalink": "/docs/tags/kubernetes"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "CKS Certification Guide",
+    "sidebar_label": "CKS",
+    "tags": [
+      "Kubernetes",
+      "Certification"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "CKAD",
+    "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide"
+  },
+  "next": {
+    "title": "Examples and Exercises Setup <!--",
+    "permalink": "/docs/EXAMPLES/"
+  }
+}

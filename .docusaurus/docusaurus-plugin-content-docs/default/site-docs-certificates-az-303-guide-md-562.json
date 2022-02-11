@@ -1,0 +1,39 @@
+{
+  "unversionedId": "CERTIFICATES/az_303_guide",
+  "id": "CERTIFICATES/az_303_guide",
+  "title": "AZ-303 Certification Guide",
+  "description": "Introduction",
+  "source": "@site/docs/CERTIFICATES/az_303_guide.md",
+  "sourceDirName": "CERTIFICATES",
+  "slug": "/CERTIFICATES/az_303_guide",
+  "permalink": "/docs/CERTIFICATES/az_303_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/az_303_guide.md",
+  "tags": [
+    {
+      "label": "Azure",
+      "permalink": "/docs/tags/azure"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "AZ-303 Certification Guide",
+    "sidebar_label": "AZ 303",
+    "tags": [
+      "Azure",
+      "Certification"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "AWS SAA",
+    "permalink": "/docs/CERTIFICATES/aws_saa_co2"
+  },
+  "next": {
+    "title": "AZ 304",
+    "permalink": "/docs/CERTIFICATES/az_304_guide"
+  }
+}

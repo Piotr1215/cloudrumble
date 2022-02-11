@@ -1,0 +1,44 @@
+{
+  "permalink": "/blog/the-fundamentals-of-microservices-oriented-architecture",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/the-fundamentals-of-microservices-oriented-architecture.md",
+  "source": "@site/blog/the-fundamentals-of-microservices-oriented-architecture.md",
+  "title": "The Fundamentals of Microservices Oriented Architecture",
+  "description": "The fundamentals of microservices-oriented architecture",
+  "date": "2020-01-19T18:08:44.000Z",
+  "formattedDate": "January 19, 2020",
+  "tags": [
+    {
+      "label": "architecture",
+      "permalink": "/blog/tags/architecture"
+    },
+    {
+      "label": "design",
+      "permalink": "/blog/tags/design"
+    }
+  ],
+  "readingTime": 6.215,
+  "truncated": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "The Fundamentals of Microservices Oriented Architecture",
+    "date": "2020-01-19T18:08:44.000Z",
+    "draft": false,
+    "tags": [
+      "architecture",
+      "design"
+    ],
+    "categories": [
+      "software architecture"
+    ],
+    "show_in_homepage": true,
+    "show_description": false
+  },
+  "prevItem": {
+    "title": "Portable Kubernetes Management With Kubectl in Docker Container",
+    "permalink": "/blog/portable-kubernetes-management-with-kubectl-in-docker-container"
+  },
+  "nextItem": {
+    "title": "Preparation and Resources for CKA Exam",
+    "permalink": "/blog/preparation-and-resources-for-CKA-exam"
+  }
+}

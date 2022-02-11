@@ -1,0 +1,23 @@
+{
+  "unversionedId": "FUNDAMENTALS/docker_intro",
+  "id": "FUNDAMENTALS/docker_intro",
+  "title": "A gentle introduction to Docker and containers",
+  "description": "Photo by frank mckenna on Unsplash",
+  "source": "@site/docs/FUNDAMENTALS/docker_intro.md",
+  "sourceDirName": "FUNDAMENTALS",
+  "slug": "/FUNDAMENTALS/docker_intro",
+  "permalink": "/docs/FUNDAMENTALS/docker_intro",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/docker_intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Containers",
+    "permalink": "/docs/FUNDAMENTALS/containers"
+  },
+  "next": {
+    "title": "Introduction to GitOps",
+    "permalink": "/docs/FUNDAMENTALS/gitops_intro"
+  }
+}

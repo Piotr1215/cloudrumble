@@ -1,0 +1,35 @@
+{
+  "unversionedId": "FUNDAMENTALS/fundamentals-intro",
+  "id": "FUNDAMENTALS/fundamentals-intro",
+  "title": "Fundamentals Intro",
+  "description": "",
+  "source": "@site/docs/FUNDAMENTALS/fundamentals-intro.md",
+  "sourceDirName": "FUNDAMENTALS",
+  "slug": "/FUNDAMENTALS/fundamentals-intro",
+  "permalink": "/docs/FUNDAMENTALS/fundamentals-intro",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/FUNDAMENTALS/fundamentals-intro.md",
+  "tags": [
+    {
+      "label": "tag1",
+      "permalink": "/docs/tags/tag-1"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "fundamentals-intro",
+    "title": "Fundamentals Intro",
+    "tags": [
+      "tag1",
+      "tag1"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "A gentle introduction to Docker and containers",
+    "permalink": "/docs/FUNDAMENTALS/docker_intro"
+  },
+  "next": {
+    "title": "Introduction to GitOps",
+    "permalink": "/docs/FUNDAMENTALS/gitops_intro"
+  }
+}

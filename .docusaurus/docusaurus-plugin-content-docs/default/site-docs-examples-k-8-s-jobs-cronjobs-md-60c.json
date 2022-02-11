@@ -1,0 +1,23 @@
+{
+  "unversionedId": "EXAMPLES/k8s-jobs-cronjobs",
+  "id": "EXAMPLES/k8s-jobs-cronjobs",
+  "title": "Kubernetes Jobs & CronJobs: batch processing <!--",
+  "description": "[!NOTE]",
+  "source": "@site/docs/EXAMPLES/k8s-jobs-cronjobs.md",
+  "sourceDirName": "EXAMPLES",
+  "slug": "/EXAMPLES/k8s-jobs-cronjobs",
+  "permalink": "/docs/EXAMPLES/k8s-jobs-cronjobs",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-jobs-cronjobs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Kubernetes Deployments: scaling, rollouts, rollbacks <!--",
+    "permalink": "/docs/EXAMPLES/k8s-deployments"
+  },
+  "next": {
+    "title": "Kubernetes Services: Exposing pods, communication <!--",
+    "permalink": "/docs/EXAMPLES/k8s-services"
+  }
+}

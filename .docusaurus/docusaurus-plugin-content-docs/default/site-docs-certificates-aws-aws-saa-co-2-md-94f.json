@@ -1,0 +1,39 @@
+{
+  "unversionedId": "CERTIFICATES/AWS/aws_saa_co2",
+  "id": "CERTIFICATES/AWS/aws_saa_co2",
+  "title": "AWS Certified Solutions Architect Associate",
+  "description": "Table of content",
+  "source": "@site/docs/CERTIFICATES/AWS/aws_saa_co2.md",
+  "sourceDirName": "CERTIFICATES/AWS",
+  "slug": "/CERTIFICATES/AWS/aws_saa_co2",
+  "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/AWS/aws_saa_co2.md",
+  "tags": [
+    {
+      "label": "AWS",
+      "permalink": "/docs/tags/aws"
+    },
+    {
+      "label": "Certificates",
+      "permalink": "/docs/tags/certificates"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "AWS Certified Solutions Architect Associate",
+    "sidebar_label": "AWS SAA",
+    "tags": [
+      "AWS",
+      "Certificates"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Kubernetes Introduction",
+    "permalink": "/docs/FUNDAMENTALS/kubernetes_intro"
+  },
+  "next": {
+    "title": "AZ 303",
+    "permalink": "/docs/CERTIFICATES/Azure/az_303_guide"
+  }
+}

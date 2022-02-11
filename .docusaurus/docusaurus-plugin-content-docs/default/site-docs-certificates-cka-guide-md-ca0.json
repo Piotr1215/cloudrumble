@@ -1,0 +1,39 @@
+{
+  "unversionedId": "CERTIFICATES/cka_guide",
+  "id": "CERTIFICATES/cka_guide",
+  "title": "CKA Certification Guide",
+  "description": "Introduction",
+  "source": "@site/docs/CERTIFICATES/cka_guide.md",
+  "sourceDirName": "CERTIFICATES",
+  "slug": "/CERTIFICATES/cka_guide",
+  "permalink": "/docs/CERTIFICATES/cka_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/cka_guide.md",
+  "tags": [
+    {
+      "label": "Kubernetes",
+      "permalink": "/docs/tags/kubernetes"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "CKA Certification Guide",
+    "sidebar_label": "CKA",
+    "tags": [
+      "Kubernetes",
+      "Certification"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "AZ 304",
+    "permalink": "/docs/CERTIFICATES/az_304_guide"
+  },
+  "next": {
+    "title": "CKAD",
+    "permalink": "/docs/CERTIFICATES/ckad_guide"
+  }
+}

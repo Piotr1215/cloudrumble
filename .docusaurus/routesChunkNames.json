@@ -1,0 +1,690 @@
+{
+  "/__docusaurus/debug-3d6": {
+    "component": "component---theme-debug-config-23-a-2ff"
+  },
+  "/__docusaurus/debug/config-914": {
+    "component": "component---theme-debug-config-23-a-2ff"
+  },
+  "/__docusaurus/debug/content-c28": {
+    "component": "component---theme-debug-contentba-8-ce7",
+    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+  },
+  "/__docusaurus/debug/globalData-3cf": {
+    "component": "component---theme-debug-global-dataede-0fa"
+  },
+  "/__docusaurus/debug/metadata-31b": {
+    "component": "component---theme-debug-site-metadata-68-e-3d4"
+  },
+  "/__docusaurus/debug/registry-0da": {
+    "component": "component---theme-debug-registry-679-501"
+  },
+  "/__docusaurus/debug/routes-244": {
+    "component": "component---theme-debug-routes-946-699"
+  },
+  "/blog-455": {
+    "component": "component---theme-blog-list-pagea-6-a-7ba",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-294-426"
+      },
+      {
+        "content": "content---blog-766-e3c"
+      },
+      {
+        "content": "content---blogeb-6-bed"
+      },
+      {
+        "content": "content---blog-781-ba5"
+      },
+      {
+        "content": "content---blog-9-c-8-f75"
+      },
+      {
+        "content": "content---blogf-4-f-cd7"
+      },
+      {
+        "content": "content---blog-84-f-da8"
+      },
+      {
+        "content": "content---blog-58-c-05f"
+      },
+      {
+        "content": "content---blogeb-4-78c"
+      },
+      {
+        "content": "content---blog-189-d10"
+      }
+    ],
+    "metadata": "metadata---blogb-2-b-df1"
+  },
+  "/blog/5-common-pitfalls-in-iac-9fd": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-5-common-pitfalls-in-iac-389-806"
+  },
+  "/blog/5-static-websites-deployment-options-da6": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-5-static-websites-deployment-optionsf-0-f-f21"
+  },
+  "/blog/5-unusual-docker-usecases-2f1": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-5-unusual-docker-usecases-059-7b5"
+  },
+  "/blog/8-tips-to-prepare-for-az-300-exam-411": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-8-tips-to-prepare-for-az-300-examae-2-998"
+  },
+  "/blog/8-tips-to-prepare-for-az-301-exam-56a": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-8-tips-to-prepare-for-az-301-examaa-1-e4f"
+  },
+  "/blog/a-gentle-introduction-to-docker-and-containers-d67": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-a-gentle-introduction-to-docker-and-containers-894-8c7"
+  },
+  "/blog/archive-f4c": {
+    "component": "component---theme-blog-archive-page-9-e-4-1d8",
+    "archive": "archive---blog-archiveb-2-f-393"
+  },
+  "/blog/cloud-native-developer-workflow-9a6": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-cloud-native-developer-workflow-053-5e5"
+  },
+  "/blog/expose-kubernetes-service-using-ngrok-6e8": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-expose-kubernetes-service-using-ngrok-124-939"
+  },
+  "/blog/gitops-with-kubernetes-a22": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-gitops-with-kubernetes-972-fa9"
+  },
+  "/blog/how-to-create-kubernetes-homelab-82b": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-how-to-create-kubernetes-homelabf-40-37b"
+  },
+  "/blog/how-to-good-sofware-documentatiion-6ec": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-how-to-good-sofware-documentatiionc-21-3ee"
+  },
+  "/blog/how-to-learn-devops-3df": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-how-to-learn-devops-1-a-0-ebf"
+  },
+  "/blog/intro-to-azure-ACI-472": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-intro-to-azure-ac-ia-8-b-dd1"
+  },
+  "/blog/mdx-blog-post-bee": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-mdx-blog-post-593-37b"
+  },
+  "/blog/page/2-cec": {
+    "component": "component---theme-blog-list-pagea-6-a-7ba",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-26-be-926"
+      },
+      {
+        "content": "content---blog-page-2076-d10"
+      },
+      {
+        "content": "content---blog-page-2-c-30-c04"
+      },
+      {
+        "content": "content---blog-page-24-b-0-4b0"
+      },
+      {
+        "content": "content---blog-page-2-d-21-ab9"
+      },
+      {
+        "content": "content---blog-page-2-a-72-637"
+      },
+      {
+        "content": "content---blog-page-2212-d49"
+      },
+      {
+        "content": "content---blog-page-26-da-d3b"
+      },
+      {
+        "content": "content---blog-page-21-d-9-a7a"
+      },
+      {
+        "content": "content---blog-page-2-f-61-6c8"
+      }
+    ],
+    "metadata": "metadata---blog-page-28-eb-625"
+  },
+  "/blog/page/3-c1c": {
+    "component": "component---theme-blog-list-pagea-6-a-7ba",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-31-dc-ab3"
+      }
+    ],
+    "metadata": "metadata---blog-page-3929-7ba"
+  },
+  "/blog/portable-kubernetes-management-with-kubectl-in-docker-container-ed0": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-portable-kubernetes-management-with-kubectl-in-docker-container-491-475"
+  },
+  "/blog/preparation-and-resources-for-CKA-exam-f0b": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-preparation-and-resources-for-cka-exam-7-fc-542"
+  },
+  "/blog/preparation-and-resources-for-CKAD-exam-f33": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-preparation-and-resources-for-ckad-examd-91-929"
+  },
+  "/blog/software-development-in-kubernetes-a-cookbook-cbe": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-software-development-in-kubernetes-a-cookbook-2-e-3-41b"
+  },
+  "/blog/tags-e13": {
+    "component": "component---theme-blog-tags-list-page-01-a-d0b",
+    "sidebar": "sidebar---blog-814-8ac",
+    "tags": "tags---blog-tagsa-70-da2"
+  },
+  "/blog/tags/architecture-b5f": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2-a-72-637"
+      }
+    ],
+    "metadata": "metadata---blog-tags-architecturec-80-7ae"
+  },
+  "/blog/tags/automation-216": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-189-d10"
+      }
+    ],
+    "metadata": "metadata---blog-tags-automation-4-bd-f7a"
+  },
+  "/blog/tags/azure-122": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-9-c-8-f75"
+      },
+      {
+        "content": "content---blog-page-26-da-d3b"
+      },
+      {
+        "content": "content---blog-page-21-d-9-a7a"
+      },
+      {
+        "content": "content---blog-page-2-f-61-6c8"
+      }
+    ],
+    "metadata": "metadata---blog-tags-azure-2-f-1-4e8"
+  },
+  "/blog/tags/certification-04a": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2212-d49"
+      },
+      {
+        "content": "content---blog-page-21-d-9-a7a"
+      },
+      {
+        "content": "content---blog-page-2-f-61-6c8"
+      },
+      {
+        "content": "content---blog-page-31-dc-ab3"
+      }
+    ],
+    "metadata": "metadata---blog-tags-certification-344-625"
+  },
+  "/blog/tags/cli-fc3": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2-d-21-ab9"
+      }
+    ],
+    "metadata": "metadata---blog-tags-clie-6-c-a61"
+  },
+  "/blog/tags/container-304": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-9-c-8-f75"
+      }
+    ],
+    "metadata": "metadata---blog-tags-container-9-f-4-77a"
+  },
+  "/blog/tags/containers-045": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-24-b-0-4b0"
+      }
+    ],
+    "metadata": "metadata---blog-tags-containers-0-e-4-dd4"
+  },
+  "/blog/tags/deployment-3ef": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2076-d10"
+      }
+    ],
+    "metadata": "metadata---blog-tags-deploymentcc-3-0a3"
+  },
+  "/blog/tags/design-53b": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2-a-72-637"
+      }
+    ],
+    "metadata": "metadata---blog-tags-designfdb-49c"
+  },
+  "/blog/tags/devops-905": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blogeb-4-78c"
+      },
+      {
+        "content": "content---blog-189-d10"
+      },
+      {
+        "content": "content---blog-page-2076-d10"
+      }
+    ],
+    "metadata": "metadata---blog-tags-devops-4-c-3-051"
+  },
+  "/blog/tags/docker-f93": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blogeb-6-bed"
+      },
+      {
+        "content": "content---blog-page-26-be-926"
+      },
+      {
+        "content": "content---blog-page-24-b-0-4b0"
+      },
+      {
+        "content": "content---blog-page-2-d-21-ab9"
+      }
+    ],
+    "metadata": "metadata---blog-tags-docker-859-ae4"
+  },
+  "/blog/tags/documentation-2c3": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-189-d10"
+      }
+    ],
+    "metadata": "metadata---blog-tags-documentation-38-f-bce"
+  },
+  "/blog/tags/docusaurus-075": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      },
+      {
+        "content": "content---blogf-4-f-cd7"
+      }
+    ],
+    "metadata": "metadata---blog-tags-docusaurusa-80-728"
+  },
+  "/blog/tags/facebook-ede": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      }
+    ],
+    "metadata": "metadata---blog-tags-facebook-031-c52"
+  },
+  "/blog/tags/gitops-0c9": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-84-f-da8"
+      }
+    ],
+    "metadata": "metadata---blog-tags-gitops-507-fba"
+  },
+  "/blog/tags/guide-217": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-294-426"
+      }
+    ],
+    "metadata": "metadata---blog-tags-guide-50-a-8ef"
+  },
+  "/blog/tags/hello-51f": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      }
+    ],
+    "metadata": "metadata---blog-tags-hello-30-a-bed"
+  },
+  "/blog/tags/homelab-ed3": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-58-c-05f"
+      }
+    ],
+    "metadata": "metadata---blog-tags-homelabca-2-453"
+  },
+  "/blog/tags/iac-23d": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-781-ba5"
+      }
+    ],
+    "metadata": "metadata---blog-tags-iacb-2-e-a52"
+  },
+  "/blog/tags/kubernetes-fdb": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-294-426"
+      },
+      {
+        "content": "content---blog-84-f-da8"
+      },
+      {
+        "content": "content---blog-58-c-05f"
+      },
+      {
+        "content": "content---blog-page-26-be-926"
+      },
+      {
+        "content": "content---blog-page-2-c-30-c04"
+      },
+      {
+        "content": "content---blog-page-2-d-21-ab9"
+      },
+      {
+        "content": "content---blog-page-2212-d49"
+      },
+      {
+        "content": "content---blog-page-26-da-d3b"
+      },
+      {
+        "content": "content---blog-page-31-dc-ab3"
+      }
+    ],
+    "metadata": "metadata---blog-tags-kubernetesb-0-f-750"
+  },
+  "/blog/tags/learning-767": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blogeb-4-78c"
+      }
+    ],
+    "metadata": "metadata---blog-tags-learning-9-a-7-b79"
+  },
+  "/blog/tags/linux-6bf": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blogeb-6-bed"
+      }
+    ],
+    "metadata": "metadata---blog-tags-linuxdd-5-032"
+  },
+  "/blog/tags/ngrok-dba": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2-c-30-c04"
+      }
+    ],
+    "metadata": "metadata---blog-tags-ngrokf-11-ec4"
+  },
+  "/blog/tags/terraform-ea7": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-781-ba5"
+      }
+    ],
+    "metadata": "metadata---blog-tags-terraform-1-c-7-bc9"
+  },
+  "/blog/the-fundamentals-of-microservices-oriented-architecture-28a": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-the-fundamentals-of-microservices-oriented-architecture-347-7d2"
+  },
+  "/blog/try-kubernetes-in-cloud-for-free-3f0": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-try-kubernetes-in-cloud-for-free-5-ce-344"
+  },
+  "/blog/welcome-bfa": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-welcomed-9-f-ffb"
+  },
+  "/docs/tags-0cc": {
+    "component": "component---theme-doc-tags-list-page-372-89e",
+    "tags": "tags---docs-tags-559-5e5"
+  },
+  "/docs/tags/aws-856": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-aws-762-9c1"
+  },
+  "/docs/tags/azure-dc9": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-azure-81-e-386"
+  },
+  "/docs/tags/certificates-d1a": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-certificates-2-c-3-8e5"
+  },
+  "/docs/tags/certification-7eb": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-certification-9-ae-d36"
+  },
+  "/docs/tags/docker-8ce": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-docker-036-383"
+  },
+  "/docs/tags/faq-3c2": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-faq-35-a-d80"
+  },
+  "/docs/tags/gcp-79f": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-gcp-77-c-483"
+  },
+  "/docs/tags/info-e9d": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-infof-57-d2e"
+  },
+  "/docs/tags/intro-b42": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-intro-516-4cb"
+  },
+  "/docs/tags/kubernetes-fbb": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-kubernetes-796-cf8"
+  },
+  "/docs/tags/links-33c": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-links-749-8e9"
+  },
+  "/docs/tags/terraform-cc4": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-terraform-230-db5"
+  },
+  "/docs/tags/ubernetes-2f7": {
+    "component": "component---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-ubernetes-6-a-7-f08"
+  },
+  "/impressum-e2a": {
+    "component": "component---theme-mdx-page-1-f-3-b90",
+    "content": "content---impressum-930-0d4"
+  },
+  "/markdown-page-be1": {
+    "component": "component---theme-mdx-page-1-f-3-b90",
+    "content": "content---markdown-page-393-028"
+  },
+  "/docs-63c": {
+    "component": "component---theme-doc-page-1-be-9be",
+    "versionMetadata": "versionMetadata---docs-935-398"
+  },
+  "/docs/CERTIFICATES/AWS/aws_saa_co2-0c7": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-aws-aws-saa-co-294-f-0d8"
+  },
+  "/docs/CERTIFICATES/Azure/az_303_guide-3d7": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-azure-az-303-guideb-9-b-423"
+  },
+  "/docs/CERTIFICATES/Azure/az_304_guide-c2c": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-azure-az-304-guide-732-eea"
+  },
+  "/docs/CERTIFICATES/Docker/dca_guide-939": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-docker-dca-guidecd-2-d45"
+  },
+  "/docs/CERTIFICATES/GCP/gcp_pca-18a": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-gcp-gcp-pcaa-89-530"
+  },
+  "/docs/CERTIFICATES/Hashicorp/terraform-8ee": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-hashicorp-terraform-8-f-9-420"
+  },
+  "/docs/CERTIFICATES/Kubernetes/cka_guide-20a": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-kubernetes-cka-guide-338-1ad"
+  },
+  "/docs/CERTIFICATES/Kubernetes/ckad_guide-fb6": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-kubernetes-ckad-guidea-1-a-bc3"
+  },
+  "/docs/CERTIFICATES/Kubernetes/cks_guide-782": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-certificates-kubernetes-cks-guided-6-d-726"
+  },
+  "/docs/EXAMPLES/-c8e": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-examples-643-797"
+  },
+  "/docs/EXAMPLES/k8s-configuration-cdc": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-examples-k-8-s-configuration-759-515"
+  },
+  "/docs/EXAMPLES/k8s-deployments-b8a": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-examples-k-8-s-deployments-10-e-403"
+  },
+  "/docs/EXAMPLES/k8s-jobs-cronjobs-ec7": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-examples-k-8-s-jobs-cronjobs-60-c-433"
+  },
+  "/docs/EXAMPLES/k8s-services-c2e": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-examples-k-8-s-servicesb-1-f-d50"
+  },
+  "/docs/EXAMPLES/k8s-storage-pv-pvc-f74": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-examples-k-8-s-storage-pv-pvc-72-b-409"
+  },
+  "/docs/faq-e60": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-faq-048-db5"
+  },
+  "/docs/FUNDAMENTALS/containers-41e": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-containers-38-d-9e6"
+  },
+  "/docs/FUNDAMENTALS/docker_intro-9b0": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-docker-intro-0-be-99b"
+  },
+  "/docs/FUNDAMENTALS/gitops_intro-082": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-gitops-intro-095-ddd"
+  },
+  "/docs/FUNDAMENTALS/kubernetes-4b2": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-kubernetes-6-ba-666"
+  },
+  "/docs/FUNDAMENTALS/kubernetes_intro-0b2": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-kubernetes-intro-16-f-a23"
+  },
+  "/docs/intro-194": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-intro-0-e-3-be1"
+  },
+  "/docs/resources-5c1": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-resourcesd-92-d12"
+  },
+  "/docs/tacos-c8a": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-tacosf-52-4a4"
+  },
+  "/-deb": {
+    "component": "component---site-src-pages-index-jsc-4-f-f99",
+    "config": "config---5-e-9-4f3"
+  }
+}
