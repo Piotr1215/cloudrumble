@@ -34,8 +34,8 @@
     "show_description": false
   },
   "prevItem": {
-    "title": "MDX Blog Post",
-    "permalink": "/blog/mdx-blog-post"
+    "title": "Intro to Azure ACI",
+    "permalink": "/blog/intro-to-azure-ACI"
   },
   "nextItem": {
     "title": "How to Create Kubernetes Homelab",

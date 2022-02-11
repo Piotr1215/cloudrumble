@@ -2,10 +2,10 @@
   "permalink": "/blog/page/2",
   "page": 2,
   "postsPerPage": 10,
-  "totalPages": 3,
-  "totalCount": 21,
+  "totalPages": 2,
+  "totalCount": 19,
   "previousPage": "/blog",
-  "nextPage": "/blog/page/3",
+  "nextPage": null,
   "blogDescription": "Blog",
   "blogTitle": "Blog"
 }

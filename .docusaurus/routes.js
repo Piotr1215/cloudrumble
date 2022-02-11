@@ -40,7 +40,7 @@ export default [
   },
   {
     path: '/blog',
-    component: ComponentCreator('/blog','455'),
+    component: ComponentCreator('/blog','565'),
     exact: true
   },
   {
@@ -114,18 +114,8 @@ export default [
     exact: true
   },
   {
-    path: '/blog/mdx-blog-post',
-    component: ComponentCreator('/blog/mdx-blog-post','bee'),
-    exact: true
-  },
-  {
     path: '/blog/page/2',
-    component: ComponentCreator('/blog/page/2','cec'),
-    exact: true
-  },
-  {
-    path: '/blog/page/3',
-    component: ComponentCreator('/blog/page/3','c1c'),
+    component: ComponentCreator('/blog/page/2','639'),
     exact: true
   },
   {
@@ -214,16 +204,6 @@ export default [
     exact: true
   },
   {
-    path: '/blog/tags/docusaurus',
-    component: ComponentCreator('/blog/tags/docusaurus','075'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/facebook',
-    component: ComponentCreator('/blog/tags/facebook','ede'),
-    exact: true
-  },
-  {
     path: '/blog/tags/gitops',
     component: ComponentCreator('/blog/tags/gitops','0c9'),
     exact: true
@@ -231,11 +211,6 @@ export default [
   {
     path: '/blog/tags/guide',
     component: ComponentCreator('/blog/tags/guide','217'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/hello',
-    component: ComponentCreator('/blog/tags/hello','51f'),
     exact: true
   },
   {
@@ -281,11 +256,6 @@ export default [
   {
     path: '/blog/try-kubernetes-in-cloud-for-free',
     component: ComponentCreator('/blog/try-kubernetes-in-cloud-for-free','3f0'),
-    exact: true
-  },
-  {
-    path: '/blog/welcome',
-    component: ComponentCreator('/blog/welcome','bfa'),
     exact: true
   },
   {

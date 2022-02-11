@@ -21,15 +21,12 @@
   "/__docusaurus/debug/routes-244": {
     "component": "component---theme-debug-routes-946-699"
   },
-  "/blog-455": {
+  "/blog-565": {
     "component": "component---theme-blog-list-pagea-6-a-7ba",
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
         "content": "content---blog-294-426"
-      },
-      {
-        "content": "content---blog-766-e3c"
       },
       {
         "content": "content---blogeb-6-bed"
@@ -39,9 +36,6 @@
       },
       {
         "content": "content---blog-9-c-8-f75"
-      },
-      {
-        "content": "content---blogf-4-f-cd7"
       },
       {
         "content": "content---blog-84-f-da8"
@@ -54,6 +48,12 @@
       },
       {
         "content": "content---blog-189-d10"
+      },
+      {
+        "content": "content---blog-6-be-ae9"
+      },
+      {
+        "content": "content---blog-076-6ee"
       }
     ],
     "metadata": "metadata---blogb-2-b-df1"
@@ -127,21 +127,10 @@
     "sidebar": "sidebar---blog-814-8ac",
     "content": "content---blog-intro-to-azure-ac-ia-8-b-dd1"
   },
-  "/blog/mdx-blog-post-bee": {
-    "component": "component---theme-blog-post-pageccc-cab",
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-mdx-blog-post-593-37b"
-  },
-  "/blog/page/2-cec": {
+  "/blog/page/2-639": {
     "component": "component---theme-blog-list-pagea-6-a-7ba",
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
-      {
-        "content": "content---blog-page-26-be-926"
-      },
-      {
-        "content": "content---blog-page-2076-d10"
-      },
       {
         "content": "content---blog-page-2-c-30-c04"
       },
@@ -165,19 +154,12 @@
       },
       {
         "content": "content---blog-page-2-f-61-6c8"
+      },
+      {
+        "content": "content---blog-page-21-dc-268"
       }
     ],
     "metadata": "metadata---blog-page-28-eb-625"
-  },
-  "/blog/page/3-c1c": {
-    "component": "component---theme-blog-list-pagea-6-a-7ba",
-    "sidebar": "sidebar---blog-814-8ac",
-    "items": [
-      {
-        "content": "content---blog-page-31-dc-ab3"
-      }
-    ],
-    "metadata": "metadata---blog-page-3929-7ba"
   },
   "/blog/portable-kubernetes-management-with-kubectl-in-docker-container-ed0": {
     "component": "component---theme-blog-post-pageccc-cab",
@@ -257,7 +239,7 @@
         "content": "content---blog-page-2-f-61-6c8"
       },
       {
-        "content": "content---blog-page-31-dc-ab3"
+        "content": "content---blog-page-21-dc-268"
       }
     ],
     "metadata": "metadata---blog-tags-certification-344-625"
@@ -297,7 +279,7 @@
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blog-page-2076-d10"
+        "content": "content---blog-076-6ee"
       }
     ],
     "metadata": "metadata---blog-tags-deploymentcc-3-0a3"
@@ -323,7 +305,7 @@
         "content": "content---blog-189-d10"
       },
       {
-        "content": "content---blog-page-2076-d10"
+        "content": "content---blog-076-6ee"
       }
     ],
     "metadata": "metadata---blog-tags-devops-4-c-3-051"
@@ -336,7 +318,7 @@
         "content": "content---blogeb-6-bed"
       },
       {
-        "content": "content---blog-page-26-be-926"
+        "content": "content---blog-6-be-ae9"
       },
       {
         "content": "content---blog-page-24-b-0-4b0"
@@ -357,29 +339,6 @@
     ],
     "metadata": "metadata---blog-tags-documentation-38-f-bce"
   },
-  "/blog/tags/docusaurus-075": {
-    "component": "component---theme-blog-tags-posts-page-687-b6c",
-    "sidebar": "sidebar---blog-814-8ac",
-    "items": [
-      {
-        "content": "content---blog-766-e3c"
-      },
-      {
-        "content": "content---blogf-4-f-cd7"
-      }
-    ],
-    "metadata": "metadata---blog-tags-docusaurusa-80-728"
-  },
-  "/blog/tags/facebook-ede": {
-    "component": "component---theme-blog-tags-posts-page-687-b6c",
-    "sidebar": "sidebar---blog-814-8ac",
-    "items": [
-      {
-        "content": "content---blog-766-e3c"
-      }
-    ],
-    "metadata": "metadata---blog-tags-facebook-031-c52"
-  },
   "/blog/tags/gitops-0c9": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
     "sidebar": "sidebar---blog-814-8ac",
@@ -399,16 +358,6 @@
       }
     ],
     "metadata": "metadata---blog-tags-guide-50-a-8ef"
-  },
-  "/blog/tags/hello-51f": {
-    "component": "component---theme-blog-tags-posts-page-687-b6c",
-    "sidebar": "sidebar---blog-814-8ac",
-    "items": [
-      {
-        "content": "content---blog-766-e3c"
-      }
-    ],
-    "metadata": "metadata---blog-tags-hello-30-a-bed"
   },
   "/blog/tags/homelab-ed3": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
@@ -444,7 +393,7 @@
         "content": "content---blog-58-c-05f"
       },
       {
-        "content": "content---blog-page-26-be-926"
+        "content": "content---blog-6-be-ae9"
       },
       {
         "content": "content---blog-page-2-c-30-c04"
@@ -459,7 +408,7 @@
         "content": "content---blog-page-26-da-d3b"
       },
       {
-        "content": "content---blog-page-31-dc-ab3"
+        "content": "content---blog-page-21-dc-268"
       }
     ],
     "metadata": "metadata---blog-tags-kubernetesb-0-f-750"
@@ -513,11 +462,6 @@
     "component": "component---theme-blog-post-pageccc-cab",
     "sidebar": "sidebar---blog-814-8ac",
     "content": "content---blog-try-kubernetes-in-cloud-for-free-5-ce-344"
-  },
-  "/blog/welcome-bfa": {
-    "component": "component---theme-blog-post-pageccc-cab",
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-welcomed-9-f-ffb"
   },
   "/docs/tags-0cc": {
     "component": "component---theme-doc-tags-list-page-372-89e",

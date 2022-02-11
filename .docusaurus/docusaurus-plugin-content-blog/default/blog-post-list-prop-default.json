@@ -6,10 +6,6 @@
       "permalink": "/blog/software-development-in-kubernetes-a-cookbook"
     },
     {
-      "title": "Welcome",
-      "permalink": "/blog/welcome"
-    },
-    {
       "title": "5 Unusual Docker Usecases",
       "permalink": "/blog/5-unusual-docker-usecases"
     },
@@ -20,10 +16,6 @@
     {
       "title": "Intro to Azure ACI",
       "permalink": "/blog/intro-to-azure-ACI"
-    },
-    {
-      "title": "MDX Blog Post",
-      "permalink": "/blog/mdx-blog-post"
     },
     {
       "title": "Gitops With Kubernetes",

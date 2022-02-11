@@ -34,8 +34,8 @@
     "show_description": false
   },
   "prevItem": {
-    "title": "Welcome",
-    "permalink": "/blog/welcome"
+    "title": "Software Development in Kubernetes a Cookbook",
+    "permalink": "/blog/software-development-in-kubernetes-a-cookbook"
   },
   "nextItem": {
     "title": "5 Common Pitfalls in Iac",
