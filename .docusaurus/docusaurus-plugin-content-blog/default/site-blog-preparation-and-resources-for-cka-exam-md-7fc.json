@@ -16,22 +16,16 @@
       "permalink": "/blog/tags/certification"
     }
   ],
-  "readingTime": 3.44,
-  "truncated": false,
+  "readingTime": 3.445,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "Preparation and Resources for CKA Exam",
     "date": "2020-01-12T18:07:14.000Z",
-    "draft": false,
     "tags": [
       "kubernetes",
       "certification"
-    ],
-    "categories": [
-      "certification"
-    ],
-    "show_in_homepage": true,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "The Fundamentals of Microservices Oriented Architecture",

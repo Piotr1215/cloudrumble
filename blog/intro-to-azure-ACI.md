@@ -1,11 +1,7 @@
 ---
 title: "Intro to Azure ACI"
 date: 2021-08-01T21:02:39+02:00
-draft: false
 tags: ['azure', 'container']
-categories: ['learning', 'azure']
-show_in_homepage: false
-show_description: false
 ---
 
 ![Photo by [Christopher Gower](https://unsplash.com/@cgower?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/desktop?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/7764/1*h4TLlisFk7XvtREAsS7C7Q.jpeg)
@@ -15,6 +11,8 @@ show_description: false
 ## Introduction
 
 Containers are now a mature solution providing an additional level of infrastructure abstraction. In many cases, containers can replace workloads traditionally powered by virtual machines.
+
+<!--truncate-->
 
 In this blog, we are going to look at [Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/) and showcase how fast and easy it is to deploy containers directly from your docker CLI to Azure.
 
@@ -38,7 +36,7 @@ Azure Container Instances is a compute offering that bridges the gap between lig
 
 ACI is best suited for containerized workloads that can operate in isolation, simple apps, batch jobs including data science models, all kinds of tasks automation and integration scenarios.
 
-* **Fast startup: **Launch containers in seconds.
+* **Fast startup:**Launch containers in seconds.
 
 * **Per second billing:** Incur costs only while the container is running.
 
@@ -53,10 +51,10 @@ ACI is best suited for containerized workloads that can operate in isolation, si
 ## Workflow
 
 We are going to deploy a sample web page. The idea is that with docker CLI and ACI we can rapidly prototype, test and deploy directly from docker command line!
->  *Important node: this flow is only for testing purposes, in real code scenario you would have CI/CD pipeline deploying your app for you.*
+> *Important node: this flow is only for testing purposes, in real code scenario you would have CI/CD pipeline deploying your app for you.*
 
 We are going to use bash, but the same is of course possible with powershell.
->  *Docker CLI contains now build-in integration with Azure Container Instances through a **context **command. When using Azure CLI, you cat activate **Azure Interactive **by typing az interactive. This is an experimental feature of Azure CLI which gives you parameters completion and more!*
+> *Docker CLI contains now build-in integration with Azure Container Instances through a **context **command. When using Azure CLI, you cat activate **Azure Interactive **by typing az interactive. This is an experimental feature of Azure CLI which gives you parameters completion and more!*
 
 First let’s setup variables and authenticate with Azure using docker CLI
 
@@ -65,7 +63,8 @@ First let’s setup variables and authenticate with Azure using docker CLI
 * Finally let’s login to Azure docker login azure --tenant-id $TENANT. You will be prompted to login via AD or paste authentication code.
 
 * Create context docker context create aci azure-context
->  *This command is interactive and will prompt you to select **subscription, resource group (create or select existing one) and location**. Make sure to note resource group name if you create a new one, so later it’s easy to cleanup resources.*
+
+> *This command is interactive and will prompt you to select **subscription, resource group (create or select existing one) and location**. Make sure to note resource group name if you create a new one, so later it’s easy to cleanup resources.*
 
 Now let’s deploy a test container!
 

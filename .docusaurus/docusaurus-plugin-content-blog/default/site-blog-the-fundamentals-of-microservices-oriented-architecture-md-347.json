@@ -17,21 +17,15 @@
     }
   ],
   "readingTime": 6.215,
-  "truncated": false,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "The Fundamentals of Microservices Oriented Architecture",
     "date": "2020-01-19T18:08:44.000Z",
-    "draft": false,
     "tags": [
       "architecture",
       "design"
-    ],
-    "categories": [
-      "software architecture"
-    ],
-    "show_in_homepage": true,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "Portable Kubernetes Management With Kubectl in Docker Container",

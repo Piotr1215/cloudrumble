@@ -16,22 +16,16 @@
       "permalink": "/blog/tags/certification"
     }
   ],
-  "readingTime": 2.94,
-  "truncated": false,
+  "readingTime": 2.945,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "Preparation and Resources for CKAD Exam",
     "date": "2019-11-22T18:07:14.000Z",
-    "draft": false,
     "tags": [
       "kubernetes",
       "certification"
-    ],
-    "categories": [
-      "certification"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "8 Tips to Prepare for Az 300 Exam",

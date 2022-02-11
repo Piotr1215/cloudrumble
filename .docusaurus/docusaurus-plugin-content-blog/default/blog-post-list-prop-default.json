@@ -2,12 +2,12 @@
   "title": "All posts",
   "items": [
     {
-      "title": "Software Development in Kubernetes a Cookbook",
+      "title": "Kubernetes Cookbook",
       "permalink": "/blog/software-development-in-kubernetes-a-cookbook"
     },
     {
       "title": "5 Unusual Docker Usecases",
-      "permalink": "/blog/5-unusual-docker-usecases"
+      "permalink": "/blog/2021/08/02/5-unusual-docker-usecases"
     },
     {
       "title": "5 Common Pitfalls in Iac",
@@ -46,7 +46,7 @@
       "permalink": "/blog/expose-kubernetes-service-using-ngrok"
     },
     {
-      "title": "A Gentle Introduction to Docker and Containers",
+      "title": "Introduction to Docker",
       "permalink": "/blog/a-gentle-introduction-to-docker-and-containers"
     },
     {

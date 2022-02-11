@@ -25,6 +25,7 @@ export default {
           "showReadingTime": true,
           "blogSidebarTitle": "All posts",
           "blogSidebarCount": "ALL",
+          "postsPerPage": 10,
           "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs"
         },
         "theme": {

@@ -16,29 +16,23 @@
       "permalink": "/blog/tags/ngrok"
     }
   ],
-  "readingTime": 3.51,
-  "truncated": false,
+  "readingTime": 3.515,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "Expose Kubernetes Service Using Ngrok",
     "date": "2020-02-08T19:00:45.000Z",
-    "draft": false,
     "tags": [
       "kubernetes",
       "ngrok"
-    ],
-    "categories": [
-      "learning"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "5 Static Websites Deployment Options",
     "permalink": "/blog/5-static-websites-deployment-options"
   },
   "nextItem": {
-    "title": "A Gentle Introduction to Docker and Containers",
+    "title": "Introduction to Docker",
     "permalink": "/blog/a-gentle-introduction-to-docker-and-containers"
   }
 }

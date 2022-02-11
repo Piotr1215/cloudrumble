@@ -1,11 +1,7 @@
 ---
 title: "How to Create Kubernetes Homelab"
 date: 2021-06-04T15:24:24+02:00
-draft: false
 tags: ['kubernetes', 'homelab']
-categories: ['homelab']
-show_in_homepage: false
-show_description: false
 ---
 
 ![Photo by [Clay Banks](https://unsplash.com/@claybanks?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/5600/1*GQqxnCRzFQ9hr6ZiZCki0Q.jpeg)
@@ -15,6 +11,8 @@ show_description: false
 ### Introduction
 
 I’ve recently “discovered” and old laptop forgotten somewhere in the depths of my basement and decided to create a mini home lab with it where I could play around with Kubernetes.
+
+<!--truncate-->
 
 Here are the specs:
 

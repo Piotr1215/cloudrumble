@@ -16,22 +16,16 @@
       "permalink": "/blog/tags/gitops"
     }
   ],
-  "readingTime": 4.63,
-  "truncated": false,
+  "readingTime": 4.635,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "Gitops With Kubernetes",
     "date": "2021-07-14T13:29:15.000Z",
-    "draft": false,
     "tags": [
       "kubernetes",
       "gitops"
-    ],
-    "categories": [
-      "gitops"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "Intro to Azure ACI",

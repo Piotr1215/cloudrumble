@@ -1,11 +1,7 @@
 ---
 title: "Cloud Native Developer Workflow"
 date: 2020-11-09T21:01:56+02:00
-draft: false
 tags: ['docker', 'kubernetes']
-categories: ['software development']
-show_in_homepage: false
-show_description: false
 ---
 
 ![Photo by [Hack Capital](https://unsplash.com/@hackcapital?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/software?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/10944/1*vJY3xQeFfVqL1UNlqQVVzg.jpeg)
@@ -17,6 +13,8 @@ show_description: false
 ### Introduction
 
 Software development tooling and processes have evolved rapidly in last decade to meet growing needs of developers. On top of mastering, often a few, programing languages and paradigms, software developers must learn to navigate increasingly complex landscape of tools and processes.
+
+<!--truncate-->
 
 My motivation for writing this blog was an introduction to a concept of software development in the Cloud Native ecosystem. I’m going to be focusing more in depth on software development for containerized workloads orchestrated by Kubernetes.
 

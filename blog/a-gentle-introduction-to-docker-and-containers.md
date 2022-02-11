@@ -1,13 +1,11 @@
 ---
-title: "A Gentle Introduction to Docker and Containers"
+title: "Introduction to Docker"
 date: 2020-02-06T20:57:35+02:00
-draft: true
 tags: ['docker', 'containers']
-categories: ['learning']
-show_in_homepage: false
-show_description: false
 ---
 Continue reading if you are interested in learning about Docker architecture and how containers work.
+
+<!--truncate-->
 
 ## Docker Architecture
 

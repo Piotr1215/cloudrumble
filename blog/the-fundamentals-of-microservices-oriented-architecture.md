@@ -1,11 +1,7 @@
 ---
 title: "The Fundamentals of Microservices Oriented Architecture"
 date: 2020-01-19T20:08:44+02:00
-draft: false
 tags: ['architecture', 'design']
-categories: ['software architecture']
-show_in_homepage: true
-show_description: false
 ---
 ## The fundamentals of microservices-oriented architecture
 
@@ -13,15 +9,17 @@ show_description: false
 
 Microservices architecture has gained popularity in recent years; and for a good reason: implemented correctly, microservices can bring numerous advantages that are particularly important in our modern, cloud computing era.
 
+<!--truncate-->
+
 In this blog we focus on a few important architecture foundations that underpin microservices-oriented architecture. A deep understanding of these underlying principles can help create better software architectures that are resilient, extensible, well-aging and, of course, microservices-oriented.
 
 ### Consider the fallacies of Distributed Computing
 
 [Distributed computing](https://en.wikipedia.org/wiki/Distributed_computing) is not a new concept; in fact internet itself is a huge distributed computing system. Microservices by definition fall under the category of a Distributed System.
->  **The appeal of distributed computing lies in the ability to harness the power of multiple, often parallel compute resources and take advantage of modern cloud computing offerings to enable almost unlimited scaling.**
+> **The appeal of distributed computing lies in the ability to harness the power of multiple, often parallel compute resources and take advantage of modern cloud computing offerings to enable almost unlimited scaling.**
 
 Yet distributed systems, by nature, function in an unpredictable environment where a lot of things can go wrong. A very common pitfall is to treat distributed computing systems with the same degree of trust we have for local, non-distributed environments.
->  **The [Fallacies of Distributed Computing](https://medium.com/baseds/foraging-for-the-fallacies-of-distributed-computing-part-1-1b35c3b85b53) help us understand the most common false assumptions we tend to make about distributed systems.**
+> **The [Fallacies of Distributed Computing](https://medium.com/baseds/foraging-for-the-fallacies-of-distributed-computing-part-1-1b35c3b85b53) help us understand the most common false assumptions we tend to make about distributed systems.**
 
 The below list would be true in an ideal world, but in our imperfect reality making these assumptions can prove dangerous:
 
@@ -51,8 +49,8 @@ Microservices often benefit from asynchronous communication via:
 
 * asynchronous calls over HTTP, TCP, with most popular being REST API model and gRPC calls.
 
-[Promise Theory](https://www.youtube.com/watch?v=2TPsB5WuZgk)’s main contribution to microservices architecture is the ability to move away from the *obligations concept *of communication — in which both sender and receiver are dependent on each other and must be active during the process of communication — towards the *promises concept*.
->  **Promises concept postulates autonomy and independence of the systems and services collaborating with each other as part of a distributed system.**
+[Promise Theory](https://www.youtube.com/watch?v=2TPsB5WuZgk)’s main contribution to microservices architecture is the ability to move away from the *obligations concept*of communication — in which both sender and receiver are dependent on each other and must be active during the process of communication — towards the *promises concept*.
+> **Promises concept postulates autonomy and independence of the systems and services collaborating with each other as part of a distributed system.**
 
 ### Actor Model
 
@@ -67,12 +65,12 @@ An actor is a computational entity that, in response to a message it receives, c
 * designate the behavior to be used for the next message it receives.
 
 The actor model is also a method of describing interactions between autonomous actors in a distributed system. This pattern allows for fault tolerance and resiliency by embracing the uncertainty of autonomy (actor A cannot compel actor B). Promise Theory introduced the concept of autonomy of communication participants.
->  **The Actor model helps us understand how to address challenges around concurrency, state management and consistency.**
+> **The Actor model helps us understand how to address challenges around concurrency, state management and consistency.**
 
 ### Event Driven Architecture
 
 [Event Driven Architecture](https://microservices.io/patterns/data/event-driven-architecture.html) further promotes asynchronous and decoupled communication by introducing the concept of “event” or, simply put, an important change of state.
->  **Microservices collaborating with each other can react to an event in their own time and fully autonomously**.
+> **Microservices collaborating with each other can react to an event in their own time and fully autonomously**.
 
 It brings to the table a deeper understanding of the dynamic nature of data exchange and the influence it has on the architecture.
 
@@ -87,12 +85,13 @@ The [CAP Theorem](https://www.ibm.com/cloud/learn/cap-theorem) states that in a 
 * Availability: Each client can read and write the data at any point in time
 
 * Partition tolerance: Physical data partitioning does not affect the functionality of the system
->  **Having the CAP Theorem in mind helps us choose the best combination based on requirements and use cases.**
+
+> **Having the CAP Theorem in mind helps us choose the best combination based on requirements and use cases.**
 
 ### UNIX Philosophy
 
 Great software architectures are often judged by how well they age. One of the oldest architectures and still very relevant to this day is the [Unix Philosophy](https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch01s06.html).
->  **Core idea of UNIX Philosophy is that every program should do one thing well and collaborate with other programs through well-defined interfaces.**
+> **Core idea of UNIX Philosophy is that every program should do one thing well and collaborate with other programs through well-defined interfaces.**
 
 UNIX Philosophy guidelines are nicely summarized by Peter H. Salus. in *A Quarter-Century of Unix*:
 
@@ -125,7 +124,8 @@ The [Twelve-Factor App Methodology](https://12factor.net/) is a very useful set 
 * Logs: Treat logs as event streams
 
 * Admin processes: Run admin/management tasks as one-off processes
->  **The 12-Factor App Methodology helps us design software and supporting DevOps processes in a manner consistent with modern microservices-based architecture.**
+
+> **The 12-Factor App Methodology helps us design software and supporting DevOps processes in a manner consistent with modern microservices-based architecture.**
 
 ### Putting it all together
 
@@ -146,3 +146,4 @@ The architecture of microservices-based distributed systems is a complex task in
 The goal was to expose aspiring software architects to theoretical foundations of microservices-based systems and maybe give some food for thought to more experienced architects. In my opinion, it is worth the effort to familiarize yourself with these theories and know when to apply which.
 
 You can find me on [GitHub](https://github.com/Piotr1215?tab=repositories) or leave a comment in the responses section. I would love to hear about your experiences with designing microservices-based architectures and what helped you make your architecture great.
+

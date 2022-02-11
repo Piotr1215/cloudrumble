@@ -16,22 +16,16 @@
       "permalink": "/blog/tags/kubernetes"
     }
   ],
-  "readingTime": 6.61,
-  "truncated": false,
+  "readingTime": 6.615,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "Cloud Native Developer Workflow",
     "date": "2020-11-09T19:01:56.000Z",
-    "draft": false,
     "tags": [
       "docker",
       "kubernetes"
-    ],
-    "categories": [
-      "software development"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "How to Good Sofware Documentatiion",

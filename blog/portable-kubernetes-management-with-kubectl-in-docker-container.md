@@ -1,11 +1,7 @@
 ---
 title: "Portable Kubernetes Management With Kubectl in Docker Container"
 date: 2020-01-25T20:11:05+02:00
-draft: false
 tags: ['kubernetes', 'docker', 'CLI']
-categories: ['kubernetes']
-show_in_homepage: true
-show_description: false
 ---
 
 ![Image by [Julius Silver](https://pixabay.com/users/Julius_Silver-4371822/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3021820) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3021820)](https://cdn-images-1.medium.com/max/3840/1*FpbN0Vh5rTCtJnj-cBAs1g.jpeg)
@@ -13,6 +9,8 @@ show_description: false
 ## Portable Kubernetes management with kubectl in Docker container
 
 Saying that Kubernetes is becoming mainstream would be an understatement. In fact, it has influenced how modern distributed systems are designed and operated. By abstracting away infrastructure concerns we are able to leverage Kubernetes as a “platform to build platforms” or “cloud operating system” with lots of obvious benefits, but also development and operational challenges.
+
+<!--truncate-->
 
 A whole ecosystem around Kubernetes is blooming and nowadays there are plenty of amazing tools and projects from the open source community, some of them under CNCF umbrella and some designed by enthusiasts or companies of various sizes and influence. Suffice to say, there is a lot going on and it’s harder to keep pace with this ever-changing landscape.
 

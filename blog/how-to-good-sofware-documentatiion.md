@@ -1,15 +1,13 @@
 ---
 title: "How to Good Sofware Documentatiion"
 date: 2021-02-09T15:25:48+02:00
-draft: false
 tags: ['documentation', 'automation', 'devops']
-categories: ['documentation']
-show_in_homepage: false
-show_description: false
 ---
 I have given a talk about this topic at the WorldWide Architecture Summit 2 on the 3rd of August 2021. You can find the [talk recording here](https://www.youtube.com/watch?v=-YmLFMDUzv0&t=1525s).
 
 ![Photo by [Maarten van den Heuvel](https://unsplash.com/@mvdheuvel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/9796/1*0X-pNeFVsj_4w0nC1qKC8Q.jpeg)
+
+<!--truncate-->
 
 ## How to create and maintain good software documentation
 

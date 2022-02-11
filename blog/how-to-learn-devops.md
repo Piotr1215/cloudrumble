@@ -1,11 +1,7 @@
 ---
 title: "How to Learn Devops"
 date: 2021-05-03T15:22:46+02:00
-draft: false
 tags: ['devops', 'learning']
-categories: ['learning']
-show_in_homepage: false
-show_description: false
 ---
 
 ![Image by [Gerd Altmann](https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1023846) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1023846)](https://cdn-images-1.medium.com/max/3840/1*6LAwAqbSiOgFVZXi7aD0bQ.jpeg)
@@ -17,6 +13,8 @@ show_description: false
 ### Know what is important to know
 
 A famous Greek philosopher *Aristotle (384 BC — 322 BC)* has been called the last person to know everything there was to know in the science. Since than science grown exponentially, became divided and subdivided into specialized, narrow disciplines.
+
+<!--truncate-->
 
 Similarly modern technology landscape is evolving in neck breaking pace and unlike Aristotle, we don’t have a luxury to know “all there is to know”. In modern day, especially in the field of practical application of technology, the problem moves from “how to know all there is to know”, to “how to filter information efficiently and know what is important to know”.
 

@@ -40,7 +40,12 @@ export default [
   },
   {
     path: '/blog',
-    component: ComponentCreator('/blog','565'),
+    component: ComponentCreator('/blog','aab'),
+    exact: true
+  },
+  {
+    path: '/blog/2021/08/02/5-unusual-docker-usecases',
+    component: ComponentCreator('/blog/2021/08/02/5-unusual-docker-usecases','f5a'),
     exact: true
   },
   {
@@ -51,11 +56,6 @@ export default [
   {
     path: '/blog/5-static-websites-deployment-options',
     component: ComponentCreator('/blog/5-static-websites-deployment-options','da6'),
-    exact: true
-  },
-  {
-    path: '/blog/5-unusual-docker-usecases',
-    component: ComponentCreator('/blog/5-unusual-docker-usecases','2f1'),
     exact: true
   },
   {
@@ -195,7 +195,7 @@ export default [
   },
   {
     path: '/blog/tags/docker',
-    component: ComponentCreator('/blog/tags/docker','f93'),
+    component: ComponentCreator('/blog/tags/docker','56a'),
     exact: true
   },
   {
@@ -235,7 +235,7 @@ export default [
   },
   {
     path: '/blog/tags/linux',
-    component: ComponentCreator('/blog/tags/linux','6bf'),
+    component: ComponentCreator('/blog/tags/linux','5ee'),
     exact: true
   },
   {

@@ -16,22 +16,16 @@
       "permalink": "/blog/tags/learning"
     }
   ],
-  "readingTime": 6.145,
-  "truncated": false,
+  "readingTime": 6.15,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "How to Learn Devops",
     "date": "2021-05-03T13:22:46.000Z",
-    "draft": false,
     "tags": [
       "devops",
       "learning"
-    ],
-    "categories": [
-      "learning"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "How to Create Kubernetes Homelab",

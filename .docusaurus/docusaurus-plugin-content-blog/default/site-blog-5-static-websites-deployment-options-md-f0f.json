@@ -16,22 +16,16 @@
       "permalink": "/blog/tags/deployment"
     }
   ],
-  "readingTime": 3.215,
-  "truncated": false,
+  "readingTime": 3.22,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "5 Static Websites Deployment Options",
     "date": "2020-11-09T19:01:19.000Z",
-    "draft": false,
     "tags": [
       "devops",
       "deployment"
-    ],
-    "categories": [
-      "devops"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "Cloud Native Developer Workflow",

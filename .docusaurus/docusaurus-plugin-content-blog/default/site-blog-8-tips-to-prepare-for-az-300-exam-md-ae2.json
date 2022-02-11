@@ -16,8 +16,8 @@
       "permalink": "/blog/tags/certification"
     }
   ],
-  "readingTime": 4.185,
-  "truncated": false,
+  "readingTime": 4.19,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "8 Tips to Prepare for Az 300 Exam",
@@ -25,11 +25,7 @@
     "tags": [
       "azure",
       "certification"
-    ],
-    "categories": [
-      "certification"
-    ],
-    "show_in_homepage": true
+    ]
   },
   "prevItem": {
     "title": "8 Tips to Prepare for Az 301 Exam",

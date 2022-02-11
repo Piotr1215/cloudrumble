@@ -1,17 +1,15 @@
 ---
 title: "5 Static Websites Deployment Options"
 date: 2020-11-09T21:01:19+02:00
-draft: false
 tags: ['devops', 'deployment']
-categories: ['devops']
-show_in_homepage: false
-show_description: false
 ---
 
 ![intro-pic](https://cdn-images-1.medium.com/max/12032/1*T1tAElaHDl_mwUOSvdguTw.jpeg)
 *Photo by [Christina @ wocintechchat.com](https://unsplash.com/@wocintechchat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/server?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 Static websites have become a mainstream content delivery medium consumed by modern browsers. In this blog, we will look at different ways of deploying a sample static website using automated CI/CD pipelines and different hosting providers.
+
+<!--truncate-->
 
 The sample website is designed using [Blazor ](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)and compiled using [Web Assembly](https://en.wikipedia.org/wiki/WebAssembly) with [PWA](https://en.wikipedia.org/wiki/Progressive_web_application) option on. This shows that not only simple websites can be delivered as static content but also potentially complex web apps benefit from this delivery mechanism.
 

@@ -1,11 +1,7 @@
 ---
 title: "Gitops With Kubernetes"
 date: 2021-07-14T15:29:15+02:00
-draft: false
 tags: ['kubernetes', 'gitops']
-categories: ['gitops']
-show_in_homepage: false
-show_description: false
 ---
 
 ![Photo by [Timelab Pro](https://unsplash.com/@timelabpro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/container?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/12032/1*bZYRUC186rFiox2B9OVD9g.jpeg)
@@ -15,6 +11,8 @@ show_description: false
 ### Introduction
 
 In 2017, a cloud-native company [Weaveworks ](https://www.weave.works/)release a blog post called “[GitOps — Operations by Pull Request](https://www.weave.works/blog/gitops-operations-by-pull-request)”. The post introduces the term **GitOps** defining it as *using Git as a source of truth to operate almost anything. *Since then GitOps movement has been growing and gaining in popularity.
+
+<!--truncate-->
 
 We are going to take a closer look at what GitOps is and how it applies to Kubernetes. What are the benefits we can gain from applying GitOps principles? What is the difference between simply using Git to deploy stuff and GitOps? Can we use GitOps at scale?
 

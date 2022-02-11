@@ -20,23 +20,17 @@
       "permalink": "/blog/tags/devops"
     }
   ],
-  "readingTime": 10.365,
-  "truncated": false,
+  "readingTime": 10.37,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "How to Good Sofware Documentatiion",
     "date": "2021-02-09T13:25:48.000Z",
-    "draft": false,
     "tags": [
       "documentation",
       "automation",
       "devops"
-    ],
-    "categories": [
-      "documentation"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "How to Learn Devops",

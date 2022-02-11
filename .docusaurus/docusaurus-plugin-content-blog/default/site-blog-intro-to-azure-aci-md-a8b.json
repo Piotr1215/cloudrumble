@@ -17,22 +17,15 @@
     }
   ],
   "readingTime": 3.585,
-  "truncated": false,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "Intro to Azure ACI",
     "date": "2021-08-01T19:02:39.000Z",
-    "draft": false,
     "tags": [
       "azure",
       "container"
-    ],
-    "categories": [
-      "learning",
-      "azure"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "5 Common Pitfalls in Iac",

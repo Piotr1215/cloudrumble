@@ -20,26 +20,20 @@
       "permalink": "/blog/tags/cli"
     }
   ],
-  "readingTime": 6.04,
-  "truncated": false,
+  "readingTime": 6.045,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "Portable Kubernetes Management With Kubectl in Docker Container",
     "date": "2020-01-25T18:11:05.000Z",
-    "draft": false,
     "tags": [
       "kubernetes",
       "docker",
       "CLI"
-    ],
-    "categories": [
-      "kubernetes"
-    ],
-    "show_in_homepage": true,
-    "show_description": false
+    ]
   },
   "prevItem": {
-    "title": "A Gentle Introduction to Docker and Containers",
+    "title": "Introduction to Docker",
     "permalink": "/blog/a-gentle-introduction-to-docker-and-containers"
   },
   "nextItem": {

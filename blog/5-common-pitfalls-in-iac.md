@@ -1,11 +1,7 @@
 ---
 title: "5 Common Pitfalls in Iac"
 date: 2021-08-02T01:07:36+02:00
-draft: false
 tags: ['terraform', 'iac']
-categories: ['IAC', 'devops']
-show_in_homepage: true
-show_description: false
 ---
 
 ![Image by [Elchinator](https://pixabay.com/users/elchinator-10722855/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4280758) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4280758)](https://cdn-images-1.medium.com/max/3840/1*7RTz2NJ_PVuxU8_b7gNSKg.jpeg)
@@ -15,6 +11,8 @@ show_description: false
 ## Introduction
 
 Modern, cloud-native infrastructure can be created and destroyed within minutes. It can be scaled up and down depending on load and usage patterns.
+
+<!--truncate-->
 
 **Infrastructure as Code (IaC) **is a common pattern where virtualized infrastructure and auxiliary services can be managed using configuration expressed in almost any language, usually hosted in a source code repository.
 

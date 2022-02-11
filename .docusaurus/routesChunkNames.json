@@ -21,7 +21,7 @@
   "/__docusaurus/debug/routes-244": {
     "component": "component---theme-debug-routes-946-699"
   },
-  "/blog-565": {
+  "/blog-aab": {
     "component": "component---theme-blog-list-pagea-6-a-7ba",
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
@@ -29,7 +29,7 @@
         "content": "content---blog-294-426"
       },
       {
-        "content": "content---blogeb-6-bed"
+        "content": "content---blog-007-91a"
       },
       {
         "content": "content---blog-781-ba5"
@@ -58,6 +58,11 @@
     ],
     "metadata": "metadata---blogb-2-b-df1"
   },
+  "/blog/2021/08/02/5-unusual-docker-usecases-f5a": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-2021-08-02-5-unusual-docker-usecases-96-d-4a4"
+  },
   "/blog/5-common-pitfalls-in-iac-9fd": {
     "component": "component---theme-blog-post-pageccc-cab",
     "sidebar": "sidebar---blog-814-8ac",
@@ -67,11 +72,6 @@
     "component": "component---theme-blog-post-pageccc-cab",
     "sidebar": "sidebar---blog-814-8ac",
     "content": "content---blog-5-static-websites-deployment-optionsf-0-f-f21"
-  },
-  "/blog/5-unusual-docker-usecases-2f1": {
-    "component": "component---theme-blog-post-pageccc-cab",
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-5-unusual-docker-usecases-059-7b5"
   },
   "/blog/8-tips-to-prepare-for-az-300-exam-411": {
     "component": "component---theme-blog-post-pageccc-cab",
@@ -310,12 +310,12 @@
     ],
     "metadata": "metadata---blog-tags-devops-4-c-3-051"
   },
-  "/blog/tags/docker-f93": {
+  "/blog/tags/docker-56a": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blogeb-6-bed"
+        "content": "content---blog-007-91a"
       },
       {
         "content": "content---blog-6-be-ae9"
@@ -423,12 +423,12 @@
     ],
     "metadata": "metadata---blog-tags-learning-9-a-7-b79"
   },
-  "/blog/tags/linux-6bf": {
+  "/blog/tags/linux-5ee": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blogeb-6-bed"
+        "content": "content---blog-007-91a"
       }
     ],
     "metadata": "metadata---blog-tags-linuxdd-5-032"

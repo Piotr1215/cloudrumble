@@ -1,11 +1,7 @@
 ---
 title: "Expose Kubernetes Service Using Ngrok"
 date: 2020-02-08T21:00:45+02:00
-draft: false
 tags: ['kubernetes', 'ngrok']
-categories: ['learning']
-show_in_homepage: false
-show_description: false
 ---
 
 ![Photo by [Product School](https://unsplash.com/@productschool?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/office?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/8064/1*trEH_iYn7WBWUAz6DVto1Q.jpeg)
@@ -13,6 +9,8 @@ show_description: false
 ## **Expose local Kubernetes service on internet using ngrok**
 
 Working with local Kubernetes cluster such as minikube, k3s, microk8s or others is great for testing new features, experimenting and running POCs. Once you are ready with a cool new functionality or just want to share quickly results of your work with colleagues or customers, well you have to push everything to an online cluster. It might not be an issue if you have good CI/CD pipeline setup, but most of the time it’s simply too much effort for a simple one-off demo.
+
+<!--truncate-->
 
 Ngrok is an online, free service that enables you (among other things) to create an SSL tunnel to expose your local http traffic to the internet and it takes just a few moments to setup! You can read more about ngrok on their [home page](https://dashboard.ngrok.com/get-started), it’s a great product and can be very useful not only in the scenario we are looking at right now but in broader scope.
 

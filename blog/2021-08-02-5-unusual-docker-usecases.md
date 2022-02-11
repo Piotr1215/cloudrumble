@@ -1,11 +1,8 @@
 ---
 title: "5 Unusual Docker Usecases"
 date: 2021-08-02T01:09:18+02:00
-draft: false
 tags: ['docker', 'linux']
-categories: ['devops']
-show_in_homepage: true
-show_description: false
+image: https://cdn-images-1.medium.com/max/6032/1*8NKs9ODk9gzzFbvEcivMGQ.jpeg
 ---
 
 ![intro-pic](https://cdn-images-1.medium.com/max/6032/1*8NKs9ODk9gzzFbvEcivMGQ.jpeg)
@@ -14,6 +11,8 @@ show_description: false
 ## Introduction
 
 [Docker ](https://www.docker.com/)introduced containers technology as mainstream around 2013. Since then, containerization became an integral part of the cloud and digital transformations. Nowadays most of the traditional server workloads such as web APIs, web apps (broadly speaking server side workloads), are containerized. Heck, even Microsoft saw the writing on the wall and since 2016 windows containers are also there (albeit a bit on the heavy side). 2017 saw the introduction of Kubernetes, a container orchestration, which even more cemented already strong position of containers as compute workhorses.
+
+<!--truncate-->
 
 ## Basic use cases
 

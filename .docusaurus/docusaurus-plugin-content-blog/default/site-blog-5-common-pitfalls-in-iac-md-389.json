@@ -16,27 +16,20 @@
       "permalink": "/blog/tags/iac"
     }
   ],
-  "readingTime": 5.84,
-  "truncated": false,
+  "readingTime": 5.845,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "5 Common Pitfalls in Iac",
     "date": "2021-08-01T23:07:36.000Z",
-    "draft": false,
     "tags": [
       "terraform",
       "iac"
-    ],
-    "categories": [
-      "IAC",
-      "devops"
-    ],
-    "show_in_homepage": true,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "5 Unusual Docker Usecases",
-    "permalink": "/blog/5-unusual-docker-usecases"
+    "permalink": "/blog/2021/08/02/5-unusual-docker-usecases"
   },
   "nextItem": {
     "title": "Intro to Azure ACI",

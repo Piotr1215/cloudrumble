@@ -32,6 +32,7 @@ const config = {
           showReadingTime: true,
           blogSidebarTitle: 'All posts',
           blogSidebarCount: 'ALL',
+          postsPerPage: 10,
           // Please change this to your repo.
           editUrl: 'https://github.com/Piotr1215/dca-prep-kit/tree/master/docs',
         },

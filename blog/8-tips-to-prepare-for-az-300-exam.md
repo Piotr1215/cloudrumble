@@ -2,8 +2,6 @@
 title: "8 Tips to Prepare for Az 300 Exam"
 date: 2019-12-12T18:37:33+02:00
 tags: ['azure', 'certification']
-categories: ['certification']
-show_in_homepage: true
 ---
 
 ![](https://miro.medium.com/max/1000/1*wXeXxddbjKQdj8-f07Kc4Q.png)
@@ -11,6 +9,8 @@ show_in_homepage: true
 AZ-300 Certification Badge
 
 I recently passed [Exam: AZ-300: Microsoft Azure Architect Technologies](https://docs.microsoft.com/en-gb/learn/certifications/exams/az-300). This exam is one of two to earn Microsoft Certified: Azure Solutions Architect Expert certification.
+
+<!--truncate-->
 
 I also created a GitHub repository with links to documentation and detailed description of learning progress.
 

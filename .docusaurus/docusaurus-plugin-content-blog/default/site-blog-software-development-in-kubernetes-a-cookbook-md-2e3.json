@@ -2,8 +2,8 @@
   "permalink": "/blog/software-development-in-kubernetes-a-cookbook",
   "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/software-development-in-kubernetes-a-cookbook.md",
   "source": "@site/blog/software-development-in-kubernetes-a-cookbook.md",
-  "title": "Software Development in Kubernetes a Cookbook",
-  "description": "Overview",
+  "title": "Kubernetes Cookbook",
+  "description": "intro-pic",
   "date": "2021-09-26T15:50:43.000Z",
   "formattedDate": "September 26, 2021",
   "tags": [
@@ -16,25 +16,19 @@
       "permalink": "/blog/tags/guide"
     }
   ],
-  "readingTime": 13.33,
-  "truncated": false,
+  "readingTime": 13.35,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
-    "title": "Software Development in Kubernetes a Cookbook",
+    "title": "Kubernetes Cookbook",
     "date": "2021-09-26T15:50:43.000Z",
-    "draft": false,
     "tags": [
       "kubernetes",
       "guide"
-    ],
-    "categories": [
-      "guide"
-    ],
-    "show_in_homepage": true,
-    "show_description": false
+    ]
   },
   "nextItem": {
     "title": "5 Unusual Docker Usecases",
-    "permalink": "/blog/5-unusual-docker-usecases"
+    "permalink": "/blog/2021/08/02/5-unusual-docker-usecases"
   }
 }

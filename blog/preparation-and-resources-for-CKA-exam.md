@@ -1,11 +1,7 @@
 ---
 title: "Preparation and Resources for CKA Exam"
 date: 2020-01-12T20:07:14+02:00
-draft: false
 tags: ['kubernetes', 'certification']
-categories: ['certification']
-show_in_homepage: true
-show_description: false
 ---
 
 ## Preparation and resources for CKA exam
@@ -14,6 +10,8 @@ show_description: false
 
 Recently I have successfully passed exam for [Certified Kubernetes Administrator (CKA)](https://www.cncf.io/certification/cka/) and I would like to share learning tips and tricks as well as resources that helped me prepare and pass the exam.
 
+<!--truncate-->
+
 ## Resources
 
 The only resource needed to pass the exam was [Certified Kubernetes Administrator (CKA) with Practice Tests](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests). Very comprehensive and in depth course that contains all needed information and practice labs to pass the exam! Mumshad, the author of the course and owner of [KodeKloud](https://kodekloud.com/)did really great work designing it.
@@ -21,7 +19,8 @@ The only resource needed to pass the exam was [Certified Kubernetes Administrato
 There is also one more resource I would like to mention, it is not needed to pass or prepare for the exam, but content is really great and it deserves a shout out. Videos from [Just me and Opensource](https://www.youtube.com/user/wenkatn/featured) YouTube channel. Author does really great work creating hands on practical videos tackling various kubernetes related topics.
 
 ## Tip #1: Create your own kubernetes cluster to play around
->  ‍I wish you best of luck in getting your CKA certification!
+
+> ‍I wish you best of luck in getting your CKA certification!
 Practice is very important for the exam, so use every opportunity to get familiar with kubectl command line tool and YAML files. One option is to setup local kubernetes cluster using for example: [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/), [microk8s](https://microk8s.io/docs/)or [kind](https://kind.sigs.k8s.io/). All of those are great options to quickly spin up kubernetes cluster on your machine.
 
 If your machine does not have enough resources or you simply do not want to install anything locally, you can quickly spin up kubernetes cluster in any cloud provider. You can check out my blog where I describe how to setup AKS cluster [https://medium.com/@piotrzan/try-kubernetes-in-cloud-for-free-e5e431c507a7](https://medium.com/@piotrzan/try-kubernetes-in-cloud-for-free-e5e431c507a7), check my GitHub repos with instructions how to deploy managed kubernetes on [Azure](https://github.com/Piotr1215/terraform-aks)or [GCP](https://github.com/Piotr1215/terraform-gcp)

@@ -1,18 +1,18 @@
 ---
-title: "Software Development in Kubernetes a Cookbook"
+title: "Kubernetes Cookbook"
 date: 2021-09-26T17:50:43+02:00
-draft: false
 tags: ['kubernetes', 'guide']
-categories: ['guide']
-show_in_homepage: true
-show_description: false
 ---
+
+![intro-pic](https://miro.medium.com/max/1400/1*_GZO1oEtSkFY405QQK02VA.jpeg)
 
 # Kubernetes
 
 ## Overview
 
 This documentation assumes basic knowledge of Kubernetes and kubectl. To learn or refresh on container orchestration related concepts, please refer to the official documentation:
+
+<!--truncate-->
 
 - [Kubernetes Docs](https://kubernetes.io/)
 

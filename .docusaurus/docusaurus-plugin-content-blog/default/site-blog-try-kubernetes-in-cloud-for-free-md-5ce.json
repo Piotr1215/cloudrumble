@@ -16,22 +16,17 @@
       "permalink": "/blog/tags/azure"
     }
   ],
-  "readingTime": 2.79,
-  "truncated": false,
+  "readingTime": 2.795,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "Try Kubernetes in Cloud for Free",
     "date": "2019-12-28T18:05:46.000Z",
-    "draft": false,
     "tags": [
       "kubernetes",
       "azure"
     ],
-    "categories": [
-      "cloud native"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    "image": "https://miro.medium.com/max/1400/1*_GZO1oEtSkFY405QQK02VA.jpeg"
   },
   "prevItem": {
     "title": "Preparation and Resources for CKA Exam",

@@ -16,22 +16,16 @@
       "permalink": "/blog/tags/certification"
     }
   ],
-  "readingTime": 6.685,
-  "truncated": false,
+  "readingTime": 6.695,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "8 Tips to Prepare for Az 301 Exam",
     "date": "2019-12-28T18:04:23.000Z",
-    "draft": false,
     "tags": [
       "azure",
       "certification"
-    ],
-    "categories": [
-      "certification"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "Try Kubernetes in Cloud for Free",

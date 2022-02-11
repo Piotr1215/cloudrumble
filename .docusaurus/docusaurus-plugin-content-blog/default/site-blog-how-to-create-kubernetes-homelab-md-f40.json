@@ -16,22 +16,16 @@
       "permalink": "/blog/tags/homelab"
     }
   ],
-  "readingTime": 6.415,
-  "truncated": false,
+  "readingTime": 6.42,
+  "truncated": true,
   "authors": [],
   "frontMatter": {
     "title": "How to Create Kubernetes Homelab",
     "date": "2021-06-04T13:24:24.000Z",
-    "draft": false,
     "tags": [
       "kubernetes",
       "homelab"
-    ],
-    "categories": [
-      "homelab"
-    ],
-    "show_in_homepage": false,
-    "show_description": false
+    ]
   },
   "prevItem": {
     "title": "Gitops With Kubernetes",

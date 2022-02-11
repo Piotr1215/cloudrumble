@@ -1,11 +1,7 @@
 ---
 title: "Preparation and Resources for CKAD Exam"
 date: 2019-11-22T20:07:14+02:00
-draft: false
 tags: ['kubernetes', 'certification']
-categories: ['certification']
-show_in_homepage: false
-show_description: false
 ---
 
 ## Preparation and resources for CKAD exam
@@ -13,6 +9,8 @@ show_description: false
 ![](https://cdn-images-1.medium.com/max/5402/1*SAm8bL78n0uQl8DCbKipmA.png)
 
 Recently I have successfully passed exam for Certified Kubernetes Application Developer (CKAD) and I would like to share learning tips and tricks as well as resources that helped me prepare and pass the exam.
+
+<!--truncate-->
 
 ## Resources
 
@@ -52,7 +50,7 @@ A lot of exam tasks required editing existing YAML files and ability to use vim 
 
 Each question is “weighted” and for CKAD you have on average 6 minutes per question. If you find yourself stuck, it’s better to note question number in notepad available within the environment and come back to it later
 
-## ‍Tip #5: My personal “dang it, why didn’t I learn it more?!” moments.
+## ‍Tip #5: My personal “dang it, why didn’t I learn it more?!” moments
 
 It’s not as much a tip, but rather a reflection on the exam content that made me realize that I should have put more emphasis on certain topics. For me those were:
 
@@ -63,4 +61,5 @@ It’s not as much a tip, but rather a reflection on the exam content that made 
 ## ‍Tip #6: Stay calm
 
 I’m not sure about you, but performance based exams always make me nervous and stress often gets best of me. It is helpful to remember that CKAD gives you one free retry, so even if you don’t pass first time, don’t worry.
->  ‍I wish you best of luck in getting your CKAD certification!
+> ‍I wish you best of luck in getting your CKAD certification!
+
