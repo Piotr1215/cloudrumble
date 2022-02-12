@@ -93,7 +93,7 @@ export default {
             },
             {
               "label": "Twitter",
-              "href": "https://twitter.com/docusaurus"
+              "href": "https://twitter.com/Piotr1215"
             }
           ]
         },
