@@ -1,0 +1,39 @@
+{
+  "unversionedId": "Certificates/Azure/az_304_guide",
+  "id": "Certificates/Azure/az_304_guide",
+  "title": "AZ-304 Certification Guide",
+  "description": "Introduction",
+  "source": "@site/docs/Certificates/Azure/az_304_guide.md",
+  "sourceDirName": "Certificates/Azure",
+  "slug": "/Certificates/Azure/az_304_guide",
+  "permalink": "/docs/Certificates/Azure/az_304_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Certificates/Azure/az_304_guide.md",
+  "tags": [
+    {
+      "label": "Azure",
+      "permalink": "/docs/tags/azure"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "AZ-304 Certification Guide",
+    "sidebar_label": "AZ 304",
+    "tags": [
+      "Azure",
+      "Certification"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "AZ 303",
+    "permalink": "/docs/Certificates/Azure/az_303_guide"
+  },
+  "next": {
+    "title": "DCA",
+    "permalink": "/docs/Certificates/Docker/dca_guide"
+  }
+}

@@ -1,13 +1,13 @@
 {
-  "unversionedId": "EXAMPLES/k8s-deployments",
-  "id": "EXAMPLES/k8s-deployments",
+  "unversionedId": "Examples/k8s-deployments",
+  "id": "Examples/k8s-deployments",
   "title": "Kubernetes Deployments",
   "description": "[!NOTE]",
-  "source": "@site/docs/EXAMPLES/k8s-deployments.md",
-  "sourceDirName": "EXAMPLES",
-  "slug": "/EXAMPLES/k8s-deployments",
-  "permalink": "/docs/EXAMPLES/k8s-deployments",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-deployments.md",
+  "source": "@site/docs/Examples/k8s-deployments.md",
+  "sourceDirName": "Examples",
+  "slug": "/Examples/k8s-deployments",
+  "permalink": "/docs/Examples/k8s-deployments",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Examples/k8s-deployments.md",
   "tags": [
     {
       "label": "Kubernetes",
@@ -30,10 +30,10 @@
   "sidebar": "mainSidebar",
   "previous": {
     "title": "Config Maps",
-    "permalink": "/docs/EXAMPLES/k8s-configuration"
+    "permalink": "/docs/Examples/k8s-configuration"
   },
   "next": {
     "title": "Jobs & Cron",
-    "permalink": "/docs/EXAMPLES/k8s-jobs-cronjobs"
+    "permalink": "/docs/Examples/k8s-jobs-cronjobs"
   }
 }

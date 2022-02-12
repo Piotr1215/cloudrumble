@@ -1,3 +1,11 @@
+---
+title: Containers Development
+sidebar_label: Containers
+tags:
+    - Docker
+    - Containers
+---
+
 # Containers
 
 This document describes containerization best practices throughout the full lifecycle of a containerized workload:

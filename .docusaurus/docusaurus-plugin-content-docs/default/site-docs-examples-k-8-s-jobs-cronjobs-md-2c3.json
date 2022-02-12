@@ -1,13 +1,13 @@
 {
-  "unversionedId": "EXAMPLES/k8s-jobs-cronjobs",
-  "id": "EXAMPLES/k8s-jobs-cronjobs",
+  "unversionedId": "Examples/k8s-jobs-cronjobs",
+  "id": "Examples/k8s-jobs-cronjobs",
   "title": "Kubernetes Jobs",
   "description": "[!NOTE]",
-  "source": "@site/docs/EXAMPLES/k8s-jobs-cronjobs.md",
-  "sourceDirName": "EXAMPLES",
-  "slug": "/EXAMPLES/k8s-jobs-cronjobs",
-  "permalink": "/docs/EXAMPLES/k8s-jobs-cronjobs",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-jobs-cronjobs.md",
+  "source": "@site/docs/Examples/k8s-jobs-cronjobs.md",
+  "sourceDirName": "Examples",
+  "slug": "/Examples/k8s-jobs-cronjobs",
+  "permalink": "/docs/Examples/k8s-jobs-cronjobs",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Examples/k8s-jobs-cronjobs.md",
   "tags": [
     {
       "label": "Kubernetes",
@@ -30,10 +30,10 @@
   "sidebar": "mainSidebar",
   "previous": {
     "title": "Deployments",
-    "permalink": "/docs/EXAMPLES/k8s-deployments"
+    "permalink": "/docs/Examples/k8s-deployments"
   },
   "next": {
     "title": "Services",
-    "permalink": "/docs/EXAMPLES/k8s-services"
+    "permalink": "/docs/Examples/k8s-services"
   }
 }

@@ -1,0 +1,39 @@
+{
+  "unversionedId": "Certificates/Docker/dca_guide",
+  "id": "Certificates/Docker/dca_guide",
+  "title": "Docker Certified Associate Certification Guide",
+  "description": "Certification",
+  "source": "@site/docs/Certificates/Docker/dca_guide.md",
+  "sourceDirName": "Certificates/Docker",
+  "slug": "/Certificates/Docker/dca_guide",
+  "permalink": "/docs/Certificates/Docker/dca_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Certificates/Docker/dca_guide.md",
+  "tags": [
+    {
+      "label": "Docker",
+      "permalink": "/docs/tags/docker"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "Docker Certified Associate Certification Guide",
+    "sidebar_label": "DCA",
+    "tags": [
+      "Docker",
+      "Certification"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "AZ 304",
+    "permalink": "/docs/Certificates/Azure/az_304_guide"
+  },
+  "next": {
+    "title": "GCP PCA",
+    "permalink": "/docs/Certificates/GCP/gcp_pca"
+  }
+}

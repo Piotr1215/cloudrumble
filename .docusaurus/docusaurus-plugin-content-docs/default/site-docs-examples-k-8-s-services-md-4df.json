@@ -1,13 +1,13 @@
 {
-  "unversionedId": "EXAMPLES/k8s-services",
-  "id": "EXAMPLES/k8s-services",
+  "unversionedId": "Examples/k8s-services",
+  "id": "Examples/k8s-services",
   "title": "Kubernetes Services",
   "description": "This blog is a little bit longer than other parts of Kubernetes explained deep enough. Kubernetes networking is a very complex topic and trying to write about all nuances of different services and mechanisms would probably take a few blogs on it's own. Instead we will focus on specific areas of Kubernetes Networking: services and look at their practical applications.",
-  "source": "@site/docs/EXAMPLES/k8s-services.md",
-  "sourceDirName": "EXAMPLES",
-  "slug": "/EXAMPLES/k8s-services",
-  "permalink": "/docs/EXAMPLES/k8s-services",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-services.md",
+  "source": "@site/docs/Examples/k8s-services.md",
+  "sourceDirName": "Examples",
+  "slug": "/Examples/k8s-services",
+  "permalink": "/docs/Examples/k8s-services",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Examples/k8s-services.md",
   "tags": [
     {
       "label": "Kubernetes",
@@ -30,10 +30,10 @@
   "sidebar": "mainSidebar",
   "previous": {
     "title": "Jobs & Cron",
-    "permalink": "/docs/EXAMPLES/k8s-jobs-cronjobs"
+    "permalink": "/docs/Examples/k8s-jobs-cronjobs"
   },
   "next": {
     "title": "Storage",
-    "permalink": "/docs/EXAMPLES/k8s-storage-pv-pvc"
+    "permalink": "/docs/Examples/k8s-storage-pv-pvc"
   }
 }

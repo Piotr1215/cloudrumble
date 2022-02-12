@@ -1,13 +1,13 @@
 {
-  "unversionedId": "EXAMPLES/examples",
-  "id": "EXAMPLES/examples",
+  "unversionedId": "Examples/examples",
+  "id": "Examples/examples",
   "title": "Exercises",
   "description": "The goal is to explain Kubernetes and Docker Swarm topics in a practical way, like storage, deployments, services etc and provide exercises scenarios for everyone to follow along.",
-  "source": "@site/docs/EXAMPLES/examples.md",
-  "sourceDirName": "EXAMPLES",
-  "slug": "/EXAMPLES/",
-  "permalink": "/docs/EXAMPLES/",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/examples.md",
+  "source": "@site/docs/Examples/examples.md",
+  "sourceDirName": "Examples",
+  "slug": "/Examples/",
+  "permalink": "/docs/Examples/",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Examples/examples.md",
   "tags": [
     {
       "label": "Examples",
@@ -29,11 +29,11 @@
   },
   "sidebar": "mainSidebar",
   "previous": {
-    "title": "Kubernetes Introduction",
-    "permalink": "/docs/FUNDAMENTALS/kubernetes_intro"
+    "title": "CKS",
+    "permalink": "/docs/Certificates/Kubernetes/cks_guide"
   },
   "next": {
     "title": "Config Maps",
-    "permalink": "/docs/EXAMPLES/k8s-configuration"
+    "permalink": "/docs/Examples/k8s-configuration"
   }
 }

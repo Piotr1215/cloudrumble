@@ -1,3 +1,11 @@
+---
+title: Introduction to GitOps
+sidebar_label: GitOps
+tags:
+    - GitOps
+    - DevOps
+---
+
 # Introduction to GitOps
 
 ## Resources

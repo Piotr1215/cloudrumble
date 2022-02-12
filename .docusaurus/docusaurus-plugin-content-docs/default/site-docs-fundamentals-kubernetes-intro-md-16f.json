@@ -15,9 +15,5 @@
   "previous": {
     "title": "Kubernetes",
     "permalink": "/docs/FUNDAMENTALS/kubernetes"
-  },
-  "next": {
-    "title": "AWS SAA",
-    "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
   }
 }

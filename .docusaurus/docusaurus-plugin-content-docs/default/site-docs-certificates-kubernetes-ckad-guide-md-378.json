@@ -1,0 +1,39 @@
+{
+  "unversionedId": "Certificates/Kubernetes/ckad_guide",
+  "id": "Certificates/Kubernetes/ckad_guide",
+  "title": "CKAD Certification Guide",
+  "description": "Introduction",
+  "source": "@site/docs/Certificates/Kubernetes/ckad_guide.md",
+  "sourceDirName": "Certificates/Kubernetes",
+  "slug": "/Certificates/Kubernetes/ckad_guide",
+  "permalink": "/docs/Certificates/Kubernetes/ckad_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Certificates/Kubernetes/ckad_guide.md",
+  "tags": [
+    {
+      "label": "ubernetes",
+      "permalink": "/docs/tags/ubernetes"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "CKAD Certification Guide",
+    "sidebar_label": "CKAD",
+    "tags": [
+      "ubernetes",
+      "Certification"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "CKA",
+    "permalink": "/docs/Certificates/Kubernetes/cka_guide"
+  },
+  "next": {
+    "title": "CKS",
+    "permalink": "/docs/Certificates/Kubernetes/cks_guide"
+  }
+}

@@ -1,4 +1,12 @@
-# Kubernetes Storage: pv & pvc <!-- {docsify-ignore-all} -->
+---
+title: Kubernetes Storage
+sidebar_label: Storage
+tags:
+    - Kubernetes
+    - Practice
+---
+
+# Kubernetes Storage: pv & pvc
 
 > [!NOTE]
 > Visit Kubernetes documentation if you need a refresher about [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and [Persistent Volume Claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)

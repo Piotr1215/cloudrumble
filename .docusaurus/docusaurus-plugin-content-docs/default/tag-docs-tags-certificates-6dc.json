@@ -3,10 +3,10 @@
   "permalink": "/docs/tags/certificates",
   "docs": [
     {
-      "id": "CERTIFICATES/AWS/aws_saa_co2",
+      "id": "Certificates/AWS/aws_saa_co2",
       "title": "AWS Certified Solutions Architect Associate",
       "description": "Table of content",
-      "permalink": "/docs/CERTIFICATES/AWS/aws_saa_co2"
+      "permalink": "/docs/Certificates/AWS/aws_saa_co2"
     }
   ],
   "allTagsPath": "/docs/tags"

@@ -1,0 +1,39 @@
+{
+  "unversionedId": "Certificates/Hashicorp/terraform",
+  "id": "Certificates/Hashicorp/terraform",
+  "title": "Terraform Certification Guide",
+  "description": "About the exam",
+  "source": "@site/docs/Certificates/Hashicorp/terraform.md",
+  "sourceDirName": "Certificates/Hashicorp",
+  "slug": "/Certificates/Hashicorp/terraform",
+  "permalink": "/docs/Certificates/Hashicorp/terraform",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Certificates/Hashicorp/terraform.md",
+  "tags": [
+    {
+      "label": "Terraform",
+      "permalink": "/docs/tags/terraform"
+    },
+    {
+      "label": "Certification",
+      "permalink": "/docs/tags/certification"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "Terraform Certification Guide",
+    "sidebar_label": "Terraform Associate",
+    "tags": [
+      "Terraform",
+      "Certification"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "GCP PCA",
+    "permalink": "/docs/Certificates/GCP/gcp_pca"
+  },
+  "next": {
+    "title": "CKA",
+    "permalink": "/docs/Certificates/Kubernetes/cka_guide"
+  }
+}

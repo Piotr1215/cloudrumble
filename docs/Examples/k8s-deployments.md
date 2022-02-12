@@ -1,4 +1,12 @@
-# Kubernetes Deployments: scaling, rollouts, rollbacks <!-- {docsify-ignore-all} -->
+---
+title: Kubernetes Deployments
+sidebar_label: Deployments
+tags:
+    - Kubernetes
+    - Practice
+---
+
+# Kubernetes Deployments: scaling, rollouts, rollbacks
 
 > [!NOTE]
 > Visit Kubernetes documentation if you need a refresher about [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)

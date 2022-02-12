@@ -3,10 +3,10 @@
   "permalink": "/docs/tags/ubernetes",
   "docs": [
     {
-      "id": "CERTIFICATES/Kubernetes/ckad_guide",
+      "id": "Certificates/Kubernetes/ckad_guide",
       "title": "CKAD Certification Guide",
       "description": "Introduction",
-      "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide"
+      "permalink": "/docs/Certificates/Kubernetes/ckad_guide"
     }
   ],
   "allTagsPath": "/docs/tags"

@@ -1,3 +1,11 @@
+---
+title: Introduction to Docker
+sidebar_label: Docker
+tags:
+    - Docker
+    - Containers
+---
+
 # A gentle introduction to Docker and containers
 
 ![Photo by frank mckenna on Unsplash](https://miro.medium.com/max/1250/1*0iIXTpckP8jspZMIn9ur2Q.jpeg)

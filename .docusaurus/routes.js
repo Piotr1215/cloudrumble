@@ -284,8 +284,23 @@ export default [
     exact: true
   },
   {
+    path: '/docs/tags/containers',
+    component: ComponentCreator('/docs/tags/containers','1e6'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/dev-ops',
+    component: ComponentCreator('/docs/tags/dev-ops','6b9'),
+    exact: true
+  },
+  {
     path: '/docs/tags/docker',
     component: ComponentCreator('/docs/tags/docker','8ce'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/examples',
+    component: ComponentCreator('/docs/tags/examples','682'),
     exact: true
   },
   {
@@ -296,6 +311,11 @@ export default [
   {
     path: '/docs/tags/gcp',
     component: ComponentCreator('/docs/tags/gcp','79f'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/git-ops',
+    component: ComponentCreator('/docs/tags/git-ops','075'),
     exact: true
   },
   {
@@ -316,6 +336,11 @@ export default [
   {
     path: '/docs/tags/links',
     component: ComponentCreator('/docs/tags/links','33c'),
+    exact: true
+  },
+  {
+    path: '/docs/tags/practice',
+    component: ComponentCreator('/docs/tags/practice','94a'),
     exact: true
   },
   {
@@ -340,95 +365,95 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs','63c'),
+    component: ComponentCreator('/docs','ccc'),
     routes: [
       {
-        path: '/docs/CERTIFICATES/AWS/aws_saa_co2',
-        component: ComponentCreator('/docs/CERTIFICATES/AWS/aws_saa_co2','0c7'),
+        path: '/docs/Certificates/AWS/aws_saa_co2',
+        component: ComponentCreator('/docs/Certificates/AWS/aws_saa_co2','da1'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/Azure/az_303_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Azure/az_303_guide','3d7'),
+        path: '/docs/Certificates/Azure/az_303_guide',
+        component: ComponentCreator('/docs/Certificates/Azure/az_303_guide','bcb'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/Azure/az_304_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Azure/az_304_guide','c2c'),
+        path: '/docs/Certificates/Azure/az_304_guide',
+        component: ComponentCreator('/docs/Certificates/Azure/az_304_guide','64a'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/Docker/dca_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Docker/dca_guide','939'),
+        path: '/docs/Certificates/Docker/dca_guide',
+        component: ComponentCreator('/docs/Certificates/Docker/dca_guide','683'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/GCP/gcp_pca',
-        component: ComponentCreator('/docs/CERTIFICATES/GCP/gcp_pca','18a'),
+        path: '/docs/Certificates/GCP/gcp_pca',
+        component: ComponentCreator('/docs/Certificates/GCP/gcp_pca','f83'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/Hashicorp/terraform',
-        component: ComponentCreator('/docs/CERTIFICATES/Hashicorp/terraform','8ee'),
+        path: '/docs/Certificates/Hashicorp/terraform',
+        component: ComponentCreator('/docs/Certificates/Hashicorp/terraform','dde'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/Kubernetes/cka_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cka_guide','20a'),
+        path: '/docs/Certificates/Kubernetes/cka_guide',
+        component: ComponentCreator('/docs/Certificates/Kubernetes/cka_guide','751'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/Kubernetes/ckad_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/ckad_guide','fb6'),
+        path: '/docs/Certificates/Kubernetes/ckad_guide',
+        component: ComponentCreator('/docs/Certificates/Kubernetes/ckad_guide','ad1'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/CERTIFICATES/Kubernetes/cks_guide',
-        component: ComponentCreator('/docs/CERTIFICATES/Kubernetes/cks_guide','782'),
+        path: '/docs/Certificates/Kubernetes/cks_guide',
+        component: ComponentCreator('/docs/Certificates/Kubernetes/cks_guide','cda'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/EXAMPLES/',
-        component: ComponentCreator('/docs/EXAMPLES/','c8e'),
+        path: '/docs/Examples/',
+        component: ComponentCreator('/docs/Examples/','eb4'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/EXAMPLES/k8s-configuration',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-configuration','cdc'),
+        path: '/docs/Examples/k8s-configuration',
+        component: ComponentCreator('/docs/Examples/k8s-configuration','fd4'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/EXAMPLES/k8s-deployments',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-deployments','b8a'),
+        path: '/docs/Examples/k8s-deployments',
+        component: ComponentCreator('/docs/Examples/k8s-deployments','710'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/EXAMPLES/k8s-jobs-cronjobs',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-jobs-cronjobs','ec7'),
+        path: '/docs/Examples/k8s-jobs-cronjobs',
+        component: ComponentCreator('/docs/Examples/k8s-jobs-cronjobs','14d'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/EXAMPLES/k8s-services',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-services','c2e'),
+        path: '/docs/Examples/k8s-services',
+        component: ComponentCreator('/docs/Examples/k8s-services','0c4'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/EXAMPLES/k8s-storage-pv-pvc',
-        component: ComponentCreator('/docs/EXAMPLES/k8s-storage-pv-pvc','f74'),
+        path: '/docs/Examples/k8s-storage-pv-pvc',
+        component: ComponentCreator('/docs/Examples/k8s-storage-pv-pvc','591'),
         exact: true,
         'sidebar': "mainSidebar"
       },
@@ -438,32 +463,32 @@ export default [
         exact: true
       },
       {
-        path: '/docs/FUNDAMENTALS/containers',
-        component: ComponentCreator('/docs/FUNDAMENTALS/containers','41e'),
+        path: '/docs/Fundamentals/containers',
+        component: ComponentCreator('/docs/Fundamentals/containers','36a'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/FUNDAMENTALS/docker_intro',
-        component: ComponentCreator('/docs/FUNDAMENTALS/docker_intro','9b0'),
+        path: '/docs/Fundamentals/docker_intro',
+        component: ComponentCreator('/docs/Fundamentals/docker_intro','9a2'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/FUNDAMENTALS/gitops_intro',
-        component: ComponentCreator('/docs/FUNDAMENTALS/gitops_intro','082'),
+        path: '/docs/Fundamentals/gitops_intro',
+        component: ComponentCreator('/docs/Fundamentals/gitops_intro','0ed'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/FUNDAMENTALS/kubernetes',
-        component: ComponentCreator('/docs/FUNDAMENTALS/kubernetes','4b2'),
+        path: '/docs/Fundamentals/kubernetes',
+        component: ComponentCreator('/docs/Fundamentals/kubernetes','56f'),
         exact: true,
         'sidebar': "mainSidebar"
       },
       {
-        path: '/docs/FUNDAMENTALS/kubernetes_intro',
-        component: ComponentCreator('/docs/FUNDAMENTALS/kubernetes_intro','0b2'),
+        path: '/docs/Fundamentals/kubernetes_intro',
+        component: ComponentCreator('/docs/Fundamentals/kubernetes_intro','3f7'),
         exact: true,
         'sidebar': "mainSidebar"
       },

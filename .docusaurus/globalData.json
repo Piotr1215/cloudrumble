@@ -11,78 +11,78 @@
           "mainDocId": "intro",
           "docs": [
             {
-              "id": "CERTIFICATES/AWS/aws_saa_co2",
-              "path": "/docs/CERTIFICATES/AWS/aws_saa_co2",
+              "id": "Certificates/AWS/aws_saa_co2",
+              "path": "/docs/Certificates/AWS/aws_saa_co2",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "CERTIFICATES/Azure/az_303_guide",
-              "path": "/docs/CERTIFICATES/Azure/az_303_guide",
+              "id": "Certificates/Azure/az_303_guide",
+              "path": "/docs/Certificates/Azure/az_303_guide",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "CERTIFICATES/Azure/az_304_guide",
-              "path": "/docs/CERTIFICATES/Azure/az_304_guide",
+              "id": "Certificates/Azure/az_304_guide",
+              "path": "/docs/Certificates/Azure/az_304_guide",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "CERTIFICATES/Docker/dca_guide",
-              "path": "/docs/CERTIFICATES/Docker/dca_guide",
+              "id": "Certificates/Docker/dca_guide",
+              "path": "/docs/Certificates/Docker/dca_guide",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "CERTIFICATES/GCP/gcp_pca",
-              "path": "/docs/CERTIFICATES/GCP/gcp_pca",
+              "id": "Certificates/GCP/gcp_pca",
+              "path": "/docs/Certificates/GCP/gcp_pca",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "CERTIFICATES/Hashicorp/terraform",
-              "path": "/docs/CERTIFICATES/Hashicorp/terraform",
+              "id": "Certificates/Hashicorp/terraform",
+              "path": "/docs/Certificates/Hashicorp/terraform",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "CERTIFICATES/Kubernetes/cka_guide",
-              "path": "/docs/CERTIFICATES/Kubernetes/cka_guide",
+              "id": "Certificates/Kubernetes/cka_guide",
+              "path": "/docs/Certificates/Kubernetes/cka_guide",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "CERTIFICATES/Kubernetes/ckad_guide",
-              "path": "/docs/CERTIFICATES/Kubernetes/ckad_guide",
+              "id": "Certificates/Kubernetes/ckad_guide",
+              "path": "/docs/Certificates/Kubernetes/ckad_guide",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "CERTIFICATES/Kubernetes/cks_guide",
-              "path": "/docs/CERTIFICATES/Kubernetes/cks_guide",
+              "id": "Certificates/Kubernetes/cks_guide",
+              "path": "/docs/Certificates/Kubernetes/cks_guide",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "EXAMPLES/examples",
-              "path": "/docs/EXAMPLES/",
+              "id": "Examples/examples",
+              "path": "/docs/Examples/",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "EXAMPLES/k8s-configuration",
-              "path": "/docs/EXAMPLES/k8s-configuration",
+              "id": "Examples/k8s-configuration",
+              "path": "/docs/Examples/k8s-configuration",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "EXAMPLES/k8s-deployments",
-              "path": "/docs/EXAMPLES/k8s-deployments",
+              "id": "Examples/k8s-deployments",
+              "path": "/docs/Examples/k8s-deployments",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "EXAMPLES/k8s-jobs-cronjobs",
-              "path": "/docs/EXAMPLES/k8s-jobs-cronjobs",
+              "id": "Examples/k8s-jobs-cronjobs",
+              "path": "/docs/Examples/k8s-jobs-cronjobs",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "EXAMPLES/k8s-services",
-              "path": "/docs/EXAMPLES/k8s-services",
+              "id": "Examples/k8s-services",
+              "path": "/docs/Examples/k8s-services",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "EXAMPLES/k8s-storage-pv-pvc",
-              "path": "/docs/EXAMPLES/k8s-storage-pv-pvc",
+              "id": "Examples/k8s-storage-pv-pvc",
+              "path": "/docs/Examples/k8s-storage-pv-pvc",
               "sidebar": "mainSidebar"
             },
             {
@@ -90,28 +90,28 @@
               "path": "/docs/faq"
             },
             {
-              "id": "FUNDAMENTALS/containers",
-              "path": "/docs/FUNDAMENTALS/containers",
+              "id": "Fundamentals/containers",
+              "path": "/docs/Fundamentals/containers",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/docker_intro",
-              "path": "/docs/FUNDAMENTALS/docker_intro",
+              "id": "Fundamentals/docker_intro",
+              "path": "/docs/Fundamentals/docker_intro",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/gitops_intro",
-              "path": "/docs/FUNDAMENTALS/gitops_intro",
+              "id": "Fundamentals/gitops_intro",
+              "path": "/docs/Fundamentals/gitops_intro",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/kubernetes",
-              "path": "/docs/FUNDAMENTALS/kubernetes",
+              "id": "Fundamentals/kubernetes",
+              "path": "/docs/Fundamentals/kubernetes",
               "sidebar": "mainSidebar"
             },
             {
-              "id": "FUNDAMENTALS/kubernetes_intro",
-              "path": "/docs/FUNDAMENTALS/kubernetes_intro",
+              "id": "Fundamentals/kubernetes_intro",
+              "path": "/docs/Fundamentals/kubernetes_intro",
               "sidebar": "mainSidebar"
             },
             {

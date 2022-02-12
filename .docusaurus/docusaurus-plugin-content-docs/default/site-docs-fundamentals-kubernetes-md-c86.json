@@ -1,0 +1,39 @@
+{
+  "unversionedId": "Fundamentals/kubernetes",
+  "id": "Fundamentals/kubernetes",
+  "title": "Practice Kubernetes",
+  "description": "Overview",
+  "source": "@site/docs/Fundamentals/kubernetes.md",
+  "sourceDirName": "Fundamentals",
+  "slug": "/Fundamentals/kubernetes",
+  "permalink": "/docs/Fundamentals/kubernetes",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Fundamentals/kubernetes.md",
+  "tags": [
+    {
+      "label": "Kubernetes",
+      "permalink": "/docs/tags/kubernetes"
+    },
+    {
+      "label": "Practice",
+      "permalink": "/docs/tags/practice"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "Practice Kubernetes",
+    "sidebar_label": "Kubernetes Practice",
+    "tags": [
+      "Kubernetes",
+      "Practice"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "GitOps",
+    "permalink": "/docs/Fundamentals/gitops_intro"
+  },
+  "next": {
+    "title": "Kubernetes Intro",
+    "permalink": "/docs/Fundamentals/kubernetes_intro"
+  }
+}

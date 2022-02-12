@@ -1,4 +1,12 @@
-# Kubernetes Configuration: configMaps, secrets, volumes <!-- {docsify-ignore-all} -->
+---
+title: Kubernetes Config Maps
+sidebar_label: Config Maps
+tags:
+    - Kubernetes
+    - Practice
+---
+
+# Kubernetes Configuration: configMaps, secrets, volumes
 
 > [!NOTE]
 > Visit Kubernetes documentation if you need a refresher about [Configuration](https://kubernetes.io/docs/concepts/configuration/)

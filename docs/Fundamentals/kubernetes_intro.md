@@ -1,3 +1,11 @@
+---
+title: Kubernetes Introduction
+sidebar_label: Kubernetes Intro
+tags:
+    - Kubernetes
+    - Practice
+---
+
 # Kubernetes Introduction
 
 ## Theory
@@ -16,7 +24,9 @@ Kubernetes is a container orchestrator, but what is container orchestration?
 - Configuring applications based on the container in which they will run
 - Keeping interactions between containers secure
 
-> [!TIP] for in-depth analysis of kubernetes orchestartion please check [this medium blog post](https://itnext.io/how-to-be-a-devops-maestro-containers-orchestration-guide-b2cf884eaed1)
+:::tip
+ for in-depth analysis of kubernetes orchestartion please check [this medium blog post](https://itnext.io/how-to-be-a-devops-maestro-containers-orchestration-guide-b2cf884eaed1)
+:::
 
 ## Resources
 

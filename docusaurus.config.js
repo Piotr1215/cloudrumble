@@ -118,8 +118,7 @@ const config = {
         prism: {
           theme: lightCodeTheme,
           darkTheme: darkCodeTheme,
-        },
-      }),
+          additionalLanguages: ['gherkin'], }, }),
 };
 
 module.exports = config;

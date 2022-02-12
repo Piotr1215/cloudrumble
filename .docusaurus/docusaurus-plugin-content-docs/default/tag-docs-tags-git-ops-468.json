@@ -1,0 +1,13 @@
+{
+  "name": "GitOps",
+  "permalink": "/docs/tags/git-ops",
+  "docs": [
+    {
+      "id": "Fundamentals/gitops_intro",
+      "title": "Introduction to GitOps",
+      "description": "Resources",
+      "permalink": "/docs/Fundamentals/gitops_intro"
+    }
+  ],
+  "allTagsPath": "/docs/tags"
+}

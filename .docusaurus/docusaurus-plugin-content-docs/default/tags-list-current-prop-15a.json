@@ -22,7 +22,7 @@
   {
     "name": "Docker",
     "permalink": "/docs/tags/docker",
-    "count": 1
+    "count": 3
   },
   {
     "name": "GCP",
@@ -37,12 +37,22 @@
   {
     "name": "Kubernetes",
     "permalink": "/docs/tags/kubernetes",
-    "count": 2
+    "count": 9
   },
   {
     "name": "ubernetes",
     "permalink": "/docs/tags/ubernetes",
     "count": 1
+  },
+  {
+    "name": "Examples",
+    "permalink": "/docs/tags/examples",
+    "count": 1
+  },
+  {
+    "name": "practice",
+    "permalink": "/docs/tags/practice",
+    "count": 8
   },
   {
     "name": "FAQ",
@@ -53,6 +63,21 @@
     "name": "Info",
     "permalink": "/docs/tags/info",
     "count": 3
+  },
+  {
+    "name": "Containers",
+    "permalink": "/docs/tags/containers",
+    "count": 2
+  },
+  {
+    "name": "GitOps",
+    "permalink": "/docs/tags/git-ops",
+    "count": 1
+  },
+  {
+    "name": "DevOps",
+    "permalink": "/docs/tags/dev-ops",
+    "count": 1
   },
   {
     "name": "Intro",

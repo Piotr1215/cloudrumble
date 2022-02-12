@@ -1,13 +1,13 @@
 {
-  "unversionedId": "EXAMPLES/k8s-storage-pv-pvc",
-  "id": "EXAMPLES/k8s-storage-pv-pvc",
+  "unversionedId": "Examples/k8s-storage-pv-pvc",
+  "id": "Examples/k8s-storage-pv-pvc",
   "title": "Kubernetes Storage",
   "description": "[!NOTE]",
-  "source": "@site/docs/EXAMPLES/k8s-storage-pv-pvc.md",
-  "sourceDirName": "EXAMPLES",
-  "slug": "/EXAMPLES/k8s-storage-pv-pvc",
-  "permalink": "/docs/EXAMPLES/k8s-storage-pv-pvc",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-storage-pv-pvc.md",
+  "source": "@site/docs/Examples/k8s-storage-pv-pvc.md",
+  "sourceDirName": "Examples",
+  "slug": "/Examples/k8s-storage-pv-pvc",
+  "permalink": "/docs/Examples/k8s-storage-pv-pvc",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Examples/k8s-storage-pv-pvc.md",
   "tags": [
     {
       "label": "Kubernetes",
@@ -30,6 +30,6 @@
   "sidebar": "mainSidebar",
   "previous": {
     "title": "Services",
-    "permalink": "/docs/EXAMPLES/k8s-services"
+    "permalink": "/docs/Examples/k8s-services"
   }
 }

@@ -1,0 +1,39 @@
+{
+  "unversionedId": "Fundamentals/containers",
+  "id": "Fundamentals/containers",
+  "title": "Containers Development",
+  "description": "This document describes containerization best practices throughout the full lifecycle of a containerized workload:",
+  "source": "@site/docs/Fundamentals/containers.md",
+  "sourceDirName": "Fundamentals",
+  "slug": "/Fundamentals/containers",
+  "permalink": "/docs/Fundamentals/containers",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Fundamentals/containers.md",
+  "tags": [
+    {
+      "label": "Docker",
+      "permalink": "/docs/tags/docker"
+    },
+    {
+      "label": "Containers",
+      "permalink": "/docs/tags/containers"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "title": "Containers Development",
+    "sidebar_label": "Containers",
+    "tags": [
+      "Docker",
+      "Containers"
+    ]
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/docs/intro"
+  },
+  "next": {
+    "title": "Docker",
+    "permalink": "/docs/Fundamentals/docker_intro"
+  }
+}

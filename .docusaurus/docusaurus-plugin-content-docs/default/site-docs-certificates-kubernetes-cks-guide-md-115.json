@@ -1,13 +1,13 @@
 {
-  "unversionedId": "CERTIFICATES/Kubernetes/cks_guide",
-  "id": "CERTIFICATES/Kubernetes/cks_guide",
+  "unversionedId": "Certificates/Kubernetes/cks_guide",
+  "id": "Certificates/Kubernetes/cks_guide",
   "title": "CKS Certification Guide",
   "description": "The 4C's of cloud-native computing",
-  "source": "@site/docs/CERTIFICATES/Kubernetes/cks_guide.md",
-  "sourceDirName": "CERTIFICATES/Kubernetes",
-  "slug": "/CERTIFICATES/Kubernetes/cks_guide",
-  "permalink": "/docs/CERTIFICATES/Kubernetes/cks_guide",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/CERTIFICATES/Kubernetes/cks_guide.md",
+  "source": "@site/docs/Certificates/Kubernetes/cks_guide.md",
+  "sourceDirName": "Certificates/Kubernetes",
+  "slug": "/Certificates/Kubernetes/cks_guide",
+  "permalink": "/docs/Certificates/Kubernetes/cks_guide",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Certificates/Kubernetes/cks_guide.md",
   "tags": [
     {
       "label": "Kubernetes",
@@ -30,10 +30,10 @@
   "sidebar": "mainSidebar",
   "previous": {
     "title": "CKAD",
-    "permalink": "/docs/CERTIFICATES/Kubernetes/ckad_guide"
+    "permalink": "/docs/Certificates/Kubernetes/ckad_guide"
   },
   "next": {
     "title": "Exercises",
-    "permalink": "/docs/EXAMPLES/"
+    "permalink": "/docs/Examples/"
   }
 }

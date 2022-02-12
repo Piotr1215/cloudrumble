@@ -309,7 +309,9 @@ export default {
           }
         ]
       },
-      "additionalLanguages": []
+      "additionalLanguages": [
+        "gherkin"
+      ]
     },
     "docs": {
       "versionPersistence": "localStorage"

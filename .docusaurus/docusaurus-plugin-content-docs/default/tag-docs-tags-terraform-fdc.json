@@ -3,10 +3,10 @@
   "permalink": "/docs/tags/terraform",
   "docs": [
     {
-      "id": "CERTIFICATES/Hashicorp/terraform",
+      "id": "Certificates/Hashicorp/terraform",
       "title": "Terraform Certification Guide",
       "description": "About the exam",
-      "permalink": "/docs/CERTIFICATES/Hashicorp/terraform"
+      "permalink": "/docs/Certificates/Hashicorp/terraform"
     }
   ],
   "allTagsPath": "/docs/tags"

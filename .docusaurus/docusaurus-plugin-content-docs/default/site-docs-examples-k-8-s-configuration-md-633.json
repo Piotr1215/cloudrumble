@@ -1,13 +1,13 @@
 {
-  "unversionedId": "EXAMPLES/k8s-configuration",
-  "id": "EXAMPLES/k8s-configuration",
+  "unversionedId": "Examples/k8s-configuration",
+  "id": "Examples/k8s-configuration",
   "title": "Kubernetes Config Maps",
   "description": "[!NOTE]",
-  "source": "@site/docs/EXAMPLES/k8s-configuration.md",
-  "sourceDirName": "EXAMPLES",
-  "slug": "/EXAMPLES/k8s-configuration",
-  "permalink": "/docs/EXAMPLES/k8s-configuration",
-  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/EXAMPLES/k8s-configuration.md",
+  "source": "@site/docs/Examples/k8s-configuration.md",
+  "sourceDirName": "Examples",
+  "slug": "/Examples/k8s-configuration",
+  "permalink": "/docs/Examples/k8s-configuration",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/docs/Examples/k8s-configuration.md",
   "tags": [
     {
       "label": "Kubernetes",
@@ -30,10 +30,10 @@
   "sidebar": "mainSidebar",
   "previous": {
     "title": "Exercises",
-    "permalink": "/docs/EXAMPLES/"
+    "permalink": "/docs/Examples/"
   },
   "next": {
     "title": "Deployments",
-    "permalink": "/docs/EXAMPLES/k8s-deployments"
+    "permalink": "/docs/Examples/k8s-deployments"
   }
 }

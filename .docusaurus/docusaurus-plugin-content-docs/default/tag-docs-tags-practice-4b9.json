@@ -1,18 +1,12 @@
 {
-  "name": "Kubernetes",
-  "permalink": "/docs/tags/kubernetes",
+  "name": "practice",
+  "permalink": "/docs/tags/practice",
   "docs": [
     {
-      "id": "Certificates/Kubernetes/cka_guide",
-      "title": "CKA Certification Guide",
-      "description": "Introduction",
-      "permalink": "/docs/Certificates/Kubernetes/cka_guide"
-    },
-    {
-      "id": "Certificates/Kubernetes/cks_guide",
-      "title": "CKS Certification Guide",
-      "description": "The 4C's of cloud-native computing",
-      "permalink": "/docs/Certificates/Kubernetes/cks_guide"
+      "id": "Examples/examples",
+      "title": "Exercises",
+      "description": "The goal is to explain Kubernetes and Docker Swarm topics in a practical way, like storage, deployments, services etc and provide exercises scenarios for everyone to follow along.",
+      "permalink": "/docs/Examples/"
     },
     {
       "id": "Examples/k8s-configuration",

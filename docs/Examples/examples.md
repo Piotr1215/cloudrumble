@@ -1,4 +1,12 @@
-# Examples and Exercises Setup <!-- {docsify-ignore-all} -->
+---
+title: Exercises
+sidebar_label: Exercises
+tags:
+    - Examples
+    - practice
+---
+
+# Examples and Exercises Setup
 
 The goal is to explain Kubernetes and Docker Swarm topics in a practical way, like storage, deployments, services etc and provide exercises scenarios for everyone to follow along.
 
