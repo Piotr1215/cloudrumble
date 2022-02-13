@@ -22,7 +22,6 @@ function HomepageHeader() {
           style={{ width: "118px", height: "20px" }} >
         </iframe>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <TwitterButton/>
         <hr></hr>
         <img className="src" src="/img/k8s-services-mindmap.svg" alt="" />
       </div>
