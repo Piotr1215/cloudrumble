@@ -2,16 +2,20 @@
   "title": "All posts",
   "items": [
     {
+      "title": "5 Common Pitfalls in Iac",
+      "permalink": "/blog/5-common-pitfalls-in-iac"
+    },
+    {
+      "title": "Infrastructure as Code - the next big shift is here",
+      "permalink": "/blog/infrastructure-as-code-the-next-big-shift"
+    },
+    {
       "title": "Kubernetes Cookbook",
       "permalink": "/blog/software-development-in-kubernetes-a-cookbook"
     },
     {
       "title": "5 Unusual Docker Usecases",
       "permalink": "/blog/2021/08/02/5-unusual-docker-usecases"
-    },
-    {
-      "title": "5 Common Pitfalls in Iac",
-      "permalink": "/blog/5-common-pitfalls-in-iac"
     },
     {
       "title": "Intro to Azure ACI",

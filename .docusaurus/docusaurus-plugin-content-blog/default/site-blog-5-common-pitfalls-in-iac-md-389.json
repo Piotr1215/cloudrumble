@@ -4,8 +4,8 @@
   "source": "@site/blog/5-common-pitfalls-in-iac.md",
   "title": "5 Common Pitfalls in Iac",
   "description": "Image by Elchinator from [Pixabay](https://cdn-images-1.medium.com/max/3840/1*7RTz2NJPVuxU8b7gNSKg.jpeg)",
-  "date": "2021-08-01T23:07:36.000Z",
-  "formattedDate": "August 1, 2021",
+  "date": "2022-08-01T23:07:36.000Z",
+  "formattedDate": "August 1, 2022",
   "tags": [
     {
       "label": "terraform",
@@ -21,18 +21,14 @@
   "authors": [],
   "frontMatter": {
     "title": "5 Common Pitfalls in Iac",
-    "date": "2021-08-01T23:07:36.000Z",
+    "date": "2022-08-01T23:07:36.000Z",
     "tags": [
       "terraform",
       "iac"
     ]
   },
-  "prevItem": {
-    "title": "5 Unusual Docker Usecases",
-    "permalink": "/blog/2021/08/02/5-unusual-docker-usecases"
-  },
   "nextItem": {
-    "title": "Intro to Azure ACI",
-    "permalink": "/blog/intro-to-azure-ACI"
+    "title": "Infrastructure as Code - the next big shift is here",
+    "permalink": "/blog/infrastructure-as-code-the-next-big-shift"
   }
 }

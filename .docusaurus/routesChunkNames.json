@@ -21,18 +21,21 @@
   "/__docusaurus/debug/routes-244": {
     "component": "component---theme-debug-routes-946-699"
   },
-  "/blog-aab": {
+  "/blog-266": {
     "component": "component---theme-blog-list-pagea-6-a-7ba",
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
+      {
+        "content": "content---blog-781-ba5"
+      },
+      {
+        "content": "content---bloga-8-e-ce5"
+      },
       {
         "content": "content---blog-294-426"
       },
       {
         "content": "content---blog-007-91a"
-      },
-      {
-        "content": "content---blog-781-ba5"
       },
       {
         "content": "content---blog-9-c-8-f75"
@@ -51,9 +54,6 @@
       },
       {
         "content": "content---blog-6-be-ae9"
-      },
-      {
-        "content": "content---blog-076-6ee"
       }
     ],
     "metadata": "metadata---blogb-2-b-df1"
@@ -122,15 +122,23 @@
     "sidebar": "sidebar---blog-814-8ac",
     "content": "content---blog-how-to-learn-devops-1-a-0-ebf"
   },
+  "/blog/infrastructure-as-code-the-next-big-shift-2e4": {
+    "component": "component---theme-blog-post-pageccc-cab",
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-infrastructure-as-code-the-next-big-shiftad-9-8f7"
+  },
   "/blog/intro-to-azure-ACI-472": {
     "component": "component---theme-blog-post-pageccc-cab",
     "sidebar": "sidebar---blog-814-8ac",
     "content": "content---blog-intro-to-azure-ac-ia-8-b-dd1"
   },
-  "/blog/page/2-639": {
+  "/blog/page/2-13b": {
     "component": "component---theme-blog-list-pagea-6-a-7ba",
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
+      {
+        "content": "content---blog-page-2076-d10"
+      },
       {
         "content": "content---blog-page-2-c-30-c04"
       },
@@ -274,12 +282,22 @@
     ],
     "metadata": "metadata---blog-tags-containers-0-e-4-dd4"
   },
+  "/blog/tags/crossplane-039": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---bloga-8-e-ce5"
+      }
+    ],
+    "metadata": "metadata---blog-tags-crossplane-781-674"
+  },
   "/blog/tags/deployment-3ef": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",
     "sidebar": "sidebar---blog-814-8ac",
     "items": [
       {
-        "content": "content---blog-076-6ee"
+        "content": "content---blog-page-2076-d10"
       }
     ],
     "metadata": "metadata---blog-tags-deploymentcc-3-0a3"
@@ -305,7 +323,7 @@
         "content": "content---blog-189-d10"
       },
       {
-        "content": "content---blog-076-6ee"
+        "content": "content---blog-page-2076-d10"
       }
     ],
     "metadata": "metadata---blog-tags-devops-4-c-3-051"
@@ -378,6 +396,16 @@
       }
     ],
     "metadata": "metadata---blog-tags-iacb-2-e-a52"
+  },
+  "/blog/tags/infrastructure-206": {
+    "component": "component---theme-blog-tags-posts-page-687-b6c",
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---bloga-8-e-ce5"
+      }
+    ],
+    "metadata": "metadata---blog-tags-infrastructure-9-aa-43d"
   },
   "/blog/tags/kubernetes-fdb": {
     "component": "component---theme-blog-tags-posts-page-687-b6c",

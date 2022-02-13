@@ -1,4 +1,32 @@
 {
+  "/blog/tags/terraform": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/terraform",
+    "name": "terraform",
+    "count": 1,
+    "permalink": "/blog/tags/terraform"
+  },
+  "/blog/tags/iac": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/iac",
+    "name": "iac",
+    "count": 1,
+    "permalink": "/blog/tags/iac"
+  },
+  "/blog/tags/infrastructure": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/infrastructure",
+    "name": "Infrastructure",
+    "count": 1,
+    "permalink": "/blog/tags/infrastructure"
+  },
+  "/blog/tags/crossplane": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/crossplane",
+    "name": "Crossplane",
+    "count": 1,
+    "permalink": "/blog/tags/crossplane"
+  },
   "/blog/tags/kubernetes": {
     "allTagsPath": "/blog/tags",
     "slug": "/blog/tags/kubernetes",
@@ -26,20 +54,6 @@
     "name": "linux",
     "count": 1,
     "permalink": "/blog/tags/linux"
-  },
-  "/blog/tags/terraform": {
-    "allTagsPath": "/blog/tags",
-    "slug": "/blog/tags/terraform",
-    "name": "terraform",
-    "count": 1,
-    "permalink": "/blog/tags/terraform"
-  },
-  "/blog/tags/iac": {
-    "allTagsPath": "/blog/tags",
-    "slug": "/blog/tags/iac",
-    "name": "iac",
-    "count": 1,
-    "permalink": "/blog/tags/iac"
   },
   "/blog/tags/azure": {
     "allTagsPath": "/blog/tags",

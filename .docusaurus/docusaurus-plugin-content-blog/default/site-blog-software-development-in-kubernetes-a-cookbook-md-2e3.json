@@ -27,6 +27,10 @@
       "guide"
     ]
   },
+  "prevItem": {
+    "title": "Infrastructure as Code - the next big shift is here",
+    "permalink": "/blog/infrastructure-as-code-the-next-big-shift"
+  },
   "nextItem": {
     "title": "5 Unusual Docker Usecases",
     "permalink": "/blog/2021/08/02/5-unusual-docker-usecases"

@@ -1,6 +1,6 @@
 ---
 title: "5 Common Pitfalls in Iac"
-date: 2021-08-02T01:07:36+02:00
+date: 2022-08-02T01:07:36+02:00
 tags: ['terraform', 'iac']
 ---
 

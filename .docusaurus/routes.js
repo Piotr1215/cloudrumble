@@ -40,7 +40,7 @@ export default [
   },
   {
     path: '/blog',
-    component: ComponentCreator('/blog','aab'),
+    component: ComponentCreator('/blog','266'),
     exact: true
   },
   {
@@ -109,13 +109,18 @@ export default [
     exact: true
   },
   {
+    path: '/blog/infrastructure-as-code-the-next-big-shift',
+    component: ComponentCreator('/blog/infrastructure-as-code-the-next-big-shift','2e4'),
+    exact: true
+  },
+  {
     path: '/blog/intro-to-azure-ACI',
     component: ComponentCreator('/blog/intro-to-azure-ACI','472'),
     exact: true
   },
   {
     path: '/blog/page/2',
-    component: ComponentCreator('/blog/page/2','639'),
+    component: ComponentCreator('/blog/page/2','13b'),
     exact: true
   },
   {
@@ -179,6 +184,11 @@ export default [
     exact: true
   },
   {
+    path: '/blog/tags/crossplane',
+    component: ComponentCreator('/blog/tags/crossplane','039'),
+    exact: true
+  },
+  {
     path: '/blog/tags/deployment',
     component: ComponentCreator('/blog/tags/deployment','3ef'),
     exact: true
@@ -221,6 +231,11 @@ export default [
   {
     path: '/blog/tags/iac',
     component: ComponentCreator('/blog/tags/iac','23d'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/infrastructure',
+    component: ComponentCreator('/blog/tags/infrastructure','206'),
     exact: true
   },
   {

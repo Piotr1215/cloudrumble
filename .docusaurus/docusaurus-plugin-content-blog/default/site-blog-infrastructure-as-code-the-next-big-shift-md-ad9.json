@@ -1,0 +1,39 @@
+{
+  "permalink": "/blog/infrastructure-as-code-the-next-big-shift",
+  "editUrl": "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs/blog/infrastructure-as-code-the-next-big-shift.md",
+  "source": "@site/blog/infrastructure-as-code-the-next-big-shift.md",
+  "title": "Infrastructure as Code - the next big shift is here",
+  "description": "Photo by Ben on Unsplash",
+  "date": "2021-12-02T00:00:00.000Z",
+  "formattedDate": "December 2, 2021",
+  "tags": [
+    {
+      "label": "Infrastructure",
+      "permalink": "/blog/tags/infrastructure"
+    },
+    {
+      "label": "Crossplane",
+      "permalink": "/blog/tags/crossplane"
+    }
+  ],
+  "readingTime": 8.415,
+  "truncated": true,
+  "authors": [],
+  "frontMatter": {
+    "title": "Infrastructure as Code - the next big shift is here",
+    "sidebar_label": "Infrastructure with Crossplane",
+    "date": "2021-12-02T00:00:00.000Z",
+    "tags": [
+      "Infrastructure",
+      "Crossplane"
+    ]
+  },
+  "prevItem": {
+    "title": "5 Common Pitfalls in Iac",
+    "permalink": "/blog/5-common-pitfalls-in-iac"
+  },
+  "nextItem": {
+    "title": "Kubernetes Cookbook",
+    "permalink": "/blog/software-development-in-kubernetes-a-cookbook"
+  }
+}
