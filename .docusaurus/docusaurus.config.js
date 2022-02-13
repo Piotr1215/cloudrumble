@@ -68,6 +68,11 @@ export default {
           "href": "https://github.com/Piotr1215",
           "label": "GitHub",
           "position": "right"
+        },
+        {
+          "href": "https://medium.com/@piotrzan",
+          "label": "Medium Blogs",
+          "position": "right"
         }
       ],
       "hideOnScroll": false
