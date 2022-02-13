@@ -26,7 +26,8 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/Piotr1215/dca-prep-kit/tree/master/docs',
+            editUrl: ({docPath}) =>
+                        `https://github.com/Piotr1215/dca-prep-kit/edit/master/docs/${docPath}`,
         },
         blog: {
           showReadingTime: true,

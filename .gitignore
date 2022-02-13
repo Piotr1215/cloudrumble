@@ -19,7 +19,7 @@ build/
 .next
 out
 # generated files
-.docusaurus
+.docusaurus/
 .cache-loader
 
 # misc
