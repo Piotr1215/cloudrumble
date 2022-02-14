@@ -8,21 +8,18 @@ tags:
 
 ## Certification
 
-> [!NOTE]
->
-> - More details about certification and exam [available on Mirantis website](https://training.mirantis.com/dca-certification-exam/).
->
-> - [Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
+:::note
+ More details about certification and exam [available on Mirantis website](https://training.mirantis.com/dca-certification-exam/).
+[Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
+:::
 
 ## Exam
 
-> [!ATTENTION]
->
-> - Unlike CKA or CKAD there is no free retake of the exam, each subsequent attempt must be separately paid for, so make sure to prepare well. Remember that you can reschedule the exam at any time.
->
-> - Exam is pretty challenging. Questions are very detailed and often revolve around obscure details about particular topic. My exam had a lot of questions around PVs, PVCs, StorageClasses as well as detailed configuration of DTR and UCP. Please remember that your exam might be different, as questions are changed often.
->
-> - This guide is based on official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
+:::caution
+ Unlike CKA or CKAD there is no free retake of the exam, each subsequent attempt must be separately paid for, so make sure to prepare well. Remember that you can reschedule the exam at any time.
+Exam is pretty challenging. Questions are very detailed and often revolve around obscure details about particular topic. My exam had a lot of questions around PVs, PVCs, StorageClasses as well as detailed configuration of DTR and UCP. Please remember that your exam might be different, as questions are changed often.
+This guide is based on official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
+:::
 
 ### Exam topics
 
@@ -75,8 +72,9 @@ There is also a similar service for exercising with Kubernetes and is very usefu
 
 [Interactive online docker environments on demand: kubernetes](https://labs.play-with-k8s.com/)
 
-> [!TIP]
-> Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
+:::tip
+ Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
+:::
 
 Here are easy steps to run the container:
 
@@ -106,8 +104,9 @@ There are plenty of great learning repositories with exam topics directly linked
 Such sources are great shortcut for learning and reference later on, but I like to have all my links at my fingertips right in bookmarks bar.
 
 If you would like to have same bookmarks, please use my gist below and import them from file. Bookmarks are arranged in subfolder corresponding to exam topics:
-> [!NOTE]
-> [DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
+:::note
+ [DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
+:::
 
 ## Basic Concepts
 
@@ -142,15 +141,16 @@ On machine form where you want to access docker host, setup variable:
 export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 ```
 
-> [!NOTE]
-> Docker default ports:
+:::note
+ Docker default ports:
+:::
 >
 > - **2375** - unencrypted traffic
->
 > - **2376** - encrypted traffic.
 
-> [!WARNING]
-> **IMPORTANT**: This setting is only for testing/playground purposes. It will make docker host available on the network and by default there is no authentication.
+:::danger
+ **IMPORTANT**: This setting is only for testing/playground purposes. It will make docker host available on the network and by default there is no authentication.
+:::
 
 ### Use docker CLI as non root user
 
@@ -168,8 +168,9 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 
 There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
 
-> [!TIP]
-> I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
+:::tip
+ I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
+:::
 
 ### Kubernetes Architecture
 
@@ -236,8 +237,9 @@ _Sources_:
 
 Highlighted fields are the only required fields for deployment to work.
 
-> [!NOTE]
-> .spec.template is the same as pod spec, without apiVersion and kind fields
+:::note
+ .spec.template is the same as pod spec, without apiVersion and kind fields
+:::
 
 ## Images and Registry
 
@@ -258,8 +260,9 @@ For example:
 - running httpd image with command override `docker run httpd printenv` will override default `CMD` with `printenv` command which will output environmental variables to the terminal
 - command can be specified as regular command: `CMD httpd` or as json array `CMD ["sleep", "5"]`
 
-> [!NOTE]
-> in json array syntax first element of an array is command itself and all subsequent elements are parameters/options
+:::note
+ in json array syntax first element of an array is command itself and all subsequent elements are parameters/options
+:::
 
 <u>ENTRYPOINT</u>
 
@@ -267,8 +270,9 @@ This section defines what command will be executed once container starts and can
 
 - `CMD` and `ENTRYPOINT` work great together where `ENTRYPOINT` defines "fixed" command to be executed once container starts and `CMD` provides default, but overrideable arguments to run the container in different ways.
 
-> [!NOTE]
-> It is required to specify both `CMD` and `ENTRYPOINT` in a json array format for the override to work
+:::note
+ It is required to specify both `CMD` and `ENTRYPOINT` in a json array format for the override to work
+:::
 
 ### How to control resources utilization by a container
 
@@ -294,8 +298,9 @@ If a container tries to consume more memory than its limit, system will kill it 
 
 Ports mapping always goes from HOST to CONTAINER, so `-p 8080:80` would be mapping of port 8080 on host to port 80 on container.
 
-> [!TIP]
-> Hint: Prefer using "-p" option with static port when running containers in production.
+:::tip
+ Hint: Prefer using "-p" option with static port when running containers in production.
+:::
 
 ### How to copy files
 
@@ -343,8 +348,9 @@ To back up the swarm using any manager, follow these steps.
 
 2. Stop Docker on the manager before backing up the data, so that no data is being changed during the backup.
 
-  > [!NOTE]
-  > Be sure to maintain the quorum of swarm managers
+:::note
+ Be sure to maintain the quorum of swarm managers
+:::
 
 3. Back up the entire /var/lib/docker/swarm directory.
 
@@ -390,8 +396,9 @@ Kubernetes uses services to enable communication between pods and other resource
 - **TargetPort** - is the port on which the service will send requests to, that your pod will be listening on. Your application in the container will need to be listening on this port also.
 - **NodePort** - exposes a service externally to the cluster by means of the target nodes IP address and the NodePort. NodePort is the default setting if the port field is not specified.
 
-> [!NOTE]
-> By default NodePort range in Kubernetes is **30000-32767**
+:::note
+ By default NodePort range in Kubernetes is **30000-32767**
+:::
 
 ### Docker daemon stop behavior
 
@@ -407,8 +414,9 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 
 ![Docker Networking Mindmap](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml&fmt=svg)
 
-> [!ATTENTION]
-> **Important** Containers can only communicate on a user defined bridge/host network
+:::caution
+ **Important** Containers can only communicate on a user defined bridge/host network
+:::
 
 ### DTR overlay network
 
