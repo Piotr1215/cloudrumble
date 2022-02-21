@@ -1,0 +1,38 @@
+@startuml
+!theme cerulean-outline
+
+mainframe **GitOps with Crossplane and Flux**
+hide footbox
+autonumber
+
+skinparam DefaultFontSize 16
+skinparam BackgroundColor white
+'scale 1024 width
+'scale 768 height
+
+actor "Developers" as dev
+participant "Git Repository" as repo
+'==Bootstrap Repository== 
+group Bootstrap
+dev -> repo : Create a repository from\ntemplate and trigger CI
+box "K8s Cluster"
+    participant "Flux" as flux
+    participant "Crossplane" as crossplane
+end box
+repo -> flux : Register repo as Source
+flux -> flux : Create base Kustomization\nfrom template folder
+end
+
+group Create Cloud Resources
+    flux -> crossplane : Push base claims to the cluster
+    participant "Cloud Resources" as cloud_infra
+    crossplane -> cloud_infra : Build base infrastructure\nwith Crossplane 
+end group
+
+dev <--- cloud_infra : Consume cloud resources
+note left of cloud_infra
+    Developers can provision more resources
+    by creating claims in a designated folder
+    and pushing changes to the remote repo.
+end note
+@enduml
