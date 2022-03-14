@@ -1,0 +1,24 @@
+@startmindmap
+!theme vibrant
+<style>
+mindmapDiagram {
+    node {
+        BackgroundColor #f3807b
+    }
+    :depth(1) {
+      BackGroundColor #fdcd3c
+    }
+}
+</style>
+* products
+++ [[https://github.com/upbound/universal-crossplane Universal Crossplane]]
+++ Cloud
+-- Registry/Marketplace
+--- React frontent
+--- Artefacts
+---- Providers
+---- Configurations
+-- CLI
+--- Go
+--- up
+@endmindmap
