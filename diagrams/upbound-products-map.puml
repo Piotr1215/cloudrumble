@@ -12,6 +12,8 @@ mindmapDiagram {
 </style>
 * products
 ++ [[https://github.com/upbound/universal-crossplane Universal Crossplane]]
++++ Distribution of Crossplane
++++ Integrated with ArgoCD
 ++ Cloud
 -- Registry/Marketplace
 --- React frontent
