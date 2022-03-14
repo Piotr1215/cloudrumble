@@ -10,21 +10,36 @@ mindmapDiagram {
     }
 }
 </style>
-* products
-++ [[https://github.com/upbound/universal-crossplane Universal Crossplane]]
-+++ Distribution of Crossplane
-+++ Feature parity with Crossplane
-+++ Integrated with the CLI
-+++ Stable 18 month version support
-+++ Enables connectivity to UC
-+++ Language server integration
-++ Cloud
--- Registry/Marketplace
---- React frontent
---- Artefacts
----- Providers
----- Configurations
--- CLI
---- Go
---- up
+* Upbound
+left
+** Enterprise\n Products
+*** [[https://github.com/upbound/universal-crossplane Universal Crossplane]]
+**** Distribution of Crossplane
+**** Feature parity with Crossplane
+**** Integrated with the CLI
+**** Stable 18 month version support
+**** Enables connectivity to UC
+**** Language server integration
+*** Cloud
+*** Registry/Marketplace
+**** React frontent
+**** Artefacts
+***** Providers
+***** Configurations
+*** CLI
+**** Go
+**** up
+right
+** Crossplane\n     OOS
+*** Open Source
+*** Kubernetes Addon
+*** Control Plane
+*** API Centric
+*** Providers
+**** Documentation
+*****_ [[https://github.com/crossplane/terrajet/blob/main/docs/generating-a-provider.md Terrajet Docs]]
+*****_ [[https://github.com/crossplane/crossplane/blob/master/docs/contributing/provider_development_guide.md Regular Docs]]
+**** Providers Templates
+*****_ [[https://github.com/crossplane-contrib/provider-jet-template Terrajet Template]] 
+*****_ [[https://github.com/crossplane/provider-template Regular Template]] 
 @endmindmap
