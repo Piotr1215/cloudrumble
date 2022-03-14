@@ -13,7 +13,11 @@ mindmapDiagram {
 * products
 ++ [[https://github.com/upbound/universal-crossplane Universal Crossplane]]
 +++ Distribution of Crossplane
-+++ Integrated with ArgoCD
++++ Feature parity with Crossplane
++++ Integrated with the CLI
++++ Stable 18 month version support
++++ Enables connectivity to UC
++++ Language server integration
 ++ Cloud
 -- Registry/Marketplace
 --- React frontent
