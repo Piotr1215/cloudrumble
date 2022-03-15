@@ -3,9 +3,22 @@
 mindmapDiagram {
     node {
         BackgroundColor #f3807b
+        LineColor green
     }
     :depth(1) {
       BackGroundColor #fdcd3c
+      LineColor blue
+      LineThickness 1.0
+      RoundCorner 35
+      Shadowing 0.0
+      FontStyle bold
+    }
+    :depth(2) {
+      BackGroundColor #fdcd3c
+      LineColor black
+      LineThickness 1.0
+      RoundCorner 35
+      Shadowing 0.0
     }
 }
 </style>
