@@ -1,5 +1,4 @@
 @startmindmap
-!theme vibrant
 <style>
 mindmapDiagram {
     node {
@@ -35,11 +34,31 @@ right
 *** Kubernetes Addon
 *** Control Plane
 *** API Centric
-*** Providers
-**** Documentation
-*****_ [[https://github.com/crossplane/terrajet/blob/main/docs/generating-a-provider.md Terrajet Docs]]
-*****_ [[https://github.com/crossplane/crossplane/blob/master/docs/contributing/provider_development_guide.md Regular Docs]]
-**** Providers Templates
-*****_ [[https://github.com/crossplane-contrib/provider-jet-template Terrajet Template]] 
-*****_ [[https://github.com/crossplane/provider-template Regular Template]] 
+*** Provider Types
+**** Regular Provider
+*****_ [[https://github.com/crossplane/crossplane/blob/master/docs/contributing/provider_development_guide.md Documentation]]
+*****_ [[https://github.com/crossplane/provider-template Template]] 
+**** Terrajet Provider
+*****_ [[https://github.com/crossplane/terrajet/blob/main/docs/generating-a-provider.md Documentation]]
+*****_ [[https://github.com/crossplane-contrib/provider-jet-template Template]] 
+**** Tools
+***** [[https://github.com/crossplane/crossplane-tools/blob/master/README.md Angryjet]]
+*****_ Adds Crossplane required scaffold to resource kinds
+*** Managed Infrastructure
+**** Configuration resource
+***** Managed Resource
+******_ Cluster scoped
+******_ High fidelity
+******_ Represent resource in extenrnal system
+******_ Defined by provider
+***** Provider
+****** Enable access to extenrnal system
+*******_ Kubernetes secret
+*******_ Other metadata
+******_ Cluster scoped
+******_ ProviderConfig resource
+**** Controller
+*****_ Watches for changes in managed resources (CRUD)
+*****_ Calls provider API as a response to the change
+*****_ Matches actual state to desired state
 @endmindmap
