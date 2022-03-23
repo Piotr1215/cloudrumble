@@ -12,7 +12,7 @@ tags:
 
 The 4C's of cloud-native computing represents security in depth where each "C" stands for level of isolation from outside in.
 
-![The 4 C's](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-4cs.puml&fmt=svg)
+![The 4 C's](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-4cs.puml&fmt=svg)
 
 | Layer     | Description                                                                |
 | --------- | -------------------------------------------------------------------------- |
@@ -53,7 +53,7 @@ If Kubernetes components are deployed as daemons, edit service configuration fil
 
 ## Pod Decision Tree
 
-![POD Decision Tree](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-pods-escalation.puml&fmt=svg)
+![POD Decision Tree](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-pods-escalation.puml&fmt=svg)
 
 ## Seccomp
 
@@ -61,7 +61,7 @@ If Kubernetes components are deployed as daemons, edit service configuration fil
 
 ### How syscalls work
 
-![Syscalls](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/linux-syscalls.puml&fmt=svg)
+![Syscalls](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/linux-syscalls.puml&fmt=svg)
 
 ### How to check if Seccomp is enabled
 
@@ -92,7 +92,7 @@ If the result is **2** meaning that seccomp is enabled for the container
 
 ### Seccomp filter json file
 
-![Syscalls](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/linux-seccomp-profile.puml&fmt=svg)
+![Syscalls](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/linux-seccomp-profile.puml&fmt=svg)
 
 there are 2 profile types:
 
@@ -241,7 +241,7 @@ When should which tool be selected? Here is list of use cases and corresponding 
 
 ## Containers Isolation
 
-![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-container-isolation.puml&fmt=svg)
+![Container Isolation](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-container-isolation.puml&fmt=svg)
 
 ### gVisor
 
@@ -249,13 +249,13 @@ When should which tool be selected? Here is list of use cases and corresponding 
 
 > [!NOTE] [Install gVisor](https://gvisor.dev/docs/user_guide/install/)
 
-![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-gvisor-isolation.puml&fmt=svg)
+![Container Isolation](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-gvisor-isolation.puml&fmt=svg)
 
 ### Kata Containers
 
 <def>[Kata Containers](https://katacontainers.io/) Kata Containers is an open source container runtime, building lightweight virtual machines that seamlessly plug into the containers ecosystem.</def>
 
-![Container Isolation](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-katacontainers-isolation.puml&fmt=svg)
+![Container Isolation](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-containers-katacontainers-isolation.puml&fmt=svg)
 
 > [!NOTE] this requires nested virtualization (in case of running workloads on VMs) and can degrade performance. Some cloud providers do not support nested virtualization.
 
@@ -283,7 +283,7 @@ Secure and monitor linux system using eBPF probes.
 
 High-level overview of falco components:
 
-![Falco Components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-components.puml&fmt=svg)
+![Falco Components](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-components.puml&fmt=svg)
 
 <sup><sub>source: https://falco.org/docs/#what-are-the-components-of-falco</sub></sup>
 
@@ -291,7 +291,7 @@ High-level overview of falco components:
 
 Falco comes with pre-defined set of rules and alerts/actions that can be triggered by those rules (bolded ones are more relevant to containerized workloads):
 
-![Falco Ruleset](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
+![Falco Ruleset](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
 
 <sub><sup>*source: https://falco.org/docs/#what-does-falco-check-for*</sup></sub>
 

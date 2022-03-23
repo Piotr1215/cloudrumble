@@ -70,9 +70,20 @@ const config = {
               position: 'right',
             },{
               href: 'https://medium.com/@piotrzan',
-              label: 'Medium Blogs',
+              label: 'Medium',
+              position: 'right',
+            },
+            {
+              href: 'https://www.katacoda.com/decoder',
+              label: 'Katacoda',
+              position: 'right',
+            },
+            {
+              href: 'https://www.youtube.com/channel/UCkWVN7H3JqGtJ5Pv5bvCrAw',
+              label: 'YouTube',
               position: 'right',
             }
+
           ],
         },
         footer: {

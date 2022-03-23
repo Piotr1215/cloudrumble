@@ -19,7 +19,7 @@ Cluster admin creates *persistent volumes* as cluster resources and developers u
 
 Diagram below shows typical interaction between pv, pvc, pod and its containers to create, claim, use and cleanup storage.
 
-![Kubernetes Storage Lifecycle](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-storage-seq.puml&fmt=png)
+![Kubernetes Storage Lifecycle](https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-storage-seq.puml&fmt=png)
 
 ## What Problem does it solve?
 

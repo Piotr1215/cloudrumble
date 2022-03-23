@@ -85,7 +85,7 @@ This info is easily accessible in TACOS also with information who or what trigge
 
 The below diagram shows a recommended TACOS flow with GitOps principles.
 
-![TacosFlow](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/gitops-tacos-flow.puml&fmt=png)
+![TacosFlow](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/gitops-tacos-flow.puml&fmt=png)
 
 It is worth pointing out that instead of communicating with TACOS provider directly via Web UI, it is also possible to use CLI or REST API webhooks.
 

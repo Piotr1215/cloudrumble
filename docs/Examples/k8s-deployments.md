@@ -17,7 +17,7 @@ tags:
 
 Typical deployment resource consists of following objects
 
-![Deployment Spec](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-spec.puml&fmt=png)
+![Deployment Spec](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-spec.puml&fmt=png)
 
 As usual *apiVersion, kind, metadata and spec* are mandatory fields in every Kubernetes resource. Deployment adds following important fields under *spec*:
 
@@ -121,7 +121,7 @@ First we need to understand how Kubernetes performs updates:
 >
 > We are only looking at RollingUpdate below
 
-![Deployment Spec](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-seq.puml&fmt=png)
+![Deployment Spec](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-seq.puml&fmt=png)
 *Source*: https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/
 
 Rollback is simply the reverse of rolling update. Kubernetes stores state of previous updates, so it's very easy to revert to previous revision.
