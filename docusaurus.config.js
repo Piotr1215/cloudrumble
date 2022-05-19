@@ -74,8 +74,8 @@ const config = {
               position: 'right',
             },
             {
-              href: 'https://www.katacoda.com/decoder',
-              label: 'Katacoda',
+              href: 'https://killercoda.com/decoder',
+              label: 'Killercoda',
               position: 'right',
             },
             {
