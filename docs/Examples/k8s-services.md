@@ -60,10 +60,10 @@ We are going to revisit scenarios from the section [What Problem does it solve?]
 
 ### Prerequisites
 
-Instead of asciinema recording, this time we are going to use [katacoda](https://www.katacoda.com/). You just need a web browser, inquisitive mindset and some spare time to learn new things, no other prerequisites needed :)
+Instead of asciinema recording, this time we are going to use [Killercoda](https://killercoda.com/). You just need a web browser, inquisitive mindset and some spare time to learn new things, no other prerequisites needed :)
 
 :::tip
- [Katacoda](https://www.katacoda.com/) is a great free service. It is an "Interactive Learning and Training Platform for Software Engineers" that "enables learning new technologies using real
+ [Killercoda](https://killercoda.com/) is a great free service. It is an "Interactive Learning and Training Platform for Software Engineers" that "enables learning new technologies using real
 :::
 > environments right in your browser"
 
@@ -99,9 +99,9 @@ This time for each scenario we are going to use formalized notation called [Gher
 :::note
  Typically we would use testing framework like [Specflow](https://docs.specflow.org/projects/specflow/en/latest/index.html) or [Cucumber](https://cucumber.io/),
 :::
-> but for the purpose of learning we are going to execute steps in the Katacoda environment manually.
+> but for the purpose of learning we are going to execute steps in the Killercoda environment manually.
 
-Let's describe our scenarios and head to my [Katacoda Scenario](https://www.katacoda.com/decoder/courses/k8s-networking/k8s-networking-services) and experiment on your own!
+Let's describe our scenarios and head to my [Killercoda Scenario](https://killercoda.com/decoder/courses/k8s-networking/k8s-networking-services) and experiment on your own!
 
 ### Expose pods to consumers from outside of the cluster
 
@@ -114,7 +114,7 @@ Feature: NodePort Service
     Scenario: Application running in pods accessed from outside of the cluster
       Given there is nginx deployment present in the cluster
       When deployment is exposed using "NodePort" Service
-      Then sample page correctly renders on the node port in "Katacoda"
+      Then sample page correctly renders on the node port in "Killercoda"
 ```
 
 **Conclusion:** We have successfully proven that workloads running in pods can be easily consumed from outside of the cluster
@@ -173,14 +173,14 @@ Feature: Services Encapsulation
       Given there is nginx deployment present in the cluster
       And deployment is exposed using "NodePort" Service
       When deployment is scaled up to "5" replicas
-      Then page on the same NodePort in "Katacoda" is accessible without disruptions
+      Then page on the same NodePort in "Killercoda" is accessible without disruptions
       And new endpoints are registered in the service manifest
 
     Scenario: Deployment scaled down
       Given there is nginx deployment present in the cluster
       And deployment is exposed using "NodePort" Service
       When deployment is scaled up to "1" replica
-      Then page on the same NodePort in "Katacoda" is accessible without disruptions
+      Then page on the same NodePort in "Killercoda" is accessible without disruptions
       And endpoints are removed from the service manifest leaving only one
 ```
 

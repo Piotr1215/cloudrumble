@@ -59,7 +59,7 @@ https://itnext.io/best-practices-for-developing-on-kubernetes-8fbdbba12538
 
 ### Exercise 1 - Deployments
 
-[Exercise on Katacoda](https://www.katacoda.com/decoder/scenarios/k8s-deployments)
+[Exercise on Katacoda](https://killercoda.com/decoder/scenarios/k8s-deployments)
 
 ### Exercise 2 - Persistent Storage
 
@@ -67,11 +67,11 @@ https://itnext.io/best-practices-for-developing-on-kubernetes-8fbdbba12538
 
 ### Exercise 3 - Configuration
 
-[Exercise on Katacoda](https://www.katacoda.com/decoder/scenarios/k8s-configuration)
+[Exercise on Katacoda](https://killercoda.com/decoder/scenarios/k8s-configuration)
 
 ### Exercise 5 - Services
 
-[Exercise on Katacoda](https://www.katacoda.com/decoder/courses/k8s-networking/k8s-networking-services)
+[Exercise on Katacoda](https://killercoda.com/decoder/courses/k8s-networking/k8s-networking-services)
 
 ### Exercise 6 - Putting it all together
 
@@ -102,7 +102,7 @@ Here is list of free services and programs to play around with Kubernetes and Do
 - **Local** installation with [Docker Desktop](https://www.docker.com/products/docker-desktop) on Windows, Mac or Linux
 - **Local** installation with [k3s](https://github.com/k3s-io/k3s) [on an old laptop/pc](https://itnext.io/how-to-create-kubernetes-home-lab-on-an-old-laptop-1de6cc12c13e)
 
-- **Remote** cluster with [Katakoda](https://www.katacoda.com/)
+- **Remote** cluster with [Katakoda](https://killercoda.com/)
 - **Remote** cluster or local installation with [LXC Containers](https://linuxcontainers.org/)
 - **Remote** cluster [PWK — Play With Kubernetes](https://labs.play-with-k8s.com/)
 - **Remote** docker [Interactive online docker environments on demand: docker](https://labs.play-with-docker.com/)

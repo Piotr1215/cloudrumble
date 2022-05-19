@@ -18,9 +18,9 @@ Let’s start by looking at resources. I used 3 resource to learn:
 
 * ‍[Kubernetes Certified Application Developer (CKAD) with Tests.](https://www.udemy.com/course/certified-kubernetes-application-developer/) The course is on Udemy and is designed and delivered by Mumshad Mannambeth. Very well done with lots of hands on exercises that prepare very well for real exam.[‍](https://github.com/lucassha/CKAD-resources)
 
-* [Exercises available on GitHub designed by Dimitris-Ilias Gkanatsios.](https://github.com/lucassha/CKAD-resources)[‍](https://www.katacoda.com/courses/kubernetes)
+* [Exercises available on GitHub designed by Dimitris-Ilias Gkanatsios.](https://github.com/lucassha/CKAD-resources)
 
-* [Katakoda with ready environments to spin and play around.](https://www.katacoda.com/courses/kubernetes)‍
+* [Killercoda with ready environments to spin and play around.](https://killercoda.com/kubernetes)
 
 * [Justmeandopensource youtube channel of with very informative short videos all things kubernetes, including basics.](https://www.youtube.com/user/wenkatn/videos)
 
