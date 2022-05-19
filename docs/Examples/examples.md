@@ -37,7 +37,7 @@ There are a lot of different options to play around with Kubernetes for free:
 - Local installation with [Minikube](https://minikube.sigs.k8s.io/docs/) or [MicroK8s](https://microk8s.io/)
 - Local installation with [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/)
 - Local installation with [Docker Desktop](https://www.docker.com/products/docker-desktop) on Windows, Mac or Linux
-- Remote cluster with [Katakoda](https://www.katacoda.com/)
+- Remote cluster with [Killercoda](https://killercoda.com/)
 - Remote cluster with free credits on any public cloud provider, 3 most popular ones:
   - [AKS*](https://docs.microsoft.com/en-us/azure/aks/)
   - [GKE](https://cloud.google.com/kubernetes-engine/)

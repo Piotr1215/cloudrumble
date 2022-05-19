@@ -39,7 +39,7 @@ Here are examples of Kubernetes and Docker sandboxes:
 - **Local** installation with [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/)
 - **Local** installation with [Docker Desktop](https://www.docker.com/products/docker-desktop) on Windows, Mac or Linux
 - **Local** installation with [k3s](https://github.com/k3s-io/k3s) [on an old laptop/pc](https://itnext.io/how-to-create-kubernetes-home-lab-on-an-old-laptop-1de6cc12c13e)
-- **Remote** cluster with [Katakoda](https://www.katacoda.com/)
+- **Remote** cluster with [Killercoda](https://killercoda.com/)
 - **Remote** cluster with free credits on any public cloud provider, 3 most popular ones: Azure [AKS](https://docs.microsoft.com/en-us/azure/aks/), Google Cloud [GKE](https://cloud.google.com/kubernetes-engine/), AWS [EKS](https://aws.amazon.com/eks/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc&eks-blogs.sort-by=item.additionalFields.createdDate&eks-blogs.sort-order=desc)
 - **Remote** cluster or local installation with [LXC Containers](https://linuxcontainers.org/)
 - **Remote** cluster [PWK — Play With Kubernetes](https://labs.play-with-k8s.com/)

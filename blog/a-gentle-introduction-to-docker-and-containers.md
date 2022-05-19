@@ -64,7 +64,7 @@ There is a lot of great learning resources, but I had most success using below 4
 
 If you would like to play with Docker and containers, there is no need to install anything on your machine nor spin up infrastructure in public cloud providers! Below resources enable you to play with Docker directly in your browser
 
--   [https://www.katacoda.com/loodse/courses/docker](https://www.katacoda.com/loodse/courses/docker). Dedicated Docker workshops and hands on guided labs
+-   [https://killercoda.com/loodse/courses/docker](https://killercoda.com/loodse/courses/docker). Dedicated Docker workshops and hands on guided labs
 -   [https://labs.play-with-docker.com/](https://labs.play-with-docker.com/). Interactive environment with Docker installed where you can explore and experiment for free. Environment is active for 4 hours)
 
 ## Conclusion
