@@ -14,11 +14,11 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Katacoda Scenarios',
+    title: 'Killercoda Scenarios',
     Svg: require('../../static/img/katacoda.svg').default,
     description: (
       <>
-        Self-pace learning interactive labs on <a href="https://killercoda.com/decoder">Katacoda</a>.
+        Self-pace learning interactive labs on <a href="https://killercoda.com/decoder">Killercoda</a>.
         Learn topics like: Kubernetes, service mesh, Crossplane, Docker.
       </>
     ),
