@@ -5,6 +5,8 @@ tags: ["kubernetes", "crossplane"]
 image: _media/kubernetes_hard.png
 ---
 
+import YouTube from 'react-youtube';
+
 This article is will be helpful to anyone interested in modern complex software
 development.
 
@@ -15,7 +17,7 @@ For a practical walkthrough using this
 check out this companion video with a guided tour of Crossplane fundamentals and
 Kubernetes Provider.
 
-<iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FQTtd_zzT57o%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DQTtd_zzT57o&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FQTtd_zzT57o%2Fhqdefault.jpg&amp;key=a19fcc184b9711e1b4764040d3dc5c07&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" frameborder="0" height="480" width="640" title="Crossplane Fundamentals - Kubernetes Provider" class="fq aq as ag cf" scrolling="false"></iframe>
+<YouTube videoId="QTtd_zzT57o" />
 
 Guided Katacoda Scenario Tour
 
