@@ -94,25 +94,55 @@ crate`.
 
 #### Search for, compare, and manipulate files and file content
 
+There are several command in this category:
+
+- find, grep
+- diff
+- sed, awk, cut
+
 #### Use pipes and shell input/output redirections
+
+Pipeing takes output of one command and makes it an input of another command.
+
+Redirection takes output of a command and redirects it into a file or process.
 
 #### Analyze file content using regular expressions
 
+[Regular expressions 101](https://regex101.com/)
+
+[Regex cheatsheet](https://docs.linuxfoundation.org/lfx/project-control-center/tools/security/manage-false-positives/regular-expressions-cheat-sheet)
+
 #### Create and work with archives
+
+unzip, tar, cpio
 
 #### Create and manage hard and symbolic links
 
+ln and ln -s
+
+https://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link
+
 #### List, set, and change file access permissions
+
+chmod, chown, setfacl (ubuntu derivatives only)
 
 ### System Configuration
 
 #### Install software packages
 
+Depending on the system.
+
 #### Create and maintain filesystems
+
+https://www.thegeekdiary.com/how-to-create-and-mount-filesystems-in-linux/
 
 #### Administer local user and group accounts
 
+Create user: useradd, groupadd, 
+
 #### Configure and set system time and timezone
+
+https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/
 
 #### Configure networking and local hostname resolution
 
@@ -120,21 +150,31 @@ crate`.
 
 #### Identify and inspect processes and services
 
+ps, pskill, netstat
+
 #### Health-check and repair network services
 
 #### Identify and inspect storage issues
 
+https://www.howtouselinux.com/post/debugging-disk-usage-in-linux
+
 #### Troubleshoot containers
+
+What kind of containers?
 
 ### Virtualization and Containers
 
 #### Create and manage local and cloud-hosted Virtual Machines
+
+virtualbox, quemu 
 
 #### Use cloud-init to initialize cloud-hosted Virtual Machines
 
 #### Create and manage application containers (Podman or Docker)
 
 #### Understand the need for container orchestration
+
+https://itnext.io/how-to-be-a-devops-maestro-containers-orchestration-guide-b2cf884eaed1
 
 ### GitOps Basics
 
