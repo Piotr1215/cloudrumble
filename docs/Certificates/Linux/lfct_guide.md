@@ -172,152 +172,13 @@ virtualbox, quemu
 
 #### Create and manage application containers (Podman or Docker)
 
-#### Understand the need for container orchestration
-
-https://itnext.io/how-to-be-a-devops-maestro-containers-orchestration-guide-b2cf884eaed1
-
-### GitOps Basics
-
-#### Use the Git version control system
-
-#### Perform change/code review
-
-#### Work on version control and collaboration platforms (GitHub, GitLab)
-
-#### Understand models of change management
-
-#### Run commands on multiple systems and capture output
-
-#### Automate configuration management
-
-### Find good training material
-
-As a primary online training learning source I have used Kodekloud's [Docker Certified Associate Exam Course](https://kodekloud.com/p/docker-certified-associate-exam-course).
-
-As a primary learning resource in general I cannot recommend enough **Nigel Poulton's DOCKER DEEP DIVE**. You can get the book for less than 10 EUR on Amazon in kindle format.
-
-You can check out [Nigel's personal page](https://nigelpoulton.com/) for more information.
-
-I have already passed, and blogged about [CKA](https://medium.com/faun/preparation-and-resources-for-cka-exam-ca868fc678c9) and [CKAD](https://piotrzan.medium.com/preparation-and-resources-for-ckad-exam-ea1b2e8888e3) and there is significant overlap with Kubernetes orchestration part and containers basics.
-
-There is a great repo by [Govinda Fichtner](https://github.com/Govinda-Fichtner) where there are links to docker documentation organized per learning topic. You can find the repo here: [DCA Prep Guide from DevOps-Academy](https://github.com/DevOps-Academy-Org/dca-prep-guide).
-
-### Go though mock questions and exams
-
-Since the exam is in the form of questions, it is important to exercise as much as possible and go thought questions and mock exams. Kodekloud course I've mentioned before has a lot of questions build in, but there are also free mock exams and questions. One from medium I find very good:
-[Medium blog - 250 Practice Questions for the DCA Exam](https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce).
-
-### Practice with Docker
-
-In this exam practical exercises are not as important as in CKA and CKAD for example, but I still find it valuable to follow up a theoretical session with a practical review.
-
 There is a free service there you can spin up a few vms (some of them already have docker swarm preinstalled) and exercise without installing anything on your machine!
 
 [Interactive online docker environments on demand: docker](https://labs.play-with-docker.com/)
 
-There is also a similar service for exercising with Kubernetes and is very useful for the Kubernetes orchestration part.
+#### Understand the need for container orchestration
 
-[Interactive online docker environments on demand: kubernetes](https://labs.play-with-k8s.com/)
-
-:::tip
-Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
-:::
-
-Here are easy steps to run the container:
-
-```bash
-
-*Results:*
-```
-PASSWD(5)                                                                                                                        File Formats and Conversions                                                                                                                        PASSWD(5)
-
-NAME
-       passwd - the password file
-
-DESCRIPTION
-       /etc/passwd contains one line for each user account, with seven fields delimited by colons (“:”). These fields are:
-
-       •   login name
-
-       •   optional encrypted password
-
-       •   numerical user ID
-
-       •   numerical group ID
-
-       •   user name or comment field
-
-       •   user home directory
-
-       •   optional user command interpreter
-
-       If the password field is a lower-case “x”, then the encrypted password is actually stored in the shadow(5) file instead; there must be a corresponding line in the /etc/shadow file, or else the user account is invalid.
-
-       The encrypted password field may be empty, in which case no password is required to authenticate as the specified login name. However, some applications which read the /etc/passwd file may decide not to permit any access at all if the password field is blank.
-
-       A password field which starts with an exclamation mark means that the password is locked. The remaining characters on the line represent the password field before the password was locked.
-
-       Refer to crypt(3) for details on how this string is interpreted.
-
-       If the password field contains some string that is not a valid result of crypt(3), for instance ! or *, the user will not be able to use a unix password to log in (but the user may log in the system by other means).
-
-       The comment field is used by various system utilities, such as finger(1).
-
-       The home directory field provides the name of the initial working directory. The login program uses this information to set the value of the $HOME environmental variable.
-
-       The command interpreter field provides the name of the user's command language interpreter, or the name of the initial program to execute. The login program uses this information to set the value of the $SHELL environmental variable. If this field is empty, it defaults to the
-       value /bin/sh.
-
-FILES
-       /etc/passwd
-           User account information.
-
-       /etc/shadow
-           optional encrypted password file
-
-       /etc/passwd-
-           Backup file for /etc/passwd.
-
-           Note that this file is used by the tools of the shadow toolsuite, but not by all user and password management tools.
-
-SEE ALSO
-       crypt(3), getent(1), getpwnam(3), login(1), passwd(1), pwck(8), pwconv(8), pwunconv(8), shadow(5), su(1), sulogin(8).
-
-shadow-utils 4.8.1                                                                                                                        11/24/2022                                                                                                                                 PASSWD(5)
-/tmp/mdeval//lfctguidemd_72_175.sh: line 4: unexpected EOF while looking for matching ``'
-/tmp/mdeval//lfctguidemd_72_175.sh: line 102: syntax error: unexpected end of file
-```
-
-# Run container on same network as host
-docker run -d --network=host --name=kubectl-host --rm -it piotrzan/kubectl-comp:zsh
-
-# Copy over Kubernetes config file
-kubectl config view --raw > config
-docker cp ./config kubectl-host:./root/.kube
-
-# Attach shell to running container
-docker attach kubectl-host
-```
-
-Or simpler version with volume mount
-
-```bash
-# .kube/config is a symling to /etc/kubernetes/admin.conf
-docker run --network=host --name=kubectl-host -v /etc/kubernetes/admin.conf:/root/.kube/config --rm -it piotrzan/kubectl-comp:zsh
-```
-
-### Know Docker/Mirantis documentation well
-
-There are plenty of great learning repositories with exam topics directly linked to Docker/Mirantis documentation. A good one that is also up to date is [Evalle/DCA](https://github.com/Evalle/DCA).
-
-Such sources are great shortcut for learning and reference later on, but I like to have all my links at my fingertips right in bookmarks bar.
-
-If you would like to have same bookmarks, please use my gist below and import them from file. Bookmarks are arranged in subfolder corresponding to exam topics:
-:::note
-[DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
-:::
-
-## Basic Concepts
+https://itnext.io/how-to-be-a-devops-maestro-containers-orchestration-guide-b2cf884eaed1
 
 ### Docker CLI syntax
 
@@ -341,114 +202,6 @@ _Sources_:
 ### Container Layer
 
 By default all docker image layers are immutable (read-only). When container is created using `docker run` command, an additional mutable (read-write) layer is created. **This layer is only there for the duration of container lifetime and will be removed once container exits**. When modifying any files in a running container, docker creates a copy of the file and moves it to container layer (COPY-ON-WRITE) before changes are saved. Original files as part of the image are never changed.
-
-### Access remote Docker host from CLI
-
-On machine form where you want to access docker host, setup variable:
-
-```bash
-export DOCKER_HOST="tcp://<docker-host-ip>:2375"
-```
-
-:::note
-Docker default ports:
-:::
-
-> - **2375** - unencrypted traffic
-> - **2376** - encrypted traffic.
-
-:::danger
-**IMPORTANT**: This setting is only for testing/playground purposes. It will make docker host available on the network and by default there is no authentication.
-:::
-
-### Use docker CLI as non root user
-
-1. Create Docker group: `sudo groupadd docker`
-2. Create a non-root user you want to use with docker: `sudo useradd -G docker <user-name>`
-3. Change this user primary group: `sudo usermod -aG docker <non-root user>`
-4. Logoff and login with the docker user.
-5. Optional - restart docker service: `sudo systemctl restart docker`
-
-## Orchestration
-
-### Orchestration Areas
-
-![Orchestration](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-orchestration.puml&fmt=svg)
-
-There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
-
-:::tip
-I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
-:::
-
-### Kubernetes Architecture
-
-![Kubernetes Architecture](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-architecture.puml&fmt=svg)
-_Source_: <https://kubernetes.io/docs/concepts/overview/components/>.
-
-### Docker Swarm Architecture
-
-![Docker Swarm](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml&fmt=svg)
-_Source_: <https://docs.docker.com/engine/swarm/images/service-lifecycle.png>.
-
-#### What is docker stack
-
-Docker stack is very similar to docker compose with key difference being that **docker compose defines containers** while **docker stack defines services**. Swarm also provides commands to work with stacks directly.
-
-Useful Stack commands:
-
-- `docker stack deploy -c <compose file>` - deploy the new stack or update
-- `docker stack services` - list services in the stack
-- `docker stack ps` - list the tasks in the stack
-- `docker stack rm` - remove the stack
-- `docker stack ls` - List stack
-
-#### Difference between docker stack ls and docker stack ps
-
-- `docker stack ls` - lists all the stacks
-- `docker stack services` - list the services created by a stack
-- `docker stack ps <stack-name>` - lists all the services running in a stack
-
-#### Docker Swarm Networks
-
-- **Overlay networks**: manage communications among the Docker daemons participating in the swarm.You can attach a service to one or more existing overlay networks as well, to enable service-to-service communication.
-
-- **ingress network**: is a special overlay network that facilitates load balancing among a service’s nodes. When any swarm node receives a request on a published port, it hands that request off to a module called IPVS. IPVS keeps track of all the IP addresses participating in that service, selects one of them, and routes the request to it, over the ingress network.
-
-- **docker_gwbridge**: is a bridge network that connects the overlay networks (including the ingress network) to an individual Docker daemon’s physical network.
-
-### Raft Consensus and Quorum
-
-Implementing [Raft Consensus Algorithm](http://thesecretlivesofdata.com/raft/) ensures that all manager nodes in a distributed system are storing the same consistent state.
-
-#### Quorum
-
-To calculate minimum number of master nodes required to achieve _quorum_ (or simply majority) use $\boxed{N=\frac {N + 1} 2}$ and round the result to full number.
-
-So having 5 master nodes, the quorum is 3.
-
-#### Fault Tolerance
-
-Knowing the quorum of master nodes, we can predict fault tolerance which is a number describing how many master nodes can fail before cluster is going to be put in an inconsistent state.
-
-To calculate _fault tolerance_ of the cluster use $\boxed{N=\frac {N - 1} 2}$
-
-So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
-
-### Kubernetes Deployment Spec
-
-![Kubernetes Deployment Spec](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-deployment-spec.puml&fmt=png)
-
-_Sources_:
-
-- Json representation of a deployment based on my [blazor in Docker demo](https://hub.docker.com/repository/docker/piotrzan/blazorindocker)
-- <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#writing-a-deployment-spec>
-
-Highlighted fields are the only required fields for deployment to work.
-
-:::note
-.spec.template is the same as pod spec, without apiVersion and kind fields
-:::
 
 ## Images and Registry
 
@@ -527,54 +280,21 @@ Copying files is very easy, first parameter after cp command is source and secon
 
 By default docker will pull images from configured images repository (Docker Hub by default), but it's possible to specify `build` directive instead of `image` with a path to `Dockerfile`
 
-## Installation and Configuration
+### GitOps Basics
 
-### MKE Architecture
+[link](https://medium.com/itnext/gitops-with-kubernetes-740f37ea015b)
 
-![MKE Architecture](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
+#### Use the Git version control system
 
-_Source_: <https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html>
+#### Perform change/code review
 
-Be aware that after Docker acquisition by Mirantis there have been some naming and product changes, so following applies:
+#### Work on version control and collaboration platforms (GitHub, GitLab)
 
-- Docker Trusted Registry (DRT) **is now** Mirantis Secure Registry (MSR)
-- Universal Control Plane **is now** Mirantis Kubernetes Engine (MKE)
-- Docker Enterprise Edition (DEE) **is now** Mirantis Container Runtime (MCR)
+#### Understand models of change management
 
-### UCP/MKE Backup
+#### Run commands on multiple systems and capture output
 
-To take a backup of UCP/MKE use **docker/ucp** container
-
-### DTR/MSR Backup
-
-To perform a backup of a MSR node, run the **mirantis/dtr backup msr-cli-backup** command
-
-### Docker Swarm Backup (simplified)
-
-To back up the swarm using any manager, follow these steps.
-
-1. If the swarm has auto-lock enabled, you need the unlock key to restore the swarm from backup.
-
-2. Stop Docker on the manager before backing up the data, so that no data is being changed during the backup.
-
-:::note
-Be sure to maintain the quorum of swarm managers
-:::
-
-3. Back up the entire /var/lib/docker/swarm directory.
-
-4. Restart the manager.
-
-_Source_: <https://docs.docker.com/engine/swarm/admin_guide/#back-up-the-swarm>
-
-### Kubernetes configMaps
-
-In order to configure configMapKeyRef in a pod to use environment variables defined in a ConfigMap, use container path subset **spec.containers.env.valueFrom**
-
-### Change docker daemon host configuration
-
-Configuration file is located at `/etc/docker/daemon.json` and is by default in `json` format.
-This file is not present by default.
+#### Automate configuration management
 
 ### Logging in docker
 
@@ -591,23 +311,6 @@ To change logging driver to for example splunk, update deamon.json, like so:
 
 ![Docker Server Components](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-components-tree.puml&fmt=svg)
 
-### Kubernetes network policies
-
-![Kubernetes Network Policy](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-network-policy.puml&fmt=svg)
-
-As soon as a network policy is associated with a POD all ingress and egress traffic to that POD are denied except allowed by the network policy.
-
-### Kubernetes service resource
-
-Kubernetes uses services to enable communication between pods and other resources as well as external endpoints. Service can declare 3 types of ports:
-
-- **Port** - exposes the Kubernetes service on the specified port within the cluster. Other pods within the cluster can communicate with this server on the specified port.
-- **TargetPort** - is the port on which the service will send requests to, that your pod will be listening on. Your application in the container will need to be listening on this port also.
-- **NodePort** - exposes a service externally to the cluster by means of the target nodes IP address and the NodePort. NodePort is the default setting if the port field is not specified.
-
-:::note
-By default NodePort range in Kubernetes is **30000-32767**
-:::
 
 ### Docker daemon stop behavior
 
@@ -626,89 +329,6 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 :::caution
 **Important** Containers can only communicate on a user defined bridge/host network
 :::
-
-### DTR overlay network
-
-The network created for the DTR services to communicate with each other is **overlay/dtr-ol**
-
-## Security
-
-### Security Layers
-
-![Layered Security](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-security-layers.puml&fmt=svg)
-
-### Access Control Model in MKE
-
-![Access Control Model](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-access-control-model.puml&fmt=svg)
-_Source:_ <http://docs.docker.oeynet.com/datacenter/ucp/2.2/guides/access-control/>
-
-Grants are effectively Access Control Lists (ACLs) which provide comprehensive access policies for an entire organization when grouped together.,Grants define which users can access what resources in what way.,A grant is made up of a subject, a role, and a resource set.
-
-To control user access, cluster resources are grouped into Docker Swarm collections or Kubernetes namespaces.,Together, collections and namespaces are named resource sets.
-
-### Image Scanning
-
-DTR/MSR has an ability to scan images for known vulnerabilities, it is done with a container called **dtr-jobrunner**.
-
-## Storage and Volumes
-
-### Kubernetes Storage Lifecycle
-
-![Kubernetes Storage Lifecycle](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-storage-seq.puml&fmt=png)
-
-_Source_: [Kubernetes Documentation](https://kubernetes.io/)
-
-The above diagram shows manual provisioning of **Persistent Volumes** as well as using them via **Persistent Volume Claims**.
-
-The process can be divided into 4 phases:
-
-- Creation
-- Setting up
-- Usage
-- Cleanup
-
-### Where is everything stored
-
-Once installed, docker creates a folder under `/var/lib/docker/` where all the containers, images, volumes and configurations are stored.
-
-Kubernetes and Docker Swarm store cluster state and related information in [etcd](https://etcd.io/).
-etcd by default listens on port `2380` for client connections.
-
-### Configure a storage class for an application in k8s
-
-Steps:
-
-1. Create a storage class with a provisioner
-2. Create a PVC with the storage class
-3. Use the PVC in the volumes section in the pod definition file
-
-### Mounting volumes syntax
-
-List of common storage drivers:
-
-- AUFS - Ubuntu default
-- ZFS
-- BTRFS
-- Device Mapper
-- Overlay
-- Overlay2
-
-<u>Volume mount</u>
-
-Template old syntax: `docker run -v volume_name:<path to store in container> container_name`
-
-Template new syntax: `docker run --mount source=volume_name,target=<path to store in container> container_name`
-
-Example old syntax: `docker run -v data_vol:/var/lib/nginx_data nginx`
-
-<u>Bind mount</u>
-
-Template old syntax: `docker run -v <full path to folder in docker host>:<full path to folder in container> container_name`
-
-Template new syntax:
-`docker run --mount type=bind,source=<full path to folder in docker host>,target=<path to store in container> container_name`
-
-Example old syntax: `docker run -v /data/nginx_data:/var/lib/nginx_data nginx`
 
 ## Useful Commands
 
@@ -786,16 +406,3 @@ This section describes useful docker CLI commands in following format:
 
 ## Links and resources
 
-1. [Docker Certified Associate Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf)
-2. [DCA Prep Guide from DevOps-Academy](https://github.com/DevOps-Academy-Org/dca-prep-guide)
-3. [Docker Cheatsheet](https://github.com/wsargent/docker-cheat-sheet)
-4. [Interactive online docker environments on demand](https://labs.play-with-docker.com/)
-5. [Interactive online kubernetes environments on demand](https://labs.play-with-k8s.com/)
-6. [Medium blog - 250 Practice Questions for the DCA Exam](https://medium.com/bb-tutorials-and-thoughts/250-practice-questions-for-the-dca-exam-84f3b9e8f5ce)
-7. [Kubernetes Official Documentation](https://kubernetes.io/)
-8. [Docker Docs](https://docs.docker.com/)
-9. [Mirantis Docs](https://docs.mirantis.com/welcome/)
-10. [Kodekloud Youtube Docker for Beginners](https://www.youtube.com/watch?v=zJ6WbK9zFpI&t=2s&ab_channel=KodeKloud)
-11. [Docker Handbook](https://www.freecodecamp.org/news/the-docker-handbook/)
-12. [PlantUML Diagrams as Code](https://plantuml.com/)
-13. [K8s Services Explained](https://www.bmc.com/blogs/kubernetes-port-targetport-nodeport/)
