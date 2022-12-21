@@ -24,7 +24,7 @@ Here are some that are useful for the exam:
 - [introduction to git](https://training.linuxfoundation.org/training/git-for-distributed-software-development-lfd109x/)
 - [linux tools and command line utilities](https://training.linuxfoundation.org/training/linux-tools-for-software-development-lfd108x/)
 - [introduction to GitOps](https://training.linuxfoundation.org/training/introduction-to-gitops-lfs169/)
-- [devops iac and containers](https://training.linuxfoundation.org/training/introduction-to-devops-and-site-reliability-engineering-lfs162/) 
+- [devops iac and containers](https://training.linuxfoundation.org/training/introduction-to-devops-and-site-reliability-engineering-lfs162/)
 - [cloud infrastructure](https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/)
 
 ## Exam
@@ -77,8 +77,8 @@ like. <br/>
 The format in general for pages in man is:
 
 > Letters in **bold** are to be written exactly as they are.
-Words in between [] are options, that is, they can be sent as arguments to the command.
-Letters in _italic_ are to be substituted with your arguments.
+> Words in between [] are options, that is, they can be sent as arguments to the command.
+> Letters in _italic_ are to be substituted with your arguments.
 
 To identify what man pages sections the command belongs to, use `whatis`
 command. For example `whatis passwd` to identify what sections a given command is part of.
@@ -96,8 +96,9 @@ you can.
 ```bash
 man passwd.5
 ```
+
 ![sdf](../_media/sample.txt)
- kk
+kk
 Search for man pages with certain keyword, for example `man -k directory` would
 show all the man pages that have a directory word in them. This can be extended
 with `grep` and focus search on specific actions. `man -k directory | grep -i
@@ -106,6 +107,13 @@ crate`.
 ### Essential Commands
 
 #### Search for, compare, and manipulate files and file content
+
+- list files in the `/usr/local/bin` directory. Output the listing to the screen
+AND redirect it to a `~/temp.txt` file
+  <details>
+  <summary>click to see the answer</summary>
+   <code>ls /usr/local/bin | tee ~/temp.txt</code>
+  </details>
 
 There are several command in this category:
 
@@ -139,13 +147,9 @@ cheatsheet](https://docs.linuxfoundation.org/lfx/project-control-center/tools/se
      sdf
      </textarea>
   </details>
-- What is required to create AWS account?
+- Exercise
     <details>
     <summary>click to see the answer</summary>
-     <ul>
-       <li>email</li>
-       <li>payment method</li>
-     </ul>
   </details>
 - How are resources grouped?
     <details>
@@ -184,7 +188,7 @@ https://www.thegeekdiary.com/how-to-create-and-mount-filesystems-in-linux/
 
 #### Administer local user and group accounts
 
-Create user: useradd, groupadd, 
+Create user: useradd, groupadd,
 
 #### Configure and set system time and timezone
 
@@ -212,7 +216,7 @@ What kind of containers?
 
 #### Create and manage local and cloud-hosted Virtual Machines
 
-virtualbox, quemu 
+virtualbox, quemu
 
 #### Use cloud-init to initialize cloud-hosted Virtual Machines
 
@@ -357,7 +361,6 @@ To change logging driver to for example splunk, update deamon.json, like so:
 
 ![Docker Server Components](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-components-tree.puml&fmt=svg)
 
-
 ### Docker daemon stop behavior
 
 By default once docker deamon is stopped or crashes all containers will be stopped as well.
@@ -451,4 +454,3 @@ This section describes useful docker CLI commands in following format:
 > **Result:** command output filtered as per filter flag.
 
 ## Links and resources
-
