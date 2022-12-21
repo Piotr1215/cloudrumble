@@ -15,6 +15,18 @@ The Linux Foundation introduced the certification in [November
 2022](https://training.linuxfoundation.org/blog/introducing-lfct/).
 :::
 
+## LFC Free training
+
+Linux Foundation has a lot of [free courses](https://training.linuxfoundation.org/resources/?_sft_content_type=free-course)
+
+Here are some that are useful for the exam:
+
+- [introduction to git](https://training.linuxfoundation.org/training/git-for-distributed-software-development-lfd109x/)
+- [linux tools and command line utilities](https://training.linuxfoundation.org/training/linux-tools-for-software-development-lfd108x/)
+- [introduction to GitOps](https://training.linuxfoundation.org/training/introduction-to-gitops-lfs169/)
+- [devops iac and containers](https://training.linuxfoundation.org/training/introduction-to-devops-and-site-reliability-engineering-lfs162/) 
+- [cloud infrastructure](https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/)
+
 ## Exam
 
 - Exam can be taken remotely
@@ -34,7 +46,7 @@ The Linux Foundation introduced the certification in [November
 
 | Topic                         | % of exam questions |
 | ----------------------------- | :-----------------: |
-| Essencial Commands            |         20%         |
+| Essential Commands            |         20%         |
 | System Configuration          |         15%         |
 | Troubleshooting               |         20%         |
 | Virtualization and Containers |         20%         |
@@ -47,33 +59,33 @@ Each section references various skills needed to pass the exam.
 ### Learn to use man pages
 
 Man pages are available in the exam environment. Learn how to use them
-effectively alongside _command_ builtin help.
+effectively alongside _command_ builtin help. Each _man_ page belongs to one of
+the below sections.
 
-Section 1 : Shell commands and applications
-Section 2 : Basic kernel services – system calls and error codes
-Section 3 : Library information for programmers
-Section 4 : Network services – if TCP/IP or NFS is installed Device drivers and network protocols
-Section 5 : Standard file formats – for example: shows what a tar archive looks like.
-Section 6 : Games
-Section 7 : Miscellaneous files and documents
-Section 8 : System administration and maintenance commands
-Section 9 : Obscure kernel specs and interfaces
+> A `section` is a number in brackets with the man page name.
 
-The format in general for pages in man is;
+✔ section 1: Shell commands and applications <br/>
+✔ section 4: Network services – if TCP/IP or NFS is installed Device drivers and
+network protocols <br/>
+✔ section 5: Standard file formats – for example: shows what a tar archive looks
+like. <br/>
+✔ section 6: Games <br/>
+✔ section 7: Miscellaneous files and documents <br/>
+✔ section 8: System administration and maintenance commands <br/>
+✔ section 9: Obscure kernel specs and interfaces <br/>
 
-    Letters in bold are to be written exactly as they are.
-    Words in between [] are options, that is, they can be sent as arguments to the command.
-    Letters in italic are to be substituted with your arguments.
+The format in general for pages in man is:
 
-Use `whatis passwd` to identify what sections a given command is part of.
+> Letters in **bold** are to be written exactly as they are.
+Words in between [] are options, that is, they can be sent as arguments to the command.
+Letters in _italic_ are to be substituted with your arguments.
+
+To identify what man pages sections the command belongs to, use `whatis`
+command. For example `whatis passwd` to identify what sections a given command is part of.
 
 > This is equivalent to `man -f passwd`
 
-get man help
-
-```bash
-man man
-```
+Getting man help is easy: `man man`
 
 It's possible to use `/search` and `n/N` to navigate the search results. Search
 also support regex so `/^(\s*\-v)` would search for lines starting from `-h`
@@ -84,7 +96,8 @@ you can.
 ```bash
 man passwd.5
 ```
-
+![sdf](../_media/sample.txt)
+ kk
 Search for man pages with certain keyword, for example `man -k directory` would
 show all the man pages that have a directory word in them. This can be extended
 with `grep` and focus search on specific actions. `man -k directory | grep -i
@@ -108,9 +121,42 @@ Redirection takes output of a command and redirects it into a file or process.
 
 #### Analyze file content using regular expressions
 
-[Regular expressions 101](https://regex101.com/)
+Using `vim` here is preferred as `vim` comes with extensive help system. Just
+type `:h regex` to get basic info about regex syntax.
 
-[Regex cheatsheet](https://docs.linuxfoundation.org/lfx/project-control-center/tools/security/manage-false-positives/regular-expressions-cheat-sheet)
+To practice regular expressions use [regular expressions
+101](https://regex101.com/).
+
+Linux Foundation has a comprehensive [regex
+cheatsheet](https://docs.linuxfoundation.org/lfx/project-control-center/tools/security/manage-false-positives/regular-expressions-cheat-sheet).
+
+- An account is a container, what it can contain?
+    <details>
+    <summary>click to see the answer</summary>
+    <textarea>sdfsdf sdf
+     sDfsdf
+     sdfsdf
+     sdf
+     </textarea>
+  </details>
+- What is required to create AWS account?
+    <details>
+    <summary>click to see the answer</summary>
+     <ul>
+       <li>email</li>
+       <li>payment method</li>
+     </ul>
+  </details>
+- How are resources grouped?
+    <details>
+    <summary>click to see the answer</summary>
+     Into accounts
+  </details>
+- Can the same email address be used with multiple accounts?
+    <details>
+    <summary>click to see the answer</summary>
+     No
+  </details>
 
 #### Create and work with archives
 
