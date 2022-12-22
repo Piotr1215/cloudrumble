@@ -234,6 +234,73 @@ https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/
 
 #### Configure networking and local hostname resolution
 
+[RedHat ip command cheatsheet](https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf)
+
+## ip commands
+
+### `ip link`, `ip link show dev em1`
+
+**Description:** display and change the state of network interfaces.
+
+**Use cases:**
+- identify networking interface for cluster connectivity (ens3)
+- show MAC address on the ens3 network interface (ip link show dev ens3)
+
+### `ip addr`
+
+**Description:** display IP Addresses and property information assigned to network interfaces.
+
+**Use cases:** 
+- check network range of cluster nodes
+
+### `ip route` or `route`
+
+**Description:** view routing table on the host.
+
+**Use cases:** 
+- check default route for dns resolution (ip route show default)
+
+## `arp`
+
+**Description:** Using the arp command allows you to display and modify the Address Resolution Protocol (ARP) cache. An ARP cache is a simple mapping of IP addresses to MAC addresses. Each time a computer’s TCP/IP stack uses ARP to determine the Media Access Control (MAC) address for an IP address, it records the mapping in the ARP cache so that future ARP lookups go faster.
+
+**Use cases:** 
+- check MAC address of a node
+
+## DNS commands
+
+### `nslookup`
+
+**Description:** query DNS server to resolve domain name
+
+**Use cases:** check if k9s DNS server (like Core DNS) is working correctly
+
+### `dig`
+
+**Description:** query DNS server to resolve domain name, similar to nslookup but returns more details
+
+**Use cases:** check if k9s DNS server (like Core DNS) is working correctly
+
+## services commands
+
+### `ps -aux | grep <service-name>`
+
+**Use cases:**
+- find paths to certificates and other settings for CNI etc `ps -aux | grep kubelet`
+
+## network status
+
+### `netstat -plnt`
+
+**Description:** In computing, netstat (network statistics) is a command-line tool that displays network connections (both incoming and outgoing), routing tables, and a number of network interface (network interface controller or software-defined network interface) and network protocol statistics
+
+**Use cases:**
+- check 
+
+## sockets
+
+### `ss -lp`
+
 ### Troubleshooting
 
 #### Identify and inspect processes and services
