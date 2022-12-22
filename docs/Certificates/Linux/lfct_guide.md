@@ -108,6 +108,17 @@ crate`.
 
 #### Search for, compare, and manipulate files and file content
 
+##### Searching for files
+
+Use `find` command to search for files.
+
+- Find all log files in the `/var` directory, but search only 1 subderictory
+deep.
+<details>
+<summary>click to see the answer</summary>
+<code>find /var -maxdepth 2 -name "*.log"</code>
+</details>
+
 - list files in the `/usr/local/bin` directory. Output the listing to the screen
 AND redirect it to a `~/temp.txt` file
   <details>
@@ -115,11 +126,38 @@ AND redirect it to a `~/temp.txt` file
    <code>ls /usr/local/bin | tee ~/temp.txt</code>
   </details>
 
-There are several command in this category:
+##### Compare files
 
-- find, grep
-- diff
-- sed, awk, cut
+- Compare two text files side by side and ignore white space.
+<details>
+<summary>click to see the answer</summary>
+<code>diff --side-by-side --ignore-all-space file1 file2</code>
+</details>
+
+##### Create files
+
+- Create 5 files named `file1` to `file5` using one command.
+<details>
+<summary>click to see the answer</summary>
+<code>touch file{1,2,3,4,5}</code>
+</details>
+
+- ls (1)               - list directory contents
+- cat (1)              - concatenate files and print on the standard output
+- rm (1)               - remove files or directories
+- mv (1)               - move (rename) files
+- mkdir (2)            - create a directory
+- mkdir (1)            - make directories
+- rmdir (2)            - delete a directory
+- rmdir (1)            - remove empty directories
+- file (1)             - determine file type
+- ln (1)               - make links between files
+- tail (1)             - output the last part of files
+- head (1)             - output the first part of files
+- less (1)             - opposite of more
+- more (1)             - file perusal filter for crt viewing
+- touch (1)            - change file timestamps
+- wc (1)               - print newline, word, and byte counts for each file
 
 #### Use pipes and shell input/output redirections
 
