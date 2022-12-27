@@ -97,8 +97,6 @@ you can.
 man passwd.5
 ```
 
-![sdf](../_media/sample.txt)
-kk
 Search for man pages with certain keyword, for example `man -k directory` would
 show all the man pages that have a directory word in them. This can be extended
 with `grep` and focus search on specific actions. `man -k directory | grep -i
