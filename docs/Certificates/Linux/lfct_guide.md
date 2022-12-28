@@ -52,11 +52,36 @@ Here are some that are useful for the exam:
 | Virtualization and Containers |         20%         |
 | GitOps Basics                 |         25%         |
 
+The exam is heavy on Linux questions and going through the  [linux tools and command line utilities](https://training.linuxfoundation.org/training/linux-tools-for-software-development-lfd108x/)
+course is very helpful. Working with archives, using regex, grep, creating and
+mounting file systems, permissions, ownership, all this is important to know
+very well in a practical application. 
+
+Familiarity with `git` is also important, but nothing
+too advanced. Definitely refresh on `ip` related config and `cloud-init` in detail.
+
 ## Learning Plan
 
 Each section references various skills needed to pass the exam.
 
-### Learn to use man pages
+### Commands help
+
+It is often easier to use the `--help` flag of a command rather than going
+through man pages. Here are a few useful tricks
+
+#### Grep in help output
+
+When using the `--help` parameter it is not possible to `grep` on the result.
+Instead use the built in `pager` search functionality. For example:
+
+`ls --help | less` and press `/` to get into search mode.
+
+#### Check what commands are available
+
+If you get stuck and don't know what commands are available, for example for
+creating block devices, check the `/sbin` and `/bin` directories content.
+
+### Using man pages
 
 Man pages are available in the exam environment. Learn how to use them
 effectively alongside _command_ builtin help. Each _man_ page belongs to one of
