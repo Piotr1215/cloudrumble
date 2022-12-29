@@ -193,6 +193,8 @@ Redirection takes output of a command and redirects it into a file or process.
 Using `vim` here is preferred as `vim` comes with extensive help system. Just
 type `:h regex` to get basic info about regex syntax.
 
+Use egrep for command line regular expressions, for example `egrep "Dec 11| Dec 10" testdates.txt`
+
 To practice regular expressions use [regular expressions
 101](https://regex101.com/).
 
@@ -347,6 +349,12 @@ What kind of containers?
 virtualbox, quemu
 
 #### Use cloud-init to initialize cloud-hosted Virtual Machines
+
+[ubuntu official docc](https://cloud-init.io/)
+
+[cloud init tutorial](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
+
+[video](https://www.youtube.com/watch?v=exeuvgPxd-E&ab_channel=LearnLinuxTV)
 
 #### Create and manage application containers (Podman or Docker)
 
