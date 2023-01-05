@@ -64,6 +64,14 @@ too advanced. Definitely refresh on `ip` related config and `cloud-init` in deta
 
 Each section references various skills needed to pass the exam.
 
+If you don't want to install a linux VM, a good way to get some hands on.
+practice is to use interactive [killercoda linux
+environment](https://killercoda.com/playgrounds/scenario/ubuntu). You can also
+use some of the predefined scenarios, such as excellent scenarios by [Pawel
+Piwosz](https://killercoda.com/pawelpiwosz).
+
+> Although the exam environment is not ubuntu, the core commands are the same.
+
 ### Commands help
 
 It is often easier to use the `--help` flag of a command rather than going
