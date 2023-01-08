@@ -143,6 +143,12 @@ crate`.
 
 Use `find` command to search for files.
 
+- Find all files in `root` directory and list them with full path
+<details>
+<summary>click to see the answer</summary>
+<code>find $PWD -maxdepth 1 -type f</code>
+</details>
+
 - Find all log files in the `/var` directory, but search only 1 subderictory
 deep.
 <details>
@@ -168,10 +174,10 @@ AND redirect it to a `~/temp.txt` file
 ##### Create files
 
 - Create 5 files named `file1` to `file5` using one command.
-<details>
-<summary>click to see the answer</summary>
-<code>touch file{1,2,3,4,5}</code>
-</details>
+```bash
+touch file{1,2,3,4,5}
+```
+
 
 - ls (1)               - list directory contents
 - cat (1)              - concatenate files and print on the standard output
