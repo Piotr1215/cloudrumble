@@ -27,6 +27,12 @@ Here are some that are useful for the exam:
 - [devops iac and containers](https://training.linuxfoundation.org/training/introduction-to-devops-and-site-reliability-engineering-lfs162/)
 - [cloud infrastructure](https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/)
 
+Another useful training in Pawel's [final
+test](https://killercoda.com/pawelpiwosz/course/linuxFundamentals/lf-21-finalTest)
+on his killercoda linux scenarios. what makes in good is not only excellent
+content but also the fact that the test is practical which is what real exam is
+about.
+
 ## Exam
 
 - Exam can be taken remotely
@@ -95,7 +101,9 @@ Man pages are available in the exam environment. Learn how to use them
 effectively alongside _command_ builtin help. Each _man_ page belongs to one of
 the below sections.
 
-> A `section` is a number in brackets with the man page name.
+> Alternatively to man you can use `info`
+
+A `section` is a number in brackets with the man page name.
 
 ✔ section 1: Shell commands and applications <br/>
 ✔ section 4: Network services – if TCP/IP or NFS is installed Device drivers and
@@ -111,7 +119,7 @@ The format in general for pages in man is:
 
 > Letters in **bold** are to be written exactly as they are.
 > Words in between [] are options, that is, they can be sent as arguments to the command.
-> Letters in _italic_ are to be substituted with your arguments.
+> Letters in _italic_ are to be [substituted](substituted.md) with your arguments.
 
 To identify what man pages sections the command belongs to, use `whatis`
 command. For example `whatis passwd` to identify what sections a given command is part of.
@@ -177,7 +185,6 @@ AND redirect it to a `~/temp.txt` file
 ```bash
 touch file{1,2,3,4,5}
 ```
-
 
 - ls (1)               - list directory contents
 - cat (1)              - concatenate files and print on the standard output
