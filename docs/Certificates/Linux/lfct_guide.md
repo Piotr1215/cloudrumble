@@ -284,6 +284,14 @@ https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/
 
 ## ip commands
 
+Changes made with the `ip` command take immediate effect, there is no need to
+reboot.
+
+Good guide [here](https://www.howtogeek.com/657911/how-to-use-the-ip-command-on-linux/)
+
+> in older liux distributions there was `ifconfig` command. It has limited
+> capabilities compared to the `ip` command.
+
 ### `ip link`, `ip link show dev em1`
 
 **Description:** display and change the state of network interfaces.
@@ -298,6 +306,10 @@ https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/
 
 **Use cases:** 
 - check network range of cluster nodes
+
+### `ip -4 addr`
+
+Show all ipv4 addresses of all devices
 
 ### `ip route` or `route`
 
