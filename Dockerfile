@@ -1,8 +1,25 @@
-FROM node:19-alpine
+FROM node:19.8.1-alpine
+
 LABEL description="IT Certifications Guide."
 LABEL org.opencontainers.image.source=https://github.com/Piotr1215/dca-prep-kit
-COPY ./docs ./docs
-RUN npm install -g docsify-cli@latest && \
-  docsify init ./docs
+
+# Create app directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json for installing dependencies
+COPY package.json package-lock.json ./
+
+# Install Docusaurus dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Set host variable
+ENV HOST=0.0.0.0
+
+# Expose the Docusaurus default port
 EXPOSE 3000/tcp
-ENTRYPOINT docsify serve ./docs
+
+# Set the command to start the Docusaurus server
+CMD ["npm", "run", "dockerstart"]
