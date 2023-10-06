@@ -45,4 +45,4 @@ jobs:
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
