@@ -1,0 +1,46 @@
+@startuml
+
+actor User
+control "Crossplane\nPod" as CP
+control "Function\nPod" as FP
+!include <tupadr3/font-awesome-5/server>
+participant "API Server\n <$server>" as API
+participant "Composition" as Comp
+participant "Composite Resource\nXR" as XR
+
+User -> CP : Install Function Package
+activate CP
+CP --> User : Function Package Installed
+deactivate CP
+
+User -> CP : Create Composite Resource (XR)
+activate CP
+CP -> FP : RunFunctionRequest
+note right of CP
+  gRPC communication
+end note
+FP --> CP : RunFunctionResponse (Desired Resources)
+CP -> API : Apply Desired Resources
+API --> CP : Confirm Resource Creation
+CP --> User : Composite Resource Created/Updated
+deactivate CP
+
+User -> CP : Test Composition with Functions
+activate CP
+CP -> FP : Render Request
+note right
+  run crossplane beta render ... command
+end note
+FP --> CP : Render Response (Resources as YAML)
+CP --> User : Display Rendered Output
+deactivate CP
+
+User -> CP : Reference Function in Composition
+activate CP
+CP -> Comp : Reference Function
+Comp -> XR : Render Resources
+XR --> CP : Resources Rendered
+CP --> User : Function Referenced and Resources Rendered
+deactivate CP
+
+@enduml

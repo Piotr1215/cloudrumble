@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1084px" preserveAspectRatio="none" style="width:2010px;height:1084px;background:#FFFFFF;" version="1.1" viewBox="0 0 2010 1084" width="2010px" zoomAndPan="magnify"><defs/><g><rect fill="#DDDDDD" height="1065.6875" style="stroke:#181818;stroke-width:0.5;" width="203" x="687.5" y="6"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="143" x="714.5" y="20.8516">Local repository</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="146" x="714.5" y="39.4766">on developer PC</text><rect fill="#DDDDDD" height="1065.6875" style="stroke:#181818;stroke-width:0.5;" width="445" x="1474.5" y="6"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="334" x="1530" y="20.8516">Remote Azure DevOps Git Repository</text><rect fill="#90EE90" height="243.625" style="stroke:#181818;stroke-width:1.0;" width="10" x="1140.5" y="634.6875"/><rect height="174.375" style="stroke:#000000;stroke-width:1.5;fill:none;" width="704.5" x="192" y="213.6875"/><rect height="145.4375" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1151" x="681.5" y="402.0625"/><rect height="324.8125" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1733.5" x="192" y="561.5"/><rect fill="#FFC0CB" height="81.1875" style="stroke:#000000;stroke-width:1.5;" width="270" x="1729.5" y="900.3125"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="252" x2="252" y1="84.875" y2="1077.6875"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="788.5" x2="788.5" y1="84.875" y2="1077.6875"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="946.5" x2="946.5" y1="84.875" y2="1077.6875"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1145.5" x2="1145.5" y1="84.875" y2="1077.6875"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1418.5" x2="1418.5" y1="84.875" y2="1077.6875"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1566.5" x2="1566.5" y1="84.875" y2="1077.6875"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1827.5" x2="1827.5" y1="84.875" y2="1077.6875"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="94" x="202" y="81.1016">Developer A</text><ellipse cx="252" cy="14.75" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M252,22.75 L252,49.75 M239,30.75 L265,30.75 M252,49.75 L239,64.75 M252,49.75 L265,64.75 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="32.625" style="stroke:#181818;stroke-width:0.5;" width="191" x="695.5" y="47.25"/><rect fill="#E2E2F0" height="32.625" style="stroke:#181818;stroke-width:0.5;" width="191" x="691.5" y="51.25"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="177" x="698.5" y="73.1016">Local source code files</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="94" x="896.5" y="81.1016">Developer B</text><ellipse cx="946.5" cy="14.75" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M946.5,22.75 L946.5,49.75 M933.5,30.75 L959.5,30.75 M946.5,49.75 L933.5,64.75 M946.5,49.75 L959.5,64.75 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="32.625" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="278" x="1006.5" y="51.25"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="264" x="1013.5" y="73.1016">Request to include in main branch</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="94" x="1368.5" y="81.1016">Developer C</text><ellipse cx="1418.5" cy="14.75" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M1418.5,22.75 L1418.5,49.75 M1405.5,30.75 L1431.5,30.75 M1418.5,49.75 L1405.5,64.75 M1418.5,49.75 L1431.5,64.75 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="51.25" style="stroke:#181818;stroke-width:0.5;" width="172" x="1482.5" y="28.625"/><rect fill="#E2E2F0" height="51.25" style="stroke:#181818;stroke-width:0.5;" width="172" x="1478.5" y="32.625"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="118" x="1505.5" y="54.4766">Staging branch</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="158" x="1485.5" y="73.1016">remote source code</text><rect fill="#E2E2F0" height="51.25" style="stroke:#181818;stroke-width:0.5;" width="172" x="1743.5" y="28.625"/><rect fill="#E2E2F0" height="51.25" style="stroke:#181818;stroke-width:0.5;" width="172" x="1739.5" y="32.625"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="95" x="1778" y="54.4766">Main branch</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="158" x="1746.5" y="73.1016">remote source code</text><rect fill="#90EE90" height="243.625" style="stroke:#181818;stroke-width:1.0;" width="10" x="1140.5" y="634.6875"/><polygon fill="#181818" points="240,134.125,250,138.125,240,142.125,244,138.125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="0" x2="246" y1="138.125" y2="138.125"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="7" y="123.0391">1</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="150" x="22" y="113.7266">request to work on</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="213" x="22" y="132.3516">a feature from a user story</text><polygon fill="#181818" points="263,194.6875,253,198.6875,263,202.6875,259,198.6875" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="257" x2="1565.5" y1="198.6875" y2="198.6875"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="269" y="178.9453">2</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="260" x="284" y="164.9766">make local copy of the repository</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="259" x="284" y="191.0273">CLONE and/or PULL</text><path d="M192,213.6875 L327,213.6875 L327,224.3125 L317,234.3125 L192,234.3125 L192,213.6875 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="174.375" style="stroke:#000000;stroke-width:1.5;" width="704.5" x="192" y="213.6875"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="90" x="207" y="229.5391">local work</text><polygon fill="#181818" points="777,254.9375,787,258.9375,777,262.9375,781,258.9375" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="252" x2="783" y1="258.9375" y2="258.9375"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="259" y="253.1641">3</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="178" x="274" y="253.1641">makes changes to files</text><polygon fill="#181818" points="777,315.5,787,319.5,777,323.5,781,319.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="252" x2="783" y1="319.5" y2="319.5"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="259" y="299.7578">4</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="355" x="274" y="285.7891">decide to include the changes for remote files</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="59" x="274" y="311.8398">ADD</text><polygon fill="#181818" points="777,376.0625,787,380.0625,777,384.0625,781,380.0625" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="252" x2="783" y1="380.0625" y2="380.0625"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="259" y="360.3203">5</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="498" x="274" y="346.3516">take a "snapshot" of the changes and give them reference point</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="111" x="274" y="372.4023">COMMIT</text><path d="M681.5,402.0625 L916.5,402.0625 L916.5,412.6875 L906.5,422.6875 L681.5,422.6875 L681.5,402.0625 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="145.4375" style="stroke:#000000;stroke-width:1.5;" width="1151" x="681.5" y="402.0625"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="190" x="696.5" y="417.9141">integrate with server</text><polygon fill="#181818" points="1554.5,471.25,1564.5,475.25,1554.5,479.25,1558.5,475.25" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="789" x2="1560.5" y1="475.25" y2="475.25"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="796" y="455.5078">6</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="352" x="811" y="441.5391">push changed local files to remote repository</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="74" x="811" y="467.5898">PUSH</text><line style="stroke:#181818;stroke-width:1.0;" x1="1566.5" x2="1608.5" y1="526.5" y2="526.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="1608.5" x2="1608.5" y1="526.5" y2="539.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="1567.5" x2="1608.5" y1="539.5" y2="539.5"/><polygon fill="#181818" points="1577.5,535.5,1567.5,539.5,1577.5,543.5,1573.5,539.5" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="1573.5" y="511.4141">7</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="204" x="1588.5" y="502.1016">reconcile the changes and</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="232" x="1588.5" y="520.7266">merge them with existing files</text><path d="M192,561.5 L364,561.5 L364,572.125 L354,582.125 L192,582.125 L192,561.5 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="324.8125" style="stroke:#000000;stroke-width:1.5;" width="1733.5" x="192" y="561.5"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="127" x="207" y="577.3516">quality control</text><polygon fill="#181818" points="1128.5,630.6875,1138.5,634.6875,1128.5,638.6875,1132.5,634.6875" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="252" x2="1134.5" y1="634.6875" y2="634.6875"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="259" y="614.9453">8</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="314" x="274" y="600.9766">create request to include in main branch</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="197" x="274" y="627.0273">PULL REQUEST</text><polygon fill="#181818" points="1406.5,663.3125,1416.5,667.3125,1406.5,671.3125,1410.5,667.3125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="252" x2="1412.5" y1="667.3125" y2="667.3125"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="259" y="661.5391">9</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="207" x="274" y="661.5391">assign task to review code</text><polygon fill="#181818" points="1161.5,723.875,1151.5,727.875,1161.5,731.875,1157.5,727.875" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1155.5" x2="1417.5" y1="727.875" y2="727.875"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="22" x="1167.5" y="708.1328">10</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="218" x="1193.5" y="694.1641">review and approve request</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="186" x="1193.5" y="720.2148">CODE REVIEW</text><path d="M1275,740.875 L1275,787.875 L1562,787.875 L1562,750.875 L1552,740.875 L1275,740.875 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1552,740.875 L1552,750.875 L1562,750.875 L1552,740.875 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="193" x="1281" y="760.7266">Developer and developer</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="266" x="1281" y="779.3516">tester cannot be the same person</text><polygon fill="#181818" points="1815.5,841.6875,1825.5,845.6875,1815.5,849.6875,1819.5,845.6875" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1150.5" x2="1821.5" y1="845.6875" y2="845.6875"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="22" x="1157.5" y="825.9453">11</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="250" x="1183.5" y="811.9766">move changes into main branch</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="94" x="1183.5" y="838.0273">MERGE</text><polygon fill="#181818" points="1156.5,874.3125,1146.5,878.3125,1156.5,882.3125,1152.5,878.3125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1150.5" x2="1417.5" y1="878.3125" y2="878.3125"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="22" x="1162.5" y="872.5391">12</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="218" x="1188.5" y="872.5391">request is no longer needed</text><line style="stroke:#A80036;stroke-width:2.0;" x1="1136.5" x2="1154.5" y1="869.3125" y2="887.3125"/><line style="stroke:#A80036;stroke-width:2.0;" x1="1136.5" x2="1154.5" y1="887.3125" y2="869.3125"/><path d="M1729.5,900.3125 L1839.5,900.3125 L1839.5,910.9375 L1829.5,920.9375 L1729.5,920.9375 L1729.5,900.3125 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="81.1875" style="stroke:#000000;stroke-width:1.5;" width="270" x="1729.5" y="900.3125"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="65" x="1744.5" y="916.1641">release</text><polygon fill="#181818" points="1997.5,969.5,2007.5,973.5,1997.5,977.5,2001.5,973.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1827.5" x2="2003.5" y1="973.5" y2="973.5"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="22" x="1834.5" y="953.7578">13</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="125" x="1860.5" y="939.7891">ready to release</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="55" x="1860.5" y="965.8398">TAG</text><polygon fill="#181818" points="957.5,1055.6875,947.5,1059.6875,957.5,1063.6875,953.5,1059.6875" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="951.5" x2="1565.5" y1="1059.6875" y2="1059.6875"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="11" x="963.5" y="1030.6328">2</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="333" x="978.5" y="1007.3516">make local copy of the repository including</text><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="169" x="978.5" y="1025.9766">changes from Roman</text><text fill="#000000" font-family="sans-serif" font-size="24" font-weight="bold" lengthAdjust="spacing" textLength="259" x="978.5" y="1052.0273">CLONE and/or PULL</text><!--MD5=[013594a5657ed637fac15163f3bffb4d]
+@startuml simplified-azure-git-workflow
+''!theme bluegray
+
+'title "Fundamentals of working with git in Azure DevOps"
+'mainframe **Fundamentals of working with git**
+hide footbox
+autonumber
+
+skinparam DefaultFontSize 16
+
+'scale 1024 width
+'scale 768 height
+
+actor "Developer A" as dev
+
+box Local repository \non developer PC
+collections "Local source code files" as localcode
+end box
+actor "Developer B" as devana
+
+participant "Request to include in main branch" as pullrequest
+
+actor "Developer C" as devtest
+
+box "Remote Azure DevOps Git Repository"
+    collections "Staging branch\nremote source code" as remotecode
+    collections "Main branch\nremote source code" as remotecodemaster
+end box
+
+[-> dev : request to work on \na feature from a user story
+
+dev <- remotecode : make local copy of the repository\n=**CLONE and/or PULL**
+group local work
+    dev -> localcode : makes changes to files
+    dev -> localcode : decide to include the changes for remote files\n= **ADD**
+    dev -> localcode : take a "snapshot" of the changes and give them reference point\n= **COMMIT**
+end
+group integrate with server
+    localcode -> remotecode : push changed local files to remote repository\n= **PUSH**
+    remotecode -> remotecode : reconcile the changes and \nmerge them with existing files
+end
+group quality control
+    dev -> pullrequest ++  #LightGreen : create request to include in main branch\n= **PULL REQUEST**
+    dev -> devtest : assign task to review code
+    devtest -> pullrequest : review and approve request\n= **CODE REVIEW**
+    note over devtest
+        <size:16>Developer and developer</size>
+        <size:16>tester cannot be the same person</size>
+    end note
+    pullrequest -> remotecodemaster : move changes into main branch\n= **MERGE**
+    devtest -> pullrequest !! : request is no longer needed
+end
+group #Pink release
+    remotecodemaster ->]: ready to release\n=**TAG**
+end
+autonumber 2
+devana <- - - remotecode : make local copy of the repository including\nchanges from Roman\n= **CLONE and/or PULL**
+@enduml
+
+@startuml simplified-azure-git-workflow
+
+hide footbox
+autonumber
+
+skinparam DefaultFontSize 16
+
+
+actor "Developer A" as dev
+
+box Local repository \non developer PC
+collections "Local source code files" as localcode
+end box
+actor "Developer B" as devana
+
+participant "Request to include in main branch" as pullrequest
+
+actor "Developer C" as devtest
+
+box "Remote Azure DevOps Git Repository"
+    collections "Staging branch\nremote source code" as remotecode
+    collections "Main branch\nremote source code" as remotecodemaster
+end box
+
+[-> dev : request to work on \na feature from a user story
+
+dev <- remotecode : make local copy of the repository\n=**CLONE and/or PULL**
+group local work
+    dev -> localcode : makes changes to files
+    dev -> localcode : decide to include the changes for remote files\n= **ADD**
+    dev -> localcode : take a "snapshot" of the changes and give them reference point\n= **COMMIT**
+end
+group integrate with server
+    localcode -> remotecode : push changed local files to remote repository\n= **PUSH**
+    remotecode -> remotecode : reconcile the changes and \nmerge them with existing files
+end
+group quality control
+    dev -> pullrequest ++  #LightGreen : create request to include in main branch\n= **PULL REQUEST**
+    dev -> devtest : assign task to review code
+    devtest -> pullrequest : review and approve request\n= **CODE REVIEW**
+    note over devtest
+        <size:16>Developer and developer</size>
+        <size:16>tester cannot be the same person</size>
+    end note
+    pullrequest -> remotecodemaster : move changes into main branch\n= **MERGE**
+    devtest -> pullrequest !! : request is no longer needed
+end
+group #Pink release
+    remotecodemaster ->]: ready to release\n=**TAG**
+end
+autonumber 2
+devana <- - - remotecode : make local copy of the repository including\nchanges from Roman\n= **CLONE and/or PULL**
+@enduml
+
+PlantUML version 1.2022.3(Tue Mar 29 18:10:57 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: GB
+--></g></svg>
