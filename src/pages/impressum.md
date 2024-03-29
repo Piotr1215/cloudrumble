@@ -15,7 +15,7 @@ Emsdettener Str. 10<br></br>
 
 ## Links to Other Websites
 
-My service may contain links to other websites that are not operated by mw. If You click on a third party link, You will be directed to that third party's site. I strongly advise You to review the Privacy Policy of every site You visit.
+My service may contain links to other websites that are not operated by me. If You click on a third party link, You will be directed to that third party's site. I strongly advise You to review the Privacy Policy of every site You visit.
 
 I have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.
 
