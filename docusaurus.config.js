@@ -49,10 +49,10 @@ const config = {
     ({
       algolia: {
         // The application ID provided by Algolia
-        appId: "XZXYKI78GW",
+        appId: "9X8FKUPVDV",
 
         // Public API key: it is safe to commit it
-        apiKey: "03e00925cd83e589c8367454d1a154dd",
+        apiKey: "370729a2fb51c097e340166c8db05632",
 
         indexName: "cloudrumble",
 
@@ -60,7 +60,7 @@ const config = {
         contextualSearch: true,
 
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: "external\\.net|domain\\.net",
+        externalUrlRegex: "external\\.com|domain\\.com",
 
         // Optional: Algolia search parameters
         searchParameters: {},
