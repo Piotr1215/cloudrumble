@@ -49,12 +49,12 @@ const config = {
     ({
       algolia: {
         // The application ID provided by Algolia
-        appId: "9X8FKUPVDV",
+        appId: "YVUCIOP9V7",
 
         // Public API key: it is safe to commit it
-        apiKey: "370729a2fb51c097e340166c8db05632",
+        apiKey: "ca28f15cd304fda34283080362ddefc6",
 
-        indexName: "cloudrumble",
+        indexName: "itcertificationsguide",
 
         // Optional: see doc section below
         contextualSearch: true,
