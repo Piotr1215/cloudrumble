@@ -1,0 +1,51 @@
+@startuml local-crossplane-box
+!pragma teoz true
+!theme mars
+hide footbox
+
+scale 1920x1080
+skinparam defaultTextAlignment center
+skinparam NoteTextAlignment left
+skinparam SequenceGroupBodyBackgroundColor #F0F8FF
+skinparam BoxPadding 10
+
+title Local Crossplane 💻DevTest Environment Setup🧪
+
+actor Developer as dev
+box "Local Environment"
+participant "Local Machine" as LM
+
+== Infrastructure Setup ==
+
+group KIND Cluster Setup
+  create "KIND Cluster" as KIND
+      dev -> KIND : Create KIND cluster
+  create "ArgoCD" as ArgoCD
+  LM -> ArgoCD : Install ArgoCD using just
+  create "Crossplane" as CP
+      LM -> CP : Install Crossplane using just
+      note right of CP : Iterative compositions development
+      note right of ArgoCD : ArgoCD observes local changes\nfor immediate deployment
+end
+== Iterative Development ==
+participant "ArgoCD Apps" as LocalApps
+note over LocalApps : Local YAML changes applied\ndirectly without remote push
+
+group  Applying Local Changes
+    dev -> LocalApps : Add/Modify ArgoCD App YAML files
+    dev -> ArgoCD : Apply Local ArgoCD App Files via kubectl
+    ArgoCD -[#blue]-> CP : Manage Crossplane resources
+    note left of CP : Apply Crossplane resources\nas YAML or create new ArgoCD Applicaitons
+end
+
+end box
+box "Remote Repository "
+== Remote Collaboration ==
+database "GitHub Repo" as Repo
+group  Remote Collaboration
+    dev -> Repo : [Optionally] Push changes to remote
+    note right of Repo : Repo primarily for collaboration\nand work recording
+end
+end box
+]->o Repo : Collaboration with other developers
+@enduml
