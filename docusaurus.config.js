@@ -10,7 +10,7 @@ const config = {
   tagline:
     "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
   url: "https://frosty-babbage-3125a3.netlify.app",
-  // url: 'https://www.itcertificationsguide.com/',
+  // url: 'https://cloudrumble.net/',
   baseUrl: "/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -52,8 +52,8 @@ const config = {
         appId: "YVUCIOP9V7",
 
         // Public API key: it is safe to commit it
-        apiKey: "ca28f15cd304fda34283080362ddefc6",
 
+        apiKey: "ca28f15cd304fda34283080362ddefc6",
         indexName: "itcertificationsguide",
 
         // Optional: see doc section below
