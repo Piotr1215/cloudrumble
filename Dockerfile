@@ -1,4 +1,4 @@
-FROM node:21.7.2-alpine
+FROM node:21.7.3-alpine
 
 LABEL description="IT Certifications Guide."
 LABEL org.opencontainers.image.source=https://github.com/Piotr1215/dca-prep-kit
