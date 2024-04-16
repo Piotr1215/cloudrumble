@@ -1,6 +1,6 @@
 ---
 title: "Git Tips & Tricks"
-sidebar_label: git
+sidebar_label: Git Tips & Tricks
 tags:
   - git
   - vcs
@@ -92,8 +92,3 @@ A guide to selectively merge changes from one Git branch to another.
 
 - Always review changes before merging to avoid unintended modifications.
 - Be prepared to resolve merge conflicts.
-
-### Related Concepts
-
-- [Git Branch Management]()
-- [Conflict Resolution Techniques]()
