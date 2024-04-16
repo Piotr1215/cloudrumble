@@ -3,8 +3,8 @@ title: Infrastructure as Code - the next big shift is here
 sidebar_label: Infrastructure with Crossplane
 date: 2021-12-02
 tags:
-    - Infrastructure
-    - Crossplane
+  - Infrastructure
+  - Crossplane
 ---
 
 ![](https://miro.medium.com/max/1400/1*QT5YQjI9LkWZpUcP7wx_2g.jpeg)
@@ -162,21 +162,21 @@ Now with this complexity hidden, developers are getting this:
 apiVersion: crossplanedemo.com/v1alpha1  
 kind: CompositeKubernetesCluster  
 metadata:  
-  name: devops-team  
-  labels:  
-    cluster-owner: piotrzan  
+ name: devops-team  
+ labels:  
+ cluster-owner: piotrzan  
 spec:  
-  compositionRef:  
-    # Possible values cluster-google, cluster-azure, cluster-aws  
-    name: cluster-aws  
-  parameters:  
-    # Possible values small, medium, large  
-    nodeSize: small  
-    # version: "1.20"  
-    # minNodeCount: 2  
-  writeConnectionSecretToRef:  
-    namespace: devops-team  
-    name: cluster
+ compositionRef:  
+ # Possible values cluster-google, cluster-azure, cluster-aws  
+ name: cluster-aws  
+ parameters:  
+ # Possible values small, medium, large  
+ nodeSize: small  
+ # version: "1.20"  
+ # minNodeCount: 2  
+ writeConnectionSecretToRef:  
+ namespace: devops-team  
+ name: cluster
 
 Deploying cluster is very easy, just `kubectl create -f ./aws`
 
@@ -186,9 +186,12 @@ EKS Cluster deployment status:
 
 ## Retrieve kubeconfig details
 
+```bash
 kubectl get secrets --namespace devops-team cluster \\  
-     --output jsonpath="{.data.kubeconfig}" \\  
-     | base64 --decode | tee eks-config.yamlexport KUBECONFIG=$PWD/eks-config.yaml
+ --output jsonpath="{.data.kubeconfig}" \\  
+ | base64 --decode | tee eks-config.yamlexport KUBECONFIG=$PWD/eks-config.yaml
+
+```
 
 From here you can use the cluster like your normal EKS.
 
@@ -221,4 +224,3 @@ There are also a few challenges to keep in mind:
 Complexity is addressed by moving it to specialized Platform Teams. For YAML I would love to see more push for integrating YAML generation like CDK8s or others. I see reliance on K8s as a benefit, but for those of us who are not yet comfortable with Kubernetes, this makes the learning curve a bit steeper.
 
 In summary, Crossplane is a great product, it appeared at the right time and solves decades all problems in a very innovative and future proof way. Go check it out!m
-

@@ -36,7 +36,7 @@ Developing with Kubernetes in mind means developing Cloud Native applications.
 
 > These techniques enable **loosely coupled systems** that are **resilient, manageable, and observable**. Combined with **robust automation**, they allow engineers to **make high-impact changes frequently** and predictably with minimal toil.
 
-*Source*: <https://github.com/cncf/foundation/blob/master/charter.md>
+*Source*: https://github.com/cncf/foundation/blob/master/charter.md
 
 ### The role of Kubernetes
 
@@ -380,7 +380,7 @@ High-level overview of falco components:
 
 ![Falco Components](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-components.puml&fmt=svg)
 
-source: <https://falco.org/docs/#what-are-the-components-of-falco>
+source: https://falco.org/docs/#what-are-the-components-of-falco
 
 #### Falco rules & alerts
 
@@ -388,7 +388,7 @@ Falco comes with pre-defined set of rules and alerts/actions that can be trigger
 
 ![Falco Ruleset](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/cks-falco-default-rules.puml&fmt=svg)
 
-source: <https://falco.org/docs/#what-does-falco-check-for>
+source: https://falco.org/docs/#what-does-falco-check-for
 
 ### Falco configuration
 

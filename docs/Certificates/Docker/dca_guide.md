@@ -2,21 +2,21 @@
 title: Docker Certified Associate Certification Guide
 sidebar_label: DCA
 tags:
-    - Docker
-    - Certification
+  - Docker
+  - Certification
 ---
 
 ## Certification
 
 :::note
- More details about certification and exam [available on Mirantis website](https://training.mirantis.com/dca-certification-exam/).
+More details about certification and exam [available on Mirantis website](https://training.mirantis.com/dca-certification-exam/).
 [Mirantis acquired Docker Enterprise in November 2019](https://techcrunch.com/2019/11/13/mirantis-acquires-docker-enterprise/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAChqDhj765aUpAQfg-rkCWE0kB-4eAJn0VdTGsf35u6hGrL6scvqoLar-_xYPJazylmp15VqXquNq69HWpYx3cepSnXSSUTirYLSMJEbPuBhQOfS4blsGLwsULwWzxK8iaH3zb2KplXRwnpdfMu9iz5Azc2czZr9T5bFwq0AIeN3)
 :::
 
 ## Exam
 
 :::caution
- Unlike CKA or CKAD there is no free retake of the exam, each subsequent attempt must be separately paid for, so make sure to prepare well. Remember that you can reschedule the exam at any time.
+Unlike CKA or CKAD there is no free retake of the exam, each subsequent attempt must be separately paid for, so make sure to prepare well. Remember that you can reschedule the exam at any time.
 Exam is pretty challenging. Questions are very detailed and often revolve around obscure details about particular topic. My exam had a lot of questions around PVs, PVCs, StorageClasses as well as detailed configuration of DTR and UCP. Please remember that your exam might be different, as questions are changed often.
 This guide is based on official [Docker Study Guide](https://docker.cdn.prismic.io/docker/4a619747-6889-48cd-8420-60f24a6a13ac_DCA_study+Guide_v1.3.pdf) **v 1.3, May 2020**
 :::
@@ -24,7 +24,7 @@ This guide is based on official [Docker Study Guide](https://docker.cdn.prismic.
 ### Exam topics
 
 | Topic                                    | % of exam questions |
-| ---------------------------------------- |:-------------------:|
+| ---------------------------------------- | :-----------------: |
 | Orchestration                            |         25%         |
 | Image Creation, Management, and Registry |         20%         |
 | Installation and Configuration           |         15%         |
@@ -37,9 +37,9 @@ This guide is based on official [Docker Study Guide](https://docker.cdn.prismic.
 - Exam can be taken remotely
 - **90** minutes to answer **55** questions
 - All questions are multiple choice
-  - 13 questions are *normal* multiple choice
-  - 52 questions are *Discrete Option Multiple Choice (DOMC)* where options are randomly presented, one at a time.
-      For each presented option, the examinee chooses YES or NO to indicate if the option is correct.
+  - 13 questions are _normal_ multiple choice
+  - 52 questions are _Discrete Option Multiple Choice (DOMC)_ where options are randomly presented, one at a time.
+    For each presented option, the examinee chooses YES or NO to indicate if the option is correct.
 
 ## Learning Plan
 
@@ -73,12 +73,12 @@ There is also a similar service for exercising with Kubernetes and is very usefu
 [Interactive online docker environments on demand: kubernetes](https://labs.play-with-k8s.com/)
 
 :::tip
- Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
+Just a small hint, once you bootstrap Kubernetes, you can use my [_portable kubectl in docker image_](https://itnext.io/portable-kubernetes-management-with-kubectl-in-docker-cb861a2c3c02) to run kubectl with diagnostic tools and aliases.
 :::
 
 Here are easy steps to run the container:
 
-``` bash
+```bash
 # Run container on same network as host
 docker run -d --network=host --name=kubectl-host --rm -it piotrzan/kubectl-comp:zsh
 
@@ -92,7 +92,7 @@ docker attach kubectl-host
 
 Or simpler version with volume mount
 
-``` bash
+```bash
 # .kube/config is a symling to /etc/kubernetes/admin.conf
 docker run --network=host --name=kubectl-host -v /etc/kubernetes/admin.conf:/root/.kube/config --rm -it piotrzan/kubectl-comp:zsh
 ```
@@ -105,7 +105,7 @@ Such sources are great shortcut for learning and reference later on, but I like 
 
 If you would like to have same bookmarks, please use my gist below and import them from file. Bookmarks are arranged in subfolder corresponding to exam topics:
 :::note
- [DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
+[DCA Bookmarks GIST](https://gist.github.com/Piotr1215/75b0105e020b740480a7d85e4e5e3dd7)
 :::
 
 ## Basic Concepts
@@ -137,19 +137,19 @@ By default all docker image layers are immutable (read-only). When container is 
 
 On machine form where you want to access docker host, setup variable:
 
-``` bash
+```bash
 export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 ```
 
 :::note
- Docker default ports:
+Docker default ports:
 :::
->
+
 > - **2375** - unencrypted traffic
 > - **2376** - encrypted traffic.
 
 :::danger
- **IMPORTANT**: This setting is only for testing/playground purposes. It will make docker host available on the network and by default there is no authentication.
+**IMPORTANT**: This setting is only for testing/playground purposes. It will make docker host available on the network and by default there is no authentication.
 :::
 
 ### Use docker CLI as non root user
@@ -169,18 +169,18 @@ export DOCKER_HOST="tcp://<docker-host-ip>:2375"
 There are a few solutions on the marked that can help with container and nodes orchestration. By far most widely adopted one is Kubernetes followed by Docker Swarm. During the exam there will be questions about both.
 
 :::tip
- I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
+I have covered in detail my learning path for **CKA** and **CKAD** certifications. So check my [Medium profile](https://piotrzan.medium.com/) if you would like to learn more.
 :::
 
 ### Kubernetes Architecture
 
 ![Kubernetes Architecture](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/k8s-architecture.puml&fmt=svg)
-_Source_: <https://kubernetes.io/docs/concepts/overview/components/>.
+_Source_: https://kubernetes.io/docs/concepts/overview/components/.
 
 ### Docker Swarm Architecture
 
 ![Docker Swarm](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-swarm-architecture.puml&fmt=svg)
-_Source_: <https://docs.docker.com/engine/swarm/images/service-lifecycle.png>.
+_Source_: https://docs.docker.com/engine/swarm/images/service-lifecycle.png.
 
 #### What is docker stack
 
@@ -214,7 +214,7 @@ Implementing [Raft Consensus Algorithm](http://thesecretlivesofdata.com/raft/) e
 
 #### Quorum
 
-To calculate minimum number of master nodes required to achieve _quorum_ (or simply majority) use $\boxed{N=\frac {N + 1} 2}$ and round the result to full number.
+To calculate minimum number of master nodes required to achieve _quorum_ (or simply majority) use `$\boxed{N=\frac {N + 1} 2}$` and round the result to full number.
 
 So having 5 master nodes, the quorum is 3.
 
@@ -222,7 +222,7 @@ So having 5 master nodes, the quorum is 3.
 
 Knowing the quorum of master nodes, we can predict fault tolerance which is a number describing how many master nodes can fail before cluster is going to be put in an inconsistent state.
 
-To calculate _fault tolerance_ of the cluster use $\boxed{N=\frac {N - 1} 2}$
+To calculate _fault tolerance_ of the cluster use `$\boxed{N=\frac {N - 1} 2}$`
 
 So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault tolerance **7-1/2 = 3**
 
@@ -233,12 +233,12 @@ So as an example having 7 master nodes, our quorum is **7+1/2 = 4** and fault to
 _Sources_:
 
 - Json representation of a deployment based on my [blazor in Docker demo](https://hub.docker.com/repository/docker/piotrzan/blazorindocker)
-- <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#writing-a-deployment-spec>
+- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#writing-a-deployment-spec
 
 Highlighted fields are the only required fields for deployment to work.
 
 :::note
- .spec.template is the same as pod spec, without apiVersion and kind fields
+.spec.template is the same as pod spec, without apiVersion and kind fields
 :::
 
 ## Images and Registry
@@ -261,7 +261,7 @@ For example:
 - command can be specified as regular command: `CMD httpd` or as json array `CMD ["sleep", "5"]`
 
 :::note
- in json array syntax first element of an array is command itself and all subsequent elements are parameters/options
+in json array syntax first element of an array is command itself and all subsequent elements are parameters/options
 :::
 
 <u>ENTRYPOINT</u>
@@ -271,7 +271,7 @@ This section defines what command will be executed once container starts and can
 - `CMD` and `ENTRYPOINT` work great together where `ENTRYPOINT` defines "fixed" command to be executed once container starts and `CMD` provides default, but overrideable arguments to run the container in different ways.
 
 :::note
- It is required to specify both `CMD` and `ENTRYPOINT` in a json array format for the override to work
+It is required to specify both `CMD` and `ENTRYPOINT` in a json array format for the override to work
 :::
 
 ### How to control resources utilization by a container
@@ -299,7 +299,7 @@ If a container tries to consume more memory than its limit, system will kill it 
 Ports mapping always goes from HOST to CONTAINER, so `-p 8080:80` would be mapping of port 8080 on host to port 80 on container.
 
 :::tip
- Hint: Prefer using "-p" option with static port when running containers in production.
+Hint: Prefer using "-p" option with static port when running containers in production.
 :::
 
 ### How to copy files
@@ -324,7 +324,7 @@ By default docker will pull images from configured images repository (Docker Hub
 
 ![MKE Architecture](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-architecture.puml&fmt=svg)
 
-_Source_: <https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html>
+_Source_: https://docs.mirantis.com/docker-enterprise/v3.0/dockeree-products/mke/mke-architecture.html
 
 Be aware that after Docker acquisition by Mirantis there have been some naming and product changes, so following applies:
 
@@ -349,14 +349,14 @@ To back up the swarm using any manager, follow these steps.
 2. Stop Docker on the manager before backing up the data, so that no data is being changed during the backup.
 
 :::note
- Be sure to maintain the quorum of swarm managers
+Be sure to maintain the quorum of swarm managers
 :::
 
 3. Back up the entire /var/lib/docker/swarm directory.
 
 4. Restart the manager.
 
-_Source_: <https://docs.docker.com/engine/swarm/admin_guide/#back-up-the-swarm>
+_Source_: https://docs.docker.com/engine/swarm/admin_guide/#back-up-the-swarm
 
 ### Kubernetes configMaps
 
@@ -369,7 +369,7 @@ This file is not present by default.
 
 ### Logging in docker
 
-Default logging drive for docker is __json-file__.
+Default logging drive for docker is **json-file**.
 To change logging driver to for example splunk, update deamon.json, like so:
 
 `echo ‘{“log-driver”: “splunk”}’ > /etc/docker/daemon.json`
@@ -397,7 +397,7 @@ Kubernetes uses services to enable communication between pods and other resource
 - **NodePort** - exposes a service externally to the cluster by means of the target nodes IP address and the NodePort. NodePort is the default setting if the port field is not specified.
 
 :::note
- By default NodePort range in Kubernetes is **30000-32767**
+By default NodePort range in Kubernetes is **30000-32767**
 :::
 
 ### Docker daemon stop behavior
@@ -415,7 +415,7 @@ To change this behavior set `"live-restore: true"` in `/etc/docker/deamon.json` 
 ![Docker Networking Mindmap](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/docker-networks.puml&fmt=svg)
 
 :::caution
- **Important** Containers can only communicate on a user defined bridge/host network
+**Important** Containers can only communicate on a user defined bridge/host network
 :::
 
 ### DTR overlay network
@@ -431,7 +431,7 @@ The network created for the DTR services to communicate with each other is **ove
 ### Access Control Model in MKE
 
 ![Access Control Model](https://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MKE-UCP-access-control-model.puml&fmt=svg)
-_Source:_ <http://docs.docker.oeynet.com/datacenter/ucp/2.2/guides/access-control/>
+_Source:_ http://docs.docker.oeynet.com/datacenter/ucp/2.2/guides/access-control/
 
 Grants are effectively Access Control Lists (ACLs) which provide comprehensive access policies for an entire organization when grouped together.,Grants define which users can access what resources in what way.,A grant is made up of a subject, a role, and a resource set.
 
@@ -504,6 +504,7 @@ Example old syntax: `docker run -v /data/nginx_data:/var/lib/nginx_data nginx`
 ## Useful Commands
 
 This section describes useful docker CLI commands in following format:
+
 > **Command:** - docker command syntax
 >
 > **When is it useful:** - common usecases when command should be used
@@ -512,21 +513,21 @@ This section describes useful docker CLI commands in following format:
 
 ### Check Docker Status
 
->**Command:** `docker system info`
+> **Command:** `docker system info`
 >
->**When is it useful:** quickly see how many containers are running and what is the status of host OS
+> **When is it useful:** quickly see how many containers are running and what is the status of host OS
 >
->**Result:** information about docker host environment and containers
+> **Result:** information about docker host environment and containers
 
 ### Remove all unused docker artifacts
 
->**Command:** `docker system prune --all`
+> **Command:** `docker system prune --all`
 >
->**Command Variation:** `docker system prune --all --volumes`
+> **Command Variation:** `docker system prune --all --volumes`
 >
->**When is it useful:** when learning or experimenting with docker, it is useful to clear unused artifacts without resetting the whole environment. Command variation with `--volumes` flag will also remove volumes.
+> **When is it useful:** when learning or experimenting with docker, it is useful to clear unused artifacts without resetting the whole environment. Command variation with `--volumes` flag will also remove volumes.
 >
->**Result:** following will be removed:
+> **Result:** following will be removed:
 >
 > - all stopped containers
 > - all networks not used by at least one container
@@ -536,43 +537,43 @@ This section describes useful docker CLI commands in following format:
 
 ### Stop all running containers
 
->**Command:** `docker container stop $(docker container ls -q)`
+> **Command:** `docker container stop $(docker container ls -q)`
 >
->**When is it useful:** quickly stop all running containers at once.
+> **When is it useful:** quickly stop all running containers at once.
 >
->**Result:** all containers are stopped.
+> **Result:** all containers are stopped.
 
 ### Setup container hostname
 
->**Command:** `docker container run -it --name=ingress --hostname=nginx nginx`
+> **Command:** `docker container run -it --name=ingress --hostname=nginx nginx`
 >
->**When is it useful:** default hostname is container id, setting up recognizable hostname can help with logging etc.
+> **When is it useful:** default hostname is container id, setting up recognizable hostname can help with logging etc.
 >
->**Result:** container hostname is set to custom one.
+> **Result:** container hostname is set to custom one.
 
 ### Automatically remove a container when on exit
 
->**Command:** `docker container run -d --name=ingress --rm nginx`
+> **Command:** `docker container run -d --name=ingress --rm nginx`
 >
->**When is it useful:** run a container and automatically remove it once stopped. This is very usefully when running CI/CD containers.
+> **When is it useful:** run a container and automatically remove it once stopped. This is very usefully when running CI/CD containers.
 >
->**Result:** container starts and is removed once it's stopped.
+> **Result:** container starts and is removed once it's stopped.
 
 ### Add or remove capabilities for the user running a container
 
->**Command:** `docker run --cap-add/--cap-drop KILL nginx` or `docker run --privileged nginx`
+> **Command:** `docker run --cap-add/--cap-drop KILL nginx` or `docker run --privileged nginx`
 >
->**When is it useful:** This command is useful when elevating or dropping privileges on the user running container. By default containers run with limited root privileges. Second command runs container with full user privileges.
+> **When is it useful:** This command is useful when elevating or dropping privileges on the user running container. By default containers run with limited root privileges. Second command runs container with full user privileges.
 >
->**Result:** container is run with expected privileges.
+> **Result:** container is run with expected privileges.
 
 ### Filter results using --filter flag
 
->**Command:** `docker search --filter=stars=3 --no-trunc busybox`
+> **Command:** `docker search --filter=stars=3 --no-trunc busybox`
 >
->**When is it useful:** Results of almost every docker command can be filtered using `--filter key=value` flag. Refer to docker documentation to check what filter options are supported for given command.
+> **When is it useful:** Results of almost every docker command can be filtered using `--filter key=value` flag. Refer to docker documentation to check what filter options are supported for given command.
 >
->**Result:** command output filtered as per filter flag.
+> **Result:** command output filtered as per filter flag.
 
 ## Links and resources
 
@@ -589,4 +590,3 @@ This section describes useful docker CLI commands in following format:
 11. [Docker Handbook](https://www.freecodecamp.org/news/the-docker-handbook/)
 12. [PlantUML Diagrams as Code](https://plantuml.com/)
 13. [K8s Services Explained](https://www.bmc.com/blogs/kubernetes-port-targetport-nodeport/)
-

@@ -7,9 +7,8 @@ hide_table_of_contents: false
 
 # Kubernetes in a box
 
-![](./_media/mia-golic-6JtuGvLzh20-unsplash.jpg) 
-<p><small>Photo by <a href="https://unsplash.com/@miagolic?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mia Golic</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  </small></p>
+<p><small>Photo by <a href="https://unsplash.com/@miagolic?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mia Golic</a>
+on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> </small></p>
 
 This article will be helpful for anyone interested in setting up a local Kubernetes dev/test environment in a reproducible and easy way.
 Source code for this blog is available in this [companion repository](https://github.com/Piotr1215/kubernetes-box).
@@ -221,7 +220,7 @@ spec:
     automated:
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
 ```
 
 This will deploy all the apps from the `apps` folder into the cluster via ArgoCD.

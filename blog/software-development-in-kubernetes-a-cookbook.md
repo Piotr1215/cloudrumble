@@ -38,7 +38,7 @@ Developing with Kubernetes in mind means developing Cloud Native applications.
 
 > These techniques enable **loosely coupled systems** that are **resilient, manageable, and observable**. Combined with **robust automation**, they allow engineers to **make high-impact changes frequently** and predictably with minimal toil.
 
-*Source*: <https://github.com/cncf/foundation/blob/master/charter.md>
+*Source*: https://github.com/cncf/foundation/blob/master/charter.md
 
 ### The role of Kubernetes
 

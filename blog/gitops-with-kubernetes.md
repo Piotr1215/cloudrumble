@@ -1,7 +1,7 @@
 ---
 title: "Gitops With Kubernetes"
 date: 2021-07-14T15:29:15+02:00
-tags: ['kubernetes', 'gitops']
+tags: ["kubernetes", "gitops"]
 ---
 
 ![Photo by [Timelab Pro](https://unsplash.com/@timelabpro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/container?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/12032/1*bZYRUC186rFiox2B9OVD9g.jpeg)
@@ -34,9 +34,9 @@ In other words; **GitOps = Continuous Delivery + Continuous Operations.**
 
 Let’s look at how GitOps principles could work with Kubernetes. Imagine your app runs in a Kubernetes cluster and you want to update its deployment manifest increasing CPU resources allowance. In a “traditional” way you would:
 
-* modify a helm chart, kustomize file or plain deployment YAML, changing CPU request and limits for a particular deployment
+- modify a helm chart, kustomize file or plain deployment YAML, changing CPU request and limits for a particular deployment
 
-* use kubectl to apply changed YAML to your cluster
+- use kubectl to apply changed YAML to your cluster
 
 In the GitOps world, instead of applying resources to your cluster manually (or via script or pipeline), a dedicated agent would pull changes into the cluster and apply them on your behalf.
 
@@ -83,4 +83,3 @@ Would you like to convince your team or boss to give GitOps a try? Check out [Gi
 ### Conclusion
 
 We have just scratched the surface of how GitOps practices can be used with Kubernetes apps and infrastructure. GitOps is a trend gaining in popularity in Cloud Native space. It is worth your time to investigate it a bit and see what benefits might it bring to you and your team.
-

@@ -1,7 +1,7 @@
 ---
 title: "How to Create Kubernetes Homelab"
 date: 2021-06-04T15:24:24+02:00
-tags: ['kubernetes', 'homelab']
+tags: ["kubernetes", "homelab"]
 ---
 
 ![Photo by [Clay Banks](https://unsplash.com/@claybanks?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/5600/1*GQqxnCRzFQ9hr6ZiZCki0Q.jpeg)
@@ -32,9 +32,9 @@ Once everything is ready, plug in the USB with Ubuntu image to your laptop and f
 
 Select following additional packages:
 
-* openssh
+- openssh
 
-* docker
+- docker
 
 During the “SSH Setup” phase, make sure to select “Allow Password Authentication over SSH”. This will allow for a quick login without setting up PKI. Once you are happy with the setup and will want to keep it running, it is easy to disable it and swap to key based authentication mode.
 
@@ -50,8 +50,8 @@ Typically laptops are used as desktop devices and are configured with screen/pow
 
 > Multipass is a lightweight VM manager for Linux, Windows and macOS. It’s designed for developers who want a fresh Ubuntu environment with a single command. It uses KVM on Linux, Hyper-V on Windows and HyperKit on macOS to run the VM with minimal overhead. It can also use VirtualBox on Windows and macOS. Multipass will fetch images for you and keep them up to date.
 > Since it supports metadata for cloud-init, you can simulate a small cloud deployment on your laptop or workstation.
-[**canonical/multipass**
-*Multipass is a lightweight VM manager for Linux, Windows and macOS. It's designed for developers who want a fresh…*github.com](https://github.com/canonical/multipass)
+> [**canonical/multipass**
+> *Multipass is a lightweight VM manager for Linux, Windows and macOS. It's designed for developers who want a fresh…*github.com](https://github.com/canonical/multipass)
 
 ### Install k3s server and agent
 
@@ -59,13 +59,13 @@ Since the laptop spec is pretty low, especially on memory side, we need a Kubern
 
 There are two choices:
 
-* Rancher [k3s](https://k3s.io/)
+- Rancher [k3s](https://k3s.io/)
 
-* Mirantis [k0s](https://www.mirantis.com/software/k0s/)
+- Mirantis [k0s](https://www.mirantis.com/software/k0s/)
 
 I have selected k3s as I’m familiar with it and at the end I want to be able to manage my cluster with Rancher Management.
 
-*If you are interested in reading more about comparison between k3s and k0s here is a good blog: [https://saiyampathak.medium.com/k0s-yet-another-kubernetes-distro-7201ea425165](https://saiyampathak.medium.com/k0s-yet-another-kubernetes-distro-7201ea425165)*
+_If you are interested in reading more about comparison between k3s and k0s here is a good blog: [https://saiyampathak.medium.com/k0s-yet-another-kubernetes-distro-7201ea425165](https://saiyampathak.medium.com/k0s-yet-another-kubernetes-distro-7201ea425165)_
 
 After installation, let’s make sure that our cluster is up and running
 
@@ -89,23 +89,25 @@ To do this, we will use nginx and replace default config with load balancing to 
 
 [https://ubuntu.com/tutorials/install-and-configure-nginx#4-setting-up-virtual-host](https://ubuntu.com/tutorials/install-and-configure-nginx#4-setting-up-virtual-host)
 
-    sudo apt install nginx
+```bash
+sudo apt install nginx
 
-    sudo cat >/etc/nginx/nginx.conf<< EOF
+sudo cat >/etc/nginx/nginx.conf<< EOF
 
-    events {}
+events {}
 
-    stream {
-     upstream k3s_servers {
-      server ${K3S_NODEIP_SERVER}:6443;
-     }
+stream {
+ upstream k3s_servers {
+  server ${K3S_NODEIP_SERVER}:6443;
+ }
 
-    server {
-     listen 6443;
-      proxy_pass k3s_servers;
-     }
-    }
-    EOF
+server {
+ listen 6443;
+  proxy_pass k3s_servers;
+ }
+}
+EOF
+```
 
 ### Connect to the cluster from your PC
 
@@ -113,7 +115,7 @@ We have a running 2 nodes cluster. Now, let’s connect to it from our home PC.
 
 Before connecting from our PC, we need to copy kube config setup from the vm and merge it with our kube config file on home PC.
 
-*I advise upgrading kubectl to latest version beforehand, follow the installation steps from [Kubernetes page](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/).*
+_I advise upgrading kubectl to latest version beforehand, follow the installation steps from [Kubernetes page](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)._
 
     # Login to k3s-server vm
     multipass shell k3s-server
@@ -123,7 +125,7 @@ Before connecting from our PC, we need to copy kube config setup from the vm and
 
     # Create a new file on your machine in the ~./kube directory and copy content
     cat > config_k3s [enter]
-    <paste content>
+    paste content
     [enter — adds one line to the file]
     [Ctrl + C — exit]
 
@@ -146,9 +148,9 @@ Now running the **kubectl get nodes** command form your home PC terminal should 
 
 Finally let’s install 2 of my favorite cluster visualization tools:
 
-* [Octant](https://octant.dev/) is a VMWare open source cluster visualizer, running in a browser so no local installation is required.
+- [Octant](https://octant.dev/) is a VMWare open source cluster visualizer, running in a browser so no local installation is required.
 
-* [k9s](https://github.com/derailed/k9s) is a really amazing console based cluster visualization tool.
+- [k9s](https://github.com/derailed/k9s) is a really amazing console based cluster visualization tool.
 
 ### Install Rancher to manage your cluster [Optional]
 
@@ -190,4 +192,3 @@ So far this setup was done mostly manually, in next blogs I will look into autom
 [https://registry.terraform.io/providers/rancher/rancher2/latest/docs](https://registry.terraform.io/providers/rancher/rancher2/latest/docs)
 
 If you encounter any issues along the way, found a bug or simply want to share your ideas, please drop a comment and have fun experimenting with your home lab :)
-

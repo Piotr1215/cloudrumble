@@ -58,10 +58,10 @@ about.
 | Virtualization and Containers |         20%         |
 | GitOps Basics                 |         25%         |
 
-The exam is heavy on Linux questions and going through the  [linux tools and command line utilities](https://training.linuxfoundation.org/training/linux-tools-for-software-development-lfd108x/)
+The exam is heavy on Linux questions and going through the [linux tools and command line utilities](https://training.linuxfoundation.org/training/linux-tools-for-software-development-lfd108x/)
 course is very helpful. Working with archives, using regex, grep, creating and
 mounting file systems, permissions, ownership, all this is important to know
-very well in a practical application. 
+very well in a practical application.
 
 Familiarity with `git` is also important, but nothing
 too advanced. Definitely refresh on `ip` related config and `cloud-init` in detail.
@@ -182,26 +182,27 @@ AND redirect it to a `~/temp.txt` file
 ##### Create files
 
 - Create 5 files named `file1` to `file5` using one command.
+
 ```bash
 touch file{1,2,3,4,5}
 ```
 
-- ls (1)               - list directory contents
-- cat (1)              - concatenate files and print on the standard output
-- rm (1)               - remove files or directories
-- mv (1)               - move (rename) files
-- mkdir (2)            - create a directory
-- mkdir (1)            - make directories
-- rmdir (2)            - delete a directory
-- rmdir (1)            - remove empty directories
-- file (1)             - determine file type
-- ln (1)               - make links between files
-- tail (1)             - output the last part of files
-- head (1)             - output the first part of files
-- less (1)             - opposite of more
-- more (1)             - file perusal filter for crt viewing
-- touch (1)            - change file timestamps
-- wc (1)               - print newline, word, and byte counts for each file
+- ls (1) - list directory contents
+- cat (1) - concatenate files and print on the standard output
+- rm (1) - remove files or directories
+- mv (1) - move (rename) files
+- mkdir (2) - create a directory
+- mkdir (1) - make directories
+- rmdir (2) - delete a directory
+- rmdir (1) - remove empty directories
+- file (1) - determine file type
+- ln (1) - make links between files
+- tail (1) - output the last part of files
+- head (1) - output the first part of files
+- less (1) - opposite of more
+- more (1) - file perusal filter for crt viewing
+- touch (1) - change file timestamps
+- wc (1) - print newline, word, and byte counts for each file
 
 #### Use pipes and shell input/output redirections
 
@@ -221,30 +222,6 @@ To practice regular expressions use [regular expressions
 
 Linux Foundation has a comprehensive [regex
 cheatsheet](https://docs.linuxfoundation.org/lfx/project-control-center/tools/security/manage-false-positives/regular-expressions-cheat-sheet).
-
-- An account is a container, what it can contain?
-    <details>
-    <summary>click to see the answer</summary>
-    <textarea>sdfsdf sdf
-     sDfsdf
-     sdfsdf
-     sdf
-     </textarea>
-  </details>
-- Exercise
-    <details>
-    <summary>click to see the answer</summary>
-  </details>
-- How are resources grouped?
-    <details>
-    <summary>click to see the answer</summary>
-     Into accounts
-  </details>
-- Can the same email address be used with multiple accounts?
-    <details>
-    <summary>click to see the answer</summary>
-     No
-  </details>
 
 #### Create and work with archives
 
@@ -301,6 +278,7 @@ Good guide [here](https://www.howtogeek.com/657911/how-to-use-the-ip-command-on-
 **Description:** display and change the state of network interfaces.
 
 **Use cases:**
+
 - identify networking interface for cluster connectivity (ens3)
 - show MAC address on the ens3 network interface (ip link show dev ens3)
 
@@ -308,7 +286,8 @@ Good guide [here](https://www.howtogeek.com/657911/how-to-use-the-ip-command-on-
 
 **Description:** display IP Addresses and property information assigned to network interfaces.
 
-**Use cases:** 
+**Use cases:**
+
 - check network range of cluster nodes
 
 ### `ip -4 addr`
@@ -319,14 +298,16 @@ Show all ipv4 addresses of all devices
 
 **Description:** view routing table on the host.
 
-**Use cases:** 
+**Use cases:**
+
 - check default route for dns resolution (ip route show default)
 
 ## `arp`
 
 **Description:** Using the arp command allows you to display and modify the Address Resolution Protocol (ARP) cache. An ARP cache is a simple mapping of IP addresses to MAC addresses. Each time a computer’s TCP/IP stack uses ARP to determine the Media Access Control (MAC) address for an IP address, it records the mapping in the ARP cache so that future ARP lookups go faster.
 
-**Use cases:** 
+**Use cases:**
+
 - check MAC address of a node
 
 ## DNS commands
@@ -348,6 +329,7 @@ Show all ipv4 addresses of all devices
 ### `ps -aux | grep <service-name>`
 
 **Use cases:**
+
 - find paths to certificates and other settings for CNI etc `ps -aux | grep kubelet`
 
 ## network status
@@ -357,7 +339,8 @@ Show all ipv4 addresses of all devices
 **Description:** In computing, netstat (network statistics) is a command-line tool that displays network connections (both incoming and outgoing), routing tables, and a number of network interface (network interface controller or software-defined network interface) and network protocol statistics
 
 **Use cases:**
-- check 
+
+- check
 
 ## sockets
 

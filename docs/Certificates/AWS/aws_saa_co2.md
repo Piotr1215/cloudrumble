@@ -15,35 +15,35 @@ tags:
 3. [Learning resources](#learning-resources)
 4. [Active learning](#active-learning)
 5. [Fundamentals](#fundamentals)
-    - [Cloud Environment](#cloud-environment)
-    - [AWS Fundamentals](#aws-fundamentals)
+   - [Cloud Environment](#cloud-environment)
+   - [AWS Fundamentals](#aws-fundamentals)
 6. [Identity & Governance](#identity-&-governance)
-    - [Accounts](#accounts)
-    - [IAM](#iam)
-    - [Cognito](#cognito)
+   - [Accounts](#accounts)
+   - [IAM](#iam)
+   - [Cognito](#cognito)
 7. [ACM (AWS Certificate Manager)](<#acm-(aws-certificate-manager)>)
-    - [Policies](#policies)
+   - [Policies](#policies)
 8. [Networking](#networking)
-    - [Networking Fundamentals](#networking-fundamentals)
-    - [VPC](#vpc)
-      - [VPC Peering](#vpc-peering)
-    - [Route 53](#route-53)
-      - [Public Hosted Zones](#public-hosted-zones)
-      - [Private Hosted Zones](#private-hosted-zones)
-      - [Routing Types](#routing-types)
-      - [Registering a domain](#registering-a-domain)
-    - [Load Balancers](#load-balancers)
-      - [Application Load Balancer (ALB)](<#application-load-balancer-(alb)>)
-      - [Network Load Balancer (NLB)](<#network-load-balancer-(nlb)>)
-      - [Gateway Load Balancer](#gateway-load-balancer)
-    - [Cloud Front](#cloud-front)
-    - [Global Accelerator](#global-accelerator)
+   - [Networking Fundamentals](#networking-fundamentals)
+   - [VPC](#vpc)
+     - [VPC Peering](#vpc-peering)
+   - [Route 53](#route-53)
+     - [Public Hosted Zones](#public-hosted-zones)
+     - [Private Hosted Zones](#private-hosted-zones)
+     - [Routing Types](#routing-types)
+     - [Registering a domain](#registering-a-domain)
+   - [Load Balancers](#load-balancers)
+     - [Application Load Balancer (ALB)](<#application-load-balancer-(alb)>)
+     - [Network Load Balancer (NLB)](<#network-load-balancer-(nlb)>)
+     - [Gateway Load Balancer](#gateway-load-balancer)
+   - [Cloud Front](#cloud-front)
+   - [Global Accelerator](#global-accelerator)
 9. [Compute](#compute)
-    - [RDS](#rds)
-      - [RDS Backup & Restore](#rds-backup-&-restore)
-      - [Data Security](#data-security)
-    - [EC2](#ec2)
-      - [Auto Scaling Groups](#auto-scaling-groups)
+   - [RDS](#rds)
+     - [RDS Backup & Restore](#rds-backup-&-restore)
+     - [Data Security](#data-security)
+   - [EC2](#ec2)
+     - [Auto Scaling Groups](#auto-scaling-groups)
 10. [ECS](#ecs)
     - [Lambda](#lambda)
 11. [Storage](#storage)
@@ -66,13 +66,13 @@ tags:
 
 ## About the exam
 
-<https://aws.amazon.com/certification/certified-solutions-architect-associate/>
+https://aws.amazon.com/certification/certified-solutions-architect-associate/
 
 ## Learning resources
 
-Main resource: <https://learn.cantrill.io/p/aws-certified-solutions-architect-associate-saa-c02>
+Main resource: https://learn.cantrill.io/p/aws-certified-solutions-architect-associate-saa-c02
 
-Practice exams (dojo): <https://portal.tutorialsdojo.com/product/aws-certified-solutions-architect-associate-practice-exams/>
+Practice exams (dojo): https://portal.tutorialsdojo.com/product/aws-certified-solutions-architect-associate-practice-exams/
 
 ## Active learning
 
@@ -1480,45 +1480,6 @@ TODO: pick up here
 
   </details>
 
-- What are the 3 types of placement groups?
-    <details>
-    <summary>click to see the answer</summary>
-
-    <ul>
-    <li><strong>Cluster</strong> physical proximity.
-    <ul>
-    <li>Designed for best performance.</li>
-    <li>Cannot span AZs</li>
-    <li>Can span VPC peers</li>
-    <li>Not all instance types support this type of placement</li>
-    <li>Best practice is to use the same type of instance and launch them in the same time</li>
-    <li>All members have direct connection to each other</li>
-    <li>Up to 10GB/s transfer rate in single stream performance</li>
-    <li>Very low resilience</li>
-    </ul>
-    </li>
-    <li><strong>Spread</strong> - physical distance</li>
-    <ul>
-    <li>Provides the highest level of resilience and availability</li>
-    <li>Can span multiple AZ</li>
-    <li>Located on separate racks with isolated network and power supply</li>
-    <li>Limit of 7 instances per AZ</li>
-    </ul>
-    <li><strong>Partition</strong> - each group on different hardware</li>
-    <ul>
-    <li>7 partitions max per AZ</li>
-    <li>Not supported on dedicated hosts</li>
-    <li>Separate fault domains are required</li>
-    <li>Each partition has a separate physical infrastructure</li>
-    <li>Partitions don't have limits</li>
-    <li>Partition placements give you an ability to decide where each instance will go</li>
-    <li>Partitions are single failover groups</li>
-    <li>Useful when using topology aware applications</li>
-    </ul>
-    </ul>
-
-  </details>
-
 - What technology is used in enhanced networking?
     <details>
     <summary>click to see the answer</summary>
@@ -1714,13 +1675,6 @@ TODO: pick up here
   </details>
 
 - What name requirement is there in an S3 bucket when you want to use it as static page hosting with a custom domain?
-- **Can you disable object versioning in an S3 bucket once it was enabled?**
-    <details>
-    <summary>click to see the answer</summary>
-
-  No. Accepted states: Disabled -> Enabled <-> Suspend
-
-  </details>
 
 - What field is used to identify a version of an object?
     <details>
@@ -1797,45 +1751,6 @@ TODO: pick up here
     <summary>click to see the answer</summary>
 
   Someone else can manage the KMS, role separation. Key rotation control.
-
-  </details>
-
-- What are storage classes types, compare main characteristics
-    <details>
-    <summary>click to see the answer</summary>
-
-    <p><b>Standard</b> - first byte milliseconds latency, 1 object lost per 10k years, replication over 3 AZs, Content-MD5 Checksum and CRCs. Use for frequently accessed, important, non-replaceable data. Select this by default. </p>
-    <p><b>Standard Infrequent Access - IA</b> - About twice as cheap to store data, but there is a retrieval fee on top of regular costs. Adds a minimum capacity charge of 128kb per object. Minimum duration charge applies (30 days). Use for long-lived infrequently accessed data.</p>
-    <p><b>One Zone Infrequent Access - IA</b>
-    The difference is that data is stored only in 1 region. Cheaper to store, but more risk. Use for long lived, non-critical, infrequently accessed data.
-    </p>
-
-    <p><b>S3 Glacier</b> - about 1/5th of the price of Standard Storage. First need to be retrieved, fee for retrieval. You can change class back. There are 3 different types of retrieval:
-    <ul>
-    <li>Expedited: 1-5 min</li>
-    <li>Standard: 3-5 hours</li>
-    <li>Bulk: 5-12 hours</li>
-    </ul>
-    It has first byte latency of minutes or hours. Objects cannot be made public. 40kb min billable object size, 90 days min billable duration of storage. Use for storing archival data with no need to access frequently.
-    </p>
-
-    <p><b>Glacier Deep Archive</b> - 1/4th of the price of regular Glacier. 180 days min billable duration.
-    <ul>
-    <li>Standard: 12 hours</li>
-    <li>Bulk: up to 48 hours</li>
-    </ul>
-    Use only for archival data that doesn't need to be accessed.
-    </p>
-
-    <p><b>Intelligent Tiering</b> - has 4 tiers:
-    <ul>
-    <li>Frequent Access</li>
-    <li>Infrequent Access</li>
-    <li>Archive</li>
-    <li>Deep Archive</li>
-    </ul>
-    Here system monitors the usage of the object and swaps to different storage tiers by itself. Management fee on top. Use for long lived data where the usage patterns are unknown, changing.
-    </p>
 
   </details>
 

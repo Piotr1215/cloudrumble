@@ -2,9 +2,9 @@
 title: GitOpsify Cloud Infrastructure with Crossplane and Flux
 sidebar_label: GitOps with Flux and Crossplane
 tags:
-    - Kubernetes
-    - GitOps
-    - Cloud
+  - Kubernetes
+  - GitOps
+  - Cloud
 ---
 
 # GitOpsify Cloud Infrastructure with Crossplane and Flux
@@ -51,76 +51,76 @@ Let's look at the architecture and use cases that both tools support.
 Flux exposes several components in the form of Kubernetes CRDs and controllers that help with expressing a workflow with GitOps model.
 Short description of 3 major components. All those components have their corresponding CRDs.
 
-   ![flux-architecture](_media/flux-architecture.png)
-    source: <https://github.com/fluxcd/flux2>
+![flux-architecture](_media/flux-architecture.png)
+source: https://github.com/fluxcd/flux2
 
-1. [Source Controller](https://fluxcd.io/docs/components/source/)
-Main role is to provide standardized API to manage sources of the Kubernetes deployments; Git and Helm repositories.
+1.  [Source Controller](https://fluxcd.io/docs/components/source/)
+    Main role is to provide standardized API to manage sources of the Kubernetes deployments; Git and Helm repositories.
 
-    ```yaml
-    apiVersion: source.toolkit.fluxcd.io/v1beta1
-    kind: GitRepository
-    metadata:
-      name: podinfo
-      namespace: default
-    spec:
-      interval: 1m
-      url: https://github.com/stefanprodan/podinfo
-    ```
-
-2. [Kustomize Controller](https://fluxcd.io/docs/components/kustomize/)
-This is a CD part of the workflow. Where source controllers specify sources for data, this controller specifies what artifacts to run from a repository.
-
-    > This controller can work with kustomization files, but also plain Kubernetes manifests
-
-    ```yaml
-    apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-    kind: Kustomization
-    metadata:
-      name: webapp
-      namespace: apps
-    spec:
-      interval: 5m
-      path: "./deploy"
-      sourceRef:
+        ```yaml
+        apiVersion: source.toolkit.fluxcd.io/v1beta1
         kind: GitRepository
-        name: webapp
-        namespace: shared
-    ```
-
-3. [Helm Controller](https://fluxcd.io/docs/components/helm/)
-This operator helps managing Helm chart releases containing Kubernetes manifests and deploy them onto a cluster.
-
-    ```yaml
-    apiVersion: helm.toolkit.fluxcd.io/v2beta1
-    kind: HelmRelease
-    metadata:
-      name: backend
-      namespace: default
-    spec:
-      interval: 5m
-      chart:
+        metadata:
+          name: podinfo
+          namespace: default
         spec:
-          chart: podinfo
-          version: ">=4.0.0 <5.0.0"
-          sourceRef:
-            kind: HelmRepository
-            name: podinfo
-            namespace: default
           interval: 1m
-      upgrade:
-        remediation:
-          remediateLastFailure: true
-      test:
-        enable: true
-      values:
-        service:
-          grpcService: backend
-        resources:
-          requests:
-            cpu: 100m
-            memory: 64Mi
-    ```
+          url: https://github.com/stefanprodan/podinfo
+        ```
+
+2.  [Kustomize Controller](https://fluxcd.io/docs/components/kustomize/)
+    This is a CD part of the workflow. Where source controllers specify sources for data, this controller specifies what artifacts to run from a repository.
+
+        > This controller can work with kustomization files, but also plain Kubernetes manifests
+
+        ```yaml
+        apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+        kind: Kustomization
+        metadata:
+          name: webapp
+          namespace: apps
+        spec:
+          interval: 5m
+          path: "./deploy"
+          sourceRef:
+            kind: GitRepository
+            name: webapp
+            namespace: shared
+        ```
+
+3.  [Helm Controller](https://fluxcd.io/docs/components/helm/)
+    This operator helps managing Helm chart releases containing Kubernetes manifests and deploy them onto a cluster.
+
+        ```yaml
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        metadata:
+          name: backend
+          namespace: default
+        spec:
+          interval: 5m
+          chart:
+            spec:
+              chart: podinfo
+              version: ">=4.0.0 <5.0.0"
+              sourceRef:
+                kind: HelmRepository
+                name: podinfo
+                namespace: default
+              interval: 1m
+          upgrade:
+            remediation:
+              remediateLastFailure: true
+          test:
+            enable: true
+          values:
+            service:
+              grpcService: backend
+            resources:
+              requests:
+                cpu: 100m
+                memory: 64Mi
+        ```
 
 ### Crossplane Architecture Overview
 
@@ -174,34 +174,35 @@ Following tools need to be installed manually
 ### Setup Flux Repository
 
 - create a new kind cluster with `make`, this will install Crossplane with AWS provider and configure secret to access selected AWS account
-    > Flux CLI was installed as put of the Makefile scrip, but optionally you can configure shell completion for the CLI `. <(flux completion zsh)`
-    >
-    > Refer to the [Flux documentation](https://fluxcd.io/docs/installation/#install-the-flux-cli) page for more installation options
+  > Flux CLI was installed as put of the Makefile scrip, but optionally you can configure shell completion for the CLI `. <(flux completion zsh)`
+  >
+  > Refer to the [Flux documentation](https://fluxcd.io/docs/installation/#install-the-flux-cli) page for more installation options
 - create [access token](https://github.com/settings/tokens) in GitHub with full repo permissions.
-   ![github-token](_media/github-token.png)
+  ![github-token](_media/github-token.png)
 - export variables for your GitHub user and the newly created token
   - `export GITHUB_TOKEN=<token copied form GitHub>`
   - `export GITHUB_USER=<your user name>`
 - use flux to bootstrap a new GitHub repository so flux can manage itself and underlying infrastructure
-    > Flux will look for GITHUB_USER  and GITHUB_TOKEN variables and once found will create a private repository on GitHub where Flux infrastructure will be tracked.
-    >
+  > Flux will look for GITHUB_USER and GITHUB_TOKEN variables and once found will create a private repository on GitHub where Flux infrastructure will be tracked.
+
 ```bash
     flux bootstrap github  \
         --owner=${GITHUB_USER} \
         --repository=flux-infra \
         --path=clusters/crossplane-cluster  \
         --personal
-   ```
+```
 
 ### Setup Crossplane EC2 Composition
 
 Now we will install a [Crossplane Composition](https://Crossplane.io/docs/v1.6/concepts/composition.html#configuring-composition) that defines what cloud resources to crate when someone asks for EC2 claim.
 
 - setup Crossplane composition and definition for creating EC2 instances
+
   - `kubectl crossplane install configuration piotrzan/crossplane-ec2-instance:v1`
 
-- fork repository with the EC2 claims 
-  - `gh repo fork https://github.com/Piotr1215/crossplane-ec2` 
+- fork repository with the EC2 claims
+  - `gh repo fork https://github.com/Piotr1215/crossplane-ec2`
     > answer <kbd>YES</kbd> when prompted whether to clone the repository
 
 ### Clone Flux Infra Repository
@@ -215,19 +216,21 @@ Now we will install a [Crossplane Composition](https://Crossplane.io/docs/v1.6/c
 ### Add Source
 
 - add source repository to tell Flux what to observe and synchronize
-    > Flux will register this repository and every 30 seconds check for changes.
+
+  > Flux will register this repository and every 30 seconds check for changes.
 
 - execute below command in the flux-infra repository, it will add a Git Source
 
-   ```bash
-   flux create source git crossplane-demo \
-      --url=https://github.com/${GITHUB_USER}/crossplane-ec2.git \
-      --branch=master \
-      --interval=30s \
-      --export > clusters/crossplane-cluster/demo-source.yaml
-   ```
+  ```bash
+  flux create source git crossplane-demo \
+     --url=https://github.com/${GITHUB_USER}/crossplane-ec2.git \
+     --branch=master \
+     --interval=30s \
+     --export > clusters/crossplane-cluster/demo-source.yaml
+  ```
 
 - the previous command created a file in clusters/crossplane-cluster sub folder, commit the file
+
   - `git add .`
   - `git commit -m "Adding Source Repository"`
   - `git push`
@@ -239,17 +242,18 @@ Now we will install a [Crossplane Composition](https://Crossplane.io/docs/v1.6/c
 - setup watch on the AWS managed resources, for now there should be none
 
   `watch kubectl get managed`
+
 - create Flux Kustomization to watch for specific folder in the repository with the Crossplane EC2 claim
 
-    ```bash
-    flux create kustomization crossplane-demo \
-      --target-namespace=default \
-      --source=crossplane-demo \
-      --path="./ec2-claim" \
-      --prune=true \
-      --interval=1m \
-      --export > clusters/crossplane-cluster/crossplane-demo.yaml
-    ```
+  ```bash
+  flux create kustomization crossplane-demo \
+    --target-namespace=default \
+    --source=crossplane-demo \
+    --path="./ec2-claim" \
+    --prune=true \
+    --interval=1m \
+    --export > clusters/crossplane-cluster/crossplane-demo.yaml
+  ```
 
   - `git add .`
   - `git commit -m "Adding EC2 Instance"`
@@ -275,7 +279,7 @@ The EC2 claims repository contains a folder where plain Kubernetes manifest file
   - `git add .`
   - `git commit -m "EC2 instance removed"`
 - after a commit or timer lapse Flux will synchronize and Crossplane will pick up removed artefact and delete cloud resources
-   > the ec2-claim folder must be present in the repo after the claim yaml is removed, otherwise Flux cannot reconcile
+  > the ec2-claim folder must be present in the repo after the claim yaml is removed, otherwise Flux cannot reconcile
 
 ### Manual Cleanup
 
