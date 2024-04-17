@@ -1,6 +1,7 @@
 ---
 title: "Build Your Own Kubernetes Co-Pilot: Harness AI for Reliable Cluster Management"
 date: 2024-04-14
+slug: "build-your-own-kubernetes-co-pilot"
 tags: ["ai", "development", "reliability"]
 ---
 
@@ -189,4 +190,4 @@ Thanks for taking the time to read this post. I hope you found it interesting an
 
 🔗 **Connect with me on [LinkedIn](https://www.linkedin.com/in/piotr-zaniewski/)**
 
-🌐 **Visit My [Website](https://cloudrumble.net/)**
+🌐 **Visit my blogs on [Medium](https://medium.com/@piotrzan)**
