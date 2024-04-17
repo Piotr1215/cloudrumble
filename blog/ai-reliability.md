@@ -6,6 +6,8 @@ tags: ["ai", "development", "reliability"]
 
 # Build Your Own Kubernetes Co-Pilot: Harness AI for Reliable Cluster Management
 
+![kubernetes-copilot](_media/kubernetes-copilot2.png)
+ 
 Have you ever felt frustrated by nonsensical AI outputs and hallucinations?
 If yes, this blog is going to be helpful for new or seasoned Kubernetes users who want to explore how AI can help manage Kubernetes
 resources more reliability.
