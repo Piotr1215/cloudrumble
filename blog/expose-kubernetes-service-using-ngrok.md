@@ -40,19 +40,19 @@ We are going to create a simple nginx pod and expose it in Kubernetes via servic
 
 1. Set alias for **kubectl **to easier run commands. This step is optional.
 
-   alias k=kubectl
+`alias k=kubectl`
 
 2. Create nginx pod in your local cluster.
 
-   k run nginx — image nginx — restart Never
+`k run nginx — image nginx — restart Never`
 
 3. Expose nginx pod via a NodePort service.
 
-   k expose pod nginx — port 80 — target-port 80 — type NodePort — name nginx-service
+`k expose pod nginx — port 80 — target-port 80 — type NodePort — name nginx-service`
 
 4. Create variable with the node port of the service. Here we are using **jsonpath **which is kubectl feature allowing to select arbitrary values from api-server. We are checking what nodePort has been automatically assigned by Kubernetes for our service.
 
-   NODE_PORT=$(k get svc nginx-service -o=jsonpath=”{$.spec.ports[0].nodePort}{'\n'}")
+`NODE_PORT=$(k get svc nginx-service -o=jsonpath=”{$.spec.ports[0].nodePort}{'\n'}")`
 
 5. Use curl to check if nginx is available on the port of the host. You should see HTML content of the nginx default welcome page.
 
