@@ -4,12 +4,19 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
+const { webpackPlugin } = require("./plugins/webpack-plugin.cjs");
+const tailwindPlugin = require("./plugins/tailwind-plugin.cjs");
+
+const plugins = [tailwindPlugin, webpackPlugin];
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Cloud Rumble",
   tagline:
     "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
   url: "https://frosty-babbage-3125a3.netlify.app",
+  // @ts-ignore
+  plugins: plugins,
   // url: 'https://cloudrumble.net/',
   baseUrl: "/",
   onBrokenLinks: "warn",
