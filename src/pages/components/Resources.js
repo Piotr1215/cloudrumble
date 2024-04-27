@@ -1,6 +1,6 @@
 import Link from "@docusaurus/Link";
 import React from "react";
-import RESOURCES from "./resources-data";
+import RESOURCES from "../../components/resources-data";
 const resData = require("../../data/resources.json");
 
 export default function ResourcesSection() {
