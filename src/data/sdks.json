@@ -12,7 +12,8 @@
           "description": "",
           "items": [
             {
-              "title": "Cloud Provider Specific",
+              "icon": "html",
+              "title": "Automatically creates ClusterIP",
               "link": "/"
             }
           ]
@@ -21,10 +22,7 @@
           "title": "",
           "description": "",
           "items": [
-            {
-              "title": "Automatically creates ClusterIP",
-              "link": "/"
-            }
+            { "icon": "html", "title": "Cloud Provider Specific", "link": "/" }
           ]
         }
       ]
@@ -35,48 +33,28 @@
       "description": "Discover the 'Frontend Development' category, your gateway to articles and resources focused on front-end development, covering the latest web technologies and best practices.",
       "parts": [
         {
-          "title": "Basics",
-          "description": "HTML, CSS, JS",
+          "title": "",
+          "description": "",
           "items": [
             {
               "icon": "html",
-              "title": "HTML",
+              "title": "Maps to external services",
               "link": "/"
             },
             {
               "icon": "react",
-              "title": "CSS",
-              "link": "/"
-            },
-            {
-              "icon": "javascript",
-              "title": "JavaScript",
+              "title": "Returns CNAME record",
               "link": "/"
             }
           ]
         },
         {
-          "title": "Frameworks",
-          "description": "React, Nextjs, Sveltekit, TailwindCSS",
+          "title": "",
+          "description": "",
           "items": [
             {
-              "icon": "react",
-              "title": "React JS",
-              "link": "/"
-            },
-            {
-              "icon": "react",
-              "title": "Next JS",
-              "link": "/"
-            },
-            {
-              "icon": "react",
-              "title": "Svelte Kit",
-              "link": "/"
-            },
-            {
-              "icon": "flutter",
-              "title": "Tailwind CSS",
+              "icon": "javascript",
+              "title": "Requirements",
               "link": "/"
             }
           ]
@@ -90,53 +68,23 @@
       "description": "Explore the 'APIs Dev' category, dedicated to articles and resources that delve into the world of API development, offering insights into creating and managing application programming interfaces.",
       "parts": [
         {
-          "title": "Frameworks",
-          "description": "Express, Nest, Django, GraphQL",
+          "title": "",
+          "description": "",
           "items": [
             {
               "icon": "react",
-              "title": "Express JS",
-              "link": "/"
-            },
-            {
-              "icon": "react",
-              "title": "Nest JS",
-              "link": "/"
-            },
-            {
-              "icon": "react",
-              "title": "Fast API",
-              "link": "/"
-            },
-            {
-              "icon": "flutter",
-              "title": "Django",
-              "link": "/"
-            },
-            {
-              "icon": "flutter",
-              "title": "GraphQL",
+              "title": "Internal to cluster only",
               "link": "/"
             }
           ]
         },
         {
-          "title": "DevOps",
-          "description": "Docker, Kubernetes, CI/CD",
+          "title": "",
+          "description": "",
           "items": [
             {
-              "icon": "html",
-              "title": "Docker",
-              "link": "/"
-            },
-            {
               "icon": "react",
-              "title": "Kubernetes",
-              "link": "/"
-            },
-            {
-              "icon": "javascript",
-              "title": "CI/CD",
+              "title": "Default service type",
               "link": "/"
             }
           ]
@@ -149,53 +97,33 @@
       "description": "Explore the 'APIs Dev' category, dedicated to articles and resources that delve into the world of API development, offering insights into creating and managing application programming interfaces.",
       "parts": [
         {
-          "title": "Frameworks",
-          "description": "Express, Nest, Django, GraphQL",
+          "title": "",
+          "description": "",
           "items": [
             {
               "icon": "react",
-              "title": "Express JS",
+              "title": "Expose service on each node",
               "link": "/"
             },
             {
               "icon": "react",
-              "title": "Nest JS",
-              "link": "/"
-            },
-            {
-              "icon": "react",
-              "title": "Fast API",
-              "link": "/"
-            },
-            {
-              "icon": "flutter",
-              "title": "Django",
-              "link": "/"
-            },
-            {
-              "icon": "flutter",
-              "title": "GraphQL",
+              "title": "Automatically creates clusterIP",
               "link": "/"
             }
           ]
         },
         {
-          "title": "DevOps",
-          "description": "Docker, Kubernetes, CI/CD",
+          "title": "",
+          "description": "",
           "items": [
             {
-              "icon": "html",
-              "title": "Docker",
-              "link": "/"
-            },
-            {
               "icon": "react",
-              "title": "Kubernetes",
+              "title": "Static Port",
               "link": "/"
             },
             {
-              "icon": "javascript",
-              "title": "CI/CD",
+              "icon": "flutter",
+              "title": "Accessible via NodeIP",
               "link": "/"
             }
           ]
@@ -206,6 +134,6 @@
   "contact": {
     "question": "Contact me for any questions",
     "contact": "Email me",
-    "link": "mailto:ahmed.bargady.bs@gmail.com"
+    "link": "mailto:something@gamil.com"
   }
 }

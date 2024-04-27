@@ -25,7 +25,7 @@ function SectionPart({ title, index, id, description, parts }) {
         <div
           key={index}
           className={clsx(
-            "flex-1 bg-secondary-800 p-6 px-8 ",
+            "flex-1 bg-secondary-800 p-6 px-6 ",
             index == 0 && "lg:rounded-l-3xl",
             index == 1 && "lg:rounded-r-3xl"
           )}
