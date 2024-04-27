@@ -12,6 +12,7 @@ import "../css/custom.css";
 import Head from "@docusaurus/Head";
 import HeroSection from "./components/hero";
 import CategoriesSection from "./components/categories";
+import ResourcesSection from "./components/Resources";
 
 export default function Homepage() {
   return (
@@ -21,6 +22,7 @@ export default function Homepage() {
       </Head>
       <HeroSection />
       <CategoriesSection />
+      <ResourcesSection />
 
       {/* <div className="relative">
         <APIReferenceSection />
