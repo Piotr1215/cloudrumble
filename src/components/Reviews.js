@@ -1,8 +1,8 @@
 import * as React from "react";
-import StarSvg from "../../icons/star.svg";
-import ClapSvg from "../../icons/clap.svg";
-import InfiniteAutoplaySwipe from "../../components/infinityAutoplaySwipe";
-import useScreenSize from "../../hooks/useScreenSize";
+import StarSvg from "../icons/star.svg";
+import ClapSvg from "../icons/clap.svg";
+import InfiniteAutoplaySwipe from "./infinityAutoplaySwipe";
+import useScreenSize from "../hooks/useScreenSize";
 import ThemedImage from "@theme/ThemedImage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";

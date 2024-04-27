@@ -13,7 +13,7 @@ import Head from "@docusaurus/Head";
 import HeroSection from "./components/hero";
 import CategoriesSection from "./components/categories";
 import ResourcesSection from "./components/Resources";
-import Reviews from "./components/Reviews";
+import Reviews from "../components/Reviews";
 
 export default function Homepage() {
   return (
