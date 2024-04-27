@@ -3,7 +3,8 @@ import Link from "@docusaurus/Link";
 import Head from "@docusaurus/Head";
 import Lottie from "react-lottie";
 // @ts-ignore
-import animationData from "../../lotties/hero.json";
+import animationData from "../../lotties/hero2.json";
+import Typing from "./typing";
 
 const defaultOptions = {
   loop: true,
@@ -26,6 +27,7 @@ export default function HeroSection() {
           <h1 className="mb-6 font-jakarta text-4xl font-bold md:w-8/12  lg:text-6xl">
             Cloud Rumble
           </h1>
+          <Typing />
           <p className="text-sm text-text-400 lg:max-w-lg lg:text-base">
             IT Certifications learning notes and blogs. Kubernetes and cloud
             native ramblings
@@ -54,7 +56,7 @@ export default function HeroSection() {
             alt="Hero Picture"
             className="w-full max-w-[420px] lg:max-w-[560px]"
           /> */}
-          <div className="relative w-8/12 ">
+          <div className="relative w-full ">
             <Lottie
               className="w-full"
               options={defaultOptions}

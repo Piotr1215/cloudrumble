@@ -18,7 +18,7 @@ export default function Homepage() {
         <link rel="prefetch" href="/css/elements.min.css" />
       </Head>
       <HeroSection />
-      {/* <SDKsSection /> */}
+      {/* <CategoriesSection /> */}
 
       {/* <div className="relative">
         <APIReferenceSection />
