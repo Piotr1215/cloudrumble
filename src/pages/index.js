@@ -13,6 +13,7 @@ import Head from "@docusaurus/Head";
 import HeroSection from "./components/hero";
 import CategoriesSection from "./components/categories";
 import ResourcesSection from "./components/Resources";
+import Reviews from "./components/Reviews";
 
 export default function Homepage() {
   return (
@@ -20,10 +21,12 @@ export default function Homepage() {
       <Head>
         <link rel="prefetch" href="/css/elements.min.css" />
       </Head>
-      <HeroSection />
-      <CategoriesSection />
-      <ResourcesSection />
-
+      <main className="w-full overflow-x-hidden">
+        <HeroSection />
+        <CategoriesSection />
+        <ResourcesSection />
+        <Reviews />
+      </main>
       {/* <div className="relative">
         <APIReferenceSection />
         <div className="absolute bottom-0 top-1/2 -z-10 w-full bg-secondary-800 dark:bg-secondary-900"></div>

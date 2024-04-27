@@ -27,7 +27,8 @@
     "react-dom": "^18.0.0",
     "react-lottie": "^1.2.4",
     "react-type-animation": "^3.2.0",
-    "react-youtube": "10.1.0"
+    "react-youtube": "10.1.0",
+    "swiper": "^11.1.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.2.1",
