@@ -1,0 +1,211 @@
+{
+  "title": "Kubernetes Services",
+  "comment": "By Cloud Rumble",
+  "pills": [
+    {
+      "title": "LoadBalancer",
+      "id": "first-pill",
+      "description": "desc.",
+      "parts": [
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "title": "Cloud Provider Specific",
+              "link": "/"
+            }
+          ]
+        },
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "title": "Automatically creates ClusterIP",
+              "link": "/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ExternalName",
+      "id": "second-pill",
+      "description": "Discover the 'Frontend Development' category, your gateway to articles and resources focused on front-end development, covering the latest web technologies and best practices.",
+      "parts": [
+        {
+          "title": "Basics",
+          "description": "HTML, CSS, JS",
+          "items": [
+            {
+              "icon": "html",
+              "title": "HTML",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "CSS",
+              "link": "/"
+            },
+            {
+              "icon": "javascript",
+              "title": "JavaScript",
+              "link": "/"
+            }
+          ]
+        },
+        {
+          "title": "Frameworks",
+          "description": "React, Nextjs, Sveltekit, TailwindCSS",
+          "items": [
+            {
+              "icon": "react",
+              "title": "React JS",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "Next JS",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "Svelte Kit",
+              "link": "/"
+            },
+            {
+              "icon": "flutter",
+              "title": "Tailwind CSS",
+              "link": "/"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title": "ClusterIP",
+      "id": "third-pill",
+      "description": "Explore the 'APIs Dev' category, dedicated to articles and resources that delve into the world of API development, offering insights into creating and managing application programming interfaces.",
+      "parts": [
+        {
+          "title": "Frameworks",
+          "description": "Express, Nest, Django, GraphQL",
+          "items": [
+            {
+              "icon": "react",
+              "title": "Express JS",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "Nest JS",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "Fast API",
+              "link": "/"
+            },
+            {
+              "icon": "flutter",
+              "title": "Django",
+              "link": "/"
+            },
+            {
+              "icon": "flutter",
+              "title": "GraphQL",
+              "link": "/"
+            }
+          ]
+        },
+        {
+          "title": "DevOps",
+          "description": "Docker, Kubernetes, CI/CD",
+          "items": [
+            {
+              "icon": "html",
+              "title": "Docker",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "Kubernetes",
+              "link": "/"
+            },
+            {
+              "icon": "javascript",
+              "title": "CI/CD",
+              "link": "/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "NodePort",
+      "id": "fourth-pill",
+      "description": "Explore the 'APIs Dev' category, dedicated to articles and resources that delve into the world of API development, offering insights into creating and managing application programming interfaces.",
+      "parts": [
+        {
+          "title": "Frameworks",
+          "description": "Express, Nest, Django, GraphQL",
+          "items": [
+            {
+              "icon": "react",
+              "title": "Express JS",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "Nest JS",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "Fast API",
+              "link": "/"
+            },
+            {
+              "icon": "flutter",
+              "title": "Django",
+              "link": "/"
+            },
+            {
+              "icon": "flutter",
+              "title": "GraphQL",
+              "link": "/"
+            }
+          ]
+        },
+        {
+          "title": "DevOps",
+          "description": "Docker, Kubernetes, CI/CD",
+          "items": [
+            {
+              "icon": "html",
+              "title": "Docker",
+              "link": "/"
+            },
+            {
+              "icon": "react",
+              "title": "Kubernetes",
+              "link": "/"
+            },
+            {
+              "icon": "javascript",
+              "title": "CI/CD",
+              "link": "/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "question": "Contact me for any questions",
+    "contact": "Email me",
+    "link": "mailto:ahmed.bargady.bs@gmail.com"
+  }
+}

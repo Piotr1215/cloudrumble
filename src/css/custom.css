@@ -1138,3 +1138,63 @@ article ol {
 article ul {
   list-style-type: disc;
 }
+
+
+.navbar__items.navbar__items--right {
+  @apply space-x-4;
+}
+
+/* Github */
+.navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(1) {
+  background-image: url(./github.svg);
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* hide content */
+  text-indent: -9999px;
+}
+
+/* Medium */
+.navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(2) {
+  background-image: url(./medium.svg);
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* hide content */
+  text-indent: -9999px;
+}
+
+
+/* Killercoda */
+.navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(3) {
+  background-image: url(./killercoda.ico);
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* hide content */
+  text-indent: -9999px;
+}
+
+/* Youtube */
+.navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(4) {
+  background-image: url(./ytb.svg);
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* hide content */
+  text-indent: -9999px;
+  
+}
+
+[data-theme="dark"] .navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(2) {
+  background-image: url(./medium-dark.svg);
+}
+
+
+[data-theme="dark"] .navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(4) {
+  background-image: url(./ytb-dark.svg);
+}
+
+[data-theme="dark"] .navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(1) {
+  background-image: url(./github-dark.svg);
+}

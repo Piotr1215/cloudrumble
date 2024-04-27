@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Layout from "@theme/Layout";
+import "../css/custom.css";
 
 // import HeroSection from "../components/homepage/Hero";
 // import SDKsSection from "../components/homepage/SDKs";
@@ -10,6 +11,7 @@ import Layout from "@theme/Layout";
 // import HelpSection from "../components/homepage/Help";
 import Head from "@docusaurus/Head";
 import HeroSection from "./components/hero";
+import CategoriesSection from "./components/categories";
 
 export default function Homepage() {
   return (
@@ -18,7 +20,7 @@ export default function Homepage() {
         <link rel="prefetch" href="/css/elements.min.css" />
       </Head>
       <HeroSection />
-      {/* <CategoriesSection /> */}
+      <CategoriesSection />
 
       {/* <div className="relative">
         <APIReferenceSection />
