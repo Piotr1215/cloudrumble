@@ -53,44 +53,6 @@ function SectionPart({ title, index, id, description, parts }) {
   );
 }
 
-function SectionSimple({
-  title,
-  linkText,
-  description,
-  id,
-  link,
-  whiteImg,
-  blackImg,
-}) {
-  return (
-    <div
-      className="sdk-section mb-16 flex flex-col rounded-3xl bg-secondary-900 lg:flex-row"
-      data-section={id}
-      id={id}
-    >
-      <div className="flex flex-1 flex-col justify-center p-6 text-center lg:pl-16 lg:text-left">
-        <h3 className="text-4xl font-semibold">{title}</h3>
-        <p className="text-sm leading-relaxed text-text-400 lg:max-w-sm">
-          {description}
-        </p>
-        <Link className="text-sm" href={link}>
-          {linkText}
-        </Link>
-      </div>
-      <div className="flex flex-[3] items-center justify-center rounded-3xl p-6 px-8 lg:justify-end">
-        <ThemedImage
-          sources={{
-            light: whiteImg,
-            dark: blackImg,
-          }}
-          alt="Alt"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  );
-}
-
 export default function CategoriesSection() {
   const [visibleSection, setVisibleSection] = useState(sdksData.pills[0].id);
 
@@ -123,7 +85,7 @@ export default function CategoriesSection() {
     return (
       <div
         className={clsx(
-          "flex-1 cursor-pointer whitespace-nowrap rounded-md px-6 py-2 text-center font-jakarta text-sm font-semibold",
+          "flex-1 cursor-pointer whitespace-nowrap rounded-md px-3 lg:px-6 py-2 text-center font-jakarta text-xs lg:text-sm font-semibold",
           visibleSection === section
             ? "bg-primary text-white"
             : "text-black dark:text-white"

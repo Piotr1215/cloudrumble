@@ -15,7 +15,7 @@ const InfiniteAutoplaySwipe = ({ data, Comp, number }) => {
         modules={[Pagination, Autoplay]}
         className=" w-full  "
         autoplay={{
-          delay: 1800,
+          delay: 3000,
           pauseOnMouseEnter: true,
           disableOnInteraction: false,
         }}

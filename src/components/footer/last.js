@@ -1,0 +1,55 @@
+import React from "react";
+import Link from "@docusaurus/Link";
+import clsx from "clsx";
+
+const PAGES = [
+  {
+    title: "Blog",
+    link: "/",
+  },
+  {
+    title: "Certificates",
+    link: "/",
+  },
+  {
+    title: "Examples",
+    link: "/",
+  },
+  {
+    title: "Resources",
+    link: "/",
+  },
+  {
+    title: "FAQ",
+    link: "/",
+  },
+];
+
+function FooterLast() {
+  return (
+    <ul className="space-y-2 list-none">
+      <li className="!mb-6 w-full font-semibold text-base">Community</li>
+      {PAGES.map((page, index) => (
+        <li
+          className={clsx(
+            "w-full font-medium ml-4",
+            "hover:underline trasnition ease-in-out duration-300 transform hover:scale-105",
+            // underline offset
+            "underline-offset-2 space-y-1"
+          )}
+          key={index}
+        >
+          <Link
+            href={page.link}
+            key={index}
+            className="w-full text-gray-500 hover:text-black dark:hover:text-white text-sm"
+          >
+            {page.title}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default FooterLast;
