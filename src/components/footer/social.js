@@ -37,7 +37,7 @@ function FooterSocial() {
         {SOCIAL_MEDIA.map((item, index) => (
           <Link key={index} href={item.link}>
             <div
-              className="flex p-1 flex-col items-center justify-center h-9 w-9 rounded-sm bg-gray-300"
+              className="flex p-1 flex-col items-center justify-center h-9 w-9 rounded-sm bg-purple-100 dark:bg-purple-800 dark:bg-opacity-75"
               key={index}
             >
               <img src={item.icon} alt={item.title} className="w-20 h-20" />

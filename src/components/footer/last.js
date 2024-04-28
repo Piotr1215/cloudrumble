@@ -42,7 +42,7 @@ function FooterLast() {
           <Link
             href={page.link}
             key={index}
-            className="w-full text-gray-500 hover:text-black dark:hover:text-white text-sm"
+            className="w-full text-gray-500 hover:text-purple-600 dark:hover:text-purple-500 text-sm"
           >
             {page.title}
           </Link>

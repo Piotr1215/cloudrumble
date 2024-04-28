@@ -15,12 +15,14 @@ function SectionPart({ title, index, id, description, parts }) {
       data-section={id}
       id={id}
     >
-      <div className="flex flex-[2] flex-col justify-center p-6 text-center lg:pl-16 lg:text-left">
+      {/* left */}
+      <div className="flex flex-[1.5] flex-col justify-center p-6 text-center lg:pl-16 lg:text-left">
         <h3 className="text-4xl font-semibold">{title}</h3>
         <p className="text-sm leading-relaxed text-text-400 lg:max-w-sm">
           {description}
         </p>
       </div>
+      {/* right */}
       {parts.map((partItem, index) => (
         <div
           key={index}

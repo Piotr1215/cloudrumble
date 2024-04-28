@@ -12,7 +12,7 @@
           "description": "",
           "items": [
             {
-              "icon": "html",
+              "icon": "docker",
               "title": "Automatically creates ClusterIP",
               "link": "/"
             }
@@ -22,7 +22,11 @@
           "title": "",
           "description": "",
           "items": [
-            { "icon": "html", "title": "Cloud Provider Specific", "link": "/" }
+            {
+              "icon": "docker",
+              "title": "Cloud Provider Specific",
+              "link": "/"
+            }
           ]
         }
       ]
@@ -37,12 +41,12 @@
           "description": "",
           "items": [
             {
-              "icon": "html",
+              "icon": "docker",
               "title": "Maps to external services",
               "link": "/"
             },
             {
-              "icon": "react",
+              "icon": "kubernetes",
               "title": "Returns CNAME record",
               "link": "/"
             }
@@ -53,7 +57,7 @@
           "description": "",
           "items": [
             {
-              "icon": "javascript",
+              "icon": "azure",
               "title": "Requirements",
               "link": "/"
             }
@@ -72,7 +76,7 @@
           "description": "",
           "items": [
             {
-              "icon": "react",
+              "icon": "kubernetes",
               "title": "Internal to cluster only",
               "link": "/"
             }
@@ -83,7 +87,7 @@
           "description": "",
           "items": [
             {
-              "icon": "react",
+              "icon": "kubernetes",
               "title": "Default service type",
               "link": "/"
             }
@@ -101,12 +105,12 @@
           "description": "",
           "items": [
             {
-              "icon": "react",
+              "icon": "kubernetes",
               "title": "Expose service on each node",
               "link": "/"
             },
             {
-              "icon": "react",
+              "icon": "kubernetes",
               "title": "Automatically creates clusterIP",
               "link": "/"
             }
@@ -117,12 +121,12 @@
           "description": "",
           "items": [
             {
-              "icon": "react",
+              "icon": "kubernetes",
               "title": "Static Port",
               "link": "/"
             },
             {
-              "icon": "flutter",
+              "icon": "aws",
               "title": "Accessible via NodeIP",
               "link": "/"
             }

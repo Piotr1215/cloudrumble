@@ -67,11 +67,12 @@
 
   html[data-theme="dark"] {
     --docs-color-text-400: 153 153 153;
-
     --docs-color-secondary-700: 71 71 71;
     --docs-color-secondary-800: 38 38 38;
     --docs-color-secondary-900: 25 25 25;
     --docs-color-secondary-1000: 0 0 0;
+
+    
   }
 
   body {
@@ -156,7 +157,7 @@
   } */
 
   .minecustom-badge {
-    @apply mb-4 inline-block rounded-sm bg-zinc-200 px-2 py-1 text-text-400 dark:bg-zinc-800;
+    @apply mb-4 inline-block rounded-sm text-zinc-700 bg-purple-200 px-2 py-1 dark:text-white/80 dark:bg-purple-900;
   }
 }
 
@@ -198,16 +199,17 @@ body {
 
 [data-theme="dark"] {
   --docs-color-border: #2e2e2e;
-
   --docs-color-text: #ffffff;
   --docs-color-text-100: #b4b4b4;
-
   --docs-color-background: #161616;
   --docs-color-background-100: #1c1c1c;
   --docs-color-background-200: #2a2a2a;
   --docs-color-background-300: #2e2e2e;
 
   --docs-color-code-background: #1e1e1e;
+
+
+  
 }
 
 /* Docusaurus Theming */
@@ -261,6 +263,16 @@ html[data-theme="dark"] {
   --ifm-color-content: #e7e7e7;
 
   --docusaurus-highlighted-code-line-bg: rgba(105, 105, 105, 0.3);
+
+
+
+  --ifm-color-primary: #8728e6;
+  --ifm-color-primary-dark: #7919da;
+  --ifm-color-primary-darker: #7318ce;
+  --ifm-color-primary-darkest: #5e14a9;
+  --ifm-color-primary-light: #9440e9;
+  --ifm-color-primary-lighter: #9b4cea;
+  --ifm-color-primary-lightest: #af71ee;
 }
 
 nav.navbar {

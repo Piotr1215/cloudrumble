@@ -41,7 +41,7 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/getting-started"
-              className="rounded-sm border border-solid border-primary bg-primary/10 px-12 py-2.5 text-center font-semibold text-primary hover:text-primary dark:border-primary-100 dark:text-primary-100"
+              className="rounded-sm border border-solid border-purple-500 bg-primary/10 px-12 py-2.5 text-center font-semibold text-purple-500 hover:text-purple-500 "
             >
               Examples
             </Link>

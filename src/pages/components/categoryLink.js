@@ -11,7 +11,7 @@ function CategoryLink({ href, Icon, label, disabled = false }) {
       )}
       href={!disabled ? href : undefined}
     >
-      {Icon && <Icon className="h-8 w-8" />}
+      {Icon && <Icon className="h-8 w-8 object-contain" />}
       {label}
     </Link>
   );

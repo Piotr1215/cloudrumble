@@ -29,7 +29,7 @@ export default function ResourcesSection() {
                     className="aspect-video h-full w-full object-cover transition-transform group-hover:scale-110 lg:aspect-square"
                   />
                 </div>
-                <h3 className="font-semibold text-black group-hover:text-primary dark:text-white dark:group-hover:text-primary-100 lg:text-xl">
+                <h3 className="font-semibold text-black group-hover:text-purple-500 dark:text-white dark:group-hover:text-purple-500 lg:text-xl">
                   {resource.title}
                 </h3>
                 {/* <p className="leading-snug text-text-400">
@@ -37,7 +37,7 @@ export default function ResourcesSection() {
                 </p> */}
               </div>
               <div className="mt-4 flex items-center justify-between">
-                <div className="rounded-sm bg-primary-100/10 px-3 py-1 text-sm text-primary-100">
+                <div className="rounded-sm bg-purple-500/10 px-3 py-1 text-sm text-purple-500">
                   {resource.type}
                 </div>
                 <div className="text-sm text-text-400">
@@ -56,7 +56,7 @@ export default function ResourcesSection() {
             {resData.links.map((linkItem, index) => (
               <Link
                 key={index}
-                className="underline underline-offset-8"
+                className="underline underline-offset-8 text-purple-500"
                 href={linkItem.url}
               >
                 {linkItem.title}

@@ -76,7 +76,7 @@ function Card({ item }) {
         color: "inherit",
       }}
     >
-      <div className="max-w-96 border min-h-48 my-6 border-gray-500 rounded-2xl p-4 shadow-lg  dark:shadow-gray-800">
+      <div className="max-w-96 border min-h-48 my-6 border-gray-500 rounded-2xl p-4 shadow-lg shadow-blue-200 dark:shadow-blue-900">
         <div className="flex flex-row justify-between items-start text-sm space-x-2 mb-2">
           <div className="flex flex-row items-start space-x-2">
             <ThemedImage
