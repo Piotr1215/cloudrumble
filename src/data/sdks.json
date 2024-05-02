@@ -1,20 +1,25 @@
 {
-  "title": "Kubernetes Services",
-  "comment": "By Cloud Rumble",
+  "title": "Certifications",
+  "comment": "Certifications",
   "pills": [
     {
-      "title": "LoadBalancer",
+      "title": "Kubernetes",
       "id": "first-pill",
-      "description": "desc.",
+      "description": "",
       "parts": [
         {
           "title": "",
           "description": "",
           "items": [
             {
-              "icon": "docker",
-              "title": "Automatically creates ClusterIP",
-              "link": "/"
+              "icon": "kubernetes",
+              "title": "CKA",
+              "link": "/docs/Certificates/Kubernetes/cka_guide"
+            },
+            {
+              "icon": "kubernetes",
+              "title": "CKS",
+              "link": "/docs/Certificates/Kubernetes/cks_guide"
             }
           ]
         },
@@ -23,32 +28,57 @@
           "description": "",
           "items": [
             {
-              "icon": "docker",
-              "title": "Cloud Provider Specific",
-              "link": "/"
+              "icon": "kubernetes",
+              "title": "CKAD",
+              "link": "/docs/Certificates/Kubernetes/ckad_guide"
             }
           ]
         }
       ]
     },
     {
-      "title": "ExternalName",
+      "title": "Linux",
       "id": "second-pill",
-      "description": "Discover the 'Frontend Development' category, your gateway to articles and resources focused on front-end development, covering the latest web technologies and best practices.",
+      "description": "",
       "parts": [
         {
           "title": "",
           "description": "",
           "items": [
             {
-              "icon": "docker",
-              "title": "Maps to external services",
-              "link": "/"
-            },
+              "icon": "linux",
+              "title": "LFCT",
+              "link": "/docs/Certificates/Linux/lfct_guide"
+            }
+          ]
+        },
+        {
+          "title": "",
+          "description": "",
+          "items": [
             {
-              "icon": "kubernetes",
-              "title": "Returns CNAME record",
+              "icon": "linux",
+              "title": "LFCA",
               "link": "/"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title": "Azure",
+      "id": "third-pill",
+      "description": "",
+      "parts": [
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "azure",
+              "title": "DevOps Expert",
+              "link": "/docs/Certificates/Azure/az_303_guide"
             }
           ]
         },
@@ -58,76 +88,25 @@
           "items": [
             {
               "icon": "azure",
-              "title": "Requirements",
-              "link": "/"
-            }
-          ]
-        }
-      ]
-    },
-
-    {
-      "title": "ClusterIP",
-      "id": "third-pill",
-      "description": "Explore the 'APIs Dev' category, dedicated to articles and resources that delve into the world of API development, offering insights into creating and managing application programming interfaces.",
-      "parts": [
-        {
-          "title": "",
-          "description": "",
-          "items": [
-            {
-              "icon": "kubernetes",
-              "title": "Internal to cluster only",
-              "link": "/"
-            }
-          ]
-        },
-        {
-          "title": "",
-          "description": "",
-          "items": [
-            {
-              "icon": "kubernetes",
-              "title": "Default service type",
-              "link": "/"
+              "title": "Architect Expert",
+              "link": "/docs/Certificates/Azure/az_304_guide"
             }
           ]
         }
       ]
     },
     {
-      "title": "NodePort",
+      "title": "Other",
       "id": "fourth-pill",
-      "description": "Explore the 'APIs Dev' category, dedicated to articles and resources that delve into the world of API development, offering insights into creating and managing application programming interfaces.",
+      "description": "",
       "parts": [
         {
           "title": "",
           "description": "",
           "items": [
             {
-              "icon": "kubernetes",
-              "title": "Expose service on each node",
-              "link": "/"
-            },
-            {
-              "icon": "kubernetes",
-              "title": "Automatically creates clusterIP",
-              "link": "/"
-            }
-          ]
-        },
-        {
-          "title": "",
-          "description": "",
-          "items": [
-            {
-              "icon": "kubernetes",
-              "title": "Static Port",
-              "link": "/"
-            },
-            {
-              "icon": "aws",
-              "title": "Accessible via NodeIP",
+              "icon": "teraform",
+              "title": "TF Associate",
               "link": "/"
             }
           ]

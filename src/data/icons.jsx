@@ -8,8 +8,10 @@ import {
   JSIcon,
   KotlinIcon,
   KubernetesIcon,
+  LinuxIcon,
   ReactIcon,
   SwiftIcon,
+  TeraformIcon,
 } from "../icons";
 
 export const icons = {
@@ -24,4 +26,6 @@ export const icons = {
   kubernetes: KubernetesIcon,
   azure: AzureIcon,
   aws: AWSIcon,
+  linux: LinuxIcon,
+  teraform: TeraformIcon,
 };

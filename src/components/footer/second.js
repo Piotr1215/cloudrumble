@@ -9,18 +9,14 @@ const PAGES = [
   },
   {
     title: "Certificates",
-    link: "/",
+    link: "/docs/Certificates/AWS/aws_saa_co2",
   },
   {
     title: "Examples",
-    link: "/",
+    link: "/docs/Examples",
   },
   {
     title: "Resources",
-    link: "/",
-  },
-  {
-    title: "FAQ",
     link: "/",
   },
 ];

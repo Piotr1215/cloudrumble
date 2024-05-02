@@ -5,23 +5,27 @@ import clsx from "clsx";
 const PAGES = [
   {
     title: "Blog",
-    link: "/",
+    link: "/blog",
   },
   {
-    title: "Certificates",
-    link: "/",
+    title: "Medium",
+    link: "https://medium.com/@piotrzan",
   },
   {
-    title: "Examples",
-    link: "/",
+    title: "GitHub",
+    link: "https://github.com/Piotr1215",
   },
   {
-    title: "Resources",
-    link: "/",
+    title: "X",
+    link: "https://twitter.com/Piotr1215",
   },
+  // {
+  //   title: "YouTube",
+  //   link: "https://www.youtube.com/channel/UCkWVN7H3JqGtJ5Pv5bvCrAw",
+  // },
   {
-    title: "FAQ",
-    link: "/",
+    title: "Impressum",
+    link: "/impressum",
   },
 ];
 
