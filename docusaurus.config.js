@@ -84,7 +84,7 @@ const config = {
         title: "Cloud Rumble",
         logo: {
           alt: "IT Certifications Guide",
-          src: "img/logo.png",
+          src: "img/logo.svg",
         },
         items: [
           {

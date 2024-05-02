@@ -17,7 +17,7 @@ const defaultOptions = {
 
 export default function HeroSection() {
   return (
-    <section className="noise-bg no-underline-links px-4 pt-16 lg:py-0">
+    <section className=" no-underline-links px-4 pt-16 lg:py-0">
       <Head>
         <link rel="prefetch" href="/homepage/hero-light.png" />
         <link rel="prefetch" href="/homepage/hero-dark.png" />
@@ -34,13 +34,13 @@ export default function HeroSection() {
           </p>
           <div className="mt-8 flex flex-col gap-4 lg:flex-row">
             <Link
-              to="/api"
+              to="/docs/Fundamentals/containers"
               className="rounded-sm bg-primary px-12 py-2.5 text-center font-semibold text-white hover:text-white"
             >
               Start with Fundamentals
             </Link>
             <Link
-              href="/getting-started"
+              href="/docs/Examples/"
               className="rounded-sm border border-solid border-purple-500 bg-primary/10 px-12 py-2.5 text-center font-semibold text-purple-500 hover:text-purple-500 "
             >
               Examples
@@ -57,11 +57,12 @@ export default function HeroSection() {
             className="w-full max-w-[420px] lg:max-w-[560px]"
           /> */}
           <div className="relative w-full ">
-            <Lottie
+            {/* <Lottie
               className="w-full"
               options={defaultOptions}
               isClickToPauseDisabled={true}
-            />
+            /> */}
+            <img src="/img/hero.svg" alt="hero" className="w-full" />
           </div>
         </div>
       </div>
