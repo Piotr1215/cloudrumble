@@ -37,7 +37,7 @@ function FooterSocial() {
         alt="logo"
         className="w-40 object-contain h-20"
       />
-      <p className="text-sm">Some text here</p>
+      <p className="text-sm">Follow me on social media</p>
       <div className="flex flex-row items-center space-x-4">
         {SOCIAL_MEDIA.map((item, index) => (
           <Link key={index} href={item.link}>
