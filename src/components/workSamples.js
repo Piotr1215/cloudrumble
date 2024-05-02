@@ -6,46 +6,9 @@ import useScreenSize from "../hooks/useScreenSize";
 import ThemedImage from "@theme/ThemedImage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
+const data = require("../data/work.json");
 
-const data = [
-  {
-    name: "az-300-prep-kit",
-    date: "Feb 4, 2024",
-    rating: 150,
-    comment: "Exercises and notes preparing for az-300 exam",
-    url: "https://github.com/Piotr1215/az-300-prep-kit",
-    platform: "GitHub",
-  },
-  {
-    name: "Tandy C",
-    date: "Feb 4, 2024 1:00 am",
-    rating: 540,
-    comment:
-      "Quick and efficient service. Joining online was easy and information and confirmation came through straight away.",
-    url: "https://github.com/Piotr1215/az-300-prep-kit",
-    platform: "Medium",
-  },
-  {
-    name: "Tandy D",
-    date: "Feb 4, 2024 1:00 am",
-    rating: 4,
-    comment:
-      "Quick and efficient service. Joining online was easy and information and confirmation came through straight away.",
-    url: "https://github.com/Piotr1215/az-300-prep-kit",
-    platform: "GitHub",
-  },
-  {
-    name: "Tandy E",
-    date: "Feb 4, 2024 1:00 am",
-    rating: 4,
-    comment:
-      "Quick and efficient service. Joining online was easy and information and confirmation came through straight away.",
-    url: "https://github.com/Piotr1215/az-300-prep-kit",
-    platform: "GitHub",
-  },
-];
-
-function Reviews() {
+function WorkSamples() {
   const screenSize = useScreenSize();
   return (
     <div className="flex flex-col  items-center space-y-6 mb-20">
@@ -100,7 +63,7 @@ function Card({ item }) {
             </div>
           </div>
         </div>
-        <p className="text-sm text-left">&quot;{item.comment}&quot;</p>
+        <p className="text-sm text-left">{item.comment}</p>
       </div>
     </Link>
   );
@@ -119,4 +82,4 @@ function Rating({ rating, platform }) {
   );
 }
 
-export default Reviews;
+export default WorkSamples;

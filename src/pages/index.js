@@ -5,7 +5,7 @@ import Head from "@docusaurus/Head";
 import HeroSection from "./components/hero";
 import CategoriesSection from "./components/categories";
 import ResourcesSection from "./components/Resources";
-import Reviews from "../components/Reviews";
+import WorkSamples from "../components/workSamples";
 import Footer from "../components/footer";
 
 export default function Homepage() {
@@ -18,7 +18,7 @@ export default function Homepage() {
       <CategoriesSection />
       <main className="w-full overflow-x-hidden">
         <ResourcesSection />
-        <Reviews />
+        <WorkSamples />
       </main>
       <Footer />
     </Layout>
