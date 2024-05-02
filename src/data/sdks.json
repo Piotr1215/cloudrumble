@@ -1,0 +1,122 @@
+{
+  "title": "Certifications",
+  "comment": "Certifications",
+  "pills": [
+    {
+      "title": "Kubernetes",
+      "id": "first-pill",
+      "description": "",
+      "parts": [
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "kubernetes",
+              "title": "CKA",
+              "link": "/docs/Certificates/Kubernetes/cka_guide"
+            },
+            {
+              "icon": "kubernetes",
+              "title": "CKS",
+              "link": "/docs/Certificates/Kubernetes/cks_guide"
+            }
+          ]
+        },
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "kubernetes",
+              "title": "CKAD",
+              "link": "/docs/Certificates/Kubernetes/ckad_guide"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Linux",
+      "id": "second-pill",
+      "description": "",
+      "parts": [
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "linux",
+              "title": "LFCT",
+              "link": "/docs/Certificates/Linux/lfct_guide"
+            }
+          ]
+        },
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "linux",
+              "title": "LFCA",
+              "link": "/"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title": "Azure",
+      "id": "third-pill",
+      "description": "",
+      "parts": [
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "azure",
+              "title": "DevOps Expert",
+              "link": "/docs/Certificates/Azure/az_303_guide"
+            }
+          ]
+        },
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "azure",
+              "title": "Architect Expert",
+              "link": "/docs/Certificates/Azure/az_304_guide"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Other",
+      "id": "fourth-pill",
+      "description": "",
+      "parts": [
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "teraform",
+              "title": "TF Associate",
+              "link": "/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "question": "Contact me for any questions",
+    "contact": "Email me",
+    "link": "mailto:something@gamil.com"
+  }
+}

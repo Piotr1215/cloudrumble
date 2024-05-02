@@ -1,0 +1,31 @@
+import {
+  AWSIcon,
+  AngularIcon,
+  AzureIcon,
+  DockerIcon,
+  FlutterIcon,
+  HTMLIcon,
+  JSIcon,
+  KotlinIcon,
+  KubernetesIcon,
+  LinuxIcon,
+  ReactIcon,
+  SwiftIcon,
+  TeraformIcon,
+} from "../icons";
+
+export const icons = {
+  angular: AngularIcon,
+  flutter: FlutterIcon,
+  html: HTMLIcon,
+  javascript: JSIcon,
+  kotlin: KotlinIcon,
+  react: ReactIcon,
+  swift: SwiftIcon,
+  docker: DockerIcon,
+  kubernetes: KubernetesIcon,
+  azure: AzureIcon,
+  aws: AWSIcon,
+  linux: LinuxIcon,
+  teraform: TeraformIcon,
+};

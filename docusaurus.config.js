@@ -4,12 +4,19 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
+const { webpackPlugin } = require("./plugins/webpack-plugin.cjs");
+const tailwindPlugin = require("./plugins/tailwind-plugin.cjs");
+
+const plugins = [tailwindPlugin, webpackPlugin];
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Cloud Rumble",
   tagline:
     "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
   url: "https://frosty-babbage-3125a3.netlify.app",
+  // @ts-ignore
+  plugins: plugins,
   // url: 'https://cloudrumble.net/',
   baseUrl: "/",
   onBrokenLinks: "warn",
@@ -77,16 +84,20 @@ const config = {
         title: "Cloud Rumble",
         logo: {
           alt: "IT Certifications Guide",
-          src: "img/logo.png",
+          src: "img/logo.svg",
         },
         items: [
           {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Docs",
+            label: "Documentation",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          {
+            to: "/blog",
+            label: "Blog",
+            position: "left",
+          },
           {
             href: "https://github.com/Piotr1215",
             label: "GitHub",
@@ -113,7 +124,7 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
+            title: "Documentation",
             items: [
               {
                 label: "Docs",
