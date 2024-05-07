@@ -138,12 +138,6 @@ export default function CategoriesSection() {
         ))}
         {/* <SectionSimple {...sdksData.pills[2]} /> */}
       </div>
-      <div className="text-center text-text-400">
-        <p>
-          {sdksData.contact.question}{" "}
-          <Link href={sdksData.contact.link}>{sdksData.contact.contact}</Link>
-        </p>
-      </div>
     </section>
   );
 }
