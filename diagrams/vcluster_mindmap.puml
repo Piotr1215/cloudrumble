@@ -1,0 +1,47 @@
+@startmindmap
+!include <logos/kubernetes>
+<style>
+mindmapDiagram {
+    node {
+        BackgroundColor white
+        LineColor green
+    }
+    depth(1) {
+        LineColor blue
+        BackgroundColor white
+        LineThickness 1.0
+        RoundCorner 35
+        Shadowing 0.0
+        FontStyle bold
+    }
+}
+</style>
+
+*  Why Virtual Kubernetes Clusters?\n                       <$kubernetes>
+** Cluster Scoped Resources
+***_ more powerful than namespaces
+***_ use CRDs, namespaces, roles
+** Ease of Use
+***_ usable in any cluster
+***_ created in seconds
+** Cost Efficient
+***_ cheaper than real clusters
+***_ shared resources like namespaces
+** Lightweight
+***_ ultra-fast k3s distribution
+***_ minimal overhead per cluster
+***_ other distributions work
+
+left side
+
+** Strict Isolation
+***_ separate control plane
+***_ share certain services
+** Cluster Wide Permissions
+***_ install cluster-wide apps
+***_ limited to one namespace
+** Great for Testing
+***_ test different versions
+***_ different from host cluster
+
+@endmindmap
