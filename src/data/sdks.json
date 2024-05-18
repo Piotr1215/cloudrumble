@@ -77,6 +77,17 @@
           "items": [
             {
               "icon": "azure",
+              "title": "AI Solutions Engineer",
+              "link": "/docs/Certificates/Azure/az_102_guide"
+            }
+          ]
+        },
+        {
+          "title": "",
+          "description": "",
+          "items": [
+            {
+              "icon": "azure",
               "title": "DevOps Expert",
               "link": "/docs/Certificates/Azure/az_303_guide"
             }
