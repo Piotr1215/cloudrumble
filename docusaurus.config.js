@@ -99,6 +99,12 @@ const config = {
             position: "left",
           },
           {
+            to: "/docs/gpts",
+            label: "GPTs",
+            position: "left",
+            label: "GPTs",
+          },
+          {
             href: "https://github.com/Piotr1215",
             label: "GitHub",
             position: "right",
