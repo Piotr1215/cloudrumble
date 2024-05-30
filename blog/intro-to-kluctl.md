@@ -67,9 +67,8 @@ more efficiently and with greater flexibility.
     review and approve them. This feature helps prevent accidental
     misconfigurations and ensures deployments are accurate.
 
-![source:
-<https://kluctl.io/>](https://cdn-images-1.medium.com/max/3620/1*z2iQqLbgwqOb72TvO7e9Fw.png)*source:
-<https://kluctl.io/>*
+![source](https://cdn-images-1.medium.com/max/3620/1*z2iQqLbgwqOb72TvO7e9Fw.png)
+source: https://kluctl.io/
 
 ### Why Choose Kluctl?
 
@@ -166,7 +165,7 @@ This file defines two targets, dev and prod, that will deploy to the
 same Kubernetes cluster.
 
 We can use the args section to define the arguments that we will use in
-our YAML files to template them. For example {{ args.environment }}
+our YAML files to template them. For example `{{ args.environment }}`
 would output dev or prod depending on the target we are deploying to.
 
 ### Create Deployment
@@ -308,16 +307,16 @@ One of the superpowers of kluctl is how transparently it handles
 changes. Let's modify the redis deployment and see how kluctl handles
 it.
 
-yq -i eval '.spec.replicas = 2' redis/deployment.yaml
+`yq -i eval '.spec.replicas = 2' redis/deployment.yaml`
 
 Now let's deploy the changes to the dev target.
 
-kluctl deploy --yes -t dev
+`kluctl deploy --yes -t dev`
 
 Remember at the beginning, we have added custom labels to each
 deployment. Let's see if the labels were correctly applied.
 
-kubectl get deployments -A --show-labels
+`kubectl get deployments -A --show-labels`
 
 ### Templating
 
@@ -333,20 +332,20 @@ Let's start by deleting the existing resources and modifying some files.
 using the kluctl prune command. However, in this case, we will delete
 the old resources and recreate them in new namespaces.*
 
-kluctl delete --yes -t dev
+`kluctl delete --yes -t dev`
 
 In order to differentiate between the two environments, we will need to
 adjust the discriminator field in the .kluctl.yaml file.
 
-yq e '.discriminator = "kluctl-demo-{{ target.name }}-{{
-args.environment }}"' -i .kluctl.yaml
+`yq e '.discriminator = "kluctl-demo-{{ target.name }}-{{
+args.environment }}"' -i .kluctl.yaml`
 
 We also need to create a namespace folder and yaml and add it to our
 kustomization.yaml file.
 
 First create the namespace folder.
 
-mkdir namespace
+`mkdir namespace`
 
 Now we can add the namespace folder to the kustomization.yaml file. \>
 *💡 Notice the use of barrier: true in the kustomization.yaml file. This
