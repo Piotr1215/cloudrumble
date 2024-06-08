@@ -1,6 +1,6 @@
 ---
 title: "Master Command Orchestration with Justfile"
-date: 2021-08-02T01:09:18+02:00
+date: 2024-06-08
 tags: ['just', 'linux']
 ---
 
