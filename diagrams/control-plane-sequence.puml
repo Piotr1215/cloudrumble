@@ -1,6 +1,6 @@
 @startuml control-plane-sequence
 !pragma teoz true
-!theme crt-green
+!theme mars
 hide footbox
 autonumber
 
