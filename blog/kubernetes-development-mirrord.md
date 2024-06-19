@@ -147,15 +147,9 @@ Does exactly what we need:
 > CI, or deployment, and without disrupting the environment by deploying
 > untested code
 
-[](https://mirrord.dev/docs/overview/introduction/?source=post_page-----58b8d2cb8e8e--------------------------------)
+https://mirrord.dev/docs/overview/introduction/
 
-## Introduction
-
-### mirrord 101
-
-mirrord.dev
-
-Running App In Local Context
+## Running App In Local Context
 
 A simple `nodejs` app connects to [Azure Storage
 Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
