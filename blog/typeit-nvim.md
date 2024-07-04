@@ -1,6 +1,7 @@
 ---
 title: Typing Simulation in Neovim with typeit.nvim
 description: Typing simulation in Neovim with typeit.nvim
+date: 2024-07-04
 tags: [neovim,plugin ]
 hide_table_of_contents: false
 ---
