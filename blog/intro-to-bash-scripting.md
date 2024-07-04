@@ -1,9 +1,9 @@
 ---
-title: Introduction to Bash Scripting | Automate, Customize, Solve
+title: Introduction to Bash Scripting Automate, Customize, Solve
 description: Introduction to bash scripting for Linux and Mac users. Learn how to automate tasks, create tools, and solve problems with bash
 scripts.
 date: 2024-07-01
-tags: [bash,scripting ]
+tags: [bash,scripting]
 hide_table_of_contents: false
 ---
 
