@@ -339,8 +339,7 @@ Let’s break this down:
 
 1.  `files=()` initializes an empty array to store our
     filenames.
-2.  The `for` loop uses C-style syntax `for ((i = 1; i
-    <= num_files; i++))`. This is a compact way to iterate a specific
+2.  The `for` loop uses C-style syntax `for ((i = 1; i <= num_files; i++))`. This is a compact way to iterate a specific
     number of times.
 3.  Inside the loop, we create a filename using string
     interpolation: `filename="file_$i.txt"`.
