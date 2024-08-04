@@ -1,0 +1,36 @@
+@startuml
+!pragma teoz true
+!theme mars
+hide footbox
+autonumber
+scale 1920x1080
+skinparam defaultTextAlignment left
+skinparam shadowing true
+skinparam BoxPadding 10
+title Neovim Autocommand Execution Flow
+
+actor "User" as user
+box "Neovim" #LightGreen
+  participant "Event" as event
+  control "Autocommand" as autocommand
+  participant "Action" as action
+end box
+
+user -> event : Trigger event {event}
+note right of event
+  Examples:
+  - 'BufReadPre'
+  - 'BufWritePost'
+end note
+
+event -> autocommand : Trigger autocommand
+autocommand -> action : Execute based on options
+
+note right of action
+  Options examples:
+  - group: 'MyGroup'
+  - pattern: '*.txt'
+  - callback: 'MyCallback'
+  - OR command: ':echo "Hello"'
+end note
+@enduml
