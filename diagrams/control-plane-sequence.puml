@@ -1,40 +1,46 @@
-@startuml control-plane-sequence
+@startuml
 !pragma teoz true
 !theme mars
 hide footbox
 autonumber
-
 scale 1920x1080
 skinparam defaultTextAlignment center
 skinparam NoteTextAlignment left
-skinparam shadowing false
+skinparam shadowing true
 skinparam backgroundColor transparent
 skinparam BoxPadding 10
-
 title Kubernetes as Control Plane for Infrastructure Provisioning
 
-actor Developer as dev
-box "\nDevelopment" 
-  participant "IDP Portal" as port
-  dev -> port : Self service app and infrastructure
-  note right of port : Developer accesses through Port\nfor unified UI experience
+actor "Developer" as dev
+box "Development & GitOps" #LightBlue
+    participant "IDP Portal" as port
+    participant "GitOps Repository" as git
 end box
-
+box "Kubernetes Cluster" #LightGreen
+    participant "ArgoCD & Crossplane" as argocp
+    control "Kubernetes API" as K8sAPI
+    box "Namespace: devops-team" #LightYellow
+        participant "vcluster" as vcluster
+        participant "Deployed Application" as app
+    end box
+end box
+box "Cloud Infrastructure" #LightPink
+    participant "Cloud Services" as cloud
+end box
 actor "Platform Engineer" as pe
-box "\nKubernetes Cluster" 
-    participant "ArgoCD" as argo
-    participant "Crossplane" as crossplane
-    control "Kubernetes" as K8sAPI
-end box
 
-box "\nGitOps" 
-participant "GitOps Repository" as git
-      port -> "Pull Request" ** : Push changes to remote
-      "Pull Request" <- pe : Approve and merge changes and update configurations
-      git --> argo : Sync changes to ArgoCD
-      argo -> K8sAPI : Deploy changes to Kubernetes
-      K8sAPI -[#blue]-> K8sAPI : Kubernetes API reconciles infrastructure via Crossplane
-      [<- crossplane : Provision infrastructure via providers
-end box
+dev -> port : Self service app and infrastructure
+note right of port : Developer accesses through Port\nfor unified UI experience
+port -> git : Push changes to remote
+git -> pe : Request review
+pe -> git : Approve and merge changes
+git -> argocp : Sync changes
+argocp -> K8sAPI : Deploy changes
+K8sAPI <--> argocp : Reconcile infrastructure and app
+argocp -> vcluster ** : Provision vcluster
+argocp -> app ** : Provision application
+vcluster -> K8sAPI : Ephemeral testing environment
+argocp -> cloud ** : Provision cloud resources
+note right of cloud : Resources: Resource Group,\nStorage Account, Storage Container
 
 @enduml
