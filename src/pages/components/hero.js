@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import Head from "@docusaurus/Head";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 // @ts-ignore
 import animationData from "../../lotties/hero2.json";
 import Typing from "./typing";
