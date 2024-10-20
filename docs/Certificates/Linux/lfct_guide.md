@@ -119,7 +119,7 @@ The format in general for pages in man is:
 
 > Letters in **bold** are to be written exactly as they are.
 > Words in between [] are options, that is, they can be sent as arguments to the command.
-> Letters in _italic_ are to be substituted with your arguments.
+> Letters in _italic_ are to be [substituted](substituted.md) with your arguments.
 
 To identify what man pages sections the command belongs to, use `whatis`
 command. For example `whatis passwd` to identify what sections a given command is part of.

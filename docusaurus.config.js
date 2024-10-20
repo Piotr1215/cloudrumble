@@ -37,7 +37,6 @@ const config = {
             `https://github.com/Piotr1215/dca-prep-kit/edit/master/docs/${docPath}`,
         },
         blog: {
-          onUntruncatedBlogPosts: 'ignore',
           showReadingTime: true,
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
