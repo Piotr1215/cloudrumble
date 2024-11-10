@@ -36,7 +36,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.2.1",
     "@tsconfig/docusaurus": "1.0.6",
-    "node-polyfill-webpack-plugin": "^2.0.1",
+    "node-polyfill-webpack-plugin": "^4.0.0",
     "buffer": "^6.0.3",
     "path-browserify": "^1.0.1",
     "browser-process": "^0.0.1",
