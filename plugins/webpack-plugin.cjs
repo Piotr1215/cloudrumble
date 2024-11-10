@@ -18,26 +18,23 @@ function webpackPlugin(context, options) {
         },
         plugins: [
           new ProvidePlugin({
-            process: require.resolve("process/browser"),
+            process: "process/browser"
           }),
         ],
         resolve: {
           fallback: {
+            process: require.resolve("process/browser"),
             stream: require.resolve("stream-browserify"),
             path: require.resolve("path-browserify"),
             buffer: require.resolve("buffer/"),
             url: require.resolve("url"),
             crypto: false,
-          },
-          alias: {
-            process: "process/browser.js",
-          },
+          }
         },
       };
     },
   };
 }
 
-module.exports = {
-  webpackPlugin,
-};
+// Export directly, not as an object
+module.exports = webpackPlugin;

@@ -1,7 +1,6 @@
 [build]
   command = """
-    npm uninstall react-gist && \
-    rm -rf node_modules && \
+    npm install process path-browserify stream-browserify buffer url --save-dev && \
     npm install --legacy-peer-deps && \
     npm run build
   """
