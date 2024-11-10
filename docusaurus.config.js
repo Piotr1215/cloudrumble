@@ -102,7 +102,11 @@ const config = {
             to: "/docs/gpts",
             label: "GPTs",
             position: "left",
-            label: "GPTs",
+          },
+          {
+            to: "/docs/talks",
+            label: "Talks",
+            position: "left",
           },
           {
             href: "https://github.com/Piotr1215",
