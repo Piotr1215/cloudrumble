@@ -1,5 +1,7 @@
 [build]
   command = """
+    rm -rf node_modules && \
+    npm install process --save && \
     npm install --legacy-peer-deps && \
     npm run build
   """

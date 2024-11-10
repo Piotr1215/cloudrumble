@@ -1,43 +1,29 @@
 /* eslint-disable */
-const { ProvidePlugin } = require("webpack");
+const webpack = require('webpack');
 
-function webpackPlugin(context, options) {
+module.exports = function (context, options) {
   return {
-    name: "webpack-plugin",
+    name: 'webpack-plugin',
     configureWebpack(config) {
       return {
-        module: {
-          rules: [
-            {
-              test: /\.m?js/,
-              resolve: {
-                fullySpecified: false,
-              },
-            },
-          ],
-        },
         plugins: [
-          new ProvidePlugin({
-            process: require.resolve("process/browser"),
-          }),
+          new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+          })
         ],
         resolve: {
           fallback: {
-            stream: require.resolve("stream-browserify"),
-            path: require.resolve("path-browserify"),
-            buffer: require.resolve("buffer/"),
-            url: require.resolve("url"),
+            process: require.resolve('process/browser'),
+            buffer: false,
             crypto: false,
-          },
-          alias: {
-            process: "process/browser.js",
-          },
-        },
+            path: false,
+            fs: false,
+            os: false,
+            stream: false,
+            util: false
+          }
+        }
       };
-    },
+    }
   };
-}
-
-module.exports = {
-  webpackPlugin,
 };

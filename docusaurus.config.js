@@ -1,22 +1,19 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-
-const { webpackPlugin } = require("./plugins/webpack-plugin.cjs");
-const tailwindPlugin = require("./plugins/tailwind-plugin.cjs");
-
-const plugins = [tailwindPlugin, webpackPlugin];
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Cloud Rumble",
-  tagline:
-    "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
+  tagline: "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
   url: "https://frosty-babbage-3125a3.netlify.app",
-  // @ts-ignore
-  plugins: plugins,
+  
+  // Define plugins explicitly without array assignment
+  plugins: [
+    // Type each plugin correctly
+    ['./plugins/tailwind-plugin.cjs', {}],
+    ['./plugins/webpack-plugin.cjs', {}],
+  ],
   // url: 'https://cloudrumble.net/',
   baseUrl: "/",
   onBrokenLinks: "warn",
