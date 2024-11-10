@@ -4,10 +4,14 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
-const { webpackPlugin } = require("./plugins/webpack-plugin.cjs");
+const webpackPlugin = require("./plugins/webpack-plugin.cjs");
 const tailwindPlugin = require("./plugins/tailwind-plugin.cjs");
 
-const plugins = [tailwindPlugin, webpackPlugin];
+// Create plugins array with defined plugins
+const plugins = [
+  tailwindPlugin,
+  webpackPlugin
+].filter(Boolean); // This ensures no sparse arrays
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {

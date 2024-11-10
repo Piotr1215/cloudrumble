@@ -36,5 +36,5 @@ function webpackPlugin(context, options) {
   };
 }
 
-// Export directly, not as an object
+// Export the function directly
 module.exports = webpackPlugin;
