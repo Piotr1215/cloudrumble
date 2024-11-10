@@ -1,29 +1,23 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-
-const { webpackPlugin } = require("./plugins/webpack-plugin.cjs");
-const tailwindPlugin = require("./plugins/tailwind-plugin.cjs");
-
-const plugins = [tailwindPlugin, webpackPlugin];
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Cloud Rumble",
-  tagline:
-    "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
+  tagline: "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
   url: "https://frosty-babbage-3125a3.netlify.app",
-  // @ts-ignore
-  plugins: plugins,
-  // url: 'https://cloudrumble.net/',
   baseUrl: "/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.svg",
-  organizationName: "Piotr1215", // Usually your GitHub org/user name.
-  projectName: "dca-prep-kit", // Usually your repo name.
+  organizationName: "Piotr1215",
+  projectName: "dca-prep-kit",
+
+  // Single tailwind plugin
+  plugins: [
+    ['./plugins/tailwind-plugin.cjs', {}]
+  ],
 
   presets: [
     [
@@ -32,7 +26,6 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
           editUrl: ({ docPath }) =>
             `https://github.com/Piotr1215/dca-prep-kit/edit/master/docs/${docPath}`,
         },
@@ -41,7 +34,6 @@ const config = {
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
           postsPerPage: 10,
-          // Please change this to your repo.
           editUrl: "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs",
         },
         theme: {
@@ -55,27 +47,13 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       algolia: {
-        // The application ID provided by Algolia
         appId: "YVUCIOP9V7",
-
-        // Public API key: it is safe to commit it
-
         apiKey: "ca28f15cd304fda34283080362ddefc6",
         indexName: "itcertificationsguide",
-
-        // Optional: see doc section below
         contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
         externalUrlRegex: "external\\.com|domain\\.com",
-
-        // Optional: Algolia search parameters
         searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
-
-        //... other Algolia params
       },
       colorMode: {
         defaultMode: "dark",
