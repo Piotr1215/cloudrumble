@@ -15,9 +15,9 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.2.1",
-    "@docusaurus/preset-classic": "^3.2.1",
-    "@docusaurus/theme-search-algolia": "^3.2.1",
+    "@docusaurus/core": "^3.6.1",
+    "@docusaurus/preset-classic": "^3.6.1",
+    "@docusaurus/theme-search-algolia": "^3.6.1",
     "@mdx-js/react": "^3.0.1",
     "buffer": "^6.0.3",
     "clsx": "1.2.1",
@@ -37,7 +37,7 @@
     "swiper": "^11.1.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.2.1",
+    "@docusaurus/module-type-aliases": "^3.6.1",
     "@tsconfig/docusaurus": "1.0.6",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
