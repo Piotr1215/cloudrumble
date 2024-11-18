@@ -60,6 +60,21 @@
    "abstract": "Platform Engineering and SRE focus on empowering developers and organizations by creating and maintaining internal software products known as platforms. In this blog, we will explore what platforms are, why they are important, and uncover best practices for well-architected platforms."
  },
  {
+"title": "From Prompts to Automation: GPTScript and Fabric",
+"description": "Unlock the power of GPTScript—turn your prompts into full-fledged automation! From running CLI commands to managing APIs, GPTScript lets you control your workflows using plain language.",
+"date": "2024-11",
+"conference": "Conf42 Prompt Engineering 2024",
+"tags": [
+"Prompt Engineering",
+"GPTScript",
+"Automation"
+],
+"recordingUrl": "https://youtu.be/_52VVf9ZBMA",
+"conferenceUrl": "https://www.conf42.com/prompt2024",
+"slidesUrl": null,
+"abstract": "Unlock the power of GPTScript—turn your prompts into full-fledged automation! From running CLI commands to managing APIs, GPTScript lets you control your workflows using plain language. Join my talk to see how this game-changing tool makes complex tasks effortless."
+},
+ {
    "title": "The Architecture of Developer Platforms",
    "description": "A deep dive into infrastructure-focused developer platforms, covering best practices, success metrics, common pitfalls, and emerging architectural patterns.",
    "date": "2024-03",
