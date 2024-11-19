@@ -5,9 +5,7 @@
    "date": "2021-11",
    "conference": "Worldwide Software Architecture Summit 2021 (WSAS) - Geekle",
    "tags": [
-     "Documentation",
-     "Architecture", 
-     "Best Practices"
+     "Documentation"
    ],
    "recordingUrl": "https://youtu.be/-YmLFMDUzv0",
    "conferenceUrl": null,
@@ -21,7 +19,6 @@
    "conference": "DevOps Meetup",
    "tags": [
      "Kubernetes",
-     "Certification",
      "Career Development"
    ],
    "recordingUrl": "https://youtu.be/xn1O6L3yqf0?t=2507",
@@ -36,8 +33,7 @@
    "conference": "Localhost Conference 2024",
    "tags": [
      "Artificial Intelligence",
-     "Cloud Native",
-     "Education"
+     "Kubernetes"
    ],
    "recordingUrl": "https://youtu.be/_L48jgOHKN4?t=10885",
    "conferenceUrl": "https://sessionize.com/localhost-conference-2024/",
@@ -51,8 +47,7 @@
    "conference": "Conf42 Platform Engineering 2024",
    "tags": [
      "Platform Engineering",
-     "Kubernetes",
-     "Cloud Native"
+     "Kubernetes"
    ],
    "recordingUrl": "https://www.youtube.com/watch?v=HQNeAZUXzbk",
    "conferenceUrl": "https://www.conf42.com/Platform_Engineering_2024_Piotr_Zaniewski_cloudnative_kubernetes_platforms",
@@ -62,12 +57,11 @@
  {
 "title": "From Prompts to Automation: GPTScript and Fabric",
 "description": "Unlock the power of GPTScript—turn your prompts into full-fledged automation! From running CLI commands to managing APIs, GPTScript lets you control your workflows using plain language.",
-"date": "2024",
+"date": "2024-11",
 "conference": "Conf42 Prompt Engineering 2024",
 "tags": [
-"Prompt Engineering",
-"GPTScript",
-"Automation"
+"Artificial Intelligence",
+"CLI"
 ],
 "recordingUrl": "https://youtu.be/_52VVf9ZBMA",
 "conferenceUrl": "https://www.conf42.com/prompt2024",
@@ -81,8 +75,7 @@
    "conference": "Worldwide Software Architecture Summit 2024 – Career Track",
    "tags": [
      "Platform Engineering",
-     "Architecture",
-     "Best Practices"
+     "Architecture"
    ],
    "recordingUrl": "https://youtu.be/D2EjyyA5gZQ?t=15411",
    "conferenceUrl": null,
@@ -97,7 +90,6 @@
    "tags": [
      "Platform Engineering",
      "Kubernetes",
-     "Workshop"
    ],
    "recordingUrl": null,
    "conferenceUrl": "https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-london-2024/",
