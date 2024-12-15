@@ -110,5 +110,19 @@
    "conferenceUrl": "https://octopus.com/shipped",
    "type": "talk",
    "abstract": "Platform Engineering focuses on empowering developers and organizations by creating and maintaining internal software products known as platforms. In this talk, we will explore what platforms are, why they are important, and uncover best practices for creating and maintaining well-architected platforms."
+ },
+ {
+   "title": "How to build cloud native platforms with Kubernetes",
+   "description": "This content will be valuable for Platform Engineers, Architects, DevOps Specialists, or anyone curious about how platforms can drive innovation and efficiency in development.",
+   "date": "2024-12",
+   "conference": "Azure Developer Community Day 2024 München",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes"
+   ],
+   "recordingUrl": "N/A",
+   "conferenceUrl": "https://muc24.azuredev.org/",
+   "type": "talk",
+   "abstract": "Platform Engineering focuses on empowering developers and organizations by creating and maintaining internal software products known as platforms. In this talk, we will explore what platforms are, why they are important, and uncover best practices for creating and maintaining well-architected platforms."
  }
 ]
