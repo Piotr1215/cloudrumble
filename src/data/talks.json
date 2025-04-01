@@ -1,5 +1,22 @@
 [
  {
+   "title": "How to Build a Kubernetes Platform with vCluster",
+   "description": "In this hands-on workshop, you will learn how to create and maintain well-architected Kubernetes platforms using virtual clusters for team isolation while sharing common resources.",
+   "date": "2025-03",
+   "conference": "vCluster Webinar Series: Multi-tenancy March",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster"
+   ],
+   "recordingUrl": "https://www.youtube.com/watch?v=fQaPml9NJiY",
+   "conferenceUrl": null,
+   "slidesUrl": null,
+   "type": "workshop",
+   "workshopUrl": "https://github.com/LoftLabs-Experiments/workshop-cloud-native-platform",
+   "abstract": "In this hands-on workshop, you will learn how to create and maintain well-architected Kubernetes platforms. We will start with creating virtual clusters for every team and work our way to installing other components on top of them to create a platform. Platform Engineering focuses on empowering developers and organizations by creating and maintaining internal software products known as platforms. You will learn how to balance the isolation between teams with sharing and utilizing common resources. This content is valuable for Platform Engineers, Architects, DevOps Specialists, or anyone curious about how platforms can drive innovation and efficiency in development."
+ },
+ {
    "title": "How to create and maintain good software documentation",
    "description": "A comprehensive approach to modern software documentation, focusing on simplicity, holistic coverage, automation, reusability, and portability in the rapid development environment.",
    "date": "2021-11",
