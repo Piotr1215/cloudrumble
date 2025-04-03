@@ -1242,3 +1242,68 @@ article ul {
 .talks-filter {
   @apply px-4 py-2 border rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600;
 }
+
+/* Talks thumbnail styling */
+.talks-card .flex-shrink-0 img {
+  @apply rounded-lg object-cover border border-gray-200 dark:border-gray-700;
+  aspect-ratio: 16/9;
+  max-height: 150px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .talks-card .flex-shrink-0 {
+    min-width: 240px;
+    max-width: 240px;
+  }
+  
+  .talks-card .flex-shrink-0 img {
+    max-height: 135px;
+  }
+}
+
+.talks-card .flex-shrink-0 a {
+  @apply block overflow-hidden rounded-lg;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.talks-card .flex-shrink-0 a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Hide text placeholders until React loads */
+.thumbnail-text-placeholder,
+[class*="thumbnail-for-"] {
+  font-size: 0 !important;
+  color: transparent !important;
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
+/* Global styles to hide any "Thumbnail for" text */
+*:contains("Thumbnail for") {
+  visibility: hidden !important;
+}
+
+/* Create a direct hide rule for thumbnail placeholder text using the parent's script injection */
+body::after {
+  content: "";
+  display: none;
+}
+
+body {
+  --thumbnail-placeholder-display: none !important;
+}
+
+/* Rule to be executed as early as possible using JS */
+:root {
+  --hide-thumbnails-text: 1;
+}
