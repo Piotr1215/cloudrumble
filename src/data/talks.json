@@ -1,5 +1,21 @@
 [
  {
+   "title": "How to Build Cloud Native Platforms with Kubernetes",
+   "description": "In this talk, I will explore how to build cloud-native platforms using Kubernetes. I will discuss creating self-service portals, leveraging programmatic APIs, and automating workflows to enhance productivity and reliability.",
+   "date": "2025-03",
+   "conference": "SREday London Q1 2025",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "SRE"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://sreday.com/2025-london-q1/",
+   "slidesUrl": null,
+   "type": "talk",
+   "abstract": "In this talk, I will explore how to build cloud-native platforms using Kubernetes. I will discuss creating self-service portals, leveraging programmatic APIs, and automating workflows to enhance productivity and reliability."
+ },
+ {
    "title": "How to Build a Kubernetes Platform with vCluster",
    "description": "In this hands-on workshop, you will learn how to create and maintain well-architected Kubernetes platforms using virtual clusters for team isolation while sharing common resources.",
    "date": "2025-03",

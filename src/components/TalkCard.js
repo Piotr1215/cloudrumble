@@ -28,7 +28,8 @@ const TalkCard = ({ talk }) => {
   // Source URL based on load state
   const thumbnailSrc = imageFailed
     ? DEFAULT_THUMBNAIL
-    : (youtubeId ? `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg` : DEFAULT_THUMBNAIL);
+    : (talk.thumbnailUrl ? talk.thumbnailUrl : 
+      (youtubeId ? `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg` : DEFAULT_THUMBNAIL));
   
   // Link and content properties
   const isExternalLink = talk.recordingUrl && youtubeId && !imageFailed;
