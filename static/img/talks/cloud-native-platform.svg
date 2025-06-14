@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="338" viewBox="0 0 600 338" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="338" fill="#0F172A"/>
+  
+  <!-- Cloud shape -->
+  <g transform="translate(300, 140)">
+    <path d="M-80 40 C-80 20, -60 10, -40 10 C-35 -10, -10 -20, 10 -10 C20 -20, 45 -15, 50 0 C70 0, 80 20, 70 40 Z" 
+          fill="#3B82F6" opacity="0.8"/>
+    <path d="M-70 35 C-70 20, -55 12, -40 12 C-35 -5, -15 -15, 5 -8 C15 -18, 40 -13, 45 2 C60 2, 70 18, 60 35 Z" 
+          fill="#60A5FA"/>
+  </g>
+  
+  <!-- Kubernetes wheel -->
+  <g transform="translate(300, 140)">
+    <circle r="25" fill="#1E40AF" opacity="0.9"/>
+    <path d="M0,-25 L7,-7 L25,-7 L11,7 L18,25 L0,13 L-18,25 L-11,7 L-25,-7 L-7,-7 Z" 
+          fill="#DBEAFE"/>
+  </g>
+  
+  <!-- Platform layers -->
+  <rect x="200" y="200" width="200" height="20" rx="4" fill="#475569" opacity="0.8"/>
+  <rect x="220" y="230" width="160" height="20" rx="4" fill="#64748B" opacity="0.8"/>
+  <rect x="240" y="260" width="120" height="20" rx="4" fill="#94A3B8" opacity="0.8"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="80" r="3" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="450" cy="100" r="3" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="480" cy="250" r="3" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="120" cy="220" r="3" fill="#60A5FA" opacity="0.6"/>
+</svg>

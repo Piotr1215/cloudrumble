@@ -1,5 +1,22 @@
 [
  {
+   "title": "How to build cloud native platforms with Kubernetes",
+   "description": "Building cloud native developer platforms using vcluster for team isolation while sharing common resources. The talk covers creating self-service portals, leveraging APIs, and automating workflows.",
+   "date": "2025-06",
+   "conference": "Cloud Native Frankfurt Meetup Jun 2025",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://community.cncf.io/events/details/cncf-cloud-native-frankfurt-presents-cloud-native-frankfurt-meetup-jun-2025/",
+   "slidesUrl": null,
+   "thumbnailUrl": "/img/talks/cloud-native-platform.svg",
+   "type": "talk",
+   "abstract": "Building cloud native developer platforms using vcluster for team isolation while sharing common resources. The talk covers creating self-service portals, leveraging APIs, and automating workflows to enhance productivity and reliability. Interactive demo showcasing how to set up and manage virtual clusters for development teams."
+ },
+ {
    "title": "How to Build Cloud Native Platforms with Kubernetes",
    "description": "In this talk, I will explore how to build cloud-native platforms using Kubernetes. I will discuss creating self-service portals, leveraging programmatic APIs, and automating workflows to enhance productivity and reliability.",
    "date": "2025-03",
