@@ -1,0 +1,27 @@
+@startuml multitenancy-options
+!include styles.iuml
+
+title Multitenancy Options
+
+skinparam DefaultTextAlignment center
+skinparam linetype ortho
+
+rectangle "Multitenancy Options" as A2
+
+rectangle "Namespaces" as B2
+rectangle "Separate Clusters" as C2
+
+rectangle "Limited Isolation" as D2
+rectangle "No Cluster-Scoped Resources" as E2
+
+rectangle "Strong Isolation" as F2
+rectangle "Resource Inefficient" as G2
+
+A2 --> B2
+A2 --> C2
+B2 --> D2
+B2 --> E2
+C2 --> F2
+C2 --> G2
+
+@enduml

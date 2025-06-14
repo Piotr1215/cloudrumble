@@ -1,5 +1,5 @@
 @startuml
-!theme mars
+!include styles.iuml
 !include <kubernetes/k8s-sprites-unlabeled-25pct>
 skinparam linetype ortho
 

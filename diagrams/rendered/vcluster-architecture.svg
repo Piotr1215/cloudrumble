@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="364px" preserveAspectRatio="none" style="width:422px;height:364px;" version="1.1" viewBox="0 0 422 364" width="422px" zoomAndPan="magnify"><defs><filter height="300%" id="f5y5zvchaem" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="189" x="120.5" y="16.708">vCluster Architecture</text><!--MD5=[305b0bf20d1e87c4314d270a9e4e4ae4]
+entity A3--><rect fill="#F8F8F8" filter="url(#f5y5zvchaem)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="190" x="112.5" y="28.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="170" x="122.5" y="51.9482">Host Kubernetes Cluster</text><!--MD5=[b315305f5d163feb1f05d61871a52faa]
+entity B3--><rect fill="#F8F8F8" filter="url(#f5y5zvchaem)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="169" x="21" y="124.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="149" x="31" y="147.9482">Namespace: tenant-a</text><!--MD5=[05d3c132bed6e058ad55d82af5f30f96]
+entity C3--><rect fill="#F8F8F8" filter="url(#f5y5zvchaem)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="170" x="229.5" y="124.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="150" x="239.5" y="147.9482">Namespace: tenant-b</text><!--MD5=[2b5544800db797a8f88460b77a577bae]
+entity D3--><rect fill="#F8F8F8" filter="url(#f5y5zvchaem)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="185" x="6" y="220.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="165" x="16" y="243.9482">vCluster A Control Plane</text><!--MD5=[a60fb756f580feb9fd8e2cf1329b5c91]
+entity E3--><rect fill="#F8F8F8" filter="url(#f5y5zvchaem)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="186" x="225.5" y="220.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="166" x="235.5" y="243.9482">vCluster B Control Plane</text><!--MD5=[1513ecefc9a925df268ab2a7bd7ec49f]
+entity F3--><rect fill="#F8F8F8" filter="url(#f5y5zvchaem)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="158" x="19.5" y="316.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="138" x="29.5" y="339.9482">Tenant A Workloads</text><!--MD5=[1c4ca12134c7fbecd6faeedbedf39441]
+entity G3--><rect fill="#F8F8F8" filter="url(#f5y5zvchaem)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="159" x="239" y="316.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="139" x="249" y="339.9482">Tenant B Workloads</text><!--MD5=[d077566dd3ec0715b1c78c1558a3983c]
+link A3 to B3--><path d="M151.25,65.0131 C151.25,65.0131 151.25,119.6531 151.25,119.6531 " fill="none" id="A3-&gt;B3" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="151.25,124.6531,155.25,115.6531,151.25,119.6531,147.25,115.6531,151.25,124.6531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[8ea13412b10ed43943604faddf32d6c3]
+link A3 to C3--><path d="M266,65.0131 C266,65.0131 266,119.6531 266,119.6531 " fill="none" id="A3-&gt;C3" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="266,124.6531,270,115.6531,266,119.6531,262,115.6531,266,124.6531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[35bdb9c05036d8bb1481f53f6dac7084]
+link B3 to D3--><path d="M105.5,161.0131 C105.5,161.0131 105.5,215.6531 105.5,215.6531 " fill="none" id="B3-&gt;D3" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="105.5,220.6531,109.5,211.6531,105.5,215.6531,101.5,211.6531,105.5,220.6531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[44cadf4860759abc70bd480af527ff2f]
+link C3 to E3--><path d="M314.5,161.0131 C314.5,161.0131 314.5,215.6531 314.5,215.6531 " fill="none" id="C3-&gt;E3" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="314.5,220.6531,318.5,211.6531,314.5,215.6531,310.5,211.6531,314.5,220.6531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[b7c22f905df7e7800ce0d4cc28341a31]
+link D3 to F3--><path d="M98.5,257.0131 C98.5,257.0131 98.5,311.6531 98.5,311.6531 " fill="none" id="D3-&gt;F3" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="98.5,316.6531,102.5,307.6531,98.5,311.6531,94.5,307.6531,98.5,316.6531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[5b79fe0dcd957da1b71cf96caa922454]
+link E3 to G3--><path d="M318.5,257.0131 C318.5,257.0131 318.5,311.6531 318.5,311.6531 " fill="none" id="E3-&gt;G3" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="318.5,316.6531,322.5,307.6531,318.5,311.6531,314.5,307.6531,318.5,316.6531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[2b934b4a519c365a6d8c8e87ef512573]
+@startuml vcluster-architecture
+skinparam monochrome true
+skinparam style strictuml
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 35
+skinparam rectangleBorderStyle dashed
+skinparam linetype ortho
+skinparam rectangleShadowing true
+
+title vCluster Architecture
+
+skinparam DefaultTextAlignment center
+skinparam linetype ortho
+
+rectangle "Host Kubernetes Cluster" as A3
+
+rectangle "Namespace: tenant-a" as B3
+rectangle "Namespace: tenant-b" as C3
+
+rectangle "vCluster A Control Plane" as D3
+rectangle "vCluster B Control Plane" as E3
+
+rectangle "Tenant A Workloads" as F3
+rectangle "Tenant B Workloads" as G3
+
+A3 - -> B3
+A3 - -> C3
+B3 - -> D3
+C3 - -> E3
+D3 - -> F3
+E3 - -> G3
+
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.26+4-post-Ubuntu-1ubuntu122.04
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

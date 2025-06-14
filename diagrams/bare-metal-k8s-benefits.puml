@@ -1,0 +1,21 @@
+@startuml bare-metal-k8s-benefits
+!include styles.iuml
+
+title Bare Metal K8s Benefits
+
+skinparam DefaultTextAlignment center
+skinparam linetype ortho
+
+rectangle "Bare Metal K8s" as A1
+
+rectangle "30% Better Performance" as B1
+rectangle "3x Lower Network Latency" as C1
+rectangle "Direct GPU Access" as D1
+rectangle "Lower Infrastructure Costs" as E1
+
+A1 --> B1
+A1 --> C1
+A1 --> D1
+A1 --> E1
+
+@enduml
