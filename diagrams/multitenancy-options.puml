@@ -1,8 +1,6 @@
 @startuml multitenancy-options
 !include styles.iuml
 
-title Multitenancy Options
-
 skinparam DefaultTextAlignment center
 skinparam linetype ortho
 

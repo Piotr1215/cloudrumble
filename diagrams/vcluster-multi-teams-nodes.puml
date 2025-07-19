@@ -1,0 +1,56 @@
+@startuml
+!include styles.iuml
+!include <kubernetes/k8s-sprites-unlabeled-25pct>
+
+' Override monochrome setting from styles.iuml
+skinparam monochrome false
+skinparam linetype ortho
+
+<style>
+package {
+  LineThickness 1.5
+}
+
+.thickBorder {
+  LineThickness 4.0
+  BorderColor #AA0000
+}
+</style>
+
+title vCluster Multi-Tenancy with Node Isolation
+
+node "Host Kubernetes Cluster" {
+    component "<$master>\nmaster" as master
+    
+    ' Shared node with 2 vClusters
+    package "Shared Node" #90EE90 {
+        package "vCluster 1" {
+            component "<$k8s>\nvCluster 1" as B
+            component "<$pod>\nTeam 1 Workloads" as G
+            B --> G
+        }
+        
+        package "vCluster 2" {
+            component "<$k8s>\nvCluster 2" as C
+            component "<$pod>\nTeam 2 Workloads" as H
+            C --> H
+        }
+    }
+    
+    ' Dedicated node with thick boundaries
+    package "Dedicated Node" <<thickBorder>> #FFB6C1 {
+        package "vCluster 3" <<thickBorder>> {
+            component "<$k8s>\nvCluster 3" as D
+            component "<$pod>\nTeam 3 Workloads" as I
+            D --> I
+        }
+    }
+}
+
+master --> B
+master --> C
+master --> D
+
+note bottom : Shared Node = Shared resources, Logical isolation\nDedicated Node = Physical isolation, Dedicated resources
+
+@enduml
