@@ -174,5 +174,21 @@
    "conferenceUrl": "https://muc24.azuredev.org/",
    "type": "talk",
    "abstract": "Platform Engineering focuses on empowering developers and organizations by creating and maintaining internal software products known as platforms. In this talk, we will explore what platforms are, why they are important, and uncover best practices for creating and maintaining well-architected platforms."
+ },
+ {
+   "title": "Building Multitenant Developer Platforms With vCluster",
+   "description": "Platform Engineering focuses on empowering developers and organizations by creating and maintaining internal software products known as platforms. In this talk, we will explore how to create multi-tenant, well-architected infrastructure platforms using vCluster.",
+   "date": "2025-01",
+   "conference": "Cloud Native Summit Munich",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://cloudnativesummit.de/",
+   "slidesUrl": null,
+   "type": "talk",
+   "abstract": "Platform Engineering focuses on empowering developers and organizations by creating and maintaining internal software products known as platforms. In this talk, we will explore how to create multi-tenant, well-architected infrastructure platforms using vCluster."
  }
 ]
