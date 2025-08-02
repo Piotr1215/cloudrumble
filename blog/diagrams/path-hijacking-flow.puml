@@ -1,0 +1,20 @@
+@startuml path-hijacking-flow
+skinparam backgroundColor white
+skinparam shadowing true
+
+title PATH Interception Flow\n\n
+
+rectangle "pet search" as pet #4a90e2
+rectangle "Our Wrapper\n/tmp/wrapper/fzf" as wrapper #e74c3c
+rectangle "Real fzf\n/usr/local/bin/fzf" as fzf #27ae60
+rectangle "Clean Output" as output #f39c12
+
+pet --> wrapper : calls 'fzf'\n(finds wrapper first!)
+wrapper --> wrapper : filters input\ngrep -v '[Link to'
+wrapper --> fzf : pipes filtered data
+fzf --> output : user sees\nclean results
+
+note top of wrapper : PATH="/tmp/wrapper:/usr/local/bin:/usr/bin"
+note bottom : We hijacked the flow without modifying pet or fzf!
+
+@enduml

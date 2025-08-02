@@ -1,0 +1,28 @@
+@startuml path-hijacking-simple
+skinparam backgroundColor white
+skinparam defaultFontSize 14
+skinparam rectangleBorderColor black
+skinparam rectangleBackgroundColor lightblue
+
+title Unix PATH Hijacking Flow\n
+
+actor User
+participant "pet search" as pet
+participant "fzf wrapper\n(/tmp/wrapper/fzf)" as wrapper #orange
+participant "real fzf\n(/usr/local/bin/fzf)" as fzf #lightgreen
+participant "Terminal" as terminal
+
+User -> pet: run command
+pet -> wrapper: exec fzf with data
+note right of wrapper: Found first in PATH!
+wrapper -> wrapper: grep -v '[Link to'
+wrapper -> fzf: filtered data
+fzf -> terminal: clean output
+terminal -> User: filtered results
+
+note bottom
+PATH="/tmp/wrapper:/usr/local/bin:/usr/bin"
+Wrapper intercepts and filters before real fzf
+end note
+
+@enduml
