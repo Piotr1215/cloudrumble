@@ -63,20 +63,22 @@ const TalkCard = ({ talk }) => {
           <div className="flex items-start justify-between mb-3">
             <div>
               {talk.conference && (
-                <div className="flex items-baseline gap-3 mb-1">
-                  <h4 className="text-lg font-semibold text-primary dark:text-primary-light">
-                    {talk.conference}
-                  </h4>
-                  {talk.type === 'keynote' && (
-                    <span className="inline-block px-2.5 py-0.5 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded">
-                      KEYNOTE
-                    </span>
-                  )}
-                  {talk.type === 'workshop' && (
-                    <span className="inline-block px-2.5 py-0.5 text-xs font-bold text-white bg-green-600 rounded">
-                      WORKSHOP
-                    </span>
-                  )}
+                <div className="mb-2">
+                  <div className="flex items-center gap-3">
+                    <h4 className="text-lg font-semibold text-primary dark:text-primary-light m-0">
+                      {talk.conference}
+                    </h4>
+                    {talk.type === 'keynote' && (
+                      <span className="px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-md">
+                        KEYNOTE
+                      </span>
+                    )}
+                    {talk.type === 'workshop' && (
+                      <span className="px-3 py-1 text-xs font-bold text-white bg-green-600 rounded-md">
+                        WORKSHOP
+                      </span>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
