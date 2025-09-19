@@ -1,5 +1,22 @@
 [
  {
+   "title": "Keynote: Flexible Kubernetes Multitenancy with vCluster",
+   "description": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster.",
+   "date": "2025-09",
+   "conference": "SREday London Q3 2025",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster",
+     "SRE"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://sreday.com/2025-london-q3e",
+   "slidesUrl": "https://github.com/Piotr1215/youtube/blob/main/vcluster-multitenancy/presentation.md",
+   "type": "keynote",
+   "abstract": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster. We'll explore: Multitenancy Spectrum - Understanding the three dimensions of multitenancy (isolation levels, resource sharing, trust boundaries); Flexibility in Practice - How to mix and match different multitenancy models for different teams and workloads; vCluster Deep Dive - How virtual clusters enable this flexibility while maintaining strong isolation boundaries; Real-World Scenarios - Live demo showing how to implement different multitenancy patterns based on actual use cases."
+ },
+ {
    "title": "How to build cloud native platforms with Kubernetes",
    "description": "Building cloud native developer platforms using vcluster for team isolation while sharing common resources. The talk covers creating self-service portals, leveraging APIs, and automating workflows.",
    "date": "2025-06",
