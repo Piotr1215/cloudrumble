@@ -60,22 +60,24 @@ const TalkCard = ({ talk }) => {
         {/* Content section */}
         <div className="flex-1">
           {/* Conference and Type Badge Row */}
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-3">
+          <div className="flex items-start justify-between mb-3">
+            <div>
               {talk.conference && (
-                <h4 className="text-lg font-semibold text-primary dark:text-primary-light">
-                  {talk.conference}
-                </h4>
-              )}
-              {talk.type === 'keynote' && (
-                <span className="px-2 py-1 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded">
-                  KEYNOTE
-                </span>
-              )}
-              {talk.type === 'workshop' && (
-                <span className="px-2 py-1 text-xs font-bold text-white bg-green-600 rounded">
-                  WORKSHOP
-                </span>
+                <div className="flex items-center gap-3 mb-1">
+                  <h4 className="text-lg font-semibold text-primary dark:text-primary-light">
+                    {talk.conference}
+                  </h4>
+                  {talk.type === 'keynote' && (
+                    <span className="px-2 py-1 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded">
+                      KEYNOTE
+                    </span>
+                  )}
+                  {talk.type === 'workshop' && (
+                    <span className="px-2 py-1 text-xs font-bold text-white bg-green-600 rounded">
+                      WORKSHOP
+                    </span>
+                  )}
+                </div>
               )}
             </div>
             <div className="flex gap-2">
