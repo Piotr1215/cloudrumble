@@ -59,11 +59,28 @@ const TalkCard = ({ talk }) => {
         
         {/* Content section */}
         <div className="flex-1">
-          <div className="flex items-start justify-between">
-            <h3 className="talks-title">{talk.title}</h3>
+          {/* Conference and Type Badge Row */}
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-3">
+              {talk.conference && (
+                <h4 className="text-lg font-semibold text-primary dark:text-primary-light">
+                  {talk.conference}
+                </h4>
+              )}
+              {talk.type === 'keynote' && (
+                <span className="px-2 py-1 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded">
+                  KEYNOTE
+                </span>
+              )}
+              {talk.type === 'workshop' && (
+                <span className="px-2 py-1 text-xs font-bold text-white bg-green-600 rounded">
+                  WORKSHOP
+                </span>
+              )}
+            </div>
             <div className="flex gap-2">
               {talk.slidesUrl && (
-                <a 
+                <a
                   href={talk.slidesUrl}
                   className="talks-link"
                   title="View Slides"
@@ -74,7 +91,7 @@ const TalkCard = ({ talk }) => {
                 </a>
               )}
               {talk.conferenceUrl && (
-                <a 
+                <a
                   href={talk.conferenceUrl}
                   className="talks-link"
                   title="Conference Page"
@@ -86,20 +103,16 @@ const TalkCard = ({ talk }) => {
               )}
             </div>
           </div>
-          
+
+          <h3 className="talks-title mb-2">{talk.title}</h3>
+
           <p className="talks-description">{talk.description}</p>
-          
+
           <div className="talks-metadata">
             <div className="flex items-center gap-1">
               <Calendar size={16} />
               <span>{talk.date}</span>
             </div>
-            {talk.conference && (
-              <div className="flex items-center gap-1">
-                <Map size={16} />
-                <span>{talk.conference}</span>
-              </div>
-            )}
             {talk.recordingUrl && (
               <a 
                 href={talk.recordingUrl}

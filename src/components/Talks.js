@@ -5,15 +5,15 @@ const talksData = require('../data/talks.json');
 const Talks = () => {
   const [selectedYear, setSelectedYear] = useState('all');
   const [selectedTag, setSelectedTag] = useState('all');
-  
-  // Sort the years array in descending order
-  const years = [...new Set(talksData.map(talk => talk.date))].sort((a, b) => b.localeCompare(a));
+
+  // Extract years only (not months) and sort in descending order
+  const years = [...new Set(talksData.map(talk => talk.date.substring(0, 4)))].sort((a, b) => b.localeCompare(a));
   const allTags = [...new Set(talksData.flatMap(talk => talk.tags))];
-  
+
   // Filter and sort the talks in descending order (newest first)
   const filteredTalks = talksData
     .filter(talk => {
-      const yearMatch = selectedYear === 'all' || talk.date === selectedYear;
+      const yearMatch = selectedYear === 'all' || talk.date.startsWith(selectedYear);
       const tagMatch = selectedTag === 'all' || talk.tags.includes(selectedTag);
       return yearMatch && tagMatch;
     })
