@@ -17,7 +17,7 @@ const getYouTubeId = (url) => {
 };
 
 // Default fallback image path
-const DEFAULT_THUMBNAIL = '/static/img/talks/default-talk-thumbnail.svg';
+const DEFAULT_THUMBNAIL = '/img/talks/default-talk-thumbnail.svg';
 
 const TalkCard = ({ talk }) => {
   const [imageFailed, setImageFailed] = useState(false);
