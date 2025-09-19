@@ -87,6 +87,11 @@ const config = {
             position: "left",
           },
           {
+            to: "/youtube",
+            label: "Videos",
+            position: "left",
+          },
+          {
             href: "https://github.com/Piotr1215",
             label: "GitHub",
             position: "right",
