@@ -14,6 +14,7 @@
    "recordingUrl": null,
    "conferenceUrl": "https://www.conf42.com/kubenative2025",
    "slidesUrl": null,
+   "thumbnailUrl": "/img/talks/cloud-native-platform.svg",
    "type": "talk",
    "abstract": "Learn how to create instant Kubernetes AI (KAI) sandboxes using vCluster, enabling multi-tenant environments with efficient GPU sharing across multiple schedulers. This talk explores practical patterns for providing isolated AI/ML development environments while maximizing GPU utilization through advanced scheduling techniques."
  },
@@ -29,7 +30,7 @@
      "SRE"
    ],
    "recordingUrl": null,
-   "conferenceUrl": "https://sreday.com/2025-london-q3e",
+   "conferenceUrl": "https://sreday.com/2025-london-q3/",
    "slidesUrl": "https://github.com/Piotr1215/youtube/blob/main/vcluster-multitenancy/presentation.md",
    "thumbnailUrl": "/img/talks/sreday-london-q3-2025.jpg",
    "type": "keynote",
@@ -65,6 +66,7 @@
    "recordingUrl": null,
    "conferenceUrl": "https://sreday.com/2025-london-q1/",
    "slidesUrl": null,
+   "thumbnailUrl": "/img/talks/cloud-native-platform.svg",
    "type": "talk",
    "abstract": "In this talk, I will explore how to build cloud-native platforms using Kubernetes. I will discuss creating self-service portals, leveraging programmatic APIs, and automating workflows to enhance productivity and reliability."
  },
