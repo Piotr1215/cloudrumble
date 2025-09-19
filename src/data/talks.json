@@ -1,5 +1,23 @@
 [
  {
+   "title": "Instant KAI Sandboxes with vCluster: Multi-Tenant, Multi-Scheduler GPU Sharing",
+   "description": "Exploring how to create instant AI sandboxes using vCluster with multi-tenant capabilities and efficient GPU sharing across multiple schedulers.",
+   "date": "2025-10",
+   "conference": "Conf42 Kube Native 2025",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster",
+     "Artificial Intelligence",
+     "GPU"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://www.conf42.com/kubenative2025",
+   "slidesUrl": null,
+   "type": "talk",
+   "abstract": "Learn how to create instant Kubernetes AI (KAI) sandboxes using vCluster, enabling multi-tenant environments with efficient GPU sharing across multiple schedulers. This talk explores practical patterns for providing isolated AI/ML development environments while maximizing GPU utilization through advanced scheduling techniques."
+ },
+ {
    "title": "Keynote: Flexible Kubernetes Multitenancy with vCluster",
    "description": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster.",
    "date": "2025-09",
