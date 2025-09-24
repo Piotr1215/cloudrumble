@@ -16,7 +16,8 @@ const config = {
 
   // Single tailwind plugin
   plugins: [
-    ['./plugins/tailwind-plugin.cjs', {}]
+    ['./plugins/tailwind-plugin.cjs', {}],
+    require.resolve('docusaurus-plugin-image-zoom')
   ],
 
   presets: [
@@ -162,6 +163,15 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         additionalLanguages: ["gherkin"],
+      },
+      zoom: {
+        selector: '.markdown img',
+        config: {
+          background: {
+            light: 'rgba(255, 255, 255, 0.9)',
+            dark: 'rgba(0, 0, 0, 0.9)'
+          }
+        }
       },
     }),
 };
