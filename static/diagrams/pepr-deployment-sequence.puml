@@ -1,0 +1,40 @@
+@startuml
+!pragma teoz true
+!theme mars
+hide footbox
+autonumber
+scale 1920x1080
+skinparam defaultTextAlignment left
+skinparam shadowing true
+skinparam BoxPadding 10
+title Pepr Deployment Flow
+
+actor "Developer" as dev
+box "Pepr" #LightBlue
+  participant "CLI" as cli
+  control "Build Process" as build
+  participant "Deployment" as deploy
+end box
+participant "Kubernetes Cluster" as k8s
+
+dev -> cli : npx pepr build
+note right of cli
+  Generates module artifacts including helm chart
+end note
+
+cli -> build : Generate artifacts
+
+dev -> cli : npx pepr deploy
+note right of cli
+  Deploys to Kubernetes
+end note
+
+cli -> deploy : Deploy module
+deploy -> k8s : Apply manifests
+note right of k8s
+  - Creates/Updates Controllers
+  - Initializes PeprStore
+end note
+
+k8s --> dev : Deployment complete
+@enduml

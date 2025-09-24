@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="284px" preserveAspectRatio="none" style="width:728px;height:284px;" version="1.1" viewBox="0 0 728 284" width="728px" zoomAndPan="magnify"><defs><filter height="300%" id="f1bxf9bcdrs6ij" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="247" x="244" y="16.708">Container Runtime Security</text><!--MD5=[b4296d86aafbbd2074f03a740cb37cff]
+entity A4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="208" x="244.5" y="28.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="188" x="254.5" y="51.9482">Container Runtime Security</text><!--MD5=[216f5950d45e1129bdffb34913d14600]
+entity B4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="143" x="48" y="124.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="123" x="58" y="147.9482">Standard Isolation</text><!--MD5=[92ed0b7d55449354be29483e00621f1b]
+entity C4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="63" x="252" y="124.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="43" x="262" y="147.9482">gVisor</text><!--MD5=[0def8311e0cfe0e91ebf6b57095df3ad]
+entity D4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="129" x="382" y="124.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="109" x="392" y="147.9482">Kata Containers</text><!--MD5=[961cefdc15414eaa3e87aec9d17c2188]
+entity E4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="36.2969" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="64" x="587.5" y="124.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="597.5" y="147.9482">vNode</text><!--MD5=[047e81973b661d20d2e62cb92c2c3d67]
+entity F4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="52.5938" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="143" x="6" y="220.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="123" x="16" y="243.9482">High Performance</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="96" x="29.5" y="260.2451">Basic Security</text><!--MD5=[c52c80dff7ee0910461955b398b39af2]
+entity G4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="52.5938" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="167" x="184" y="220.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="147" x="194" y="243.9482">Medium Performance</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="97" x="219" y="260.2451">Good Security</text><!--MD5=[46e692d45a0b60d87b097c4043ce42a2]
+entity H4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="52.5938" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="153" x="386" y="220.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="133" x="396" y="243.9482">Lower Performance</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="108" x="408.5" y="260.2451">VM-like Security</text><!--MD5=[25e450cb19355c22995e3ac14e6d3ff2]
+entity I4--><rect fill="#F8F8F8" filter="url(#f1bxf9bcdrs6ij)" height="52.5938" rx="17.5" ry="17.5" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;" width="143" x="574" y="220.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="123" x="584" y="243.9482">High Performance</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="593" y="260.2451">Strong Security</text><!--MD5=[95f6ae073bd2571f02b1416d0f487607]
+link A4 to B4--><path d="M248.25,65.0131 C248.25,92.8231 248.25,142.9531 248.25,142.9531 C248.25,142.9531 196.03,142.9531 196.03,142.9531 " fill="none" id="A4-&gt;B4" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="191.03,142.9531,200.03,146.9531,196.03,142.9531,200.03,138.9531,191.03,142.9531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[48513e9a452d2caf64fd1af7ac3f3e40]
+link A4 to C4--><path d="M283.5,65.0131 C283.5,65.0131 283.5,119.6531 283.5,119.6531 " fill="none" id="A4-&gt;C4" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="283.5,124.6531,287.5,115.6531,283.5,119.6531,279.5,115.6531,283.5,124.6531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[00658631062d84be4fa1cd1d4e4d58d2]
+link A4 to D4--><path d="M417.25,65.0131 C417.25,65.0131 417.25,119.6531 417.25,119.6531 " fill="none" id="A4-&gt;D4" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="417.25,124.6531,421.25,115.6531,417.25,119.6531,413.25,115.6531,417.25,124.6531" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[5d850a5590fed40f4dcbf7a4105bd713]
+link A4 to E4--><path d="M452.5,46.9531 C528.92,46.9531 619.5,46.9531 619.5,46.9531 C619.5,46.9531 619.5,119.8931 619.5,119.8931 " fill="none" id="A4-&gt;E4" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="619.5,124.8931,623.5,115.8931,619.5,119.8931,615.5,115.8931,619.5,124.8931" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[6d923dcb240e4d5e43b4a96e87225536]
+link B4 to F4--><path d="M98.5,161.1531 C98.5,161.1531 98.5,215.8431 98.5,215.8431 " fill="none" id="B4-&gt;F4" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="98.5,220.8431,102.5,211.8431,98.5,215.8431,94.5,211.8431,98.5,220.8431" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[a71a13502e5524f79f5bbfe4abb9cb1a]
+link C4 to G4--><path d="M283.5,161.1531 C283.5,161.1531 283.5,215.8431 283.5,215.8431 " fill="none" id="C4-&gt;G4" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="283.5,220.8431,287.5,211.8431,283.5,215.8431,279.5,211.8431,283.5,220.8431" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[0425b6cd3ffa8bf6cf3c68901013318b]
+link D4 to H4--><path d="M448.5,161.1531 C448.5,161.1531 448.5,215.8431 448.5,215.8431 " fill="none" id="D4-&gt;H4" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="448.5,220.8431,452.5,211.8431,448.5,215.8431,444.5,211.8431,448.5,220.8431" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[24c25bad01756f4a7791ac74054c9b42]
+link E4 to I4--><path d="M619.5,161.1531 C619.5,161.1531 619.5,215.8431 619.5,215.8431 " fill="none" id="E4-&gt;I4" style="stroke: #383838; stroke-width: 1.0;"/><polygon fill="#383838" points="619.5,220.8431,623.5,211.8431,619.5,215.8431,615.5,211.8431,619.5,220.8431" style="stroke: #383838; stroke-width: 1.0;"/><!--MD5=[04dc29c7d80d158ce54b46fca4e2e6cb]
+@startuml container-runtime-security
+skinparam monochrome true
+skinparam style strictuml
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 35
+skinparam rectangleBorderStyle dashed
+skinparam linetype ortho
+skinparam rectangleShadowing true
+
+title Container Runtime Security
+
+skinparam DefaultTextAlignment center
+skinparam linetype ortho
+
+rectangle "Container Runtime Security" as A4
+
+rectangle "Standard Isolation" as B4
+rectangle "gVisor" as C4
+rectangle "Kata Containers" as D4
+rectangle "vNode" as E4
+
+rectangle "High Performance\nBasic Security" as F4
+rectangle "Medium Performance\nGood Security" as G4
+rectangle "Lower Performance\nVM-like Security" as H4
+rectangle "High Performance\nStrong Security" as I4
+
+A4 - -> B4
+A4 - -> C4
+A4 - -> D4
+A4 - -> E4
+
+B4 - -> F4
+C4 - -> G4
+D4 - -> H4
+E4 - -> I4
+
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.26+4-post-Ubuntu-1ubuntu122.04
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

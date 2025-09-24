@@ -1,0 +1,27 @@
+@startuml vcluster-architecture
+!include styles.iuml
+
+title vCluster Architecture
+
+skinparam DefaultTextAlignment center
+skinparam linetype ortho
+
+rectangle "Host Kubernetes Cluster" as A3
+
+rectangle "Namespace: tenant-a" as B3
+rectangle "Namespace: tenant-b" as C3
+
+rectangle "vCluster A Control Plane" as D3
+rectangle "vCluster B Control Plane" as E3
+
+rectangle "Tenant A Workloads" as F3
+rectangle "Tenant B Workloads" as G3
+
+A3 --> B3
+A3 --> C3
+B3 --> D3
+C3 --> E3
+D3 --> F3
+E3 --> G3
+
+@enduml

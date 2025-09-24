@@ -1,0 +1,70 @@
+@startuml k8s-deployment-seq
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome-5/user>
+'Global Styles
+'!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+skinparam BackgroundColor white
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
+skinparam rectangleBackgroundColor white
+skinparam componentBackgroundColor white
+skinparam linetype poly
+skinparam rectangleShadowing true
+skinparam ActorBackgroundColor white
+skinparam ParticipantBackgroundColor transparent
+skinparam CollectionsBackgroundColor transparent
+skinparam ArrowColor black
+skinparam ParticipantPadding 40
+skinparam BoxPadding 20
+'skinparam monochrome false
+!define TITLE Kubernetes Deployment: Rolling Update
+!pragma teoz true
+
+title TITLE
+autonumber
+
+participant "<$deploy>\n3 replicas deployment" as dep
+note left of dep
+Pods can be scheduled on different nodes
+end note
+participant "<$svc>\nservice" as svc
+participant "<$pod>\npod1" as po1
+participant "<$pod>\npod2" as po2
+participant "<$pod>\npod3" as po3
+participant "<$pod>\npod1'" as po1n
+participant "<$pod>\npod2'" as po2n
+participant "<$pod>\npod3'" as po3n
+
+
+[-> dep: Image Update Triggered
+
+note left of dep
+For example by
+k set image deployment/nginx-test nginx-test=piotrzan/nginx-demo:blue --record
+end note
+
+activate po1n
+dep -> po1n : Create pod1' with new image
+dep -> svc: Update Service with pod1' IP
+svc -> po1n: Serve traffic to pod1'
+dep -> po1 : Destroy pod1
+destroy po1
+
+activate po2n
+dep -> po2n : Create pod2' with new image
+dep -> svc: Update Service with pod2' IP
+svc -> po2n: Serve traffic to pod2'
+dep -> po2 : Destroy pod2
+destroy po2
+
+activate po3n
+dep -> po3n : Create pod3' with new image
+dep -> svc: Update Service with pod3' IP
+svc -> po2n: Serve traffic to pod2'
+dep -> po3 : Destroy pod3
+destroy po3
+
+@enduml

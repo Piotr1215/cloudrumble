@@ -1,0 +1,34 @@
+@startmindmap azure-aci-mindmap
+!define AzurePuml https://raw.githubusercontent.com/RicardoNiepel/Azure-PlantUML/release/2-1/dist
+!include AzurePuml/AzureCommon.puml
+!include AzurePuml/Compute/all.puml
+!include AzurePuml/Containers/all.puml
+!include AzurePuml/Storage/AzureFileStorage.puml
+!include AzurePuml/Networking/AzureDNS.puml
+<style>
+mindmapDiagram {
+    node {
+        BackgroundColor lightGreen
+    }
+    :depth(1) {
+      BackGroundColor white
+    }
+}
+</style>
+* Functions\nvs\n Contianer\n Instances
+left side
+** <$AzureFunction>\nFunctions
+*** Billed per Use
+*** Suitable for
+**** Event Driven
+right side
+** <$AzureContainerInstance>\nContainer Instances
+
+*** Billed per Second
+*** Suitable for
+**** Simple applications
+**** Task automation
+**** Build jobs
+
+
+@endmindmap

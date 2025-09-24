@@ -1,0 +1,44 @@
+@startuml kubernetes-volumes-and-pods
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome-5/user>
+'Global Styles
+'!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
+skinparam rectangleBackgroundColor white
+skinparam componentBackgroundColor white
+skinparam linetype poly
+skinparam rectangleShadowing true
+'skinparam monochrome false
+!define TITLE Kubernetes Volumes and Pods Overview
+
+title TITLE
+node "Kubernetes Node"{
+rectangle "<$pod>\nPod Spec" as pod {
+    rectangle "containers:" as containers {
+        rectangle "     <$ECScontainer>\n:Contianer 1" as cont1
+        rectangle "     <$ECScontainer>\n: Container 2" as cont2
+    }
+    rectangle "volumes:" {
+    rectangle "<$vol>\n hostPath" as vol_hp
+    rectangle "<$vol>\n emptyDir" as emptyDir
+    }
+}
+}
+cont1 -- vol_hp : mount on path\n in volumeMounts
+cont2 -- emptyDir : mount on path\n in volumeMounts
+
+legend left
+TITLE
+|= Component |= Definition |
+|     <$vol> | A directory containing data,\n accesible to containers in a pod. |
+|     <$pv> | Cluster resource providing storage to pods,\n but exisitng independently of pod lifecycle. |
+|     <$pvc> | Request for storage, consumes persistent volumes. |
+|     <$sc> | StorageClass provides a way for administrators\n to describe the "classes" of storage they offer |
+endlegend
+
+
+@enduml

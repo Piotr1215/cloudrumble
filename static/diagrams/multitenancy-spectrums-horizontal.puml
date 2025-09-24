@@ -1,0 +1,44 @@
+@startuml multitenancy-spectrums-horizontal
+!include styles.iuml
+
+skinparam DefaultTextAlignment center
+skinparam linetype ortho
+skinparam nodesep 30
+skinparam ranksep 40
+
+' Core concept at top
+rectangle "Multitenancy" as core #Orange
+
+' Three spectrum groups side by side
+rectangle "Isolation Spectrum" as iso_group {
+  rectangle "None → Logical → Physical" as isolation_spectrum #LightBlue
+}
+
+rectangle "Resource Sharing" as res_group {
+  rectangle "Shared → Pooled → Dedicated" as resource_spectrum #LightGreen
+}
+
+rectangle "Trust Levels" as trust_group {
+  rectangle "Full → Partial → Zero" as trust_spectrum #LightYellow
+}
+
+' Connect core to all three groups
+core --> iso_group
+core --> res_group  
+core --> trust_group
+
+' Arrange groups horizontally
+iso_group -[hidden]right-> res_group
+res_group -[hidden]right-> trust_group
+
+' Mixed approaches rectangle at bottom
+rectangle "Mixed Approaches" as mixed #Lavender {
+  rectangle "All aspects can be mixed\nand combined as needed" as mixed_text
+}
+
+' Connect all three groups to mixed approaches
+iso_group --> mixed
+res_group --> mixed
+trust_group --> mixed
+
+@enduml

@@ -1,0 +1,86 @@
+@startwbs
+* Linux Distributions (High-Level Map)
+' Top-level families use bold frames for clarity
+** Debian-based <<bold>>
+*** Debian
+**** Ubuntu (official flavours)
+*****< Kubuntu
+*****> Xubuntu
+*****< Lubuntu
+*****> Ubuntu MATE
+*****< Ubuntu Budgie
+*****> Ubuntu Kylin
+*****< Ubuntu Studio
+*****> Edubuntu
+*****< Ubuntu Unity
+**** Ubuntu derivatives (selection)
+*****< Pop!_OS
+*****> Linux Mint
+****** LMDE
+*****< elementary OS
+*****> Zorin OS
+*****< KDE neon
+*****> Linux Lite
+*****< Peppermint OS
+*****> Bodhi Linux
+**** Other Debian-based (selection)
+*****< Devuan
+*****> Kali Linux
+*****< MX Linux
+*****> antiX
+*****< Deepin
+*****> Tails
+*****< Knoppix
+** RPM-based <<bold>>
+*** Fedora / RHEL line
+**** Fedora
+**** RHEL
+*****< CentOS Stream
+*****> CentOS (legacy)
+*****< AlmaLinux
+*****> Rocky Linux
+*****< Oracle Linux
+*****> EuroLinux
+*** openSUSE-based
+**** openSUSE Leap
+**** openSUSE Tumbleweed
+**** SUSE Linux Enterprise
+**** GeckoLinux
+*** Mandriva-based
+**** Mageia
+**** OpenMandriva
+**** PCLinuxOS
+**** ROSA
+** Pacman-based <<bold>>
+*** Arch Linux
+****< Manjaro
+****> EndeavourOS
+****< Garuda
+****> ArcoLinux
+****< ArchBang
+****> BlackArch
+*** Other pacman-based
+**** KaOS
+** Gentoo-based <<bold>>
+*** Gentoo
+****< Funtoo
+****> Calculate Linux
+** Slackware-based <<bold>>
+*** Slackware
+****< Salix
+****> Zenwalk
+****< Porteus
+** Alpine-based <<bold>>
+*** Alpine Linux
+**** postmarketOS
+** NixOS <<bold>>
+*** NixOS
+** Independents <<bold>>
+***< Void Linux
+***> Solus
+***< Clear Linux
+***> Tiny Core
+***< Puppy Linux
+** Miscellaneous <<bold>>
+***< (Room for additions you care about)
+@endwbs

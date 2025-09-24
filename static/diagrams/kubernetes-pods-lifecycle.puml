@@ -1,0 +1,39 @@
+@startuml
+!theme mars
+skinparam activity {
+    BackgroundColor #ADD8E6
+    BorderColor #4682B4
+    StartColor #FFFFFF
+    EndColor #FFFFFF
+}
+skinparam diamond {
+    BackgroundColor #ADD8E6
+    BorderColor #4682B4
+}
+
+|User|
+start
+:Create Pod;
+
+|Kubernetes System|
+:Pending;
+note right: Pod in Pending until containers start
+note left: Init containers run first before\nthe application containers.
+
+if (Bound to Node?) then (yes)
+  :Running;
+  note right: At least one container is running
+  if (All Containers Success?) then (yes)
+    :Succeeded;
+    note right: All containers\nterminated successfully
+  else (no)
+    :Failed;
+    note right: One or more containers\nterminated unsuccessfully
+  endif
+else (no)
+  :Unknown;
+  note right: State unknown due\nto communication error
+endif
+
+stop
+@enduml

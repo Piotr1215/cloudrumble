@@ -1,0 +1,62 @@
+@startuml k8s-architecture
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+
+rectangle "            <$master>\nKubernetes Architecture"
+
+rectangle  "Control Plane" as ctrl {
+    collections "<$etcd>" as etcd
+    collections "<$sched>" as sched
+    collections "<$api>" as api
+    collections "<$c_m>" as cm
+    collections "<$c_c_m>" as ccm
+    api -> cm
+    api .> ccm
+    api -> sched
+    api -> etcd
+}
+
+rectangle "Nodes" as nodes {
+    node "Node" as node1 {
+        component "<$kubelet>" as 1
+        component "<$k_proxy>" as 2
+        1 -[hidden]--> 2
+    }
+    node "Node" as node2 {
+        component "<$kubelet>" as 3
+        component "<$k_proxy>" as 4
+        3 -[hidden]--> 4
+    }
+    node "Node" as node3 {
+        component "<$kubelet>" as 5
+        component "<$k_proxy>" as 6
+        5 -[hidden]--> 6
+    }
+}
+
+cloud "Cloud Provider\n API" as cloud
+
+ctrl -[hidden]r-> nodes
+ccm -> cloud
+
+1 -> api
+2 -> api
+3 -> api
+4 -> api
+5 -> api
+6 -> api
+
+legend bottom
+ |= Component |= Description |= Function  |
+ |     <$etcd>  | Perisstent store | Key-value backing store for all \n cluster data |
+ |     <$sched> | Scheduler | Watches for pods and assigns \n them to nodes |
+ |     <$api>   | Kube API server | Exposes Kubernetes API,\n front end for control plane |
+ |     <$c_m>   | Controller manager | Node Controller, Replication Controller, \n Endpoints Controller, \n Service Account & Token Controllers |
+ |     <$c_c_m> | Cloud controller manager\n optional | Embeds cloud specific control logic |
+ |     <$kubelet> | Kubelet | Responsible for runnning \n containers in a pod |
+ |     <$k_proxy> | Kube proxy | Maintains network rules on nodes |
+endlegend
+
+@enduml

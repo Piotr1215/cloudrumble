@@ -1,0 +1,30 @@
+@startuml cks-container-isolation
+
+title "Containers Isolation"
+left to right direction
+skinparam nodesep 10
+skinparam ranksep 20
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <logos/docker>
+!include <logos/ubuntu>
+
+rectangle "\t\tHardware Infrastructure\t\t\t" as hard #Gray {
+
+}
+
+rectangle "\t\t              Host OS         \t\t\t\t" as host_os #LightBlue {
+
+}
+
+rectangle "\t\t\t    Docker Host     \t\t\t\t" as hyper #Orange {
+
+}
+rectangle "Container\n<$ubuntu>\n<$docker>\t<$ECScontainer>" as vm1 #White {
+    rectangle " Libraries | Dependencies " as libs #LightGreen {
+
+    }
+    rectangle "\t\tApplications\t\t" as apps  #423F68
+}
+
+
+@enduml

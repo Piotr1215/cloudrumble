@@ -1,0 +1,50 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include <material/common>
+!include <material/sync>
+HIDE_STEREOTYPE()
+LAYOUT_TOP_DOWN()
+
+Person(user, "User", "Uses kubectl")
+
+System_Boundary(host, "Physical Host Cluster") {
+    System_Boundary(vcluster, "vCluster") {
+        Container(controlPlane, "vCluster Control Plane", "Manages the virtual cluster")
+        Container(syncer, "Syncer", "Synchronizes resources between virtual and host clusters", $sprite="ma_sync")
+        
+        System_Boundary(context, "Context inside virtual cluster") {
+            System_Boundary(ns1, "ns-1 namespace") {
+                Container(ns1High, "High-Level Resources (ns-1)", "deployment, crd", "Resources")
+                Container(ns1Low, "Low-Level Resources (ns-1)", "pod-1, svc-a", "Resources")
+            }
+
+            System_Boundary(ns2, "ns-2 namespace") {
+                Container(ns2High, "High-Level Resources (ns-2)", "statefulset, job", "Resources")
+                Container(ns2Low, "Low-Level Resources (ns-2)", "pod-1, svc-a", "Resources")
+            }
+        }
+    }
+
+    System_Boundary(hostResources, "Host Cluster Resources") {
+        Container(hostPod1, "Host Pod 1 (ns-1)", "pod-1-x-ns1", "Resources")
+        Container(hostSvcA1, "Host Service A (ns-1)", "svc-a-x-ns1", "Resources")
+        Container(hostPod2, "Host Pod 1 (ns-2)", "pod-1-x-ns2", "Resources")
+        Container(hostSvcA2, "Host Service A (ns-2)", "svc-a-x-ns2", "Resources")
+        System(network, "Regular Networking", "Handles network traffic")
+    }
+}
+
+Rel(user, controlPlane, "Uses kubectl")
+Rel(controlPlane, syncer, "Manages")
+Rel(ns1Low, syncer, "Synchronizes")
+Rel(ns2Low, syncer, "Synchronizes")
+Rel(syncer, hostPod1, "Synchronizes")
+Rel(syncer, hostSvcA1, "Synchronizes")
+Rel(syncer, hostPod2, "Synchronizes")
+Rel(syncer, hostSvcA2, "Synchronizes")
+BiRel(hostPod1, network, "Traffic")
+BiRel(hostSvcA1, network, "Traffic")
+BiRel(hostPod2, network, "Traffic")
+BiRel(hostSvcA2, network, "Traffic")
+
+@enduml

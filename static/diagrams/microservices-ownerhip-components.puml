@@ -1,0 +1,33 @@
+@startuml
+!theme mars
+!include <C4/C4_Container>
+
+title Microservice Architecture with Ownership and Lifecycle
+
+Person(user, "Development Team")
+Person(central_security_team, "Centralized Security Team", "Manages shared services")
+Person(platform_team, "Platform Team", "Manages messaging infrastructure")
+
+System_Boundary(sb, "Microservice Architecture") {
+    Container(microservice, "Microservice", "Java", "Handles business logic\nOwned and managed by development team\nLifecycle: Develop, Deploy, Monitor")
+    ContainerDb(database, "Database", "SQL", "Stores data for the microservice\nOwned by development team\nShares lifecycle with microservice")
+    
+    System_Boundary(messaging_system, "Messaging System") {
+        ContainerQueue(message_broker, "Message Broker", "Kafka", "Handles messaging infrastructure\nManaged by Platform Team\nIndependent deployment")
+        Container(specific_queue, "Specific Queue", "Kafka Topic", "Owned by development team\nContent follows microservice lifecycle\nInfrastructure managed by Platform Team")
+    }
+}
+
+System_Boundary(shared_services, "Shared Services") {
+    Container(key_store, "Key Store", "Azure Key Vault", "Centralized key management service\nManaged by Security Team\nDifferent lifecycle from microservices")
+}
+
+Rel(user, microservice, "Uses")
+Rel(microservice, database, "Reads/Writes")
+Rel(microservice, specific_queue, "Publishes/Consumes messages")
+Rel(microservice, key_store, "Retrieves secrets", "Different lifecycle and ownership")
+Rel(central_security_team, key_store, "Manages")
+Rel(platform_team, message_broker, "Manages")
+
+Lay_D(sb, shared_services)
+@enduml

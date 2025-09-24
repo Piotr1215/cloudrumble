@@ -1,0 +1,68 @@
+@startuml gitops-tacos-flow
+!theme bluegray
+''!include default-font.iuml
+
+mainframe **TACOS flow with GitOps**
+hide footbox
+autonumber
+
+skinparam dpi 250
+'scale max 1024 width
+'scale .5 
+'scale 600 height
+
+actor "Developer" as dev
+[-> dev : creates a\nnew dev environment
+
+box "Git Repository with terraform"
+    collections "Feature branch" as feature
+    dev -> feature : creates a feature branch for new\n **DEV environment**
+    collections "Main branch" as master
+end box
+
+group Merge Request
+    activate feature #LightGreen
+    feature -> master : merge request into the main branch\n **MERGE REQUEST**
+    deactivate feature
+end
+
+box On-Prem/Cloud Infrastructure
+    control "Flux GitOps Agent" as agent
+    control "TACOS Infrastructure Agent" as tacos_agent
+    control "TACOS Git Agent" as tacos_git_agent
+        group GitOps Reconciliation Loop
+            agent o<->o master : reconciliation loop
+            master <-o agent : detect change
+            agent -> tacos_git_agent : triggers tacos agent via a webhook
+            tacos_git_agent o<- master : pulls current state from master
+        end
+    agent -> tacos_agent : instruct to crate a terraform run
+end box
+
+box TACOS Provider
+    participant "TACOS Web UI" as web_ui
+    participant "TACOS REST API" as tacos_rest_api
+    group Cloud Workspace
+        create participant "Terraform Run" as terraform_run
+        tacos_agent -> terraform_run : creates
+    end
+end box
+
+box Provisioned Environment
+    collections "Provisioned Infrastructure" as infra
+    terraform_run -> infra : creates new infrastructure
+    tacos_agent -> tacos_rest_api : trigger run via webhook
+end box
+
+web_ui --> dev : run report available
+dev --> infra : access infrastructure, deploy apps
+note left
+This will contain login credentials etc.
+TACOS could initiate the pipeline process
+of deploying apps the the new infra.
+
+From TACOS API call to GitHub to trigger CI/CD.
+
+Spacelift does "destroy" at the end of env lifecycle.
+end note
+@enduml

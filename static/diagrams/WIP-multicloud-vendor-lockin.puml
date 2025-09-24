@@ -1,0 +1,35 @@
+@startuml MKE-UCP-Architecture
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <tupadr3/devicons/docker>
+!include <tupadr3/font-awesome/server>
+!include <tupadr3/font-awesome/chrome>
+!include <tupadr3/font-awesome/terminal>
+!include <logos/azure.puml>
+!include <logos/google-cloud.puml>
+!include <logos/jenkins.puml>
+!include <logos/github.puml>
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+'Overrides
+'skinparam linetype default
+
+title Multi Cloud: vendor lockin
+
+cloud "<$azure>" as azure {
+    rectangle "<$chrome>\nWeb App" as webapp
+}
+
+cloud "<$google-cloud>" as gcp {
+    rectangle "<$chrome>\nWeb App" as webapp1
+}
+
+component "<$jenkins>" as jenkins
+component "<$github>" as github
+
+jenkins -u-> webapp
+jenkins -u-> webapp1
+
+github -> jenkins
+
+@enduml

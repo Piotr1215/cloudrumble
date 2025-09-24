@@ -1,0 +1,17 @@
+@startuml How to use IaC safely with live data
+
+skinparam monochrome true
+
+:Apply Infrastructure Change;
+
+if (Change Destrucive?) then (yes)
+
+:Create New Infrastructure;
+:Mirror database;
+:Swap traffic to new infrastructure;
+
+else (no)
+:Continue with regular traffic;
+endif
+
+@enduml

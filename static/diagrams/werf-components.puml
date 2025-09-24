@@ -1,0 +1,57 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome/cog>
+
+HIDE_STEREOTYPE()
+LAYOUT_LANDSCAPE()
+
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 250
+scale 1920x1080
+
+AddElementTag("important", $bgColor="#d73027")
+
+Person(user, "User", "Uses werf CLI")
+Person(ci, "Proces in CI", "Uses werf CLI", $sprite="cog")
+
+Container_Boundary(git, "Git Repository") {
+  Container(werf_yaml, "werf.yaml", "Configuration File", $sprite="img:/home/decoder/Pictures/werf-file.png{scale=0.7}")
+  Container(dockerfile, "Dockerfile(s)", "Build Scripts")
+  Container(helm_chart, "Helm Chart", "Deployment Configurations")
+}
+
+Container_Boundary(werf_cli, "Werf CLI") {
+  Container(build, "Build", "Building Images", "Deploy an image per layer\nuseful for development phase")
+  Container(deploy, "converge", "Deploying Applications", "Render manifests and apply them to the cluster")
+  Container(nelm, "NELM", "Helm Replacement", "Improved deployment and chart management", $tags="important")
+}
+
+System_Boundary(kube, "Kubernetes") {
+  System(k8s, "Kubernetes Cluster", "Container Orchestration") {
+    Container(running_app, "Running Application", "Deployed by Helm Chart", "Deployment, Service, Ingress, CRDs., etc", $sprite="pod")
+  }
+}
+
+System_Boundary(cr, "Container Registry") {
+  System(registry, "Container Registry", "Image Storage", $sprite="ECScontainer")
+
+}
+
+Rel(user, werf_cli, "Interactively via", "terminal")
+Rel_R(ci, werf_cli, "Scripted in", "remote CI runner")
+
+Rel(werf_yaml, werf_cli, "utilized by")
+Rel(dockerfile, build, "used by")
+Rel(helm_chart, deploy, "used by")
+
+Rel(build, registry, "publishes to")
+BiRel(deploy, registry, "pulls image from")
+Rel_D(deploy, nelm, "uses")
+Rel(nelm, k8s, "deploys to")
+
+Rel(registry, running_app, "pulls image from")
+
+@enduml

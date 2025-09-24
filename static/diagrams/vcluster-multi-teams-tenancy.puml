@@ -1,0 +1,99 @@
+@startuml
+!include styles.iuml
+!include <kubernetes/k8s-sprites-unlabeled-25pct>
+skinparam linetype ortho
+
+title vCluster Multi-Team Setup with Tenancy Patterns
+
+node "Host Kubernetes Cluster" #LightGray {
+    
+    ' Shared Infrastructure Layer
+    package "Shared Platform Services" #AliceBlue {
+        component "<$master>\nControl Plane" as master
+        component "Ingress\nController" as ingress #LightBlue
+        component "Monitoring\nStack" as monitoring #LightBlue
+        component "Logging\nInfrastructure" as logging #LightBlue
+    }
+    
+    ' High Trust Zone - Shared Resources
+    package "High Trust Zone - Internal Teams" #LightGreen {
+        package "vCluster 1" {
+            component "<$k8s>\nvCluster 1" as B
+            component "<$pod>\nTeam 1\nWorkloads" as G
+            B --> G : **trust**
+        }
+        
+        package "vCluster 2" {
+            component "<$k8s>\nvCluster 2" as C
+            component "<$pod>\nTeam 2\nWorkloads" as H
+            C --> H : **trust**
+        }
+        
+        note bottom of "High Trust Zone - Internal Teams" : Shared compute resources\nLogical isolation only\nFull platform access
+    }
+    
+    ' Partial Trust Zone - Pooled Resources
+    package "Partial Trust Zone - Partner Teams" #LightBlue {
+        package "vCluster 3" {
+            component "<$k8s>\nvCluster 3" as D
+            component "<$pod>\nPartner A\nWorkloads" as I
+            D --> I
+        }
+        
+        component "Resource\nQuotas" as quota1 #Yellow
+        component "Network\nPolicies" as netpol1 #Yellow
+        
+        note bottom of "Partial Trust Zone - Partner Teams" : Pooled resources with quotas\nNetwork segmentation\nLimited platform access
+    }
+    
+    ' Zero Trust Zone - Dedicated Resources
+    package "Zero Trust Zone - External Clients" #LightCoral {
+        package "vCluster 4" {
+            component "<$k8s>\nvCluster 4" as F
+            component "<$pod>\nClient X\nWorkloads" as J
+            F ..> J : untrusted
+        }
+        
+        component "Dedicated\nNodes" as nodes #Orange
+        component "mTLS\nEnforced" as mtls #Orange
+        component "Strict\nPolicies" as policies #Orange
+        
+        note bottom of "Zero Trust Zone - External Clients" : Dedicated compute nodes\nPhysical isolation\nNo platform access
+    }
+}
+
+' Trust relationships with different line styles
+master ==> B : <b>full trust</b>
+master ==> C : <b>full trust</b>
+master --> D : partial trust
+master ..> F : <color:red>zero trust</color>
+
+' Shared services connections
+B --> monitoring : direct
+C --> monitoring : direct
+D --> monitoring : filtered
+F ..> monitoring : <color:red>blocked</color>
+
+B --> logging : full
+C --> logging : full
+D --> logging : audit only
+F ..> logging : <color:red>isolated</color>
+
+' Resource allocation indicators
+quota1 --> D
+netpol1 --> D
+nodes --> F
+mtls --> F
+policies --> F
+
+legend right
+    |= Line Style |= Trust Level |= Resource Access |
+    | **Solid Bold** | Full Trust | Shared Everything |
+    | Solid | Partial Trust | Pooled with Limits |
+    | ..Dotted.. | Zero Trust | Dedicated/Isolated |
+    |<#LightGreen> | Internal Teams | Development/Testing |
+    |<#LightBlue> | Partner Teams | Staging/Integration |
+    |<#LightCoral> | External Clients | Production/Sensitive |
+endlegend
+
+@enduml

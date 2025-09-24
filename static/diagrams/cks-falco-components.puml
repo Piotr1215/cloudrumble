@@ -1,0 +1,30 @@
+@startuml cks-falco-components
+!include https://raw.githubusercontent.com/Piotr1215/sprites/master/falco.puml
+
+!theme resume-light
+'skinparam RectangleBackgroundColor transparent
+'skinparam Linetype ortho
+'!skinparam RectangleBackgroundColor #White
+rectangle "<$cks_falco>" {
+component "falco CLI" as cli
+component "configuration file" as config
+note left
+YAML config in /etc/falco/falco.yaml
+end note
+component "driver" as driver
+
+cli <--> driver : parse falco infomration, send alerts
+note left
+{{mindmap
+!theme resume-light
+* driver types
+** **Kernel module:** default
+** eBPF probe
+** Userspace instrumentation
+}}
+end note
+driver --> config
+
+driver <. [Linux\nkernel] : retrieve stream of data\n with system call informaiton
+}
+@enduml

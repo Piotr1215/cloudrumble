@@ -1,0 +1,31 @@
+@startuml
+!theme C4_sandstone from https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/themes
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+
+HIDE_STEREOTYPE()
+skinparam nodesep 50
+skinparam ranksep 150
+scale 1920x1080
+
+
+Person(user, "User", "Interacts with the system")
+
+System_Boundary(pepr_module, "Pepr Module") {
+    Container_Boundary(capabilities, "Capabilities Directory") {
+        Container(capability1, "Example Capability One", "Directory") {
+            Component(mutate_action, "Mutate Action", "Function", "Modifies Kubernetes resources")
+            Component(validate_action, "Validate Action", "Function", "Validates Kubernetes resources")
+        }
+        Container(capability2, "Example Capability Two", "Directory") {
+            Component(watch_action, "Watch Action", "Function", "Watches Kubernetes resources")
+            Component(reconcile_action, "Reconcile Action", "Function", "Reconciles Kubernetes resources")
+        }
+    }
+}
+
+Rel(user, pepr_module, "Creates ", "via CLI: pepr init", "Module and Capabilities with Actions")
+Lay_D(pepr_module, capabilities)
+
+@enduml

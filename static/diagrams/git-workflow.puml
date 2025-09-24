@@ -1,0 +1,58 @@
+@startuml simplified-azure-git-workflow
+''!theme bluegray
+
+'title "Fundamentals of working with git in Azure DevOps"
+'mainframe **Fundamentals of working with git**
+hide footbox
+autonumber
+
+skinparam DefaultFontSize 16
+
+'scale 1024 width
+'scale 768 height
+
+actor "Developer A" as dev
+
+box Local repository \non developer PC
+collections "Local source code files" as localcode
+end box
+actor "Developer B" as devana
+
+participant "Request to include in main branch" as pullrequest
+
+actor "Developer C" as devtest
+
+box "Remote Azure DevOps Git Repository"
+    collections "Staging branch\nremote source code" as remotecode
+    collections "Main branch\nremote source code" as remotecodemaster
+end box
+
+[-> dev : request to work on \na feature from a user story
+
+dev <- remotecode : make local copy of the repository\n=**CLONE and/or PULL**
+group local work
+    dev -> localcode : makes changes to files
+    dev -> localcode : decide to include the changes for remote files\n= **ADD**
+    dev -> localcode : take a "snapshot" of the changes and give them reference point\n= **COMMIT**
+end
+group integrate with server
+    localcode -> remotecode : push changed local files to remote repository\n= **PUSH**
+    remotecode -> remotecode : reconcile the changes and \nmerge them with existing files
+end
+group quality control
+    dev -> pullrequest ++  #LightGreen : create request to include in main branch\n= **PULL REQUEST**
+    dev -> devtest : assign task to review code
+    devtest -> pullrequest : review and approve request\n= **CODE REVIEW**
+    note over devtest
+        <size:16>Developer and developer</size>
+        <size:16>tester cannot be the same person</size>
+    end note
+    pullrequest -> remotecodemaster : move changes into main branch\n= **MERGE**
+    devtest -> pullrequest !! : request is no longer needed
+end
+group #Pink release
+    remotecodemaster ->]: ready to release\n=**TAG**
+end
+autonumber 2
+devana <--- remotecode : make local copy of the repository including\nchanges from Roman\n= **CLONE and/or PULL**
+@enduml

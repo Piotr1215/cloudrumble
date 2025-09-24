@@ -1,0 +1,29 @@
+@startmindmap docker-networking
+'Icons
+!include <cloudinsight/docker>
+
+*[#Gray] <$docker>\nDocker Networking
+**[#Lightgreen] Bridge
+***[#Lightgreen] Default
+***[#Lightgreen] Built in DNS
+****[#Lightgreen] IP: 127.0.0.11
+***[#Lightgreen] Private internal
+***[#Lightgreen] Only one created
+***[#Lightgreen] Containers get private IP
+***[#Lightgreen] Port Mapping
+****[#Lightgreen] Map between container and host
+**[#Gray] None
+***[#Gray] Complete isolation
+
+left side
+
+** General
+*** Separate Namespace per Contianer
+*** Connected with virtual ethernet pair
+
+**[#Lightblue] Host
+***[#Lightblue] No network isolation
+***[#Lightblue] Port Mapping
+****[#Lightblue] No port mapping
+***[#Lightblue] Cannot run same different apps on same port
+@endmindmap

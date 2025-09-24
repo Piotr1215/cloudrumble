@@ -1,0 +1,47 @@
+@startuml mke-ucp-access-control-model
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+
+!include FONTAWESOME/house_user.puml
+!include FONTAWESOME/users.puml
+
+'!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+LAYOUT_LEFT_RIGHT()
+title Access Control Model
+
+'   note right of sub
+'
+'   end note
+Boundary(sub, "Subjects"){
+    System(org, "Organization", "", "house_user"){
+        System(team, "Team", "", "users"){
+            Person(usr, "User")
+        }
+    }
+
+}
+Boundary(roles, "Roles"){
+
+    Container(noac, "No Access", "role")
+    Container(ronl, "Read Only", "role")
+    Container(restr, "Restricted Control", "role")
+    Container(full, "Full Control", "role")
+}
+
+Boundary(resourcecol, "Resource collections"){
+
+
+    Container(Phy, "Physical or virtual nodes", "resource")
+    Container(Con, "Containers", "resource")
+    Container(Ser, "Services", "resource")
+    Container(Net, "Networks", "resource")
+    Container(Vol, "Volumes", "resource")
+    Container(Sec, "Secrets", "resource")
+    Container(App, "Application configs", "resource")
+}
+
+Rel(usr, full, "Assign role using a grant to a user")
+Rel(full, Con, "Control access to resources by using collections")
+
+@enduml

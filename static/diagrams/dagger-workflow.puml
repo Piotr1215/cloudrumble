@@ -1,0 +1,45 @@
+@startuml
+!pragma teoz true
+!theme mars
+hide footbox
+autonumber
+
+scale 1920x1080
+skinparam defaultTextAlignment center
+skinparam NoteTextAlignment left
+skinparam shadowing false
+skinparam BoxPadding 10
+
+title Dagger Operation Sequence
+
+actor Developer as dev
+box "\nLocal Development" 
+  participant "Dagger CLI" as cli
+  dev -> cli : Run Dagger command
+  note right of cli : Developer interacts with Dagger\nvia the CLI
+end box
+box "\nCI Environment" 
+box "\nDagger Workflow" 
+  participant "Dagger Engine" as engine
+  participant "Dagger Container" as container
+  cli -> engine : Initialize Dagger engine
+  engine -> container : Start container environment
+  note right of container : Environment with\nall dependencies
+end box
+
+box "\nPipeline Execution" 
+  participant "Pipeline Step" as step
+  container -> step : Execute pipeline step
+  step -> engine : Report status
+end box
+box "\nCI Environment" 
+
+  participant "Docker Host" as docker
+  participant "Repositories" as repo
+  engine -> docker : Interact with Docker host
+  engine -> repo : Pull/push code\nand artifacts
+  note right of repo : Repositories such as\nGitHub, DockerHub, etc.
+end box
+end box
+
+@enduml

@@ -1,0 +1,30 @@
+@startmindmap composition-funcion-mindmap
+<style>
+rootNode {
+    LineStyle 8.0;3.0
+    LineColor red
+    BackgroundColor white
+    LineThickness 1.0
+    RoundCorner 35
+    Shadowing 0.0
+    FontStyle bold
+}
+</style>
+
++ Project_Root
+++ **Dockerfile** : Docker configuration for building the function's image
+++ **example** : Directory containing example files for the application
++++ composition.yaml : Example composition file
++++ functions.yaml : Example functions configuration
++++ xr.yaml : Example Crossplane resource (XR) or claim specification
+++ **fn**.go : Main Go source file for function logic
+++ **fn_test**.go : Unit tests for function logic defined in fn.go
+++ **input**[optional] : Directory containing input
++++ generate.go : Code generator for input
++++ v1beta1 : Versioned API directory for input
+++++ input.go : Input definitions
+++ **main**.go : Entry point for the Function
+++ **package** : Directory containing package specifications for Crossplane
++++ crossplane.yaml : Crossplane configuration file
++++ input : Input directory for package templates
+@endmindmap

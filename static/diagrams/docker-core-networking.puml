@@ -1,0 +1,57 @@
+@startuml docker-core-networking
+!include <tupadr3/font-awesome/terminal>
+!include <tupadr3/devicons/docker>
+!define TITLE Docker Core Networking
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+skinparam linetype polyline
+skinparam nodesep 15
+skinparam ranksep 30
+skinparam monochrome false
+skinparam ComponentBackgroundColor white
+skinparam RectangleBackgroundColor white
+'left to right direction
+'top to bottom direction
+title TITLE
+center header
+    Based on "Networking" chapter from "Docker Deep Dive".
+end header
+
+
+Component "      <$docker>\nDocker Engine" as docker #lightblue
+Rectangle "Control and Management Plane" as core #lightgray {
+    Rectangle  "Building Blocks" as blocks{
+        Component "Sandboxes" as sand
+        Component "Endpoints" as end
+        Component "Networks" as net
+    }
+    sand -[hidden]d- end
+    end -[hidden]d- net
+    Rectangle "Libnetwork" as lib{
+        Component "Service Dicovery" as sdisc
+        Component "Load Balancing" as lbal
+        sdisc -[hidden]d- lbal
+    }
+    Component "Plugabble Interface" as plug
+}
+
+Rectangle "Data Plane" as networks #lightgreen {
+    Component "Bridge Driver\n  Single Host" as bridge
+    Component "Overlay Driver\n    Multi Host" as overlay
+    Component "MACVLAN Driver\n  Existing VLANs" as macvlan
+}
+
+bridge -[hidden]r- overlay
+overlay -[hidden]r- macvlan
+
+docker <--> core : API
+networks ---> plug : Plugins
+
+legend left
+<color:blue> TITLE </color>
+|= Component |= Description  |
+|  Sandboxes  |  An isolated network stack |
+|  Endpoints  | Virtual Network Interfaces |
+|  Networks  | Software implementation of a switch |
+endlegend
+
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+!pragma teoz true
+!theme mars
+hide footbox
+autonumber
+scale 1920x1080
+skinparam defaultTextAlignment center
+skinparam NoteTextAlignment left
+skinparam shadowing false
+skinparam BoxPadding 10
+
+title Shell Operator Setup and Workflow
+
+actor "Developer" as dev
+box "Local Development" #LightBlue
+  participant "Local Environment" as local
+end box
+box "Kubernetes Cluster" #LightGreen
+  participant "Kubernetes API" as k8s
+  participant "Shell Operator Pod" as shellop
+  participant "nginx pod" as nginx
+end box
+box "External Services" #FFA07A
+  participant "Slack" as slack
+end box
+
+dev -> local : Prepare Shell Operator setup
+note left of local
+  1. Create shell scripts in hook directory
+  2. Create Dockerfile based on shell-operator image
+  3. Add hook directory with scripts to Dockerfile
+  4. Create manifest for Shell Operator pod
+  5. Create RBAC permissions for Shell Operator
+end note
+
+dev -> k8s : Deploy RBAC permissions and Shell Operator pod
+create shellop
+k8s -> shellop : Schedule/Deploy
+
+activate shellop
+
+loop Continuous Operation
+  shellop o->o k8s : Monitor for events
+  
+  alt Pod Lifecycle Event
+    dev -> k8s : Create/Delete nginx pod
+    
+    alt Pod Creation
+      create nginx
+      k8s -> nginx : Create/Delete pod
+      k8s -> shellop : Notify of creation event
+    else Pod Deletion
+      k8s -> shellop : Notify of deletion event
+      destroy nginx
+    end
+    
+    shellop -> shellop : Trigger Slack notification webhook
+    shellop ->>o slack : Send pod lifecycle notification
+  end
+end
+
+dev -> shellop : Update configuration (if needed)
+shellop -> shellop : Reload scripts
+
+@enduml

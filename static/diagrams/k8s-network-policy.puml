@@ -1,0 +1,40 @@
+@startmindmap k8s-network-policy
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+
+*[#lightyellow] Network Policy\n     <$netpol>
+
+**[#lightgray] <&spreadsheet>Prerequisites <&spreadsheet>
+***[#lightgray] Network plugin supporting\n Network Policies
+****[#lightgray] Calico
+****[#lightgray] **Cilium**
+****[#lightgray] Kube-router
+****[#lightgray] Romana
+****[#lightgray] Weave Net
+
+**[#lightgreen] <&question-mark>What is it for <&question-mark>
+***[#lightgreen] Control pods communication with
+****[#lightgreen] Other pods
+****[#lightgreen] Namespaces
+****[#lightgreen] IP Blocks
+
+left side
+
+**[#LightCyan] <&cog>How does it work <&cog>
+***[#LightCyan] Policies are addative
+***[#LightCyan] Pods accept all traffic by default
+***[#LightCyan] To apply policy to pod
+****[#LightCyan]_ Select pod in a\n namespace wtih selector
+***[#LightCyan] Policy types
+****[#LightCyan] Ingress
+*****[#LightCyan]_ To selected pod
+****[#LightCyan] Egress
+*****[#LightCyan]_ From selected pod
+***[#LightCyan] Selector types
+****[#LightCyan] Pod selector
+*****[#LightCyan]_ Applies to single pod
+****[#LightCyan] Namespace selector
+*****[#LightCyan]_ Applies to all pods in a namespace
+****[#LightCyan] Namespace AND pod selector
+*****[#LightCyan]_ Applies to particular\n pod in a namespace
+@endmindmap

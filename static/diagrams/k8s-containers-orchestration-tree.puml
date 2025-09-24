@@ -1,0 +1,55 @@
+@startwbs k8s-containers-orchestration-tree
+
+scale 1920x1080
+
+'Icons
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+
+'Global Skinparams
+skinparam defaultTextAlignment center
+
+'Diagram Style
+'"!theme" directive will be overriden, but fond will stay
+
+!theme silver
+<style>
+wbsDiagram {
+    BackgroundColor White
+    :depth(0) {
+        RoundCorner 10
+        LineColor black
+        LineStyle 3
+    }
+    :depth(1){
+        LineColor black
+        FontStyle Bold
+    }
+    :depth(2){
+        LineColor blue
+        LineThickness 2.5
+    }
+}
+</style>
+
+
+* Containers Orchestration \n\n<$ECScontainer>
+** Development
+*** Desing container images
+*** Inner loop (code -> run -> debug)
+***< Local testing & verification
+** Build&Ship Automation
+*** Images/Binaries security scans
+***< Automated tests
+***< Automated builds
+*** Automated deployments to pre-prod
+** Operations
+***< Proivision and deploy
+*** Schedule on correct node
+*** Allocate resources
+*** Ensure high availability
+*** Conditionally autoscale
+***< Load balance and route traffic
+***< Monitor and health checks
+***< Configure
+***< Security and secure communication
+@endwbs

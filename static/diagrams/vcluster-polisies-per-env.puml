@@ -1,0 +1,35 @@
+@startuml
+!theme mars
+scale 1920x1080
+!include <kubernetes/k8s-sprites-unlabeled-25pct>
+skinparam linetype ortho
+
+node "Host Kubernetes Cluster" {
+    package "Development Environment" {
+        component "<$node>\nvCluster Team 1" as dev1
+        component "<$node>\nvCluster Team 2" as dev2
+        component "<$node>\nvCluster Team N" as devN
+    }
+    
+    package "Staging Environment" {
+        component "<$node>\nvCluster Staging" as stage
+    }
+    
+    package "Production Environment" {
+        component "<$node>\nvCluster Prod 1" as prod1
+        component "<$node>\nvCluster Prod 2" as prod2
+    }
+}
+
+package "Policies" {
+    component "<$secret>\nDev Policies" as devPolicies
+    component "<$secret>\nStaging Policies" as stagePolicies
+    component "<$secret>\nProd Policies" as prodPolicies
+}
+devPolicies --> dev1
+devPolicies --> dev2
+devPolicies --> devN
+stagePolicies --> stage
+prodPolicies --> prod1
+prodPolicies --> prod2
+@enduml

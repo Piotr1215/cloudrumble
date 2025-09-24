@@ -1,0 +1,57 @@
+@startuml azure-storage-components
+
+!theme bluegray
+
+!include <azure/AzureCommon>
+!include <azure/Storage/all>
+!include <azure/Databases/all>
+
+rectangle "Storage Options" as sop {
+    rectangle "Storage Account" as sa {
+        AzureFileStorage(files, "File Storage", "Storage Account", "SMB Protocol, *.txt, *.exe")
+        AzureBlobStorage(blobs, "Blob Storage", "Storage Account", "Images, Documents, Video, Logs, VM images, etc")
+        AzureStorage(tables, "Table Storage", "Storage Account", "Structured noSQL Data, Excel-like")
+        AzureQueueStorage(queues, "Queue Storage", "Storage Account", "Async messaging, FIFO queue")
+    }
+
+    rectangle "Phisical Medium" as phisical {
+        AzureDataBox(databox, "Data Box", "Rugged Device", "100TB capacity encrypted medium")
+
+    }
+
+    rectangle "Big Data" as bigdata {
+        AzureDataLakeStorage(datalake, "Data Lake", "Hadoop comparable", "Massively scalable and secure data lake for your high-performance analytics workloads")
+
+    }
+
+    rectangle "Managed Disks" as disks {
+        AzureManagedDisks(manageddisks, "Managed Disks", "Hard Drives", "Highly durable disks for VMs and backup")
+
+    }
+}
+
+rectangle "Databases" as databases {
+    AzureCosmosDb(cosmosdb, "CosmosDB", "noSQL Database", "Fast NoSQL database with open APIs for any scale")
+    AzureDatabaseForMariaDB(mariadb, "Maria DB", "SQL Database", "MySQL clone")
+    AzureDatabaseForMySQL(mysql, "MySQL DB", "SQL Database", "Fully managed, scalable MySQL database")
+    AzureDatabaseForPostgreSQL(postgres, "PostgreSQL DB", "SQL Database", "Fully managed, intelligent, and scalable PostgreSQL")
+    AzureDataFactory(datafactory, "Data Factory", "Integration ETL", "Data integration solution")
+    AzureRedisCache(redis, "Redis Cache", "Caching", "Provides an in-memory data store based on the Redis software")
+    AzureSqlDatabase(sqldatabase, "Azure SQL", "SQL Database", "Managed SQL Database for structured data")
+    AzureSqlDataWarehouse(datawarehouse, "Azure Data Warehouse", "Data Warehouse", "Centralized data repository from different sources")
+
+
+
+
+
+
+
+
+}
+sop -[hidden]u-> databases
+'blobs -[hidden]-> tables
+'tables -[hidden]-> queues
+
+
+
+@enduml

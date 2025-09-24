@@ -1,0 +1,42 @@
+@startuml ckx-exams-heutistics
+!theme blueprint
+repeat
+    :read;
+    :comprehend;
+    :do;
+    note right 
+    1. Copy/paste
+    2. use **%s/=/: /g** to replace labels after copy/pasting
+    end note
+    :validate;
+    switch (validating what?)
+    case ()
+    :[[http://plantuml.com pod validation]];
+        note
+        {{
+            :spin up busybox;
+            stop
+        }}
+        end note
+    case ()
+    :service validation;
+        note
+        {{
+            :spin up busybox;
+            stop
+        }}
+        end note
+    case (accounts)
+    :service validation;
+        note
+        {{
+            :spin up busybox;
+            stop
+        }}
+        end note
+    endswitch
+
+repeat while (result valid?) is (no)
+->yes;
+end
+@enduml

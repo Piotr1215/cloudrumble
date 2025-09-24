@@ -1,0 +1,25 @@
+@startuml devops-3ways
+!theme reddress-darkblue
+!include MesloLGS.iuml
+left to right direction
+
+rectangle "\t\t\t1 - Flow/Systems Thinking\t\t               "
+note right
+Emphasizes the performance of the entire system, as opposed
+to the performance of a specific silo of work or department
+end note
+rectangle "\t\t\t2 - Amplify Feedback Loops\t\t                "
+note right
+The goal of almost any process improvement initiative is to
+shorten and amplify feedback loops so necessary corrections
+can be continually made.
+end note
+rectangle "\t3 - Culture of Continual Experimentaiton and Learning\t"
+note right
+Culture that fosters two things: continual experimentation,
+taking risks and learning from failure; and understanding that
+repetition and practice is the prerequisite to mastery
+end note
+
+
+@enduml

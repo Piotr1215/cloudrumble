@@ -1,0 +1,45 @@
+@startuml
+!include styles.iuml
+skinparam linetype ortho
+skinparam nodesep 50
+skinparam ranksep 60
+
+title Multi-Tenancy with vCluster
+
+rectangle "Kubernetes Host Cluster" #F5F5F5 {
+    
+    ' Shared services at top
+    rectangle "Shared Platform Services" #E8E8E8 {
+        component "Monitoring | Logging | Ingress" as shared
+    }
+    
+    ' Three tenancy models side by side
+    rectangle "High Trust" #90EE90 {
+        component "Team A\nvCluster" as A
+        component "Team B\nvCluster" as B
+        A -[hidden]- B
+    }
+    
+    rectangle "Partial Trust" #87CEEB {
+        component "Partner\nvCluster" as P
+        note right of P : Resource\nQuotas
+    }
+    
+    rectangle "Zero Trust" #FFB6C1 {
+        component "Client\nvCluster" as C
+        note right of C : Dedicated\nNodes
+    }
+    
+    ' Connections showing trust levels
+    shared ==> A : <b>full</b>
+    shared ==> B : <b>full</b>
+    shared --> P : limited
+    shared ..> C : <color:red>isolated</color>
+}
+
+legend bottom
+    **Trust Levels:** Bold = Full | Normal = Partial | Dotted = Zero
+    **Resource Sharing:** Green = Shared | Blue = Pooled | Pink = Dedicated
+endlegend
+
+@enduml

@@ -1,0 +1,54 @@
+@startuml multicloud-hybrid-cloud
+!include multicloud-styles.puml
+
+cloud "<$azure>\nPublic Cloud" as azure {
+    rectangle "PaaS\n<$AzureWebApp*0.7>" as webapp_azure
+    rectangle "FaaS\n<$AzureFunction*0.75>" as function_azure
+    rectangle "CaaS\n<$ECScontainer>" as container_azure
+    rectangle "DaaS\n<$database>" as db_azure
+    rectangle "IaaS\n<$server>" as vm_azure
+    rectangle "PaaS/IaaS\n<$kubernetes>" as k8s_azure
+}
+
+cloud "<$google-cloud>\nPublic Cloud" as gcp {
+    rectangle "PaaS\n<$AzureWebApp*0.7>" as webapp_gpc
+    rectangle "FaaS\n<$AzureFunction*0.75>" as function_gpc
+    rectangle "CaaS\n<$ECScontainer>" as container_gpc
+    rectangle "DaaS\n<$database>" as db_gpc
+    rectangle "IaaS\n<$server>" as vm_gcp
+    rectangle "PaaS/IaaS\n<$kubernetes>" as k8s_gcp
+}
+
+rectangle "<$building>\nPrivate Cloud" as prem {
+    rectangle "<$server>\nSelf-Hosted" as vm_prem{
+        rectangle "<$database>" as db_prem
+    }
+    rectangle "<$kubernetes>\nDedicated" as k8s_prem {
+        rectangle "<$ECScontainer>" as container_prem
+        rectangle "<$AzureFunction*0.75>" as function_prem
+        rectangle "<$AzureWebApp*0.7>" as webapp_prem
+
+    }
+}
+
+cloud "SaaS" as saas {
+    rectangle "<$dropbox>"
+    rectangle "<$salesforce>"
+}
+
+rectangle "Hybrid Cloud" {
+    cloud "<$azure>\nAzure" as azure_hybrid
+    cloud "<$google-cloud>\nGoogle Cloud Platform" as gcp_hybrid
+    rectangle "<$building>\nPrivate Cloud" as prem_hybrid
+    cloud "SaaS" as saas_hybrid
+
+    azure_hybrid --> gcp_hybrid : calls <$rest*0.5>
+    prem_hybrid ~(0)~> saas_hybrid : stores files in\n<$dropbox>
+    gcp_hybrid ~r~> saas_hybrid : sends events to\n<$salesforce>
+}
+
+azure -[hidden]r--> gcp
+azure -[hidden]d--> prem
+saas -[hidden]d-> prem
+
+@enduml

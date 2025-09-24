@@ -1,0 +1,70 @@
+@startuml MKE-UCP-Architecture
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <tupadr3/devicons/docker>
+!include <tupadr3/font-awesome/server>
+!include <tupadr3/font-awesome/chrome>
+!include <tupadr3/font-awesome/terminal>
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+'Overrides
+skinparam linetype default
+
+rectangle "Clients" as client{
+
+    rectangle "<$terminal>" as ter
+    rectangle "<$chrome>\nWeb UI" as webclt
+}
+
+rectangle "Swarm Cluster" as nodes {
+    node "Manager Node\n<$server>" as master {
+
+        rectangle "   <$docker>\nucp-agent" as u1
+        rectangle "   <$docker>\nucp-controller" as cont
+        rectangle "   <$docker>\nucp-auth-api" as auth
+        rectangle "<$chrome>\n<$docker>\nWeb UI" as web
+        collections "          <$docker>\nother-components" as other
+    }
+    node "Worker Node\n<$server>" as worker1 {
+        rectangle "   <$docker>\nucp-agent" as u2
+        rectangle "   <$docker>\nucp-proxy" as prox2
+        collections "          <$docker>\nother-components" as other2
+    }
+    node "Worker Node\n<$server>" as worker2 {
+        rectangle "   <$docker>\nucp-agent" as u3
+        rectangle "   <$docker>\nucp-proxy" as prox3
+        collections "          <$docker>\nother-components" as other3
+    }
+}
+
+nodes <- client: HTTPS
+
+u1 --> web : Creates\n Container
+u1 --> cont : Creates\n Container
+u1 --> auth : Creates\n Container
+u1 --> other : Creates\n Containers
+
+u2 --> prox2 : Creates\n Container
+u2 --> other2 : Creates\n Containers
+
+u3 --> prox3 : Creates\n Container
+u3 --> other3 : Creates\n Containers
+
+note top of u1
+    Starts first
+end note
+note top of u2
+    Starts first
+end note
+note top of u3
+    Starts first
+end note
+
+legend bottom
+<color:black></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>
+|= Component |= Description |= Function  |
+|  ucp-agent  | Globally scheduled service \n (runs on every node) | Node monitoring, different behavior \n depending if it runs on manager or worker node |
+|  ucp-proxy  | A TLS proxy | Allows secure access to the local Mirantis Container Runtime to MKE components |
+endlegend
+
+@enduml

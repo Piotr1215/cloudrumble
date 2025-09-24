@@ -1,0 +1,32 @@
+@startuml devops-5ideals
+!theme reddress-darkblue
+!include MesloLGS.iuml
+left to right direction
+
+rectangle "\t\t1 - Locality & Simplicity\t    "
+note right
+    Empower development teams to be more efficient by
+    introducing self-servicing tools and platforms.
+end note
+rectangle "\t\t2 - Focus, Flow & Joy\t\t    "
+note right
+    Ability to move fast and without internal
+    obstacles creates feeling of joy and “flow”.
+end note
+rectangle "\t3 - Improvement of daily work\t    "
+note right
+    Improve and innovate to avoid stale routines
+    and stimulate progress.
+end note
+rectangle "\t**4 - Psychological Safety**\t   "
+note right
+    In the “State of DevOps Report 2019” named
+    number one factor to improve performance and foster innovation.
+end note
+rectangle "\t\t5 - Customer Focus\t\t   "
+note right
+    Only when all above points are met can the
+    Team focus on customer and deliver value fast and reliably.
+end note
+
+@enduml

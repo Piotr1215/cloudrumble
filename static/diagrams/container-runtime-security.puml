@@ -1,0 +1,31 @@
+@startuml container-runtime-security
+!include styles.iuml
+
+title Container Runtime Security
+
+skinparam DefaultTextAlignment center
+skinparam linetype ortho
+
+rectangle "Container Runtime Security" as A4
+
+rectangle "Standard Isolation" as B4
+rectangle "gVisor" as C4
+rectangle "Kata Containers" as D4
+rectangle "vNode" as E4
+
+rectangle "High Performance\nBasic Security" as F4
+rectangle "Medium Performance\nGood Security" as G4
+rectangle "Lower Performance\nVM-like Security" as H4
+rectangle "High Performance\nStrong Security" as I4
+
+A4 --> B4
+A4 --> C4
+A4 --> D4
+A4 --> E4
+
+B4 --> F4
+C4 --> G4
+D4 --> H4
+E4 --> I4
+
+@enduml

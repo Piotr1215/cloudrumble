@@ -1,0 +1,34 @@
+@startuml
+!include styles.iuml
+!include <kubernetes/k8s-sprites-unlabeled-25pct>
+skinparam linetype ortho
+
+node "Host Kubernetes Cluster" {
+    component "<$master>\nmaster" as master
+    package "vCluster 1" {
+        component "<$k8s>\nvCluster 1" as B
+        component "<$pod>\nTeam 1 Workloads" as G
+        B --> G
+    }
+    package "vCluster 2" {
+        component "<$k8s>\nvCluster 2" as C
+        component "<$pod>\nTeam 2 Workloads" as H
+        C --> H
+    }
+    package "vCluster 3" {
+        component "<$k8s>\nvCluster 3" as D
+        component "<$pod>\nTeam 3 Workloads" as I
+        D --> I
+    }
+    package "vCluster N" {
+        component "<$k8s>\nvCluster N" as F
+        component "<$pod>\nTeam N Workloads" as J
+        F --> J
+    }
+}
+
+master --> B
+master --> C
+master --> D
+master --> F
+@enduml

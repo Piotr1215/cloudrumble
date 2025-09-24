@@ -1,0 +1,41 @@
+@startuml pet-workflow
+'!theme bluegray
+'!theme crt-amber
+'!theme crt-green
+'!theme plain
+
+!theme materia-outline
+
+title "Workflow working with Pet"
+
+scale 1920x1080
+
+skinparam defaultTextAlignment left
+skinparam DefaultFontStyle bold
+
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/MesloLGS.iuml
+|Prepare|
+:Install Pet Go Binary;
+:Configure\n- detaulf editor\n- sync options\n- snippet direcroty\nwith [[https://github.com/knqyf263/pet#configuration pet configure]];
+|Prepare|
+|Register|
+:Register new snippets\nwith [[https://github.com/knqyf263/pet#register-the-previous-command-easily pet new]];
+:Edit existing snippets\nwith [[https://github.com/knqyf263/pet#edit-snippets pet edit]];
+|Register|
+|Use|
+:List all snippets\nwith [[https://github.com/knqyf263/pet#snippet pet list]];
+:Search for a snippet without\nexecuting the command\nwith [[https://github.com/knqyf263/pet#snippet pet search]];
+:Execute command\nwith [[https://github.com/knqyf263/pet#snippet pet execute]];
+|Use|
+|Sync|
+:Synchronize pet snippets\nwith [[https://github.com/knqyf263/pet#sync pet sync]];
+note right
+Depending on the configuration, snippets can be
+- synced automatically
+- synced with GitHub gist
+- synced with GitLab snippet
+- synced with a repository
+end note
+|Sync|
+
+@enduml

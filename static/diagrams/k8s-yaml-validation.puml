@@ -1,0 +1,44 @@
+@startuml k8s-yaml-validation
+'!theme materia
+'!theme reddress-darkblue
+!theme reddress-lightblue
+
+skinparam SequenceBoxFontName MesloLGS NF
+skinparam ParticipantFontName MesloLGS NF
+skinparam ArrowFontName MesloLGS NF
+skinparam BoxFontName MesloLGS NF
+skinparam NoteFontName MesloLGS NF
+skinparam ActivityFontName MesloLGS NF
+skinparam DefaultFontName MesloLGS NF
+skinparam RectangleFontName MesloLGS NF
+skinparam defaultTextAlignment center
+
+start
+repeat :K8s YAML Validation Flow;
+fork
+  if(correct YAML file?) then (yes)
+    :**Structure**:\nYAML Syntax OK<&thumb-up>;
+  else (no)
+    #orange:YAML error <&warning>;
+
+  endif
+fork again
+  if(correct Kubernetes resource?) then (yes)
+    :**Semantics**:\nSchema Context OK<&thumb-up>;
+  else (no)
+    #orange:K8s schema error <&warning>;
+
+  endif
+fork again
+  if(policy checks passed?) then (yes)
+    :**Pragmatic**:\nPolicy Enforcement OK <&thumb-up>;
+  else (no)
+    #orange:Policy Enforcement error <&warning>;
+  endif
+end fork
+
+backward:Correct errors or\nadjust policy requirements;
+repeat while (errors on any level?) is (yes) not (no)
+:Safe to create a resource <&thumb-up>;
+stop
+@enduml

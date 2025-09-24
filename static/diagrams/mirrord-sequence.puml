@@ -1,0 +1,45 @@
+@startuml
+!pragma teoz true
+!theme mars
+hide footbox
+autonumber
+
+scale 1920x1080
+skinparam defaultTextAlignment center
+skinparam NoteTextAlignment left
+skinparam shadowing false
+skinparam BoxPadding 10
+
+title How mirrord Works
+
+actor Developer as dev
+box "\nLocal Machine" 
+  participant "mirrord-cli" as cli
+  participant "mirrord-layer" as layer
+end box
+
+box "\nKubernetes Cluster" 
+  participant "original pod" as origPod
+  participant "temporary mirrord pod" as agent
+end box
+
+dev -> cli : Uses mirrord-cli to execute a process\n (e.g., Node.js app)
+cli -> layer : Talks to mirrord-layer library locally
+layer -> layer : Uses existing kubectl config
+layer -> origPod : Finds pod in the cluster
+
+create agent
+activate agent
+layer -> agent : Initiate mirrord-agent
+agent -> origPod : Mirror traffic from Original Pod
+agent -> layer : Send mirrored traffic to mirrord-agent
+note right of agent
+ Relay traffic, file operations, env variables
+end note
+agent --> cli : return response
+& cli --> dev
+dev -> cli : quit process
+& cli -> agent : remove temporary pod
+destroy agent
+
+@enduml

@@ -1,0 +1,68 @@
+@startuml docker-architecture
+'Icons
+!include <tupadr3/devicons/linux>
+!include <tupadr3/devicons/docker>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome/terminal>
+
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+skinparam Linetype default
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
+
+package "<$docker> Docker" as runtime {
+
+    component "     <$terminal>\nDocker CLI" as dockercli
+    component "REST API" as restapi
+
+    dockercli <--> restapi
+    node "dockerd\n Manages" as dockerdeamon {
+        [Images]
+        [Volumes]
+        [Networks]
+    }
+    restapi <--> dockerdeamon : HTTPS
+    component libcontainer
+    dockerdeamon <-[hidden]r-> libcontainer
+
+    node containerd {
+        [Manage Containers]
+    }
+
+    node "containerd-shim" as containerd_shim {
+        [Monitor Containers]
+    }
+    node runC {
+        [Run Containers]
+    }
+
+    collections "   <$ECScontainer>\nContainers" as cont
+
+    dockerdeamon - libcontainer
+    dockerdeamon -- containerd: gRPC
+    containerd -- containerd_shim
+    containerd_shim -- runC
+    runC -- cont
+}
+
+package "<$linux> Linux" as linux {
+    component "namespaces"
+    component "CGroups"
+    component "CFS: Completely Fair Scheduler"
+}
+
+libcontainer - linux
+
+legend right
+<color:black></color> High Level docker Architecture <color:blue><$k8s></color>
+|= Component |= Description |= Function  |
+|  dockerd  | Docker daemon |  persistent process that manages containers. Docker uses different binaries for the daemon and client.\n To run the daemon you type dockerd |
+|  libcontainer  | Docker execution environment | Libcontainer enables containers to work with Linux namespaces, control groups, capabilities, AppArmor,\n security profiles, network interfaces and firewalling rules in a consistent and predictable way. |
+|  containerd  | Daemon for Linux and Windows | It manages the complete container lifecycle of its host system, from image transfer and storage\n to container execution and supervision to low-level storage to network attachments and beyond. |
+|  runC  | Lightweight binary | Responsible for spawning and running containers according to the OCI specification |
+|  containerd-shim  | Daemon | Allows contianerd to exit after running a contianer, thus no need for long running\n runtime processes for running containers |
+|  CFS  | Part of kernel | Responsible for managing CPU resources and allocating the time of the CPU between different processes |
+endlegend
+
+@enduml

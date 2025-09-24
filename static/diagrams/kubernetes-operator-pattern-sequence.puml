@@ -1,0 +1,33 @@
+@startuml
+!pragma teoz true
+!theme mars
+hide footbox
+autonumber
+scale 1920x1080
+skinparam defaultTextAlignment center
+skinparam shadowing true
+skinparam BoxPadding 10
+
+title Kubernetes Operator Pattern in Abstract
+
+actor "User" as user
+box "Kubernetes Cluster" #LightGreen
+  participant "Desired State" as desired_state
+  control "Operator Reconciliation" as operator
+box "In or outside of the cluster"
+  participant "Managed Resource(s)" as managed_resource
+end box
+end box
+
+user -> desired_state : Declare desired state
+
+operator o<--> desired_state : Continuously ensure actual
+autonumber stop
+& operator o<--> managed_resource: state matches desired state
+note right of operator
+  The operator:
+  - Monitors the desired state
+  - Performs necessary tasks to reconcile the actual state
+  - Capabilities include complex tasks like backups, scaling, and upgrades
+end note
+@enduml

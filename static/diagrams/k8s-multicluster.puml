@@ -1,0 +1,12 @@
+@startuml
+
+start
+
+if "Cluster Installed" then ->[ok] 
+else -->[no]
+endif
+
+
+stop
+ 
+@enduml

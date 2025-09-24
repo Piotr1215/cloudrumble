@@ -1,0 +1,50 @@
+@startuml multi-layer-architecture-components
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <tupadr3/devicons/chrome>
+!include <tupadr3/font-awesome-5/keyboard>
+!include <tupadr3/font-awesome-5/mouse>
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include FONTAWESOME/user.puml
+
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+'left to right direction
+
+skinparam BackgroundColor white
+skinparam componentShadowing true
+skinparam rectangleRoundCorner 0
+skinparam rectangleBorderStyle default
+skinparam rectangleBackgroundColor white
+skinparam componentBackgroundColor white
+skinparam linetype poly
+skinparam rectangleShadowing true
+skinparam ActorBackgroundColor white
+skinparam ParticipantBackgroundColor transparent
+skinparam CollectionsBackgroundColor transparent
+skinparam ArrowColor black
+
+rectangle "<$user>" as user
+
+frame "<$chrome>   " <<https://awesome-site.com>> as browser
+
+rectangle "Web Server" as web_server {
+
+    component "Presentation Layer" as ui
+}
+
+rectangle "Application Server" as app_server {
+
+    component "Application Layer" as api
+}
+
+rectangle "Database Server" as db_server {
+    component "Data Persistance Layer" as db
+}
+
+user <-r-> browser : <$mouse> <$keyboard>
+browser <.r.> ui : HTTPS
+ui <--> api : HTTPS
+api <--> db : TCP IP / ODBC
+
+@enduml

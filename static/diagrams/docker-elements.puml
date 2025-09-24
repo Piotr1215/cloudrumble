@@ -1,0 +1,25 @@
+@startuml docker-components
+'Icons
+!include <cloudinsight/docker>
+!include <cloudinsight/linux>
+
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+
+rectangle "                                  <$docker>\n Components For Running Docker Containers" as tit
+
+together "Group" as grp {
+    package "Docker Runtime" as runtime {
+        component "namespaces"
+        component "CGroupss"
+
+    }
+
+    package "<$registry> Linux" as linux {
+        component "namespace"
+        component "CGroups"
+    }
+}
+
+tit -[hidden]-> grp
+@enduml

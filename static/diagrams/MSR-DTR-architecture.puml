@@ -1,0 +1,51 @@
+@startuml MSR-DTR-Architecture
+'Icons
+!include <kubernetes/k8s-sprites-labeled-25pct>
+!include <tupadr3/devicons/docker>
+!include <tupadr3/font-awesome/server>
+!include <tupadr3/font-awesome/chrome>
+!include <tupadr3/font-awesome/terminal>
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+'Overrides
+skinparam linetype default
+
+rectangle "Clients" as client{
+
+    rectangle "<$terminal>" as ter
+    rectangle "<$chrome>\nWeb UI" as webclt
+}
+
+rectangle "Load Balancer" as bal
+
+rectangle "Swarm Cluster" as nodes {
+    node "Manager Node\n<$server>" as master {
+
+        rectangle "   <$docker>\nucp-agent" as u1
+        collections "          <$docker>\nother-components" as other
+    }
+    together {
+        node "Worker Node\n<$server>" as worker1 {
+            rectangle "   <$docker>\nucp-agent" as u2
+            rectangle "<$docker>\nMSR" as msr2
+            collections "          <$docker>\nother-components" as other2
+        }
+        node "Worker Node\n<$server>" as worker2 {
+            rectangle "   <$docker>\nucp-agent" as u3
+            rectangle "<$docker>\nMSR" as msr3
+            collections "          <$docker>\nother-components" as other3
+        }
+    }
+}
+
+bal -r- client : HTTPS
+bal --- nodes : HTTPS
+
+legend bottom
+<color:black></color> Mirantis Kubernetes Engine (former UCP) Architecture <color:blue><$k8s></color>
+|= Component |= Description |= Function  |
+|  ucp-agent  | Globally scheduled service \n (runs on every node) | Node monitoring, different behavior \n depending if it runs on manager or worker node |
+|  ucp-agent  | A TLS proxy | Allows secure access to the local Mirantis Container Runtime to MKE components |
+endlegend
+
+@enduml

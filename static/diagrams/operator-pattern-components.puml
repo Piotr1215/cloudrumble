@@ -1,0 +1,24 @@
+@startuml
+!define RECTANGLE
+!theme mars
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(user, "User", "Developer or Administrator creating CRD and CR")
+
+System_Boundary(k8s, "Kubernetes Cluster") {
+    Container(api_server, "API Server", "Manages CRD and CR")
+    Container(crd, "Custom Resource Definition (CRD)", "Defines the structure of CR")
+    Container(cr, "Custom Resource (CR)", "Represents the desired state of the application")
+    Container(controller, "Controller", "Monitors CR and reconciles the state")
+}
+
+Rel(user, api_server, "Creates CRD and CR")
+Rel(api_server, crd, "Manages")
+Rel(api_server, cr, "Manages")
+Rel(controller, api_server, "Watches CR")
+Rel(controller, cr, "Reconciles State")
+
+SHOW_LEGEND()
+@enduml

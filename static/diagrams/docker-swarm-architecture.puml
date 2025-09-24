@@ -1,0 +1,71 @@
+@startuml docker-swarm-architecture
+'Icons
+!include <tupadr3/devicons/docker>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!include <tupadr3/font-awesome/terminal>
+
+'Global Styles
+!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
+
+rectangle "                  <$docker>\n Docker Swarm Architecture"
+
+package "Docker Client" as client {
+    component "    <$terminal>\nDocker CLI" as cli
+    note right
+        Docker Service Create
+    end note
+}
+
+package "Swarm Manager Node" as manager{
+    component API as api
+    note right
+        Accepts commands and
+        creates service objects
+    end note
+    component Orchestrator as orch
+    note right
+        Reconcilliation loop that
+        creates tasks for service objects
+    end note
+    component Allocator as all
+    note right
+        Allocates IP addresses to tasks
+    end note
+    component Disparcher as disp
+    note right
+        Assigns tasks to nodes
+    end note
+    component Scheduler as sched
+    note right
+        Instructs worker to
+        run a task
+    end note
+}
+
+package "Swarm Worker Node" as worker {
+    component Worker as work
+    note right
+        Connects to dispatcher to
+        check for assigned tasks
+    end note
+    component Executor as exec
+    note right
+        Executes tasks assigned to worker node
+    end note
+    component "   <$ECScontainer>\nContianer" as cont
+}
+
+client -[hidden]r- manager
+manager -[hidden]r- worker
+
+cli -> api
+work -> sched
+
+api --> orch
+orch --> all
+all --> disp
+disp --> sched
+
+cont -[hidden]-> work
+work -[hidden]-> exec
+@enduml

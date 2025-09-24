@@ -1,0 +1,27 @@
+@startuml azure-container-apps-architecture
+!theme spacelab
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+!define AzurePuml https://raw.githubusercontent.com/RicardoNiepel/Azure-PlantUML/release/2-1/dist
+!include AzurePuml/AzureCommon.puml
+allow_mixing
+rectangle "Environment" {
+!procedure $foo($arg)
+    !$i=2
+    !while $i!=0
+          rectangle "Container App $i" as $i##cont {
+              !$i = $i - 1
+     !while $arg!=0
+
+              rectangle "Pod" as $arg##pod {
+                collections "<color:AZURE_SYMBOL_COLOR><$ECScontainer>\nContianer(s)" as $arg##app
+            }
+        }
+
+    !$arg = $arg - 1
+  !endwhile
+    !endwhile
+
+!endprocedure
+$foo(4)
+
+@enduml
