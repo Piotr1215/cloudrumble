@@ -78,11 +78,6 @@ const config = {
             position: "left",
           },
           {
-            to: "/gpts",
-            label: "GPTs",
-            position: "left",
-          },
-          {
             to: "/talks",
             label: "Talks",
             position: "left",

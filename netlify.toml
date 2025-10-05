@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/docs/talks"
+  to = "/talks"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/docs/videos"
+  to = "/videos"
+  status = 301
+  force = true
