@@ -1,5 +1,44 @@
 [
  {
+   "title": "GPU Sharing at Scale: vCluster + NVIDIA KAI Scheduler",
+   "description": "Kubernetes offers many ways to share GPUs, but a single, cluster-wide scheduler often forces trade-offs between utilization, stability, and team autonomy. This talk shows how vCluster makes the NVIDIA Kubernetes AI Scheduler (KAI) run as an opt-in service for each tenant.",
+   "date": "2025-11",
+   "conference": "SREDay Paris Q4 2025",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster",
+     "GPU",
+     "SRE"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://sreday.com/2025-paris-q4/",
+   "slidesUrl": null,
+   "thumbnailUrl": "/img/sre-day-paris.png",
+   "type": "talk",
+   "upcoming": true,
+   "abstract": "Kubernetes offers many ways to share GPUs, but a single, cluster-wide scheduler often forces trade-offs between utilization, stability, and team autonomy. This talk shows how vCluster makes the NVIDIA Kubernetes AI Scheduler (KAI) run as an opt-in service for each tenant—so platform teams can raise GPU density while keeping operations predictable. What We'll Cover: Problem statement – why mixed workloads leave GPUs under-used and complicate on-call; vCluster fundamentals – lightweight control planes that isolate scheduling logic, not hardware; KAI at a glance – fractional GPU allocation, gang queues, topology awareness; Live demonstration – two vClusters on one host. Key Takeaways: A reproducible pattern for running different schedulers side-by-side; Practical steps to increase GPU utilisation without adding more clusters; An isolation model that lets teams experiment safely. Why It Matters: As GPU demand grows, platform engineers must balance cost efficiency with reliability. Combining vCluster and KAI delivers both—turning idle accelerators into productive capacity while preserving operational control."
+ },
+ {
+   "title": "Workshop: Introduction to vCluster: Building Internal Developer Platforms",
+   "description": "The workshop introduces participants to vCluster, demonstrating how to create and manage virtual Kubernetes environments for multiple development teams. Attendees will learn to use vCluster effectively, starting with basic setups and progressing to more advanced configurations.",
+   "date": "2025-10",
+   "conference": "Kubernetes Community Days UK - Edinburgh 2025",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-edinburgh-2025/",
+   "slidesUrl": null,
+   "thumbnailUrl": "/img/kcd-uk-scotland.png",
+   "type": "workshop",
+   "upcoming": true,
+   "workshopUrl": "https://killercoda.com/decoder/course/vcluster/vcluster_introduction",
+   "abstract": "The workshop introduces participants to vCluster, demonstrating how to create and manage virtual Kubernetes environments for multiple development teams. Attendees will learn to use vCluster effectively, starting with basic setups and progressing to more advanced configurations. Throughout the workshop, participants will take on the perspective of a platform engineering team, making decisions and implementing solutions to serve the needs of various development groups within an organization. Key Focus Areas: Introduction to vCluster and virtual Kubernetes clusters; Setting up and configuring virtual Kubernetes clusters; Managing multiple development environments; Implementing shared services and optimizing resources; Enhancing developer workflows with self-service provisioning. Participants will: Set up and configure virtual Kubernetes clusters; Learn to manage multiple team environments efficiently; Explore resource optimization and cost reduction strategies; Implement progressive improvements to virtual cluster setups; Understand vCluster's role in enhancing developer productivity."
+ },
+ {
    "title": "Instant KAI Sandboxes with vCluster: Multi-Tenant, Multi-Scheduler GPU Sharing",
    "description": "Exploring how to create instant AI sandboxes using vCluster with multi-tenant capabilities and efficient GPU sharing across multiple schedulers.",
    "date": "2025-10",
@@ -14,8 +53,9 @@
    "recordingUrl": null,
    "conferenceUrl": "https://www.conf42.com/kubenative2025",
    "slidesUrl": null,
-   "thumbnailUrl": "/img/talks/cloud-native-platform.svg",
+   "thumbnailUrl": "/img/conf42-kube-native-2025.png",
    "type": "talk",
+   "upcoming": true,
    "abstract": "Learn how to create instant Kubernetes AI (KAI) sandboxes using vCluster, enabling multi-tenant environments with efficient GPU sharing across multiple schedulers. This talk explores practical patterns for providing isolated AI/ML development environments while maximizing GPU utilization through advanced scheduling techniques."
  },
  {
@@ -49,7 +89,7 @@
    "recordingUrl": null,
    "conferenceUrl": "https://community.cncf.io/events/details/cncf-cloud-native-frankfurt-presents-cloud-native-frankfurt-meetup-jun-2025/",
    "slidesUrl": null,
-   "thumbnailUrl": "/img/talks/cloud-native-platform.svg",
+   "thumbnailUrl": "/img/cloud-native-frankfurt-2025.png",
    "type": "talk",
    "abstract": "Building cloud native developer platforms using vcluster for team isolation while sharing common resources. The talk covers creating self-service portals, leveraging APIs, and automating workflows to enhance productivity and reliability. Interactive demo showcasing how to set up and manage virtual clusters for development teams."
  },
@@ -66,7 +106,7 @@
    "recordingUrl": null,
    "conferenceUrl": "https://sreday.com/2025-london-q1/",
    "slidesUrl": null,
-   "thumbnailUrl": "/img/talks/cloud-native-platform.svg",
+   "thumbnailUrl": "/img/sreday-london-q1-2025.png",
    "type": "talk",
    "abstract": "In this talk, I will explore how to build cloud-native platforms using Kubernetes. I will discuss creating self-service portals, leveraging programmatic APIs, and automating workflows to enhance productivity and reliability."
  },
@@ -226,6 +266,7 @@
    "recordingUrl": null,
    "conferenceUrl": "https://cloudnativesummit.de/",
    "slidesUrl": null,
+   "thumbnailUrl": "/img/cloud-native-summit-munich-2025.png",
    "type": "talk",
    "abstract": "Platform Engineering focuses on empowering developers and organizations by creating and maintaining internal software products known as platforms. In this talk, we will explore how to create multi-tenant, well-architected infrastructure platforms using vCluster."
  }

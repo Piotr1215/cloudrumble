@@ -68,6 +68,11 @@ const TalkCard = ({ talk }) => {
                     <h4 className="text-lg font-semibold text-primary dark:text-primary-light m-0">
                       {talk.conference}
                     </h4>
+                    {talk.upcoming && (
+                      <span className="px-2 py-1 text-xs font-bold text-white bg-gradient-to-r from-orange-500 to-red-500 rounded-md">
+                        UPCOMING
+                      </span>
+                    )}
                     {talk.type === 'keynote' && (
                       <span className="px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-md">
                         KEYNOTE
