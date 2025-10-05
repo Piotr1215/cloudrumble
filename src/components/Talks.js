@@ -26,9 +26,12 @@ const Talks = () => {
           Speaking Engagements
         </h1>
         <p className="text-gray-600 dark:text-gray-300">
-          Here are my recent talks and presentations at various conferences and events. 
-          Feel free to check out the recordings and slides!
+          I focus on deeply technical talks driven by live demos and real-world experience.
+          My sessions are hands-on, honest, and pragmatic—aimed at practitioners working with
+          Kubernetes, infrastructure, and AI. I've spoken at events like KCD (Kubernetes Community Days),
+          SRE Day, and internal summits. 
         </p>
+    <h2>List of past and upcoming talks below</h2>
       </div>
       <div className="mb-8 flex flex-wrap gap-4">
         <select
