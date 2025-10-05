@@ -1,19 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import Head from "@docusaurus/Head";
-import Lottie from "react-lottie";
-// @ts-ignore
-import animationData from "../../lotties/hero2.json";
 import Typing from "./typing";
-
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: animationData,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
 
 export default function HeroSection() {
   return (
