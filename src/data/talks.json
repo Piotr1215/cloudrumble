@@ -69,7 +69,7 @@
      "vCluster",
      "SRE"
    ],
-   "recordingUrl": null,
+   "recordingUrl": "https://www.youtube.com/watch?v=sfGyBZmNxqk",
    "conferenceUrl": "https://sreday.com/2025-london-q3/",
    "slidesUrl": "https://github.com/Piotr1215/youtube/blob/main/vcluster-multitenancy/presentation.md",
    "thumbnailUrl": "/img/talks/sreday-london-q3-2025.jpg",
@@ -103,7 +103,7 @@
      "Kubernetes",
      "SRE"
    ],
-   "recordingUrl": null,
+   "recordingUrl": "https://www.youtube.com/watch?v=O1BH5Y2bAdQ",
    "conferenceUrl": "https://sreday.com/2025-london-q1/",
    "slidesUrl": null,
    "thumbnailUrl": "/img/sreday-london-q1-2025.png",
@@ -266,7 +266,7 @@
    "recordingUrl": null,
    "conferenceUrl": "https://cloudnativesummit.de/",
    "slidesUrl": null,
-   "thumbnailUrl": "/img/cloud-native-summit-munich-2025.png",
+   "thumbnailUrl": "/img/talks/kcd-munchen.jpeg",
    "type": "talk",
    "abstract": "Platform Engineering focuses on empowering developers and organizations by creating and maintaining internal software products known as platforms. In this talk, we will explore how to create multi-tenant, well-architected infrastructure platforms using vCluster."
  }
