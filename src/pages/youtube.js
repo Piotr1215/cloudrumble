@@ -2,78 +2,17 @@ import React, { useState, useEffect } from "react";
 import Layout from "@theme/Layout";
 import YouTubeReel from "./components/YouTubeReel";
 import BrowserOnly from "@docusaurus/BrowserOnly";
-
-const CHANNEL_ID = "UCkWVN7H3JqGtJ5Pv5bvCrAw";
-const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
-const CORS_PROXY = "https://api.allorigins.win/raw?url=";
+const videosData = require('../data/videos.json');
 
 function YouTubeContent() {
-  const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [videos, setVideos] = useState(videosData);
+  const [loading, setLoading] = useState(false);
 
+  // Videos are loaded from static JSON file
+  // No need for async fetching or error handling
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const response = await fetch(CORS_PROXY + encodeURIComponent(RSS_URL));
-        const text = await response.text();
-
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(text, "text/xml");
-        const entries = xml.getElementsByTagName("entry");
-
-        const videoList = [];
-        for (let i = 0; i < Math.min(entries.length, 12); i++) {
-          const entry = entries[i];
-          const videoId = entry.getElementsByTagName("yt:videoId")[0]?.textContent;
-          const title = entry.getElementsByTagName("title")[0]?.textContent;
-          const published = entry.getElementsByTagName("published")[0]?.textContent;
-          const mediaGroup = entry.getElementsByTagName("media:group")[0];
-          const description = mediaGroup?.getElementsByTagName("media:description")[0]?.textContent;
-
-          if (videoId) {
-            videoList.push({
-              id: videoId,
-              videoId: videoId,
-              title: title || "Untitled",
-              thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
-              description: description?.substring(0, 150) + "..." || "",
-              date: new Date(published).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              }),
-            });
-          }
-        }
-
-        setVideos(videoList);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching videos:", err);
-        setError("Failed to load videos. Please try again later.");
-        setLoading(false);
-      }
-    };
-
-    fetchVideos();
+    setVideos(videosData);
   }, []);
-
-  if (loading) {
-    return (
-      <div className="text-center py-12">
-        <div className="text-xl">Loading latest videos...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-12">
-        <div className="text-xl text-red-500">{error}</div>
-      </div>
-    );
-  }
 
   return <YouTubeReel videos={videos} />;
 }

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "Ymh9-GTvriI",
+    "videoId": "Ymh9-GTvriI",
+    "title": "Top 10 Practical Terminal Commands I Use Every Day",
+    "thumbnail": "https://img.youtube.com/vi/Ymh9-GTvriI/maxresdefault.jpg",
+    "description": "",
+    "date": "Sep 13, 2025",
+    "publishedAt": "2025-09-13T17:40:08+00:00"
+  },
+  {
+    "id": "Q-tOLvbDWJ0",
+    "videoId": "Q-tOLvbDWJ0",
+    "title": "pairup.nvim | real-time AI pair programming in neovim",
+    "thumbnail": "https://img.youtube.com/vi/Q-tOLvbDWJ0/maxresdefault.jpg",
+    "description": "",
+    "date": "Sep 7, 2025",
+    "publishedAt": "2025-09-07T17:00:09+00:00"
+  },
+  {
+    "id": "NYC38m4Z47o",
+    "videoId": "NYC38m4Z47o",
+    "title": "beam nvim | remote text object operations with native search",
+    "thumbnail": "https://img.youtube.com/vi/NYC38m4Z47o/maxresdefault.jpg",
+    "description": "",
+    "date": "Aug 30, 2025",
+    "publishedAt": "2025-08-30T16:24:08+00:00"
+  },
+  {
+    "id": "Fej7-Q8YRR8",
+    "videoId": "Fej7-Q8YRR8",
+    "title": "Terminal-Only Media Workflow with Tmux and MPV | No Browser Required",
+    "thumbnail": "https://img.youtube.com/vi/Fej7-Q8YRR8/maxresdefault.jpg",
+    "description": "",
+    "date": "Aug 17, 2025",
+    "publishedAt": "2025-08-17T18:10:13+00:00"
+  },
+  {
+    "id": "5YFmYcic8XQ",
+    "videoId": "5YFmYcic8XQ",
+    "title": "Why You Should Build a Kubernetes Homelab | How to Start Today",
+    "thumbnail": "https://img.youtube.com/vi/5YFmYcic8XQ/maxresdefault.jpg",
+    "description": "",
+    "date": "Aug 10, 2025",
+    "publishedAt": "2025-08-10T15:47:09+00:00"
+  },
+  {
+    "id": "K_REZUyzQSY",
+    "videoId": "K_REZUyzQSY",
+    "title": "5 tmux sessions to boost your terminal workflow",
+    "thumbnail": "https://img.youtube.com/vi/K_REZUyzQSY/maxresdefault.jpg",
+    "description": "",
+    "date": "Jul 26, 2025",
+    "publishedAt": "2025-07-26T20:22:30+00:00"
+  },
+  {
+    "id": "3I8JzeIEUds",
+    "videoId": "3I8JzeIEUds",
+    "title": "3 Claude Sessions Collaborating in a Terminal: MCP Agentic Framework",
+    "thumbnail": "https://img.youtube.com/vi/3I8JzeIEUds/maxresdefault.jpg",
+    "description": "",
+    "date": "Jul 5, 2025",
+    "publishedAt": "2025-07-05T11:59:05+00:00"
+  },
+  {
+    "id": "yENV9LqqR2w",
+    "videoId": "yENV9LqqR2w",
+    "title": "Stop Googling Keyboard Shortcuts - Build This Instead!",
+    "thumbnail": "https://img.youtube.com/vi/yENV9LqqR2w/maxresdefault.jpg",
+    "description": "",
+    "date": "Jun 14, 2025",
+    "publishedAt": "2025-06-14T17:19:27+00:00"
+  },
+  {
+    "id": "lxZb_QEGQ7E",
+    "videoId": "lxZb_QEGQ7E",
+    "title": "Terminal Monitoring with Unix Philosophy",
+    "thumbnail": "https://img.youtube.com/vi/lxZb_QEGQ7E/maxresdefault.jpg",
+    "description": "",
+    "date": "Jun 8, 2025",
+    "publishedAt": "2025-06-08T21:07:38+00:00"
+  },
+  {
+    "id": "kwjuHO9ZWlA",
+    "videoId": "kwjuHO9ZWlA",
+    "title": "Bookmarks manager in terminal with tmux and neovim",
+    "thumbnail": "https://img.youtube.com/vi/kwjuHO9ZWlA/maxresdefault.jpg",
+    "description": "Learn how to build your own files and folders bookmark manager using tmux, neovim, bash and lua code....",
+    "date": "May 4, 2025",
+    "publishedAt": "2025-05-04T14:25:37+00:00"
+  },
+  {
+    "id": "NoSrjHnirKw",
+    "videoId": "NoSrjHnirKw",
+    "title": "Human vs Claude AI: Neovim Coding Showdown",
+    "thumbnail": "https://img.youtube.com/vi/NoSrjHnirKw/maxresdefault.jpg",
+    "description": "",
+    "date": "Apr 26, 2025",
+    "publishedAt": "2025-04-26T20:29:59+00:00"
+  },
+  {
+    "id": "D2pe9ZZ2yCE",
+    "videoId": "D2pe9ZZ2yCE",
+    "title": "How to build your own scripts library",
+    "thumbnail": "https://img.youtube.com/vi/D2pe9ZZ2yCE/maxresdefault.jpg",
+    "description": "",
+    "date": "Apr 12, 2025",
+    "publishedAt": "2025-04-12T16:33:37+00:00"
+  }
+]

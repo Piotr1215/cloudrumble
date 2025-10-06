@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Cloud Rumble",
+    "description": "Source for my homepage cloudrumble.net. Docs, blogs, tips & tricks.",
+    "stars": 54,
+    "url": "https://github.com/Piotr1215/cloudrumble",
+    "tags": ["Documentation", "Blog", "Docusaurus"],
+    "category": "web"
+  },
+  {
+    "name": "kubectl-container",
+    "description": "kubectl with plugins and auto-completion",
+    "stars": 16,
+    "url": "https://github.com/Piotr1215/kubectl-container",
+    "tags": ["Kubernetes", "Docker", "CLI"],
+    "installCommand": "docker run -it --rm piotrzan/kubectl-comp",
+    "category": "container"
+  },
+  {
+    "name": "beam.nvim",
+    "description": "Beam nvim text operations on text objects anywhere in your file.",
+    "stars": 36,
+    "url": "https://github.com/Piotr1215/beam.nvim",
+    "tags": ["Neovim", "Plugin", "Productivity"],
+    "installCommand": "{ 'Piotr1215/beam.nvim' }",
+    "installType": "lazy.nvim",
+    "category": "neovim"
+  },
+  {
+    "name": "pairup.nvim",
+    "description": "AI Pair Programming in Neovim",
+    "stars": 29,
+    "url": "https://github.com/Piotr1215/pairup.nvim",
+    "tags": ["Neovim", "AI", "Plugin"],
+    "installCommand": "{ 'Piotr1215/pairup.nvim' }",
+    "installType": "lazy.nvim",
+    "category": "neovim"
+  },
+  {
+    "name": "presenterm.nvim",
+    "description": "Neovim plugin for presenterm",
+    "stars": 21,
+    "url": "https://github.com/Piotr1215/presenterm.nvim",
+    "tags": ["Neovim", "Plugin", "Presentations"],
+    "installCommand": "{ 'Piotr1215/presenterm.nvim' }",
+    "installType": "lazy.nvim",
+    "category": "neovim"
+  },
+  {
+    "name": "dotfiles",
+    "description": "Pop_OS! dotfiles with install script. Complete development environment setup with Neovim, Tmux, and essential CLI tools.",
+    "stars": 108,
+    "url": "https://github.com/Piotr1215/dotfiles",
+    "tags": ["Dotfiles", "Linux", "Configuration"],
+    "category": "config"
+  },
+  {
+    "name": "mcp-agentic-framework",
+    "description": "MCP implementation of an agentic framework",
+    "stars": 2,
+    "url": "https://github.com/Piotr1215/mcp-agentic-framework",
+    "tags": ["MCP", "AI", "Framework"],
+    "installCommand": "npm install @piotr1215/mcp-agentic-framework",
+    "category": "mcp"
+  },
+  {
+    "name": "mcp-obsidian",
+    "description": "Simple MCP server for interacting with local obsidian notes",
+    "stars": 2,
+    "url": "https://github.com/Piotr1215/mcp-obsidian",
+    "tags": ["MCP", "Obsidian", "Notes"],
+    "installCommand": "npm install @piotr1215/mcp-obsidian",
+    "category": "mcp"
+  },
+  {
+    "name": "killercoda-cli",
+    "description": "Helper CLI for creating killercoda scenarios",
+    "stars": 5,
+    "url": "https://github.com/Piotr1215/killercoda-cli",
+    "tags": ["CLI", "Killercoda", "Education"],
+    "installCommand": "go install github.com/Piotr1215/killercoda-cli@latest",
+    "category": "cli"
+  },
+  {
+    "name": "pet-snippets",
+    "description": "Collection of useful command line snippets for everyday tasks. Use with the pet CLI tool for quick access to frequently used commands.",
+    "stars": 4,
+    "url": "https://github.com/Piotr1215/pet-snippets",
+    "tags": ["CLI", "Snippets", "Productivity"],
+    "category": "snippets"
+  },
+  {
+    "name": "aicmdtools",
+    "description": "GoAI is a Go library and command line for interacting with OpenAI API",
+    "stars": 23,
+    "url": "https://github.com/Piotr1215/aicmdtools",
+    "tags": ["CLI", "AI", "OpenAI", "Go"],
+    "installCommand": "go install github.com/Piotr1215/aicmdtools@latest",
+    "category": "cli"
+  },
+  {
+    "name": "typeit.nvim",
+    "description": "Simulate typing in real time without paste, or pausing on paragraph or lines",
+    "stars": 6,
+    "url": "https://github.com/Piotr1215/typeit.nvim",
+    "tags": ["Neovim", "Plugin", "Presentations"],
+    "installCommand": "{ 'Piotr1215/typeit.nvim' }",
+    "installType": "lazy.nvim",
+    "category": "neovim"
+  },
+  {
+    "name": "incus-dev-env",
+    "description": "Containerized distributed development environment with incus. Quickly spin up isolated development environments with full Linux distributions.",
+    "stars": 10,
+    "url": "https://github.com/Piotr1215/incus-dev-env",
+    "tags": ["Incus", "Development", "Containers"],
+    "category": "dev"
+  },
+  {
+    "name": "Crossplane",
+    "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
+    "stars": 10908,
+    "url": "https://github.com/crossplane/crossplane",
+    "tags": ["Kubernetes", "Cloud Native", "Control Plane", "Platform Engineering"],
+    "category": "contributed",
+    "isContributed": true
+  },
+  {
+    "name": "vCluster",
+    "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
+    "stars": 10619,
+    "url": "https://github.com/loft-sh/vcluster",
+    "tags": ["Kubernetes", "Virtual Clusters", "Multi-tenancy"],
+    "category": "contributed",
+    "isContributed": true
+  },
+  {
+    "name": "vCluster Docs",
+    "description": "Documentation for vCluster - virtual Kubernetes clusters",
+    "stars": 5,
+    "url": "https://github.com/loft-sh/vcluster-docs",
+    "tags": ["Documentation", "Kubernetes", "vCluster"],
+    "category": "contributed",
+    "isContributed": true
+  }
+]
