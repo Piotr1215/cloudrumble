@@ -5,13 +5,10 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 
 const InfiniteAutoplaySwipe = ({ data, Comp, number }) => {
-  const slidesPerView = number || 3;
-  const hasEnoughSlides = data.length >= slidesPerView * 2;
-
   return (
     <div className="w-full   relative">
       <Swiper
-        slidesPerView={slidesPerView}
+        slidesPerView={number || 3}
         centeredSlides={true}
         spaceBetween={10}
         grabCursor={true}
@@ -22,7 +19,6 @@ const InfiniteAutoplaySwipe = ({ data, Comp, number }) => {
           pauseOnMouseEnter: true,
           disableOnInteraction: false,
         }}
-        loop={hasEnoughSlides}
       >
         {data.map((item, index) => (
           <SwiperSlide
