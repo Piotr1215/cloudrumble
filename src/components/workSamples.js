@@ -1,15 +1,12 @@
 import * as React from "react";
 import StarSvg from "../icons/star.svg";
 import ClapSvg from "../icons/clap.svg";
-import InfiniteAutoplaySwipe from "./infinityAutoplaySwipe";
-import useScreenSize from "../hooks/useScreenSize";
 import ThemedImage from "@theme/ThemedImage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
 const data = require("../data/work.json");
 
 function WorkSamples() {
-  const screenSize = useScreenSize();
   return (
     <div className="flex flex-col  items-center space-y-6 mb-20">
       <main className="container lg:px-12 ">
@@ -20,11 +17,11 @@ function WorkSamples() {
           <br />
         </p>
 
-        <InfiniteAutoplaySwipe
-          Comp={Card}
-          data={data}
-          number={screenSize === "sm" ? 1 : screenSize === "md" ? 2 : 3}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
+          {data.map((item, index) => (
+            <Card key={index} item={item} />
+          ))}
+        </div>
       </main>
     </div>
   );
