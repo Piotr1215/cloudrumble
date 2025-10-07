@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Cloud Rumble",
   tagline: "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
-  url: "https://frosty-babbage-3125a3.netlify.app",
+  url: "https://cloudrumble.net",
   baseUrl: "/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
