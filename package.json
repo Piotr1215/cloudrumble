@@ -43,7 +43,7 @@
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
     "trim": "1.0.1",
-    "typescript": "5.9.2",
+    "typescript": "5.9.3",
     "url": "^0.11.3"
   },
   "resolutions": {
