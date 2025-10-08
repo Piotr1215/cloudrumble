@@ -13,7 +13,7 @@ export default function FeaturedProjects() {
     <section className="px-4">
       <div className="mx-auto max-w-7xl">
         {/* Projects Terminal */}
-        <div className="rounded-lg border-2 border-gray-700 bg-black shadow-xl overflow-hidden font-mono">
+        <div className="rounded-lg border-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-black shadow-xl overflow-hidden font-mono">
           <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-800 px-4 py-2">
             <div className="flex gap-2">
               <div className="h-2.5 w-2.5 rounded-full bg-red-500"></div>
@@ -29,8 +29,8 @@ export default function FeaturedProjects() {
             <div className="flex items-center gap-2 mb-4">
               <span className="text-green-400">➜</span>
               <span className="text-blue-400">~/projects</span>
-              <span className="text-gray-300">$</span>
-              <span className="text-white ml-2">ls -lh --sort=stars</span>
+              <span className="text-gray-500 dark:text-gray-300">$</span>
+              <span className="text-gray-900 dark:text-white ml-2">ls -lh --sort=stars</span>
             </div>
 
             <div className="ml-4 space-y-3">
@@ -46,7 +46,7 @@ export default function FeaturedProjects() {
                     <span className="text-blue-400">drwxr-xr-x</span>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-cyan-400 font-semibold group-hover:text-cyan-300">
+                        <span className="text-cyan-600 dark:text-cyan-400 font-semibold group-hover:text-cyan-300">
                           {project.name}
                         </span>
                         {project.stars && (
@@ -55,7 +55,7 @@ export default function FeaturedProjects() {
                           </span>
                         )}
                       </div>
-                      <div className="text-gray-400 text-xs mb-1">
+                      <div className="text-gray-600 dark:text-gray-400 text-xs mb-1">
                         {project.description}
                       </div>
                       <div className="flex flex-wrap gap-1">

@@ -162,7 +162,7 @@ export default function TerminalHero() {
     <section className="no-underline-links px-4">
       <div className="mx-auto max-w-7xl">
         {/* Terminal Window */}
-        <div className="rounded-lg border-2 border-gray-700 bg-black shadow-2xl overflow-hidden font-mono">
+        <div className="rounded-lg border-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-black shadow-2xl overflow-hidden font-mono">
           {/* Terminal Header */}
           <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-800 px-4 py-2">
             <div className="flex gap-2">
@@ -182,15 +182,15 @@ export default function TerminalHero() {
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-green-400">➜</span>
                 <span className="text-blue-400">~</span>
-                <span className="text-gray-300">$</span>
-                <span className="text-white ml-2">whoami</span>
+                <span className="text-gray-500 dark:text-gray-300">$</span>
+                <span className="text-gray-900 dark:text-white ml-2">whoami</span>
               </div>
               <div className="ml-4 space-y-4">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-green-400 font-bold text-2xl">Piotr Zaniewski:</span>
-                  <BrowserOnly fallback={<span className="text-gray-300 text-lg">Platform Engineer</span>}>
+                  <BrowserOnly fallback={<span className="text-gray-800 dark:text-gray-300 text-lg">Platform Engineer</span>}>
                     {() => (
-                      <span className="text-gray-300 text-lg">
+                      <span className="text-gray-800 dark:text-gray-300 text-lg">
                         <TypeAnimation
                           sequence={[
                             "Platform Engineer",
@@ -210,7 +210,7 @@ export default function TerminalHero() {
                   </BrowserOnly>
                 </div>
 
-                <div className="text-gray-300 leading-relaxed space-y-2">
+                <div className="text-gray-800 dark:text-gray-300 leading-relaxed space-y-2">
                   <p>
                     I lead <span className="text-green-400 font-semibold">platform, operations, and DevOps teams</span> while driving technical excellence across
                     cloud-native infrastructure. My expertise spans Kubernetes, GitOps, and building tools
