@@ -222,8 +222,8 @@ export default function TerminalHero() {
                     and engineering summits—sessions that are hands-on, honest, and <span className="text-green-400 font-semibold">pragmatic</span>.
                   </p>
                   <p>
-                    <span className="text-green-400 font-semibold">I love contributing</span> to CNCF projects like Crossplane, <span className="text-green-400 font-semibold">vCluster</span>, and OpenGitOps, and building open source
-                    tools for terminal-focused developers including Neovim plugins, CLI utilities, and <span className="text-green-400 font-semibold">AI-powered</span> development workflows.
+                    <span className="text-green-400 font-semibold">I love contributing</span> to open source projects like <span className="text-green-400 font-semibold">vCluster</span> for virtual Kubernetes clusters.
+                    I build tools for terminal-focused developers including Neovim plugins, CLI utilities, and <span className="text-green-400 font-semibold">AI-powered</span> development workflows.
                   </p>
                 </div>
 
