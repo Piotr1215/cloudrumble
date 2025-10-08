@@ -6,13 +6,14 @@ const talksData = require("../../data/talks.json");
 export default function TerminalContent() {
   const recentVideos = videosData.slice(0, 6);
   const upcomingTalks = talksData.filter(t => t.upcoming).slice(0, 3);
-  const recentTalks = talksData.filter(t => !t.upcoming).slice(0, 3);
+  const upcomingCount = upcomingTalks.length;
+  const recentTalks = talksData.filter(t => !t.upcoming).slice(0, 6 - upcomingCount);
 
   return (
     <section className="px-4">
       <div className="mx-auto max-w-7xl space-y-16">
         {/* Videos Terminal */}
-        <div className="rounded-lg border-2 border-gray-700 bg-black shadow-xl overflow-hidden font-mono">
+        <div className="rounded-lg border-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-black shadow-xl overflow-hidden font-mono">
           <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-800 px-4 py-2">
             <div className="flex gap-2">
               <div className="h-2.5 w-2.5 rounded-full bg-red-500"></div>
@@ -28,8 +29,8 @@ export default function TerminalContent() {
             <div className="flex items-center gap-2 mb-4">
               <span className="text-green-400">➜</span>
               <span className="text-blue-400">~/content/videos</span>
-              <span className="text-gray-300">$</span>
-              <span className="text-white ml-2">ls -lh --recent</span>
+              <span className="text-gray-500 dark:text-gray-300">$</span>
+              <span className="text-gray-900 dark:text-white ml-2">ls -lh --recent</span>
             </div>
 
             <div className="ml-4 space-y-2">
@@ -43,7 +44,7 @@ export default function TerminalContent() {
                 >
                   <span className="text-blue-400">-rw-r--r--</span>
                   <span className="text-gray-500 text-xs w-24">{video.date}</span>
-                  <span className="text-white group-hover:text-cyan-400 transition-colors">
+                  <span className="text-gray-900 dark:text-white group-hover:text-cyan-400 transition-colors">
                     {video.title}
                   </span>
                 </Link>
@@ -63,7 +64,7 @@ export default function TerminalContent() {
         </div>
 
         {/* Talks Terminal */}
-        <div className="rounded-lg border-2 border-gray-700 bg-black shadow-xl overflow-hidden font-mono">
+        <div className="rounded-lg border-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-black shadow-xl overflow-hidden font-mono">
           <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-800 px-4 py-2">
             <div className="flex gap-2">
               <div className="h-2.5 w-2.5 rounded-full bg-red-500"></div>
@@ -82,8 +83,8 @@ export default function TerminalContent() {
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-green-400">➜</span>
                   <span className="text-blue-400">~/content/talks</span>
-                  <span className="text-gray-300">$</span>
-                  <span className="text-white ml-2">ls -lh --upcoming</span>
+                  <span className="text-gray-500 dark:text-gray-300">$</span>
+                  <span className="text-gray-900 dark:text-white ml-2">ls -lh --upcoming</span>
                 </div>
 
                 <div className="ml-4 space-y-2">
@@ -98,10 +99,10 @@ export default function TerminalContent() {
                       <span className="text-yellow-400">●</span>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-cyan-400 font-semibold group-hover:text-cyan-300">{talk.title}</span>
+                          <span className="text-cyan-600 dark:text-cyan-400 font-semibold group-hover:text-cyan-300">{talk.title}</span>
                           <span className="text-gray-500 text-xs">[{talk.date}]</span>
                         </div>
-                        <div className="text-gray-400 text-xs mt-1">{talk.conference}</div>
+                        <div className="text-gray-600 dark:text-gray-400 text-xs mt-1">{talk.conference}</div>
                       </div>
                     </Link>
                   ))}
@@ -114,8 +115,8 @@ export default function TerminalContent() {
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-green-400">➜</span>
                 <span className="text-blue-400">~/content/talks</span>
-                <span className="text-gray-300">$</span>
-                <span className="text-white ml-2">ls -lh --recent</span>
+                <span className="text-gray-500 dark:text-gray-300">$</span>
+                <span className="text-gray-900 dark:text-white ml-2">ls -lh --recent</span>
               </div>
 
               <div className="ml-4 space-y-2">
@@ -130,12 +131,12 @@ export default function TerminalContent() {
                     <span className="text-green-400">✓</span>
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-white group-hover:text-cyan-400 transition-colors">
+                        <span className="text-gray-900 dark:text-white group-hover:text-cyan-400 transition-colors">
                           {talk.title}
                         </span>
                         <span className="text-gray-500 text-xs">[{talk.date}]</span>
                       </div>
-                      <div className="text-gray-400 text-xs mt-1">{talk.conference}</div>
+                      <div className="text-gray-600 dark:text-gray-400 text-xs mt-1">{talk.conference}</div>
                     </div>
                   </Link>
                 ))}
