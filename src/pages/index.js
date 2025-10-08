@@ -2,10 +2,9 @@ import React from "react";
 import Layout from "@theme/Layout";
 import "../css/custom.css";
 import Head from "@docusaurus/Head";
-import HeroSection from "./components/hero";
-import CategoriesSection from "./components/categories";
-import ResourcesSection from "./components/Resources";
-import WorkSamples from "../components/workSamples";
+import TerminalHero from "./components/terminalHero";
+import FeaturedProjects from "./components/featuredProjects";
+import TerminalContent from "./components/terminalContent";
 import Footer from "../components/footer";
 
 export default function Homepage() {
@@ -14,12 +13,11 @@ export default function Homepage() {
       <Head>
         <link rel="prefetch" href="/css/elements.min.css" />
       </Head>
-      <HeroSection />
-      <CategoriesSection />
-      <main className="w-full overflow-x-hidden">
-        <ResourcesSection />
-        <WorkSamples />
-      </main>
+      <div className="space-y-16 py-16">
+        <TerminalHero />
+        <FeaturedProjects />
+        <TerminalContent />
+      </div>
       <Footer />
     </Layout>
   );
