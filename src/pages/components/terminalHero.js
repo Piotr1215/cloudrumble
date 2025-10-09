@@ -8,6 +8,9 @@ export default function TerminalHero() {
   const [currentCommand, setCurrentCommand] = useState("");
   const [lastCommand, setLastCommand] = useState(null);
   const [showHelp, setShowHelp] = useState(true);
+  const [inVimMode, setInVimMode] = useState(false);
+  const [vimBuffer, setVimBuffer] = useState("");
+  const [vimAttempts, setVimAttempts] = useState(0);
   const inputRef = useRef(null);
   const history = useHistory();
 
@@ -61,7 +64,12 @@ export default function TerminalHero() {
     },
     vim: {
       hidden: true,
-      action: () => "Pro tip: I use Neovim btw"
+      action: () => {
+        setInVimMode(true);
+        setVimAttempts(0);
+        setShowHelp(false);
+        return null;
+      }
     },
     nvim: {
       hidden: true,
@@ -124,6 +132,334 @@ export default function TerminalHero() {
     }
   };
 
+  const handleVimCommand = (cmd) => {
+    const trimmedCmd = cmd.trim();
+    setVimAttempts(prev => prev + 1);
+
+    const vimResponses = {
+      ":q": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ You escaped vim!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":wq": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ You escaped vim AND saved your work!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+              <div className="text-cyan-400 text-sm">Efficiency level: Expert</div>
+            </div>
+          )
+        };
+      },
+      ":q!": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Force quit successful!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+              <div className="text-yellow-400 text-sm">All unsaved changes discarded (there were none anyway)</div>
+            </div>
+          )
+        };
+      },
+      ":x": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Saved and exited!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+              <div className="text-cyan-400 text-sm">A true vim wizard!</div>
+            </div>
+          )
+        };
+      },
+      "ZZ": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Exited with ZZ!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+              <div className="text-purple-400 text-sm">Wow, someone actually knows the keyboard shortcuts!</div>
+            </div>
+          )
+        };
+      },
+      "ZQ": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Quit without saving with ZQ!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+              <div className="text-purple-400 text-sm">A true vim master!</div>
+            </div>
+          )
+        };
+      },
+      ":exit": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Exited vim!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":qa": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Quit all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":qa!": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Force quit all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":qall": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Quit all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":qall!": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Force quit all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":wqa": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Write all and quit!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":wqall": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Write all and quit!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":xa": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Exited all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":xal": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Exited all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":xall": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Exited all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":quita": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Quit all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":quital": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Quit all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":quitall": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Quit all!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":wqal": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Write all and quit!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":exi": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Exited vim!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      },
+      ":exil": () => {
+        setInVimMode(false);
+        setVimBuffer("");
+        return {
+          command: "vim",
+          output: (
+            <div className="space-y-2">
+              <div className="text-green-400">✓ Exited vim!</div>
+              <div className="text-gray-400 text-sm">Attempts: {vimAttempts + 1}</div>
+            </div>
+          )
+        };
+      }
+    };
+
+    if (vimResponses[trimmedCmd]) {
+      const result = vimResponses[trimmedCmd]();
+      setLastCommand(result);
+      return;
+    }
+
+    // Funny responses for incorrect commands
+    if (trimmedCmd) {
+      const funnyResponses = [
+        "Nice try, but that's not it...",
+        "So close, yet so far away...",
+        "Have you tried turning it off and on again?",
+        "That's not how vim works, friend",
+        "You're making this harder than it needs to be",
+        "The year is 2025 and you're still stuck in vim",
+        "Legend says some are still trying to exit vim to this day",
+        "Your keyboard is not broken, you just need the right command",
+        "This is why we can't have nice things",
+        "404: Exit command not found",
+        "This isn't Google, you can't just type anything",
+        "Keep trying, you'll get there... eventually",
+        "At this rate, you'll discover the answer by accident",
+        "Fun fact: vim has been holding developers hostage since 1991"
+      ];
+
+      const randomResponse = funnyResponses[Math.floor(Math.random() * funnyResponses.length)];
+      setVimBuffer(prev => prev + `\n${randomResponse}`);
+    }
+  };
+
   const handleCommand = (cmd) => {
     const trimmedCmd = cmd.trim().toLowerCase();
 
@@ -149,7 +485,12 @@ export default function TerminalHero() {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleCommand(currentCommand);
+      if (inVimMode) {
+        handleVimCommand(currentCommand);
+        setCurrentCommand("");
+      } else {
+        handleCommand(currentCommand);
+      }
     }
   };
 
@@ -261,8 +602,60 @@ export default function TerminalHero() {
               </div>
             )}
 
+            {/* Vim Mode Display */}
+            {inVimMode && (
+              <div className="mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-green-400">➜</span>
+                  <span className="text-blue-400">~</span>
+                  <span className="text-gray-300">$</span>
+                  <span className="text-white ml-2">vim</span>
+                </div>
+                <div className="bg-black p-6 rounded text-sm leading-relaxed">
+                  <div className="space-y-0.5 text-gray-500">
+                    <div>~</div>
+                    <div>~</div>
+                    <div>~</div>
+                    <div>~</div>
+                    <div>~</div>
+                    <div>~</div>
+                  </div>
+                  <div className="text-center space-y-1 my-4">
+                    <div className="text-white font-bold">VIM - Vi IMproved</div>
+                    <div className="text-gray-400">~</div>
+                    <div className="text-gray-300">version 8.2.2121</div>
+                    <div className="text-gray-300">by Bram Moolenaar et al.</div>
+                    <div className="text-gray-300">Modified by team+vim@tracker.debian.org</div>
+                    <div className="text-gray-300">Vim is open source and freely distributable</div>
+                    <div className="text-gray-400">~</div>
+                  </div>
+                  <div className="space-y-0.5 text-gray-500">
+                    <div>~</div>
+                    <div>~</div>
+                    <div>~</div>
+                    <div>~</div>
+                    <div>~</div>
+                    <div>~</div>
+                  </div>
+                  {vimBuffer && (
+                    <div className="text-red-400 text-sm space-y-1 mt-4 border-t border-gray-800 pt-2">
+                      {vimBuffer.split('\n').filter(line => line.trim()).map((line, i) => (
+                        <div key={i}>{line}</div>
+                      ))}
+                    </div>
+                  )}
+                  <div className="border-t border-gray-800 pt-2 mt-4 flex justify-between items-center">
+                    <div className="text-white text-xs">
+                      <span className="bg-gray-700 px-2 py-0.5">NORMAL</span>
+                    </div>
+                    <div className="text-gray-500 text-xs">Attempt {vimAttempts + 1}</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Help Display */}
-            {showHelp && (
+            {showHelp && !inVimMode && (
               <div className="mb-4 ml-4 border-l-2 border-cyan-500 pl-4">
                 <div className="text-cyan-400 font-semibold mb-2">Available Commands:</div>
                 <div className="space-y-1 text-sm">
@@ -286,9 +679,13 @@ export default function TerminalHero() {
               className="mt-6 flex items-center gap-2 cursor-text"
               onClick={focusInput}
             >
-              <span className="text-green-400">➜</span>
-              <span className="text-blue-400">~</span>
-              <span className="text-gray-300">$</span>
+              {!inVimMode && (
+                <>
+                  <span className="text-green-400">➜</span>
+                  <span className="text-blue-400">~</span>
+                  <span className="text-gray-300">$</span>
+                </>
+              )}
               <input
                 ref={inputRef}
                 type="text"
@@ -296,7 +693,7 @@ export default function TerminalHero() {
                 onChange={(e) => setCurrentCommand(e.target.value)}
                 onKeyPress={handleKeyPress}
                 className="ml-2 bg-transparent border-none outline-none text-white font-mono flex-1 caret-white"
-                placeholder="Type 'help' for commands..."
+                placeholder={inVimMode ? "Enter command to exit vim..." : "Type 'help' for commands..."}
                 autoComplete="off"
                 spellCheck="false"
               />
