@@ -103,27 +103,7 @@ vCluster creates a fully functional Kubernetes cluster inside a namespace of you
 
 **Key characteristics:**
 
-```mermaid
-graph TB
-    subgraph "vCluster Pod Components"
-        API["API Server<br/>(k8s)"]
-        ETCD["Data Store<br/>(SQLite/etcd)"]
-        SYNC["Syncer<br/>(bi-directional)"]
-        CTRL["Controller Manager"]
-        SCHED["Scheduler<br/>(optional)"]
-    end
-
-    subgraph "Host Cluster"
-        RES["Synced Resources<br/>(Pods, Services, PVCs,<br/>ConfigMaps, Secrets, etc.)"]
-    end
-
-    API --> ETCD
-    API --> SYNC
-    SYNC <--> RES
-
-    style API fill:#4dabf7,color:#fff
-    style SYNC fill:#51cf66,color:#fff
-```
+![Solution: vCluster for Isolated Testing](_media/diagrams/01-solution-vcluster-for-isolated-testing.png)
 
 The architecture consists of these components:
 - **API Server**: Handles all Kubernetes API calls independently
@@ -135,29 +115,7 @@ This architecture enables running a Kubernetes cluster inside Kubernetes, with c
 
 ## The Syncer: vCluster's Core Component
 
-```mermaid
-graph LR
-    subgraph "vCluster"
-        VAPI["vCluster<br/>API Server"]
-    end
-
-    SYNCER["Syncer<br/>(bidirectional)"]
-
-    subgraph "Host Cluster"
-        HAPI["Host<br/>API Server"]
-        RES["Various Resources<br/>(Pods, Services, PVCs,<br/>ConfigMaps, Secrets, etc.)"]
-    end
-
-    VAPI -->|"1. Create Resource"| SYNCER
-    SYNCER -->|"2. Transform & Apply"| HAPI
-    HAPI -->|"3. Create in Host"| RES
-    RES -.->|"4. Status Updates"| SYNCER
-    SYNCER -.->|"5. Sync Status"| VAPI
-
-    style SYNCER fill:#51cf66,color:#fff
-    style VAPI fill:#4dabf7,color:#fff
-    style HAPI fill:#868e96,color:#fff
-```
+![The Syncer: vCluster's Core Component](_media/diagrams/02-the-syncer-vclusters-core-component.png)
 
 The syncer is the component that makes vCluster work seamlessly. It's responsible for:
 - Synchronizing resources between virtual and host cluster
@@ -171,7 +129,7 @@ This means your GPU workloads scheduled by KAI inside the vCluster actually run 
 
 Here's how you can safely test KAI Scheduler without risking production:
 
-![vCluster Isolation](_media/03-solution-vcluster-isolation.png)
+![vCluster Isolation](_media/diagrams/03-solution-vcluster-isolation.png)
 
 **The workflow:**
 1. Create a vCluster with virtual scheduler enabled

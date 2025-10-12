@@ -1,0 +1,22 @@
+graph TB
+    subgraph PC["Production Cluster"]
+        direction LR
+        subgraph VCT["vCluster Test"]
+            TEST["Test Environment<br/>KAI v0.9.3"]
+        end
+
+        PROD["Production<br/>KAI v0.7 Stable"]
+
+        TEST -.->|"Isolated"| PROD
+    end
+
+    PC --> DECISION{Test Result}
+
+    DECISION -->|Failed| ROLLBACK["Delete vCluster<br/>Recovery: 30 seconds"]
+    DECISION -->|Success| SUCCESS["Upgrade Production<br/>With Confidence"]
+
+    style TEST fill:#4dabf7,color:#fff
+    style PROD fill:#51cf66,color:#fff
+    style ROLLBACK fill:#ff6b6b,color:#fff
+    style SUCCESS fill:#51cf66,color:#fff
+    style DECISION fill:#ffd43b,color:#000

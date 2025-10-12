@@ -1,0 +1,19 @@
+graph TB
+    subgraph "vCluster Pod Components"
+        API["API Server<br/>(k8s)"]
+        ETCD["Data Store<br/>(SQLite/etcd)"]
+        SYNC["Syncer<br/>(bi-directional)"]
+        CTRL["Controller Manager"]
+        SCHED["Scheduler<br/>(optional)"]
+    end
+
+    subgraph "Host Cluster"
+        RES["Synced Resources<br/>(Pods, Services, PVCs,<br/>ConfigMaps, Secrets, etc.)"]
+    end
+
+    API --> ETCD
+    API --> SYNC
+    SYNC <--> RES
+
+    style API fill:#4dabf7,color:#fff
+    style SYNC fill:#51cf66,color:#fff

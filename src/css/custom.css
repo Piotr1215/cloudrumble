@@ -1410,3 +1410,21 @@ article.margin-vert--lg {
 .info-card-badge-info {
   @apply bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100;
 }
+
+/* Mermaid diagram sizing for better readability */
+article img[src*="diagrams/"] {
+  max-width: 60%;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+}
+
+/* On mobile, diagrams scale to fit screen */
+@media only screen and (max-width: 996px) {
+  article img[src*="diagrams/"] {
+    max-width: 100%;
+  }
+}
