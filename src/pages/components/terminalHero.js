@@ -527,11 +527,11 @@ export default function TerminalHero() {
                 <span className="text-gray-900 dark:text-white ml-2">whoami</span>
               </div>
               <div className="ml-4 space-y-4">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-green-400 font-bold text-2xl">Piotr Zaniewski:</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                  <span className="text-green-400 font-bold text-2xl whitespace-nowrap">Piotr Zaniewski</span>
                   <BrowserOnly fallback={<span className="text-gray-800 dark:text-gray-300 text-lg">Platform Engineer</span>}>
                     {() => (
-                      <span className="text-gray-800 dark:text-gray-300 text-lg">
+                      <span className="text-gray-800 dark:text-gray-300 text-lg whitespace-nowrap overflow-hidden">
                         <TypeAnimation
                           sequence={[
                             "Platform Engineer",
