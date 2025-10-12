@@ -17,8 +17,13 @@ const config = {
   // Single tailwind plugin
   plugins: [
     ['./plugins/tailwind-plugin.cjs', {}],
-    require.resolve('docusaurus-plugin-image-zoom')
+    'plugin-image-zoom'
   ],
+
+  themes: ['@docusaurus/theme-mermaid'],
+  markdown: {
+    mermaid: true,
+  },
 
   presets: [
     [
@@ -164,13 +169,11 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ["gherkin"],
       },
-      zoom: {
-        selector: '.markdown img',
-        config: {
-          background: {
-            light: 'rgba(255, 255, 255, 0.9)',
-            dark: 'rgba(0, 0, 0, 0.9)'
-          }
+      imageZoom: {
+        selector: '.markdown img, .markdown .mermaid svg, article img, article .mermaid svg',
+        options: {
+          background: 'rgba(0, 0, 0, 0.8)',
+          scrollOffset: 0,
         }
       },
     }),

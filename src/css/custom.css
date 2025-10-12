@@ -1316,3 +1316,97 @@ body {
 .project-card:hover {
   @apply transform -translate-y-1;
 }
+
+/* Blog post content width - 75% for high-res displays */
+article.margin-vert--lg {
+  max-width: 75% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Container for blog posts */
+.container.padding-top--md.padding-bottom--lg {
+  max-width: 85% !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Main wrapper for blog and docs */
+.main-wrapper {
+  max-width: 90% !important;
+  margin: 0 auto;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Docs container */
+.docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module,
+.container {
+  max-width: 85% !important;
+}
+
+/* Blog list page */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module .container {
+  max-width: 85% !important;
+}
+
+/* Override default container padding */
+.container {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* DataGrid custom styling for better corners and overflow */
+.my-6.overflow-x-auto.rounded-lg {
+  border-radius: 0.5rem;
+  overflow: hidden; /* Ensures rounded corners work with overflow */
+}
+
+.my-6.overflow-x-auto.rounded-lg > table {
+  border-radius: 0.5rem;
+}
+
+/* Card grid for table alternatives */
+.info-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.info-card {
+  @apply p-5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800;
+  @apply hover:shadow-lg transition-all duration-300;
+}
+
+.info-card:hover {
+  @apply transform -translate-y-1;
+}
+
+.info-card-header {
+  @apply text-lg font-bold mb-3 text-gray-900 dark:text-gray-100;
+}
+
+.info-card-content {
+  @apply text-gray-600 dark:text-gray-300 text-sm space-y-2;
+}
+
+.info-card-badge {
+  @apply inline-block px-3 py-1 text-xs font-semibold rounded-full;
+}
+
+.info-card-badge-success {
+  @apply bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100;
+}
+
+.info-card-badge-warning {
+  @apply bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100;
+}
+
+.info-card-badge-danger {
+  @apply bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100;
+}
+
+.info-card-badge-info {
+  @apply bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100;
+}
