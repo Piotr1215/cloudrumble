@@ -1,15 +1,15 @@
----
 title: "How to Simplify Kubernetes Deployments with Kluctl: A Beginner's Guide"
 date: 2024-05-30
 slug: "intro-to-kluctl"
 tags: ["kubernetes", "devops"]
----
-
 ![intro-to-kluctl](_media/intro-to-kluctl.png) 
 # How to Simplify Kubernetes Deployments with Kluctl: A Beginner's Guide
 
 Introduction
 ------------
+
+
+<!-- truncate -->
 
 Kubernetes has revolutionized the way we manage containerized
 applications, providing a robust and scalable platform for deploying,

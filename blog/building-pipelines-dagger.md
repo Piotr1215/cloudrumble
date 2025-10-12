@@ -1,14 +1,14 @@
----
 title: "Why is Building Pipelines Different from Software Development?"
 date: 2024-06-14
 tags: ['cicd', 'pipelines']
----
-
 ![](_media/image1.jpg)
 
 # Why is Building Pipelines Different from Software Development?
 
 ## It Doesn’t Have to Be\! Simplify Your CI/CD Workflow with Dagger
+
+
+<!-- truncate -->
 
 # Introduction
 

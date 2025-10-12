@@ -1,14 +1,14 @@
----
 title: "Development with AI: the GAG Stack"
 date: 2024-03-29
 tags: ["ai", "development", "tools"]
----
-
 # Development with AI: the GAG Stack
 
 ![gag-stack](_media/gag-stack.png)
 
 ## Introduction
+
+
+<!-- truncate -->
 
 Are developers going to be replaced by AI? What is the future of software development? Those questions are asked again and again as the
 software development landscape is evolving rapidly.

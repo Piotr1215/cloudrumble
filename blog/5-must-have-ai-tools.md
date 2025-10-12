@@ -1,14 +1,14 @@
----
 title: "5 Must-Have Command Line AI Tools"
 date: 2024-06-20
 tags: ['ai', 'command-line', 'automation', 'productivity']
----
-
 ![](_media/984983_image0.jpg)
 
 # 5 Must-Have Command Line AI Tools
 
 ## Terminal Friendly AI Projects
+
+
+<!-- truncate -->
 
 # Introduction
 

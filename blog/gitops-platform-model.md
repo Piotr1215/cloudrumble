@@ -1,13 +1,13 @@
----
 title: GitOpsify Cloud Infrastructure with Crossplane and Flux
 sidebar_label: GitOps with Flux and Crossplane
 tags:
   - Kubernetes
   - GitOps
   - Cloud
----
-
 # GitOpsify Cloud Infrastructure with Crossplane and Flux
+
+
+<!-- truncate -->
 
 In this article we are going to learn how to automate the provisioning of cloud resources via Crossplane and combine it with GitOps practices.
 

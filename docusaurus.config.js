@@ -9,7 +9,6 @@ const config = {
   url: "https://frosty-babbage-3125a3.netlify.app",
   baseUrl: "/",
   onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.svg",
   organizationName: "Piotr1215",
   projectName: "dca-prep-kit",
@@ -23,6 +22,9 @@ const config = {
   themes: ['@docusaurus/theme-mermaid'],
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
 
   presets: [
