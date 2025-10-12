@@ -28,6 +28,9 @@ jobs:
       - name: Update YouTube videos
         run: node scripts/update-youtube-videos.js
 
+      - name: Update Medium blogs
+        run: node scripts/update-medium-blogs.js
+
       - name: Check for changes
         id: git-check
         run: |
@@ -38,6 +41,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add src/data/projects.json src/data/videos.json
-          git commit -m "chore: update GitHub stars and YouTube videos [skip ci]"
+          git add src/data/projects.json src/data/videos.json src/data/blogs.json
+          git commit -m "chore: update GitHub stars, YouTube videos, and Medium blogs [skip ci]"
           git push

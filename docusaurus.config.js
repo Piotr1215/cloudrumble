@@ -100,6 +100,11 @@ const config = {
             position: "left",
           },
           {
+            to: "/medium",
+            label: "Medium",
+            position: "left",
+          },
+          {
             href: "https://github.com/Piotr1215",
             label: "GitHub",
             position: "right",

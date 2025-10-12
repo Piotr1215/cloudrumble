@@ -1,0 +1,152 @@
+[
+  {
+    "title": "GPU on Kubernetes: Safe Upgrades, Flexible Multitenancy",
+    "link": "https://itnext.io/gpu-on-kubernetes-safe-upgrades-flexible-multitenancy-b615ece8532d",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*0NBPtU4oqRRuaj4D",
+    "description": "Photo by Growtika on UnsplashUsing KAI Scheduler and vClusterIn today’s cloud-native landscape, GPU workloads are becoming increasingly critical. From...",
+    "date": "Oct 10, 2025",
+    "publishedAt": "Fri, 10 Oct 2025 00:00:59 GMT",
+    "categories": [
+      "kubernetes",
+      "platform-engineering",
+      "devops",
+      "artificial-intelligence",
+      "software-engineering"
+    ]
+  },
+  {
+    "title": "Kubernetes Multi-tenancy: Are You Doing It the Hard Way?",
+    "link": "https://itnext.io/kubernetes-multi-tenancy-are-you-doing-it-the-hard-way-2619357a7c58",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*o_dvIHt-o4-0xWDdg4l8EA.png",
+    "description": "Virtual clusters with container native isolation on bare-metalIn the world of cloud-native computing, bare metal Kubernetes represents an increasingly...",
+    "date": "May 10, 2025",
+    "publishedAt": "Sat, 10 May 2025 21:06:27 GMT",
+    "categories": [
+      "devops",
+      "cloud-computing",
+      "platform-engineering",
+      "kubernetes",
+      "virtualization"
+    ]
+  },
+  {
+    "title": "Deploy Virtual Kubernetes Clusters on EKS, AKS, and GKE",
+    "link": "https://itnext.io/deploy-virtual-kubernetes-clusters-on-eks-aks-and-gke-215bc7a07f56",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*h_X4x3xp_666RSY_E_-WWg.png",
+    "description": "Step-by-Step Guide to Installing vCluster on Managed Kubernetes ServicesIntroductionKubernetes has revolutionized application deployment, but as teams...",
+    "date": "Nov 28, 2024",
+    "publishedAt": "Thu, 28 Nov 2024 10:03:44 GMT",
+    "categories": [
+      "devops",
+      "kubernetes",
+      "technology",
+      "cncf",
+      "platform-engineering"
+    ]
+  },
+  {
+    "title": "Terminal-Based Presentations",
+    "link": "https://itnext.io/terminal-based-presentations-66c9f0c9b4a3",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*U4dT88z1buEiUtw_Y8UViQ.png",
+    "description": "A Guide to No-Fuss Technical DemosIntroductionTechnical presentations often involve jumping between slides, terminal, and IDE. Picture explaining a Ku...",
+    "date": "Nov 24, 2024",
+    "publishedAt": "Sun, 24 Nov 2024 09:50:19 GMT",
+    "categories": [
+      "presentations",
+      "terminal",
+      "open-source",
+      "development",
+      "technology"
+    ]
+  },
+  {
+    "title": "I Transitioned to Containerized Development Environments",
+    "link": "https://itnext.io/i-transitioned-to-containerized-development-environments-75f2ecbc37c5",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*nQEm-frTadgGZ1sx",
+    "description": "Photo by Amira El Fohail on UnsplashHere’s How It Improved My Daily WorkflowIntroductionIn today’s fast-paced development landscape, maintaining consi...",
+    "date": "Sep 15, 2024",
+    "publishedAt": "Sun, 15 Sep 2024 12:25:03 GMT",
+    "categories": [
+      "technology",
+      "improvement",
+      "software-development",
+      "kubernetes",
+      "containers"
+    ]
+  },
+  {
+    "title": "Top 5 Kubernetes Challenges for Platform Teams",
+    "link": "https://itnext.io/top-5-kubernetes-challenges-for-platform-teams-87aa2f59e904",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*u1lBDlKGpIJwZ03TZl7PeQ.png",
+    "description": "Using vCluster to build scalable, efficient, and manageable platformsIntroductionAs more organizations move towards cloud-native architectures, platfo...",
+    "date": "Sep 8, 2024",
+    "publishedAt": "Sun, 08 Sep 2024 09:57:48 GMT",
+    "categories": [
+      "kubernetes",
+      "devops",
+      "cloud-computing",
+      "platform-engineering",
+      "technology"
+    ]
+  },
+  {
+    "title": "Multi-Container Development Environments",
+    "link": "https://itnext.io/multi-container-development-environments-fc11f4a1c9d5",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*vNoSEHIuONWRP83KFQCAwg.png",
+    "description": "Neovim on IncusIntroductionDevelopment environments have evolved significantly over the years, with containerization playing a crucial role in creatin...",
+    "date": "Aug 23, 2024",
+    "publishedAt": "Fri, 23 Aug 2024 09:18:57 GMT",
+    "categories": [
+      "technology",
+      "docker",
+      "tutorial",
+      "containers",
+      "software-development"
+    ]
+  },
+  {
+    "title": "8 Advanced Linux Command Line Tools",
+    "link": "https://itnext.io/8-advanced-linux-command-line-tools-9d81258c3165",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*58c3hqlzF3-mfx3NQjtDJw.png",
+    "description": "The Power of MoreutilsIntroductionWe often start our command-line journey with the essential coreutils package, which provides fundamental tools for f...",
+    "date": "Aug 18, 2024",
+    "publishedAt": "Sun, 18 Aug 2024 09:30:35 GMT",
+    "categories": [
+      "developer-tools",
+      "linux",
+      "programming",
+      "terminal",
+      "technology"
+    ]
+  },
+  {
+    "title": "After 5 Years of Using tmux, Here are the Features I Can’t Live Without",
+    "link": "https://itnext.io/after-5-years-of-using-tmux-here-are-the-features-i-cant-live-without-04b27dba9b27",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*syOcuebBSizS9ZT0tYp4ig.png",
+    "description": "Beyond the basicsIntroductionIf you’re someone who spends a lot of time working in the terminal, you’ve probably heard of tools like tmux, but maybe y...",
+    "date": "Aug 14, 2024",
+    "publishedAt": "Wed, 14 Aug 2024 15:51:57 GMT",
+    "categories": [
+      "technology",
+      "software-development",
+      "open-source",
+      "guides-and-tutorials",
+      "terminal"
+    ]
+  },
+  {
+    "title": "10 CLI Tools That Made the Biggest Impact",
+    "link": "https://itnext.io/10-cli-tools-that-made-the-biggest-impact-f8a2f4168434",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*MOmOg-6kEAV8I-5V6VJUrg.png",
+    "description": "On Transforming My Terminal-Based WorkflowIntroductionThe command line remains a powerful ally for anyone working in tech. Whether you’re managing Kub...",
+    "date": "Aug 11, 2024",
+    "publishedAt": "Sun, 11 Aug 2024 12:28:09 GMT",
+    "categories": [
+      "command-line",
+      "top-10",
+      "programming",
+      "open-source",
+      "technology"
+    ]
+  }
+]

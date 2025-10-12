@@ -1311,10 +1311,34 @@ body {
 /* Projects card styling */
 .project-card {
   @apply p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800;
+  min-height: 400px;
 }
 
 .project-card:hover {
   @apply transform -translate-y-1;
+}
+
+/* Video card styling - matches project card */
+.video-card {
+  @apply rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 overflow-hidden;
+  min-height: 400px;
+}
+
+.video-card:hover {
+  @apply transform -translate-y-1;
+}
+
+/* Blog card styling - matches project and video cards */
+.blog-card {
+  @apply rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 overflow-hidden;
+  min-height: 400px;
+  text-decoration: none;
+  display: block;
+}
+
+.blog-card:hover {
+  @apply transform -translate-y-1;
+  text-decoration: none;
 }
 
 /* Blog post content width - 75% for high-res displays */
