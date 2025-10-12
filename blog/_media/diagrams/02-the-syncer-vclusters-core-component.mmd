@@ -1,0 +1,25 @@
+graph LR
+    subgraph VIRT["Virtual Cluster"]
+        VAPI["API Server"]
+        VPOD["Virtual Pods"]
+        VAPI --> VPOD
+    end
+
+    VPOD -->|"Create"| SYNC["Syncer<br/>Bidirectional Translation"]
+
+    SYNC -->|"Transform"| HPOD
+
+    subgraph HOST["Host Cluster"]
+        HPOD["Real Pods<br/>on GPU Nodes"]
+        HRES["Services<br/>ConfigMaps<br/>Secrets"]
+        HPOD -.-> HRES
+    end
+
+    HPOD -.->|"Status"| SYNC
+    SYNC -.->|"Update"| VPOD
+
+    style SYNC fill:#51cf66,color:#fff
+    style VAPI fill:#4dabf7,color:#fff
+    style VPOD fill:#748ffc,color:#fff
+    style HPOD fill:#ffd43b,color:#000
+    style HRES fill:#495057,color:#fff
