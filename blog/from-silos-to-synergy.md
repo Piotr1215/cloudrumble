@@ -1,14 +1,14 @@
----
 title: "From Silos to Synergy: Cloud Infrastructure Management in the Age of Platform Teams"
 date: 2024-06-26
 tags: ['platform', 'iac']
----
-
 ![](_media/289487_image0.jpg)
 
 # From Silos to Synergy: Cloud Infrastructure Management in the Age of Platform Teams
 
 ## Navigating Lifecycle and Ownership in Modern Infrastructure Architectures
+
+
+<!-- truncate -->
 
 # Introduction
 

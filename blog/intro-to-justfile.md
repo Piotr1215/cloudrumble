@@ -1,13 +1,13 @@
----
 title: "Master Command Orchestration with Justfile"
 date: 2024-06-08
 tags: ['just', 'linux']
----
-
 Master Command Orchestration
 ============================
 
 ![image](_media/image.png)
+
+
+<!-- truncate -->
 
 ### Introducing Just
 

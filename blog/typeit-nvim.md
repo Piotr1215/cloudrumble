@@ -1,15 +1,15 @@
----
 title: Typing Simulation in Neovim with typeit.nvim
 description: Typing simulation in Neovim with typeit.nvim
 date: 2024-07-04
 tags: [neovim,plugin ]
 hide_table_of_contents: false
----
-
 ![Photo by [Andrew
 Seaman](https://unsplash.com/@amseaman?utm_source=medium&utm_medium=referral)
 on
 [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)](_media/580689_image0.jpg)
+
+
+<!-- truncate -->
 
 # Typing Simulation in Neovim with typeit.nvim
 

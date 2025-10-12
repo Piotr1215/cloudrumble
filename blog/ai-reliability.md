@@ -1,13 +1,13 @@
----
 title: "Build Your Own Kubernetes Co-Pilot: Harness AI for Reliable Cluster Management"
 date: 2024-04-14
 slug: "build-your-own-kubernetes-co-pilot"
 tags: ["ai", "development", "reliability"]
----
-
 # Build Your Own Kubernetes Co-Pilot: Harness AI for Reliable Cluster Management
 
 ![kubernetes-copilot](_media/kubernetes-copilot2.png)
+
+
+<!-- truncate -->
 
 Have you ever felt frustrated by nonsensical AI outputs and hallucinations?
 If yes, this blog is going to be helpful for new or seasoned Kubernetes users who want to explore how AI can help manage Kubernetes
@@ -61,7 +61,6 @@ The following steps outline the plan to achieve our goals:
   cluster with Kubernetes running.
 - 💬 Test the AI Assistant with various scenarios to ensure it can handle different Kubernetes configurations and provide accurate responses.
 
----
 
 # Assistant in Action
 
@@ -184,7 +183,6 @@ Give it a try, build your own AI powered Kubernetes management today:
 - **Engage with the Community**: Share your experiences and solutions, there setup is very much proof of concept and can be improved in many
   ways.
 
----
 
 Thanks for taking the time to read this post. I hope you found it interesting and informative.
 

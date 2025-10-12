@@ -1,14 +1,14 @@
----
 title: "Crossplane resources in Neovim"
 date: 2024-03-31
 tags: ["crossplane", "neovim"]
----
-
 # Introduction
 
 In the realm of text editors, Neovim stands out for its extensibility, especially for developers working with Kubernetes. The telescope-crossplane.nvim extension bridges the gap between Neovim's editing capabilities and Kubernetes resource management. This tutorial outlines the prerequisites, installation, and setup processes for integrating telescope-crossplane.nvim into Neovim, providing an efficient way to manage Kubernetes resources.
 
 ## Prerequisites
+
+
+<!-- truncate -->
 
 Obviously some familiarity with Crossplane plus the following installed.
 
