@@ -55,7 +55,7 @@
   {
     "name": "presenterm.nvim",
     "description": "Neovim plugin for presenterm",
-    "stars": 21,
+    "stars": 24,
     "url": "https://github.com/Piotr1215/presenterm.nvim",
     "tags": [
       "Neovim",
@@ -69,7 +69,7 @@
   {
     "name": "dotfiles",
     "description": "Pop_OS! dotfiles with install script. Complete development environment setup with Neovim, Tmux, and essential CLI tools.",
-    "stars": 108,
+    "stars": 109,
     "url": "https://github.com/Piotr1215/dotfiles",
     "tags": [
       "Dotfiles",
@@ -102,6 +102,19 @@
       "Notes"
     ],
     "installCommand": "npm install @piotr1215/mcp-obsidian",
+    "category": "mcp"
+  },
+  {
+    "name": "vcluster-yaml-mcp",
+    "description": "vCluster YAML MCP server",
+    "stars": 0,
+    "url": "https://github.com/Piotr1215/vcluster-yaml-mcp",
+    "tags": [
+      "MCP",
+      "vCluster",
+      "YAML"
+    ],
+    "installCommand": "npm install -g vcluster-yaml-mcp-server",
     "category": "mcp"
   },
   {
@@ -172,7 +185,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 10908,
+    "stars": 10934,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -186,7 +199,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10619,
+    "stars": 10646,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
@@ -212,7 +225,7 @@
   {
     "name": "Pepr",
     "description": "Type safe K8s middleware for humans. A Kubernetes controller framework that simplifies building admission controllers, operators, and other K8s automation with TypeScript.",
-    "stars": 187,
+    "stars": 190,
     "url": "https://github.com/defenseunicorns/pepr",
     "tags": [
       "Kubernetes",
