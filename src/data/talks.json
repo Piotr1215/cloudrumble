@@ -55,7 +55,7 @@
    "slidesUrl": null,
    "thumbnailUrl": "/img/conf42-kube-native-2025.png",
    "type": "talk",
-   "upcoming": true,
+   "upcoming": false,
    "abstract": "Learn how to create instant Kubernetes AI (KAI) sandboxes using vCluster, enabling multi-tenant environments with efficient GPU sharing across multiple schedulers. This talk explores practical patterns for providing isolated AI/ML development environments while maximizing GPU utilization through advanced scheduling techniques."
  },
  {
