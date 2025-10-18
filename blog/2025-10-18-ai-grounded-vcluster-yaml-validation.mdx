@@ -263,30 +263,17 @@ Full CLI docs: [github.com/Piotr1215/vcluster-yaml-mcp](https://github.com/Piotr
 
 The server is built on four principles that make it reliable for production use:
 
-<InfoCards
-  items={[
-    {
-      principle: 'Stateless',
-      description: 'Every query takes explicit version params. Query v0.19 and v0.24 in parallel—no conflicts, no state drift.'
-    },
-    {
-      principle: 'Source-of-Truth',
-      description: 'Fetches directly from loft-sh/vcluster GitHub. No manual updates. Always reflects actual source.'
-    },
-    {
-      principle: 'Token-Optimized',
-      description: 'kubectl-style output, not JSON dumps. 800-1500 tokens vs 2K+.'
-    },
-    {
-      principle: 'Production-Ready',
-      description: '15-min smart cache, HTTP/SSE transport, comprehensive tests, Docker container available.'
-    }
+<DataGrid
+  columns={[
+    { key: 'principle', label: 'Principle' },
+    { key: 'description', label: 'Description' }
   ]}
-  titleKey="principle"
-  fields={[
-    { key: 'description' }
+  data={[
+    { principle: 'Stateless', description: 'Every query takes explicit version params. Query v0.19 and v0.24 in parallel—no conflicts, no state drift.' },
+    { principle: 'Source-of-Truth', description: 'Fetches directly from loft-sh/vcluster GitHub. No manual updates. Always reflects actual source.' },
+    { principle: 'Token-Optimized', description: 'kubectl-style output, not JSON dumps. 800-1500 tokens vs 2K+.' },
+    { principle: 'Production-Ready', description: '15-min smart cache, HTTP/SSE transport, comprehensive tests, Docker container available.' }
   ]}
-  columns={2}
 />
 
 ## Beyond vCluster
