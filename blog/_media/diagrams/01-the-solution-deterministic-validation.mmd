@@ -1,0 +1,6 @@
+graph TB
+    A[Claude] -->|MCP Protocol| B[vCluster YAML Server]
+    B -->|Fetch values.yaml| C[GitHub API]
+    C -->|loft-sh/vcluster| D[Specific Version Tag]
+    B -->|Schema Validation| E[YAML Parser]
+    E -->|Pass/Fail| A
