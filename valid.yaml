@@ -1,0 +1,12 @@
+sync:
+  fromHost:
+    nodes:
+      enabled: true
+controlPlane:
+  backingStore:
+    etcd:
+      embedded:
+        enabled: true
+  statefulSet:
+    highAvailability:
+      replicas: 3
