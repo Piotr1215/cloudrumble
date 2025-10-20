@@ -34,7 +34,7 @@
    "slidesUrl": null,
    "thumbnailUrl": "/img/kcd-uk-scotland.png",
    "type": "workshop",
-   "upcoming": true,
+   "upcoming": false,
    "workshopUrl": "https://killercoda.com/decoder/course/vcluster/vcluster_introduction",
    "abstract": "The workshop introduces participants to vCluster, demonstrating how to create and manage virtual Kubernetes environments for multiple development teams. Attendees will learn to use vCluster effectively, starting with basic setups and progressing to more advanced configurations. Throughout the workshop, participants will take on the perspective of a platform engineering team, making decisions and implementing solutions to serve the needs of various development groups within an organization. Key Focus Areas: Introduction to vCluster and virtual Kubernetes clusters; Setting up and configuring virtual Kubernetes clusters; Managing multiple development environments; Implementing shared services and optimizing resources; Enhancing developer workflows with self-service provisioning. Participants will: Set up and configure virtual Kubernetes clusters; Learn to manage multiple team environments efficiently; Explore resource optimization and cost reduction strategies; Implement progressive improvements to virtual cluster setups; Understand vCluster's role in enhancing developer productivity."
  },
