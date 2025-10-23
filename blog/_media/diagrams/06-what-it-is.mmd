@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User1 as Team A
+    participant User2 as Team B
+    participant vCluster1 as vCluster A API
+    participant vCluster2 as vCluster B API
+    participant HostAPI as Host Cluster API
+    participant Syncer1 as Syncer A
+    participant Syncer2 as Syncer B
+    participant Node as Host Nodes
+
+    User1->>vCluster1: kubectl apply (Team A resource)
+    vCluster1->>Syncer1: Store in vCluster etcd
+    Syncer1->>HostAPI: Sync to host namespace A
+    HostAPI->>Node: Schedule pod
+
+    User2->>vCluster2: kubectl apply (Team B resource)
+    vCluster2->>Syncer2: Store in vCluster etcd
+    Syncer2->>HostAPI: Sync to host namespace B
+    HostAPI->>Node: Schedule pod

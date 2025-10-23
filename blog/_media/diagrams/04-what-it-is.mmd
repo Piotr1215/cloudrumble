@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant User
+    participant Container1 as Container: Web
+    participant Container2 as Container: DB
+    participant Runtime as Container Runtime
+    participant Kernel as Shared Kernel
+    participant Hardware
+
+    User->>Container1: HTTP request
+    Container1->>Runtime: Network call
+    Runtime->>Kernel: Namespace isolation
+    Container1->>Container2: TCP connection
+    Container2->>Runtime: Filesystem access
+    Runtime->>Kernel: Cgroup limits
+    Kernel->>Hardware: CPU/Memory
+    Container2-->>Container1: Response
+    Container1-->>User: HTTP response

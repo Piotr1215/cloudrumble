@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User
+    participant VM1 as VM: Web
+    participant VM2 as VM: DB
+    participant Hypervisor
+    participant Hardware
+
+    User->>VM1: HTTP request
+    VM1->>Hypervisor: System call
+    Hypervisor->>Hardware: CPU/Memory access
+    VM1->>VM2: Network request
+    VM2->>Hypervisor: System call
+    Hypervisor->>Hardware: CPU/Memory access
+    VM2-->>VM1: Response
+    VM1-->>User: HTTP response
