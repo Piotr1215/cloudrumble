@@ -1,4 +1,4 @@
-%%{init: {'flowchart' : {'curve' : 'linear'}}}%%
+%%{init: {'theme': 'neutral', 'themeVariables': {'edgeLabelBackground': '#f5f5f5', 'nodeTextColor': '#000'}, 'flowchart' : {'curve' : 'linear'}}}%%
 flowchart TB
     subgraph host["Host Kubernetes Cluster"]
         subgraph vclusters[" "]
@@ -25,9 +25,9 @@ flowchart TB
     W1 --> Shared
     W3 --> Shared
 
-    classDef cluster fill:transparent,stroke:#2ea043,stroke-width:2px,color:#fff
-    classDef workload fill:transparent,stroke:#3b82f6,stroke-width:2px,color:#fff
-    classDef service fill:transparent,stroke:#FF6600,stroke-width:2px,color:#fff
+    classDef cluster fill:white,stroke:#2ea043,stroke-width:2px,color:#000
+    classDef workload fill:white,stroke:#3b82f6,stroke-width:2px,color:#000
+    classDef service fill:white,stroke:#FF6600,stroke-width:2px,color:#000
 
     class vc1,vc2,vc3 cluster
     class W1,W2,W3 workload
