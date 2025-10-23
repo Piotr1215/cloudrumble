@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User
+    participant Computer
+
+    User->>Computer: Execute program
+    Computer->>Computer: Process on local CPU
+    Computer-->>User: Return result
+
+    Note over Computer: Single machine<br/>Direct hardware access<br/>No abstraction

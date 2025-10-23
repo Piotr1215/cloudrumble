@@ -1,0 +1,34 @@
+%%{init: {'flowchart' : {'curve' : 'linear'}}}%%
+flowchart TB
+    subgraph host["Host Kubernetes Cluster"]
+        subgraph vclusters[" "]
+            direction LR
+            subgraph vc1["vCluster 1"]
+                W1["Team 1<br/>Workloads"]
+            end
+
+            subgraph vc2["vCluster 2"]
+                direction TB
+                W2["Team 2<br/>Workloads"]
+                Ingress2["• Ingress"]
+                CertManager2["• Cert Manager"]
+            end
+
+            subgraph vc3["vCluster 3"]
+                W3["Team 3<br/>Workloads"]
+            end
+        end
+
+        Shared["Shared Services<br/>(Cert Manager, Ingress Controller)"]
+    end
+
+    W1 --> Shared
+    W3 --> Shared
+
+    classDef cluster fill:transparent,stroke:#2ea043,stroke-width:2px,color:#fff
+    classDef workload fill:transparent,stroke:#3b82f6,stroke-width:2px,color:#fff
+    classDef service fill:transparent,stroke:#FF6600,stroke-width:2px,color:#fff
+
+    class vc1,vc2,vc3 cluster
+    class W1,W2,W3 workload
+    class Shared,CertManager2,Ingress2 service

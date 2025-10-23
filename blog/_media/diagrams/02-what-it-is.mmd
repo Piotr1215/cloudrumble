@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User
+    participant WebServer
+    participant DBServer
+    participant Worker
+
+    User->>WebServer: HTTP request
+    WebServer->>DBServer: Query data
+    DBServer-->>WebServer: Return data
+    WebServer->>Worker: Background job
+    Worker->>Worker: Process
+    WebServer-->>User: HTTP response

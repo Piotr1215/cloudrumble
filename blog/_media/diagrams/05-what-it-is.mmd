@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant User
+    participant API as K8s API
+    participant Scheduler
+    participant Controller
+    participant Node1 as Node 1
+    participant Node2 as Node 2
+    participant Container
+
+    User->>API: kubectl apply deployment
+    API->>Controller: Store desired state
+    Controller->>Scheduler: Schedule pods
+    Scheduler->>Node1: Assign pod 1
+    Scheduler->>Node2: Assign pod 2
+    Node1->>Container: Start container
+    Node2->>Container: Start container
+    Controller->>Controller: Monitor health
+    Controller->>Node1: Restart failed pod

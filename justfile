@@ -71,3 +71,7 @@ diagrams-regen-blog:
             echo "No diagrams directory found at: $diagrams_path"
         fi
     fi
+
+# Generate hero banner from HTML to PNG
+hero-banner HTML_FILE OUTPUT_FILE:
+    npx playwright screenshot --wait-for-timeout 2000 --full-page --viewport-size 1920,1080 {{HTML_FILE}} {{OUTPUT_FILE}}
