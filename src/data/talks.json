@@ -1,5 +1,23 @@
 [
  {
+   "title": "Flexible Kubernetes Multitenancy with vCluster",
+   "description": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster.",
+   "date": "2025-12",
+   "conference": "SHIPPED25",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://octopus.com/shipped",
+   "slidesUrl": null,
+   "thumbnailUrl": "/img/shipped25.png",
+   "type": "talk",
+   "upcoming": true,
+   "abstract": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster. We'll explore: - Multitenancy Spectrum: Understanding the three dimensions of multitenancy - isolation levels (physical/logical/none), resource sharing (dedicated/pooled/shared), and trust boundaries (zero/partial/full) - Flexibility in Practice: How to mix and match different multitenancy models for different teams and workloads - vCluster Deep Dive: How virtual clusters enable this flexibility while maintaining strong isolation boundaries - Real-World Scenarios: Live demo showing how to implement different multitenancy patterns based on actual use cases"
+ },
+ {
    "title": "GPU Sharing at Scale: vCluster + NVIDIA KAI Scheduler",
    "description": "Kubernetes offers many ways to share GPUs, but a single, cluster-wide scheduler often forces trade-offs between utilization, stability, and team autonomy. This talk shows how vCluster makes the NVIDIA Kubernetes AI Scheduler (KAI) run as an opt-in service for each tenant.",
    "date": "2025-11",
@@ -34,7 +52,7 @@
    "slidesUrl": null,
    "thumbnailUrl": "/img/kcd-uk-scotland.png",
    "type": "workshop",
-   "upcoming": true,
+   "upcoming": false,
    "workshopUrl": "https://killercoda.com/decoder/course/vcluster/vcluster_introduction",
    "abstract": "The workshop introduces participants to vCluster, demonstrating how to create and manage virtual Kubernetes environments for multiple development teams. Attendees will learn to use vCluster effectively, starting with basic setups and progressing to more advanced configurations. Throughout the workshop, participants will take on the perspective of a platform engineering team, making decisions and implementing solutions to serve the needs of various development groups within an organization. Key Focus Areas: Introduction to vCluster and virtual Kubernetes clusters; Setting up and configuring virtual Kubernetes clusters; Managing multiple development environments; Implementing shared services and optimizing resources; Enhancing developer workflows with self-service provisioning. Participants will: Set up and configure virtual Kubernetes clusters; Learn to manage multiple team environments efficiently; Explore resource optimization and cost reduction strategies; Implement progressive improvements to virtual cluster setups; Understand vCluster's role in enhancing developer productivity."
  },
