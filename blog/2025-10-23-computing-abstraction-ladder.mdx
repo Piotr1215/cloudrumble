@@ -17,13 +17,38 @@ import DataGrid from '@site/src/components/DataGrid';
     height: auto;
   }
   article mark {
-    background-color: rgba(255, 102, 0, 0.15);
-    color: #FF6600;
+    background-color: rgba(255, 102, 0, 0.2);
+    color: #000;
     font-weight: 600;
     padding: 2px 6px;
     border-radius: 3px;
   }
+
+  @media (prefers-color-scheme: dark) {
+    article mark {
+      background-color: rgba(255, 102, 0, 0.3);
+      color: #fff;
+    }
+  }
+  .tldr-box {
+    background: rgba(255, 102, 0, 0.08);
+    border-left: 4px solid #FF6600;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .tldr-box strong {
+    color: #FF6600;
+  }
 `}</style>
+
+<div className="tldr-box">
+<strong>TL;DR:</strong> This blog explains the evolution of computing abstractions from physical servers to virtual Kubernetes clusters.
+
+Each layer solved a real problem while creating new challenges: physical computers led to VMs (stranded resources), VMs to containers (OS overhead), containers to Kubernetes (orchestration complexity), and Kubernetes to virtual clusters (multi-tenancy isolation).
+
+vCluster enables teams to run fully functional virtual Kubernetes clusters inside existing infrastructure—providing control plane isolation that namespaces cannot match.
+</div>
 
 **Last week I returned from [KCD UK](https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-edinburgh-2025/) where I led a workshop introducing people to vCluster** ([try it yourself here](https://killercoda.com/decoder/course/vcluster/vcluster_introduction)). At the workshop and at our booth, we fielded dozens of questions from people with wildly different backgrounds.
 
