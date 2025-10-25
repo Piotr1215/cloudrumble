@@ -1,5 +1,35 @@
 [
   {
+    "title": "From Physical Servers to Virtual Kubernetes Clusters",
+    "link": "https://itnext.io/from-physical-servers-to-virtual-kubernetes-clusters-85f931d4cdff",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*ZEsdmS2pVjxM3l6K.png",
+    "description": "Understanding the need for Kubernetes multi-tenancy with vClusterTL;DR: This blog explains the evolution of computing abstractions from physical serve...",
+    "date": "Oct 23, 2025",
+    "publishedAt": "Thu, 23 Oct 2025 19:33:21 GMT",
+    "categories": [
+      "cloud-computing",
+      "education",
+      "kubernetes",
+      "software-engineering",
+      "devops"
+    ]
+  },
+  {
+    "title": "Stop AI from Hallucinating Your Kubernetes YAML",
+    "link": "https://itnext.io/stop-ai-from-hallucinating-your-kubernetes-yaml-10142f685a8b",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*1GsCYrgwVq4LJjs0",
+    "description": "Photo by Mon Esprit on UnsplashUsing a vCluster YAML MCP ServerYou ask an AI to generate a Kubernetes manifest, Helm chart values, or Ansible playbook...",
+    "date": "Oct 18, 2025",
+    "publishedAt": "Sat, 18 Oct 2025 19:49:25 GMT",
+    "categories": [
+      "kubernetes",
+      "cloud-computing",
+      "ai",
+      "artificial-intelligence",
+      "devops"
+    ]
+  },
+  {
     "title": "GPU on Kubernetes: Safe Upgrades, Flexible Multitenancy",
     "link": "https://itnext.io/gpu-on-kubernetes-safe-upgrades-flexible-multitenancy-b615ece8532d",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*0NBPtU4oqRRuaj4D",
@@ -116,36 +146,6 @@
       "linux",
       "programming",
       "terminal",
-      "technology"
-    ]
-  },
-  {
-    "title": "After 5 Years of Using tmux, Here are the Features I Can’t Live Without",
-    "link": "https://itnext.io/after-5-years-of-using-tmux-here-are-the-features-i-cant-live-without-04b27dba9b27",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*syOcuebBSizS9ZT0tYp4ig.png",
-    "description": "Beyond the basicsIntroductionIf you’re someone who spends a lot of time working in the terminal, you’ve probably heard of tools like tmux, but maybe y...",
-    "date": "Aug 14, 2024",
-    "publishedAt": "Wed, 14 Aug 2024 15:51:57 GMT",
-    "categories": [
-      "technology",
-      "software-development",
-      "open-source",
-      "guides-and-tutorials",
-      "terminal"
-    ]
-  },
-  {
-    "title": "10 CLI Tools That Made the Biggest Impact",
-    "link": "https://itnext.io/10-cli-tools-that-made-the-biggest-impact-f8a2f4168434",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*MOmOg-6kEAV8I-5V6VJUrg.png",
-    "description": "On Transforming My Terminal-Based WorkflowIntroductionThe command line remains a powerful ally for anyone working in tech. Whether you’re managing Kub...",
-    "date": "Aug 11, 2024",
-    "publishedAt": "Sun, 11 Aug 2024 12:28:09 GMT",
-    "categories": [
-      "command-line",
-      "top-10",
-      "programming",
-      "open-source",
       "technology"
     ]
   }
