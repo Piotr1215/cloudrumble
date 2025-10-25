@@ -36,11 +36,33 @@ jobs:
         run: |
           git diff --exit-code src/data/ || echo "changed=true" >> $GITHUB_OUTPUT
 
-      - name: Commit and push if changed
+      - name: Commit and push to branch if changed
         if: steps.git-check.outputs.changed == 'true'
         run: |
+          BRANCH_NAME="auto-update-data-$(date +%Y%m%d-%H%M%S)"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git checkout -b "$BRANCH_NAME"
           git add src/data/projects.json src/data/videos.json src/data/blogs.json
           git commit -m "chore: update GitHub stars, YouTube videos, and Medium blogs"
-          git push
+          git push -u origin "$BRANCH_NAME"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        if: steps.git-check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+        run: |
+          gh pr create \
+            --title "chore: update GitHub stars, YouTube videos, and Medium blogs" \
+            --body "Automated data update from scheduled workflow" \
+            --base master \
+            --head "${{ env.BRANCH_NAME }}"
+
+      - name: Enable auto-merge
+        if: steps.git-check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+        run: |
+          PR_NUMBER=$(gh pr list --head "${{ env.BRANCH_NAME }}" --json number --jq '.[0].number')
+          gh pr merge "$PR_NUMBER" --auto --squash
