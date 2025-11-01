@@ -140,6 +140,7 @@
       "Snippets",
       "Productivity"
     ],
+    "installCommand": "git clone https://github.com/Piotr1215/pet-snippets.git",
     "category": "snippets"
   },
   {
@@ -153,6 +154,7 @@
       "GitHub Actions",
       "CI/CD"
     ],
+    "installCommand": "git clone https://github.com/Piotr1215/cv-pipeline-template.git",
     "category": "automation"
   },
   {
@@ -193,6 +195,7 @@
       "Development",
       "Containers"
     ],
+    "installCommand": "curl -fsSL https://pkgs.zabbly.com/get/incus-stable | sh",
     "category": "dev"
   },
   {
