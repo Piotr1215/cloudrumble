@@ -143,6 +143,19 @@
     "category": "snippets"
   },
   {
+    "name": "cv-pipeline-template",
+    "description": "Automated CV generation pipeline that creates multiple psychologically-optimized CV variants from YAML data. Uses LaTeX, GitHub Actions, and color psychology research.",
+    "stars": 0,
+    "url": "https://github.com/Piotr1215/cv-pipeline-template",
+    "tags": [
+      "Automation",
+      "LaTeX",
+      "GitHub Actions",
+      "CI/CD"
+    ],
+    "category": "automation"
+  },
+  {
     "name": "aicmdtools",
     "description": "GoAI is a Go library and command line for interacting with OpenAI API",
     "stars": 23,
