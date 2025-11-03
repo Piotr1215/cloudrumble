@@ -81,7 +81,7 @@
   {
     "name": "mcp-agentic-framework",
     "description": "MCP implementation of an agentic framework",
-    "stars": 2,
+    "stars": 4,
     "url": "https://github.com/Piotr1215/mcp-agentic-framework",
     "tags": [
       "MCP",
@@ -94,7 +94,7 @@
   {
     "name": "mcp-obsidian",
     "description": "Simple MCP server for interacting with local obsidian notes",
-    "stars": 2,
+    "stars": 3,
     "url": "https://github.com/Piotr1215/mcp-obsidian",
     "tags": [
       "MCP",
@@ -146,7 +146,7 @@
   {
     "name": "cv-pipeline-template",
     "description": "Automated CV generation pipeline that creates multiple psychologically-optimized CV variants from YAML data. Uses LaTeX, GitHub Actions, and color psychology research.",
-    "stars": 0,
+    "stars": 5,
     "url": "https://github.com/Piotr1215/cv-pipeline-template",
     "tags": [
       "Automation",
@@ -201,7 +201,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 10959,
+    "stars": 10977,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -215,7 +215,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10659,
+    "stars": 10673,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
@@ -228,7 +228,7 @@
   {
     "name": "OpenGitOps Documents",
     "description": "Lasting documents from the OpenGitOps project which are versioned and released together, including the GitOps Principles and Glossary. Defining standards and best practices for GitOps.",
-    "stars": 458,
+    "stars": 459,
     "url": "https://github.com/open-gitops/documents",
     "tags": [
       "GitOps",

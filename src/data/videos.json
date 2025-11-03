@@ -1,5 +1,14 @@
 [
   {
+    "id": "S2gpOr-mbf4",
+    "videoId": "S2gpOr-mbf4",
+    "title": "CV Pipeline as Code: LaTeX, YAML, and GitHub Actions",
+    "thumbnail": "https://img.youtube.com/vi/S2gpOr-mbf4/maxresdefault.jpg",
+    "description": "",
+    "date": "Nov 1, 2025",
+    "publishedAt": "2025-11-01T14:22:36+00:00"
+  },
+  {
     "id": "KsvB4AB_kFA",
     "videoId": "KsvB4AB_kFA",
     "title": "From Physical Servers to Virtual Kubernetes Clusters",
@@ -97,14 +106,5 @@
     "description": "Learn how to build your own files and folders bookmark manager using tmux, neovim, bash and lua code....",
     "date": "May 4, 2025",
     "publishedAt": "2025-05-04T14:25:37+00:00"
-  },
-  {
-    "id": "NoSrjHnirKw",
-    "videoId": "NoSrjHnirKw",
-    "title": "Human vs Claude AI: Neovim Coding Showdown",
-    "thumbnail": "https://img.youtube.com/vi/NoSrjHnirKw/maxresdefault.jpg",
-    "description": "",
-    "date": "Apr 26, 2025",
-    "publishedAt": "2025-04-26T20:29:59+00:00"
   }
 ]
