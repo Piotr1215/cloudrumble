@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CloudRumble Activity Feed</title>
+    <link>https://cloudrumble.net/activity</link>
+    <description>Latest videos, blog posts, and conference talks from CloudRumble</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Nov 2025 21:56:26 GMT</lastBuildDate>
+    <atom:link href="https://cloudrumble.net/activity.rss" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title>▶️ CV Pipeline as Code: LaTeX, YAML, and GitHub Actions</title>
+      <link>https://youtube.com/watch?v=S2gpOr-mbf4</link>
+      <guid>https://youtube.com/watch?v=S2gpOr-mbf4</guid>
+      <pubDate>Sat, 01 Nov 2025 14:22:36 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ From Physical Servers to Virtual Kubernetes Clusters</title>
+      <link>https://youtube.com/watch?v=KsvB4AB_kFA</link>
+      <guid>https://youtube.com/watch?v=KsvB4AB_kFA</guid>
+      <pubDate>Fri, 24 Oct 2025 14:13:19 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>📝 From Physical Servers to Virtual Kubernetes Clusters</title>
+      <link>https://itnext.io/from-physical-servers-to-virtual-kubernetes-clusters-85f931d4cdff</link>
+      <guid>https://itnext.io/from-physical-servers-to-virtual-kubernetes-clusters-85f931d4cdff</guid>
+      <pubDate>Thu, 23 Oct 2025 19:33:21 GMT</pubDate>
+      <description>Understanding the need for Kubernetes multi-tenancy with vClusterTL;DR: This blog explains the evolution of computing abstractions from physical serve...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>📝 Stop AI from Hallucinating Your Kubernetes YAML</title>
+      <link>https://itnext.io/stop-ai-from-hallucinating-your-kubernetes-yaml-10142f685a8b</link>
+      <guid>https://itnext.io/stop-ai-from-hallucinating-your-kubernetes-yaml-10142f685a8b</guid>
+      <pubDate>Sat, 18 Oct 2025 19:49:25 GMT</pubDate>
+      <description>Photo by Mon Esprit on UnsplashUsing a vCluster YAML MCP ServerYou ask an AI to generate a Kubernetes manifest, Helm chart values, or Ansible playbook...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>📝 GPU on Kubernetes: Safe Upgrades, Flexible Multitenancy</title>
+      <link>https://itnext.io/gpu-on-kubernetes-safe-upgrades-flexible-multitenancy-b615ece8532d</link>
+      <guid>https://itnext.io/gpu-on-kubernetes-safe-upgrades-flexible-multitenancy-b615ece8532d</guid>
+      <pubDate>Fri, 10 Oct 2025 00:00:59 GMT</pubDate>
+      <description>Photo by Growtika on UnsplashUsing KAI Scheduler and vClusterIn today’s cloud-native landscape, GPU workloads are becoming increasingly critical. From...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>🎤 Workshop: Introduction to vCluster: Building Internal Developer Platforms</title>
+      <link>https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-edinburgh-2025/</link>
+      <guid>https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-edinburgh-2025/</guid>
+      <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
+      <description>Conference talk at Kubernetes Community Days UK - Edinburgh 2025</description>
+      <category>Talk</category>
+      <category>Kubernetes Community Days UK - Edinburgh 2025</category>
+    </item>
+
+    <item>
+      <title>🎤 Instant KAI Sandboxes with vCluster: Multi-Tenant, Multi-Scheduler GPU Sharing</title>
+      <link>https://www.conf42.com/kubenative2025</link>
+      <guid>https://www.conf42.com/kubenative2025</guid>
+      <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
+      <description>Conference talk at Conf42 Kube Native 2025</description>
+      <category>Talk</category>
+      <category>Conf42 Kube Native 2025</category>
+    </item>
+
+    <item>
+      <title>▶️ Top 10 Practical Terminal Commands I Use Every Day</title>
+      <link>https://youtube.com/watch?v=Ymh9-GTvriI</link>
+      <guid>https://youtube.com/watch?v=Ymh9-GTvriI</guid>
+      <pubDate>Sat, 13 Sep 2025 17:40:08 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ pairup.nvim | real-time AI pair programming in neovim</title>
+      <link>https://youtube.com/watch?v=Q-tOLvbDWJ0</link>
+      <guid>https://youtube.com/watch?v=Q-tOLvbDWJ0</guid>
+      <pubDate>Sun, 07 Sep 2025 17:00:09 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>🎤 Keynote: Flexible Kubernetes Multitenancy with vCluster</title>
+      <link>https://sreday.com/2025-london-q3/</link>
+      <guid>https://sreday.com/2025-london-q3/</guid>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 GMT</pubDate>
+      <description>Conference talk at SREday London Q3 2025</description>
+      <category>Talk</category>
+      <category>SREday London Q3 2025</category>
+    </item>
+
+    <item>
+      <title>▶️ beam nvim | remote text object operations with native search</title>
+      <link>https://youtube.com/watch?v=NYC38m4Z47o</link>
+      <guid>https://youtube.com/watch?v=NYC38m4Z47o</guid>
+      <pubDate>Sat, 30 Aug 2025 16:24:08 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ Terminal-Only Media Workflow with Tmux and MPV | No Browser Required</title>
+      <link>https://youtube.com/watch?v=Fej7-Q8YRR8</link>
+      <guid>https://youtube.com/watch?v=Fej7-Q8YRR8</guid>
+      <pubDate>Sun, 17 Aug 2025 18:10:13 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ Why You Should Build a Kubernetes Homelab | How to Start Today</title>
+      <link>https://youtube.com/watch?v=5YFmYcic8XQ</link>
+      <guid>https://youtube.com/watch?v=5YFmYcic8XQ</guid>
+      <pubDate>Sun, 10 Aug 2025 15:47:09 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ 5 tmux sessions to boost your terminal workflow</title>
+      <link>https://youtube.com/watch?v=K_REZUyzQSY</link>
+      <guid>https://youtube.com/watch?v=K_REZUyzQSY</guid>
+      <pubDate>Sat, 26 Jul 2025 20:22:30 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ 3 Claude Sessions Collaborating in a Terminal: MCP Agentic Framework</title>
+      <link>https://youtube.com/watch?v=3I8JzeIEUds</link>
+      <guid>https://youtube.com/watch?v=3I8JzeIEUds</guid>
+      <pubDate>Sat, 05 Jul 2025 11:59:05 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ Stop Googling Keyboard Shortcuts - Build This Instead!</title>
+      <link>https://youtube.com/watch?v=yENV9LqqR2w</link>
+      <guid>https://youtube.com/watch?v=yENV9LqqR2w</guid>
+      <pubDate>Sat, 14 Jun 2025 17:19:27 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ Terminal Monitoring with Unix Philosophy</title>
+      <link>https://youtube.com/watch?v=lxZb_QEGQ7E</link>
+      <guid>https://youtube.com/watch?v=lxZb_QEGQ7E</guid>
+      <pubDate>Sun, 08 Jun 2025 21:07:38 GMT</pubDate>
+      <description></description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>🎤 How to build cloud native platforms with Kubernetes</title>
+      <link>https://community.cncf.io/events/details/cncf-cloud-native-frankfurt-presents-cloud-native-frankfurt-meetup-jun-2025/</link>
+      <guid>https://community.cncf.io/events/details/cncf-cloud-native-frankfurt-presents-cloud-native-frankfurt-meetup-jun-2025/</guid>
+      <pubDate>Sun, 01 Jun 2025 00:00:00 GMT</pubDate>
+      <description>Conference talk at Cloud Native Frankfurt Meetup Jun 2025</description>
+      <category>Talk</category>
+      <category>Cloud Native Frankfurt Meetup Jun 2025</category>
+    </item>
+
+    <item>
+      <title>📝 Kubernetes Multi-tenancy: Are You Doing It the Hard Way?</title>
+      <link>https://itnext.io/kubernetes-multi-tenancy-are-you-doing-it-the-hard-way-2619357a7c58</link>
+      <guid>https://itnext.io/kubernetes-multi-tenancy-are-you-doing-it-the-hard-way-2619357a7c58</guid>
+      <pubDate>Sat, 10 May 2025 21:06:27 GMT</pubDate>
+      <description>Virtual clusters with container native isolation on bare-metalIn the world of cloud-native computing, bare metal Kubernetes represents an increasingly...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>▶️ Bookmarks manager in terminal with tmux and neovim</title>
+      <link>https://youtube.com/watch?v=kwjuHO9ZWlA</link>
+      <guid>https://youtube.com/watch?v=kwjuHO9ZWlA</guid>
+      <pubDate>Sun, 04 May 2025 14:25:37 GMT</pubDate>
+      <description>Learn how to build your own files and folders bookmark manager using tmux, neovim, bash and lua code....</description>
+      <category>Video</category>
+      
+    </item>
+
+    <item>
+      <title>🎤 How to Build Cloud Native Platforms with Kubernetes</title>
+      <link>https://sreday.com/2025-london-q1/</link>
+      <guid>https://sreday.com/2025-london-q1/</guid>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 GMT</pubDate>
+      <description>Conference talk at SREday London Q1 2025</description>
+      <category>Talk</category>
+      <category>SREday London Q1 2025</category>
+    </item>
+
+    <item>
+      <title>🎤 How to Build a Kubernetes Platform with vCluster</title>
+      <link>https://www.youtube.com/watch?v=fQaPml9NJiY</link>
+      <guid>https://www.youtube.com/watch?v=fQaPml9NJiY</guid>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 GMT</pubDate>
+      <description>Conference talk at vCluster Webinar Series: Multi-tenancy March</description>
+      <category>Talk</category>
+      <category>vCluster Webinar Series: Multi-tenancy March</category>
+    </item>
+
+    <item>
+      <title>🎤 Building Multitenant Developer Platforms With vCluster</title>
+      <link>https://cloudnativesummit.de/</link>
+      <guid>https://cloudnativesummit.de/</guid>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 GMT</pubDate>
+      <description>Conference talk at Cloud Native Summit Munich</description>
+      <category>Talk</category>
+      <category>Cloud Native Summit Munich</category>
+    </item>
+
+    <item>
+      <title>🎤 How to build cloud native platforms with Kubernetes</title>
+      <link>https://muc24.azuredev.org/</link>
+      <guid>https://muc24.azuredev.org/</guid>
+      <pubDate>Sun, 01 Dec 2024 00:00:00 GMT</pubDate>
+      <description>Conference talk at Azure Developer Community Day 2024 München</description>
+      <category>Talk</category>
+      <category>Azure Developer Community Day 2024 München</category>
+    </item>
+
+    <item>
+      <title>📝 Deploy Virtual Kubernetes Clusters on EKS, AKS, and GKE</title>
+      <link>https://itnext.io/deploy-virtual-kubernetes-clusters-on-eks-aks-and-gke-215bc7a07f56</link>
+      <guid>https://itnext.io/deploy-virtual-kubernetes-clusters-on-eks-aks-and-gke-215bc7a07f56</guid>
+      <pubDate>Thu, 28 Nov 2024 10:03:44 GMT</pubDate>
+      <description>Step-by-Step Guide to Installing vCluster on Managed Kubernetes ServicesIntroductionKubernetes has revolutionized application deployment, but as teams...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>📝 Terminal-Based Presentations</title>
+      <link>https://itnext.io/terminal-based-presentations-66c9f0c9b4a3</link>
+      <guid>https://itnext.io/terminal-based-presentations-66c9f0c9b4a3</guid>
+      <pubDate>Sun, 24 Nov 2024 09:50:19 GMT</pubDate>
+      <description>A Guide to No-Fuss Technical DemosIntroductionTechnical presentations often involve jumping between slides, terminal, and IDE. Picture explaining a Ku...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>🎤 From Prompts to Automation: GPTScript and Fabric</title>
+      <link>https://www.conf42.com/prompt2024</link>
+      <guid>https://www.conf42.com/prompt2024</guid>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 GMT</pubDate>
+      <description>Conference talk at Conf42 Prompt Engineering 2024</description>
+      <category>Talk</category>
+      <category>Conf42 Prompt Engineering 2024</category>
+    </item>
+
+    <item>
+      <title>🎤 How to build cloud native platforms with Kubernetes</title>
+      <link>https://octopus.com/shipped</link>
+      <guid>https://octopus.com/shipped</guid>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 GMT</pubDate>
+      <description>Conference talk at SHIPPED24</description>
+      <category>Talk</category>
+      <category>SHIPPED24</category>
+    </item>
+
+    <item>
+      <title>📝 I Transitioned to Containerized Development Environments</title>
+      <link>https://itnext.io/i-transitioned-to-containerized-development-environments-75f2ecbc37c5</link>
+      <guid>https://itnext.io/i-transitioned-to-containerized-development-environments-75f2ecbc37c5</guid>
+      <pubDate>Sun, 15 Sep 2024 12:25:03 GMT</pubDate>
+      <description>Photo by Amira El Fohail on UnsplashHere’s How It Improved My Daily WorkflowIntroductionIn today’s fast-paced development landscape, maintaining consi...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>📝 Top 5 Kubernetes Challenges for Platform Teams</title>
+      <link>https://itnext.io/top-5-kubernetes-challenges-for-platform-teams-87aa2f59e904</link>
+      <guid>https://itnext.io/top-5-kubernetes-challenges-for-platform-teams-87aa2f59e904</guid>
+      <pubDate>Sun, 08 Sep 2024 09:57:48 GMT</pubDate>
+      <description>Using vCluster to build scalable, efficient, and manageable platformsIntroductionAs more organizations move towards cloud-native architectures, platfo...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>📝 Multi-Container Development Environments</title>
+      <link>https://itnext.io/multi-container-development-environments-fc11f4a1c9d5</link>
+      <guid>https://itnext.io/multi-container-development-environments-fc11f4a1c9d5</guid>
+      <pubDate>Fri, 23 Aug 2024 09:18:57 GMT</pubDate>
+      <description>Neovim on IncusIntroductionDevelopment environments have evolved significantly over the years, with containerization playing a crucial role in creatin...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>📝 8 Advanced Linux Command Line Tools</title>
+      <link>https://itnext.io/8-advanced-linux-command-line-tools-9d81258c3165</link>
+      <guid>https://itnext.io/8-advanced-linux-command-line-tools-9d81258c3165</guid>
+      <pubDate>Sun, 18 Aug 2024 09:30:35 GMT</pubDate>
+      <description>The Power of MoreutilsIntroductionWe often start our command-line journey with the essential coreutils package, which provides fundamental tools for f...</description>
+      <category>Blog</category>
+      
+    </item>
+
+    <item>
+      <title>🎤 The Architecture of Developer Platforms</title>
+      <link>https://youtu.be/D2EjyyA5gZQ?t=15411</link>
+      <guid>https://youtu.be/D2EjyyA5gZQ?t=15411</guid>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 GMT</pubDate>
+      <description>Conference talk at Worldwide Software Architecture Summit 2024 – Career Track</description>
+      <category>Talk</category>
+      <category>Worldwide Software Architecture Summit 2024 – Career Track</category>
+    </item>
+
+    <item>
+      <title>🎤 Introduction to vCluster: Building Internal Developer Platforms</title>
+      <link>https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-london-2024/</link>
+      <guid>https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-london-2024/</guid>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 GMT</pubDate>
+      <description>Conference talk at Kubernetes Community Days UK - London 2024</description>
+      <category>Talk</category>
+      <category>Kubernetes Community Days UK - London 2024</category>
+    </item>
+
+    <item>
+      <title>🎤 How to Learn Cloud Native Technologies Using AI</title>
+      <link>https://sessionize.com/localhost-conference-2024/</link>
+      <guid>https://sessionize.com/localhost-conference-2024/</guid>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 GMT</pubDate>
+      <description>Conference talk at Localhost Conference 2024</description>
+      <category>Talk</category>
+      <category>Localhost Conference 2024</category>
+    </item>
+
+    <item>
+      <title>🎤 How to Build Cloud-Native Platforms with Kubernetes</title>
+      <link>https://www.conf42.com/Platform_Engineering_2024_Piotr_Zaniewski_cloudnative_kubernetes_platforms</link>
+      <guid>https://www.conf42.com/Platform_Engineering_2024_Piotr_Zaniewski_cloudnative_kubernetes_platforms</guid>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 GMT</pubDate>
+      <description>Conference talk at Conf42 Platform Engineering 2024</description>
+      <category>Talk</category>
+      <category>Conf42 Platform Engineering 2024</category>
+    </item>
+
+    <item>
+      <title>🎤 Kubernetes Certifications: How to Take Your Career to Next Level</title>
+      <link>https://youtu.be/xn1O6L3yqf0?t=2507</link>
+      <guid>https://youtu.be/xn1O6L3yqf0?t=2507</guid>
+      <pubDate>Wed, 01 Nov 2023 00:00:00 GMT</pubDate>
+      <description>Conference talk at DevOps Meetup</description>
+      <category>Talk</category>
+      <category>DevOps Meetup</category>
+    </item>
+
+    <item>
+      <title>🎤 How to create and maintain good software documentation</title>
+      <link>https://youtu.be/-YmLFMDUzv0</link>
+      <guid>https://youtu.be/-YmLFMDUzv0</guid>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 GMT</pubDate>
+      <description>Conference talk at Worldwide Software Architecture Summit 2021 (WSAS) - Geekle</description>
+      <category>Talk</category>
+      <category>Worldwide Software Architecture Summit 2021 (WSAS) - Geekle</category>
+    </item>
+  </channel>
+</rss>
