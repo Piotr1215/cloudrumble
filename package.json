@@ -6,14 +6,13 @@
     "docusaurus": "docusaurus",
     "dockerstart": "docusaurus start --host 0.0.0.0",
     "start": "docusaurus start",
-    "build": "node scripts/__generate_activity_rss.js && docusaurus build",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "generate-rss": "node scripts/__generate_activity_rss.js"
+    "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
     "@docusaurus/core": "^3.9.1",

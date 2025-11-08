@@ -32,14 +32,7 @@ export default function TerminalHero() {
     },
     ls: {
       description: "List available sections",
-      action: () => "projects  videos  talks  blog  activity"
-    },
-    activity: {
-      description: "View activity dashboard",
-      action: () => {
-        history.push("/activity");
-        return "Loading activity dashboard...";
-      }
+      action: () => "projects  videos  talks  blog"
     },
     "cd projects": {
       description: "Go to projects page",
@@ -67,13 +60,6 @@ export default function TerminalHero() {
       action: () => {
         history.push("/blog");
         return "Navigating to blog...";
-      }
-    },
-    "cd activity": {
-      description: "Go to activity dashboard",
-      action: () => {
-        history.push("/activity");
-        return "Navigating to activity dashboard...";
       }
     },
     vim: {
