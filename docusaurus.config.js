@@ -105,11 +105,6 @@ const config = {
             position: "left",
           },
           {
-            to: "/activity",
-            label: "Activity",
-            position: "left",
-          },
-          {
             href: "https://github.com/Piotr1215",
             label: "GitHub",
             position: "right",
