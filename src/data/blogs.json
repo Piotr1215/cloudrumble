@@ -1,5 +1,20 @@
 [
   {
+    "title": "Why GPU Infrastructure Is Foundational to an Enterprise AI Strategy",
+    "link": "https://itnext.io/why-gpu-infrastructure-is-foundational-to-an-enterprise-ai-strategy-5b574ef1eebc",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*dj5Kcc1e2z4xfs6g",
+    "description": "Photo by BoliviaInteligente on UnsplashIn an era where artificial intelligence is rapidly becoming a cornerstone of enterprise strategy, the conversat...",
+    "date": "Nov 11, 2025",
+    "publishedAt": "Tue, 11 Nov 2025 14:44:01 GMT",
+    "categories": [
+      "virtualization",
+      "infrastructure",
+      "artificial-intelligence",
+      "cloud-computing",
+      "kubernetes"
+    ]
+  },
+  {
     "title": "From Physical Servers to Virtual Kubernetes Clusters",
     "link": "https://itnext.io/from-physical-servers-to-virtual-kubernetes-clusters-85f931d4cdff",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*ZEsdmS2pVjxM3l6K.png",
@@ -132,21 +147,6 @@
       "tutorial",
       "containers",
       "software-development"
-    ]
-  },
-  {
-    "title": "8 Advanced Linux Command Line Tools",
-    "link": "https://itnext.io/8-advanced-linux-command-line-tools-9d81258c3165",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*58c3hqlzF3-mfx3NQjtDJw.png",
-    "description": "The Power of MoreutilsIntroductionWe often start our command-line journey with the essential coreutils package, which provides fundamental tools for f...",
-    "date": "Aug 18, 2024",
-    "publishedAt": "Sun, 18 Aug 2024 09:30:35 GMT",
-    "categories": [
-      "developer-tools",
-      "linux",
-      "programming",
-      "terminal",
-      "technology"
     ]
   }
 ]
