@@ -34,7 +34,7 @@
    "slidesUrl": null,
    "thumbnailUrl": "/img/sre-day-paris.png",
    "type": "talk",
-   "upcoming": true,
+   "upcoming": false,
    "abstract": "Kubernetes offers many ways to share GPUs, but a single, cluster-wide scheduler often forces trade-offs between utilization, stability, and team autonomy. This talk shows how vCluster makes the NVIDIA Kubernetes AI Scheduler (KAI) run as an opt-in service for each tenant—so platform teams can raise GPU density while keeping operations predictable. What We'll Cover: Problem statement – why mixed workloads leave GPUs under-used and complicate on-call; vCluster fundamentals – lightweight control planes that isolate scheduling logic, not hardware; KAI at a glance – fractional GPU allocation, gang queues, topology awareness; Live demonstration – two vClusters on one host. Key Takeaways: A reproducible pattern for running different schedulers side-by-side; Practical steps to increase GPU utilisation without adding more clusters; An isolation model that lets teams experiment safely. Why It Matters: As GPU demand grows, platform engineers must balance cost efficiency with reliability. Combining vCluster and KAI delivers both—turning idle accelerators into productive capacity while preserving operational control."
  },
  {
