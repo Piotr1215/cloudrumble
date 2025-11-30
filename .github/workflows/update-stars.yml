@@ -31,8 +31,32 @@ jobs:
         run: node scripts/update-youtube-videos.js
 
       - name: Update Medium blogs
+        id: medium
         continue-on-error: true
-        run: node scripts/update-medium-blogs.js
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          feed_list: "https://medium.com/feed/@piotrzan"
+          max_post_count: 12
+          output_only: true
+
+      - name: Transform Medium blogs to JSON
+        if: steps.medium.outcome == 'success'
+        run: |
+          node -e "
+            const fs = require('fs');
+            const input = JSON.parse(fs.readFileSync('/tmp/blog_post_workflow_output.json', 'utf8'));
+            const blogs = input.map(item => ({
+              title: item.title,
+              link: item.url.split('?')[0],
+              thumbnail: '',
+              description: (item.description || '').replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+              date: new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+              publishedAt: item.date,
+              categories: item.categories || []
+            }));
+            fs.writeFileSync('src/data/blogs.json', JSON.stringify(blogs, null, 2) + '\n');
+            console.log('✓ Updated blogs.json with', blogs.length, 'posts');
+          "
 
       - name: Check for changes
         id: git-check
