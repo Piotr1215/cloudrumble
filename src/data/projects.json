@@ -50,7 +50,8 @@
     ],
     "installCommand": "{ 'Piotr1215/pairup.nvim' }",
     "installType": "lazy.nvim",
-    "category": "neovim"
+    "category": "neovim",
+    "pinned": true
   },
   {
     "name": "presenterm.nvim",
@@ -76,7 +77,8 @@
       "Linux",
       "Configuration"
     ],
-    "category": "config"
+    "category": "config",
+    "pinned": true
   },
   {
     "name": "mcp-agentic-framework",
@@ -89,7 +91,8 @@
       "Framework"
     ],
     "installCommand": "npm install @piotr1215/mcp-agentic-framework",
-    "category": "mcp"
+    "category": "mcp",
+    "pinned": true
   },
   {
     "name": "mcp-obsidian",
@@ -169,7 +172,8 @@
       "Go"
     ],
     "installCommand": "go install github.com/Piotr1215/aicmdtools@latest",
-    "category": "cli"
+    "category": "cli",
+    "pinned": true
   },
   {
     "name": "typeit.nvim",

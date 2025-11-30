@@ -5,7 +5,9 @@ import TalksPage from '@site/src/components/Talks';
 export default function Talks() {
   return (
     <Layout title="Talks" description="Conference talks and workshops">
-      <TalksPage />
+      <main className="px-4 py-12">
+        <TalksPage />
+      </main>
     </Layout>
   );
 }

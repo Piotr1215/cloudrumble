@@ -45,7 +45,12 @@ jobs:
           node -e "
             const fs = require('fs');
             const input = JSON.parse(fs.readFileSync('/tmp/blog_post_workflow_output.json', 'utf8'));
-            const blogs = input.map(item => ({
+
+            // Read existing blogs to preserve pinned entries
+            const existingBlogs = JSON.parse(fs.readFileSync('src/data/blogs.json', 'utf8'));
+            const pinnedBlogs = existingBlogs.filter(b => b.pinned);
+
+            const newBlogs = input.map(item => ({
               title: item.title,
               link: item.url.split('?')[0],
               thumbnail: '',
@@ -54,8 +59,14 @@ jobs:
               publishedAt: item.date,
               categories: item.categories || []
             }));
+
+            // Combine: pinned first, then new blogs (excluding duplicates of pinned)
+            const pinnedLinks = new Set(pinnedBlogs.map(b => b.link));
+            const filteredNewBlogs = newBlogs.filter(b => !pinnedLinks.has(b.link));
+            const blogs = [...pinnedBlogs, ...filteredNewBlogs];
+
             fs.writeFileSync('src/data/blogs.json', JSON.stringify(blogs, null, 2) + '\n');
-            console.log('✓ Updated blogs.json with', blogs.length, 'posts');
+            console.log('✓ Updated blogs.json with', blogs.length, 'posts (' + pinnedBlogs.length + ' pinned preserved)');
           "
 
       - name: Check for changes

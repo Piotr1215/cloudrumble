@@ -74,24 +74,8 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Documentation",
-          },
-          {
-            to: "/blog",
-            label: "Blog",
-            position: "left",
-          },
-          {
             to: "/talks",
             label: "Talks",
-            position: "left",
-          },
-          {
-            to: "/youtube",
-            label: "Videos",
             position: "left",
           },
           {
@@ -100,8 +84,13 @@ const config = {
             position: "left",
           },
           {
+            to: "/youtube",
+            label: "Videos",
+            position: "left",
+          },
+          {
             to: "/medium",
-            label: "Medium",
+            label: "Blogs",
             position: "left",
           },
           {

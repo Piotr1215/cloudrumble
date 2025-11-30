@@ -90,9 +90,22 @@ async function main() {
 
   try {
     const xmlData = await fetchRSS(RSS_URL);
-    const videos = parseVideos(xmlData);
+    const newVideos = parseVideos(xmlData);
 
-    console.log(`Found ${videos.length} videos`);
+    console.log(`Found ${newVideos.length} videos from RSS`);
+
+    // Read existing videos to preserve pinned entries
+    let pinnedVideos = [];
+    if (fs.existsSync(VIDEOS_FILE)) {
+      const existingVideos = JSON.parse(fs.readFileSync(VIDEOS_FILE, 'utf8'));
+      pinnedVideos = existingVideos.filter(v => v.pinned);
+      console.log(`Found ${pinnedVideos.length} pinned videos to preserve`);
+    }
+
+    // Combine: pinned first, then new videos (excluding duplicates of pinned)
+    const pinnedIds = new Set(pinnedVideos.map(v => v.videoId));
+    const filteredNewVideos = newVideos.filter(v => !pinnedIds.has(v.videoId));
+    const videos = [...pinnedVideos, ...filteredNewVideos];
 
     // Ensure directory exists
     const dir = path.dirname(VIDEOS_FILE);
@@ -106,7 +119,7 @@ async function main() {
       'utf8'
     );
 
-    console.log(`✓ Successfully updated ${VIDEOS_FILE}`);
+    console.log(`✓ Successfully updated ${VIDEOS_FILE} (${pinnedVideos.length} pinned + ${filteredNewVideos.length} new)`);
   } catch (error) {
     console.error('Error fetching videos:', error.message);
     process.exit(1);

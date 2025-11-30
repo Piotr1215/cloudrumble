@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Link from "@docusaurus/Link";
 
 export default function YouTubeReel({ videos = [] }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -14,13 +13,23 @@ export default function YouTubeReel({ videos = [] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {videos.map((video) => (
           <div
             key={video.id}
             className="video-card group cursor-pointer"
             onClick={() => openVideo(video)}
           >
+            {/* Terminal header */}
+            <div className="terminal-card-header">
+              <div className="traffic-lights">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <span className="path">~/videos/{video.videoId}</span>
+            </div>
+
             <div className="flex flex-col h-full">
               <div className="relative aspect-video">
                 <img
@@ -43,22 +52,22 @@ export default function YouTubeReel({ videos = [] }) {
                   </svg>
                 </div>
                 {video.duration && (
-                  <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 text-xs rounded">
+                  <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 text-xs rounded font-mono">
                     {video.duration}
                   </span>
                 )}
               </div>
-              <div className="p-6 flex-grow flex flex-col">
-                <h3 className="font-semibold text-xl mb-2 line-clamp-2 group-hover:text-purple-500 transition-colors text-gray-900 dark:text-gray-100">
+              <div className="p-4 flex-grow flex flex-col">
+                <h3 className="terminal-file text-lg mb-2 line-clamp-2 group-hover:text-cyan-500 transition-colors">
                   {video.title}
                 </h3>
                 {video.description && (
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2 flex-grow">
-                    {video.description}
+                  <p className="text-sm terminal-comment mb-3 line-clamp-2 flex-grow">
+                    # {video.description}
                   </p>
                 )}
                 {video.date && (
-                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-auto">
+                  <p className="text-xs terminal-comment mt-auto">
                     {video.date}
                   </p>
                 )}
@@ -81,7 +90,7 @@ export default function YouTubeReel({ videos = [] }) {
               className="absolute -top-10 right-0 text-white text-3xl hover:text-gray-300"
               onClick={closeModal}
             >
-              ×
+              x
             </button>
             <div className="aspect-video">
               <iframe

@@ -32,7 +32,7 @@ export default function TerminalHero() {
     },
     ls: {
       description: "List available sections",
-      action: () => "projects  videos  talks  blog"
+      action: () => "projects  videos  talks  blogs"
     },
     "cd projects": {
       description: "Go to projects page",
@@ -55,11 +55,11 @@ export default function TerminalHero() {
         return "Navigating to talks...";
       }
     },
-    "cd blog": {
-      description: "Go to blog",
+    "cd blogs": {
+      description: "Go to blogs (Medium)",
       action: () => {
-        history.push("/blog");
-        return "Navigating to blog...";
+        history.push("/medium");
+        return "Navigating to blogs...";
       }
     },
     vim: {
@@ -501,7 +501,7 @@ export default function TerminalHero() {
 
   return (
     <section className="no-underline-links px-4">
-      <div className="mx-auto max-w-7xl">
+      <div className="max-w-[96rem] mx-auto">
         {/* Terminal Window */}
         <div className="rounded-lg border-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-black shadow-2xl overflow-hidden font-mono">
           {/* Terminal Header */}

@@ -8,7 +8,7 @@ export default function ProjectsPage() {
       title="Open Source Projects"
       description="Open source tools, plugins, and utilities created by Piotr Zaniewski"
     >
-      <main className="container mx-auto px-4 py-12">
+      <main className="px-4 py-12">
         <Projects />
       </main>
     </Layout>

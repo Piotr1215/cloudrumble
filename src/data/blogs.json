@@ -1,5 +1,45 @@
 [
   {
+    "title": "10 Essential Kubernetes Tools You Didn't Know You Needed",
+    "link": "https://itnext.io/10-essential-kubernetes-tools-you-didnt-know-you-needed-06954251d845",
+    "thumbnail": "https://miro.medium.com/v2/resize:fit:1200/1*rl6fQ_FEjew5EkvtSUO_YQ.png",
+    "description": "Celebrating 10th Kubernetes Anniversary - 10 Essential Kubernetes Tools for DevOps engineers and platform teams",
+    "date": "Jul 2, 2024",
+    "publishedAt": "Thu, 04 Jul 2024 14:48:48 GMT",
+    "categories": ["kubernetes", "cncf", "containers", "devops", "tools"],
+    "pinned": true
+  },
+  {
+    "title": "The Zsh Shell Tricks I Wish I'd Known Earlier",
+    "link": "https://itnext.io/the-zsh-shell-tricks-i-wish-id-known-earlier-ae99e91c53c2",
+    "thumbnail": "https://miro.medium.com/v2/resize:fit:1200/1*0Gt5FXMWBcpO-eQZ0Gfx1g.png",
+    "description": "Boost Terminal Productivity - Zsh tips and tricks for better terminal workflow",
+    "date": "Jul 14, 2024",
+    "publishedAt": "Mon, 15 Jul 2024 08:54:37 GMT",
+    "categories": ["shell", "programming", "tips-and-tricks", "productivity", "guides-and-tutorials"],
+    "pinned": true
+  },
+  {
+    "title": "10 CLI Tools That Made the Biggest Impact",
+    "link": "https://itnext.io/10-cli-tools-that-made-the-biggest-impact-f8a2f4168434",
+    "thumbnail": "https://miro.medium.com/v2/resize:fit:1200/1*MOmOg-6kEAV8I-5V6VJUrg.png",
+    "description": "On Transforming My Terminal-Based Workflow - Top CLI tools for developers and DevOps engineers",
+    "date": "Aug 11, 2024",
+    "publishedAt": "Sun, 15 Sep 2024 12:45:16 GMT",
+    "categories": ["programming", "command-line", "top-10", "technology", "open-source"],
+    "pinned": true
+  },
+  {
+    "title": "Spice up your Infrastructure as Code with TACOS",
+    "link": "https://itnext.io/spice-up-your-infrastructure-as-code-with-tacos-1a9c179e0783",
+    "thumbnail": "https://miro.medium.com/v2/resize:fit:1200/0*S5siyTwA_-5W29gz",
+    "description": "TACOS Providers Review - Terraform Automation and Collaboration Software",
+    "date": "Jan 30, 2022",
+    "publishedAt": "Sun, 30 Jan 2022 18:00:55 GMT",
+    "categories": ["terraform", "infrastructure-as-code", "devops", "automation", "cloud"],
+    "pinned": true
+  },
+  {
     "title": "Why GPU Infrastructure Is Foundational to an Enterprise AI Strategy",
     "link": "https://itnext.io/why-gpu-infrastructure-is-foundational-to-an-enterprise-ai-strategy-5b574ef1eebc",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*dj5Kcc1e2z4xfs6g",

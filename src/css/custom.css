@@ -1308,37 +1308,137 @@ body {
   --hide-thumbnails-text: 1;
 }
 
-/* Terminal-style project cards */
-.terminal-card {
-  @apply p-4 border border-gray-700 bg-black transition-all duration-200;
-  min-height: 280px;
-}
+/* ============================================
+   UNIFIED TERMINAL CARD SYSTEM
+   All content cards share this base styling
+   ============================================ */
 
-.terminal-card:hover {
-  @apply border-gray-500;
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
-}
-
-/* Video card styling - matches project card */
-.video-card {
-  @apply rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 overflow-hidden;
-  min-height: 400px;
-}
-
-.video-card:hover {
-  @apply transform -translate-y-1;
-}
-
-/* Blog card styling - matches project and video cards */
+/* Base terminal card - shared by all card types */
+.terminal-card,
+.video-card,
 .blog-card {
-  @apply rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 overflow-hidden;
-  min-height: 400px;
+  @apply font-mono rounded-lg overflow-hidden transition-all duration-200;
+  /* Light mode: subtle shadow, off-white background */
+  @apply border border-gray-200 bg-gray-50;
+  @apply shadow-sm;
+  /* Dark mode: elevated surface (#1E1E1E), defined border */
+  @apply dark:border-gray-600 dark:bg-[#1E1E1E];
+  @apply dark:shadow-none;
+}
+
+/* Fixed height for grid cards (projects, videos, blogs) */
+.video-card,
+.blog-card {
+  height: 320px;
+}
+
+.terminal-card {
+  height: 280px;
+}
+
+.terminal-card:hover,
+.video-card:hover,
+.blog-card:hover {
+  /* Light mode: stronger shadow on hover */
+  @apply border-gray-300 shadow-md;
+}
+
+[data-theme='dark'] .terminal-card:hover,
+[data-theme='dark'] .video-card:hover,
+[data-theme='dark'] .blog-card:hover {
+  /* Dark mode: elevate to next surface level + subtle glow */
+  background-color: #252629 !important;
+  border-color: #4a4a4a;
+}
+
+/* Terminal card header with traffic lights */
+.terminal-card-header {
+  @apply flex items-center gap-2 bg-gray-800 px-3 py-2 border-b border-gray-700;
+}
+
+.terminal-card-header .traffic-lights {
+  @apply flex gap-1.5;
+}
+
+.terminal-card-header .traffic-lights span {
+  @apply h-2 w-2 rounded-full;
+}
+
+.terminal-card-header .traffic-lights span:nth-child(1) { @apply bg-red-500; }
+.terminal-card-header .traffic-lights span:nth-child(2) { @apply bg-yellow-500; }
+.terminal-card-header .traffic-lights span:nth-child(3) { @apply bg-green-500; }
+
+.terminal-card-header .path {
+  @apply text-xs text-gray-400 flex-1 text-center truncate;
+}
+
+/* Terminal card body */
+.terminal-card-body {
+  @apply p-4 flex flex-col flex-1 overflow-hidden;
+}
+
+/* Ensure cards use flex layout */
+.terminal-card,
+.video-card,
+.blog-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Truncate description text */
+.terminal-card-body .terminal-comment {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Terminal command prompt style */
+.terminal-prompt {
+  @apply flex items-center gap-2 text-sm;
+}
+
+.terminal-prompt .symbol {
+  @apply text-green-500;
+}
+
+.terminal-prompt .command {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+/* Terminal file listing style */
+.terminal-file {
+  @apply text-cyan-600 dark:text-cyan-300 font-semibold;
+}
+
+/* Terminal comment style */
+.terminal-comment {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+/* Terminal tags as flags/extensions */
+.terminal-tag {
+  @apply px-2 py-0.5 text-xs rounded border;
+  @apply bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600;
+}
+
+/* Terminal link styles */
+.terminal-link {
+  @apply hover:underline transition-colors;
+}
+
+.terminal-link-green { @apply text-green-600 dark:text-green-400; }
+.terminal-link-blue { @apply text-blue-600 dark:text-blue-400; }
+.terminal-link-purple { @apply text-purple-600 dark:text-purple-400; }
+.terminal-link-cyan { @apply text-cyan-600 dark:text-cyan-400; }
+
+/* Card-specific overrides */
+.blog-card {
   text-decoration: none;
   display: block;
 }
 
 .blog-card:hover {
-  @apply transform -translate-y-1;
   text-decoration: none;
 }
 

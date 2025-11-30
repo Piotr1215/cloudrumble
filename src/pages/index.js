@@ -13,7 +13,7 @@ export default function Homepage() {
       <Head>
         <link rel="prefetch" href="/css/elements.min.css" />
       </Head>
-      <div className="space-y-16 py-16">
+      <div className="space-y-16 py-12">
         <TerminalHero />
         <FeaturedProjects />
         <TerminalContent />

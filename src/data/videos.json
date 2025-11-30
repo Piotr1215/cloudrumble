@@ -1,5 +1,45 @@
 [
   {
+    "id": "D2pe9ZZ2yCE",
+    "videoId": "D2pe9ZZ2yCE",
+    "title": "How to build your own scripts library",
+    "thumbnail": "https://img.youtube.com/vi/D2pe9ZZ2yCE/maxresdefault.jpg",
+    "description": "",
+    "date": "Apr 12, 2025",
+    "publishedAt": "2025-04-12T09:33:37-07:00",
+    "pinned": true
+  },
+  {
+    "id": "M58o-Hxx5JI",
+    "videoId": "M58o-Hxx5JI",
+    "title": "Automate Your Developer Workflow with Taskwarrior",
+    "thumbnail": "https://img.youtube.com/vi/M58o-Hxx5JI/maxresdefault.jpg",
+    "description": "",
+    "date": "Mar 3, 2024",
+    "publishedAt": "2024-03-03T00:00:00+00:00",
+    "pinned": true
+  },
+  {
+    "id": "W4aLqTV4qkc",
+    "videoId": "W4aLqTV4qkc",
+    "title": "My Top 10 Neovim Plugins: With Demos!",
+    "thumbnail": "https://img.youtube.com/vi/W4aLqTV4qkc/maxresdefault.jpg",
+    "description": "",
+    "date": "Jan 21, 2024",
+    "publishedAt": "2024-01-21T00:00:00+00:00",
+    "pinned": true
+  },
+  {
+    "id": "fU8HB1cvG9w",
+    "videoId": "fU8HB1cvG9w",
+    "title": "Neovim For DevOps",
+    "thumbnail": "https://img.youtube.com/vi/fU8HB1cvG9w/maxresdefault.jpg",
+    "description": "",
+    "date": "Oct 21, 2023",
+    "publishedAt": "2023-10-21T00:00:00+00:00",
+    "pinned": true
+  },
+  {
     "id": "09dggS8KwBc",
     "videoId": "09dggS8KwBc",
     "title": "Self-Improving Claude Code: Hooks, Skills, and Session Automation",
