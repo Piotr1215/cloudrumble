@@ -2,8 +2,8 @@ name: Update GitHub Data
 
 on:
   schedule:
-    # Run every Monday at 00:00 UTC
-    - cron: '0 0 * * 1'
+    # Run every day at 00:00 UTC
+    - cron: '0 0 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -21,14 +21,17 @@ jobs:
           node-version: '24'
 
       - name: Update GitHub stars
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/update-github-stars.js
 
       - name: Update YouTube videos
+        continue-on-error: true
         run: node scripts/update-youtube-videos.js
 
       - name: Update Medium blogs
+        continue-on-error: true
         run: node scripts/update-medium-blogs.js
 
       - name: Check for changes

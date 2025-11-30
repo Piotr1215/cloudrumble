@@ -1,5 +1,14 @@
 [
   {
+    "id": "09dggS8KwBc",
+    "videoId": "09dggS8KwBc",
+    "title": "Self-Improving Claude Code: Hooks, Skills, and Session Automation",
+    "thumbnail": "https://img.youtube.com/vi/09dggS8KwBc/maxresdefault.jpg",
+    "description": "",
+    "date": "Nov 23, 2025",
+    "publishedAt": "2025-11-23T16:00:27+00:00"
+  },
+  {
     "id": "S2gpOr-mbf4",
     "videoId": "S2gpOr-mbf4",
     "title": "CV Pipeline as Code: LaTeX, YAML, and GitHub Actions",
@@ -97,14 +106,5 @@
     "description": "",
     "date": "Jun 8, 2025",
     "publishedAt": "2025-06-08T21:07:38+00:00"
-  },
-  {
-    "id": "kwjuHO9ZWlA",
-    "videoId": "kwjuHO9ZWlA",
-    "title": "Bookmarks manager in terminal with tmux and neovim",
-    "thumbnail": "https://img.youtube.com/vi/kwjuHO9ZWlA/maxresdefault.jpg",
-    "description": "Learn how to build your own files and folders bookmark manager using tmux, neovim, bash and lua code....",
-    "date": "May 4, 2025",
-    "publishedAt": "2025-05-04T14:25:37+00:00"
   }
 ]
