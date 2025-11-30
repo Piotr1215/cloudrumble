@@ -1308,14 +1308,15 @@ body {
   --hide-thumbnails-text: 1;
 }
 
-/* Projects card styling */
-.project-card {
-  @apply p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800;
-  min-height: 400px;
+/* Terminal-style project cards */
+.terminal-card {
+  @apply p-4 border border-gray-700 bg-black transition-all duration-200;
+  min-height: 280px;
 }
 
-.project-card:hover {
-  @apply transform -translate-y-1;
+.terminal-card:hover {
+  @apply border-gray-500;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
 }
 
 /* Video card styling - matches project card */
