@@ -41,7 +41,7 @@
   {
     "name": "pairup.nvim",
     "description": "AI Pair Programming in Neovim",
-    "stars": 31,
+    "stars": 44,
     "url": "https://github.com/Piotr1215/pairup.nvim",
     "tags": [
       "Neovim",
@@ -55,7 +55,7 @@
   {
     "name": "presenterm.nvim",
     "description": "Neovim plugin for presenterm",
-    "stars": 27,
+    "stars": 29,
     "url": "https://github.com/Piotr1215/presenterm.nvim",
     "tags": [
       "Neovim",
@@ -94,7 +94,7 @@
   {
     "name": "mcp-obsidian",
     "description": "Simple MCP server for interacting with local obsidian notes",
-    "stars": 4,
+    "stars": 7,
     "url": "https://github.com/Piotr1215/mcp-obsidian",
     "tags": [
       "MCP",
@@ -146,7 +146,7 @@
   {
     "name": "cv-pipeline-template",
     "description": "Automated CV generation pipeline that creates multiple psychologically-optimized CV variants from YAML data. Uses LaTeX, GitHub Actions, and color psychology research.",
-    "stars": 13,
+    "stars": 14,
     "url": "https://github.com/Piotr1215/cv-pipeline-template",
     "tags": [
       "Automation",
@@ -201,7 +201,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11072,
+    "stars": 11144,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -215,7 +215,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10700,
+    "stars": 10724,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
@@ -241,7 +241,7 @@
   {
     "name": "Pepr",
     "description": "Type safe K8s middleware for humans. A Kubernetes controller framework that simplifies building admission controllers, operators, and other K8s automation with TypeScript.",
-    "stars": 199,
+    "stars": 208,
     "url": "https://github.com/defenseunicorns/pepr",
     "tags": [
       "Kubernetes",
