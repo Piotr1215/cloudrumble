@@ -1,0 +1,15 @@
+<!--
+  Hidden form for Netlify to detect at build time.
+  This file enables Netlify Forms for the React guestbook component.
+-->
+<!DOCTYPE html>
+<html>
+<head><title>Guestbook Form</title></head>
+<body>
+  <form name="guestbook" netlify netlify-honeypot="bot-field" hidden>
+    <input name="bot-field" />
+    <input name="name" />
+    <input name="message" />
+  </form>
+</body>
+</html>

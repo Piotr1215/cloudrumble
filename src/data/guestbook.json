@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Marco",
+    "message": "Love the vim easter egg! Took me 3 attempts to escape :)",
+    "date": "2024-11-28",
+    "approved": true
+  },
+  {
+    "id": 2,
+    "name": "Kurt",
+    "message": "Found you from KCD Munich, great talk on vCluster!",
+    "date": "2024-11-25",
+    "approved": true
+  },
+  {
+    "id": 4,
+    "name": "Anonymous",
+    "message": ":wq",
+    "date": "2024-11-05",
+    "approved": true
+  },
+  {
+    "id": 5,
+    "name": "alex",
+    "message": "nice site, bookmarked!",
+    "date": "2024-10-20",
+    "approved": true
+  }
+]

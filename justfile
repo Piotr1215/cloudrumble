@@ -75,3 +75,63 @@ diagrams-regen-blog:
 # Generate hero banner from HTML to PNG
 hero-banner HTML_FILE OUTPUT_FILE:
     npx playwright screenshot --wait-for-timeout 2000 --full-page --viewport-size 1920,1080 {{HTML_FILE}} {{OUTPUT_FILE}}
+
+# List pending guestbook submissions from Netlify
+guestbook-list:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    TOKEN=$(echo "$NETLIFY_CLOUDRUMBLE_GUESTBOOK" | tr -d '\n')
+    SITE_ID="46affbd2-980c-49c3-89f2-fc74edfa84c4"
+
+    submissions=$(curl -s -H "Authorization: Bearer $TOKEN" \
+        "https://api.netlify.com/api/v1/sites/$SITE_ID/submissions")
+
+    count=$(echo "$submissions" | jq length)
+    if [ "$count" -eq 0 ]; then
+        echo "No pending submissions"
+        exit 0
+    fi
+
+    echo "=== Pending Guestbook Submissions ==="
+    echo "$submissions" | jq -r '.[] | "[\(.id)] \(.data.name) - \"\(.data.message)\" (\(.created_at | split("T")[0]))"'
+
+# Approve a guestbook submission by ID
+guestbook-approve ID:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    TOKEN=$(echo "$NETLIFY_CLOUDRUMBLE_GUESTBOOK" | tr -d '\n')
+    SITE_ID="46affbd2-980c-49c3-89f2-fc74edfa84c4"
+    JSON_FILE="src/data/guestbook.json"
+
+    # Fetch the submission
+    submission=$(curl -s -H "Authorization: Bearer $TOKEN" \
+        "https://api.netlify.com/api/v1/sites/$SITE_ID/submissions" | \
+        jq -r '.[] | select(.id == "{{ID}}")')
+
+    if [ -z "$submission" ]; then
+        echo "Submission {{ID}} not found"
+        exit 1
+    fi
+
+    name=$(echo "$submission" | jq -r '.data.name')
+    message=$(echo "$submission" | jq -r '.data.message')
+    date=$(echo "$submission" | jq -r '.created_at | split("T")[0]')
+
+    echo "Approving: $name - \"$message\""
+
+    # Get next ID
+    next_id=$(jq '[.[].id] | max + 1' "$JSON_FILE")
+
+    # Add to JSON
+    jq --arg name "$name" \
+       --arg msg "$message" \
+       --arg date "$date" \
+       --argjson id "$next_id" \
+       '. += [{"id": $id, "name": $name, "message": $msg, "date": $date, "approved": true}]' \
+       "$JSON_FILE" > "$JSON_FILE.tmp" && mv "$JSON_FILE.tmp" "$JSON_FILE"
+
+    # Delete from Netlify
+    curl -s -X DELETE -H "Authorization: Bearer $TOKEN" \
+        "https://api.netlify.com/api/v1/submissions/{{ID}}" > /dev/null
+
+    echo "Added to guestbook.json and deleted from Netlify"
