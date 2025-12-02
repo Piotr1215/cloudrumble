@@ -84,13 +84,18 @@ const config = {
             position: "left",
           },
           {
+            to: "/blog",
+            label: "Blogs",
+            position: "left",
+          },
+          {
             to: "/youtube",
             label: "Videos",
             position: "left",
           },
           {
             to: "/medium",
-            label: "Blogs",
+            label: "Medium",
             position: "left",
           },
           {

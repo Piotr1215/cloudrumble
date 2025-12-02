@@ -230,7 +230,7 @@ export default function TerminalContent() {
           </div>
         </div>
 
-        {/* Blogs Terminal */}
+        {/* Medium Blogs Terminal */}
         <div className="rounded-lg border-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-black shadow-xl overflow-hidden font-mono">
           <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-800 px-4 py-2">
             <div className="flex gap-2">
@@ -239,7 +239,7 @@ export default function TerminalContent() {
               <div className="h-2.5 w-2.5 rounded-full bg-green-500"></div>
             </div>
             <div className="flex-1 text-center text-xs text-gray-400">
-              ~/content/blogs
+              ~/content/medium
             </div>
           </div>
 
@@ -248,7 +248,7 @@ export default function TerminalContent() {
             <div className="mb-6">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-green-400">➜</span>
-                <span className="text-blue-400">~/content/blogs</span>
+                <span className="text-blue-400">~/content/medium</span>
                 <span className="text-gray-500 dark:text-gray-300">$</span>
                 <span className="text-gray-900 dark:text-white ml-2">ls -lh --pinned</span>
               </div>
@@ -276,7 +276,7 @@ export default function TerminalContent() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-green-400">➜</span>
-                <span className="text-blue-400">~/content/blogs</span>
+                <span className="text-blue-400">~/content/medium</span>
                 <span className="text-gray-500 dark:text-gray-300">$</span>
                 <span className="text-gray-900 dark:text-white ml-2">ls -lh --latest</span>
               </div>
@@ -305,7 +305,7 @@ export default function TerminalContent() {
                 href="/medium"
                 className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-semibold text-sm hover:no-underline"
               >
-                <span>cd blogs/</span>
+                <span>cd medium/</span>
                 <span>→</span>
               </Link>
             </div>

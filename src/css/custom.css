@@ -1443,11 +1443,185 @@ body {
 }
 
 /* Blog post content width - 75% for high-res displays */
-article.margin-vert--lg {
-  max-width: 75% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+/* VIM BUFFER STYLING - Terminal.CSS Dark Theme */
+main.col.col--7 .markdown {
+  /* Terminal.CSS Dark Theme + Vim buffer appearance */
+  font-family: 'Menlo', 'Monaco', 'Fira Code', 'Lucida Console', monospace !important;
+  font-size: 15px !important;
+  line-height: 1.6em !important;
+  background: #000000 !important;
+  color: #e8e9ed !important;
+  border: 1px solid #3f3f44 !important;
+  border-radius: 4px !important;
+  padding: 3rem 2rem 4rem 2rem !important;
+  position: relative !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3) !important;
+  margin: 2rem 0 !important;
 }
+
+/* Vim header bar with traffic lights */
+main.col.col--7 .markdown::before {
+  content: '';
+  display: block !important;
+  height: 28px !important;
+  background-color: #2d2d2d !important;
+  border-bottom: 1px solid #444 !important;
+  margin: -3rem -2rem 2rem -2rem !important;
+  background-image:
+    radial-gradient(circle, #ff5f56 6px, transparent 6px),
+    radial-gradient(circle, #ffbd2e 6px, transparent 6px),
+    radial-gradient(circle, #27c93f 6px, transparent 6px) !important;
+  background-size: 12px 12px, 12px 12px, 12px 12px !important;
+  background-position: 12px center, 34px center, 56px center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Vim status bar at bottom */
+main.col.col--7 .markdown::after {
+  content: '-- NORMAL --' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 28px !important;
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  font-family: 'Menlo', 'Monaco', 'Fira Code', monospace !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 1rem !important;
+  border-top: 1px solid #444 !important;
+  border-radius: 0 0 4px 4px !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Vim-style headings with markdown prefixes */
+main.col.col--7 .markdown h1 {
+  color: #4dd0e1 !important;
+  font-family: 'Menlo', 'Monaco', 'Fira Code', monospace !important;
+  font-size: 1.8em !important;
+  font-weight: 600 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+main.col.col--7 .markdown h1::before {
+  content: '# ';
+  color: #666 !important;
+  margin-right: 0.5rem;
+  font-weight: normal !important;
+}
+
+main.col.col--7 .markdown h2 {
+  color: #4dd0e1 !important;
+  font-family: 'Menlo', 'Monaco', 'Fira Code', monospace !important;
+  font-size: 1.5em !important;
+  font-weight: 600 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+main.col.col--7 .markdown h2::before {
+  content: '## ';
+  color: #666 !important;
+  margin-right: 0.5rem;
+  font-weight: normal !important;
+}
+
+main.col.col--7 .markdown h3 {
+  color: #4dd0e1 !important;
+  font-family: 'Menlo', 'Monaco', 'Fira Code', monospace !important;
+  font-size: 1.3em !important;
+  font-weight: 600 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+main.col.col--7 .markdown h3::before {
+  content: '### ';
+  color: #666 !important;
+  margin-right: 0.5rem;
+  font-weight: normal !important;
+}
+
+main.col.col--7 .markdown h4::before {
+  content: '#### ';
+  color: #666 !important;
+  margin-right: 0.5rem;
+}
+
+/* Vim-style content */
+main.col.col--7 .markdown p {
+  color: #d0d0d0 !important;
+  font-family: 'Menlo', 'Monaco', 'Fira Code', monospace !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1em !important;
+}
+
+main.col.col--7 .markdown a {
+  color: #60a5fa !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+main.col.col--7 .markdown a:hover {
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+}
+
+main.col.col--7 .markdown strong {
+  color: #fbbf24 !important;
+  font-weight: 600 !important;
+}
+
+main.col.col--7 .markdown em {
+  color: #c084fc !important;
+  font-style: italic !important;
+}
+
+/* Code styling */
+main.col.col--7 .markdown code {
+  color: #4ade80 !important;
+  background-color: #1a1a1a !important;
+  font-family: 'Menlo', 'Monaco', 'Fira Code', monospace !important;
+  padding: 2px 6px !important;
+  border-radius: 2px !important;
+}
+
+main.col.col--7 .markdown pre {
+  background: #0d0d0d !important;
+  border: 1px solid #333 !important;
+  padding: 1rem !important;
+  overflow-x: auto !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 3px !important;
+}
+
+main.col.col--7 .markdown pre code {
+  background: transparent !important;
+  color: #d0d0d0 !important;
+  padding: 0 !important;
+}
+
+/* Blockquotes */
+main.col.col--7 .markdown blockquote {
+  position: relative !important;
+  padding-left: 2rem !important;
+  margin: 1.5rem 0 !important;
+  border-left: 3px solid #60a5fa !important;
+  color: #a0a0a0 !important;
+}
+
+/* Lists */
+main.col.col--7 .markdown ul li::marker,
+main.col.col--7 .markdown ol li::marker {
+  color: #60a5fa !important;
+}
+
+main.col.col--7 .markdown ul li,
+main.col.col--7 .markdown ol li {
+  color: #d0d0d0 !important;
+  margin-bottom: 0.5em !important;
+}
+
 
 /* Container for blog posts */
 .container.padding-top--md.padding-bottom--lg {
@@ -1470,9 +1644,278 @@ article.margin-vert--lg {
   max-width: 85% !important;
 }
 
-/* Blog list page */
+/* ============================================
+   VIM NETRW FILE EXPLORER - BLOG LIST PAGE
+   Blog list styled as vim split with file tree
+   ============================================ */
+
+/* Blog list page - full vim window */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module {
+  background: #1a1a1a !important;
+  min-height: 100vh !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+}
+
 .blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module .container {
-  max-width: 85% !important;
+  max-width: 95% !important;
+  background: #000000 !important;
+  border: 2px solid #3f3f44 !important;
+  border-radius: 6px !important;
+  position: relative !important;
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6) !important;
+  overflow: hidden !important;
+}
+
+/* Vim window header with traffic lights */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module .container::before {
+  content: '' !important;
+  display: block !important;
+  height: 32px !important;
+  background: linear-gradient(180deg, #3a3a3a 0%, #2d2d2d 100%) !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  background-image:
+    radial-gradient(circle, #ff5f56 6px, transparent 6px),
+    radial-gradient(circle, #ffbd2e 6px, transparent 6px),
+    radial-gradient(circle, #27c93f 6px, transparent 6px) !important;
+  background-size: 12px 12px !important;
+  background-position: 14px center, 38px center, 62px center !important;
+  background-repeat: no-repeat !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Container row - create split layout */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module .row {
+  display: flex !important;
+  background: #000000 !important;
+  margin: 0 !important;
+  min-height: calc(100vh - 200px) !important;
+}
+
+/* Sidebar - vim netrw file tree */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside {
+  background: #0d0d0d !important;
+  border-right: 1px solid #333 !important;
+  padding: 1.5rem 0 !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+}
+
+/* netrw header */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside::before {
+  content: '" ============================================================================\A" Netrw Directory Listing                                        (netrw v171)\A"   /blog\A"   Sorted by name\A"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:special\A" ==============================================================================';
+  display: block !important;
+  color: #4a4a4a !important;
+  font-size: 11px !important;
+  padding: 0 1rem 1rem 1rem !important;
+  white-space: pre !important;
+  border-bottom: 1px solid #222 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* "All posts" title - hide it, we have netrw header */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside nav::before {
+  content: '../' !important;
+  display: block !important;
+  color: #4dd0e1 !important;
+  font-weight: bold !important;
+  padding: 0.3rem 1rem !important;
+  cursor: pointer !important;
+}
+
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside nav > *:first-child {
+  display: none !important; /* Hide "All posts" text */
+}
+
+/* Year headings - directory folders */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside h3 {
+  color: #4dd0e1 !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  padding: 0.4rem 1rem !important;
+  margin: 0.5rem 0 0.2rem 0 !important;
+  position: relative !important;
+}
+
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside h3::before {
+  content: '▾ 📁 ' !important;
+  color: #fbbf24 !important;
+  margin-right: 0.5rem !important;
+}
+
+/* Blog post links - files with tree characters */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside a {
+  display: block !important;
+  color: #d0d0d0 !important;
+  text-decoration: none !important;
+  padding: 0.25rem 1rem 0.25rem 2.5rem !important;
+  font-size: 12px !important;
+  position: relative !important;
+  transition: all 0.15s !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Tree characters for file list */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside a::before {
+  content: '├── ' !important;
+  position: absolute !important;
+  left: 1rem !important;
+  color: #666 !important;
+}
+
+/* Last item gets └── */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside h3 + a:last-of-type::before,
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside a:last-child::before {
+  content: '└── ' !important;
+}
+
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside a:hover {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+/* Active/selected file */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module aside a:active {
+  background: #2d2d2d !important;
+  color: #4dd0e1 !important;
+}
+
+/* Main content area - vim buffer showing file content */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main {
+  flex: 1 !important;
+  background: #000000 !important;
+  padding: 2rem !important;
+  overflow-y: auto !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+}
+
+/* Blog post previews in main area */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main > article {
+  border-bottom: 1px solid #222 !important;
+  padding-bottom: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Blog post titles in list */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main h2 a {
+  color: #4dd0e1 !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+  font-size: 1.4em !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main h2 a:hover {
+  color: #7de4f1 !important;
+  text-decoration: underline !important;
+}
+
+/* Metadata (date, read time) */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main time,
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main .margin-vert--md {
+  color: #888 !important;
+  font-size: 12px !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+}
+
+/* Blog post excerpt text */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main article p {
+  color: #d0d0d0 !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+  line-height: 1.6 !important;
+  font-size: 14px !important;
+}
+
+/* Tags */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main .margin-top--sm a {
+  background: #1a1a1a !important;
+  color: #60a5fa !important;
+  border: 1px solid #333 !important;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 3px !important;
+  font-size: 11px !important;
+  text-decoration: none !important;
+  font-family: 'Fira Code', monospace !important;
+  display: inline-block !important;
+  margin: 0.2rem 0.3rem 0.2rem 0 !important;
+}
+
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main .margin-top--sm a:hover {
+  background: #2d2d2d !important;
+  color: #93c5fd !important;
+  border-color: #4dd0e1 !important;
+}
+
+/* "Read more" links */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main a[aria-label*="Read more"] {
+  color: #c084fc !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 13px !important;
+}
+
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main a[aria-label*="Read more"]:hover {
+  color: #d8b4fe !important;
+  text-decoration: underline !important;
+}
+
+/* Images in blog previews */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module main img {
+  border: 1px solid #333 !important;
+  border-radius: 4px !important;
+  max-width: 100% !important;
+  margin: 1rem 0 !important;
+}
+
+/* Pagination */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module nav[aria-label="Blog list page navigation"] {
+  padding: 2rem 0 !important;
+  border-top: 1px solid #222 !important;
+}
+
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module nav[aria-label="Blog list page navigation"] a {
+  background: #1a1a1a !important;
+  color: #4dd0e1 !important;
+  border: 1px solid #333 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 13px !important;
+}
+
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module nav[aria-label="Blog list page navigation"] a:hover {
+  background: #2d2d2d !important;
+  color: #7de4f1 !important;
+  border-color: #4dd0e1 !important;
+}
+
+/* Vim status bar at bottom */
+.blogListPage_node_modules-\@docusaurus-theme-classic-lib-theme-BlogListPage-styles-module .container::after {
+  content: '  NORMAL  blog/index.md                                                    1,1        Top' !important;
+  display: block !important;
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  padding: 0.4rem 1rem !important;
+  border-top: 1px solid #1a1a1a !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  letter-spacing: 0.3px !important;
 }
 
 /* Override default container padding */
@@ -1552,4 +1995,961 @@ article img[src*="diagrams/"] {
   article img[src*="diagrams/"] {
     max-width: 100%;
   }
+}
+
+/* ============================================
+   VIM-THEMED BLOG POSTS
+   Individual blog posts styled as vim buffers
+   ============================================ */
+
+/* Main blog post article - vim buffer wrapper */
+.theme-doc-markdown.markdown,
+article.markdown,
+.markdown {
+  font-family: 'Fira Code', monospace !important;
+  background: #1c1c1c !important;
+  border: 2px solid #3d3d3d !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  padding-bottom: 30px !important;
+}
+
+/* Vim header bar with traffic lights */
+.theme-doc-markdown.markdown::before,
+article.markdown::before,
+.markdown::before {
+  content: '';
+  display: block;
+  height: 32px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #1a1a1a;
+  margin: -2rem -2rem 1rem -2rem;
+  background-image:
+    radial-gradient(circle, #ff5f56 5px, transparent 5px),
+    radial-gradient(circle, #ffbd2e 5px, transparent 5px),
+    radial-gradient(circle, #27c93f 5px, transparent 5px);
+  background-size: 10px 10px, 10px 10px, 10px 10px;
+  background-position: 16px center, 36px center, 56px center;
+  background-repeat: no-repeat;
+}
+
+/* Vim status bar at bottom */
+.theme-doc-markdown.markdown::after,
+article.markdown::after,
+.markdown::after {
+  content: '-- NORMAL --';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  border-top: 1px solid #1a1a1a;
+}
+
+/* Blog post headings - vim markdown style */
+.theme-doc-markdown h1,
+.markdown h1 {
+  color: #4dd0e1 !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+.theme-doc-markdown h1::before,
+.markdown h1::before {
+  content: '# ';
+  color: #666 !important;
+  margin-right: 0.5rem;
+}
+
+.theme-doc-markdown h2,
+.markdown h2 {
+  color: #4dd0e1 !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+.theme-doc-markdown h2::before,
+.markdown h2::before {
+  content: '## ';
+  color: #666 !important;
+  margin-right: 0.5rem;
+}
+
+.theme-doc-markdown h3,
+.markdown h3 {
+  color: #4dd0e1 !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+.theme-doc-markdown h3::before,
+.markdown h3::before {
+  content: '### ';
+  color: #666 !important;
+  margin-right: 0.5rem;
+}
+
+/* Blog post body text */
+.theme-doc-markdown p,
+.markdown p {
+  color: #d0d0d0 !important;
+  font-family: 'Fira Code', monospace !important;
+  line-height: 1.7;
+}
+
+/* Code blocks - keep vim style */
+.theme-doc-markdown pre,
+.markdown pre {
+  background: #0d0d0d !important;
+  border: 1px solid #3d3d3d !important;
+}
+
+.theme-doc-markdown code,
+.markdown code {
+  font-family: 'Fira Code', monospace !important;
+  color: #4ade80 !important;
+}
+
+/* Links - vim blue */
+.theme-doc-markdown a,
+.markdown a {
+  color: #60a5fa !important;
+  text-decoration: none !important;
+}
+
+.theme-doc-markdown a:hover,
+.markdown a:hover {
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+}
+
+/* Lists - vim style */
+.theme-doc-markdown ul,
+.theme-doc-markdown ol,
+.markdown ul,
+.markdown ol {
+  color: #d0d0d0 !important;
+}
+
+/* Blockquotes - vim comment style */
+.theme-doc-markdown blockquote,
+.markdown blockquote {
+  border-left: 4px solid #4d4d4d !important;
+  color: #9ca3af !important;
+  background: #252525 !important;
+}
+
+.theme-doc-markdown blockquote::before,
+.markdown blockquote::before {
+  content: '// ';
+  color: #6b7280 !important;
+}
+
+/* Strong/bold - vim highlight */
+.theme-doc-markdown strong,
+.markdown strong {
+  color: #fbbf24 !important;
+}
+
+/* Em/italic - vim constant */
+.theme-doc-markdown em,
+.markdown em {
+  color: #c084fc !important;
+  font-style: italic !important;
+}
+
+/* ============================================
+   VIM NETRW FILE EXPLORER - BLOG LIST
+   ============================================ */
+
+div[class*="blogListPage"] {
+  background: #0a0a0a !important;
+}
+
+div[class*="blogListPage"] > .container {
+  max-width: 95% !important;
+  background: #000 !important;
+  border: 2px solid #2a2a2a !important;
+  border-radius: 8px !important;
+  margin: 2rem auto !important;
+  overflow: hidden !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8) !important;
+  position: relative !important;
+}
+
+div[class*="blogListPage"] > .container::before {
+  content: '' !important;
+  display: block !important;
+  height: 36px !important;
+  background: linear-gradient(180deg, #3d3d3d 0%, #2a2a2a 100%) !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  background-image:
+    radial-gradient(circle at 16px 18px, #ff5f56 6px, transparent 6px),
+    radial-gradient(circle at 40px 18px, #ffbd2e 6px, transparent 6px),
+    radial-gradient(circle at 64px 18px, #27c93f 6px, transparent 6px) !important;
+}
+
+div[class*="blogListPage"] .row {
+  display: flex !important;
+  background: #000 !important;
+  margin: 0 !important;
+  min-height: 70vh !important;
+}
+
+div[class*="blogListPage"] aside[role="complementary"] {
+  background: #0d0d0d !important;
+  border-right: 1px solid #1a1a1a !important;
+  width: 340px !important;
+  min-width: 340px !important;
+  max-width: 340px !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+  overflow-y: auto !important;
+}
+
+div[class*="blogListPage"] aside::before {
+  content: '" ============================================================================\A"  Netrw Directory Listing                                    (netrw v171)\A"   /blog\A"   Sorted by      name\A"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$\A"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by\A" ============================================================================' !important;
+  display: block !important;
+  white-space: pre !important;
+  color: #555 !important;
+  font-size: 10px !important;
+  padding: 12px 14px !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  margin-bottom: 8px !important;
+}
+
+div[class*="blogListPage"] aside nav::before {
+  content: '../' !important;
+  display: block !important;
+  color: #5fd7ff !important;
+  font-weight: bold !important;
+  padding: 4px 14px !important;
+  margin-bottom: 6px !important;
+}
+
+div[class*="blogListPage"] aside nav > div:first-child {
+  display: none !important;
+}
+
+div[class*="blogListPage"] aside h3 {
+  color: #5fd7ff !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  padding: 6px 14px !important;
+  margin: 8px 0 4px 0 !important;
+  background: #0a0a0a !important;
+}
+
+div[class*="blogListPage"] aside h3::before {
+  content: '▾ 📁  ' !important;
+  color: #d7af00 !important;
+}
+
+div[class*="blogListPage"] aside ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+div[class*="blogListPage"] aside li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+div[class*="blogListPage"] aside a {
+  display: block !important;
+  color: #c0c0c0 !important;
+  text-decoration: none !important;
+  padding: 3px 14px 3px 38px !important;
+  position: relative !important;
+  font-size: 11px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  transition: background 0.1s !important;
+}
+
+div[class*="blogListPage"] aside a::before {
+  content: '├── ' !important;
+  position: absolute !important;
+  left: 14px !important;
+  color: #555 !important;
+}
+
+div[class*="blogListPage"] aside li:last-child a::before {
+  content: '└── ' !important;
+}
+
+div[class*="blogListPage"] aside a:hover {
+  background: #1a1a1a !important;
+  color: #fff !important;
+}
+
+div[class*="blogListPage"] main {
+  flex: 1 !important;
+  background: #000 !important;
+  padding: 24px 32px !important;
+  overflow-y: auto !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+}
+
+div[class*="blogListPage"] main article {
+  border-bottom: 1px solid #1a1a1a !important;
+  padding-bottom: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+div[class*="blogListPage"] main h2 a {
+  color: #5fd7ff !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+div[class*="blogListPage"] main h2 a:hover {
+  color: #87d7ff !important;
+  text-decoration: underline !important;
+}
+
+div[class*="blogListPage"] main time {
+  color: #666 !important;
+  font-size: 11px !important;
+}
+
+div[class*="blogListPage"] main p {
+  color: #b0b0b0 !important;
+  line-height: 1.6 !important;
+  font-size: 13px !important;
+}
+
+div[class*="blogListPage"] main a[href*="/tags/"] {
+  background: #1a1a1a !important;
+  color: #5f87d7 !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 2px 8px !important;
+  border-radius: 3px !important;
+  font-size: 10px !important;
+  text-decoration: none !important;
+  margin-right: 6px !important;
+  display: inline-block !important;
+  margin-top: 4px !important;
+}
+
+div[class*="blogListPage"] main a[href*="/tags/"]:hover {
+  background: #2a2a2a !important;
+  color: #87afd7 !important;
+}
+
+div[class*="blogListPage"] main a[aria-label*="Read more"] {
+  color: #af87d7 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  font-size: 12px !important;
+}
+
+div[class*="blogListPage"] main a[aria-label*="Read more"]:hover {
+  color: #d7afd7 !important;
+  text-decoration: underline !important;
+}
+
+div[class*="blogListPage"] main img {
+  border: 1px solid #2a2a2a !important;
+  border-radius: 4px !important;
+  max-width: 100% !important;
+  margin: 16px 0 !important;
+}
+
+div[class*="blogListPage"] nav[aria-label="Blog list page navigation"] {
+  padding: 24px 0 !important;
+  border-top: 1px solid #1a1a1a !important;
+  margin-top: 24px !important;
+}
+
+div[class*="blogListPage"] nav[aria-label="Blog list page navigation"] a {
+  background: #1a1a1a !important;
+  color: #5fd7ff !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  font-size: 12px !important;
+}
+
+div[class*="blogListPage"] nav[aria-label="Blog list page navigation"] a:hover {
+  background: #2a2a2a !important;
+  border-color: #5fd7ff !important;
+}
+
+div[class*="blogListPage"] > .container::after {
+  content: '  NORMAL                                            blog/index.md                     1,1           Top' !important;
+  display: block !important;
+  background: #2a2a2a !important;
+  color: #fff !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  padding: 6px 14px !important;
+  border-top: 1px solid #1a1a1a !important;
+}
+/* VIM NETRW - BLOG LIST */
+html.blog-list-page {
+  background: #0a0a0a !important;
+}
+
+html.blog-list-page .container.margin-vert--lg {
+  max-width: 95% !important;
+  background: #000 !important;
+  border: 2px solid #2a2a2a !important;
+  border-radius: 8px !important;
+  margin: 2rem auto !important;
+  overflow: hidden !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8) !important;
+  position: relative !important;
+  padding-top: 36px !important;
+}
+
+html.blog-list-page .container.margin-vert--lg::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 36px !important;
+  background: linear-gradient(180deg, #3d3d3d 0%, #2a2a2a 100%) !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  background-image:
+    radial-gradient(circle at 16px 18px, #ff5f56 6px, transparent 6px),
+    radial-gradient(circle at 40px 18px, #ffbd2e 6px, transparent 6px),
+    radial-gradient(circle at 64px 18px, #27c93f 6px, transparent 6px) !important;
+  z-index: 100 !important;
+}
+
+html.blog-list-page .row {
+  display: flex !important;
+  background: #000 !important;
+  margin: 0 !important;
+}
+
+html.blog-list-page aside.col--3 {
+  background: #0d0d0d !important;
+  border-right: 1px solid #1a1a1a !important;
+  width: 340px !important;
+  min-width: 340px !important;
+  max-width: 340px !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 12px !important;
+  overflow-y: auto !important;
+}
+
+html.blog-list-page aside::before {
+  content: '" ============================================================================\A"  Netrw Directory Listing                                    (netrw v171)\A"   /blog\A"   Sorted by      name\A"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by\A" ============================================================================' !important;
+  display: block !important;
+  white-space: pre !important;
+  color: #555 !important;
+  font-size: 10px !important;
+  padding: 12px 14px !important;
+  border-bottom: 1px solid #1a1a1a !important;
+}
+
+html.blog-list-page aside nav::before {
+  content: '../' !important;
+  display: block !important;
+  color: #5fd7ff !important;
+  font-weight: bold !important;
+  padding: 4px 14px !important;
+}
+
+html.blog-list-page aside nav > div:first-child {
+  display: none !important;
+}
+
+html.blog-list-page aside h3 {
+  color: #5fd7ff !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  padding: 6px 14px !important;
+  margin: 8px 0 4px 0 !important;
+  background: #0a0a0a !important;
+}
+
+html.blog-list-page aside h3::before {
+  content: '▾ 📁  ' !important;
+  color: #d7af00 !important;
+}
+
+html.blog-list-page aside ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+html.blog-list-page aside a {
+  display: block !important;
+  color: #c0c0c0 !important;
+  text-decoration: none !important;
+  padding: 3px 14px 3px 38px !important;
+  position: relative !important;
+  font-size: 11px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+html.blog-list-page aside a::before {
+  content: '├── ' !important;
+  position: absolute !important;
+  left: 14px !important;
+  color: #555 !important;
+}
+
+html.blog-list-page aside li:last-child a::before {
+  content: '└── ' !important;
+}
+
+html.blog-list-page aside a:hover {
+  background: #1a1a1a !important;
+  color: #fff !important;
+}
+
+html.blog-list-page main.col--7 {
+  flex: 1 !important;
+  background: #000 !important;
+  padding: 24px 32px !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+}
+
+html.blog-list-page main article {
+  border-bottom: 1px solid #1a1a1a !important;
+  padding-bottom: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+html.blog-list-page main h2 a {
+  color: #5fd7ff !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+html.blog-list-page main h2 a:hover {
+  color: #87d7ff !important;
+  text-decoration: underline !important;
+}
+
+html.blog-list-page main time {
+  color: #666 !important;
+  font-size: 11px !important;
+}
+
+html.blog-list-page main p {
+  color: #b0b0b0 !important;
+  line-height: 1.6 !important;
+  font-size: 13px !important;
+}
+
+html.blog-list-page main a[href*="/tags/"] {
+  background: #1a1a1a !important;
+  color: #5f87d7 !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 2px 8px !important;
+  border-radius: 3px !important;
+  font-size: 10px !important;
+  text-decoration: none !important;
+}
+
+html.blog-list-page main a[href*="/tags/"]:hover {
+  background: #2a2a2a !important;
+  color: #87afd7 !important;
+}
+
+html.blog-list-page main img {
+  border: 1px solid #2a2a2a !important;
+  max-width: 100% !important;
+}
+
+html.blog-list-page .container.margin-vert--lg::after {
+  content: '-- NORMAL --' !important;
+  display: block !important;
+  background: #2a2a2a !important;
+  color: #fff !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  padding: 6px 14px !important;
+  border-top: 1px solid #1a1a1a !important;
+}
+
+/* INDIVIDUAL BLOG POSTS - vim split view */
+html.blog-post-page {
+  background: #0a0a0a !important;
+}
+
+html.blog-post-page .container.margin-vert--lg {
+  max-width: 95% !important;
+  background: #000 !important;
+  border: 2px solid #2a2a2a !important;
+  border-radius: 8px !important;
+  margin: 2rem auto !important;
+  overflow: hidden !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8) !important;
+  position: relative !important;
+  padding-top: 36px !important;
+}
+
+html.blog-post-page .container.margin-vert--lg::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 36px !important;
+  background: linear-gradient(180deg, #3d3d3d 0%, #2a2a2a 100%) !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  background-image:
+    radial-gradient(circle at 16px 18px, #ff5f56 6px, transparent 6px),
+    radial-gradient(circle at 40px 18px, #ffbd2e 6px, transparent 6px),
+    radial-gradient(circle at 64px 18px, #27c93f 6px, transparent 6px) !important;
+  z-index: 100 !important;
+}
+
+html.blog-post-page .row {
+  display: flex !important;
+  background: #000 !important;
+  margin: 0 !important;
+}
+
+html.blog-post-page aside.col--3 {
+  background: #0d0d0d !important;
+  border-right: 1px solid #1a1a1a !important;
+  width: 420px !important;
+  min-width: 420px !important;
+  max-width: 420px !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 12px !important;
+}
+
+html.blog-post-page aside::before {
+  content: '" ============================================================================\A"  Netrw Directory Listing                                    (netrw v171)\A"   /blog\A"   Sorted by      name\A"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by\A" ============================================================================' !important;
+  display: block !important;
+  white-space: pre !important;
+  color: #555 !important;
+  font-size: 10px !important;
+  padding: 12px 14px !important;
+  border-bottom: 1px solid #1a1a1a !important;
+}
+
+html.blog-post-page aside nav::before {
+  content: '../' !important;
+  display: block !important;
+  color: #5fd7ff !important;
+  font-weight: bold !important;
+  padding: 4px 14px !important;
+}
+
+html.blog-post-page aside nav > div:first-child {
+  display: none !important;
+}
+
+html.blog-post-page aside h3 {
+  color: #5fd7ff !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  padding: 6px 14px !important;
+  margin: 8px 0 4px 0 !important;
+  background: #0a0a0a !important;
+}
+
+html.blog-post-page aside h3::before {
+  content: '▾ 📁  ' !important;
+  color: #d7af00 !important;
+}
+
+html.blog-post-page aside ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+html.blog-post-page aside a {
+  display: block !important;
+  color: #c0c0c0 !important;
+  text-decoration: none !important;
+  padding: 3px 14px 3px 38px !important;
+  position: relative !important;
+  font-size: 11px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+html.blog-post-page aside a::before {
+  content: '├── ' !important;
+  position: absolute !important;
+  left: 14px !important;
+  color: #555 !important;
+}
+
+html.blog-post-page aside li:last-child a::before {
+  content: '└── ' !important;
+}
+
+html.blog-post-page aside a:hover {
+  background: #1a1a1a !important;
+  color: #fff !important;
+}
+
+html.blog-post-page main {
+  flex: 1 !important;
+  background: #000 !important;
+  padding: 24px 32px !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+}
+
+html.blog-post-page .container.margin-vert--lg::after {
+  content: '  NORMAL                                            blog/post.md                      1,1           Top' !important;
+  display: block !important;
+  background: #2a2a2a !important;
+  color: #fff !important;
+  font-family: 'Menlo', 'Monaco', monospace !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  padding: 6px 14px !important;
+  border-top: 1px solid #1a1a1a !important;
+}
+
+/* FIXES FOR BLOG LIST */
+/* Wider sidebar */
+html.blog-list-page aside.col--3 {
+  width: 420px !important;
+  min-width: 420px !important;
+  max-width: 420px !important;
+}
+
+/* Hide nested terminal images in blog previews */
+html.blog-list-page main article img[alt*="terminal"],
+html.blog-list-page main article img[src*="traffic"],
+html.blog-list-page main article > div > p:first-child > img:only-child {
+  display: none !important;
+}
+
+/* Remove terminal/window images from blog content - already have vim chrome */
+html.blog-list-page main article > div > p:first-of-type img,
+html.blog-post-page main article > div > p:first-of-type img {
+  display: none !important;
+}
+
+/* Also hide any image that looks like a terminal window */
+html.blog-list-page main img[src*="traffic"],
+html.blog-list-page main img[alt*="cluster"],
+html.blog-post-page main img[src*="traffic"] {
+  display: none !important;
+}
+
+/* Remove nested terminal frame from blog content */
+html.blog-list-page .markdown,
+html.blog-post-page .markdown {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+html.blog-list-page .markdown::before,
+html.blog-post-page .markdown::before {
+  display: none !important;
+}
+
+/* NUCLEAR OPTION - kill all markdown terminal styling */
+html.blog-list-page article .markdown,
+html.blog-post-page article .markdown,
+html.blog-list-page main .markdown,
+html.blog-post-page main .markdown {
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+html.blog-list-page article .markdown::before,
+html.blog-list-page article .markdown::after,
+html.blog-post-page article .markdown::before,
+html.blog-post-page article .markdown::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* OVERRIDE: Disable nested terminal frame on blog pages - whole page is already a vim window */
+html.blog-list-page main.col.col--7 .markdown,
+html.blog-post-page main.col.col--7 .markdown,
+html.blog-list-page main .markdown,
+html.blog-post-page main .markdown {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 1rem 0 !important;
+  margin: 0 !important;
+}
+
+html.blog-list-page main.col.col--7 .markdown::before,
+html.blog-list-page main.col.col--7 .markdown::after,
+html.blog-post-page main.col.col--7 .markdown::before,
+html.blog-post-page main.col.col--7 .markdown::after,
+html.blog-list-page main .markdown::before,
+html.blog-list-page main .markdown::after,
+html.blog-post-page main .markdown::before,
+html.blog-post-page main .markdown::after {
+  content: none !important;
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* BLOG PAGE REFINEMENTS */
+
+/* Wider netrw sidebar */
+html.blog-list-page aside.col--3,
+html.blog-post-page aside.col--3 {
+  width: 500px !important;
+  min-width: 500px !important;
+  max-width: 500px !important;
+}
+
+/* Hide TOC on right side of blog posts */
+html.blog-post-page aside[class*="tableOfContents"],
+html.blog-post-page .table-of-contents,
+html.blog-post-page aside:not(.col--3) {
+  display: none !important;
+}
+
+/* Show images EXCEPT terminal window screenshots */
+html.blog-list-page main article > div > p:first-of-type img,
+html.blog-post-page main article > div > p:first-of-type img {
+  display: block !important; /* Re-enable images */
+}
+
+/* But hide ONLY terminal/cluster window screenshots */
+html.blog-list-page main img[alt*="Cluster"],
+html.blog-list-page main img[alt*="Virtual Cluster"],
+html.blog-post-page main img[alt*="Cluster"],
+html.blog-post-page main img[alt*="Virtual Cluster"] {
+  display: none !important;
+}
+
+/* Expand main content width since TOC is hidden */
+html.blog-post-page main {
+  max-width: 100% !important;
+  flex: 1 !important;
+}
+
+html.blog-post-page .row {
+  display: flex !important;
+}
+
+html.blog-post-page main.col--7 {
+  flex: 1 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* AGGRESSIVE TOC REMOVAL */
+html.blog-post-page aside:not([role="complementary"]),
+html.blog-post-page nav + aside,
+html.blog-post-page main + aside,
+html.blog-post-page ul[class*="table"],
+html.blog-post-page .col--2,
+html.blog-post-page .col--3:not(:first-of-type) {
+  display: none !important;
+  width: 0 !important;
+}
+
+/* Remove column width constraint on blog posts */
+html.blog-post-page main.col--7,
+html.blog-post-page .col.col--7 {
+  max-width: 100% !important;
+  flex: 1 !important;
+}
+
+/* FIX: Only expand main content, keep sidebar */
+html.blog-post-page aside.col--3 {
+  width: 500px !important;
+  min-width: 500px !important;
+  max-width: 500px !important;
+  flex-shrink: 0 !important;
+}
+
+html.blog-post-page main.col {
+  flex: 1 !important;
+  max-width: calc(100% - 500px) !important;
+}
+
+/* FORCE netrw sidebar to always be visible on left */
+html.blog-post-page aside[role="complementary"],
+html.blog-list-page aside[role="complementary"] {
+  display: block !important;
+  width: 500px !important;
+  min-width: 500px !important;
+  max-width: 500px !important;
+  flex-shrink: 0 !important;
+  order: -1 !important;
+}
+
+/* CRITICAL FIX: Show netrw sidebar on blog posts */
+html.blog-post-page aside.col--3 {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* FIX: Side-by-side layout for blog posts */
+html.blog-post-page .row,
+html.blog-post-page .container > .row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+}
+
+html.blog-post-page aside.col--3 {
+  flex: 0 0 500px !important;
+  order: 1 !important;
+}
+
+html.blog-post-page main {
+  flex: 1 !important;
+  order: 2 !important;
+  min-width: 0 !important;
+}
+
+/* UNIVERSAL FIX: Side-by-side layout for ALL blog pages */
+html[class*="blog"] .row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
+
+html[class*="blog"] aside.col--3,
+html[class*="blog"] aside[class*="col"] {
+  display: block !important;
+  flex: 0 0 500px !important;
+  order: 1 !important;
+}
+
+html[class*="blog"] main {
+  flex: 1 !important;
+  order: 2 !important;
 }
