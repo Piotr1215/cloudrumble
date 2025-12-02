@@ -205,7 +205,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11144,
+    "stars": 11152,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -232,7 +232,7 @@
   {
     "name": "OpenGitOps Documents",
     "description": "Lasting documents from the OpenGitOps project which are versioned and released together, including the GitOps Principles and Glossary. Defining standards and best practices for GitOps.",
-    "stars": 459,
+    "stars": 460,
     "url": "https://github.com/open-gitops/documents",
     "tags": [
       "GitOps",
@@ -245,7 +245,7 @@
   {
     "name": "Pepr",
     "description": "Type safe K8s middleware for humans. A Kubernetes controller framework that simplifies building admission controllers, operators, and other K8s automation with TypeScript.",
-    "stars": 208,
+    "stars": 209,
     "url": "https://github.com/defenseunicorns/pepr",
     "tags": [
       "Kubernetes",
