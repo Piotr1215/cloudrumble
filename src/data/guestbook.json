@@ -26,5 +26,12 @@
     "message": "nice site, bookmarked!",
     "date": "2024-10-20",
     "approved": true
+  },
+  {
+    "id": 6,
+    "name": "dalorion",
+    "message": "Hi!",
+    "date": "2025-12-05",
+    "approved": true
   }
 ]
