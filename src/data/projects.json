@@ -41,7 +41,7 @@
   {
     "name": "pairup.nvim",
     "description": "AI Pair Programming in Neovim",
-    "stars": 44,
+    "stars": 45,
     "url": "https://github.com/Piotr1215/pairup.nvim",
     "tags": [
       "Neovim",
@@ -205,7 +205,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11178,
+    "stars": 11184,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -219,7 +219,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10740,
+    "stars": 10741,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
