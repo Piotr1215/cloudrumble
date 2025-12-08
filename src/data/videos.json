@@ -40,6 +40,15 @@
     "pinned": true
   },
   {
+    "id": "UZtutO0NRoE",
+    "videoId": "UZtutO0NRoE",
+    "title": "4 Event-Driven Techniques That Changed My Terminal Workflow",
+    "thumbnail": "https://img.youtube.com/vi/UZtutO0NRoE/maxresdefault.jpg",
+    "description": "",
+    "date": "Dec 7, 2025",
+    "publishedAt": "2025-12-07T15:28:15+00:00"
+  },
+  {
     "id": "09dggS8KwBc",
     "videoId": "09dggS8KwBc",
     "title": "Self-Improving Claude Code: Hooks, Skills, and Session Automation",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Jun 14, 2025",
     "publishedAt": "2025-06-14T17:19:27+00:00"
-  },
-  {
-    "id": "lxZb_QEGQ7E",
-    "videoId": "lxZb_QEGQ7E",
-    "title": "Terminal Monitoring with Unix Philosophy",
-    "thumbnail": "https://img.youtube.com/vi/lxZb_QEGQ7E/maxresdefault.jpg",
-    "description": "",
-    "date": "Jun 8, 2025",
-    "publishedAt": "2025-06-08T21:07:38+00:00"
   }
 ]
