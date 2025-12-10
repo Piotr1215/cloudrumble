@@ -9,12 +9,12 @@
      "Kubernetes",
      "vCluster"
    ],
-   "recordingUrl": null,
+   "recordingUrl": "https://youtu.be/5NFENlnH-WM?list=TLGG3ARVTHb9ansxMDEyMjAyNQ",
    "conferenceUrl": "https://octopus.com/shipped",
-   "slidesUrl": null,
+   "slidesUrl": "https://github.com/Piotr1215/youtube/blob/main/vcluster-multitenancy/presentation.md",
    "thumbnailUrl": "/img/shipped25.png",
    "type": "talk",
-   "upcoming": true,
+   "upcoming": false,
    "abstract": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster. We'll explore: - Multitenancy Spectrum: Understanding the three dimensions of multitenancy - isolation levels (physical/logical/none), resource sharing (dedicated/pooled/shared), and trust boundaries (zero/partial/full) - Flexibility in Practice: How to mix and match different multitenancy models for different teams and workloads - vCluster Deep Dive: How virtual clusters enable this flexibility while maintaining strong isolation boundaries - Real-World Scenarios: Live demo showing how to implement different multitenancy patterns based on actual use cases"
  },
  {
