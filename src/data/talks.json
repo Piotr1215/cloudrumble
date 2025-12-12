@@ -1,5 +1,44 @@
 [
  {
+   "title": "Instant KAI Sandboxes with vCluster: Multi-Tenant, Multi-Scheduler GPU Sharing",
+   "description": "Exploring how to create instant AI sandboxes using vCluster with multi-tenant capabilities and efficient GPU sharing across multiple schedulers.",
+   "date": "2026-07",
+   "conference": "WeAreDevelopers World Congress 2026",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster",
+     "Artificial Intelligence",
+     "GPU"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://www.wearedevelopers.com/world-congress",
+   "slidesUrl": null,
+   "thumbnailUrl": null,
+   "type": "talk",
+   "upcoming": true,
+   "abstract": "Learn how to create instant Kubernetes AI (KAI) sandboxes using vCluster, enabling multi-tenant environments with efficient GPU sharing across multiple schedulers. This talk explores practical patterns for providing isolated AI/ML development environments while maximizing GPU utilization through advanced scheduling techniques."
+ },
+ {
+   "title": "Flexible Kubernetes Multitenancy with vCluster",
+   "description": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster.",
+   "date": "2026-05",
+   "conference": "DevOpsPro Europe 2026",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "vCluster",
+     "DevOps"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://devopspro.eu/",
+   "slidesUrl": null,
+   "thumbnailUrl": null,
+   "type": "talk",
+   "upcoming": true,
+   "abstract": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster. We'll explore: Multitenancy Spectrum - Understanding the three dimensions of multitenancy (isolation levels, resource sharing, trust boundaries); Flexibility in Practice - How to mix and match different multitenancy models for different teams and workloads; vCluster Deep Dive - How virtual clusters enable this flexibility while maintaining strong isolation boundaries; Real-World Scenarios - Live demo showing how to implement different multitenancy patterns based on actual use cases."
+ },
+ {
    "title": "Flexible Kubernetes Multitenancy with vCluster",
    "description": "In this session, we'll explore how to implement flexible multitenancy in Kubernetes using vCluster. You'll learn how to design platforms that can adapt to different isolation requirements, resource sharing needs, and trust models within a single cluster.",
    "date": "2025-12",
