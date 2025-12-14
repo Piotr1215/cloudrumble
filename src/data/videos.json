@@ -40,6 +40,15 @@
     "pinned": true
   },
   {
+    "id": "aqEIE6Jn0mU",
+    "videoId": "aqEIE6Jn0mU",
+    "title": "Practical Bash Scripting: What AI Can't Teach You",
+    "thumbnail": "https://img.youtube.com/vi/aqEIE6Jn0mU/maxresdefault.jpg",
+    "description": "",
+    "date": "Dec 13, 2025",
+    "publishedAt": "2025-12-13T21:53:54+00:00"
+  },
+  {
     "id": "UZtutO0NRoE",
     "videoId": "UZtutO0NRoE",
     "title": "4 Event-Driven Techniques That Changed My Terminal Workflow",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Jul 5, 2025",
     "publishedAt": "2025-07-05T11:59:05+00:00"
-  },
-  {
-    "id": "yENV9LqqR2w",
-    "videoId": "yENV9LqqR2w",
-    "title": "Stop Googling Keyboard Shortcuts - Build This Instead!",
-    "thumbnail": "https://img.youtube.com/vi/yENV9LqqR2w/maxresdefault.jpg",
-    "description": "",
-    "date": "Jun 14, 2025",
-    "publishedAt": "2025-06-14T17:19:27+00:00"
   }
 ]
