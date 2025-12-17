@@ -1,0 +1,187 @@
+---
+title: "Mozilla Wants AI in Your Browser? Move to LibreWolf Instead"
+date: 2025-12-17
+tags: ["linux", "privacy", "firefox", "librewolf", "browser", "dotfiles", "flatpak"]
+image: _media/librewolf-hero.png
+description: "Quick Firefox to LibreWolf migration guide for Linux"
+---
+
+import DataGrid from '@site/src/components/DataGrid';
+
+![LibreWolf Migration](_media/librewolf-hero.png)
+
+<style>{`
+  article img:not(:first-of-type) {
+    max-width: 700px;
+    height: auto;
+  }
+`}</style>
+
+Mozilla just [named a new CEO](https://blog.mozilla.org/en/mozilla/leadership/mozillas-next-chapter-anthony-enzor-demeo-new-ceo/). The headline promise? Firefox will "evolve into a modern AI browser." I read that and immediately started looking for alternatives.
+
+This is a quick migration guide, not comprehensive documentation. Check [LibreWolf's official docs](https://librewolf.net/docs/faq/) for your specific system.
+
+I was worried about breaking things—my setup has shell aliases for profile switching, wrapper scripts, keyboard shortcuts that launch Firefox, and window management automation. Everything migrated in about 30 minutes. If it worked for me, it'll work for you.
+
+<!--truncate-->
+
+## Why Leave Firefox?
+
+Mozilla's December 2025 announcement outlined three priorities:
+
+1. AI must be "clear and understandable"
+2. Revenue diversification beyond search
+3. Firefox growing into "a broader ecosystem"
+
+None of these say "leave users alone."
+
+## The Alternatives
+
+<DataGrid
+  columns={[
+    { key: 'browser', label: 'Browser' },
+    { key: 'engine', label: 'Engine' },
+    { key: 'features', label: 'Key Features' }
+  ]}
+  data={[
+    { browser: 'LibreWolf', engine: 'Gecko (Firefox fork)', features: 'Zero telemetry, uBlock Origin pre-installed, hardened defaults' },
+    { browser: 'Mullvad Browser', engine: 'Gecko (Tor fork)', features: 'Best anti-fingerprinting, designed for VPN use' },
+    { browser: 'Ungoogled Chromium', engine: 'Chromium', features: 'Pure Chromium with all Google code removed, truly FOSS' },
+    { browser: 'Zen Browser', engine: 'Gecko (Firefox fork)', features: 'Privacy-focused, vertical tabs, minimal UI' }
+  ]}
+/>
+
+**My pick: [LibreWolf](https://librewolf.net/).** It's Firefox without Mozilla's telemetry. Same Gecko engine, same extensions, same workflow. uBlock Origin comes pre-installed. Updates track Firefox releases within days (currently at Firefox 146). Firefox Sync is disabled by default but you can enable it.
+
+## Installation
+
+Multiple options. This guide uses Flatpak:
+
+<DataGrid
+  columns={[
+    { key: 'method', label: 'Method' },
+    { key: 'command', label: 'Install Command' },
+    { key: 'notes', label: 'Notes' }
+  ]}
+  data={[
+    { method: 'Flatpak', command: 'flatpak install flathub io.gitlab.librewolf-community', notes: 'Sandboxed, auto-updates, profiles in ~/.var/app/...' },
+    { method: 'Native (Debian/Ubuntu)', command: 'sudo apt install extrepo && sudo extrepo enable librewolf && sudo apt install librewolf', notes: 'Faster startup, profiles in ~/.librewolf/' },
+    { method: 'Native (Arch)', command: 'yay -S librewolf', notes: 'AUR package, native performance' },
+    { method: 'AppImage', command: 'Download from librewolf.net', notes: 'Portable, no install needed' }
+  ]}
+/>
+
+```bash
+flatpak install flathub io.gitlab.librewolf-community
+```
+
+I used Flatpak because it's available on Pop!_OS. Trade-off: slower startup, profiles live in `~/.var/app/io.gitlab.librewolf-community/.librewolf/`.
+
+If you choose native install, adjust paths from `~/.var/app/io.gitlab.librewolf-community/.librewolf/` to `~/.librewolf/`, and binary from `flatpak run io.gitlab.librewolf-community` to `librewolf`.
+
+## Migrating Data
+
+LibreWolf can import everything from Firefox in one step:
+
+Settings → General → Import Browser Data → **Import Data**
+
+This imports bookmarks, passwords, history, and autofill data.
+
+## Fix Broken Sites
+
+LibreWolf's strict tracking protection can break some sites. Enable this:
+
+Settings → Privacy & Security → Enhanced Tracking Protection → **Fix major site issues (recommended)**
+
+## Keep Logins Persistent
+
+By default, LibreWolf deletes cookies when closed—you'll have to re-login everywhere. Either disable it or add exceptions for sites you use:
+
+Settings → Privacy & Security → **Delete cookies and site data when LibreWolf is closed**
+
+## Setting Up Profiles
+
+LibreWolf supports Firefox-style profiles:
+
+```bash
+# Open profile manager
+flatpak run io.gitlab.librewolf-community -P
+
+# Or launch specific profile
+flatpak run io.gitlab.librewolf-community -P "Work"
+```
+
+If you use multiple Firefox profiles, create matching ones in LibreWolf's profile manager, then copy the data:
+
+```bash
+# Copy bookmarks and passwords (adjust profile names)
+cp ~/.mozilla/firefox/PROFILE_NAME/places.sqlite \
+   ~/.var/app/io.gitlab.librewolf-community/.librewolf/PROFILE_NAME/
+
+cp ~/.mozilla/firefox/PROFILE_NAME/logins.json \
+   ~/.var/app/io.gitlab.librewolf-community/.librewolf/PROFILE_NAME/
+
+cp ~/.mozilla/firefox/PROFILE_NAME/key4.db \
+   ~/.var/app/io.gitlab.librewolf-community/.librewolf/PROFILE_NAME/
+```
+
+## Extensions
+
+Same Firefox Add-ons store. uBlock Origin comes pre-installed.
+
+Extension settings don't transfer automatically, but most extensions support exporting settings to JSON. Vimium-C, uBlock Origin, and others have Settings → Export/Import. Quick way to move your keybindings and configurations.
+
+## Updating Dotfiles
+
+### Shell Aliases
+
+Update any aliases that reference `firefox`:
+
+```bash
+alias firefox='flatpak run io.gitlab.librewolf-community'
+```
+
+### System-Wide Wrapper
+
+Aliases don't work in scripts or desktop files. Create a wrapper so all `firefox` calls use LibreWolf:
+
+```bash
+sudo tee /usr/local/bin/firefox << 'EOF'
+#!/bin/bash
+exec flatpak run io.gitlab.librewolf-community "$@"
+EOF
+sudo chmod +x /usr/local/bin/firefox
+```
+
+This is the key trick—no changes needed to existing scripts. Everything that calls `firefox` just works.
+
+### Default Browser
+
+```bash
+xdg-settings set default-web-browser io.gitlab.librewolf-community.desktop
+```
+
+Verify:
+
+```bash
+xdg-settings get default-web-browser
+# io.gitlab.librewolf-community.desktop
+```
+
+## What Changes
+
+| Item | Firefox | LibreWolf (Flatpak) |
+|------|---------|---------------------|
+| Binary | `firefox` | `flatpak run io.gitlab.librewolf-community` |
+| Profile path | `~/.mozilla/firefox/` | `~/.var/app/io.gitlab.librewolf-community/.librewolf/` |
+| Telemetry | On by default | Disabled, can't enable |
+| Firefox Sync | Enabled | Disabled by default (can enable) |
+| uBlock Origin | Manual install | Pre-installed |
+
+## The Result
+
+Everything works. Firefox stays installed as backup for now.
+
+```bash
+sudo apt remove firefox
+```
