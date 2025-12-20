@@ -77,6 +77,12 @@ flatpak install flathub io.gitlab.librewolf-community
 
 I used Flatpak because it's available on Pop!_OS. Trade-off: slower startup, profiles live in `~/.var/app/io.gitlab.librewolf-community/.librewolf/`.
 
+For webcam access (video calls), grant device permissions:
+
+```bash
+flatpak override --user io.gitlab.librewolf-community --device=all
+```
+
 If you choose native install, adjust paths from `~/.var/app/io.gitlab.librewolf-community/.librewolf/` to `~/.librewolf/`, and binary from `flatpak run io.gitlab.librewolf-community` to `librewolf`.
 
 ## Migrating Data
