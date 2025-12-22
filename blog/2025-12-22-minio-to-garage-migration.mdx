@@ -1,0 +1,434 @@
+---
+title: "MinIO is Dead. Garage S3 is Better Anyway (Homelab Migration Guide)"
+date: 2025-12-22
+tags: ["homelab", "kubernetes", "s3", "storage", "garage", "minio", "gitops"]
+image: _media/garage-hero.jpg
+description: "MinIO CE entered maintenance mode. No more Docker images, stripped console, frozen development. Migrate to Garage S3 before it's too late."
+---
+
+import DataGrid from '@site/src/components/DataGrid';
+
+![Garage S3 Migration](_media/garage-hero.jpg)
+
+*Photo by [todd kent](https://unsplash.com/@churchoftodd) on [Unsplash](https://unsplash.com/photos/black-metal-tool-lot-onnJOfF-okU)*
+
+<style>{`
+  article img:not(:first-of-type) {
+    max-width: 700px;
+    height: auto;
+  }
+`}</style>
+
+MinIO Community Edition is dead. On December 3, 2025, MinIO Inc. [announced maintenance mode](https://github.com/minio/minio): no new features, no PR reviews, no Docker images, no RPM/DEB packages. Critical security fixes only "on a case-by-case basis."
+
+This didn't come out of nowhere. Back in May 2025, they gutted the console - the GUI that made MinIO actually usable. What's left is a glorified file browser. User management, policies, replication config? Moved to the paid AIStor product. The whole thing is open source cosplay now - the repo exists, but it's just a funnel to their commercial offering.
+
+The [r/selfhosted](https://www.reddit.com/r/selfhosted/comments/1pd97nq/minio_is_in_maintenance_mode_and_is_no_longer/) and [Hacker News](https://news.ycombinator.com/item?id=46136023) threads are worth reading. Thousands of Helm charts and CI/CD pipelines depending on `minio/minio` images are now broken. Bitnami stopped their MinIO builds too.
+
+Time to migrate. Honestly? For a homelab, Garage is the better choice anyway. 50MB footprint vs 500MB+. Written in Rust. Built-in static web hosting. Actively maintained. MinIO's collapse just forced me to make the switch I should have made earlier.
+
+Here's how to set up Garage on Kubernetes. Takes about 15 minutes.
+
+<!--truncate-->
+
+## Why Garage?
+
+<DataGrid
+  columns={[
+    { key: 'feature', label: 'Feature' },
+    { key: 'minio', label: 'MinIO' },
+    { key: 'garage', label: 'Garage' }
+  ]}
+  data={[
+    { feature: 'Memory Usage', minio: '500MB+', garage: '~50MB' },
+    { feature: 'Binary Size', minio: '~100MB', garage: '~20MB' },
+    { feature: 'Language', minio: 'Go', garage: 'Rust' },
+    { feature: 'Web Console', minio: 'Built-in', garage: 'Separate (optional)' },
+    { feature: 'Static Web Hosting', minio: 'Limited', garage: 'Built-in' },
+    { feature: 'Multi-node', minio: 'Complex', garage: 'Simple layout system' }
+  ]}
+/>
+
+Garage supports multi-node clusters with built-in replication. For a single-node setup where your storage layer (like Longhorn) already handles redundancy, single-node Garage works perfectly.
+
+## Deploy Garage
+
+This section covers a basic Kubernetes deployment. You can adapt it to your setup - Docker, bare metal, whatever. The [official docs](https://garagehq.deuxfleurs.fr/documentation/quick-start/) cover other deployment methods.
+
+### Create Namespace and Secrets
+
+```bash
+kubectl create namespace garage
+
+# Generate secrets
+RPC_SECRET=$(openssl rand -hex 32)
+ADMIN_TOKEN=$(openssl rand -hex 32)
+
+# Store them (save these somewhere safe!)
+echo "RPC Secret: $RPC_SECRET"
+echo "Admin Token: $ADMIN_TOKEN"
+
+kubectl create secret generic garage-secrets \
+  --from-literal=rpc-secret=$RPC_SECRET \
+  --from-literal=admin-token=$ADMIN_TOKEN \
+  -n garage
+```
+
+### ConfigMap
+
+Garage uses a TOML config file. Create a ConfigMap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: garage-config
+  namespace: garage
+data:
+  garage.toml: |
+    metadata_dir = "/data/meta"
+    data_dir = "/data/blocks"
+    db_engine = "lmdb"
+    replication_factor = 1
+
+    rpc_bind_addr = "[::]:3901"
+    rpc_public_addr = "garage.garage.svc.cluster.local:3901"
+    rpc_secret_file = "/secrets/rpc_secret"
+
+    [s3_api]
+    s3_region = "garage"
+    api_bind_addr = "[::]:3900"
+
+    [s3_web]
+    bind_addr = "[::]:3902"
+
+    [admin]
+    api_bind_addr = "[::]:3903"
+    admin_token_file = "/secrets/admin_token"
+```
+
+### Secret File Permissions
+
+Garage reads secrets from files, not environment variables. When Kubernetes mounts a Secret as a volume, the files default to mode 0644 (world-readable). Garage refuses to start with world-readable secret files - it's a security check built into the binary.
+
+The fix is `defaultMode: 0600` on the volume mount:
+
+```yaml
+volumes:
+  - name: secrets
+    secret:
+      secretName: garage-secrets
+      defaultMode: 0600
+      items:
+        - key: rpc-secret
+          path: rpc_secret
+        - key: admin-token
+          path: admin_token
+```
+
+Skip this and Garage exits with "secret file has insecure permissions".
+
+### Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: garage
+  namespace: garage
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate  # Important for RWO PVCs
+  selector:
+    matchLabels:
+      app: garage
+  template:
+    metadata:
+      labels:
+        app: garage
+    spec:
+      containers:
+      - name: garage
+        image: dxflrs/garage:v2.1.0
+        ports:
+        - containerPort: 3900  # S3 API
+        - containerPort: 3901  # RPC
+        - containerPort: 3902  # Web
+        - containerPort: 3903  # Admin
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        - name: config
+          mountPath: /etc/garage.toml
+          subPath: garage.toml
+        - name: secrets
+          mountPath: /secrets
+          readOnly: true
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: garage-data
+      - name: config
+        configMap:
+          name: garage-config
+      - name: secrets
+        secret:
+          secretName: garage-secrets
+          defaultMode: 0600
+          items:
+          - key: rpc-secret
+            path: rpc_secret
+          - key: admin-token
+            path: admin_token
+```
+
+### Service
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: garage
+  namespace: garage
+spec:
+  selector:
+    app: garage
+  ports:
+  - name: s3
+    port: 3900
+  - name: web
+    port: 3902
+  - name: admin
+    port: 3903
+```
+
+### PVC
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: garage-data
+  namespace: garage
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+```
+
+Apply everything, wait for the pod to start.
+
+## Initialize Garage
+
+Garage needs a "layout" before it accepts data. This tells it how much storage to use and which zone the node belongs to.
+
+```bash
+# Get the node ID
+kubectl exec -n garage deploy/garage -- /garage status
+
+# You'll see something like:
+# ==== HEALTHY NODES ====
+# ID                Hostname  Address         Tags  Zone  Capacity
+# 563e...          garage    10.42.0.1:3901              NO ROLE
+
+# Assign storage (use your node ID)
+kubectl exec -n garage deploy/garage -- \
+  /garage layout assign -z dc1 -c 50GB 563e
+
+# Apply the layout
+kubectl exec -n garage deploy/garage -- \
+  /garage layout apply --version 1
+```
+
+Now create an access key:
+
+```bash
+kubectl exec -n garage deploy/garage -- \
+  /garage key create garage-admin
+
+# Output:
+# Key name: garage-admin
+# Key ID: GK0ff60c017ac3f70efb9772f4
+# Secret key: 598d28be9a91fc0b0e854454419f091cd6a704b2c121e8a99eab8f9e964e1bf0
+```
+
+Save these. You'll need them for any S3 client.
+
+## Test It
+
+Create a bucket and upload something:
+
+```bash
+kubectl exec -n garage deploy/garage -- \
+  /garage bucket create test-bucket
+
+kubectl exec -n garage deploy/garage -- \
+  /garage bucket allow --read --write test-bucket --key garage-admin
+```
+
+From outside the cluster, use AWS CLI:
+
+```bash
+aws configure --profile garage
+# Access Key: GK0ff60c017ac3f70efb9772f4
+# Secret Key: (your secret)
+# Region: garage
+# Output format: json
+
+aws --profile garage --endpoint-url http://garage.garage.svc:3900 \
+  s3 ls
+```
+
+That's it. You have a working S3-compatible storage system.
+
+---
+
+## My Homelab Integration
+
+The above is all you need for basic Garage. The rest of this post covers how I integrated it into my specific homelab setup: GitOps secrets management, ingress routing, automation, and document sync.
+
+My homelab runs on a 7-node Kubernetes cluster (1 control plane, 6 workers) across 3 Proxmox hosts. Storage is Longhorn, ingress is Envoy Gateway, everything deploys via ArgoCD from a [GitOps repo](https://github.com/Piotr1215/homelab).
+
+### Secrets with External Secrets Operator
+
+The basic setup above uses `kubectl create secret`. That works, but for GitOps you need secrets in your repo - and committing plaintext secrets is a security risk.
+
+I use External Secrets Operator (ESO) with Bitwarden Secrets Manager:
+
+1. Generate secrets locally with `openssl rand -hex 32`
+2. Store them in Bitwarden Secrets Manager (gives you a UUID)
+3. Create an ExternalSecret that references the UUID
+4. ESO syncs the secret from Bitwarden into Kubernetes
+
+The ExternalSecret references UUIDs, not values - safe to commit:
+
+```yaml
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: garage-secrets
+  namespace: garage
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: bitwarden-secretsmanager
+    kind: ClusterSecretStore
+  target:
+    name: garage-secrets
+  data:
+  - secretKey: rpc-secret
+    remoteRef:
+      key: 7b5d53a8-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+  - secretKey: admin-token
+    remoteRef:
+      key: 8c6e64b9-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+### HTTPRoutes with Envoy Gateway
+
+Instead of NodePort or LoadBalancer, I use Envoy Gateway with HTTPRoutes. For simple services, my [httproute-controller](https://github.com/Piotr1215/httproute-controller) generates HTTPRoutes from Service annotations automatically. Here's the Garage config:
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: garage-s3
+  namespace: envoy-gateway-system
+spec:
+  parentRefs:
+  - name: homelab-gateway
+    sectionName: https
+  hostnames:
+  - "s3.garage.homelab.local"
+  - "*.s3.garage.homelab.local"
+  rules:
+  - backendRefs:
+    - name: garage
+      namespace: garage
+      port: 3900
+```
+
+The wildcard `*.s3.garage.homelab.local` enables virtual-hosted bucket access (`mybucket.s3.garage.homelab.local`).
+
+For cross-namespace routing, you need a ReferenceGrant in the garage namespace allowing the HTTPRoute to reference the Service.
+
+### WebUI
+
+Garage has no built-in UI. [garage-webui](https://github.com/khairul169/garage-webui) fills that gap - runs as a sidecar, connects to Garage's admin API on port 3903.
+
+See my [deployment manifest](https://github.com/Piotr1215/homelab/blob/main/gitops/apps/garage/garage.yaml) for the full setup with WebUI.
+
+### Justfile Recipes
+
+I use a [justfile](https://github.com/Piotr1215/homelab/blob/main/justfile) for cluster operations. Two recipes for Garage:
+
+- `garage-bucket` - creates buckets with read/write permissions
+- `garage-upload` - uploads files/folders, extracts credentials from Garage automatically
+
+### rclone Bisync
+
+For syncing local folders to Garage, I use rclone with bisync. My `~/.config/rclone/rclone.conf`:
+
+```ini
+[garage]
+type = s3
+provider = Other
+access_key_id = GK0ff60c017ac3f70efb9772f4
+secret_access_key = (your secret)
+endpoint = https://s3.garage.homelab.local
+region = garage
+no_check_bucket = true
+```
+
+Two gotchas:
+- **`region = garage`** is required. Without it, rclone defaults to `us-east-1` and Garage rejects with "AuthorizationHeaderMalformed"
+- **Self-signed certs** need `--no-check-certificate` on every command
+
+I run bisync daily via cron with local folder as source of truth.
+
+### Static Web Hosting
+
+Garage has built-in static web hosting. Enable it per bucket in the WebUI (or via CLI), access at `https://<bucket>.web.garage.homelab.local`. No nginx, no separate web server.
+
+---
+
+## Gotchas
+
+1. **Layout must be applied** - Garage won't accept data until you assign capacity and apply the layout. The pod starts fine, but S3 operations fail.
+
+2. **PVC access mode** - Use `ReadWriteOnce` with `Recreate` strategy. Rolling updates hang if the old pod holds the PVC.
+
+3. **WebUI needs Garage v2** - The webui uses v2 admin API. Don't use Garage v1.x.
+
+4. **HTTPRoute namespace** - If using Gateway API, routes in `default` namespace won't match ReferenceGrants for your gateway namespace.
+
+## Results
+
+<DataGrid
+  columns={[
+    { key: 'item', label: 'Item' },
+    { key: 'before', label: 'Before' },
+    { key: 'after', label: 'After' }
+  ]}
+  data={[
+    { item: 'RAM Usage', before: '~500MB', after: '~50MB' },
+    { item: 'Pods', before: '2 (MinIO + console)', after: '2 (Garage + WebUI)' },
+    { item: 'Static hosting', before: 'nginx sidecar', after: 'Built-in' }
+  ]}
+/>
+
+450MB less RAM. Built-in static web hosting.
+
+---
+
+**Resources:**
+- [Garage Documentation](https://garagehq.deuxfleurs.fr/)
+- [garage-webui](https://github.com/khairul169/garage-webui)
+- [My homelab repo](https://github.com/Piotr1215/homelab)
+  - [Garage deployment](https://github.com/Piotr1215/homelab/blob/main/gitops/apps/garage/garage.yaml)
+  - [HTTPRoutes](https://github.com/Piotr1215/homelab/tree/main/gitops/apps/envoy-gateway-resources)
+- [rclone S3 docs](https://rclone.org/s3/)
+
