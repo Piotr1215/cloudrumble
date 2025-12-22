@@ -2745,9 +2745,8 @@ html.blog-list-page main article > div > p:first-child > img:only-child {
   display: none !important;
 }
 
-/* Remove terminal/window images from blog content - already have vim chrome */
-html.blog-list-page main article > div > p:first-of-type img,
-html.blog-post-page main article > div > p:first-of-type img {
+/* Hide hero images in blog list previews (thumbnails) */
+html.blog-list-page main article > div > p:first-of-type img {
   display: none !important;
 }
 
@@ -2836,10 +2835,9 @@ html.blog-post-page aside:not(.col--3) {
   display: none !important;
 }
 
-/* Show images EXCEPT terminal window screenshots */
-html.blog-list-page main article > div > p:first-of-type img,
+/* Re-enable hero images on blog post pages (not hidden anyway, but ensure visibility) */
 html.blog-post-page main article > div > p:first-of-type img {
-  display: block !important; /* Re-enable images */
+  display: block !important;
 }
 
 /* But hide ONLY terminal/cluster window screenshots */
