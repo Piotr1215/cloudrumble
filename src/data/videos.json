@@ -40,6 +40,15 @@
     "pinned": true
   },
   {
+    "id": "ljBkzBt9nBc",
+    "videoId": "ljBkzBt9nBc",
+    "title": "Homelab Dashboard as Code | Homepage Setup and Configuration",
+    "thumbnail": "https://img.youtube.com/vi/ljBkzBt9nBc/maxresdefault.jpg",
+    "description": "",
+    "date": "Dec 21, 2025",
+    "publishedAt": "2025-12-21T22:40:20+00:00"
+  },
+  {
     "id": "aqEIE6Jn0mU",
     "videoId": "aqEIE6Jn0mU",
     "title": "Practical Bash Scripting: What AI Can't Teach You",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Jul 26, 2025",
     "publishedAt": "2025-07-26T20:22:30+00:00"
-  },
-  {
-    "id": "3I8JzeIEUds",
-    "videoId": "3I8JzeIEUds",
-    "title": "3 Claude Sessions Collaborating in a Terminal: MCP Agentic Framework",
-    "thumbnail": "https://img.youtube.com/vi/3I8JzeIEUds/maxresdefault.jpg",
-    "description": "",
-    "date": "Jul 5, 2025",
-    "publishedAt": "2025-07-05T11:59:05+00:00"
   }
 ]

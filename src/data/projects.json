@@ -83,7 +83,7 @@
   {
     "name": "mcp-agentic-framework",
     "description": "MCP implementation of an agentic framework",
-    "stars": 4,
+    "stars": 5,
     "url": "https://github.com/Piotr1215/mcp-agentic-framework",
     "tags": [
       "MCP",
@@ -97,7 +97,7 @@
   {
     "name": "mcp-obsidian",
     "description": "Simple MCP server for interacting with local obsidian notes",
-    "stars": 7,
+    "stars": 9,
     "url": "https://github.com/Piotr1215/mcp-obsidian",
     "tags": [
       "MCP",
@@ -205,7 +205,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11228,
+    "stars": 11231,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -219,7 +219,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10768,
+    "stars": 10770,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
@@ -245,7 +245,7 @@
   {
     "name": "Pepr",
     "description": "Type safe K8s middleware for humans. A Kubernetes controller framework that simplifies building admission controllers, operators, and other K8s automation with TypeScript.",
-    "stars": 211,
+    "stars": 212,
     "url": "https://github.com/defenseunicorns/pepr",
     "tags": [
       "Kubernetes",
