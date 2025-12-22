@@ -2953,3 +2953,87 @@ html[class*="blog"] main {
   flex: 1 !important;
   order: 2 !important;
 }
+
+/* YAML syntax highlighting colors (Dracula-inspired) */
+.prism-code.language-yaml .token.key.atrule {
+  color: #8be9fd !important; /* cyan for keys */
+}
+.prism-code.language-yaml .token.punctuation {
+  color: #ff79c6 !important; /* pink for : and - */
+}
+.prism-code.language-yaml .token.number {
+  color: #bd93f9 !important; /* purple for numbers */
+}
+.prism-code.language-yaml .token.boolean {
+  color: #bd93f9 !important; /* purple for true/false */
+}
+.prism-code.language-yaml .token.string {
+  color: #f1fa8c !important; /* yellow for strings */
+}
+.prism-code.language-yaml .token.null {
+  color: #bd93f9 !important; /* purple for null */
+}
+
+/* TOML syntax highlighting colors (Dracula-inspired) */
+.prism-code.language-toml .token.key,
+.prism-code.language-toml .token.property {
+  color: #8be9fd !important; /* cyan for keys */
+}
+.prism-code.language-toml .token.punctuation {
+  color: #ff79c6 !important; /* pink for = and [] */
+}
+.prism-code.language-toml .token.number {
+  color: #bd93f9 !important; /* purple for numbers */
+}
+.prism-code.language-toml .token.boolean {
+  color: #bd93f9 !important; /* purple for true/false */
+}
+.prism-code.language-toml .token.string {
+  color: #f1fa8c !important; /* yellow for strings */
+}
+.prism-code.language-toml .token.table,
+.prism-code.language-toml .token.section {
+  color: #50fa7b !important; /* green for [section] headers */
+}
+.prism-code.language-toml .token.comment {
+  color: #6272a4 !important; /* gray for comments */
+}
+
+/* INI syntax (same as TOML) */
+.prism-code.language-ini .token.key,
+.prism-code.language-ini .token.property,
+.prism-code.language-ini .token.attr-name {
+  color: #8be9fd !important;
+}
+.prism-code.language-ini .token.punctuation {
+  color: #ff79c6 !important;
+}
+.prism-code.language-ini .token.number {
+  color: #bd93f9 !important;
+}
+.prism-code.language-ini .token.string,
+.prism-code.language-ini .token.attr-value {
+  color: #f1fa8c !important;
+}
+.prism-code.language-ini .token.section {
+  color: #50fa7b !important;
+}
+.prism-code.language-ini .token.comment {
+  color: #6272a4 !important;
+}
+
+/* INI syntax - additional selectors */
+.prism-code.language-ini .token.selector,
+.prism-code.language-ini .token.constant {
+  color: #8be9fd !important;
+}
+.prism-code.language-ini .token.section.title,
+.prism-code.language-ini .token.title {
+  color: #50fa7b !important;
+}
+.prism-code.language-ini .token.value {
+  color: #f1fa8c !important;
+}
+.prism-code.language-ini .token.boolean {
+  color: #bd93f9 !important;
+}

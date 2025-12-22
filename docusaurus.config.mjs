@@ -1,6 +1,5 @@
 // @ts-check
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -33,7 +32,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          sidebarPath: "./sidebars.js",
           editUrl: ({ docPath }) =>
             `https://github.com/Piotr1215/dca-prep-kit/edit/master/docs/${docPath}`,
         },
@@ -45,7 +44,7 @@ const config = {
           editUrl: "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: "./src/css/custom.css",
         },
       }),
     ],
@@ -171,9 +170,9 @@ const config = {
         copyright: `Built with Docusaurus.`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-        additionalLanguages: ["gherkin"],
+        theme: prismThemes.dracula,
+        darkTheme: prismThemes.dracula,
+        additionalLanguages: ["bash", "yaml", "toml", "ini", "gherkin"],
       },
       imageZoom: {
         selector: '.markdown img, .markdown .mermaid svg, article img, article .mermaid svg',
@@ -185,4 +184,4 @@ const config = {
     }),
 };
 
-module.exports = config;
+export default config;
