@@ -41,7 +41,7 @@
   {
     "name": "pairup.nvim",
     "description": "AI Pair Programming in Neovim",
-    "stars": 45,
+    "stars": 44,
     "url": "https://github.com/Piotr1215/pairup.nvim",
     "tags": [
       "Neovim",
