@@ -1,0 +1,261 @@
+---
+title: "Your Kubernetes Cluster is Unbalanced (And the Scheduler Won't Fix It)"
+date: 2025-12-29
+tags: ["kubernetes", "homelab", "descheduler", "resource-management", "scheduling"]
+image: _media/descheduler-hero.jpg
+description: "The Kubernetes scheduler places pods once and never looks back. Descheduler fixes the imbalance by evicting pods from overutilized nodes."
+---
+
+import DataGrid from '@site/src/components/DataGrid';
+
+![Descheduler](_media/descheduler-hero.jpg)
+
+*Photo by [Paul Hanaoka](https://unsplash.com/@plhnk) on [Unsplash](https://unsplash.com/photos/a-long-hallway-with-glass-doors-leading-to-another-room-s0XabTAKvak)*
+
+<style>{`
+  article img:not(:first-of-type) {
+    max-width: 700px;
+    height: auto;
+  }
+`}</style>
+
+The Kubernetes scheduler is lazy. It places pods when they're created, picks the best node at that moment, and never thinks about it again. Weeks later, one node is at 75% memory while another sits at 40%. The scheduler doesn't care - its job was done the moment the pod started.
+
+[Descheduler](https://github.com/kubernetes-sigs/descheduler) fixes this. It runs every few minutes, finds imbalanced nodes, and evicts pods so the scheduler gets another chance to place them better. Set it up once, cluster self-balances automatically.
+
+Here's how to configure it for a homelab. Takes about 20 minutes to get right.
+
+<!--truncate-->
+
+## Why This Matters
+
+Kubernetes scheduling is a point-in-time decision. When a pod is created, the scheduler picks the best available node based on current conditions. But clusters are dynamic - nodes get added, pods come and go, resource requests change with updates.
+
+After a few weeks, you end up with hot nodes and cold nodes. Here's what my homelab looked like:
+
+```
+NAME           CPU(cores)   MEMORY%
+kube-worker1   438m         75%       <-- carrying the load
+kube-worker4   266m         41%       <-- sitting idle
+kube-worker6   171m         42%       <-- sitting idle
+```
+
+Worker1 was handling most of the work while worker4 and worker6 did nothing.
+
+## Requests vs Actual Usage
+
+Before configuring descheduler, you need to understand what it actually measures. This is where most people get it wrong.
+
+**Descheduler uses REQUESTED resources, not actual usage.**
+
+<DataGrid
+  columns={[
+    { key: 'metric', label: 'Metric' },
+    { key: 'command', label: 'Command' },
+    { key: 'descheduler', label: 'Descheduler Uses?' }
+  ]}
+  data={[
+    { metric: 'Actual CPU/Memory', command: 'kubectl top nodes', descheduler: 'No' },
+    { metric: 'Requested CPU/Memory', command: 'kubectl describe node', descheduler: 'Yes' }
+  ]}
+/>
+
+A node might show 5% actual CPU usage but 70% requested. From a scheduling perspective, that node is "full" - the scheduler reserved that capacity even if the pods aren't using it.
+
+Check what descheduler sees:
+
+```bash
+kubectl describe node kube-worker1 | grep -A5 "Allocated resources"
+```
+
+```
+Allocated resources:
+  Resource           Requests         Limits
+  --------           --------         ------
+  cpu                2368m (69%)      5490m (161%)
+  memory             4769334Ki (65%)  9343689984 (126%)
+```
+
+Those percentages (69% CPU, 65% memory) are what descheduler uses. Not `kubectl top nodes`.
+
+## Install Descheduler
+
+Descheduler runs as a CronJob. The Helm chart is the easiest way:
+
+```yaml
+# values.yaml
+kind: CronJob
+schedule: "*/5 * * * *"
+
+deschedulerPolicy:
+  profiles:
+    - name: default
+      pluginConfig:
+        - name: DefaultEvictor
+          args:
+            ignorePvcPods: true
+            evictLocalStoragePods: false
+        - name: LowNodeUtilization
+          args:
+            thresholds:
+              cpu: 55
+              memory: 30
+              pods: 30
+            targetThresholds:
+              cpu: 70
+              memory: 70
+              pods: 50
+      plugins:
+        balance:
+          enabled:
+            - LowNodeUtilization
+```
+
+Deploy:
+
+```bash
+helm install descheduler descheduler \
+  --repo https://kubernetes-sigs.github.io/descheduler/ \
+  --namespace descheduler \
+  --create-namespace \
+  -f values.yaml
+```
+
+## Understanding Thresholds
+
+This is where I wasted an hour. LowNodeUtilization has two threshold sets that work differently:
+
+**`thresholds`** - defines UNDERUTILIZED nodes
+- A node is underutilized when ALL metrics are BELOW these values
+- These nodes receive evicted pods
+
+**`targetThresholds`** - defines OVERUTILIZED nodes
+- A node is overutilized when ANY metric is ABOVE these values
+- Pods get evicted FROM these nodes
+
+```
+                    thresholds        targetThresholds
+                         |                   |
+  UNDERUTILIZED         |    BALANCED       |    OVERUTILIZED
+  (receives pods)       |                   |    (evicts pods)
+  <---------------------|-------------------|-------------------->
+         0%            55%                 70%               100%
+```
+
+Descheduler evicts pods from overutilized nodes. The scheduler then places them on underutilized nodes.
+
+**Critical**: If no nodes qualify as underutilized, descheduler does nothing. If no nodes qualify as overutilized, descheduler does nothing. Both conditions must be true.
+
+## Tuning for Your Cluster
+
+The default thresholds (cpu: 20, memory: 20) assume your nodes have low resource requests. Most real clusters have higher utilization - mine certainly did.
+
+Check your actual request percentages first:
+
+```bash
+for node in $(kubectl get nodes -o name | cut -d/ -f2); do
+  echo "=== $node ==="
+  kubectl describe node $node | grep -A3 "Allocated resources" | grep -E "cpu|memory"
+done
+```
+
+Then set thresholds based on what you see:
+
+- If your coldest node is at 45% CPU requests, set `thresholds.cpu: 55` (above it)
+- If your hottest node is at 75% memory requests, set `targetThresholds.memory: 70` (below it)
+
+I started with the defaults and descheduler did nothing. My coldest node had 45% CPU requests - above the 20% threshold. No node qualified as "underutilized" so there was nowhere to put evicted pods.
+
+After checking my actual cluster state:
+
+```yaml
+thresholds:
+  cpu: 55      # nodes below 55% CPU are underutilized
+  memory: 30   # nodes below 30% memory are underutilized
+  pods: 30
+targetThresholds:
+  cpu: 70      # nodes above 70% CPU are overutilized
+  memory: 70   # nodes above 70% memory are overutilized
+  pods: 50
+```
+
+## Protecting PVC Pods
+
+Not all pods should be evicted. This is important:
+
+```yaml
+- name: DefaultEvictor
+  args:
+    ignorePvcPods: true           # Don't evict pods with PVCs
+    evictLocalStoragePods: false  # Don't evict pods with emptyDir
+```
+
+Why protect PVC pods? Longhorn and similar storage use ReadWriteOnce volumes. Evicting a pod means:
+
+1. Old pod terminates
+2. Volume detaches from old node
+3. New pod schedules on different node
+4. Volume attaches to new node
+5. Pod starts
+
+If step 2 doesn't complete before step 4, you get Multi-Attach errors. The new pod hangs waiting for the volume while the old node still has it attached.
+
+I had `ignorePvcPods: false` initially. Got several Multi-Attach errors before I figured this out.
+
+## Verify It's Working
+
+After deploying, watch for LowNodeUtilization events:
+
+```bash
+kubectl get events -A | grep -i "LowNodeUtilization"
+```
+
+```
+prometheus   Normal  LowNodeUtilization  pod/kube-state-metrics-7c8b8bf58c-88qqq
+  pod eviction from kube-worker1 node by sigs.k8s.io/descheduler
+
+vpa          Normal  LowNodeUtilization  pod/vpa-updater-f59cccc88-fp2t6
+  pod eviction from kube-worker1 node by sigs.k8s.io/descheduler
+```
+
+Check node balance:
+
+```bash
+kubectl top nodes
+```
+
+## Results
+
+<DataGrid
+  columns={[
+    { key: 'node', label: 'Node' },
+    { key: 'before', label: 'Before' },
+    { key: 'after', label: 'After' }
+  ]}
+  data={[
+    { node: 'worker1 (hot)', before: '75% / 77%', after: '69% / 65%' },
+    { node: 'worker4 (cold)', before: '50% / 25%', after: '50% / 25%' },
+    { node: 'worker5', before: '45% / 30%', after: '48% / 35%' }
+  ]}
+/>
+
+Worker1's request percentage dropped from 75% to 65%. The cluster is balanced now, and descheduler runs every 5 minutes to keep it that way.
+
+## Gotchas
+
+1. **Thresholds are percentages of REQUESTS** - Don't use `kubectl top nodes` to set thresholds. Use `kubectl describe node` to see request percentages.
+
+2. **ALL metrics must be below thresholds for underutilized** - If you set cpu: 20 but your coldest node has 45% CPU requests, no node qualifies as underutilized. Descheduler does nothing.
+
+3. **The comparison is greater-than, not greater-than-or-equal** - A node at exactly 70% CPU with `targetThresholds.cpu: 70` is NOT overutilized. 70 is not greater than 70.
+
+4. **Jobs get auto-deleted** - CronJob default history limits are low. If debugging, set `successfulJobsHistoryLimit: 3` to keep completed jobs around for log inspection.
+
+5. **DaemonSet pods can't be evicted** - Don't count them when calculating node utilization. A node with 8 DaemonSet pods still has room for workloads.
+
+---
+
+**Resources:**
+- [Descheduler GitHub](https://github.com/kubernetes-sigs/descheduler)
+- [LowNodeUtilization docs](https://github.com/kubernetes-sigs/descheduler#lownodeutilization)
+- [My homelab descheduler config](https://github.com/Piotr1215/homelab/tree/main/gitops/apps/descheduler)
