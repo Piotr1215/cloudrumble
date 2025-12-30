@@ -47,10 +47,11 @@ I built [confhelp](https://github.com/Piotr1215/confhelp) to solve this. Define 
 
 ```bash
 pip install confhelp
+confhelp --init  # creates ~/.config/confhelp/config.toml
 ```
 
 ```toml
-# config.toml
+# ~/.config/confhelp/config.toml
 [tmux]
 paths = [".tmux.conf"]
 match_line = "^bind"
@@ -77,19 +78,21 @@ type = "abbrev"
 Run it:
 
 ```bash
-confhelp -c config.toml -b ~/dotfiles
+confhelp -b ~/dotfiles           # list all bindings
+confhelp -b ~/dotfiles --select  # fzf selection, outputs file:line
+confhelp -b ~/dotfiles --edit    # fzf selection, opens $EDITOR at line
 ```
 
-Output: `[type]|key|description|file:line`
+Output is pipe-delimited: `[type]|key|description|file:line`
 
-Each binding includes the exact file and line number. Pipe to fzf, select, jump directly to the definition.
+Each binding includes the exact file and line number. The `--edit` flag gives you jump-to-definition out of the box.
 
 ## fzf Integration
 
-The wrapper script spawns a centered popup with mode switching:
+For advanced workflows (like combining with tealdeer), a wrapper script spawns a centered popup with mode switching:
 
 ```bash
-selection=$(confhelp -c "$CONFIG" -b "$DOTFILES" | column -t -s'|' | fzf \
+selection=$(confhelp -b "$DOTFILES" | column -t -s'|' | fzf \
     --header='Enter=jump | Ctrl+G=tealdeer' \
     --bind='ctrl-g:become(echo SWITCH_TLDR)' \
     --height=100% \
