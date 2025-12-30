@@ -1,0 +1,225 @@
+---
+title: "Your Shortcuts YAML is Always Outdated (Parse Config Files Instead)"
+date: 2025-12-30
+tags: ["dotfiles", "terminal", "fzf", "tealdeer", "productivity"]
+image: _media/shortcuts-hero.jpg
+description: "Static shortcuts files go stale within days. Parse your actual config files dynamically and use tealdeer for everything else."
+---
+
+import DataGrid from '@site/src/components/DataGrid';
+
+![Shortcuts Help](_media/shortcuts-hero.jpg)
+
+<style>{`
+  article img:not(:first-of-type) {
+    max-width: 700px;
+    height: auto;
+  }
+`}</style>
+
+You add a new tmux binding. A week later you're hunting through `.tmux.conf` because you can't remember what you mapped to `prefix + g`. The shortcuts.yaml you maintain? Three months out of date. The cheatsheet on your desk? Laughable.
+
+The problem isn't discipline. It's architecture. Any system requiring manual sync between source of truth (config files) and documentation (shortcuts file) will drift. Always.
+
+Here's a better approach: parse your config files directly. For workflows that don't map to a single keybinding, use tealdeer custom pages. One popup, two modes, zero maintenance.
+
+<!--truncate-->
+
+## The Architecture
+
+Two types of "help" information exist:
+
+**Config-derived** - keyboard shortcuts that live in actual config files:
+- tmux bindings in `.tmux.conf`
+- zsh bindkeys in `.zshrc`
+- aliases in `.zsh_aliases`
+- abbreviations in `.zsh_abbreviations`
+- functions in `.zsh_functions`
+
+**Workflow-derived** - multi-step processes, tips, commands:
+- "How do I copy in tmux?" (5 steps, not one keybinding)
+- "What moreutils commands exist?" (reference material)
+- "What's the taskwarrior syntax?" (cheatsheet)
+
+For config-derived, parse the files. For workflow-derived, use tealdeer custom pages.
+
+## The Script
+
+A Python parser extracts bindings from each config format. fzf displays them. Enter jumps to the exact line in nvim. Ctrl+G switches to tealdeer browser.
+
+```bash
+#!/usr/bin/env bash
+set -eo pipefail
+
+DOTFILES="$HOME/dev/dotfiles"
+TEMP_FILE=$(mktemp)
+
+parse_configs() {
+    python3 << 'PYEOF'
+import re
+import os
+
+DOTFILES = os.path.expanduser("~/dev/dotfiles")
+
+def parse_tmux():
+    path = f"{DOTFILES}/.tmux.conf"
+    if not os.path.exists(path): return
+    with open(path) as f:
+        for i, line in enumerate(f, 1):
+            if re.match(r'^bind', line.strip()):
+                m = re.match(r'bind(?:-key)?\s+(?:-n\s+)?(\S+)', line.strip())
+                if m:
+                    key = m.group(1)
+                    cmd = line.strip()[len(m.group(0)):].strip()[:50]
+                    print(f"[tmux]|{key}|{cmd}|.tmux.conf:{i}")
+
+def parse_zsh_bindkeys():
+    path = f"{DOTFILES}/.zshrc"
+    if not os.path.exists(path): return
+    with open(path) as f:
+        for i, line in enumerate(f, 1):
+            if 'bindkey' in line and not line.strip().startswith('#'):
+                m = re.search(r"bindkey\s+(?:-s\s+)?['\"]([^'\"]+)['\"]", line)
+                if m:
+                    key = m.group(1)
+                    comment = line.split('#')[1].strip() if '#' in line else ''
+                    func = re.search(r"['\"][^'\"]+['\"]\s+(\S+)", line)
+                    desc = comment if comment else (func.group(1) if func else '')
+                    print(f"[bind]|{key}|{desc}|.zshrc:{i}")
+
+def parse_aliases():
+    for fname in ['.zsh_aliases', '.zsh_claude']:
+        path = f"{DOTFILES}/{fname}"
+        if not os.path.exists(path): continue
+        with open(path) as f:
+            for i, line in enumerate(f, 1):
+                m = re.match(r"alias\s+(?:-[gs]\s+)?([^=]+)=", line.strip())
+                if m:
+                    name = m.group(1).strip()
+                    val = line.split('=', 1)[1][:50].strip().strip("'\"")
+                    print(f"[alias]|{name}|{val}|{fname}:{i}")
+
+parse_tmux()
+parse_zsh_bindkeys()
+parse_aliases()
+PYEOF
+}
+```
+
+The output format is `[type]|key|description|file:line`. Piped through `column -t -s'|'` for alignment.
+
+## fzf Interface
+
+Two modes in a single alacritty window. Mode switching uses fzf's `become()` action - no window flicker:
+
+```bash
+main_loop() {
+    local mode="bindings"
+
+    while true; do
+        if [[ "$mode" == "bindings" ]]; then
+            selection=$(parse_configs | column -t -s'|' | fzf \
+                --header='Enter=jump | Ctrl+G=tealdeer' \
+                --bind='ctrl-g:become(echo SWITCH_TLDR)' \
+                --height=100% \
+                --layout=reverse)
+
+            if [[ "$selection" == "SWITCH_TLDR" ]]; then
+                mode="tldr"
+                continue
+            elif [[ -n "$selection" ]]; then
+                # Extract file:line, open in nvim
+                break
+            fi
+        else
+            # tldr mode with custom pages marked [custom]
+            selection=$(tldr --list | fzf \
+                --header='Enter=view | Ctrl+G=bindings' \
+                --bind='ctrl-g:become(echo SWITCH_BINDINGS)' \
+                --preview='tldr {}')
+            # ...
+        fi
+    done
+}
+
+alacritty --class config-bindings-popup \
+    -o window.dimensions.columns=160 \
+    -o window.dimensions.lines=45 \
+    -e bash -c "main_loop"
+```
+
+The `become()` action replaces the fzf process with a new command without closing the terminal. Critical for smooth mode switching.
+
+## Tealdeer Custom Pages
+
+Tealdeer reads custom pages from a configured directory. I symlink from dotfiles:
+
+```bash
+# ~/.config/tealdeer/config.toml
+[directories]
+custom_pages_dir = "/home/decoder/.local/share/tealdeer/pages"
+
+# Symlink to dotfiles
+ln -s ~/dev/dotfiles/tealdeer-pages/common ~/.local/share/tealdeer/pages
+```
+
+Custom pages need `.page.md` extension. The format:
+
+```markdown
+# tmux-copy-mode
+
+> Tmux copy mode with vi keybindings
+
+- Enter copy mode:
+
+`prefix + [`
+
+- Start selection:
+
+`v` or `V` for line
+
+- Copy selection:
+
+`y`
+```
+
+I created pages for: tmux, tmux-copy-mode, vim, zsh, taskwarrior, moreutils, mpv, neomutt.
+
+## Result
+
+<DataGrid
+  columns={[
+    { key: 'aspect', label: 'Aspect' },
+    { key: 'before', label: 'Before' },
+    { key: 'after', label: 'After' }
+  ]}
+  data={[
+    { aspect: 'Source of truth', before: 'shortcuts.yaml (manual)', after: 'Config files (parsed)' },
+    { aspect: 'Maintenance', before: 'Constant drift', after: 'Zero' },
+    { aspect: 'Jump to definition', before: 'Search manually', after: 'Enter → nvim at line' },
+    { aspect: 'Workflow docs', before: 'Scattered notes', after: 'tealdeer pages' }
+  ]}
+/>
+
+Add a binding to `.tmux.conf`, it appears in the popup immediately. No yaml to update.
+
+## Gotchas
+
+1. **Tealdeer file extension** - Custom pages must end in `.page.md`, not `.md`. Without the `.page` prefix, tealdeer ignores them.
+
+2. **Symlink target** - The symlink must point to the directory containing pages directly, not a parent. tealdeer doesn't recurse.
+
+3. **fzf become() vs execute()** - `execute()` runs a command and returns to fzf. `become()` replaces fzf entirely. For mode switching, you need `become()`.
+
+4. **Alacritty window re-opening** - If your script opens a new alacritty for each mode, you get flicker. Run the mode loop inside a single alacritty process.
+
+5. **Column alignment** - The parser outputs pipe-separated values. `column -t -s'|'` aligns them. If your descriptions contain pipes, they break alignment.
+
+---
+
+**Resources:**
+- [My dotfiles repo](https://github.com/Piotr1215/dotfiles)
+  - [The script](https://github.com/Piotr1215/dotfiles/blob/main/scripts/__config_bindings_help.sh)
+  - [Custom tealdeer pages](https://github.com/Piotr1215/dotfiles/tree/main/tealdeer-pages/common)
+- [tealdeer docs](https://dbrgn.github.io/tealdeer/)
+- [fzf wiki](https://github.com/junegunn/fzf/wiki)
