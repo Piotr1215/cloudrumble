@@ -40,9 +40,18 @@
     "pinned": true
   },
   {
+    "id": "7_Ls4a6Pr0k",
+    "videoId": "7_Ls4a6Pr0k",
+    "title": "Neovim Terminal: Tips and Tricks for Shell Power Users",
+    "thumbnail": "https://img.youtube.com/vi/7_Ls4a6Pr0k/maxresdefault.jpg",
+    "description": "",
+    "date": "Dec 29, 2025",
+    "publishedAt": "2025-12-29T14:53:48+00:00"
+  },
+  {
     "id": "ljBkzBt9nBc",
     "videoId": "ljBkzBt9nBc",
-    "title": "Homelab Dashboard as Code | Homepage Setup and Configuration",
+    "title": "Stop Managing Bookmarks: Build a Live Homelab Dashboard with Homepage",
     "thumbnail": "https://img.youtube.com/vi/ljBkzBt9nBc/maxresdefault.jpg",
     "description": "",
     "date": "Dec 21, 2025",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Aug 10, 2025",
     "publishedAt": "2025-08-10T15:47:09+00:00"
-  },
-  {
-    "id": "K_REZUyzQSY",
-    "videoId": "K_REZUyzQSY",
-    "title": "5 tmux sessions to boost your terminal workflow",
-    "thumbnail": "https://img.youtube.com/vi/K_REZUyzQSY/maxresdefault.jpg",
-    "description": "",
-    "date": "Jul 26, 2025",
-    "publishedAt": "2025-07-26T20:22:30+00:00"
   }
 ]
