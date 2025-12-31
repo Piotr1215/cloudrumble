@@ -29,7 +29,7 @@ Parse your config files directly. For workflows that don't map to a single keybi
 
 Two types of "help" information exist:
 
-**Config-derived** - keyboard shortcuts living in actual config files:
+**Config-derived** - patterns living in actual config files:
 - tmux bindings in `.tmux.conf`
 - zsh bindkeys in `.zshrc`
 - aliases in `.zsh_aliases`
@@ -43,7 +43,7 @@ For config-derived, parse the files. For workflow-derived, use tealdeer custom p
 
 ## confhelp
 
-I built [confhelp](https://github.com/Piotr1215/confhelp) to solve this. Define regex patterns in TOML, point at your dotfiles:
+I built [confhelp](https://github.com/Piotr1215/confhelp) to solve this. Define regex patterns in TOML, point at your config files:
 
 ```bash
 pip install confhelp
@@ -78,14 +78,18 @@ type = "abbrev"
 Run it:
 
 ```bash
-confhelp -b ~/dotfiles           # list all bindings
-confhelp -b ~/dotfiles --select  # fzf selection, outputs file:line
-confhelp -b ~/dotfiles --edit    # fzf selection, opens $EDITOR at line
+confhelp -b ~/dotfiles            # list all entries
+confhelp -b ~/dotfiles --select   # fzf selection, outputs file:line
+confhelp -b ~/dotfiles --edit     # fzf selection, opens $EDITOR at line
+confhelp -b ~/dotfiles --conflicts # find keys bound multiple times
+confhelp -b ~/dotfiles --check    # find patterns your regex missed
 ```
 
 Output is pipe-delimited: `[type]|key|description|file:line`
 
-Each binding includes the exact file and line number. The `--edit` flag gives you jump-to-definition out of the box.
+Each entry includes the exact file and line number. The `--edit` flag gives you jump-to-definition out of the box.
+
+Set `base_dirs` in your config.toml and you can just run `confhelp` without the `-b` flag.
 
 ## fzf Integration
 
