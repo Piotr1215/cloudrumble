@@ -40,6 +40,15 @@
     "pinned": true
   },
   {
+    "id": "Z8nUL419gI8",
+    "videoId": "Z8nUL419gI8",
+    "title": "Stop Grepping Your Dotfiles - Build This Instead",
+    "thumbnail": "https://img.youtube.com/vi/Z8nUL419gI8/maxresdefault.jpg",
+    "description": "",
+    "date": "Dec 31, 2025",
+    "publishedAt": "2025-12-31T12:41:03+00:00"
+  },
+  {
     "id": "7_Ls4a6Pr0k",
     "videoId": "7_Ls4a6Pr0k",
     "title": "Neovim Terminal: Tips and Tricks for Shell Power Users",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Aug 17, 2025",
     "publishedAt": "2025-08-17T18:10:13+00:00"
-  },
-  {
-    "id": "5YFmYcic8XQ",
-    "videoId": "5YFmYcic8XQ",
-    "title": "Why You Should Build a Kubernetes Homelab | How to Start Today",
-    "thumbnail": "https://img.youtube.com/vi/5YFmYcic8XQ/maxresdefault.jpg",
-    "description": "",
-    "date": "Aug 10, 2025",
-    "publishedAt": "2025-08-10T15:47:09+00:00"
   }
 ]
