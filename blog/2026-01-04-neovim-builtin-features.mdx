@@ -1,0 +1,254 @@
+---
+title: "10 Neovim Features You're Probably Installing Plugins For"
+date: 2026-01-04
+tags: ["neovim", "vim", "productivity", "terminal", "editor"]
+image: _media/neovim-features-hero.png
+description: "Multi-cursor editing, shell integration, incremental search preview - these are built into Neovim. No plugins required."
+---
+
+import DataGrid from '@site/src/components/DataGrid';
+
+![Neovim Built-in Features](_media/neovim-features-hero.png)
+
+<style>{`
+  article img:not(:first-of-type) {
+    max-width: 700px;
+    height: auto;
+  }
+`}</style>
+
+You install a plugin for multi-cursor editing. Another for shell integration. A third for incremental search preview. Your plugin count grows, startup time increases, and you debug compatibility issues between packages.
+
+Most of these features exist in vanilla Neovim. Have existed since Vim 7. Here are 10 built-in features that replace common plugins.
+
+<!--truncate-->
+
+## 1. Shell Filter: `!` and `!!`
+
+Pipe any text through external commands. Every Unix tool becomes a text processor.
+
+| Command | Effect |
+|---------|--------|
+| `:.!date` | Replace current line with date output |
+| `!ip sort` | Sort current paragraph |
+| `!ap jq .` | Format JSON in paragraph |
+| `:%!column -t` | Align entire file into columns |
+
+The motion after `!` defines the range. `ip` is "inner paragraph", `ap` is "around paragraph", `%` is whole file.
+
+```vim
+" Sort lines 10-20
+:10,20!sort
+
+" Reverse selection (visual mode, then !)
+:'<,'>!tac
+
+" Format current function as JSON
+!i{jq .
+```
+
+This is the Unix philosophy applied to editing. `sort`, `uniq`, `jq`, `column`, `sed` - all available without plugins.
+
+## 2. Visual Block Increment: `g Ctrl-a`
+
+Select a column of numbers, press `g Ctrl-a`. They become a sequence.
+
+```
+item 0          item 1
+item 0    →     item 2
+item 0          item 3
+item 0          item 4
+```
+
+Standard `Ctrl-a` increments by the same amount. `g Ctrl-a` creates a sequence where each line increases by one more than the previous.
+
+Works for generating IDs, numbered lists, array indices. No macro needed.
+
+## 3. Global Command: `:g/pattern/cmd`
+
+Run any Ex command on every line matching a pattern.
+
+| Command | Effect |
+|---------|--------|
+| `:g/TODO/d` | Delete all lines containing TODO |
+| `:g/^$/d` | Delete all empty lines |
+| `:g/error/t$` | Copy lines with "error" to end of file |
+| `:g/func/norm A;` | Append semicolon to lines containing "func" |
+
+The inverse is `:v/pattern/cmd` - runs on lines NOT matching the pattern.
+
+```vim
+" Delete all comments
+:g/^#/d
+
+" Move all imports to top
+:g/^import/m0
+
+" Number all TODO lines
+:let i=1 | g/TODO/s/TODO/\=i.'. TODO'/ | let i+=1
+```
+
+This is bulk editing without regex gymnastics in the replacement string.
+
+## 4. Command-line Registers: `Ctrl-r`
+
+In `:` or `/` prompts, `Ctrl-r` inserts register contents. Stop typing long paths and patterns manually.
+
+| Shortcut | Inserts |
+|----------|---------|
+| `Ctrl-r Ctrl-w` | Word under cursor |
+| `Ctrl-r "` | Last yanked text |
+| `Ctrl-r /` | Last search pattern |
+| `Ctrl-r =` | Expression result |
+
+Practical example: cursor on `myFunction`, want to search for it:
+
+```
+/Ctrl-r Ctrl-w<Enter>
+```
+
+Inserts `myFunction` into the search prompt. Works in substitute commands too:
+
+```vim
+:%s/Ctrl-r Ctrl-w/newName/g
+```
+
+The `Ctrl-r =` variant evaluates expressions:
+
+```vim
+:echo Ctrl-r =system('date')<Enter>
+```
+
+## 5. Normal on Selection: `:'<,'>norm`
+
+Run normal mode commands on every selected line. This is multi-cursor without plugins.
+
+Select lines visually, then:
+
+| Command | Effect |
+|---------|--------|
+| `:'<,'>norm A,` | Append comma to each line |
+| `:'<,'>norm I# ` | Prepend "# " to each line (comment) |
+| `:'<,'>norm @q` | Run macro q on each line |
+| `:'<,'>norm f=lD` | Delete everything after = on each line |
+
+The `norm` command executes keystrokes as if typed in normal mode. Combined with a range, it applies to multiple lines.
+
+```vim
+" Convert list to array elements
+" Before:      After:
+" apple        "apple",
+" banana  →    "banana",
+" cherry       "cherry",
+
+:'<,'>norm I"
+:'<,'>norm A",
+```
+
+## 6. The `g` Commands
+
+Navigation jumps you probably don't use:
+
+| Command | Effect |
+|---------|--------|
+| `gi` | Go to last insert position AND enter insert mode |
+| `g;` | Jump to previous change location |
+| `g,` | Jump to next change location |
+| `gv` | Reselect last visual selection |
+
+`gi` is the one I use most. Edit something, scroll away to reference code, `gi` puts you back exactly where you were typing.
+
+`g;` and `g,` navigate the change list - every position where you modified text. Different from jump list (`Ctrl-o`/`Ctrl-i`) which tracks navigation.
+
+## 7. Auto-Marks
+
+Vim sets marks automatically. You don't need to remember to set them.
+
+| Mark | Position |
+|------|----------|
+| ``` `` ``` | Previous cursor position (toggle back) |
+| `` `. `` | Last change |
+| `` `" `` | Position when file was last closed |
+| `` `[ `` / `` `] `` | Start/end of last yank or change |
+
+The backtick goes to exact position. Apostrophe goes to line start.
+
+`` `` `` (double backtick) is the most useful - it toggles between current position and previous. Edit something, jump to a definition, ``` `` ``` returns you instantly.
+
+`` `[ `` and `` `] `` mark the boundaries of your last operation. Useful for reselecting: `gv` reselects visual, but `` `[v`] `` selects the range you just yanked or changed.
+
+## 8. Command History Window: `q:`
+
+Press `q:` and your command history opens in a buffer. Full editing. Search with `/`. Modify any line. Press Enter to execute.
+
+| Shortcut | Opens |
+|----------|-------|
+| `q:` | Command history |
+| `q/` | Search history |
+| `Ctrl-f` | Switch from cmdline to history window |
+
+The third one is key. Start typing a complex command, realize you want to edit it properly, hit `Ctrl-f`. The command line becomes a buffer.
+
+Compose multi-part commands, edit previous attempts, combine parts from different history entries. Then Enter executes the current line.
+
+## 9. Live Substitution Preview: `inccommand`
+
+See substitution results before executing. Add to your config:
+
+```lua
+vim.opt.inccommand = "split"
+```
+
+Now when you type `:%s/old/new/`, matches highlight in real-time and a preview window shows what will change.
+
+`split` shows preview in a split window. `nosplit` highlights inline only.
+
+This catches regex mistakes before they happen. See exactly what `:s/foo\(bar\)/\1/` will do before pressing Enter.
+
+## 10. Copy/Move Lines: `:t` and `:m`
+
+Duplicate or relocate lines without touching registers. Your yank stays intact.
+
+| Command | Effect |
+|---------|--------|
+| `:t.` | Duplicate current line below |
+| `:t0` | Copy current line to top of file |
+| `:t$` | Copy current line to end of file |
+| `:m+2` | Move current line 2 lines down |
+| `:'<,'>t.` | Duplicate selection below cursor |
+
+`:t` is copy (think "transfer"), `:m` is move. Both take a destination line number.
+
+```vim
+" Copy line 5 to after line 10
+:5t10
+
+" Move lines 1-3 to end of file
+:1,3m$
+
+" Duplicate current line 5 times
+:t.|t.|t.|t.|t.
+```
+
+No register pollution. `p` still pastes what you yanked earlier.
+
+## Bonus: Mark-Based Ranges
+
+Set marks at function boundaries, substitute only within:
+
+```vim
+ma          " mark start with 'a'
+... navigate to end ...
+mb          " mark end with 'b'
+
+:'a,'b s/old/new/g
+```
+
+Scoped refactoring without selecting anything. The substitution only affects lines between marks a and b.
+
+---
+
+**Resources:**
+- [Neovim documentation](https://neovim.io/doc/user/)
+- [Video covering these features](https://youtu.be/7D1k1l-Q8rA)
+- [My dotfiles](https://github.com/Piotr1215/dotfiles)
