@@ -203,6 +203,57 @@
     "category": "dev"
   },
   {
+    "name": "zsh-jumper",
+    "description": "Jump to any word on the current line via fuzzy picker (fzf/sk/peco). Quick navigation without leaving the keyboard.",
+    "stars": 2,
+    "url": "https://github.com/Piotr1215/zsh-jumper",
+    "tags": [
+      "ZSH",
+      "CLI",
+      "Fuzzy Finder",
+      "Productivity"
+    ],
+    "category": "cli"
+  },
+  {
+    "name": "confhelp",
+    "description": "Key bindings config helper. Quickly look up and search through your keybindings across tools.",
+    "stars": 3,
+    "url": "https://github.com/Piotr1215/confhelp",
+    "tags": [
+      "CLI",
+      "Configuration",
+      "Productivity"
+    ],
+    "category": "cli"
+  },
+  {
+    "name": "homelab",
+    "description": "GitOps-managed Kubernetes homelab. ArgoCD, Cilium, MetalLB, and various self-hosted services.",
+    "stars": 11,
+    "url": "https://github.com/Piotr1215/homelab",
+    "tags": [
+      "Kubernetes",
+      "Homelab",
+      "GitOps",
+      "ArgoCD"
+    ],
+    "category": "config"
+  },
+  {
+    "name": "httproute-controller",
+    "description": "Kubernetes controller that automatically generates Gateway API HTTPRoutes from Service annotations.",
+    "stars": 0,
+    "url": "https://github.com/Piotr1215/httproute-controller",
+    "tags": [
+      "Kubernetes",
+      "Gateway API",
+      "Controller",
+      "Go"
+    ],
+    "category": "cli"
+  },
+  {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
     "stars": 11258,
