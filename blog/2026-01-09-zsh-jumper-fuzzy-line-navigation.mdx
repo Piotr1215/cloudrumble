@@ -1,0 +1,168 @@
+---
+title: "Stop Holding Arrow Keys (Fuzzy Jump to Any Word on Your Command Line)"
+date: 2026-01-09
+tags: ["zsh", "terminal", "fzf", "productivity", "cli"]
+image: _media/zsh-jumper-hero.png
+description: "Long commands are tedious to edit. Instead of arrow keys or Ctrl+Left repeatedly, fuzzy-search any word and jump straight to it."
+---
+
+![zsh-jumper](_media/zsh-jumper-hero.png)
+
+<style>{`
+  article img:not(:first-of-type) {
+    max-width: 700px;
+    height: auto;
+  }
+`}</style>
+
+You've typed a 10-word kubectl command. You realize the namespace is wrong. Now you're holding `Ctrl+Left` six times to get there. Or worse, reaching for the mouse.
+
+Vim solved this for text editing decades ago. Why are we still navigating command lines like it's 1985?
+
+[zsh-jumper](https://github.com/Piotr1215/zsh-jumper) brings fuzzy search to command line navigation. Press a key, pick a word, cursor jumps there.
+
+<!--truncate-->
+
+## The Problem
+
+Terminal commands grow long:
+
+```bash
+kubectl get pods -n kube-system --output wide --selector app=nginx
+```
+
+You need to edit `kube-system`. Options:
+
+1. **Arrow keys** - Hold until you get there. Slow.
+2. **Ctrl+Left/Right** - Jump word by word. Better, but still multiple presses.
+3. **Home then Ctrl+Right** - Start from beginning. Indirect.
+4. **Mouse** - Works, but your hands leave the keyboard.
+
+None of these scale. A 15-word command means 15 potential targets.
+
+## The Solution
+
+```bash
+$ kubectl get pods -n kube-system --output wide
+                    ▲
+              [Ctrl+X /]
+                    │
+         ┌──────────┴──────────┐
+         │      jump>          │
+         │  1: kubectl         │
+         │  2: get             │
+         │> 3: pods            │
+         │  4: -n              │
+         │  5: kube-system     │
+         │  6: --output        │
+         │  7: wide            │
+         └─────────────────────┘
+```
+
+Type `kube`, hit enter. Cursor lands at `kube-system`. Edit, continue.
+
+The mental model matches how you think: "I want to change the namespace" not "I need to move left 6 words."
+
+## Installation
+
+Requires fzf (or sk, peco, percol). Most of you have fzf already.
+
+```zsh
+# zinit
+zinit light Piotr1215/zsh-jumper
+
+# antigen
+antigen bundle Piotr1215/zsh-jumper
+
+# oh-my-zsh
+git clone https://github.com/Piotr1215/zsh-jumper \
+    ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-jumper
+# then add zsh-jumper to plugins in .zshrc
+```
+
+Default binding: `Ctrl+X /`
+
+## Why Word Numbering?
+
+The picker shows numbered words:
+
+```
+1: kubectl
+2: get
+3: -n
+4: --user
+5: admin
+```
+
+This prevents ambiguity. If you search for `-u`, you want `-n` at position 3, not a substring match inside `--user`. Numbers ensure exact cursor placement.
+
+## Configuration
+
+All options via zstyle, set before loading the plugin:
+
+```zsh
+# Force specific picker
+zstyle ':zsh-jumper:' picker fzf
+
+# Custom picker options
+zstyle ':zsh-jumper:' picker-opts '--height=50% --reverse --border'
+
+# Where cursor lands: start (default), middle, end
+zstyle ':zsh-jumper:' cursor end
+
+# Custom keybinding
+zstyle ':zsh-jumper:' binding '^J'
+```
+
+For tmux users: the plugin auto-detects tmux and uses `fzf-tmux` for a floating popup instead of inline fzf.
+
+## Vi Mode
+
+If you use vi mode in zsh, bind to both insert and command modes:
+
+```zsh
+zstyle ':zsh-jumper:' disable-bindings yes
+bindkey -M viins '^X/' zsh-jumper-widget
+bindkey -M vicmd '^X/' zsh-jumper-widget
+```
+
+## Workflow Tips
+
+After jumping to a word:
+
+- `Alt+D` - Delete word forward (remove it)
+- `Ctrl+W` - Delete word backward
+- `Ctrl+K` - Kill to end of line
+- Just type - Insert before the word
+
+Jump, delete, retype. Three keystrokes to fix any part of a long command.
+
+## Multiline Commands
+
+Works with backslash continuations:
+
+```bash
+docker run -d \
+    --name my-container \
+    --network host \
+    nginx:latest
+```
+
+Line continuation characters are filtered out. You see only actual command tokens in the picker.
+
+## Performance
+
+Load time: ~0.2ms. Negligible impact on shell startup.
+
+```
+% zmodload zsh/zprof && source zsh-jumper.plugin.zsh && zprof
+num  calls                time            self            name
+-------------------------------------------------------------------------------
+ 1)    1           0.23     0.23  100.00%  zsh-jumper-setup-bindings
+```
+
+---
+
+**Resources:**
+- [zsh-jumper on GitHub](https://github.com/Piotr1215/zsh-jumper)
+- [fzf](https://github.com/junegunn/fzf) - Required fuzzy finder
