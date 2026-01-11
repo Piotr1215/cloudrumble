@@ -19,7 +19,7 @@ You've typed a 10-word kubectl command. You realize the namespace is wrong. Now 
 
 Vim solved this for text editing decades ago. Why are we still navigating command lines like it's 1985?
 
-[zsh-jumper](https://github.com/Piotr1215/zsh-jumper) brings fuzzy search to command line navigation. Press a key, pick a word, cursor jumps there.
+[zsh-jumper](https://github.com/Piotr1215/zsh-jumper) brings fuzzy search to command line navigation. Press a key, pick a word, cursor jumps there. Or press `;` and a letter for instant EasyMotion-style jumps.
 
 <!--truncate-->
 
@@ -47,19 +47,26 @@ $ kubectl get pods -n kube-system --output wide
                     ▲
               [Ctrl+X /]
                     │
-         ┌──────────┴──────────┐
-         │      jump>          │
-         │  1: kubectl         │
-         │  2: get             │
-         │> 3: pods            │
-         │  4: -n              │
-         │  5: kube-system     │
-         │  6: --output        │
-         │  7: wide            │
-         └─────────────────────┘
+→ [a]kubectl [s]get [d]pods [f]-n [g]kube-system [h]--output [j]wide   ← overlay
+┌─────────────────────────────────────┬────────────────────────────────────────┐
+│ jump>                               │ kubectl controls the Kubernetes...     │
+│ ^S:wrap | ^E:var | ^R:replace | ^M:m│                                        │
+│─────────────────────────────────────│                                        │
+│> 1: kubectl                         │ Basic Commands (Beginner):             │
+│  2: get                             │   create    Create a resource          │
+│  3: pods                            │   expose    Expose a resource          │
+│  4: -n                              │   run       Run a particular image     │
+│  5: kube-system                     │   set       Set specific features      │
+│  6: --output                        │                                        │
+│  7: wide                            │ Basic Commands (Intermediate):         │
+└─────────────────────────────────────┴────────────────────────────────────────┘
 ```
 
+The overlay shows letter hints (`[a]kubectl [s]get [d]pods`) for instant jump. The picker has numbered items for fuzzy search, with `--help` preview on the right.
+
 Type `kube`, hit enter. Cursor lands at `kube-system`. Edit, continue.
+
+Or press `;` then `g` to jump directly to `kube-system`. No fuzzy searching needed.
 
 The mental model matches how you think: "I want to change the namespace" not "I need to move left 6 words."
 
@@ -81,6 +88,41 @@ git clone https://github.com/Piotr1215/zsh-jumper \
 ```
 
 Default binding: `Ctrl+X /`
+
+## FZF Actions
+
+Beyond jumping, the picker offers token manipulation:
+
+| Key | Action |
+|-----|--------|
+| `Enter` | Jump to selected token |
+| `Ctrl+S` | Wrap token in `"..."`, `'...'`, `$(...)`, etc. |
+| `Ctrl+E` | Extract token to `UPPERCASE` variable |
+| `Ctrl+R` | Replace token (delete and position cursor) |
+| `Ctrl+M` | Move/swap token with another position |
+| `;` | Enter instant mode (then press a-z to jump) |
+
+**Variable extraction** converts `my-gpu` to:
+```bash
+MY_GPU="my-gpu"
+kubectl run test --image "$MY_GPU"
+```
+
+**Instant mode**: Press `;` then a hint letter to jump directly. The overlay on your command line shows the mapping.
+
+**Replace mode** is particularly useful: it deletes the token and leaves cursor in place, so you get full zsh tab completion for the replacement text.
+
+For complex multiline editing, `Ctrl+X Ctrl+E` (edit in `$EDITOR`) still shines. zsh-jumper is for quick navigation and token manipulation.
+
+## Preview Panel
+
+The right panel shows contextual help:
+
+- **Commands**: `--help` output (with bat highlighting), fallback to `tldr`, then `man`
+- **Files**: Content preview via `bat` (or `head`)
+- **Directories**: `ls -la` listing
+
+This makes the picker double as a quick reference. Forgot what flags kubectl accepts? Just invoke the picker.
 
 ## Why Word Numbering?
 
@@ -128,14 +170,18 @@ bindkey -M vicmd '^X/' zsh-jumper-widget
 
 ## Workflow Tips
 
-After jumping to a word:
+The built-in actions handle most edits directly:
 
-- `Alt+D` - Delete word forward (remove it)
+- **Wrong value?** `Ctrl+R` to replace with full tab completion
+- **Need quotes?** `Ctrl+S` to wrap in `"..."`, `'...'`, or `$(...)`
+- **Reuse a value?** `Ctrl+E` to extract to a variable
+- **Wrong order?** `Ctrl+M` to swap positions
+
+For anything else, jump to the word then use standard zsh:
+
+- `Alt+D` - Delete word forward
 - `Ctrl+W` - Delete word backward
 - `Ctrl+K` - Kill to end of line
-- Just type - Insert before the word
-
-Jump, delete, retype. Three keystrokes to fix any part of a long command.
 
 ## Multiline Commands
 
@@ -150,16 +196,39 @@ docker run -d \
 
 Line continuation characters are filtered out. You see only actual command tokens in the picker.
 
+## Extensibility
+
+For power users, custom actions and previewers via TOML config:
+
+```zsh
+zstyle ':zsh-jumper:' config ~/.config/zsh-jumper/config.toml
+```
+
+```toml
+[[actions]]
+binding = 'ctrl-u'
+description = 'uppercase'
+script = '~/.config/zsh-jumper/scripts/uppercase.sh'
+
+[[previewers]]
+pattern = '^https?://'
+description = 'URL preview'
+script = '~/.config/zsh-jumper/scripts/url-preview.sh'
+```
+
+Run `zsh-jumper-list` to see all registered actions and previewers.
+
 ## Performance
 
-Load time: ~0.2ms. Negligible impact on shell startup.
+CI measures and enforces thresholds on every commit:
 
-```
-% zmodload zsh/zprof && source zsh-jumper.plugin.zsh && zprof
-num  calls                time            self            name
--------------------------------------------------------------------------------
- 1)    1           0.23     0.23  100.00%  zsh-jumper-setup-bindings
-```
+| Metric | What it measures | Threshold |
+|--------|------------------|-----------|
+| **Load** | Time to source the plugin | < 200ms |
+| **Parse** | Tokenize a 10-word command 100× | < 150ms |
+| **Leak** | Memory delta after 10 load/unload cycles | < 400KB |
+
+Live badges in the [README](https://github.com/Piotr1215/zsh-jumper) show actual values from the latest CI run. The plugin loads in under 1ms and cleans up properly on unload.
 
 ---
 
