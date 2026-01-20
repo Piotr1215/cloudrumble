@@ -56,7 +56,7 @@
   {
     "name": "presenterm.nvim",
     "description": "Neovim plugin for presenterm",
-    "stars": 30,
+    "stars": 31,
     "url": "https://github.com/Piotr1215/presenterm.nvim",
     "tags": [
       "Neovim",
@@ -149,7 +149,7 @@
   {
     "name": "cv-pipeline-template",
     "description": "Automated CV generation pipeline that creates multiple psychologically-optimized CV variants from YAML data. Uses LaTeX, GitHub Actions, and color psychology research.",
-    "stars": 14,
+    "stars": 15,
     "url": "https://github.com/Piotr1215/cv-pipeline-template",
     "tags": [
       "Automation",
@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11300,
+    "stars": 11306,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -270,7 +270,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10841,
+    "stars": 10842,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
