@@ -1,5 +1,23 @@
 [
  {
+   "title": "Workshop: TBD",
+   "description": "Workshop at Platform Engineering Day, co-located with KubeCon EU Amsterdam 2026. Exploring real-world challenges and advanced practices behind building and scaling Internal Developer Platforms.",
+   "date": "2026-03",
+   "conference": "Platform Engineering Day @ KubeCon EU Amsterdam 2026",
+   "tags": [
+     "Platform Engineering",
+     "Kubernetes",
+     "Workshop"
+   ],
+   "recordingUrl": null,
+   "conferenceUrl": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/platform-engineering-day/",
+   "slidesUrl": null,
+   "thumbnailUrl": null,
+   "type": "workshop",
+   "upcoming": true,
+   "abstract": "Platform Engineering Day is dedicated to exploring real-world challenges and advanced practices behind building and scaling Internal Developer Platforms (IDPs). IDPs provide curated capabilities, frameworks, and developer-centric experiences to accelerate internal teams such as application developers."
+ },
+ {
    "title": "Instant KAI Sandboxes with vCluster: Multi-Tenant, Multi-Scheduler GPU Sharing",
    "description": "Exploring how to create instant AI sandboxes using vCluster with multi-tenant capabilities and efficient GPU sharing across multiple schedulers.",
    "date": "2026-07",
