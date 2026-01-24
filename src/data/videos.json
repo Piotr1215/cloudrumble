@@ -40,6 +40,15 @@
     "pinned": true
   },
   {
+    "id": "7D1k1l-Q8rA",
+    "videoId": "7D1k1l-Q8rA",
+    "title": "10 Built-in Neovim Features You're Not Using (No Plugins Required)",
+    "thumbnail": "https://img.youtube.com/vi/7D1k1l-Q8rA/maxresdefault.jpg",
+    "description": "",
+    "date": "Jan 4, 2026",
+    "publishedAt": "2026-01-04T16:00:01+00:00"
+  },
+  {
     "id": "Z8nUL419gI8",
     "videoId": "Z8nUL419gI8",
     "title": "Stop Grepping Your Dotfiles - Build This Instead",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Aug 30, 2025",
     "publishedAt": "2025-08-30T16:24:08+00:00"
-  },
-  {
-    "id": "Fej7-Q8YRR8",
-    "videoId": "Fej7-Q8YRR8",
-    "title": "Terminal-Only Media Workflow with Tmux and MPV | No Browser Required",
-    "thumbnail": "https://img.youtube.com/vi/Fej7-Q8YRR8/maxresdefault.jpg",
-    "description": "",
-    "date": "Aug 17, 2025",
-    "publishedAt": "2025-08-17T18:10:13+00:00"
   }
 ]
