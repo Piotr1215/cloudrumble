@@ -3,12 +3,15 @@ import TalkCard from './TalkCard';
 const talksData = require('../data/talks.json');
 
 const Talks = () => {
+  // Only show confirmed talks (completed/accepted), hide submitted
+  const confirmedTalks = talksData.filter(t => t.status !== 'submitted');
+
   // Separate upcoming, pinned, and other talks
-  const upcomingTalks = talksData.filter(t => t.upcoming);
-  const pinnedTalks = talksData.filter(t => t.pinned && !t.upcoming);
+  const upcomingTalks = confirmedTalks.filter(t => t.upcoming);
+  const pinnedTalks = confirmedTalks.filter(t => t.pinned && !t.upcoming);
 
   // Sort all other talks in descending order (newest first)
-  const allTalks = talksData
+  const allTalks = confirmedTalks
     .filter(talk => !talk.upcoming && !talk.pinned)
     .sort((a, b) => b.date.localeCompare(a.date));
 
