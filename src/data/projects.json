@@ -192,7 +192,7 @@
   {
     "name": "incus-dev-env",
     "description": "Containerized distributed development environment with incus. Quickly spin up isolated development environments with full Linux distributions.",
-    "stars": 10,
+    "stars": 11,
     "url": "https://github.com/Piotr1215/incus-dev-env",
     "tags": [
       "Incus",
