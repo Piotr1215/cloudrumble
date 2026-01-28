@@ -83,7 +83,7 @@
   {
     "name": "mcp-agentic-framework",
     "description": "MCP implementation of an agentic framework",
-    "stars": 7,
+    "stars": 8,
     "url": "https://github.com/Piotr1215/mcp-agentic-framework",
     "tags": [
       "MCP",
@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11332,
+    "stars": 11336,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -270,7 +270,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10859,
+    "stars": 10857,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
