@@ -13,7 +13,7 @@ const getYouTubeId = (url) => {
   return matches && matches[1] ? matches[1] : null;
 };
 
-const DEFAULT_THUMBNAIL = '/img/talks/default-talk-thumbnail.svg';
+const DEFAULT_THUMBNAIL = '/img/talks/default-talk-thumbnail.png';
 
 const TalkCard = ({ talk }) => {
   const [imageFailed, setImageFailed] = useState(false);

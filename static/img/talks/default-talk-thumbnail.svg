@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="600" height="338" viewBox="0 0 600 338" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="338" fill="#1E293B"/>
-  <rect x="150" y="84" width="300" height="170" rx="12" fill="#334155" stroke="#475569" stroke-width="2"/>
-  <circle cx="300" cy="130" r="30" fill="#64748B"/>
-  <rect x="230" y="180" width="140" height="12" rx="6" fill="#64748B"/>
-  <rect x="250" y="204" width="100" height="8" rx="4" fill="#475569"/>
-  <path d="M286 124v12l10-6-10-6z" fill="#1E293B"/>
-  <path d="M310 124v12l10-6-10-6z" fill="#1E293B"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M320 259c0-5.523 4.477-10 10-10h40c5.523 0 10 4.477 10 10s-4.477 10-10 10h-40c-5.523 0-10-4.477-10-10zm-100 0c0-5.523 4.477-10 10-10h40c5.523 0 10 4.477 10 10s-4.477 10-10 10h-40c-5.523 0-10-4.477-10-10zm-100 0c0-5.523 4.477-10 10-10h40c5.523 0 10 4.477 10 10s-4.477 10-10 10h-40c-5.523 0-10-4.477-10-10z" fill="#475569"/>
+  <!-- Background -->
+  <rect width="600" height="338" fill="#0D1117"/>
+
+  <!-- Terminal window -->
+  <rect x="60" y="40" width="480" height="258" rx="8" fill="#161B22" stroke="#30363D" stroke-width="2"/>
+
+  <!-- Terminal header bar -->
+  <rect x="60" y="40" width="480" height="32" rx="8" fill="#21262D"/>
+  <rect x="60" y="64" width="480" height="8" fill="#21262D"/>
+
+  <!-- Traffic lights -->
+  <circle cx="84" cy="56" r="6" fill="#FF5F56"/>
+  <circle cx="104" cy="56" r="6" fill="#FFBD2E"/>
+  <circle cx="124" cy="56" r="6" fill="#27C93F"/>
+
+  <!-- Terminal title -->
+  <text x="300" y="60" text-anchor="middle" fill="#8B949E" font-family="monospace" font-size="12">~/talks/upcoming</text>
+
+  <!-- Terminal content -->
+  <text x="80" y="100" fill="#27C93F" font-family="monospace" font-size="14">$</text>
+  <text x="100" y="100" fill="#C9D1D9" font-family="monospace" font-size="14">echo "Talk coming soon..."</text>
+
+  <text x="80" y="130" fill="#8B949E" font-family="monospace" font-size="14">Talk coming soon...</text>
+
+  <text x="80" y="170" fill="#27C93F" font-family="monospace" font-size="14">$</text>
+  <text x="100" y="170" fill="#C9D1D9" font-family="monospace" font-size="14">cat status.txt</text>
+
+  <text x="80" y="200" fill="#F0883E" font-family="monospace" font-size="14">UPCOMING</text>
+
+  <!-- Blinking cursor -->
+  <rect x="80" y="230" width="10" height="18" fill="#27C93F">
+    <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Decorative code brackets -->
+  <text x="460" y="270" fill="#30363D" font-family="monospace" font-size="48">{}</text>
 </svg>
