@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11392,
+    "stars": 11397,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -270,7 +270,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10939,
+    "stars": 10942,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
@@ -283,7 +283,7 @@
   {
     "name": "OpenGitOps Documents",
     "description": "Lasting documents from the OpenGitOps project which are versioned and released together, including the GitOps Principles and Glossary. Defining standards and best practices for GitOps.",
-    "stars": 470,
+    "stars": 471,
     "url": "https://github.com/open-gitops/documents",
     "tags": [
       "GitOps",
