@@ -70,7 +70,7 @@
   {
     "name": "dotfiles",
     "description": "Pop_OS! dotfiles with install script. Complete development environment setup with Neovim, Tmux, and essential CLI tools.",
-    "stars": 129,
+    "stars": 130,
     "url": "https://github.com/Piotr1215/dotfiles",
     "tags": [
       "Dotfiles",
@@ -192,7 +192,7 @@
   {
     "name": "incus-dev-env",
     "description": "Containerized distributed development environment with incus. Quickly spin up isolated development environments with full Linux distributions.",
-    "stars": 11,
+    "stars": 12,
     "url": "https://github.com/Piotr1215/incus-dev-env",
     "tags": [
       "Incus",
@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11397,
+    "stars": 11400,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -270,7 +270,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 10942,
+    "stars": 10947,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
