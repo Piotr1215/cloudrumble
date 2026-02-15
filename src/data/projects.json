@@ -70,7 +70,7 @@
   {
     "name": "dotfiles",
     "description": "Pop_OS! dotfiles with install script. Complete development environment setup with Neovim, Tmux, and essential CLI tools.",
-    "stars": 130,
+    "stars": 131,
     "url": "https://github.com/Piotr1215/dotfiles",
     "tags": [
       "Dotfiles",
@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11405,
+    "stars": 11408,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
