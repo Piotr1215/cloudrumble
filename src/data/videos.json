@@ -40,9 +40,18 @@
     "pinned": true
   },
   {
+    "id": "APUzjye4fPk",
+    "videoId": "APUzjye4fPk",
+    "title": "Neovim Batch Editing: 7 Recipes for Multi-File Changes",
+    "thumbnail": "https://img.youtube.com/vi/APUzjye4fPk/maxresdefault.jpg",
+    "description": "",
+    "date": "Feb 15, 2026",
+    "publishedAt": "2026-02-15T18:15:59+00:00"
+  },
+  {
     "id": "W5X_c_4haRw",
     "videoId": "W5X_c_4haRw",
-    "title": "zsh power features: custom widgets, keymaps, and the ZLE pipeline",
+    "title": "5 zsh keybindings that should be muscle memory",
     "thumbnail": "https://img.youtube.com/vi/W5X_c_4haRw/maxresdefault.jpg",
     "description": "",
     "date": "Feb 8, 2026",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Sep 13, 2025",
     "publishedAt": "2025-09-13T17:40:08+00:00"
-  },
-  {
-    "id": "Q-tOLvbDWJ0",
-    "videoId": "Q-tOLvbDWJ0",
-    "title": "pairup.nvim | real-time AI pair programming in neovim",
-    "thumbnail": "https://img.youtube.com/vi/Q-tOLvbDWJ0/maxresdefault.jpg",
-    "description": "",
-    "date": "Sep 7, 2025",
-    "publishedAt": "2025-09-07T17:00:09+00:00"
   }
 ]
