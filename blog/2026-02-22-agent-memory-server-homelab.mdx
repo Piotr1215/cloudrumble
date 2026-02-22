@@ -375,28 +375,16 @@ Once connected, any MCP client gains these tools:
 
 Say "remember that I always use bun instead of npm" and it persists. Next session, on a different machine, in a different tool, the memory is there. The semantic search means it finds relevant memories even with different wording.
 
-## Gotcha: The Ollama Model Tag
 
-The worker kept crashing with an `AuthenticationError`. Misleading, because there's no authentication involved. The actual problem:
+## Why This Matters
 
-```
-litellm.exceptions.AuthenticationError: OllamaException -
-model "llama3.2" not found, try pulling it first
-```
+This setup solves a real problem: AI tools are stateless by default. Every session is a blank slate. Memory servers fix that, but most require cloud APIs that cost money and store your data on their infrastructure.
 
-Ollama had the model as `llama3.2:3b`. The config said `ollama/llama3.2` (no size tag). LiteLLM tried to find `llama3.2` without the `:3b` suffix, Ollama returned "not found", and LiteLLM wrapped that as an `AuthenticationError`.
-
-The fix: use the explicit tag `ollama/llama3.2:3b` in `GENERATION_MODEL`. Always specify the full model name including size tag when using Ollama through LiteLLM.
-
-## Why This Matters for Homelabs
-
-This setup solves a real problem: AI tools are stateless by default. Every session is a blank slate. Memory servers fix that, but most require cloud APIs that cost money and send your data to third parties.
-
-Think about what AI memories contain: details about your codebase, your infrastructure topology, your workflow habits, your credentials naming patterns. With cloud memory services, that data lives on someone else's servers. With this setup, every step is local. Ollama computes embeddings on your Mac, Redis stores them on your cluster's PVC, searches run against your local vector index. Memories never leave your network.
+Think about what AI memories contain: details about your codebase, your infrastructure topology, your workflow habits, your credentials naming patterns. With cloud memory services, that data lives in someone else's database, governed by their retention policies. With this setup, the canonical store is yours. Redis on your PVC, embeddings computed by Ollama on your hardware, search indexes you control. When an MCP client retrieves a memory and sends it to Claude or Codex for inference, that's your choice for that interaction. The difference is who holds the source of truth. You decide what gets stored, what gets shared, and what gets deleted.
 
 Running agent-memory-server on Kubernetes with Ollama gives you:
 
-- Full data sovereignty -- memories stay on your hardware
+- You own the data -- memories live in your database, governed by your retention policies
 - Zero inference costs -- Ollama on a spare Mac handles all embeddings and generation
 - Kubernetes ops tooling -- health checks, rolling updates, PVC persistence, ArgoCD GitOps
 - Multi-machine memory -- any device pointing at the MCP endpoint shares the same memory store
