@@ -44,7 +44,7 @@ graph LR
     API[agent-memory-api<br/>:8000] --> Redis
     Worker[agent-memory-worker] -->|polls tasks| Redis
     Worker -->|embeddings<br/>nomic-embed-text| Ollama[Ollama<br/>Mac 192.168.x.x<br/>:11434]
-    Worker -->|generation<br/>llama3.2:3b| Ollama
+    Worker -->|generation<br/>qwen2.5:7b| Ollama
     MCP --> Ollama
     API --> Ollama
 
@@ -59,7 +59,7 @@ graph LR
 | Component | Image | Purpose |
 |-----------|-------|---------|
 | Redis Stack | `redis/redis-stack-server:7.4.0-v8` | Vector store + pub/sub + persistence |
-| API Server | `piotrzan/agent-memory-server:0.13.2-custom-v4` | REST API on port 8000 |
+| API Server | `piotrzan/agent-memory-server:0.13.2-custom-v5` | REST API on port 8000 |
 | MCP Server | Same custom image | MCP interface on port 9000 |
 | Task Worker | Same custom image | Async processing (embeddings, NER, topic extraction) |
 
@@ -79,7 +79,7 @@ graph TD
 
     subgraph "Phase 2: Async Worker"
         D -->|docket task| E[worker picks up job]
-        E --> F[Ollama llama3.2:3b]
+        E --> F[Ollama qwen2.5:7b]
         F --> G[topic extraction]
         F --> H[named entity recognition]
         G --> I[enriched Redis record]
@@ -89,7 +89,9 @@ graph TD
 
 Phase 1 is synchronous. nomic-embed-text converts your text into a 768-dimension vector. Redis stores both the vector and the raw text immediately, so you can search for it right away.
 
-Phase 2 runs in the background. The worker pulls async tasks from Redis (using [docket](https://github.com/chrisguidry/docket)), sends text to llama3.2:3b for topic extraction and NER, and writes structured metadata back. This makes future searches more precise; you can filter by topic or entity, not just vector similarity.
+Phase 2 runs in the background. The worker pulls async tasks from Redis (using [docket](https://github.com/chrisguidry/docket)), sends text to qwen2.5:7b for topic extraction and NER, and writes structured metadata back. This makes future searches more precise; you can filter by topic or entity, not just vector similarity.
+
+I started with llama3.2:3b for generation. It works for simple tasks, but the memory compaction worker merges duplicate memories by asking the LLM to produce clean combined text. llama3.2:3b would output meta-commentary instead: "As a memory merging assistant, I will now merge..." rather than the actual merged content. qwen2.5:7b follows structured output instructions reliably. For tasks where the model must produce clean text without editorializing, instruction adherence matters more than model size.
 
 ### Why Not Just Use OpenAI-backed Memory?
 
@@ -100,7 +102,7 @@ Redis Agent Memory Server supports [LiteLLM](https://docs.litellm.ai/), which me
 <InfoCards
   items={[
     { feature: 'Embeddings', cloud: 'OpenAI ada-002 ($0.10/1M tokens)', local: 'Ollama nomic-embed-text (free)' },
-    { feature: 'Generation', cloud: 'GPT-4 for extraction ($30/1M tokens)', local: 'Ollama llama3.2:3b (free)' },
+    { feature: 'Generation', cloud: 'GPT-4 for extraction ($30/1M tokens)', local: 'Ollama qwen2.5:7b (free)' },
     { feature: 'Vector Store', cloud: 'Pinecone/Weaviate (managed)', local: 'Redis Stack RediSearch (self-hosted)' },
     { feature: 'Data Location', cloud: 'Third-party servers', local: 'Your cluster, your PVC' }
   ]}
@@ -123,7 +125,7 @@ Everything below is the actual deployment. If you just wanted the concept, you c
 ### Prerequisites
 
 - **A Kubernetes cluster.** Any distro works: k3s on a single node, kubeadm, Talos, managed. If you don't have one yet, [k3s](https://k3s.io/) gets you there in one command
-- A machine running [Ollama](https://ollama.com/) with `nomic-embed-text` and `llama3.2:3b` pulled. Can be the same node, a spare laptop, a Mac. Needs ~4GB RAM for both models
+- A machine running [Ollama](https://ollama.com/) with `nomic-embed-text` and `qwen2.5:7b` pulled. Can be the same node, a spare laptop, a Mac. Needs ~6GB RAM for both models
 - ~2.3GB cluster RAM at pod limits for the 4 deployments (actual usage is lower)
 - A storage class that supports PVCs (Longhorn, local-path, OpenEBS, anything)
 - Optional: ArgoCD for GitOps sync, or just `kubectl apply`
@@ -218,7 +220,11 @@ env:
   - name: ENABLE_NER
     value: "true"
   - name: GENERATION_MODEL
-    value: ollama/llama3.2:3b    # explicit tag matters!
+    value: ollama/qwen2.5:7b     # used for memory compaction/merging
+  - name: FAST_MODEL
+    value: ollama/qwen2.5:7b     # topic extraction, query optimization
+  - name: SLOW_MODEL
+    value: ollama/qwen2.5:7b     # complex reasoning tasks
   - name: EMBEDDING_MODEL
     value: ollama/nomic-embed-text
   - name: OLLAMA_API_BASE
@@ -317,7 +323,7 @@ git apply mcp-patches.patch
 docker build -f Dockerfile.patched --target standard -t "$IMAGE" .
 ```
 
-The resulting image (`piotrzan/agent-memory-server:0.13.2-custom-v4`) is used by all three application pods. I've submitted a PR upstream to add streamable-http support natively, but until that lands you'll need a custom image.
+The resulting image (`piotrzan/agent-memory-server:0.13.2-custom-v5`) is used by all three application pods. v5 also fixes a hardcoded `gpt-4o-mini` model reference in the memory compaction function that ignored the `GENERATION_MODEL` setting. I've submitted a PR upstream to add streamable-http support natively, but until that lands you'll need a custom image.
 
 ## Connecting MCP Clients
 
