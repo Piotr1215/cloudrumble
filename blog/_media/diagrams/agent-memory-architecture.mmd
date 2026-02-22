@@ -1,0 +1,16 @@
+graph LR
+    CC[Claude Code<br/>workstation] -->|MCP streamable-http| MCP[agent-memory-mcp<br/>:9000]
+    MCP --> Redis[(Redis Stack<br/>:6379<br/>PVC: 2Gi)]
+    API[agent-memory-api<br/>:8000] --> Redis
+    Worker[agent-memory-worker] -->|polls tasks| Redis
+    Worker -->|embeddings<br/>nomic-embed-text| Ollama[Ollama<br/>Mac 192.168.x.x<br/>:11434]
+    Worker -->|generation<br/>llama3.2:3b| Ollama
+    MCP --> Ollama
+    API --> Ollama
+
+    style CC fill:#1a1a2e,stroke:#e94560,color:#fff
+    style MCP fill:#16213e,stroke:#0f3460,color:#fff
+    style API fill:#16213e,stroke:#0f3460,color:#fff
+    style Worker fill:#16213e,stroke:#0f3460,color:#fff
+    style Redis fill:#533483,stroke:#e94560,color:#fff
+    style Ollama fill:#0f3460,stroke:#e94560,color:#fff
