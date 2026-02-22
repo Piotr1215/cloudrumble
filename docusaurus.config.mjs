@@ -12,6 +12,10 @@ const config = {
   organizationName: "Piotr1215",
   projectName: "dca-prep-kit",
 
+  clientModules: [
+    './src/webmcp.js',
+  ],
+
   // Single tailwind plugin
   plugins: [
     ['./plugins/tailwind-plugin.cjs', {}],
