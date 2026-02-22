@@ -59,7 +59,7 @@ graph LR
 | Component | Image | Purpose |
 |-----------|-------|---------|
 | Redis Stack | `redis/redis-stack-server:7.4.0-v8` | Vector store + pub/sub + persistence |
-| API Server | `piotrzan/agent-memory-server:0.13.2-custom-v3` | REST API on port 8000 |
+| API Server | `piotrzan/agent-memory-server:0.13.2-custom-v4` | REST API on port 8000 |
 | MCP Server | Same custom image | MCP interface on port 9000 |
 | Task Worker | Same custom image | Async processing (embeddings, NER, topic extraction) |
 
@@ -317,7 +317,7 @@ git apply mcp-patches.patch
 docker build -f Dockerfile.patched --target standard -t "$IMAGE" .
 ```
 
-The resulting image (`piotrzan/agent-memory-server:0.13.2-custom-v3`) is used by all three application pods. The plan is to PR this upstream so the custom image won't be needed long-term.
+The resulting image (`piotrzan/agent-memory-server:0.13.2-custom-v4`) is used by all three application pods. I've submitted a PR upstream to add streamable-http support natively, but until that lands you'll need a custom image.
 
 ## Connecting MCP Clients
 
