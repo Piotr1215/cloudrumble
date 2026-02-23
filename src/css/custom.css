@@ -2952,6 +2952,61 @@ html[class*="blog"] main {
   order: 2 !important;
 }
 
+/* ============================================
+   NETRW SIDEBAR COLLAPSE TOGGLE (:Lex)
+   ============================================ */
+
+.netrw-toggle {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  z-index: 10 !important;
+  background: #2d2d2d !important;
+  color: #4dd0e1 !important;
+  border: 1px solid #444 !important;
+  border-radius: 3px !important;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', monospace !important;
+  font-size: 12px !important;
+  padding: 2px 10px !important;
+  cursor: pointer !important;
+}
+
+.netrw-toggle:hover {
+  background: #3a3a3a !important;
+  color: #7de4f1 !important;
+}
+
+/* Collapsed state: hide sidebar content, shrink width */
+html.netrw-collapsed aside.col--3,
+html.netrw-collapsed aside[class*="col"] {
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  flex: 0 0 48px !important;
+  overflow: hidden !important;
+}
+
+html.netrw-collapsed aside.col--3 nav > *:not(.netrw-toggle),
+html.netrw-collapsed aside[class*="col"] nav > *:not(.netrw-toggle) {
+  display: none !important;
+}
+
+html.netrw-collapsed aside.col--3::before,
+html.netrw-collapsed aside[class*="col"]::before {
+  display: none !important;
+}
+
+html.netrw-collapsed .netrw-toggle {
+  right: auto !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Expand main content when sidebar collapsed */
+html.netrw-collapsed main.col {
+  max-width: calc(100% - 48px) !important;
+}
+
 /* YAML syntax highlighting colors (Dracula-inspired) */
 .prism-code.language-yaml .token.key.atrule {
   color: #8be9fd !important; /* cyan for keys */

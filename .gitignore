@@ -45,3 +45,4 @@ docs/.textlintcache
 .netlify
 
 **/.claude/settings.local.json
+.playwright-mcp
