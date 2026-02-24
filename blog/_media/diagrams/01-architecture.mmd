@@ -1,0 +1,26 @@
+graph LR
+    subgraph "Workstation"
+        Hook["__rag_context_hook.py<br/>UserPromptSubmit"] --> CC["Claude Code"]
+    end
+
+    subgraph "K8s Cluster · ai-tools namespace"
+        R2R["R2R API<br/>:7272"] --> PG["pgvector<br/>StatefulSet<br/>10Gi PVC"]
+        AM["agent-memory<br/>MCP :9000"] --> Redis["Redis Stack<br/>2Gi PVC"]
+    end
+
+    subgraph "Pop-OS Desktop"
+        Ollama["Ollama<br/>nomic-embed-text<br/>192.168.178.125"]
+    end
+
+    Hook -->|"~200ms"| R2R
+    Hook -->|"~400ms"| AM
+    R2R -->|embeddings| Ollama
+    AM -->|embeddings| Ollama
+
+    style Ollama fill:#0f3460,stroke:#e94560,color:#fff
+    style R2R fill:#16213e,stroke:#0f3460,color:#fff
+    style PG fill:#533483,stroke:#e94560,color:#fff
+    style AM fill:#16213e,stroke:#0f3460,color:#fff
+    style Redis fill:#533483,stroke:#e94560,color:#fff
+    style Hook fill:#e94560,stroke:#fff,color:#fff
+    style CC fill:#1a1a2e,stroke:#e94560,color:#fff
