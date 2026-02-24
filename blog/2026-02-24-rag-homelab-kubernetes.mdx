@@ -215,7 +215,7 @@ Any pod in the cluster reaches Ollama at `ollama-pc.ai-tools.svc:11434`. No port
 
 ## The RAG Hook
 
-The core of the system is a Python script that Claude Code runs as a `UserPromptSubmit` hook. Every non-trivial prompt triggers it. The hook searches both knowledge stores in parallel and prints the results to stdout, which Claude Code injects as context.
+The core of the system is a Python script that Claude Code runs as a `UserPromptSubmit` hook. It fires only when you prefix a prompt with `rag:`. The hook searches both knowledge stores in parallel and prints the results to stdout, which Claude Code injects as context.
 
 Hook registration in `~/.claude/settings.json`:
 
@@ -232,27 +232,13 @@ Hook registration in `~/.claude/settings.json`:
 }
 ```
 
-The script is 217 lines of stdlib Python. No dependencies beyond what ships with Python 3. Four design decisions matter.
+The script is 155 lines of stdlib Python. No dependencies beyond what ships with Python 3. Three design decisions matter.
 
-**Skip trivial prompts.** "yes", "ok", "push", "continue" — these don't need context. A regex filter catches them. Prompts under 30 characters get skipped too. About 40% of prompts during a typical session are trivial.
+**Manual trigger, not automatic.** The first version had regex filters, trivial-prompt detection, and question-signal matching to decide when to fire. Too clever. It burned tokens on irrelevant hits and missed context when the heuristics guessed wrong. The `rag:` prefix puts the human in control. You know when you need context. The machine doesn't.
 
-```python
-TRIVIAL = re.compile(
-    r"^(yes|no|ok|okay|y|n|sure|thanks|done|continue|"
-    r"go ahead|lgtm|sounds good|perfect|great|good)$",
-    re.IGNORECASE,
-)
 ```
-
-**Only fire for questions and tasks.** Even non-trivial prompts like "refactor the auth module" don't always need RAG context. A second regex gates the hook to prompts that look like questions or actionable tasks — words like "how", "configure", "deploy", "troubleshoot". This cuts unnecessary searches by another ~30%.
-
-```python
-QUESTION_SIGNAL = re.compile(
-    r"(how|what|why|where|when|which|can|does|is there|explain|"
-    r"troubleshoot|configure|setup|deploy|create|add|remove|"
-    r"fix|debug|install|upgrade|migrate|backup|restore)",
-    re.IGNORECASE,
-)
+rag: what was the metallb config issue
+rag: longhorn backup restore pattern
 ```
 
 **Parallel search with strict timeouts.** R2R takes ~200ms, agent-memory takes ~400ms (sometimes 3s on a cold start). Both run in a `ThreadPoolExecutor` with a 2-second hard ceiling. If agent-memory times out, R2R results still arrive. If both fail, the hook stays silent.
@@ -260,8 +246,8 @@ QUESTION_SIGNAL = re.compile(
 ```python
 with ThreadPoolExecutor(max_workers=2) as pool:
     futures = {
-        pool.submit(search_r2r, prompt): "r2r",
-        pool.submit(search_memory, prompt): "memory",
+        pool.submit(search_r2r, query): "r2r",
+        pool.submit(search_memory, query): "memory",
     }
     for future in as_completed(futures, timeout=TOTAL_TIMEOUT):
         source = futures[future]
@@ -274,7 +260,7 @@ with ThreadPoolExecutor(max_workers=2) as pool:
             pass
 ```
 
-**Minimum relevance score.** R2R chunks below 0.60 similarity get dropped. This prevents low-quality matches from consuming context window tokens. The threshold started at 0.45 and moved up after observing too many marginal hits adding noise.
+**Low relevance threshold.** Since the human explicitly asked for context, the score threshold sits at 0.35 — generous enough to surface loose matches across both knowledge stores. Two weak hits from different sources often combine into useful context. The automatic mode needed 0.60 to avoid noise; manual mode can afford to show more.
 
 The hook prints results in a format Claude Code injects as a `system-reminder`:
 
