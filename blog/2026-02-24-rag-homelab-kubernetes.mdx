@@ -164,7 +164,7 @@ skip_document_summary = true
 
 R2R uses LiteLLM under the hood, so you can mix providers. Embeddings run through Ollama (free, local). Haiku is configured as the completion LLM, but the hook only calls R2R's `/v3/retrieval/search` endpoint — pure vector similarity, no LLM in the loop. Haiku would only fire if you used R2R's RAG endpoint for synthesized answers or re-enabled document summaries.
 
-```toml
+```ini
 [completion]
 provider = "litellm"
 concurrent_request_limit = 16
