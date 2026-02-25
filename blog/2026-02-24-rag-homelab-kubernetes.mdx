@@ -17,13 +17,11 @@ import InfoCards from '@site/src/components/InfoCards';
   }
 `}</style>
 
-AI agents work with what you give them. The system prompt, the files you open, the tools you configure. But they don't know what you wrote in your Obsidian vault last week. They don't remember the debugging pattern you discovered three sessions ago.
+I have 392 notes in Obsidian and ~2,800 memories from past AI sessions. My AI agent knows none of it unless I paste it in manually. And I can only paste what I remember to paste — which defeats the point of having a knowledge store.
 
-You can manually paste context. You can tell the agent "search my notes for X." But that assumes you know what's relevant before you ask the question. The whole point of accumulated knowledge is that connections surface when you need them, not when you predict them.
+So I built a hook that fires before every prompt, searches both stores in parallel, and injects the relevant context before the agent thinks. R2R as the RAG backend, pgvector for storage, Ollama for embeddings, all on a homelab Kubernetes cluster. Total latency: under 400ms. Zero tokens consumed in the retrieval path.
 
-What if every prompt automatically searched your knowledge stores and injected the relevant context before the agent saw it? Not a tool the agent calls. A hook that fires before the agent thinks.
-
-I built this on my homelab Kubernetes cluster. R2R as the RAG backend, pgvector for vector storage, Ollama on a desktop for embeddings, and a 196-line Python hook that searches two knowledge sources in parallel on every prompt. Total latency: under 400ms.
+The value isn't the search itself. It's what surfaces when you stop choosing what's relevant. Ask about a Kubernetes pattern and a six-month-old Obsidian note appears. Debug a tmux issue and a memory from a previous session shows up with the exact fix. The agent answers from your accumulated knowledge, not just its training data.
 
 <!--truncate-->
 
