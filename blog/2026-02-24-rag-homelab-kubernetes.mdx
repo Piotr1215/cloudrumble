@@ -213,7 +213,7 @@ Any pod in the cluster reaches Ollama at `ollama-pc.ai-tools.svc:11434`. No port
 
 ## The RAG Hook
 
-The core of the system is a Python script that Claude Code runs as a `UserPromptSubmit` hook. It fires only when you prefix a prompt with `rag:`. The hook searches both knowledge stores in parallel and prints the results to stdout, which Claude Code injects as context.
+The core of the system is a Python script that Claude Code runs as a `UserPromptSubmit` hook. It fires only when you end a prompt with `:rag`. The hook searches both knowledge stores in parallel and prints the results to stdout, which Claude Code injects as context.
 
 Hook registration in `~/.claude/settings.json`:
 
@@ -232,11 +232,11 @@ Hook registration in `~/.claude/settings.json`:
 
 The script is 155 lines of stdlib Python. No dependencies beyond what ships with Python 3. Three design decisions matter.
 
-**Manual trigger, not automatic.** The first version had regex filters, trivial-prompt detection, and question-signal matching to decide when to fire. Too clever. It burned tokens on irrelevant hits and missed context when the heuristics guessed wrong. The `rag:` prefix puts the human in control. You know when you need context. The machine doesn't.
+**Manual trigger, not automatic.** The first version had regex filters, trivial-prompt detection, and question-signal matching to decide when to fire. Too clever. It burned tokens on irrelevant hits and missed context when the heuristics guessed wrong. The `:rag` suffix puts the human in control. You know when you need context. The machine doesn't.
 
 ```
-rag: what was the metallb config issue
-rag: longhorn backup restore pattern
+what was the metallb config issue:rag
+longhorn backup restore pattern:rag
 ```
 
 **Parallel search with generous timeouts.** Both sources take ~100ms warm. They run in a `ThreadPoolExecutor` with per-request and total timeout ceilings. Timeouts are generous — better to wait a beat than lose context. If one source times out, the other's results still arrive. If both fail, the hook stays silent.
