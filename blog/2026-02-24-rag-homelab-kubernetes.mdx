@@ -3,7 +3,7 @@ title: "Your AI Agent Should Read Your Notes Before Answering"
 date: 2026-02-24
 tags: ["homelab", "kubernetes", "ai", "rag", "r2r", "ollama", "mcp", "gitops"]
 image: _media/diagrams/01-architecture.png
-description: "R2R on Kubernetes, pgvector for storage, Ollama for embeddings, and a Python hook that searches your knowledge on every prompt in under 400ms."
+description: "R2R on Kubernetes, pgvector for storage, Ollama for embeddings, and a Python hook that searches your knowledge on every prompt in under 200ms."
 ---
 
 import InfoCards from '@site/src/components/InfoCards';
@@ -19,7 +19,7 @@ import InfoCards from '@site/src/components/InfoCards';
 
 I have 392 notes in Obsidian and ~2,800 memories from past AI sessions. My AI agent knows none of it unless I paste it in manually. And I can only paste what I remember to paste — which defeats the point of having a knowledge store.
 
-So I built a hook that fires before every prompt, searches both stores in parallel, and injects the relevant context before the agent thinks. R2R as the RAG backend, pgvector for storage, Ollama for embeddings, all on a homelab Kubernetes cluster. Total latency: under 400ms. Zero tokens consumed in the retrieval path.
+So I built a hook that fires before every prompt, searches both stores in parallel, and injects the relevant context before the agent thinks. R2R as the RAG backend, pgvector for storage, Ollama for embeddings, all on a homelab Kubernetes cluster. Total latency: under 200ms. Zero tokens consumed in the retrieval path.
 
 The value isn't the search itself. It's what surfaces when you stop choosing what's relevant. Ask about a Kubernetes pattern and a six-month-old Obsidian note appears. Debug a tmux issue and a memory from a previous session shows up with the exact fix. The agent answers from your accumulated knowledge, not just its training data.
 
@@ -35,7 +35,7 @@ Each prompt follows this path:
 
 1. You type a prompt in Claude Code
 2. The `UserPromptSubmit` hook fires before the agent sees it
-3. The hook searches R2R (Obsidian vault, ~200ms) and agent-memory (session insights, ~400ms) in parallel
+3. The hook searches R2R (Obsidian vault, ~100ms) and agent-memory (session insights, ~100ms) in parallel
 4. Relevant chunks get injected as `system-reminder` context
 5. The agent sees your prompt plus the matched knowledge
 6. If a note title looks relevant, the agent drills deeper via the Obsidian MCP server
@@ -44,8 +44,8 @@ Two knowledge stores serve different purposes. R2R holds the Obsidian vault: 392
 
 | Component | Purpose | Storage | Latency |
 |-----------|---------|---------|---------|
-| R2R (SciPhi) | Obsidian vault search | pgvector on K8s, 10Gi PVC | ~200ms |
-| agent-memory | Session memory search | Redis Stack on K8s, 2Gi PVC | ~400ms |
+| R2R (SciPhi) | Obsidian vault search | pgvector on K8s, 10Gi PVC | ~100ms |
+| agent-memory | Session memory search | Redis Stack on K8s, 2Gi PVC | ~100ms |
 | Ollama | nomic-embed-text embeddings | Pop-OS desktop (always-on) | &lt;100ms |
 | Anthropic Haiku | R2R completions via LiteLLM | Cloud API | on-demand |
 
@@ -73,7 +73,7 @@ pgvector builds an HNSW index over these vectors so it doesn't compare against e
 
 When you type "how do I backup Longhorn volumes?", the hook sends your prompt to Ollama, gets back 768 numbers, and sends those to pgvector. pgvector computes cosine similarity — the angle between your prompt vector and every stored vector — and returns the closest matches. Identical direction = 1.0, orthogonal = 0.0. The threshold is 0.60; anything below gets dropped as irrelevant.
 
-This is pure linear algebra. Dot products and normalization. That's why it runs in 200ms with zero token costs.
+This is pure linear algebra. Dot products and normalization. That's why it runs in ~100ms with zero token costs.
 
 ### Two stores, same space
 
@@ -239,7 +239,7 @@ rag: what was the metallb config issue
 rag: longhorn backup restore pattern
 ```
 
-**Parallel search with generous timeouts.** R2R takes ~200ms, agent-memory takes ~400ms (sometimes longer on a cold start). Both run in a `ThreadPoolExecutor` with per-request and total timeout ceilings. Timeouts are generous — better to wait a beat than lose context. If one source times out, the other's results still arrive. If both fail, the hook stays silent.
+**Parallel search with generous timeouts.** Both sources take ~100ms warm. They run in a `ThreadPoolExecutor` with per-request and total timeout ceilings. Timeouts are generous — better to wait a beat than lose context. If one source times out, the other's results still arrive. If both fail, the hook stays silent.
 
 ```python
 with ThreadPoolExecutor(max_workers=2) as pool:
@@ -296,16 +296,17 @@ Every service in the cluster that referenced `ollama-mac.ai-tools.svc` now point
 
 ## Results
 
-The hook adds about 400ms to each prompt. A brief pause before the agent responds. In practice, negligible — the agent's thinking time dwarfs the hook latency.
+The hook adds about 110ms to each prompt. Imperceptible — the agent's thinking time dwarfs it.
 
 | Metric | Value |
 |--------|-------|
-| R2R search latency | ~200ms |
-| Agent-memory search latency | ~400ms |
-| Total hook latency (parallel) | ~400ms |
+| R2R search latency | ~100ms |
+| Agent-memory search latency | ~100ms |
+| Total hook latency (parallel) | ~110ms |
 | Obsidian notes indexed | 392 |
 | Agent memories searchable | ~2,800 |
-| Prompts skipped (trivial) | ~40% |
+
+Agent-memory originally went through the MCP JSON-RPC layer, adding ~1.7s of overhead. Bypassing MCP and querying Redis FT.SEARCH directly — with Ollama generating the embedding on a GPU — brought it down to match R2R.
 
 The value shows up in unexpected moments. Ask about a Kubernetes pattern and the hook surfaces an Obsidian note you wrote six months ago. Start debugging a tmux issue and it finds a memory from a previous session where you solved something similar. The agent doesn't just answer from its training data — it answers from your accumulated knowledge.
 
