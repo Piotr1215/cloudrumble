@@ -239,7 +239,7 @@ rag: what was the metallb config issue
 rag: longhorn backup restore pattern
 ```
 
-**Parallel search with strict timeouts.** R2R takes ~200ms, agent-memory takes ~400ms (sometimes 3s on a cold start). Both run in a `ThreadPoolExecutor` with a 2-second hard ceiling. If agent-memory times out, R2R results still arrive. If both fail, the hook stays silent.
+**Parallel search with generous timeouts.** R2R takes ~200ms, agent-memory takes ~400ms (sometimes longer on a cold start). Both run in a `ThreadPoolExecutor` with per-request and total timeout ceilings. Timeouts are generous — better to wait a beat than lose context. If one source times out, the other's results still arrive. If both fail, the hook stays silent.
 
 ```python
 with ThreadPoolExecutor(max_workers=2) as pool:
