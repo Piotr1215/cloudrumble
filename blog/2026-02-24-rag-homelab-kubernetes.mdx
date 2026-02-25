@@ -3,7 +3,7 @@ title: "Your AI Agent Should Read Your Notes Before Answering"
 date: 2026-02-24
 tags: ["homelab", "kubernetes", "ai", "rag", "r2r", "ollama", "mcp", "gitops"]
 image: _media/diagrams/01-architecture.png
-description: "R2R on Kubernetes, pgvector for storage, Ollama for embeddings, and a Python hook that searches your knowledge on every prompt in under 200ms."
+description: "R2R on Kubernetes, pgvector for storage, Ollama for embeddings, and a Python hook that searches your knowledge on every prompt in under 250ms."
 ---
 
 import InfoCards from '@site/src/components/InfoCards';
@@ -19,7 +19,7 @@ import InfoCards from '@site/src/components/InfoCards';
 
 I have 392 notes in Obsidian and ~2,800 memories from past AI sessions. My AI agent knows none of it unless I paste it in manually. And I can only paste what I remember to paste — which defeats the point of having a knowledge store.
 
-So I built a hook that fires before every prompt, searches both stores in parallel, and injects the relevant context before the agent thinks. R2R as the RAG backend, pgvector for storage, Ollama for embeddings, all on a homelab Kubernetes cluster. Total latency: under 200ms. Zero tokens consumed in the retrieval path.
+So I built a hook that fires before every prompt, searches both stores in parallel, and injects the relevant context before the agent thinks. R2R as the RAG backend, pgvector for storage, Ollama for embeddings, all on a homelab Kubernetes cluster. Total latency: under 250ms. Zero tokens consumed in the retrieval path.
 
 The value isn't the search itself. It's what surfaces when you stop choosing what's relevant. Ask about a Kubernetes pattern and a six-month-old Obsidian note appears. Debug a tmux issue and a memory from a previous session shows up with the exact fix. The agent answers from your accumulated knowledge, not just its training data.
 
@@ -293,6 +293,8 @@ subsets:
 ```
 
 Every service in the cluster that referenced `ollama-mac.ai-tools.svc` now points at `ollama-pc.ai-tools.svc`. Agent-memory, k8sgpt, R2R, open-webui — one manifest change per service, all applied through ArgoCD. No more wake-from-sleep failures.
+
+One gotcha after migration: Ollama evicts models from VRAM after five minutes idle. With multiple models loaded (qwen2.5 at 5.1GB, nomic-embed-text at 561MB), the embedding model kept getting evicted despite fitting comfortably in the 12GB RTX 3060. Every RAG request after an idle gap paid a multi-second cold-load penalty. The fix: `keep_alive: -1` in the embed request pins the model permanently.
 
 ## Results
 
