@@ -212,6 +212,8 @@ subsets:
 
 Any pod in the cluster reaches Ollama at `ollama-pc.ai-tools.svc:11434`. No port-forwarding, no NodePorts.
 
+One gotcha: Ollama evicts models from VRAM after five minutes idle. The embedding model kept getting cold-loaded on every RAG request after an idle gap. The fix: `keep_alive: -1` in the embed request pins the model permanently.
+
 ## The RAG Hook
 
 The core of the system is a Python script that Claude Code runs as a `UserPromptSubmit` hook. It fires on every non-trivial prompt automatically, with an explicit `:rag` suffix for verbose output. The hook searches R2R's unified index and prints the results to stdout, which Claude Code injects as context.
@@ -270,28 +272,6 @@ RAG context (agent memory):
 ```
 
 The agent sees this alongside the prompt. If a note title looks relevant, it reads the full note via the Obsidian MCP server, follows wikilinks, cross-references. The hook provides the signal; the agent decides how deep to go.
-
-## Ollama Migration
-
-Ollama started on a Mac laptop. That worked until the laptop went into clamshell mode. When the lid closes, macOS suspends network interfaces. Every service depending on Ollama — agent-memory, k8sgpt, R2R, open-webui — started failing intermittently.
-
-The Mac was convenient for ad-hoc use but unreliable as infrastructure. The System76 Serval WS at `192.168.178.125` is always on, with an RTX 5070 Ti (12GB VRAM) that handles inference without breaking a sweat. Moving Ollama there meant updating one Kubernetes manifest per service: the Endpoints IP address.
-
-```yaml
-# Before
-subsets:
-- addresses:
-  - ip: 192.168.178.154  # Mac laptop
-
-# After
-subsets:
-- addresses:
-  - ip: 192.168.178.125  # Pop-OS desktop
-```
-
-Every service in the cluster that referenced `ollama-mac.ai-tools.svc` now points at `ollama-pc.ai-tools.svc`. Agent-memory, k8sgpt, R2R, open-webui — one manifest change per service, all applied through ArgoCD. No more wake-from-sleep failures.
-
-One gotcha after migration: Ollama evicts models from VRAM after five minutes idle. With multiple models loaded (qwen2.5 at 5.1GB, nomic-embed-text at 561MB), the embedding model kept getting evicted despite fitting comfortably in the 12GB RTX 5070 Ti. Every RAG request after an idle gap paid a multi-second cold-load penalty. The fix: `keep_alive: -1` in the embed request pins the model permanently.
 
 ## Results
 
