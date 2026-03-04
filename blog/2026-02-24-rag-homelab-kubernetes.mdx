@@ -3,7 +3,7 @@ title: "Your AI Agent Should Read Your Notes Before Answering"
 date: 2026-02-24
 tags: ["homelab", "kubernetes", "ai", "rag", "r2r", "ollama", "mcp", "gitops"]
 image: _media/diagrams/01-architecture.png
-description: "R2R on Kubernetes, pgvector for storage, Ollama for embeddings, and a Python hook that searches your knowledge on every prompt in under 250ms."
+description: "R2R on Kubernetes, pgvector for storage, Ollama for embeddings, and a Python hook that searches your knowledge on every prompt in under 100ms."
 ---
 
 import InfoCards from '@site/src/components/InfoCards';
@@ -17,9 +17,9 @@ import InfoCards from '@site/src/components/InfoCards';
   }
 `}</style>
 
-I have 392 notes in Obsidian and ~2,800 memories from past AI sessions. My AI agent knows none of it unless I paste it in manually. And I can only paste what I remember to paste — which defeats the point of having a knowledge store.
+I have 395 notes in Obsidian and ~2,800 memories from past AI sessions. My AI agent knows none of it unless I paste it in manually. And I can only paste what I remember to paste — which defeats the point of having a knowledge store.
 
-So I built a hook that fires before every prompt, searches both stores in parallel, and injects the relevant context before the agent thinks. R2R as the RAG backend, pgvector for storage, Ollama for embeddings, all on a homelab Kubernetes cluster. Total latency: under 250ms. Zero tokens consumed in the retrieval path.
+So I built a hook that fires before every prompt, searches a unified vector store, and injects the relevant context before the agent thinks. R2R as the RAG backend, pgvector for storage, Ollama for embeddings, all on a homelab Kubernetes cluster. Total latency: under 100ms. Zero tokens consumed in the retrieval path.
 
 The value isn't the search itself. It's what surfaces when you stop choosing what's relevant. Ask about a Kubernetes pattern and a six-month-old Obsidian note appears. Debug a tmux issue and a memory from a previous session shows up with the exact fix. The agent answers from your accumulated knowledge, not just its training data.
 
@@ -35,18 +35,19 @@ Each prompt follows this path:
 
 1. You type a prompt in Claude Code
 2. The `UserPromptSubmit` hook fires before the agent sees it
-3. The hook searches R2R (Obsidian vault, ~100ms) and agent-memory (session insights, ~100ms) in parallel
+3. The hook searches R2R's unified index (~90ms) containing both Obsidian notes and agent memories
 4. Relevant chunks get injected as `system-reminder` context
 5. The agent sees your prompt plus the matched knowledge
 6. If a note title looks relevant, the agent drills deeper via the Obsidian MCP server
 
-Two knowledge stores serve different purposes. R2R holds the Obsidian vault: 392 notes of accumulated technical knowledge, architecture decisions, tool configurations. Agent-memory holds session-derived insights: debugging patterns, preference corrections, workflow discoveries that emerged from actual AI interactions.
+Two data sources feed a single vector store. A local cron syncs the Obsidian vault into R2R every 30 minutes. A Kubernetes CronJob syncs agent-memory entries every hour. Both land in pgvector with the same embedding model, so a single search covers your curated notes and your session-derived insights.
 
 | Component | Purpose | Storage | Latency |
 |-----------|---------|---------|---------|
-| R2R (SciPhi) | Obsidian vault search | pgvector on K8s, 10Gi PVC | ~100ms |
-| agent-memory | Session memory search | Redis Stack on K8s, 2Gi PVC | ~100ms |
-| Ollama | nomic-embed-text embeddings | Pop-OS desktop (always-on) | &lt;100ms |
+| R2R (SciPhi) | Unified search (notes + memories) | pgvector on K8s, 10Gi PVC | ~90ms |
+| Obsidian sync | Vault ingestion into R2R | Local cron, every 30min | batch |
+| Memory sync | Agent-memory ingestion into R2R | K8s CronJob, every hour | batch |
+| Ollama | nomic-embed-text embeddings | System76 Serval WS (RTX 5070 Ti) | &lt;100ms |
 | Anthropic Haiku | R2R completions via LiteLLM | Cloud API | on-demand |
 
 ## How Vector Search Works
@@ -57,7 +58,7 @@ The model was trained on millions of text pairs so that texts with similar meani
 
 ### Ingestion
 
-When the 392 Obsidian notes were loaded into R2R, each note got chunked into segments. Each chunk went to Ollama, which ran it through nomic-embed-text and returned a 768-number vector. pgvector stored both the vector and the original text:
+When the 395 Obsidian notes were loaded into R2R, each note got chunked into segments. Each chunk went to Ollama, which ran it through nomic-embed-text and returned a 768-number vector. pgvector stored both the vector and the original text:
 
 ```
 pgvector row:
@@ -71,22 +72,22 @@ pgvector builds an HNSW index over these vectors so it doesn't compare against e
 
 ### Search
 
-When you type "how do I backup Longhorn volumes?", the hook sends your prompt to Ollama, gets back 768 numbers, and sends those to pgvector. pgvector computes cosine similarity — the angle between your prompt vector and every stored vector — and returns the closest matches. Identical direction = 1.0, orthogonal = 0.0. The threshold is 0.60; anything below gets dropped as irrelevant.
+When you type "how do I backup Longhorn volumes?", the hook sends your prompt to Ollama, gets back 768 numbers, and sends those to pgvector. pgvector computes cosine similarity — the angle between your prompt vector and every stored vector — and returns the closest matches. Identical direction = 1.0, orthogonal = 0.0. The threshold is 0.45; anything below gets dropped as irrelevant.
 
 This is pure linear algebra. Dot products and normalization. That's why it runs in ~100ms with zero token costs.
 
-### Two stores, same space
+### One store, two sources
 
-Both R2R and agent-memory use nomic-embed-text for embeddings. The vectors live in the same semantic space, which means a prompt about "Longhorn backup" finds relevant hits in both stores.
+Both Obsidian notes and agent memories get embedded with nomic-embed-text and stored in pgvector. A single HNSW index covers everything — a prompt about "Longhorn backup" finds relevant hits regardless of whether the knowledge came from a note you wrote or a pattern the agent learned.
 
-| | R2R / pgvector | agent-memory / Redis Stack |
+| | Obsidian notes | Agent memories |
 |---|---|---|
-| Storage engine | Postgres with vector extension | Redis with RediSearch module |
-| Index type | HNSW (approximate nearest neighbor) | HNSW |
-| Content | Obsidian notes (chunked) | Session memories (whole entries) |
-| Dimensions | 768 | 768 |
+| Sync method | Local cron (every 30min) | K8s CronJob (every hour) |
+| Content | Curated technical knowledge | Session-derived insights |
+| Chunking | R2R recursive splitter | Whole entries as documents |
+| Metadata tag | `source: obsidian` | `source: agent-memory` |
 
-The difference is what they hold. pgvector stores your curated knowledge. Redis stores what the agent learned from working with you.
+The metadata tags let you filter by source if needed, but the default search spans both.
 
 ## The Database Journey
 
@@ -144,13 +145,13 @@ Simplicity wins on a homelab. Save the operator for production.
 
 ## Ingesting the Obsidian Vault
 
-R2R accepts documents through a multipart API. The ingestion script walks the vault directory and uploads each markdown file as `raw_text`. 392 notes, about three minutes.
+R2R accepts documents through a multipart API. The ingestion script walks the vault directory and uploads each markdown file as `raw_text`. 395 notes, about three minutes.
 
 Two gotchas during ingestion.
 
 **Filenames as DocumentType.** R2R parses the uploaded filename to determine document type. Obsidian's zettelkasten IDs (`1711476153-YXRZ.md`) worked fine. But filenames with special characters got parsed as unknown types. The fix: sanitize filenames before upload and always set the content type to `text/plain`.
 
-**Document summary generation.** R2R's default pipeline generates a summary for each ingested document by calling the configured LLM. For 392 documents, that meant 392 Haiku calls during ingestion. Slow, expensive, and unnecessary since I only use vector search, not summaries.
+**Document summary generation.** R2R's default pipeline generates a summary for each ingested document by calling the configured LLM. For 395 documents, that meant 395 Haiku calls during ingestion. Slow, expensive, and unnecessary since I only use vector search, not summaries.
 
 One line in the R2R config fixes it:
 
@@ -213,7 +214,7 @@ Any pod in the cluster reaches Ollama at `ollama-pc.ai-tools.svc:11434`. No port
 
 ## The RAG Hook
 
-The core of the system is a Python script that Claude Code runs as a `UserPromptSubmit` hook. It fires only when you end a prompt with `:rag`. The hook searches both knowledge stores in parallel and prints the results to stdout, which Claude Code injects as context.
+The core of the system is a Python script that Claude Code runs as a `UserPromptSubmit` hook. It fires on every non-trivial prompt automatically, with an explicit `:rag` suffix for verbose output. The hook searches R2R's unified index and prints the results to stdout, which Claude Code injects as context.
 
 Hook registration in `~/.claude/settings.json`:
 
@@ -230,35 +231,31 @@ Hook registration in `~/.claude/settings.json`:
 }
 ```
 
-The script is 155 lines of stdlib Python. No dependencies beyond what ships with Python 3. Three design decisions matter.
+The script is 233 lines of stdlib Python. No dependencies beyond what ships with Python 3. Three design decisions matter.
 
-**Manual trigger, not automatic.** The first version had regex filters, trivial-prompt detection, and question-signal matching to decide when to fire. Too clever. It burned tokens on irrelevant hits and missed context when the heuristics guessed wrong. The `:rag` suffix puts the human in control. You know when you need context. The machine doesn't.
+**Automatic with escape hatches.** The first version was manual-only — you had to type `:rag` to trigger a search. That meant you only got context when you remembered to ask for it, which defeats the purpose of having a knowledge store. The current version fires on every prompt longer than 20 characters that isn't trivial banter ("ok", "thanks", "ship it"). A regex filter catches these short responses and skips the search. Append `:norag` to suppress auto-search on a specific prompt. Append `:rag` for verbose output with scores and timing.
 
 ```
-what was the metallb config issue:rag
-longhorn backup restore pattern:rag
+how do I backup longhorn volumes    → auto search, compact output
+metallb config issue:rag            → verbose search with scores
+just do it:norag                    → no search
 ```
 
-**Parallel search with generous timeouts.** Both sources take ~100ms warm. They run in a `ThreadPoolExecutor` with per-request and total timeout ceilings. Timeouts are generous — better to wait a beat than lose context. If one source times out, the other's results still arrive. If both fail, the hook stays silent.
+**Single source, single request.** Both Obsidian notes and agent memories live in the same pgvector index. One HTTP call to R2R's `/v3/retrieval/search` endpoint covers everything. No thread pools, no parallel coordination, no partial failure handling. The search takes ~90ms.
 
 ```python
-with ThreadPoolExecutor(max_workers=2) as pool:
-    futures = {
-        pool.submit(search_r2r, query): "r2r",
-        pool.submit(search_memory, query): "memory",
-    }
-    for future in as_completed(futures, timeout=TOTAL_TIMEOUT):
-        source = futures[future]
-        try:
-            if source == "r2r":
-                r2r_results = future.result(timeout=0.1)
-            else:
-                memory_results = future.result(timeout=0.1)
-        except Exception:
-            pass
+payload = json.dumps({
+    "query": query,
+    "search_settings": {"limit": limit},
+}).encode()
+req = urllib.request.Request(
+    R2R_URL, data=payload,
+    headers={"Content-Type": "application/json"})
+with urllib.request.urlopen(req, timeout=timeout, context=_ssl_ctx) as resp:
+    body = resp.read()
 ```
 
-**Low relevance threshold.** Since the human explicitly asked for context, the score threshold sits at 0.35 — generous enough to surface loose matches across both knowledge stores. Two weak hits from different sources often combine into useful context. The automatic mode needed 0.60 to avoid noise; manual mode can afford to show more.
+**Tuned relevance threshold.** The score threshold sits at 0.45 for both auto and manual modes — high enough to filter noise, low enough to catch useful tangential hits. Auto mode returns 2 results with a 5-second timeout. Manual mode returns 4 results with a 12-second timeout and retries.
 
 The hook prints results in a format Claude Code injects as a `system-reminder`:
 
@@ -278,7 +275,7 @@ The agent sees this alongside the prompt. If a note title looks relevant, it rea
 
 Ollama started on a Mac laptop. That worked until the laptop went into clamshell mode. When the lid closes, macOS suspends network interfaces. Every service depending on Ollama — agent-memory, k8sgpt, R2R, open-webui — started failing intermittently.
 
-The Mac was convenient for ad-hoc use but unreliable as infrastructure. The Pop-OS desktop at `192.168.178.125` is always on, with an RTX 3060 (12GB VRAM) that outperforms the M1's 8GB unified memory for inference. Moving Ollama there meant updating one Kubernetes manifest per service: the Endpoints IP address.
+The Mac was convenient for ad-hoc use but unreliable as infrastructure. The System76 Serval WS at `192.168.178.125` is always on, with an RTX 5070 Ti (12GB VRAM) that handles inference without breaking a sweat. Moving Ollama there meant updating one Kubernetes manifest per service: the Endpoints IP address.
 
 ```yaml
 # Before
@@ -294,27 +291,29 @@ subsets:
 
 Every service in the cluster that referenced `ollama-mac.ai-tools.svc` now points at `ollama-pc.ai-tools.svc`. Agent-memory, k8sgpt, R2R, open-webui — one manifest change per service, all applied through ArgoCD. No more wake-from-sleep failures.
 
-One gotcha after migration: Ollama evicts models from VRAM after five minutes idle. With multiple models loaded (qwen2.5 at 5.1GB, nomic-embed-text at 561MB), the embedding model kept getting evicted despite fitting comfortably in the 12GB RTX 3060. Every RAG request after an idle gap paid a multi-second cold-load penalty. The fix: `keep_alive: -1` in the embed request pins the model permanently.
+One gotcha after migration: Ollama evicts models from VRAM after five minutes idle. With multiple models loaded (qwen2.5 at 5.1GB, nomic-embed-text at 561MB), the embedding model kept getting evicted despite fitting comfortably in the 12GB RTX 5070 Ti. Every RAG request after an idle gap paid a multi-second cold-load penalty. The fix: `keep_alive: -1` in the embed request pins the model permanently.
 
 ## Results
 
-The hook adds about 110ms to each prompt. Imperceptible — the agent's thinking time dwarfs it.
+The hook adds about 90ms to each prompt. Imperceptible — the agent's thinking time dwarfs it.
 
 | Metric | Value |
 |--------|-------|
-| R2R search latency | ~100ms |
-| Agent-memory search latency | ~100ms |
-| Total hook latency (parallel) | ~110ms |
-| Obsidian notes indexed | 392 |
+| R2R search latency | ~90ms |
+| Total hook latency | ~90ms |
+| Obsidian notes indexed | 395 |
 | Agent memories searchable | ~2,800 |
+| Combined documents in pgvector | ~3,200 |
 
-Agent-memory originally went through the MCP JSON-RPC layer, adding ~1.7s of overhead. Bypassing MCP and querying Redis FT.SEARCH directly — with Ollama generating the embedding on a GPU — brought it down to match R2R.
+The original architecture searched R2R and agent-memory in parallel — two stores, two HTTP calls, a ThreadPoolExecutor to coordinate them. Agent-memory went through the MCP JSON-RPC layer, adding ~1.7s of overhead. Bypassing MCP and querying Redis FT.SEARCH directly helped, but maintaining two search backends meant two failure modes, two timeout configs, and two relevance thresholds to tune.
+
+The current architecture is simpler. Both data sources sync into R2R on a schedule. One search call covers everything. The hook went from a parallel coordinator to a single HTTP request.
 
 The value shows up in unexpected moments. Ask about a Kubernetes pattern and the hook surfaces an Obsidian note you wrote six months ago. Start debugging a tmux issue and it finds a memory from a previous session where you solved something similar. The agent doesn't just answer from its training data — it answers from your accumulated knowledge.
 
-The entire search pipeline is open source and runs locally. Ollama generates embeddings with nomic-embed-text. pgvector stores and searches vectors. Redis Stack does the same for agent-memory. The hook is 217 lines of stdlib Python. Zero API calls, zero tokens consumed, zero billing in the retrieval path. The only cloud dependency is Claude itself interpreting the results.
+The entire search pipeline is open source and runs locally. Ollama generates embeddings with nomic-embed-text. pgvector stores and searches vectors. The hook is 233 lines of stdlib Python. Zero API calls, zero tokens consumed, zero billing in the retrieval path. The only cloud dependency is Claude itself interpreting the results.
 
-The two sources complement each other. Obsidian holds curated, structured notes — architecture decisions, tool configurations, blog drafts. Agent-memory holds organic, session-derived insights — "this user prefers bun over npm", "the homelab uses Longhorn for storage", "tmux layouts need xdotool without --sync flags." Together they give the agent both your deliberate knowledge and your implicit patterns.
+The two sources complement each other even though they share an index. Obsidian holds curated, structured notes — architecture decisions, tool configurations, blog drafts. Agent-memory holds organic, session-derived insights — "this user prefers bun over npm", "the homelab uses Longhorn for storage", "tmux layouts need xdotool without --sync flags." Together they give the agent both your deliberate knowledge and your implicit patterns.
 
 ## Links
 
