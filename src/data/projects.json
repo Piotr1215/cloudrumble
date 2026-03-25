@@ -97,7 +97,7 @@
   {
     "name": "mcp-obsidian",
     "description": "Simple MCP server for interacting with local obsidian notes",
-    "stars": 18,
+    "stars": 19,
     "url": "https://github.com/Piotr1215/mcp-obsidian",
     "tags": [
       "MCP",
@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11525,
+    "stars": 11529,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
