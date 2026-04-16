@@ -192,7 +192,7 @@
   {
     "name": "incus-dev-env",
     "description": "Containerized distributed development environment with incus. Quickly spin up isolated development environments with full Linux distributions.",
-    "stars": 12,
+    "stars": 13,
     "url": "https://github.com/Piotr1215/incus-dev-env",
     "tags": [
       "Incus",
@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11593,
+    "stars": 11596,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -270,7 +270,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 11086,
+    "stars": 11088,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
