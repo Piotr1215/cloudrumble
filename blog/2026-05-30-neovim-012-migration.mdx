@@ -1,0 +1,83 @@
+---
+title: "A Great Release Isn't Always Right for Your Config: Neovim 0.12"
+date: 2026-05-30
+tags: ["neovim", "vim", "lua", "productivity", "editor"]
+image: _media/neovim-features-hero.png
+description: "Neovim 0.12 ships a native plugin manager, :restart, and stock LSP defaults. I went through my config area by area, asking what to adopt. The most useful answer was no."
+---
+
+import DataGrid from '@site/src/components/DataGrid';
+
+![Neovim 0.12 Migration](_media/neovim-features-hero.png)
+
+<style>{`
+  article img:not(:first-of-type) {
+    max-width: 700px;
+    height: auto;
+  }
+`}</style>
+
+Neovim 0.12 landed with a pile of things that used to be plugins: a native plugin manager (`vim.pack`), a native `:restart`, stock LSP keymaps, treesitter incremental selection. The release notes read like a checklist of things to rip out of your config.
+
+So I went through mine, one area at a time, asking each the same question: should this move to the 0.12 way of doing it?
+
+Four of the seven came back with some flavor of "no," and that turned out to be the useful part. Three earned a yes and I made the changes. The rest I left alone on purpose. The features are real and they work, but whether *your* config should adopt them is a different question, and the honest answer was mostly to leave it alone.
+
+<!--truncate-->
+
+## The verdict matrix
+
+I split the migration into seven areas and checked each against the actual config rather than the release notes. Every area got a verdict and a reason.
+
+<DataGrid
+  columns={[
+    { key: 'area', label: 'Area' },
+    { key: 'verdict', label: 'Verdict' },
+    { key: 'reason', label: 'Bottom line' }
+  ]}
+  data={[
+    { area: 'A. vim.pack (plugin manager)', verdict: 'NO-GO', reason: "vim.pack can't express dev=true local plugins, build hooks, or dependency ordering. Keep lazy.nvim." },
+    { area: 'B. Native :restart', verdict: 'GO', reason: 'Replaces a custom tmux-respawn script. Delete the script, reflash one keyboard macro.' },
+    { area: 'C. Stock LSP keymaps', verdict: 'GO (low urgency)', reason: 'Pure dedup. Retire maps that now duplicate stock grt / grn / gra. Zero hard conflicts.' },
+    { area: 'D. Treesitter an / in selection', verdict: 'N/A', reason: "mini.ai already owns an / in at runtime. Native selection never surfaces; a config-only scan missed the plugin." },
+    { area: 'E. ui2 / extui (new UI)', verdict: 'NO-GO / WAIT', reason: 'Experimental, and it fights the existing mini.cmdline + nvim-notify stack.' },
+    { area: 'F. undotree / difftool built-ins', verdict: 'SKIP', reason: 'Both ship via vim.pack. Since A keeps lazy.nvim, adopting them means running two managers for one optional tool.' },
+    { area: 'G. System-wide defaults', verdict: 'GO (1 line)', reason: '0.12 drops /tmp scratch files from :oldfiles. One-line shada fix keeps them.' }
+  ]}
+/>
+
+The two GOs that mattered both *deleted* code rather than adding it. `:restart` replaced a 22-line shell script. The stock LSP keymaps let me drop six of my own mappings that now just duplicated them. No new features, less to maintain. The big, tempting migration, moving everything to the native plugin manager, was the one to turn down. Boring wins, impressive no.
+
+## The only "no" that's interesting: vim.pack
+
+`vim.pack` is the headline feature, a plugin manager built into Neovim with no bootstrap clone. Shedding a dependency is tempting, and the usual objection ("I'd lose lazy-loading") doesn't even apply to me: of 108 plugin specs, maybe seven or eight are actually deferred.
+
+The real problem is that `vim.pack` can't describe my config. Five plugins load from local checkouts because I'm actively writing them. Four run a build step on install. About ten declare an order they have to load in. lazy.nvim handles all three; `vim.pack` handles none. So lazy.nvim stays, not out of habit, but because the native manager literally can't model the setup. The two can coexist if I ever want one bundled built-in, but the wholesale migration is off the table.
+
+## Three gotchas worth passing on
+
+**The keymap that was never there.** 0.12 adds native visual-mode selection on `an` and `in`. A grep of my config said those keys were free, so I marked it a free win. Then I asked the running editor instead of the files: `maparg('an')` pointed at `mini.ai`, not Neovim. The plugin already owns those keys, and the native feature never surfaces. Nothing broke, but the verdict went from "free win" to "doesn't apply." A grep of your Lua tells you what the config *says*. Only the live editor tells you what the keys actually *do*.
+
+**The command that outlived its script.** I had a shell script that restarted Neovim by respawning a tmux pane. 0.12 ships `:restart` (mapped to `ZR`), so I deleted the script. The catch: the thing that *triggered* the old script was never a Neovim keymap. It's a macro burned into my keyboard's firmware. Deleting the script doesn't touch the macro; it just leaves it typing keystrokes at a command that no longer exists. The fix lives in Oryx/QMK, outside the repo, and it has to ship at the same moment as the delete. Not every keybinding you own lives where your code does.
+
+**The silent default that ate my scratch files.** I live in `/tmp` scratch buffers and find them again through Telescope's recent-files picker. 0.12 quietly started treating `/tmp` as removable media and dropped it from that list. Nothing errored; the files just stopped showing up. One line put them back:
+
+```lua
+set.shada:remove "r/tmp/"
+```
+
+Subtractive, so it inherits every other shada default and never drifts. The kind of change you only make because you noticed the absence.
+
+## What it was actually about
+
+Splitting the upgrade into seven separate questions forced a real decision on each one instead of a blanket "migrate everything." And the decisions cluster: the small, boring changes were worth doing, and the big, impressive one was the one to decline, because it couldn't model my config.
+
+A release being impressive and a release being right for *your* config are different questions. Most of the value here was permission to say no to the impressive part.
+
+---
+
+**Resources:**
+- [Neovim 0.12 documentation](https://neovim.io/doc/user/)
+- [`:help news-0.12`](https://neovim.io/doc/user/news-0.12.html)
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [The migration, commit by commit](https://github.com/Piotr1215/dotfiles/pull/23)
