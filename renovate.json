@@ -1,13 +1,72 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:recommended",
+    ":ignoreUnstable"
   ],
-  "platformAutomerge": true,
+  "description": "Renovate configuration for CloudRumble Docusaurus site",
+  "dependencyDashboard": true,
+  "platformAutomerge": false,
+  "timezone": "Europe/Berlin",
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
+  "assignees": [
+    "Piotr1215"
+  ],
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 0,
+  "semanticCommits": "enabled",
+  "commitMessagePrefix": "chore(deps):",
+  "prCreation": "immediate",
+  "rebaseWhen": "behind-base-branch",
+  "suppressNotifications": [
+    "prIgnoreNotification"
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security"
+    ]
+  },
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
+      "description": "Auto-merge all minor and patch updates once the build passes",
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    },
+    {
+      "description": "Hold back major updates for manual review",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true,
+      "labels": [
+        "major-update",
+        "needs-review"
+      ]
+    },
+    {
+      "description": "Group GitHub Actions updates",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "GitHub Actions",
+      "semanticCommitType": "ci",
+      "commitMessageTopic": "GitHub Actions"
     }
+  ],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/vendor/**",
+    "**/.claude/**"
   ]
 }
