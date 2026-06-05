@@ -1,5 +1,7 @@
-// WebMCP tools for Cloud Rumble — exposes site data to AI agents via navigator.modelContext
-// Requires Chrome 146+ with chrome://flags/#enable-webmcp-testing
+// WebMCP tools for Cloud Rumble — exposes site data to AI agents via the modelContext API
+// Chrome 149+ Origin Trial (no flag for registered domains), or Chrome 146+ behind
+// chrome://flags/#enable-webmcp-testing. navigator.modelContext was deprecated in
+// Chrome 150 in favor of document.modelContext; we prefer the new namespace and fall back.
 
 import talks from './data/talks.json';
 import projects from './data/projects.json';
@@ -22,9 +24,11 @@ function matchesAny(fields, query) {
 }
 
 function registerTools() {
-  if (!('modelContext' in navigator)) return;
+  const mc = (typeof document !== 'undefined' && document.modelContext) ||
+    (typeof navigator !== 'undefined' && navigator.modelContext);
+  if (!mc) return;
 
-  navigator.modelContext.registerTool({
+  mc.registerTool({
     name: "search_talks",
     description: "Search Piotr's conference talks and workshops by keyword, tag, year, or status. Returns title, conference, date, tags, type, status, and available links (recording, slides, workshop).",
     inputSchema: {
@@ -35,6 +39,7 @@ function registerTools() {
         type: { type: "string", description: "Filter by type: talk, workshop, or keynote" },
       },
     },
+    annotations: { readOnlyHint: true },
     execute: async ({ query, status, type }) => {
       let results = talks.filter(t =>
         matchesAny([t.title, t.description, t.conference, t.tags], query) &&
@@ -53,11 +58,11 @@ function registerTools() {
         ...(t.workshopUrl && { workshopUrl: t.workshopUrl }),
         ...(t.conferenceUrl && { conferenceUrl: t.conferenceUrl }),
       }));
-      return { content: [{ type: "text", text: JSON.stringify({ count: summary.length, talks: summary }) }] };
+      return JSON.stringify({ count: summary.length, talks: summary });
     },
   });
 
-  navigator.modelContext.registerTool({
+  mc.registerTool({
     name: "search_projects",
     description: "Search Piotr's open source projects by name, tag, or category. Returns name, description, GitHub stars, URL, tags, and install command if available.",
     inputSchema: {
@@ -67,6 +72,7 @@ function registerTools() {
         category: { type: "string", description: "Filter by category (e.g. web, container, cli, neovim)" },
       },
     },
+    annotations: { readOnlyHint: true },
     execute: async ({ query, category }) => {
       let results = projects.filter(p =>
         matchesAny([p.name, p.description, p.tags], query) &&
@@ -81,11 +87,11 @@ function registerTools() {
         category: p.category,
         ...(p.installCommand && { installCommand: p.installCommand }),
       }));
-      return { content: [{ type: "text", text: JSON.stringify({ count: summary.length, projects: summary }) }] };
+      return JSON.stringify({ count: summary.length, projects: summary });
     },
   });
 
-  navigator.modelContext.registerTool({
+  mc.registerTool({
     name: "search_blogs",
     description: "Search Piotr's blog posts by keyword or category. Returns title, link, date, description, and categories.",
     inputSchema: {
@@ -94,6 +100,7 @@ function registerTools() {
         query: { type: "string", description: "Search term to match in title, description, or categories" },
       },
     },
+    annotations: { readOnlyHint: true },
     execute: async ({ query }) => {
       let results = blogs.filter(b =>
         matchesAny([b.title, b.description, b.categories], query)
@@ -105,11 +112,11 @@ function registerTools() {
         description: b.description,
         categories: b.categories,
       }));
-      return { content: [{ type: "text", text: JSON.stringify({ count: summary.length, blogs: summary }) }] };
+      return JSON.stringify({ count: summary.length, blogs: summary });
     },
   });
 
-  navigator.modelContext.registerTool({
+  mc.registerTool({
     name: "search_videos",
     description: "Search Piotr's YouTube videos by keyword. Returns title, video URL, date, and description.",
     inputSchema: {
@@ -118,6 +125,7 @@ function registerTools() {
         query: { type: "string", description: "Search term to match in title or description" },
       },
     },
+    annotations: { readOnlyHint: true },
     execute: async ({ query }) => {
       let results = videos.filter(v =>
         matchesAny([v.title, v.description], query)
@@ -128,14 +136,15 @@ function registerTools() {
         date: v.date,
         description: v.description,
       }));
-      return { content: [{ type: "text", text: JSON.stringify({ count: summary.length, videos: summary }) }] };
+      return JSON.stringify({ count: summary.length, videos: summary });
     },
   });
 
-  navigator.modelContext.registerTool({
+  mc.registerTool({
     name: "get_site_info",
     description: "Get an overview of Cloud Rumble: who Piotr is, what content is available, counts of talks/projects/blogs/videos, and navigation links.",
     inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
     execute: async () => {
       const info = {
         site: "Cloud Rumble",
@@ -157,7 +166,7 @@ function registerTools() {
         },
         availableTools: ["search_talks", "search_projects", "search_blogs", "search_videos"],
       };
-      return { content: [{ type: "text", text: JSON.stringify(info) }] };
+      return JSON.stringify(info);
     },
   });
 
