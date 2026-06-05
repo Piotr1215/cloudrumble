@@ -1,0 +1,20 @@
+# Cloud Rumble
+
+> Cloud Rumble is Piotr Zaniewski's site for IT certification notes and blogs on Kubernetes, cloud native, and platform engineering, alongside conference talks and open source projects.
+
+Piotr Zaniewski is a DevOps engineer, conference speaker, and open source contributor. The site collects long-form blog posts, a catalog of talks and workshops, open source projects, and YouTube videos.
+
+This site also exposes WebMCP tools (navigator/document.modelContext) so in-browser AI agents can query talks, projects, blogs, and videos directly.
+
+## Sections
+
+- [Blog](https://frosty-babbage-3125a3.netlify.app/blog): technical posts on Kubernetes, cloud native, platform engineering, and certifications
+- [Talks](https://frosty-babbage-3125a3.netlify.app/talks): conference talks and workshops, with recordings and slides where available
+- [Projects](https://frosty-babbage-3125a3.netlify.app/projects): open source projects with descriptions and GitHub links
+- [Videos](https://frosty-babbage-3125a3.netlify.app/youtube): YouTube videos
+
+## Links
+
+- GitHub: https://github.com/Piotr1215
+- YouTube: https://www.youtube.com/channel/UCkWVN7H3JqGtJ5Pv5bvCrAw
+- Sitemap: https://frosty-babbage-3125a3.netlify.app/sitemap.xml

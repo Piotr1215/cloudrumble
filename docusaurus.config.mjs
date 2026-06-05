@@ -1,11 +1,15 @@
 // @ts-check
 import {themes as prismThemes} from 'prism-react-renderer';
 
+const siteUrl = "https://frosty-babbage-3125a3.netlify.app";
+const siteDescription =
+  "Cloud Rumble by Piotr Zaniewski: IT certification notes and blogs on Kubernetes, cloud native, and platform engineering, plus conference talks and open source projects.";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Cloud Rumble",
   tagline: "IT Certifications learning notes and blogs. Kubernetes and cloud native ramblings",
-  url: "https://frosty-babbage-3125a3.netlify.app",
+  url: siteUrl,
   baseUrl: "/",
   onBrokenLinks: "warn",
   favicon: "img/favicon.svg",
@@ -14,6 +18,34 @@ const config = {
 
   clientModules: [
     './src/webmcp.js',
+  ],
+
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: { type: 'application/ld+json' },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'WebSite',
+            name: 'Cloud Rumble',
+            url: siteUrl,
+            description: siteDescription,
+          },
+          {
+            '@type': 'Person',
+            name: 'Piotr Zaniewski',
+            url: 'https://github.com/Piotr1215',
+            jobTitle: 'DevOps Engineer',
+            sameAs: [
+              'https://github.com/Piotr1215',
+              'https://www.youtube.com/channel/UCkWVN7H3JqGtJ5Pv5bvCrAw',
+            ],
+          },
+        ],
+      }),
+    },
   ],
 
   // Single tailwind plugin
@@ -57,6 +89,10 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        { name: "description", content: siteDescription },
+        { property: "og:description", content: siteDescription },
+      ],
       algolia: {
         appId: "YVUCIOP9V7",
         apiKey: "ca28f15cd304fda34283080362ddefc6",
