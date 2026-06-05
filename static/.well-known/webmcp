@@ -1,0 +1,13 @@
+{
+  "name": "Cloud Rumble",
+  "description": "Site tools for querying Piotr Zaniewski's talks, projects, blog posts, and videos.",
+  "registration": "imperative",
+  "api": "navigator/document.modelContext",
+  "tools": [
+    { "name": "search_talks", "description": "Search conference talks and workshops by keyword, status, or type." },
+    { "name": "search_projects", "description": "Search open source projects by name, tag, or category." },
+    { "name": "search_blogs", "description": "Search blog posts by keyword or category." },
+    { "name": "search_videos", "description": "Search YouTube videos by keyword." },
+    { "name": "get_site_info", "description": "Overview of the site, content counts, and navigation links." }
+  ]
+}
