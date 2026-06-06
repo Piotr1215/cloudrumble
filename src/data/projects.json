@@ -56,7 +56,7 @@
   {
     "name": "presenterm.nvim",
     "description": "Neovim plugin for presenterm",
-    "stars": 38,
+    "stars": 39,
     "url": "https://github.com/Piotr1215/presenterm.nvim",
     "tags": [
       "Neovim",
@@ -70,7 +70,7 @@
   {
     "name": "dotfiles",
     "description": "Pop_OS! dotfiles with install script. Complete development environment setup with Neovim, Tmux, and essential CLI tools.",
-    "stars": 131,
+    "stars": 132,
     "url": "https://github.com/Piotr1215/dotfiles",
     "tags": [
       "Dotfiles",
@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11730,
+    "stars": 11741,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -270,7 +270,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 11153,
+    "stars": 11166,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
@@ -283,7 +283,7 @@
   {
     "name": "OpenGitOps Documents",
     "description": "Lasting documents from the OpenGitOps project which are versioned and released together, including the GitOps Principles and Glossary. Defining standards and best practices for GitOps.",
-    "stars": 479,
+    "stars": 478,
     "url": "https://github.com/open-gitops/documents",
     "tags": [
       "GitOps",
@@ -296,7 +296,7 @@
   {
     "name": "Pepr",
     "description": "Type safe K8s middleware for humans. A Kubernetes controller framework that simplifies building admission controllers, operators, and other K8s automation with TypeScript.",
-    "stars": 228,
+    "stars": 229,
     "url": "https://github.com/defenseunicorns/pepr",
     "tags": [
       "Kubernetes",
