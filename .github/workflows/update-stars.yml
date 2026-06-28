@@ -30,6 +30,10 @@ jobs:
         continue-on-error: true
         run: node scripts/update-youtube-videos.js
 
+      - name: Update talk statuses
+        continue-on-error: true
+        run: node scripts/update-talks-status.js
+
       - name: Update Medium blogs
         id: medium
         continue-on-error: true
@@ -81,8 +85,8 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git checkout -b "$BRANCH_NAME"
-          git add src/data/projects.json src/data/videos.json src/data/blogs.json
-          git commit -m "chore: update GitHub stars, YouTube videos, and Medium blogs"
+          git add src/data/projects.json src/data/videos.json src/data/blogs.json src/data/talks.json
+          git commit -m "chore: update GitHub stars, YouTube videos, Medium blogs, and talk statuses"
           git push -u origin "$BRANCH_NAME"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
@@ -92,7 +96,7 @@ jobs:
           GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
         run: |
           gh pr create \
-            --title "chore: update GitHub stars, YouTube videos, and Medium blogs" \
+            --title "chore: update GitHub stars, YouTube videos, Medium blogs, and talk statuses" \
             --body "Automated data update from scheduled workflow" \
             --base master \
             --head "${{ env.BRANCH_NAME }}"
