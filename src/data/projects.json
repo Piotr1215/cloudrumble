@@ -2,7 +2,7 @@
   {
     "name": "Cloud Rumble",
     "description": "Source for my homepage cloudrumble.net. Docs, blogs, tips & tricks.",
-    "stars": 54,
+    "stars": 55,
     "url": "https://github.com/Piotr1215/cloudrumble",
     "tags": [
       "Documentation",
@@ -256,7 +256,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11850,
+    "stars": 11851,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
