@@ -2,11 +2,11 @@
 title: "Paste tmux Scrollback by Typing the Words You Remember"
 date: 2026-09-05
 tags: ["tmux", "terminal", "productivity", "cli", "python"]
-image: _media/diagrams/01-pane-regex-flow.png
+image: _media/tmux-pane-regex-hero.png
 description: "Search tmux scrollback with the landmarks you remember, watch the exact range highlight in the pane, then paste it at your cursor without submitting it."
 ---
 
-![How the picker turns a query into a paste](_media/diagrams/01-pane-regex-flow.png)
+![A range of tmux scrollback selected from a floating query box](_media/tmux-pane-regex-hero.png)
 
 <style>{`
   article img:not(:first-of-type) {
@@ -51,6 +51,8 @@ That choice is what makes the range easy to trust. A preview inside the popup wo
 The selection also survives refinement. Add another character to the query and the highlight moves rather than resetting, so you can narrow a range by watching it shrink.
 
 ## How it works
+
+![How the picker turns a query into a paste](_media/diagrams/01-pane-regex-flow.png)
 
 The script captures up to 10,000 lines with `tmux capture-pane -p -J -S -10000`. The `-J` is what joins tmux's soft wraps back into logical lines, so a command that occupies three display rows is one line to the matcher, and selecting it gives you one line back.
 
