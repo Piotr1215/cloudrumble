@@ -1,0 +1,7 @@
+flowchart LR
+    Q["query typed<br/>in the fzf popup"] --> C["tmux capture-pane<br/>-p -J -S -10000"]
+    C --> N["strip margins and<br/>prompt glyphs"]
+    N --> M["Python picks<br/>the exact range"]
+    M --> H["tmux search and copy-mode<br/>paint the live pane"]
+    M --> B["named tmux buffer"]
+    B --> P["bracketed paste,<br/>after the popup closes"]
