@@ -138,11 +138,6 @@ const config = {
             position: "left",
           },
           {
-            to: "/guestbook",
-            label: "Guestbook",
-            position: "left",
-          },
-          {
             href: "https://github.com/Piotr1215",
             label: "GitHub",
             position: "right",
