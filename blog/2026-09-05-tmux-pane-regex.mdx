@@ -33,12 +33,12 @@ You press `prefix + R`, a small popup opens, and you type the parts you remember
 
 | Query | Selection |
 | --- | --- |
-| `^start\\3f,` | Through the third comma |
-| `^start\\2tout` | Stops before the second `out` and the whitespace ahead of it |
-| `^start.*stop\\2` | Through the second `stop` |
-| `^start.*stop\\2t` | Stops before the second `stop` |
-| `^\\u` | Newest URL, with Up to visit older ones |
-| `^github\\u` | Newest URL containing `github` |
+| `^start\3f,` | Through the third comma |
+| `^start\2tout` | Stops before the second `out` and the whitespace ahead of it |
+| `^start.*stop\2` | Through the second `stop` |
+| `^start.*stop\2t` | Stops before the second `stop` |
+| `^\u` | Newest URL, with Up to visit older ones |
+| `^github\u` | Newest URL containing `github` |
 | `^word$` | Latest logical line containing `word` |
 | `^start.*end` | From `start` downward through the first `end` |
 | `^start$$` | From `start` through that logical line's last visible character |
@@ -54,15 +54,15 @@ Up walks to an older occurrence, Down to a newer one. Enter or Tab pastes. Ctrl+
 
 ### Count the word or punctuation you need
 
-The `f` and `t` motions take a count and a literal target. `^start\\3f,` includes the third comma; `^start\\3t,` stops before it. Leave out the count for the first occurrence. Unlike vim's single-character motions, the target can be a whole word: `^change\\2fout` reaches the second `out`. Each hop stops at the nearest target. Writing `(out){2}` in a regex would instead ask for `outout`.
+The `f` and `t` motions take a count and a literal target. `^start\3f,` includes the third comma; `^start\3t,` stops before it. Leave out the count for the first occurrence. Unlike vim's single-character motions, the target can be a whole word: `^change\2fout` reaches the second `out`. Each hop stops at the nearest target. Writing `(out){2}` in a regex would instead ask for `outout`.
 
-If you already typed a landmark range, append the count: `^start.*stop\\2`. You can change the final digit without moving back through the query. Only the hop after the last `.*` or `.+` repeats, and its target remains a regex. For example, `^start.*(stop|end)\\3` reaches the third occurrence of either word. A period is literal in `\\2f.`, but needs escaping in a regex landmark.
+If you already typed a landmark range, append the count: `^start.*stop\2`. You can change the final digit without moving back through the query. Only the hop after the last `.*` or `.+` repeats, and its target remains a regex. For example, `^start.*(stop|end)\3` reaches the third occurrence of either word. A period is literal in `\2f.`, but needs escaping in a regex landmark.
 
-Counts preserve valid backreferences. If your query has two capture groups, `\\2` still refers to the second group. A trailing count applies only where Python would reject that group reference. A bare `.+` stays greedy; adding a count, as in `^start.+stop\\1`, makes that hop lazy.
+Counts preserve valid backreferences. If your query has two capture groups, `\2` still refers to the second group. A trailing count applies only where Python would reject that group reference. A bare `.+` stays greedy; adding a count, as in `^start.+stop\1`, makes that hop lazy.
 
 ### Copy a URL out of scrollback
 
-`^\\u` selects the newest URL. Up walks to older URLs, and `^github\\u` filters them to those containing `github`. Ctrl+Y copies the selected URL; Enter pastes it into the source pane.
+`^\u` selects the newest URL. Up walks to older URLs, and `^github\u` filters them to those containing `github`. Ctrl+Y copies the selected URL; Enter pastes it into the source pane.
 
 The selector recognizes `scheme://` URLs and trims trailing sentence punctuation and unmatched closing brackets. In `(see https://example.com/a_(b)).`, it selects `https://example.com/a_(b)`. Balanced brackets within the URL stay intact, and soft wrapping does not split the copied address.
 
@@ -70,7 +70,7 @@ The selector recognizes `scheme://` URLs and trims trailing sentence punctuation
 
 The popup shows your query and a three-line legend with the controls and shortcuts. The selection is painted in the source pane using tmux's own search highlight and copy-mode selection styles, so what you see is the real text in its real place, wrapped the way the terminal wrapped it.
 
-The current match gets an exact selection, including single words, single characters, and ranges whose selected text starts with a regex operator such as `.*`. Other nearby matches stay highlighted so you can see where Up and Down will land. For a multiline match, the hint paints its first line. With `\\zs` and `\\ze`, context can appear in the search highlight, but only the selected range is copied or pasted.
+The current match gets an exact selection, including single words, single characters, and ranges whose selected text starts with a regex operator such as `.*`. Other nearby matches stay highlighted so you can see where Up and Down will land. For a multiline match, the hint paints its first line. With `\zs` and `\ze`, context can appear in the search highlight, but only the selected range is copied or pasted.
 
 These hints have a size limit: the plugin keeps the nearest matches within a 4 KB search-pattern budget to fit tmux's command limit. Navigation still searches all retained history.
 
