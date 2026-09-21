@@ -3007,86 +3007,420 @@ html.netrw-collapsed main.col {
   max-width: calc(100% - 48px) !important;
 }
 
-/* YAML syntax highlighting colors (Dracula-inspired) */
-.prism-code.language-yaml .token.key.atrule {
+/* YAML syntax highlighting colors (Dracula-inspired, dark theme only) */
+[data-theme='dark'] .prism-code.language-yaml .token.key.atrule {
   color: #8be9fd !important; /* cyan for keys */
 }
-.prism-code.language-yaml .token.punctuation {
+[data-theme='dark'] .prism-code.language-yaml .token.punctuation {
   color: #ff79c6 !important; /* pink for : and - */
 }
-.prism-code.language-yaml .token.number {
+[data-theme='dark'] .prism-code.language-yaml .token.number {
   color: #bd93f9 !important; /* purple for numbers */
 }
-.prism-code.language-yaml .token.boolean {
+[data-theme='dark'] .prism-code.language-yaml .token.boolean {
   color: #bd93f9 !important; /* purple for true/false */
 }
-.prism-code.language-yaml .token.string {
+[data-theme='dark'] .prism-code.language-yaml .token.string {
   color: #f1fa8c !important; /* yellow for strings */
 }
-.prism-code.language-yaml .token.null {
+[data-theme='dark'] .prism-code.language-yaml .token.null {
   color: #bd93f9 !important; /* purple for null */
 }
 
 /* TOML syntax highlighting colors (Dracula-inspired) */
-.prism-code.language-toml .token.key,
-.prism-code.language-toml .token.property {
+[data-theme='dark'] .prism-code.language-toml .token.key,
+[data-theme='dark'] .prism-code.language-toml .token.property {
   color: #8be9fd !important; /* cyan for keys */
 }
-.prism-code.language-toml .token.punctuation {
+[data-theme='dark'] .prism-code.language-toml .token.punctuation {
   color: #ff79c6 !important; /* pink for = and [] */
 }
-.prism-code.language-toml .token.number {
+[data-theme='dark'] .prism-code.language-toml .token.number {
   color: #bd93f9 !important; /* purple for numbers */
 }
-.prism-code.language-toml .token.boolean {
+[data-theme='dark'] .prism-code.language-toml .token.boolean {
   color: #bd93f9 !important; /* purple for true/false */
 }
-.prism-code.language-toml .token.string {
+[data-theme='dark'] .prism-code.language-toml .token.string {
   color: #f1fa8c !important; /* yellow for strings */
 }
-.prism-code.language-toml .token.table,
-.prism-code.language-toml .token.section {
+[data-theme='dark'] .prism-code.language-toml .token.table,
+[data-theme='dark'] .prism-code.language-toml .token.section {
   color: #50fa7b !important; /* green for [section] headers */
 }
-.prism-code.language-toml .token.comment {
+[data-theme='dark'] .prism-code.language-toml .token.comment {
   color: #6272a4 !important; /* gray for comments */
 }
 
 /* INI syntax (same as TOML) */
-.prism-code.language-ini .token.key,
-.prism-code.language-ini .token.property,
-.prism-code.language-ini .token.attr-name {
+[data-theme='dark'] .prism-code.language-ini .token.key,
+[data-theme='dark'] .prism-code.language-ini .token.property,
+[data-theme='dark'] .prism-code.language-ini .token.attr-name {
   color: #8be9fd !important;
 }
-.prism-code.language-ini .token.punctuation {
+[data-theme='dark'] .prism-code.language-ini .token.punctuation {
   color: #ff79c6 !important;
 }
-.prism-code.language-ini .token.number {
+[data-theme='dark'] .prism-code.language-ini .token.number {
   color: #bd93f9 !important;
 }
-.prism-code.language-ini .token.string,
-.prism-code.language-ini .token.attr-value {
+[data-theme='dark'] .prism-code.language-ini .token.string,
+[data-theme='dark'] .prism-code.language-ini .token.attr-value {
   color: #f1fa8c !important;
 }
-.prism-code.language-ini .token.section {
+[data-theme='dark'] .prism-code.language-ini .token.section {
   color: #50fa7b !important;
 }
-.prism-code.language-ini .token.comment {
+[data-theme='dark'] .prism-code.language-ini .token.comment {
   color: #6272a4 !important;
 }
 
 /* INI syntax - additional selectors */
-.prism-code.language-ini .token.selector,
-.prism-code.language-ini .token.constant {
+[data-theme='dark'] .prism-code.language-ini .token.selector,
+[data-theme='dark'] .prism-code.language-ini .token.constant {
   color: #8be9fd !important;
 }
-.prism-code.language-ini .token.section.title,
-.prism-code.language-ini .token.title {
+[data-theme='dark'] .prism-code.language-ini .token.section.title,
+[data-theme='dark'] .prism-code.language-ini .token.title {
   color: #50fa7b !important;
 }
-.prism-code.language-ini .token.value {
+[data-theme='dark'] .prism-code.language-ini .token.value {
   color: #f1fa8c !important;
 }
-.prism-code.language-ini .token.boolean {
+[data-theme='dark'] .prism-code.language-ini .token.boolean {
   color: #bd93f9 !important;
+}
+
+/* Blog Vim palette */
+html.blog-list-page,
+html.blog-post-page {
+  --blog-vim-shell: #edf1f5;
+  --blog-vim-window: #ffffff;
+  --blog-vim-sidebar: #f6f8fa;
+  --blog-vim-panel: #eef2f6;
+  --blog-vim-border: #c8d1dc;
+  --blog-vim-divider: #d8dee4;
+  --blog-vim-header-start: #f7f8fa;
+  --blog-vim-header-end: #dde2e8;
+  --blog-vim-text: #24292f;
+  --blog-vim-muted: #57606a;
+  --blog-vim-faint: #6e7781;
+  --blog-vim-link: #0969da;
+  --blog-vim-link-hover: #0550ae;
+  --blog-vim-folder: #9a6700;
+  --blog-vim-tree: #8c959f;
+  --blog-vim-tag-bg: #ddf4ff;
+  --blog-vim-tag-text: #0550ae;
+  --blog-vim-tag-border: #b6e3ff;
+  --blog-vim-read-more: #8250df;
+  --blog-vim-read-more-hover: #6639ba;
+  --blog-vim-status-bg: #d0d7de;
+  --blog-vim-status-text: #24292f;
+  /* Inline code mirrors the plain colors of the prism theme (github light, dracula dark). */
+  --blog-vim-code-bg: #f6f8fa;
+  --blog-vim-code-text: #393a34;
+  --blog-vim-quote-bg: #f6f8fa;
+  --blog-vim-quote-border: #afb8c1;
+  --blog-vim-strong: #9a6700;
+  --blog-vim-em: #8250df;
+  --blog-vim-shadow: rgba(31, 35, 40, 0.18);
+
+  background: var(--blog-vim-shell) !important;
+}
+
+html[data-theme='dark'].blog-list-page,
+html[data-theme='dark'].blog-post-page {
+  --blog-vim-shell: #0a0a0a;
+  --blog-vim-window: #000000;
+  --blog-vim-sidebar: #0d0d0d;
+  --blog-vim-panel: #1a1a1a;
+  --blog-vim-border: #2a2a2a;
+  --blog-vim-divider: #1a1a1a;
+  --blog-vim-header-start: #3d3d3d;
+  --blog-vim-header-end: #2a2a2a;
+  --blog-vim-text: #d0d0d0;
+  --blog-vim-muted: #b0b0b0;
+  --blog-vim-faint: #777777;
+  --blog-vim-link: #5fd7ff;
+  --blog-vim-link-hover: #87d7ff;
+  --blog-vim-folder: #d7af00;
+  --blog-vim-tree: #555555;
+  --blog-vim-tag-bg: #1a1a1a;
+  --blog-vim-tag-text: #5f87d7;
+  --blog-vim-tag-border: #2a2a2a;
+  --blog-vim-read-more: #af87d7;
+  --blog-vim-read-more-hover: #d7afd7;
+  --blog-vim-status-bg: #2a2a2a;
+  --blog-vim-status-text: #ffffff;
+  --blog-vim-code-bg: #282a36;
+  --blog-vim-code-text: #f8f8f2;
+  --blog-vim-quote-bg: #252525;
+  --blog-vim-quote-border: #4d4d4d;
+  --blog-vim-strong: #fbbf24;
+  --blog-vim-em: #c084fc;
+  --blog-vim-shadow: rgba(0, 0, 0, 0.8);
+}
+
+html.blog-list-page .main-wrapper,
+html.blog-post-page .main-wrapper {
+  background: var(--blog-vim-shell) !important;
+}
+
+html.blog-list-page .container.margin-vert--lg,
+html.blog-post-page .container.margin-vert--lg {
+  background: var(--blog-vim-window) !important;
+  border-color: var(--blog-vim-border) !important;
+  box-shadow: 0 20px 60px var(--blog-vim-shadow) !important;
+}
+
+html.blog-list-page .container.margin-vert--lg::before,
+html.blog-post-page .container.margin-vert--lg::before {
+  background-color: var(--blog-vim-header-end) !important;
+  background-image:
+    radial-gradient(circle at 16px 18px, #ff5f56 6px, transparent 6px),
+    radial-gradient(circle at 40px 18px, #ffbd2e 6px, transparent 6px),
+    radial-gradient(circle at 64px 18px, #27c93f 6px, transparent 6px),
+    linear-gradient(180deg, var(--blog-vim-header-start) 0%, var(--blog-vim-header-end) 100%) !important;
+  border-bottom-color: var(--blog-vim-divider) !important;
+}
+
+html.blog-list-page .row,
+html.blog-post-page .row,
+html.blog-list-page main,
+html.blog-post-page main {
+  background: var(--blog-vim-window) !important;
+}
+
+html.blog-list-page aside.col--3,
+html.blog-post-page aside.col--3 {
+  background: var(--blog-vim-sidebar) !important;
+  border-right-color: var(--blog-vim-divider) !important;
+  color: var(--blog-vim-text) !important;
+}
+
+html.blog-list-page aside::before,
+html.blog-post-page aside::before {
+  color: var(--blog-vim-faint) !important;
+  border-bottom-color: var(--blog-vim-divider) !important;
+}
+
+html.blog-list-page aside nav::before,
+html.blog-post-page aside nav::before,
+html.blog-list-page aside h3,
+html.blog-post-page aside h3 {
+  color: var(--blog-vim-link) !important;
+}
+
+html.blog-list-page aside h3,
+html.blog-post-page aside h3 {
+  background: var(--blog-vim-sidebar) !important;
+}
+
+html.blog-list-page aside h3::before,
+html.blog-post-page aside h3::before {
+  color: var(--blog-vim-folder) !important;
+}
+
+html.blog-list-page aside a,
+html.blog-post-page aside a {
+  color: var(--blog-vim-muted) !important;
+}
+
+html.blog-list-page aside a::before,
+html.blog-post-page aside a::before {
+  color: var(--blog-vim-tree) !important;
+}
+
+html.blog-list-page aside a:hover,
+html.blog-post-page aside a:hover {
+  background: var(--blog-vim-panel) !important;
+  color: var(--blog-vim-text) !important;
+}
+
+html.blog-list-page main article {
+  border-bottom-color: var(--blog-vim-divider) !important;
+}
+
+html.blog-list-page main h2 a,
+html.blog-post-page .markdown h1,
+html.blog-post-page .markdown h2,
+html.blog-post-page .markdown h3 {
+  color: var(--blog-vim-link) !important;
+}
+
+html.blog-list-page main h2 a:hover {
+  color: var(--blog-vim-link-hover) !important;
+}
+
+html.blog-list-page main time {
+  color: var(--blog-vim-faint) !important;
+}
+
+html.blog-list-page main p,
+html.blog-post-page .markdown p,
+html.blog-post-page .markdown ul,
+html.blog-post-page .markdown ol {
+  color: var(--blog-vim-text) !important;
+}
+
+html.blog-list-page main a[href*='/tags/'] {
+  background: var(--blog-vim-tag-bg) !important;
+  color: var(--blog-vim-tag-text) !important;
+  border-color: var(--blog-vim-tag-border) !important;
+}
+
+html.blog-list-page main a[href*='/tags/']:hover {
+  background: var(--blog-vim-panel) !important;
+  color: var(--blog-vim-link-hover) !important;
+}
+
+html.blog-list-page main a[aria-label*='Read more'] {
+  color: var(--blog-vim-read-more) !important;
+}
+
+html.blog-list-page main a[aria-label*='Read more']:hover {
+  color: var(--blog-vim-read-more-hover) !important;
+}
+
+html.blog-list-page main img,
+html.blog-post-page main img {
+  border-color: var(--blog-vim-border) !important;
+}
+
+html.blog-list-page nav[aria-label='Blog list page navigation'] {
+  border-top-color: var(--blog-vim-divider) !important;
+}
+
+html.blog-list-page nav[aria-label='Blog list page navigation'] a {
+  background: var(--blog-vim-panel) !important;
+  color: var(--blog-vim-link) !important;
+  border-color: var(--blog-vim-border) !important;
+}
+
+html.blog-list-page nav[aria-label='Blog list page navigation'] a:hover {
+  background: var(--blog-vim-sidebar) !important;
+  border-color: var(--blog-vim-link) !important;
+}
+
+html.blog-list-page .container.margin-vert--lg::after,
+html.blog-post-page .container.margin-vert--lg::after {
+  background: var(--blog-vim-status-bg) !important;
+  color: var(--blog-vim-status-text) !important;
+  border-top-color: var(--blog-vim-divider) !important;
+}
+
+html.blog-post-page .markdown {
+  color: var(--blog-vim-text) !important;
+}
+
+html.blog-post-page .markdown h1::before,
+html.blog-post-page .markdown h2::before,
+html.blog-post-page .markdown h3::before {
+  color: var(--blog-vim-faint) !important;
+}
+
+html.blog-post-page .markdown pre {
+  background: var(--prism-background-color, var(--blog-vim-code-bg)) !important;
+  border-color: var(--blog-vim-border) !important;
+}
+
+html.blog-list-page .markdown :not(pre) > code,
+html.blog-post-page .markdown :not(pre) > code {
+  background: var(--blog-vim-code-bg) !important;
+  color: var(--blog-vim-code-text) !important;
+}
+
+html.blog-post-page .markdown a {
+  color: var(--blog-vim-link) !important;
+}
+
+html.blog-post-page .markdown a:hover {
+  color: var(--blog-vim-link-hover) !important;
+}
+
+html.blog-post-page .markdown blockquote {
+  background: var(--blog-vim-quote-bg) !important;
+  border-left-color: var(--blog-vim-quote-border) !important;
+  color: var(--blog-vim-muted) !important;
+}
+
+html.blog-post-page .markdown strong {
+  color: var(--blog-vim-strong) !important;
+}
+
+html.blog-post-page .markdown em {
+  color: var(--blog-vim-em) !important;
+}
+
+html.blog-list-page .netrw-toggle,
+html.blog-post-page .netrw-toggle {
+  background: var(--blog-vim-status-bg) !important;
+  color: var(--blog-vim-link) !important;
+  border-color: var(--blog-vim-border) !important;
+}
+
+html.blog-list-page .netrw-toggle:hover,
+html.blog-post-page .netrw-toggle:hover {
+  background: var(--blog-vim-panel) !important;
+  color: var(--blog-vim-link-hover) !important;
+}
+
+/* Keep the blog palette above the legacy Vim selectors with column classes. */
+html.blog-list-page main.col.col--7,
+html.blog-list-page main.col--7,
+html.blog-post-page main.col.col--7 {
+  background: var(--blog-vim-window) !important;
+}
+
+html.blog-list-page main.col.col--7 .markdown,
+html.blog-post-page main.col.col--7 .markdown {
+  background: transparent !important;
+  color: var(--blog-vim-text) !important;
+}
+
+html.blog-list-page main.col.col--7 .markdown p,
+html.blog-list-page main.col.col--7 .markdown ul,
+html.blog-list-page main.col.col--7 .markdown ol,
+html.blog-list-page main.col.col--7 .markdown li,
+html.blog-post-page main.col.col--7 .markdown p,
+html.blog-post-page main.col.col--7 .markdown ul,
+html.blog-post-page main.col.col--7 .markdown ol,
+html.blog-post-page main.col.col--7 .markdown li {
+  color: var(--blog-vim-text) !important;
+}
+
+html.blog-post-page main.col.col--7 .markdown h1,
+html.blog-post-page main.col.col--7 .markdown h2,
+html.blog-post-page main.col.col--7 .markdown h3,
+html.blog-post-page main.col.col--7 .markdown a {
+  color: var(--blog-vim-link) !important;
+}
+
+html.blog-post-page main.col.col--7 .markdown a:hover {
+  color: var(--blog-vim-link-hover) !important;
+}
+
+html.blog-post-page main.col.col--7 .markdown pre {
+  background: var(--prism-background-color, var(--blog-vim-code-bg)) !important;
+  border-color: var(--blog-vim-border) !important;
+}
+
+html.blog-list-page main.col.col--7 .markdown :not(pre) > code,
+html.blog-post-page main.col.col--7 .markdown :not(pre) > code {
+  background: var(--blog-vim-code-bg) !important;
+  color: var(--blog-vim-code-text) !important;
+}
+
+html.blog-post-page main.col.col--7 .markdown blockquote {
+  background: var(--blog-vim-quote-bg) !important;
+  border-left-color: var(--blog-vim-quote-border) !important;
+  color: var(--blog-vim-muted) !important;
+}
+
+html.blog-post-page main.col.col--7 .markdown strong {
+  color: var(--blog-vim-strong) !important;
+}
+
+html.blog-post-page main.col.col--7 .markdown em {
+  color: var(--blog-vim-em) !important;
 }

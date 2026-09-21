@@ -210,7 +210,7 @@ const config = {
         copyright: `Built with Docusaurus.`,
       },
       prism: {
-        theme: prismThemes.dracula,
+        theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         additionalLanguages: ["bash", "yaml", "toml", "ini", "gherkin"],
       },
