@@ -77,7 +77,7 @@ const config = {
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
           postsPerPage: 10,
-          editUrl: "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs",
+          editUrl: "https://github.com/Piotr1215/cloudrumble/edit/master/",
         },
         theme: {
           customCss: "./src/css/custom.css",
