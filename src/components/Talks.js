@@ -1,10 +1,9 @@
 import React from 'react';
 import TalkCard from './TalkCard';
-const talksData = require('../data/talks.json');
+// Only confirmed talks (completed/accepted); submissions stay private
+const confirmedTalks = require('../data/publicTalks');
 
 const Talks = () => {
-  // Only show confirmed talks (completed/accepted), hide submitted
-  const confirmedTalks = talksData.filter(t => t.status !== 'submitted');
 
   // Separate upcoming, pinned, and other talks
   const upcomingTalks = confirmedTalks.filter(t => t.upcoming);
