@@ -3,7 +3,7 @@
 // chrome://flags/#enable-webmcp-testing. navigator.modelContext was deprecated in
 // Chrome 150 in favor of document.modelContext; we prefer the new namespace and fall back.
 
-import talks from './data/talks.json';
+import talks from './data/publicTalks';
 import projects from './data/projects.json';
 import blogs from './data/blogs.json';
 import videos from './data/videos.json';
@@ -35,7 +35,7 @@ function registerTools() {
       type: "object",
       properties: {
         query: { type: "string", description: "Search term to match in title, description, conference name, or tags" },
-        status: { type: "string", description: "Filter by status: submitted, accepted, or completed" },
+        status: { type: "string", description: "Filter by status: accepted (upcoming) or completed" },
         type: { type: "string", description: "Filter by type: talk, workshop, or keynote" },
       },
     },
