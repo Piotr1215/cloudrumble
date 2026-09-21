@@ -33,6 +33,12 @@ You press `prefix + R`, a small popup opens, and you type the parts you remember
 
 | Query | Selection |
 | --- | --- |
+| `^start\\3f,` | Through the third comma |
+| `^start\\2tout` | Stops before the second `out` and the whitespace ahead of it |
+| `^start.*stop\\2` | Through the second `stop` |
+| `^start.*stop\\2t` | Stops before the second `stop` |
+| `^\\u` | Newest URL, with Up to visit older ones |
+| `^github\\u` | Newest URL containing `github` |
 | `^word$` | Latest logical line containing `word` |
 | `^start.*end` | From `start` downward through the first `end` |
 | `^start$$` | From `start` through that logical line's last visible character |
@@ -44,11 +50,29 @@ You press `prefix + R`, a small popup opens, and you type the parts you remember
 | `^word\zeend` | Selects `word`, with `end` matched but left out |
 | `^price\$` | A literal final dollar sign |
 
-Up walks to an older occurrence, Down to a newer one. Enter or Tab pastes. Ctrl+Y copies the selection to the clipboard instead, through tmux's OSC 52 path, so no clipboard helper is needed. Esc closes the popup and leaves the pane as it was.
+Up walks to an older occurrence, Down to a newer one. Enter or Tab pastes. Ctrl+Y copies the selection to the clipboard instead, through tmux's OSC 52 path. Your terminal must allow clipboard writes; no clipboard helper is needed. Esc closes the popup without pasting. When launched by an inline text expander, cancellation also removes the trigger and recovered query text.
+
+### Count the word or punctuation you need
+
+The `f` and `t` motions take a count and a literal target. `^start\\3f,` includes the third comma; `^start\\3t,` stops before it. Leave out the count for the first occurrence. Unlike vim's single-character motions, the target can be a whole word: `^change\\2fout` reaches the second `out`. Each hop stops at the nearest target. Writing `(out){2}` in a regex would instead ask for `outout`.
+
+If you already typed a landmark range, append the count: `^start.*stop\\2`. You can change the final digit without moving back through the query. Only the hop after the last `.*` or `.+` repeats, and its target remains a regex. For example, `^start.*(stop|end)\\3` reaches the third occurrence of either word. A period is literal in `\\2f.`, but needs escaping in a regex landmark.
+
+Counts preserve valid backreferences. If your query has two capture groups, `\\2` still refers to the second group. A trailing count applies only where Python would reject that group reference. A bare `.+` stays greedy; adding a count, as in `^start.+stop\\1`, makes that hop lazy.
+
+### Copy a URL out of scrollback
+
+`^\\u` selects the newest URL. Up walks to older URLs, and `^github\\u` filters them to those containing `github`. Ctrl+Y copies the selected URL; Enter pastes it into the source pane.
+
+The selector recognizes `scheme://` URLs and trims trailing sentence punctuation and unmatched closing brackets. In `(see https://example.com/a_(b)).`, it selects `https://example.com/a_(b)`. Balanced brackets within the URL stay intact, and soft wrapping does not split the copied address.
 
 ## The feedback lives in the pane, not the popup
 
-The popup shows your query and nothing else. The selection is painted in the source pane using tmux's own search highlight and copy-mode selection styles, so what you see is the real text in its real place, wrapped the way the terminal wrapped it.
+The popup shows your query and a three-line legend with the controls and shortcuts. The selection is painted in the source pane using tmux's own search highlight and copy-mode selection styles, so what you see is the real text in its real place, wrapped the way the terminal wrapped it.
+
+The current match gets an exact selection, including single words, single characters, and ranges whose selected text starts with a regex operator such as `.*`. Other nearby matches stay highlighted so you can see where Up and Down will land. For a multiline match, the hint paints its first line. With `\\zs` and `\\ze`, context can appear in the search highlight, but only the selected range is copied or pasted.
+
+These hints have a size limit: the plugin keeps the nearest matches within a 4 KB search-pattern budget to fit tmux's command limit. Navigation still searches all retained history.
 
 That choice is what makes the range easy to trust. A preview inside the popup would be a copy of the text, reflowed to a different width, and you would have to decide whether it matched the thing you were looking at. Here the thing you are looking at is the answer.
 
@@ -63,6 +87,8 @@ The script captures the whole retained history with `tmux capture-pane -p -J -S 
 Captured text carries terminal decoration that no one wants in a paste. A cleanup pass strips leading margins, including the `•` and `›` bullets a picker draws and the `●` and `⎿` gutter an agent CLI draws down the left of its own output, and removes Unicode private-use characters with the space that usually follows them. Those are the glyphs a Nerd Font prompt draws, and without this pass a range starting at a prompt line would paste an invisible icon into your shell. Indentation is recorded per line rather than discarded, so an indented YAML block pastes with the shape it had on screen. Only the whitespace before the first selected character is left out.
 
 Python then matches against the cleaned text and computes the exact source range. Rendering that range is handed back to tmux: the plugin drives `send-keys -X` with tmux's native search and `begin-selection`, so the highlight is drawn by the same code that draws it when you search by hand.
+
+Once the selection stops, another native search paints the nearby matches without clearing it. That search uses literal text from the matches Python found, because tmux's search cannot express the plugin's lazy hops, selection markers, or multiline ranges.
 
 ## The paste that never submits
 
@@ -120,3 +146,5 @@ The tmux binding passes `--pane '#{pane_id}'` and needs no X11 focus detection. 
 ## Resources
 
 - [tmux-pane-regex](https://github.com/Piotr1215/tmux-pane-regex)
+- [Selector reference and controls](https://github.com/Piotr1215/tmux-pane-regex#use)
+- [Matching and native tmux highlighting](https://github.com/Piotr1215/tmux-pane-regex/blob/main/scripts/pane_regex.py)
