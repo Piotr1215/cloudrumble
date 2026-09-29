@@ -40,6 +40,15 @@
     "pinned": true
   },
   {
+    "id": "ZhgUzG1V0VM",
+    "videoId": "ZhgUzG1V0VM",
+    "title": "Stop Steering the Cursor: Copy tmux Scrollback With Regex",
+    "thumbnail": "https://img.youtube.com/vi/ZhgUzG1V0VM/maxresdefault.jpg",
+    "description": "",
+    "date": "Sep 27, 2026",
+    "publishedAt": "2026-09-27T11:10:57+00:00"
+  },
+  {
     "id": "PpVsxs29PNs",
     "videoId": "PpVsxs29PNs",
     "title": "How to Run a Full Kubernetes Cluster in Docker with vCluster",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Nov 1, 2025",
     "publishedAt": "2025-11-01T14:22:36+00:00"
-  },
-  {
-    "id": "KsvB4AB_kFA",
-    "videoId": "KsvB4AB_kFA",
-    "title": "From Physical Servers to Virtual Kubernetes Clusters",
-    "thumbnail": "https://img.youtube.com/vi/KsvB4AB_kFA/maxresdefault.jpg",
-    "description": "",
-    "date": "Oct 24, 2025",
-    "publishedAt": "2025-10-24T14:13:19+00:00"
   }
 ]
