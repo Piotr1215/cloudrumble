@@ -2738,21 +2738,35 @@ html.blog-list-page aside.col--3 {
   max-width: 420px !important;
 }
 
-/* Hide nested terminal images in blog previews */
-html.blog-list-page main article img[alt*="terminal"],
-html.blog-list-page main article img[src*="traffic"],
-html.blog-list-page main article > div > p:first-child > img:only-child {
-  display: none !important;
+/* Show each post's image as a compact preview beside its excerpt. */
+html.blog-list-page main article .markdown {
+  display: flow-root !important;
 }
 
-/* Hide hero images in blog list previews (thumbnails) */
-html.blog-list-page main article > div > p:first-of-type img {
-  display: none !important;
+html.blog-list-page main article .markdown > p:has(> img) {
+  float: right;
+  width: clamp(180px, 24%, 240px);
+  aspect-ratio: 16 / 9;
+  margin: 0 0 12px 24px !important;
 }
 
-/* Also hide any image that looks like a terminal window */
-html.blog-list-page main img[src*="traffic"],
-html.blog-list-page main img[alt*="cluster"],
+html.blog-list-page main article .markdown > p:has(> img) img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  background: var(--blog-vim-panel);
+}
+
+@media (max-width: 600px) {
+  html.blog-list-page main article .markdown > p:has(> img) {
+    float: none;
+    width: min(100%, 360px);
+    margin: 0 0 14px !important;
+  }
+}
+
+/* Keep oversized traffic screenshots out of individual posts. */
 html.blog-post-page main img[src*="traffic"] {
   display: none !important;
 }
@@ -2840,9 +2854,7 @@ html.blog-post-page main article > div > p:first-of-type img {
   display: block !important;
 }
 
-/* But hide ONLY terminal/cluster window screenshots */
-html.blog-list-page main img[alt*="Cluster"],
-html.blog-list-page main img[alt*="Virtual Cluster"],
+/* Hide terminal/cluster window screenshots in individual posts. */
 html.blog-post-page main img[alt*="Cluster"],
 html.blog-post-page main img[alt*="Virtual Cluster"] {
   display: none !important;
@@ -3423,4 +3435,42 @@ html.blog-post-page main.col.col--7 .markdown strong {
 
 html.blog-post-page main.col.col--7 .markdown em {
   color: var(--blog-vim-em) !important;
+}
+
+@media (max-width: 1199px) {
+  html.blog-list-page .container.margin-vert--lg {
+    width: calc(100% - 16px) !important;
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  html.blog-list-page .row {
+    display: block !important;
+  }
+
+  html.blog-list-page aside.col--3 {
+    display: none !important;
+  }
+
+  html.blog-list-page main.col.col--7,
+  html.blog-list-page main.col--7 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  html.blog-list-page .main-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html.blog-list-page main.col.col--7,
+  html.blog-list-page main.col--7 {
+    padding: 16px !important;
+  }
 }
