@@ -64,11 +64,41 @@
     "pinned": true
   },
   {
+    "title": "Seven Ways to Multi Line Editing in Neovim",
+    "link": "https://piotrzan.medium.com/seven-ways-to-multi-line-editing-in-neovim-55d903120e2a",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*szAIeoYcLHy4ivJQ.png",
+    "description": "Every Neovim method for editing many lines at once, from :norm and :s to macros and the new built-in multicursor, with a rule of thumb and a keystroke...",
+    "date": "Sep 30, 2026",
+    "publishedAt": "2026-09-30T18:33:38.000Z",
+    "categories": [
+      "neovim",
+      "command-line",
+      "editing",
+      "programming",
+      "software-development"
+    ]
+  },
+  {
+    "title": "No Mouse: Tmux and Regex for instant copy/paste",
+    "link": "https://piotrzan.medium.com/no-mouse-tmux-and-regex-for-instant-copy-paste-707a0768d6c9",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*8excj5-fIQz_6IFN.png",
+    "description": "Search tmux scrollback with the landmarks you remember, watch the exact range highlight in the pane, then paste it at your cursor without submitting i...",
+    "date": "Sep 28, 2026",
+    "publishedAt": "2026-09-28T20:22:01.000Z",
+    "categories": [
+      "command-line",
+      "programming",
+      "tmux",
+      "terminal",
+      "regex"
+    ]
+  },
+  {
     "title": "Platform Engineering for AI Agents",
     "link": "https://itnext.io/platform-engineering-for-ai-agents-578380c2de47",
-    "thumbnail": "",
-    "description": "...",
-    "date": "Mar 15, 2026",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*ClL3kUtR2p-HooF_D_PPDA.png",
+    "description": "The Consumer You Never Designed For Is Already Here Platform engineering matured around one thesis: reduce cognitive load for developers. The CNCF Pla...",
+    "date": "Mar 16, 2026",
     "publishedAt": "2026-03-15T23:31:18.000Z",
     "categories": [
       "ai-agent",
@@ -81,8 +111,8 @@
   {
     "title": "90ms to Total Recall",
     "link": "https://itnext.io/90ms-to-total-recall-a37741c4842b",
-    "thumbnail": "",
-    "description": "...",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*hru1TrVpYCmbtNZb",
+    "description": "Your AI Agent Should Read Your Notes Before Answering R2R on Kubernetes, pgvector for storage, Ollama for embeddings, and a Python hook that searches ...",
     "date": "Mar 4, 2026",
     "publishedAt": "2026-03-04T21:59:29.000Z",
     "categories": [
@@ -96,8 +126,8 @@
   {
     "title": "My day to day tasks revolve one way or another around Kubernetes — I give talks about it, maintain…",
     "link": "https://itnext.io/my-day-to-day-tasks-revolve-one-way-or-another-around-kubernetes-i-give-talks-about-it-maintain-c384229a0000",
-    "thumbnail": "",
-    "description": "...",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*qJftRi2vWVIVQT1V",
+    "description": "What If Your Docker Was Also Your Kubernetes? My day to day tasks revolve one way or another around Kubernetes — I give talks about it, maintain it, d...",
     "date": "Feb 1, 2026",
     "publishedAt": "2026-02-01T10:00:54.000Z",
     "categories": [
@@ -111,8 +141,8 @@
   {
     "title": "Why GPU Infrastructure Is Foundational to an Enterprise AI Strategy",
     "link": "https://itnext.io/why-gpu-infrastructure-is-foundational-to-an-enterprise-ai-strategy-5b574ef1eebc",
-    "thumbnail": "",
-    "description": "...",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*dj5Kcc1e2z4xfs6g",
+    "description": "In an era where artificial intelligence is rapidly becoming a cornerstone of enterprise strategy, the conversation is shifting from whether a company ...",
     "date": "Nov 11, 2025",
     "publishedAt": "2025-11-11T14:44:01.000Z",
     "categories": [
@@ -126,8 +156,8 @@
   {
     "title": "From Physical Servers to Virtual Kubernetes Clusters",
     "link": "https://itnext.io/from-physical-servers-to-virtual-kubernetes-clusters-85f931d4cdff",
-    "thumbnail": "",
-    "description": "...",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*ZEsdmS2pVjxM3l6K.png",
+    "description": "Understanding the need for Kubernetes multi-tenancy with vCluster TL;DR: This blog explains the evolution of computing abstractions from physical serv...",
     "date": "Oct 23, 2025",
     "publishedAt": "2025-10-23T19:33:21.000Z",
     "categories": [
@@ -141,8 +171,8 @@
   {
     "title": "Stop AI from Hallucinating Your Kubernetes YAML",
     "link": "https://itnext.io/stop-ai-from-hallucinating-your-kubernetes-yaml-10142f685a8b",
-    "thumbnail": "",
-    "description": "...",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*1GsCYrgwVq4LJjs0",
+    "description": "Using a vCluster YAML MCP Server You ask an AI to generate a Kubernetes manifest, Helm chart values, or Ansible playbook. It responds instantly with c...",
     "date": "Oct 18, 2025",
     "publishedAt": "2025-10-18T19:49:25.000Z",
     "categories": [
@@ -156,8 +186,8 @@
   {
     "title": "GPU on Kubernetes: Safe Upgrades, Flexible Multitenancy",
     "link": "https://itnext.io/gpu-on-kubernetes-safe-upgrades-flexible-multitenancy-b615ece8532d",
-    "thumbnail": "",
-    "description": "...",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*0NBPtU4oqRRuaj4D",
+    "description": "Using KAI Scheduler and vCluster In today’s cloud-native landscape, GPU workloads are becoming increasingly critical. From training large language mod...",
     "date": "Oct 10, 2025",
     "publishedAt": "2025-10-10T00:00:59.000Z",
     "categories": [
@@ -171,8 +201,8 @@
   {
     "title": "Kubernetes Multi-tenancy: Are You Doing It the Hard Way?",
     "link": "https://itnext.io/kubernetes-multi-tenancy-are-you-doing-it-the-hard-way-2619357a7c58",
-    "thumbnail": "",
-    "description": "...",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*o_dvIHt-o4-0xWDdg4l8EA.png",
+    "description": "Virtual clusters with container native isolation on bare-metal In the world of cloud-native computing, bare metal Kubernetes represents an increasingl...",
     "date": "May 10, 2025",
     "publishedAt": "2025-05-10T21:06:27.000Z",
     "categories": [
@@ -181,36 +211,6 @@
       "platform-engineering",
       "kubernetes",
       "virtualization"
-    ]
-  },
-  {
-    "title": "Deploy Virtual Kubernetes Clusters on EKS, AKS, and GKE",
-    "link": "https://itnext.io/deploy-virtual-kubernetes-clusters-on-eks-aks-and-gke-215bc7a07f56",
-    "thumbnail": "",
-    "description": "...",
-    "date": "Nov 28, 2024",
-    "publishedAt": "2024-11-28T10:03:44.000Z",
-    "categories": [
-      "devops",
-      "kubernetes",
-      "technology",
-      "cncf",
-      "platform-engineering"
-    ]
-  },
-  {
-    "title": "Terminal-Based Presentations",
-    "link": "https://itnext.io/terminal-based-presentations-66c9f0c9b4a3",
-    "thumbnail": "",
-    "description": "...",
-    "date": "Nov 24, 2024",
-    "publishedAt": "2024-11-24T09:50:19.000Z",
-    "categories": [
-      "presentations",
-      "terminal",
-      "open-source",
-      "development",
-      "technology"
     ]
   }
 ]

@@ -35,43 +35,8 @@ jobs:
         run: node scripts/update-talks-status.js
 
       - name: Update Medium blogs
-        id: medium
         continue-on-error: true
-        uses: gautamkrishnar/blog-post-workflow@v1
-        with:
-          feed_list: "https://medium.com/feed/@piotrzan"
-          max_post_count: 12
-          output_only: true
-
-      - name: Transform Medium blogs to JSON
-        if: steps.medium.outcome == 'success'
-        run: |
-          node -e "
-            const fs = require('fs');
-            const input = JSON.parse(fs.readFileSync('/tmp/blog_post_workflow_output.json', 'utf8'));
-
-            // Read existing blogs to preserve pinned entries
-            const existingBlogs = JSON.parse(fs.readFileSync('src/data/blogs.json', 'utf8'));
-            const pinnedBlogs = existingBlogs.filter(b => b.pinned);
-
-            const newBlogs = input.map(item => ({
-              title: item.title,
-              link: item.url.split('?')[0],
-              thumbnail: '',
-              description: (item.description || '').replace(/<[^>]*>/g, '').substring(0, 150) + '...',
-              date: new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
-              publishedAt: item.date,
-              categories: item.categories || []
-            }));
-
-            // Combine: pinned first, then new blogs (excluding duplicates of pinned)
-            const pinnedLinks = new Set(pinnedBlogs.map(b => b.link));
-            const filteredNewBlogs = newBlogs.filter(b => !pinnedLinks.has(b.link));
-            const blogs = [...pinnedBlogs, ...filteredNewBlogs];
-
-            fs.writeFileSync('src/data/blogs.json', JSON.stringify(blogs, null, 2) + '\n');
-            console.log('✓ Updated blogs.json with', blogs.length, 'posts (' + pinnedBlogs.length + ' pinned preserved)');
-          "
+        run: node scripts/update-medium-blogs.js
 
       - name: Check for changes
         id: git-check
