@@ -21,20 +21,24 @@ jobs:
           node-version: '24'
 
       - name: Update GitHub stars
+        id: stars
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/update-github-stars.js
 
       - name: Update YouTube videos
+        id: youtube
         continue-on-error: true
         run: node scripts/update-youtube-videos.js
 
       - name: Update talk statuses
+        id: talks
         continue-on-error: true
         run: node scripts/update-talks-status.js
 
       - name: Update Medium blogs
+        id: medium
         continue-on-error: true
         run: node scripts/update-medium-blogs.js
 
@@ -73,3 +77,13 @@ jobs:
         run: |
           PR_NUMBER=$(gh pr list --head "${{ env.BRANCH_NAME }}" --json number --jq '.[0].number')
           gh pr merge "$PR_NUMBER" --auto --squash
+
+      - name: Fail if any update step failed
+        if: >-
+          steps.stars.outcome == 'failure' ||
+          steps.youtube.outcome == 'failure' ||
+          steps.talks.outcome == 'failure' ||
+          steps.medium.outcome == 'failure'
+        run: |
+          echo "::error::Update steps failed: stars=${{ steps.stars.outcome }} youtube=${{ steps.youtube.outcome }} talks=${{ steps.talks.outcome }} medium=${{ steps.medium.outcome }}"
+          exit 1
