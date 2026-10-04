@@ -109,7 +109,7 @@ For a question that one passage can settle, like "does she die?", classif search
 
 The Elizabeth question that used to take over four minutes now comes back in about 17 seconds, and in under 3 seconds once the passage index is cached. (She doesn't die, in case you were worried.)
 
-![The robot uses a card index to pick a few pages from a 772 KB novel, the owl reads them and says no, she lives, and a traffic light checks the answer before the finish line: 17 seconds cold, under 3 seconds cached](_media/diagrams/classif-wave-5.png)
+![The robot uses a card index to pick a few pages from a 772 KB novel, the owl reads them and says no, she lives, and a traffic light checks the answer before the finish line: 17 seconds on the first run, under 3 seconds cached](_media/diagrams/classif-wave-5.png)
 
 _Before we move on to the architecture, a quick note on the cast. The robot is our code, which follows instructions to the letter, and the owl is the language model, which reads. I picked owls for their reputation as careful readers, and the cuteness level helped._
 
@@ -121,7 +121,9 @@ What makes classif different from calling a model in a loop? Code decides how to
 
 A word of warning: this part goes deeper than the rest of the blog. If you mostly want to try the tool, feel free to skip to the demo and come back later. The diagram below shows the main components and how they work together.
 
-![classif component diagram: your script calls the classif CLI, short text goes to Ollama in one call, long text goes through the Router to the Search, Linked lines and Full read plans, then the Gate returns a label, probability and exit code](_media/diagrams/classif-components.png)
+[![classif component diagram: your script calls the classif CLI, short text goes to Ollama in one call, long text goes through the Router to the Search, Linked lines and Full read plans, then the Gate returns a label, probability and exit code](_media/diagrams/classif-components.png)](_media/diagrams/classif-components.png)
+
+_[Open the diagram full size](_media/diagrams/classif-components.png)_
 
 Your script runs `classif` with a question and some text. When the text fits the model's window, classif sends it in one call and reads the answer from that single token. This short path covers most everyday uses: commit messages, log lines, diffs, comments.
 
@@ -135,7 +137,9 @@ Finally, the Gate decides whether the answer may leave. If the reading didn't co
 
 Here is the same flow as a sequence, using the Elizabeth question from earlier.
 
-![Sequence diagram of classif reading a long text: the CLI sends the whole novel, Ollama refuses it as too long, the Router asks which kind of question it is, Search embeds and ranks passages, Winnow-12B answers no from the closest 30,000 characters, and the Gate returns no with exit 1](_media/diagrams/classif-sequence.png)
+[![Sequence diagram of classif reading a long text: the CLI sends the whole novel, Ollama refuses it as too long, the Router asks which kind of question it is, Search embeds and ranks passages, Winnow-12B answers no from the closest 30,000 characters, and the Gate returns no with exit 1](_media/diagrams/classif-sequence.png)](_media/diagrams/classif-sequence.png)
+
+_[Open the diagram full size](_media/diagrams/classif-sequence.png)_
 
 Two steps are worth a closer look. In step 3, the server refuses the text, and that refusal is the only thing that sends classif down the long path; it never guesses token counts up front. In step 15, the Gate applies a simple rule: a `yes` stands because the model saw a passage that shows it, but a `no` stands only when the passages were ranked by meaning. If the embedding model is missing and the ranking used words alone, classif keeps reading.
 
@@ -149,7 +153,7 @@ The scenario flow:
 
 - pick out a staged change that needs a security review
 - sort a change description into bug, feature or chore
-- ask a question about a 772 KB novel, first cold and then with the cache
+- ask a question about a 772 KB novel, first building the passage index and then reusing it
 - clean up
 
 ### Prerequisites
@@ -358,7 +362,7 @@ time classif "Does Elizabeth die in this book?" -i pg1342.txt --cache
 no 0.99
 ```
 
-The first run took 16.8 seconds on my machine. Most of that time goes into cutting the book into passages and embedding each one. Run the same command again and the index comes from the cache:
+The first run took 16.8 seconds on my machine, with the model already loaded and no saved index. Most of that time goes into cutting the book into passages and embedding each one. Run the same command again and the index comes from the cache:
 
 ```
 no 0.99
@@ -366,7 +370,7 @@ no 0.99
 
 The second run took 2.7 seconds. Both runs exited with 1, since `no` is not the first label.
 
-Remember what a `no` from the search means: the passages closest to the question don't show Elizabeth dying. For a question like this one, that is exactly how a person would answer it too; nobody re-reads a whole novel to check. A claim about every line, such as "is every entry in this log from the same day?", needs the full read, and that can take minutes.
+Remember what a `no` from the search means: the passages closest to the question don't show Elizabeth dying. The answer rests on those passages, and a search can miss one. Add `-j` and the read report says so with `"plan": "search"`. A claim about every line, such as "is every entry in this log from the same day?", needs the full read, and that can take minutes.
 
 ### Exit codes cheat sheet
 

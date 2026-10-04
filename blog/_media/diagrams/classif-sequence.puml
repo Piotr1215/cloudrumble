@@ -47,7 +47,11 @@ note right of cli
 end note
 cli -> router : read it in parts
 router -> judge : the question alone: which kind is it?
-judge --> router : "exists"
+judge --> router : a kind, only 0.75 sure
+note right of router
+  Below 0.8 the pick counts as unsure.
+  classif still searches with the top kind.
+end note
 router -> search : look for a passage that shows it
 search -> search : cut into 1,200-char passages
 search -> embed : passages, then the question

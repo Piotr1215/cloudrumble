@@ -81,7 +81,7 @@ end note
 legend bottom
   |= Type |= Description |
   | <color:#3A6DB0><b><<CLI>></b></color> | The command your script runs. |
-  | <color:#5B8FD1><b><<CODE>></b></color> | Plain program steps. The long text stays here and never goes into one prompt whole. |
+  | <color:#5B8FD1><b><<CODE>></b></color> | Plain program steps. After an overflow, code keeps the long text and sends the model only selected parts. |
   | <color:#B06A28><b><<MODEL>></b></color> | Models served by Ollama on localhost. |
   | <b>Router</b> | One model call that reads only the question and picks a reading plan. |
   | <b>Search</b> | Ranks passages by words and by meaning. One call reads the closest 30,000 characters. |
