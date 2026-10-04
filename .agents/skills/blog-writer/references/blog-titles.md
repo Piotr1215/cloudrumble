@@ -1,5 +1,7 @@
 # Blog Title Patterns
 
+This is a bank of title ideas, not a set of rules. Filter every pattern through the blog's content, audience, and current writing-style guide. Skip hype, hidden-topic teasers, unsupported counts, and clickbait. A title does not need a number, urgency, or a call to action.
+
 Proven title patterns that generate clicks. Use these as inspiration when crafting blog titles.
 
 ## Essential Title Components
@@ -315,10 +317,10 @@ Proven title patterns that generate clicks. Use these as inspiration when crafti
 
 ## Title Crafting Checklist
 
-- [ ] Contains number or specific metric
+- [ ] Uses a number or metric only when the content supports it
 - [ ] Includes relevant keywords for SEO
-- [ ] Has CTA or urgency element
-- [ ] Creates curiosity without revealing everything
+- [ ] Names the topic and reader's problem without forced urgency
+- [ ] Makes the subject clear without a hidden-topic teaser
 - [ ] Under 60 characters (ideal for social media)
 - [ ] Matches actual content (no false promises)
 - [ ] Resonates with target audience problem
