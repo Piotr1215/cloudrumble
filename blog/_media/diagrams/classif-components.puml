@@ -6,27 +6,37 @@ skinparam defaultFontSize 14
 skinparam ArrowColor #444444
 skinparam componentStyle uml1
 skinparam component {
-  BackgroundColor<<CLI>> #F4877C
-  BorderColor<<CLI>> #A80036
-  BackgroundColor<<CODE>> #F4877C
-  BorderColor<<CODE>> #A80036
-  BackgroundColor<<MODEL>> #FFCC33
-  BorderColor<<MODEL>> #A80036
+  BackgroundColor<<CLI>> #5B8FD1
+  BorderColor<<CLI>> #23466E
+  FontColor<<CLI>> #FFFFFF
+  StereotypeFontColor<<CLI>> #FFFFFF
+  BackgroundColor<<CODE>> #B9D3EE
+  BorderColor<<CODE>> #23466E
+  BackgroundColor<<MODEL>> #E9B27E
+  BorderColor<<MODEL>> #7A4A1E
 }
 skinparam database {
-  BackgroundColor #FFCC33
-  BorderColor #A80036
+  BackgroundColor #D8D8D8
+  BorderColor #555555
 }
 skinparam interface {
-  BackgroundColor #FFFFCC
-  BorderColor #A80036
+  BackgroundColor #FFFFFF
+  BorderColor #555555
 }
 skinparam note {
-  BackgroundColor #33CCBB
-  BorderColor #222222
+  BackgroundColor #FFF2A8
+  BorderColor #9C8500
 }
 skinparam legend {
-  BackgroundColor #F0FFFF
+  BackgroundColor #FAFAF5
+}
+skinparam cloud {
+  BackgroundColor #FBF4EC
+  BorderColor #7A4A1E
+}
+skinparam package {
+  BackgroundColor #F4F8FC
+  BorderColor #23466E
 }
 
 actor "Your script" as dev
@@ -70,9 +80,9 @@ end note
 
 legend bottom
   |= Type |= Description |
-  | <color:#F4877C><b><<CLI>></b></color> | The command your script runs. |
-  | <color:#F4877C><b><<CODE>></b></color> | Plain program steps. The long text stays here and never goes into one prompt whole. |
-  | <color:#E6AC00><b><<MODEL>></b></color> | Models served by Ollama on localhost. |
+  | <color:#3A6DB0><b><<CLI>></b></color> | The command your script runs. |
+  | <color:#5B8FD1><b><<CODE>></b></color> | Plain program steps. The long text stays here and never goes into one prompt whole. |
+  | <color:#B06A28><b><<MODEL>></b></color> | Models served by Ollama on localhost. |
   | <b>Router</b> | One model call that reads only the question and picks a reading plan. |
   | <b>Search</b> | Ranks passages by words and by meaning. One call reads the closest 30,000 characters. |
   | <b>Linked lines</b> | Reads the lines connected to what the question names. |

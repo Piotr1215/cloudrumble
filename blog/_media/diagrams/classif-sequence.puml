@@ -8,17 +8,17 @@ skinparam ArrowColor #222222
 skinparam SequenceBoxBorderColor #555555
 skinparam SequenceLifeLineBorderColor #555555
 skinparam participant {
-  BackgroundColor #E85A5A
-  BorderColor #222222
-  FontColor #FFFFFF
+  BackgroundColor #B9D3EE
+  BorderColor #23466E
+  FontColor #000000
 }
 skinparam actor {
   BackgroundColor #222222
   BorderColor #222222
 }
 skinparam note {
-  BackgroundColor #F8F8F8
-  BorderColor #222222
+  BackgroundColor #FFF2A8
+  BorderColor #9C8500
 }
 title <b>classif reading a long text</b>
 autonumber
@@ -26,16 +26,16 @@ hide footbox
 
 actor "Your script" as dev
 
-box "classif" #DDDDDD
+box "classif" #F4F8FC
   participant "CLI" as cli
   participant "Router" as router
   participant "Search" as search
   participant "Gate" as gate
 end box
 
-box "Ollama on your machine" #DDDDDD
-  participant "Winnow-12B" as judge
-  participant "embeddinggemma" as embed
+box "Ollama on your machine" #FBF4EC
+  participant "Winnow-12B" as judge #E9B27E
+  participant "embeddinggemma" as embed #E9B27E
 end box
 
 dev -> cli : novel and "Does Elizabeth die?"
