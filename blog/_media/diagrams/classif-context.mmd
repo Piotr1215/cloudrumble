@@ -1,0 +1,28 @@
+flowchart LR
+    subgraph shell["Your shell or script"]
+        direction TB
+        Q[Question, text, labels, context]
+        O[Label, score, exit code]
+    end
+    subgraph proc["classif: one Python process"]
+        X[Spans, index, table of readings, link graph: in memory, never in a prompt]
+    end
+    subgraph disk["Disk, only with --cache: ~/.cache/classif/mem.sqlite"]
+        D[(Readings, links, vectors)]
+    end
+    subgraph ollama["Ollama server on the GPU"]
+        direction TB
+        M[12B model: one token per call]
+        E[Embedding model, 300M]
+    end
+    Q --> X
+    X --> O
+    X <-- reuse or store --> D
+    X -- root call, reader, link resolver, judge --> M
+    X -- passages once per text, then the question --> E
+    classDef semantic fill:#174a58,stroke:#69d7e3,color:#f3fafb,stroke-width:2px;
+    classDef program fill:#1d2842,stroke:#9ab4ee,color:#f3f6fc,stroke-width:2px;
+    classDef store fill:#2b2b3a,stroke:#c9b458,color:#f3f6fc,stroke-width:2px;
+    class M,E semantic;
+    class Q,O,X program;
+    class D store;

@@ -1,0 +1,39 @@
+flowchart LR
+    subgraph shell["Your shell or script"]
+        direction TB
+        P[Text past the window]
+        O[Label, score, exit code, basis complete or witness]
+    end
+    subgraph proc["classif process, in memory"]
+        direction TB
+        S[Passages of 3,000 chars, likely evidence first; halve a flagged one down to lines]
+        T[(Table of readings: label, p, offsets; link edges)]
+        X[Reduce: count labels, distinct ids, latest date; pack evidence to 4,000 chars]
+        G[Coverage and execution checks]
+    end
+    subgraph disk["Disk, only with --cache"]
+        D[(Readings and links, per prompt)]
+    end
+    subgraph ollama["Ollama server on the GPU"]
+        direction TB
+        R[Reader, 12B: fits, breaks, related or unrelated, one token]
+        L[Link resolver, 12B: which earlier line does this line point to]
+        J[Judge, 12B: yes, no or unknown over the packed lines]
+    end
+    P --> S
+    S --> R
+    R --> T
+    R <-- reuse or store --> D
+    T --> L
+    L --> T
+    T --> X
+    X --> J
+    J --> G
+    T --> G
+    G --> O
+    classDef semantic fill:#174a58,stroke:#69d7e3,color:#f3fafb,stroke-width:2px;
+    classDef program fill:#1d2842,stroke:#9ab4ee,color:#f3f6fc,stroke-width:2px;
+    classDef store fill:#2b2b3a,stroke:#c9b458,color:#f3f6fc,stroke-width:2px;
+    class R,L,J semantic;
+    class P,O,S,T,X,G program;
+    class D store;

@@ -47,10 +47,6 @@ You have a script that collects changes and a reviewer that inspects them. A gat
 
 <!--truncate-->
 
-:::note Working draft
-This post covers implementation and experiments through 3 October 2026. The long-input reader is still evolving. Timings describe recorded runs under the named model and cache conditions; they are not performance guarantees.
-:::
-
 ## A semantic gate in a shell pipeline
 
 Consider a local gate that sends security-related changes to a more expensive reviewer:
@@ -169,7 +165,7 @@ The root call also gives the executor the shape of a mixture of experts, in the 
 
 ## The external-memory reader
 
-![Code stores the document, semantic readings, and links outside the model context](_media/diagrams/classif-external-memory.png)
+![Where each part lives: your shell, the classif process, the optional cache on disk, and the Ollama server](_media/diagrams/classif-context.png)
 
 The executor in [mem.py](https://github.com/Piotr1215/classif/blob/main/mem.py) works through several stages.
 
@@ -183,6 +179,8 @@ Evidence output maps decoded-text offsets to files and line numbers, showing whi
 
 After overflow, a root call reads the question alone and selects a reading kind: a witness for existence, a counterexample for a claim about every case, broader reading for current state or counts, and counted facts plus an evenly spaced sample for whole-text questions.
 
+![The root call reads the question alone and picks one of four paths; code decides whether the answer stands](_media/diagrams/classif-routing.png)
+
 Existence and state questions try search first. A root pick below 0.8 confidence also tries search as the kind on top; when that kind is every case or whole text, only a yes is accepted. When the root selects a claim about every case, the scanning path looks for a counterexample or reads every line. Callers supply the question, options, policy, and budget; classif chooses the reading plan.
 
 Answers carry `basis: search` for retrieved passages, `basis: sample` for samples, or `basis: component` for linked evidence. These paths do not establish full-source coverage.
@@ -193,7 +191,7 @@ Code groups source spans into passages of about 1,200 characters. `embeddinggemm
 
 Selection takes six word matches, then twenty vector matches, then more vector candidates until the roughly 30,000-character budget fills. This gives exact names and identifiers priority over similar passages. Code prepends a bounded chain of lines connected to the question's identifiers and presents selected passages in source order.
 
-![The search path: an index built once, a ranking by words and vectors, a budget filled in text order, one judge call, and a code decision on whether the answer stands](_media/diagrams/classif-search-path.png)
+![The search path across the shell, the classif process, the optional cache and the Ollama server](_media/diagrams/classif-search-path.png)
 
 One 12B call judges whether the selected evidence shows an existence claim. State questions also allow `unknown`. Negative existence results require both meaning-based and word-based ranking; negative state results can also use word-based retrieval alone. Unaccepted results fall through to the linked component, for state and unsure questions, and then to the full read.
 
@@ -204,6 +202,8 @@ Search answers report `scan_complete: false`. Negative results describe retrieve
 The scanning path uses 3,000-character passages for much of the read. Each semantic call labels the passage as fitting the claim, breaking it, related, or unrelated.
 
 The reader dismisses unrelated passages and retains related passages without narrowing them. It splits and rechecks fitting or breaking passages to find smaller evidence. Facts spanning wrapped lines retain the smallest span that still expresses them.
+
+![The full read: passages to the reader, rows into a table in memory, links resolved, facts reduced in code, one judge call, then coverage checks](_media/diagrams/classif-full-read.png)
 
 Readings become rows in an external table. Code can count identifiers, compare dates, follow links, and gather support without carrying every reading in the prompt.
 
@@ -227,29 +227,29 @@ A judgment such as “this line refers to that earlier line” becomes an edge t
 
 The graph can miss references beyond its candidate window, unrecognized anchors, and exceptions elsewhere in the source. A component answer does not establish whole-source coverage, regardless of confidence.
 
-Repeated claims can reuse saved reader scores for unchanged text. Cache keys include the exact prompt, labels, model identity and digest, context size, and policy text. Policy changes require new readings; changed source lines invalidate affected work. Stored raw log masses allow recalibration at lookup.
+Nothing is written to disk unless you pass `--cache`; every run then starts cold. With the flag, repeated claims reuse saved reader scores for unchanged text. Cache keys include the exact prompt, labels, model identity and digest, context size, and policy text. Policy changes require new readings; changed source lines invalidate affected work. Stored raw log masses allow recalibration at lookup.
 
-The vector index key includes the source, embedding model and digest, and passage size. Later questions reuse document vectors and embed only the question. Source changes build a new index. This cache is independent of claim-specific reader scores.
+Under the same flag, the vector index key includes the source, embedding model and digest, and passage size. Later questions reuse document vectors and embed only the question. Source changes build a new index. This cache is independent of claim-specific reader scores.
 
 The final verdict is judged again when evidence is available. Different questions can reuse reference links but generally need new reader scores. Growing files reuse unchanged portions and read additions.
 
 ## What the design rests on
 
-Each mechanism in classif has a published counterpart. The table names the paper, what classif takes from it, and where it departs. The papers ground the mechanisms; none of their results transfer to classif's accuracy or speed.
+Each mechanism in classif has a published counterpart. The table names the paper, what classif takes from it, and where it departs, checked against each paper's abstract and, where a row leans on more, its text. The papers ground the mechanisms; none of their results transfer to classif's accuracy or speed. Full citations are in the references at the end.
 
 | classif mechanism | Paper | Taken | Departs |
 | --- | --- | --- | --- |
 | One-token decision, label variants summed | [Surface Form Competition](https://arxiv.org/abs/2104.08315), Holtzman and colleagues, 2021 | an answer's probability is split across its surface forms, so the top string is not the top answer | the forms are case and spacing variants of a fixed label, summed before comparing |
-| Fitted temperature | [On Calibration of Modern Neural Networks](https://arxiv.org/abs/1706.04599), Guo and colleagues, 2017; [Calibrate Before Use](https://arxiv.org/abs/2102.09690), Zhao and colleagues, 2021 | temperature scaling fits one parameter and changes no winner; a language model leans toward some answers before it reads | fitted per model and per output shape on held-out decisions |
-| Score floor and exit code 3 | [Selective Classification for Deep Neural Networks](https://arxiv.org/abs/1705.08500), Geifman and El-Yaniv, 2017 | a reject option trades coverage for risk; the caller sets the floor | the reject is also a code decision on what was read |
+| Fitted temperature | [On Calibration of Modern Neural Networks](https://arxiv.org/abs/1706.04599), Guo and colleagues, 2017; [Calibrate Before Use](https://arxiv.org/abs/2102.09690), Zhao and colleagues, 2021 | temperature scaling, a one-parameter calibration, leaves the predicted class unchanged; a language model leans toward some answers before it reads | fitted per model and per output shape on held-out decisions |
+| Score floor and exit code 3 | [Selective Classification for Deep Neural Networks](https://arxiv.org/abs/1705.08500), Geifman and El-Yaniv, 2017 | a reject option trades coverage for risk; the user sets a risk level and the classifier rejects what it must | the caller sets a probability floor directly, and code also rejects on what was read |
 | Reading past the window in pieces | [Lost in the Middle](https://arxiv.org/abs/2307.03172), Liu and colleagues, 2023 | a long window is not a read: what sits in its middle is used worst | the window is refused past its size; the judge sees a small set in text order |
-| Root call and external memory | [Recursive Language Models](https://arxiv.org/abs/2512.24601), Zhang, Kraska and Khattab, 2025 | the prompt as environment, sub-calls over slices, values kept outside the context | the program is fixed; the root call is one token |
-| A model deciding how to read | [MemWalker](https://arxiv.org/abs/2310.05029), Chen and colleagues, 2023; [ReadAgent](https://arxiv.org/abs/2402.09727), Lee and colleagues, 2024 | the model navigates a long text by looking up what it needs | navigation is code over an index; the model picks only the kind |
-| Code counts and gates, the model reads | [PAL](https://arxiv.org/abs/2211.10435), Gao and colleagues, 2022 | arithmetic and logic go to a program | the program is fixed; the model writes no code |
-| Passage search | [Dense Passage Retrieval](https://arxiv.org/abs/2004.04906), Karpukhin and colleagues, 2020; [Sparse, Dense, and Attentional Representations](https://arxiv.org/abs/2005.00181), Luan and colleagues, 2020; [Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401), Lewis and colleagues, 2020; [EmbeddingGemma](https://arxiv.org/abs/2509.20354), 2025 | dual-encoder retrieval; sparse and dense rankers fail differently and a hybrid beats either; retrieve, then read | one text, not a corpus; one token over a bounded budget; code decides whether a no stands |
-| Gate and cascade | [Sparsely gated mixture of experts](https://arxiv.org/abs/1701.06538), Shazeer and colleagues, 2017; [FrugalGPT](https://arxiv.org/abs/2305.05176), Chen, Zaharia and Zou, 2023 | run only the expert the gate picks; answer cheap first and let a scorer decide whether to go on | the experts are programs; the scorer is code |
-| Judge over packed evidence | [Judging LLM-as-a-Judge](https://arxiv.org/abs/2306.05685), Zheng and colleagues, 2023 | a model judge shows position and verbosity bias | one token over lines in text order, told nothing of coverage |
-| Link resolver | [End-to-end Neural Coreference Resolution](https://arxiv.org/abs/1707.07045), Lee and colleagues, 2017 | which earlier mention a span refers to | one call over eight earlier lines, no trained span model; edges saved per text |
+| Root call and external memory | [Recursive Language Models](https://arxiv.org/abs/2512.24601), Zhang, Kraska and Khattab, 2025 | a long prompt as part of an external environment the model examines, decomposes and recursively calls itself over | the program is fixed; the root call is one token |
+| A model deciding how to read | [MemWalker](https://arxiv.org/abs/2310.05029), Chen and colleagues, 2023; [ReadAgent](https://arxiv.org/abs/2402.09727), Lee and colleagues, 2024 | the model decides how to read: MemWalker navigates a tree of summaries, ReadAgent keeps gist memories and looks up pages | navigation is code over an index; the model picks only the kind |
+| Code counts and gates, the model reads | [PAL](https://arxiv.org/abs/2211.10435), Gao and colleagues, 2022 | the model decomposes a problem into program steps and a Python interpreter solves them | the program is fixed; the model writes no code |
+| Passage search | [Dense Passage Retrieval](https://arxiv.org/abs/2004.04906), Karpukhin and colleagues, 2020; [Sparse, Dense, and Attentional Representations](https://arxiv.org/abs/2005.00181), Luan and colleagues, 2020; [Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401), Lewis and colleagues, 2020; [EmbeddingGemma](https://arxiv.org/abs/2509.20354), 2025 | dual-encoder retrieval; fixed-length dense encodings lose precision on long documents and a sparse-dense hybrid keeps the precision of sparse retrieval; retrieve, then generate from the passages; a 300M embedding model from Gemma 3 | one text, not a corpus; one token over a bounded budget; code decides whether a no stands |
+| Gate and cascade | [Sparsely gated mixture of experts](https://arxiv.org/abs/1701.06538), Shazeer and colleagues, 2017; [FrugalGPT](https://arxiv.org/abs/2305.05176), Chen, Zaharia and Zou, 2023 | a trainable gate picks a sparse combination of experts per example; a cascade asks the cheap model first and a scoring function decides whether its answer is reliable enough to return | the experts are programs; the scorer is code |
+| Judge over packed evidence | [Judging LLM-as-a-Judge](https://arxiv.org/abs/2306.05685), Zheng and colleagues, 2023 | a model used as a judge shows position, verbosity and self-enhancement biases | one token over lines in text order, told nothing of coverage |
+| Link resolver | [End-to-end Neural Coreference Resolution](https://arxiv.org/abs/1707.07045), Lee and colleagues, 2017 | every span is a candidate mention with a learned distribution over its antecedents | one call over eight earlier lines, no trained span model; edges saved per text |
 
 ## Failed shortcuts
 
@@ -273,14 +273,14 @@ The architecture docs record these runs with `gemma4:12b` on one 12 GB GPU on 2 
 | 153k characters, first whole-input question | 22 s |
 | Same text, next question with a warm server prompt cache | 0.9 s |
 | 306k characters, first full-read claim | 91 s |
-| Same text and claim with saved readings | 0.8 s |
+| Same text and claim again, with `--cache` | 0.8 s |
 | A claim settled by a small linked component | 0.6 to 0.9 s |
 
-A server prompt cache helps with another question on the same text. Saved reader rows help with the same claim. A graph reduces material for entity-specific questions. New text still requires prompt evaluation.
+A server prompt cache helps with another question on the same text. Saved reader rows, kept only with `--cache`, help with the same claim. A graph reduces material for entity-specific questions. New text still requires prompt evaluation.
 
 Before search, a question about whether Elizabeth marries Darcy in the 772 KB text of Pride and Prejudice took 248 seconds and returned `insufficient`, even after skipping the expensive graph path.
 
-A matched comparison on 3 October used the same existence question about Elizabeth dying, piped from `curl`, on the same machine and model. The earlier run read all 11,882 lines in 259 passages, made 295 calls, and returned `insufficient` after 4 minutes 21 seconds. With `winnow:12b-q4_K_M` and the `embeddinggemma` index, it returned `no 0.99` in 17 seconds cold and 3.9 seconds with the saved index.
+A matched comparison on 3 October used the same existence question about Elizabeth dying, piped from `curl`, on the same machine and model. The earlier run read all 11,882 lines in 259 passages, made 295 calls, and returned `insufficient` after 4 minutes 21 seconds. With `winnow:12b-q4_K_M` and the `embeddinggemma` index, it returned `no 0.99` in 17 seconds cold and 3.9 seconds with the index saved by `--cache`.
 
 The saved long-input evaluation results show:
 
@@ -332,7 +332,7 @@ For a policy-based decision, give the rule with `-c` and the material with `-i` 
 
 The policy precedes every reader and judge call, including on long input, and must fit alongside the bounded passage. Put large sources in input; each call carries the context file. Reference-resolution calls omit the policy because they answer a separate question about which line a statement refers to, and so does the root call, which reads the question alone.
 
-`-d SECONDS` bounds the work. `-t P` imposes a score floor. `-w`, or `--why`, uses the line reader and prints source evidence, so even a short input can take longer and produce a different answer from the one-call path.
+`-d SECONDS` bounds the work. `-t P` imposes a score floor. `--cache` keeps readings, links and the passage index under `~/.cache/classif` so a repeat on the same text reuses them; without it nothing touches the disk. `-w`, or `--why`, uses the line reader and prints source evidence, so even a short input can take longer and produce a different answer from the one-call path.
 
 ## Resources
 
@@ -340,21 +340,29 @@ The policy precedes every reader and judge call, including on long input, and mu
 - [Architecture, graph scope, and recorded costs](https://github.com/Piotr1215/classif/blob/main/docs/architecture.md)
 - [CLI, scoring, calibration, and exit codes](https://github.com/Piotr1215/classif/blob/main/docs/reference.md)
 - [Shell use cases](https://github.com/Piotr1215/classif/blob/main/docs/use-cases.md)
-- [Recursive Language Models paper](https://arxiv.org/abs/2512.24601)
-- [Sparsely gated mixture-of-experts layer](https://arxiv.org/abs/1701.06538)
-- [FrugalGPT: LLM cascades](https://arxiv.org/abs/2305.05176)
-- [Surface Form Competition](https://arxiv.org/abs/2104.08315)
-- [On Calibration of Modern Neural Networks](https://arxiv.org/abs/1706.04599)
-- [Calibrate Before Use](https://arxiv.org/abs/2102.09690)
-- [Selective Classification for Deep Neural Networks](https://arxiv.org/abs/1705.08500)
-- [Lost in the Middle](https://arxiv.org/abs/2307.03172)
-- [MemWalker](https://arxiv.org/abs/2310.05029) and [ReadAgent](https://arxiv.org/abs/2402.09727)
-- [PAL: Program-aided Language Models](https://arxiv.org/abs/2211.10435)
-- [Dense Passage Retrieval](https://arxiv.org/abs/2004.04906), [Sparse, Dense, and Attentional Representations](https://arxiv.org/abs/2005.00181) and [Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401)
-- [EmbeddingGemma](https://arxiv.org/abs/2509.20354)
-- [Judging LLM-as-a-Judge](https://arxiv.org/abs/2306.05685)
-- [End-to-end Neural Coreference Resolution](https://arxiv.org/abs/1707.07045)
 - [Jev and typed decisions](https://docs.typesafe.ai/introduction)
 - [SemIf-OpenJev](https://github.com/TheoLeeCJ/SemIf-OpenJev)
 - [Upstream Winnow-12B](https://huggingface.co/EldanRing/Winnow-12B)
 - [Winnow-12B Q4_K_M GGUF and provenance](https://huggingface.co/Piotr1215/Winnow-12B-GGUF)
+
+## References
+
+Cited in the arXiv versions; a venue is given where the arXiv record or Semantic Scholar names one. Authors are listed in full up to eight.
+
+- Holtzman, A., West, P., Shwartz, V., Choi, Y., and Zettlemoyer, L. (2021). Surface Form Competition: Why the Highest Probability Answer Isn't Always Right. arXiv preprint. [arXiv:2104.08315](https://arxiv.org/abs/2104.08315).
+- Guo, C., Pleiss, G., Sun, Y., and Weinberger, K. Q. (2017). On Calibration of Modern Neural Networks. In Proceedings of ICML 2017. [arXiv:1706.04599](https://arxiv.org/abs/1706.04599).
+- Zhao, T. Z., Wallace, E., Feng, S., Klein, D., and Singh, S. (2021). Calibrate Before Use: Improving Few-Shot Performance of Language Models. In Proceedings of ICML 2021. [arXiv:2102.09690](https://arxiv.org/abs/2102.09690).
+- Geifman, Y. and El-Yaniv, R. (2017). Selective Classification for Deep Neural Networks. In Advances in Neural Information Processing Systems 30 (NeurIPS 2017). [arXiv:1705.08500](https://arxiv.org/abs/1705.08500).
+- Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., and Liang, P. (2023). Lost in the Middle: How Language Models Use Long Contexts. Transactions of the Association for Computational Linguistics. [arXiv:2307.03172](https://arxiv.org/abs/2307.03172).
+- Zhang, A. L., Kraska, T., and Khattab, O. (2025). Recursive Language Models. arXiv preprint. [arXiv:2512.24601](https://arxiv.org/abs/2512.24601).
+- Chen, H., Pasunuru, R., Weston, J., and Celikyilmaz, A. (2023). Walking Down the Memory Maze: Beyond Context Limit through Interactive Reading. arXiv preprint. [arXiv:2310.05029](https://arxiv.org/abs/2310.05029).
+- Lee, K. H., Chen, X., Furuta, H., Canny, J., and Fischer, I. (2024). A Human-Inspired Reading Agent with Gist Memory of Very Long Contexts. arXiv preprint. [arXiv:2402.09727](https://arxiv.org/abs/2402.09727).
+- Gao, L., Madaan, A., Zhou, S., Alon, U., Liu, P., Yang, Y., Callan, J., and Neubig, G. (2022). PAL: Program-aided Language Models. In Proceedings of ICML 2023. [arXiv:2211.10435](https://arxiv.org/abs/2211.10435).
+- Karpukhin, V., Oğuz, B., Min, S., Lewis, P., Wu, L., Edunov, S., Chen, D., and Yih, W.-t. (2020). Dense Passage Retrieval for Open-Domain Question Answering. In Proceedings of EMNLP 2020. [arXiv:2004.04906](https://arxiv.org/abs/2004.04906).
+- Luan, Y., Eisenstein, J., Toutanova, K., and Collins, M. (2020). Sparse, Dense, and Attentional Representations for Text Retrieval. Transactions of the Association for Computational Linguistics. [arXiv:2005.00181](https://arxiv.org/abs/2005.00181).
+- Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. In Advances in Neural Information Processing Systems 33 (NeurIPS 2020). [arXiv:2005.11401](https://arxiv.org/abs/2005.11401).
+- Vera, H. S. et al. (2025). EmbeddingGemma: Powerful and Lightweight Text Representations. arXiv preprint. [arXiv:2509.20354](https://arxiv.org/abs/2509.20354).
+- Shazeer, N., Mirhoseini, A., Maziarz, K., Davis, A., Le, Q., Hinton, G., and Dean, J. (2017). Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. arXiv preprint. [arXiv:1701.06538](https://arxiv.org/abs/1701.06538).
+- Chen, L., Zaharia, M., and Zou, J. (2023). FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance. arXiv preprint. [arXiv:2305.05176](https://arxiv.org/abs/2305.05176).
+- Zheng, L. et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. In NeurIPS 2023 Datasets and Benchmarks Track. [arXiv:2306.05685](https://arxiv.org/abs/2306.05685).
+- Lee, K., He, L., Lewis, M., and Zettlemoyer, L. (2017). End-to-end Neural Coreference Resolution. In Proceedings of EMNLP 2017. [arXiv:1707.07045](https://arxiv.org/abs/1707.07045).
