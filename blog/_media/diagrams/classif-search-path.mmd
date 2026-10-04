@@ -1,0 +1,20 @@
+flowchart TB
+    Q[Question] --> QE[Embedding model: question vector, one call]
+    S[Passages of about 1,200 characters] --> PE[Embedding model: one vector per passage, once per text]
+    PE --> I[(Saved vectors)]
+    S --> B[Python: BM25 by stem]
+    QE --> R
+    I --> R
+    B --> R
+    R[Python: 6 closest by words, 20 closest by vector, then the rest by vector] --> F[Python: fill 30,000 characters in that order, present in text order]
+    C[Python: lines chained to the question's identifiers] --> F
+    F --> J[12B: one token, yes or no; unknown too for a state]
+    J --> G{Python: does the answer stand?}
+    G -->|yes| O[Answer, basis search]
+    G -->|exists no, ranked by meaning| O
+    G -->|state no| O
+    G -->|anything else| N[Next path: linked component, then full read]
+    classDef semantic fill:#174a58,stroke:#69d7e3,color:#f3fafb,stroke-width:2px;
+    classDef program fill:#1d2842,stroke:#9ab4ee,color:#f3f6fc,stroke-width:2px;
+    class QE,PE,J semantic;
+    class Q,S,I,B,R,F,C,G,O,N program;
