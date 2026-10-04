@@ -236,7 +236,8 @@ mkdir /tmp/classif-demo && cd /tmp/classif-demo
 git init -q
 printf 'def api_headers():\n    return {"Content-Type": "application/json"}\n' > api.py
 printf 'MAX_CONTEXT_TOKENS = 4096\n' > model.py
-git add . && git commit -qm "baseline"
+git add .
+git -c user.name=demo -c user.email=demo@example.invalid commit -qm "baseline"
 ```
 
 Now make a change that reads an API key from the environment and stage it:
@@ -385,7 +386,8 @@ Remember what a `no` from the search means: the passages closest to the question
 Remove the demo files, the cache and the command link:
 
 ```bash
-rm -rf /tmp/classif-demo pg1342.txt ~/.cache/classif
+cd ~
+rm -rf /tmp/classif-demo ~/.cache/classif
 rm ~/.local/bin/classif
 ```
 
