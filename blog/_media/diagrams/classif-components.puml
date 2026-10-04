@@ -1,0 +1,83 @@
+@startuml classif-components
+skinparam dpi 150
+skinparam shadowing true
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 14
+skinparam ArrowColor #444444
+skinparam componentStyle uml1
+skinparam component {
+  BackgroundColor<<CLI>> #F4877C
+  BorderColor<<CLI>> #A80036
+  BackgroundColor<<CODE>> #F4877C
+  BorderColor<<CODE>> #A80036
+  BackgroundColor<<MODEL>> #FFCC33
+  BorderColor<<MODEL>> #A80036
+}
+skinparam database {
+  BackgroundColor #FFCC33
+  BorderColor #A80036
+}
+skinparam interface {
+  BackgroundColor #FFFFCC
+  BorderColor #A80036
+}
+skinparam note {
+  BackgroundColor #33CCBB
+  BorderColor #222222
+}
+skinparam legend {
+  BackgroundColor #F0FFFF
+}
+
+actor "Your script" as dev
+
+component "classif" <<CLI>> as cli
+component "Router" <<CODE>> as router
+
+package "Long text plans" as plans {
+  component "Search" <<CODE>> as search
+  component "Linked lines" <<CODE>> as linked
+  component "Full read" <<CODE>> as full
+}
+
+component "Gate" <<CODE>> as gate
+
+cloud "Ollama on your machine" as ollama {
+  component "Winnow-12B" <<MODEL>> as judge
+  component "embeddinggemma" <<MODEL>> as embed
+}
+
+database "Cache" as cache
+
+dev -right-> cli : pipes text\nand a question
+cli -right-> ollama : short text:\none call
+cli -down-> router : text is too long
+router -down-> search : one passage\ncan settle it
+router -down-> full : a claim about\nevery part
+search -right-> linked : not settled
+linked -right-> full : not settled
+plans -down-> gate : answer and\nwhat was read
+gate -left-> dev : label, probability, exit code
+router ..> ollama : which kind\nof question?
+plans ..> ollama : model calls
+plans .left. cache : vectors and\nreadings
+
+note right of gate
+  Code checks that the reading
+  covered the question before
+  an answer may stand.
+end note
+
+legend bottom
+  |= Type |= Description |
+  | <color:#F4877C><b><<CLI>></b></color> | The command your script runs. |
+  | <color:#F4877C><b><<CODE>></b></color> | Plain program steps. The long text stays here and never goes into one prompt whole. |
+  | <color:#E6AC00><b><<MODEL>></b></color> | Models served by Ollama on localhost. |
+  | <b>Router</b> | One model call that reads only the question and picks a reading plan. |
+  | <b>Search</b> | Ranks passages by words and by meaning. One call reads the closest 30,000 characters. |
+  | <b>Linked lines</b> | Reads the lines connected to what the question names. |
+  | <b>Full read</b> | Reads every passage, keeps the answers in a table and combines them in code. |
+  | <b>Gate</b> | Returns the answer only when the reading covered the question. Otherwise "insufficient", exit 3. |
+  | <b>Cache</b> | Optional (--cache). Keeps vectors and readings on disk so a repeat question is fast. |
+endlegend
+@enduml

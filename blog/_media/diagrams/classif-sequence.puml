@@ -1,0 +1,66 @@
+@startuml classif-sequence
+skinparam dpi 150
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam BackgroundColor #F8F8F8
+skinparam ArrowColor #222222
+skinparam SequenceBoxBorderColor #555555
+skinparam SequenceLifeLineBorderColor #555555
+skinparam participant {
+  BackgroundColor #E85A5A
+  BorderColor #222222
+  FontColor #FFFFFF
+}
+skinparam actor {
+  BackgroundColor #222222
+  BorderColor #222222
+}
+skinparam note {
+  BackgroundColor #F8F8F8
+  BorderColor #222222
+}
+title <b>classif reading a long text</b>
+autonumber
+hide footbox
+
+actor "Your script" as dev
+
+box "classif" #DDDDDD
+  participant "CLI" as cli
+  participant "Router" as router
+  participant "Search" as search
+  participant "Gate" as gate
+end box
+
+box "Ollama on your machine" #DDDDDD
+  participant "Winnow-12B" as judge
+  participant "embeddinggemma" as embed
+end box
+
+dev -> cli : novel and "Does Elizabeth die?"
+cli -> judge : whole text, truncate: false
+judge --> cli : error, longer than the window
+note right of cli
+  The server refuses instead
+  of cutting the text quietly.
+end note
+cli -> router : read it in parts
+router -> judge : the question alone: which kind is it?
+judge --> router : "exists"
+router -> search : look for a passage that shows it
+search -> search : cut into 1,200-char passages
+search -> embed : passages, then the question
+embed --> search : vectors
+search -> search : rank by words and by meaning
+search -> judge : closest 30,000 chars, answer with one token
+judge --> search : "no" and its probability
+search -> gate : answer, kind, how passages were ranked
+gate -> gate : may this answer stand?
+note right of gate
+  A "no" stands only when the passages
+  were ranked by meaning. Otherwise the
+  linked lines and then a full read follow.
+end note
+gate --> dev : no, probability, exit 1
+@enduml
