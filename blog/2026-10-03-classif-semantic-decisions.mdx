@@ -216,6 +216,7 @@ The demos run classif from other directories, so put it on your `PATH`. A symlin
 ```bash
 mkdir -p ~/.local/bin
 ln -s "$PWD/classif" ~/.local/bin/classif
+export PATH="$HOME/.local/bin:$PATH"  # if ~/.local/bin is not on your PATH yet
 ```
 
 ### Observability
@@ -310,7 +311,7 @@ git diff --staged |
 
 ### Demo 2: Name the kind of change
 
-Yes and no are only the default answers. With `-e`, you give classif your own options, each with a short description that tells the model when to pick it. The script only ever sees the option name:
+Yes and no are only the default answers. With `-e`, you give classif your own options, each with a short description that tells the model when to pick it. The descriptions only guide the model; the output is the option name and its probability:
 
 ```bash
 printf 'Fix a startup crash when the config file is missing.\n' |
