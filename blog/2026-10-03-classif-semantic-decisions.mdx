@@ -47,7 +47,7 @@ In this blog, we will look at how programs make decisions about text, and how th
 
 <!--truncate-->
 
-A semantic decision is a question about what a piece of text means, asked by a program that needs a short answer it can act on. "Does this diff touch credentials?" is one. "Is this log line a real failure or just noise?" is another. Programs have always made decisions about text, but until recently they could only check which characters the text contains.
+A semantic decision is a question about what a piece of text means, asked by a program that needs a short answer it can act on. "Does this diff touch credentials?" is one. "Is this log line a real failure or just noise?" is another. Programs have always made decisions about text, but for most shell scripts that meant checking which characters the text contains.
 
 A few changes made semantic decisions practical:
 
@@ -67,7 +67,7 @@ Let's look at how each wave changed the way programs decide things about text.
 
 ### #1 Matching text
 
-For decades, a script that needed to decide something about text had one tool: pattern matching. `grep`, `sed`, `awk` and regular expressions are fast and predictable, and they cost nothing to run. They are also completely literal. Ask grep whether a diff touches secrets and the best it can do is look for words like `token` or `password`.
+For decades, the tool a shell script reached for to decide something about text was pattern matching. `grep`, `sed`, `awk` and regular expressions are fast and predictable, and they cost nothing to run. They are also completely literal. Ask grep whether a diff touches secrets and the best it can do is look for words like `token` or `password`.
 
 The trouble is that words carry more than one meaning. `token` appears in a change to an API client, but also in a change to how many tokens a model may read, and in a parser that splits text into tokens. grep flags all three. Meanwhile, a change that quietly makes a storage bucket public may never use any of those words, and grep lets it through.
 
