@@ -1,0 +1,23 @@
+flowchart TB
+    Q[Question past the model window] --> K[12B root call: picks the reading kind from the question alone]
+    K -->|existence or state| P[Python: rank passages by words, vectors and linked lines]
+    K -->|every case| R[Reader: passage judgments and links]
+    K -->|whole text| W[12B: judge counted facts and an even sample]
+    S[Source outside the model context] --> E[Embedding model: passage vectors, once per text]
+    E --> I[(Passage index: saved vectors)]
+    I --> P
+    P --> J[12B: judge the closest passages in one call]
+    J --> A{Python: accept the search result?}
+    A -->|yes, or a trusted no| O[Answer + basis + evidence]
+    A -->|read more: linked lines, then every passage| R
+    S --> R
+    R --> T[(External table of readings)]
+    T --> F[Python: reduce facts and gather evidence]
+    F --> V[12B: judge gathered evidence]
+    V --> G[Python: execution and coverage checks]
+    G --> O
+    W --> O
+    classDef semantic fill:#174a58,stroke:#69d7e3,color:#f3fafb,stroke-width:2px;
+    classDef program fill:#1d2842,stroke:#9ab4ee,color:#f3f6fc,stroke-width:2px;
+    class K,E,J,R,V,W semantic;
+    class S,I,Q,P,A,T,F,G,O program;
