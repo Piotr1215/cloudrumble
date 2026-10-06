@@ -153,6 +153,7 @@ The scenario flow:
 
 - pick out a staged change that needs a security review
 - sort a change description into bug, feature or chore
+- ask several questions about one message in a single call
 - ask a question about a 772 KB novel, first building the passage index and then reusing it
 - clean up
 
@@ -162,7 +163,7 @@ To follow along, you will need a Linux or macOS machine with a GPU that has abou
 
 Locally installed you will need:
 
-- [Ollama](https://ollama.com/), tested with version 0.34.3 and running at `localhost:11434`
+- [Ollama](https://ollama.com/), running at `localhost:11434`; I measured the timings in this blog with version 0.34.3 and reran the demos on 0.40.0
 - Python 3.12, with no extra packages
 - git and curl
 - `ifne` from moreutils, for the pipeline example
@@ -346,7 +347,41 @@ bug 1.00
 
 With a one-line input there is not much to see, but on a long log it points you straight at the lines that mattered.
 
-### Demo 3: Ask a question about a whole novel
+### Demo 3: Ask several questions at once
+
+Often one answer is not enough. When a message lands in my inbox, I want to know both how urgent it is and whether it asks something of me. Two separate calls would make the model read the message twice. `classif tag` asks all the questions in one call, so the text is read once:
+
+```bash
+echo "Prod login is down since the 3pm deploy. Can you roll back now?" |
+  classif tag 'urgency=today,this week,no deadline' 'kind=asks me,fyi,newsletter'
+echo "exit $?"
+```
+
+```
+urgency  today    1.00
+kind     asks me  1.00
+exit 0
+```
+
+Each argument is one question: a name, an equals sign and the options, separated by commas. The output has one line per question with the name, the winning option and its probability. A newsletter gets a different pair of answers:
+
+```bash
+echo "Our March newsletter: five talks we loved and a new meetup in Berlin." |
+  classif tag 'urgency=today,this week,no deadline' 'kind=asks me,fyi,newsletter'
+```
+
+```
+urgency  no deadline  1.00
+kind     newsletter   1.00
+```
+
+Under the hood, the model no longer stops after one token. It writes a single line of JSON with one key per question and one digit after each key, the number of the option it picked, or 0 for the `none` option classif adds, as it does with `-e`. classif reads the scores behind each digit, the same way it reads `yes` and `no`. The keys matter: without them, the model tended to copy its first answer into the second.
+
+A few things work differently from a single question. Options take no descriptions, so pick names the model can understand on their own. The exit code covers all questions together: 0 when every question got an answer, 2 when any could not be scored, and 3 when any answer fell below the `-t` floor. To act on a specific answer, read the output or add `-j`. And the whole text has to fit in the model's window. Point `tag` at the novel from the next demo and it exits with 2 and tells you to ask one question at a time.
+
+Is one call always faster? Not for short text. Each extra question adds a few generated tokens, so for a short email three separate calls finished slightly sooner than one `tag` call. The gain grows with the text. The [classif reference](https://github.com/Piotr1215/classif/blob/main/docs/reference.md#several-questions-one-text) records three questions about a 44,000-character document taking 2.2 seconds with `tag` against 4.4 seconds as three calls. Accuracy held up too: on the public test set of 36 texts with two claims each, asked in both orders, `tag` got 137 of 144 answers right against 138 for separate calls.
+
+### Demo 4: Ask a question about a whole novel
 
 Time for the long text. Download *Pride and Prejudice* from Project Gutenberg, all 772 KB of it:
 
@@ -380,6 +415,8 @@ Remember what a `no` from the search means: the passages closest to the question
 - `1`: another answer won, including `unknown` and `none`
 - `2`: the answer could not be scored, for example when Ollama is not running
 - `3`: not enough evidence, a deadline (`-d`) ran out, or the score fell below the `-t` floor
+
+`classif tag` reports on all its questions at once: `0` when every question got an answer, `2` when any could not be scored, and `3` when any answer fell below `-t`.
 
 ### Cleanup
 
