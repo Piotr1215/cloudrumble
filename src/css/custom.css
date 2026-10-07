@@ -1211,6 +1211,20 @@ article ul {
   background-image: url(./github-dark.svg);
 }
 
+/* RSS */
+.navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(5) {
+  background-image: url(./rss.svg);
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* hide content */
+  text-indent: -9999px;
+}
+
+[data-theme="dark"] .navbar__items.navbar__items--right > a.navbar__item.navbar__link:nth-child(5) {
+  background-image: url(./rss-dark.svg);
+}
+
 .talks-card {
   @apply mb-8 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow bg-white dark:bg-gray-800;
 }
