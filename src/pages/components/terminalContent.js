@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 const videosData = require("../../data/videos.json");
-const talksData = require("../../data/talks.json");
+const talksData = require("../../data/publicTalks");
 const blogsData = require("../../data/blogs.json");
 
 export default function TerminalContent() {

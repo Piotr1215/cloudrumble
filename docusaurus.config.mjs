@@ -1,7 +1,7 @@
 // @ts-check
 import {themes as prismThemes} from 'prism-react-renderer';
 
-const siteUrl = "https://frosty-babbage-3125a3.netlify.app";
+const siteUrl = "https://cloudrumble.net";
 const siteDescription =
   "Cloud Rumble by Piotr Zaniewski: IT certification notes and blogs on Kubernetes, cloud native, and platform engineering, plus conference talks and open source projects.";
 
@@ -77,7 +77,7 @@ const config = {
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
           postsPerPage: 10,
-          editUrl: "https://github.com/Piotr1215/dca-prep-kit/tree/master/docs",
+          editUrl: "https://github.com/Piotr1215/cloudrumble/edit/master/",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -135,11 +135,6 @@ const config = {
           {
             to: "/medium",
             label: "Medium",
-            position: "left",
-          },
-          {
-            to: "/guestbook",
-            label: "Guestbook",
             position: "left",
           },
           {
@@ -210,7 +205,7 @@ const config = {
         copyright: `Built with Docusaurus.`,
       },
       prism: {
-        theme: prismThemes.dracula,
+        theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         additionalLanguages: ["bash", "yaml", "toml", "ini", "gherkin"],
       },

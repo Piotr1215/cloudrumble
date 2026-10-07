@@ -70,7 +70,7 @@
   {
     "name": "dotfiles",
     "description": "Pop_OS! dotfiles with install script. Complete development environment setup with Neovim, Tmux, and essential CLI tools.",
-    "stars": 134,
+    "stars": 137,
     "url": "https://github.com/Piotr1215/dotfiles",
     "tags": [
       "Dotfiles",
@@ -97,7 +97,7 @@
   {
     "name": "mcp-obsidian",
     "description": "Simple MCP server for interacting with local obsidian notes",
-    "stars": 23,
+    "stars": 22,
     "url": "https://github.com/Piotr1215/mcp-obsidian",
     "tags": [
       "MCP",
@@ -203,10 +203,10 @@
     "category": "dev"
   },
   {
-    "name": "zsh-jumper",
+    "name": "zledit",
     "description": "Jump to any word on the current line via fuzzy picker (fzf/sk/peco). Quick navigation without leaving the keyboard.",
-    "stars": 2,
-    "url": "https://github.com/Piotr1215/zsh-jumper",
+    "stars": 15,
+    "url": "https://github.com/Piotr1215/zledit",
     "tags": [
       "ZSH",
       "CLI",
@@ -228,19 +228,6 @@
     "category": "cli"
   },
   {
-    "name": "homelab",
-    "description": "GitOps-managed Kubernetes homelab. ArgoCD, Cilium, MetalLB, and various self-hosted services.",
-    "stars": 14,
-    "url": "https://github.com/Piotr1215/homelab",
-    "tags": [
-      "Kubernetes",
-      "Homelab",
-      "GitOps",
-      "ArgoCD"
-    ],
-    "category": "config"
-  },
-  {
     "name": "httproute-controller",
     "description": "Kubernetes controller that automatically generates Gateway API HTTPRoutes from Service annotations.",
     "stars": 0,
@@ -256,7 +243,7 @@
   {
     "name": "Crossplane",
     "description": "A control plane framework for platform engineering. Build custom control planes to manage cloud native software with custom Kubernetes APIs and abstractions - without writing controllers. Unlocks the power of Kubernetes custom resources with a rich ecosystem of extensions.",
-    "stars": 11920,
+    "stars": 12132,
     "url": "https://github.com/crossplane/crossplane",
     "tags": [
       "Kubernetes",
@@ -270,7 +257,7 @@
   {
     "name": "vCluster",
     "description": "vCluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.",
-    "stars": 11257,
+    "stars": 11332,
     "url": "https://github.com/loft-sh/vcluster",
     "tags": [
       "Kubernetes",
@@ -283,7 +270,7 @@
   {
     "name": "OpenGitOps Documents",
     "description": "Lasting documents from the OpenGitOps project which are versioned and released together, including the GitOps Principles and Glossary. Defining standards and best practices for GitOps.",
-    "stars": 482,
+    "stars": 478,
     "url": "https://github.com/open-gitops/documents",
     "tags": [
       "GitOps",
@@ -296,7 +283,7 @@
   {
     "name": "Pepr",
     "description": "Type safe K8s middleware for humans. A Kubernetes controller framework that simplifies building admission controllers, operators, and other K8s automation with TypeScript.",
-    "stars": 232,
+    "stars": 240,
     "url": "https://github.com/defenseunicorns/pepr",
     "tags": [
       "Kubernetes",
@@ -309,7 +296,7 @@
   {
     "name": "vCluster Docs",
     "description": "Documentation for vCluster - virtual Kubernetes clusters",
-    "stars": 11,
+    "stars": 13,
     "url": "https://github.com/loft-sh/vcluster-docs",
     "tags": [
       "Documentation",

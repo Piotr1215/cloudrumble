@@ -6,7 +6,13 @@
     "description": "Celebrating 10th Kubernetes Anniversary - 10 Essential Kubernetes Tools for DevOps engineers and platform teams",
     "date": "Jul 2, 2024",
     "publishedAt": "Thu, 04 Jul 2024 14:48:48 GMT",
-    "categories": ["kubernetes", "cncf", "containers", "devops", "tools"],
+    "categories": [
+      "kubernetes",
+      "cncf",
+      "containers",
+      "devops",
+      "tools"
+    ],
     "pinned": true
   },
   {
@@ -16,7 +22,13 @@
     "description": "Boost Terminal Productivity - Zsh tips and tricks for better terminal workflow",
     "date": "Jul 14, 2024",
     "publishedAt": "Mon, 15 Jul 2024 08:54:37 GMT",
-    "categories": ["shell", "programming", "tips-and-tricks", "productivity", "guides-and-tutorials"],
+    "categories": [
+      "shell",
+      "programming",
+      "tips-and-tricks",
+      "productivity",
+      "guides-and-tutorials"
+    ],
     "pinned": true
   },
   {
@@ -26,7 +38,13 @@
     "description": "On Transforming My Terminal-Based Workflow - Top CLI tools for developers and DevOps engineers",
     "date": "Aug 11, 2024",
     "publishedAt": "Sun, 15 Sep 2024 12:45:16 GMT",
-    "categories": ["programming", "command-line", "top-10", "technology", "open-source"],
+    "categories": [
+      "programming",
+      "command-line",
+      "top-10",
+      "technology",
+      "open-source"
+    ],
     "pinned": true
   },
   {
@@ -36,16 +54,112 @@
     "description": "TACOS Providers Review - Terraform Automation and Collaboration Software",
     "date": "Jan 30, 2022",
     "publishedAt": "Sun, 30 Jan 2022 18:00:55 GMT",
-    "categories": ["terraform", "infrastructure-as-code", "devops", "automation", "cloud"],
+    "categories": [
+      "terraform",
+      "infrastructure-as-code",
+      "devops",
+      "automation",
+      "cloud"
+    ],
     "pinned": true
+  },
+  {
+    "title": "A Bridge Between Code and Semantic Reasoning",
+    "link": "https://itnext.io/a-bridge-between-code-and-semantic-reasoning-57fc3fc9d32c",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*olYfIKQWKKM-41jO.png",
+    "description": "How programs make decisions about text, from grep to a local model that answers with one token, and how classif reads documents far bigger than the mo...",
+    "date": "Oct 5, 2026",
+    "publishedAt": "2026-10-05T18:11:42.000Z",
+    "categories": [
+      "ollama",
+      "command-line",
+      "open-source",
+      "software-development",
+      "ai"
+    ]
+  },
+  {
+    "title": "Seven Ways to Multi Line Editing in Neovim",
+    "link": "https://piotrzan.medium.com/seven-ways-to-multi-line-editing-in-neovim-55d903120e2a",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*szAIeoYcLHy4ivJQ.png",
+    "description": "Every Neovim method for editing many lines at once, from :norm and :s to macros and the new built-in multicursor, with a rule of thumb and a keystroke...",
+    "date": "Sep 30, 2026",
+    "publishedAt": "2026-09-30T18:33:38.000Z",
+    "categories": [
+      "neovim",
+      "command-line",
+      "editing",
+      "programming",
+      "software-development"
+    ]
+  },
+  {
+    "title": "No Mouse: Tmux and Regex for instant copy/paste",
+    "link": "https://piotrzan.medium.com/no-mouse-tmux-and-regex-for-instant-copy-paste-707a0768d6c9",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*8excj5-fIQz_6IFN.png",
+    "description": "Search tmux scrollback with the landmarks you remember, watch the exact range highlight in the pane, then paste it at your cursor without submitting i...",
+    "date": "Sep 28, 2026",
+    "publishedAt": "2026-09-28T20:22:01.000Z",
+    "categories": [
+      "command-line",
+      "programming",
+      "tmux",
+      "terminal",
+      "regex"
+    ]
+  },
+  {
+    "title": "Platform Engineering for AI Agents",
+    "link": "https://itnext.io/platform-engineering-for-ai-agents-578380c2de47",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*ClL3kUtR2p-HooF_D_PPDA.png",
+    "description": "The Consumer You Never Designed For Is Already Here Platform engineering matured around one thesis: reduce cognitive load for developers. The CNCF Pla...",
+    "date": "Mar 15, 2026",
+    "publishedAt": "2026-03-15T23:31:18.000Z",
+    "categories": [
+      "ai-agent",
+      "platform-engineering",
+      "devops",
+      "kubernetes",
+      "artificial-intelligence"
+    ]
+  },
+  {
+    "title": "90ms to Total Recall",
+    "link": "https://itnext.io/90ms-to-total-recall-a37741c4842b",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*hru1TrVpYCmbtNZb",
+    "description": "Your AI Agent Should Read Your Notes Before Answering R2R on Kubernetes, pgvector for storage, Ollama for embeddings, and a Python hook that searches ...",
+    "date": "Mar 4, 2026",
+    "publishedAt": "2026-03-04T21:59:29.000Z",
+    "categories": [
+      "ai",
+      "homelab",
+      "ai-agent",
+      "redis",
+      "kubernetes"
+    ]
+  },
+  {
+    "title": "My day to day tasks revolve one way or another around Kubernetes — I give talks about it, maintain…",
+    "link": "https://itnext.io/my-day-to-day-tasks-revolve-one-way-or-another-around-kubernetes-i-give-talks-about-it-maintain-c384229a0000",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*qJftRi2vWVIVQT1V",
+    "description": "What If Your Docker Was Also Your Kubernetes? My day to day tasks revolve one way or another around Kubernetes — I give talks about it, maintain it, d...",
+    "date": "Feb 1, 2026",
+    "publishedAt": "2026-02-01T10:00:54.000Z",
+    "categories": [
+      "cloud-native",
+      "cloud-computing",
+      "devops",
+      "kubernetes",
+      "virtualization"
+    ]
   },
   {
     "title": "Why GPU Infrastructure Is Foundational to an Enterprise AI Strategy",
     "link": "https://itnext.io/why-gpu-infrastructure-is-foundational-to-an-enterprise-ai-strategy-5b574ef1eebc",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*dj5Kcc1e2z4xfs6g",
-    "description": "Photo by BoliviaInteligente on UnsplashIn an era where artificial intelligence is rapidly becoming a cornerstone of enterprise strategy, the conversat...",
+    "description": "In an era where artificial intelligence is rapidly becoming a cornerstone of enterprise strategy, the conversation is shifting from whether a company ...",
     "date": "Nov 11, 2025",
-    "publishedAt": "Tue, 11 Nov 2025 14:44:01 GMT",
+    "publishedAt": "2025-11-11T14:44:01.000Z",
     "categories": [
       "virtualization",
       "infrastructure",
@@ -58,9 +172,9 @@
     "title": "From Physical Servers to Virtual Kubernetes Clusters",
     "link": "https://itnext.io/from-physical-servers-to-virtual-kubernetes-clusters-85f931d4cdff",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*ZEsdmS2pVjxM3l6K.png",
-    "description": "Understanding the need for Kubernetes multi-tenancy with vClusterTL;DR: This blog explains the evolution of computing abstractions from physical serve...",
+    "description": "Understanding the need for Kubernetes multi-tenancy with vCluster TL;DR: This blog explains the evolution of computing abstractions from physical serv...",
     "date": "Oct 23, 2025",
-    "publishedAt": "Thu, 23 Oct 2025 19:33:21 GMT",
+    "publishedAt": "2025-10-23T19:33:21.000Z",
     "categories": [
       "cloud-computing",
       "education",
@@ -73,9 +187,9 @@
     "title": "Stop AI from Hallucinating Your Kubernetes YAML",
     "link": "https://itnext.io/stop-ai-from-hallucinating-your-kubernetes-yaml-10142f685a8b",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*1GsCYrgwVq4LJjs0",
-    "description": "Photo by Mon Esprit on UnsplashUsing a vCluster YAML MCP ServerYou ask an AI to generate a Kubernetes manifest, Helm chart values, or Ansible playbook...",
+    "description": "Using a vCluster YAML MCP Server You ask an AI to generate a Kubernetes manifest, Helm chart values, or Ansible playbook. It responds instantly with c...",
     "date": "Oct 18, 2025",
-    "publishedAt": "Sat, 18 Oct 2025 19:49:25 GMT",
+    "publishedAt": "2025-10-18T19:49:25.000Z",
     "categories": [
       "kubernetes",
       "cloud-computing",
@@ -88,105 +202,15 @@
     "title": "GPU on Kubernetes: Safe Upgrades, Flexible Multitenancy",
     "link": "https://itnext.io/gpu-on-kubernetes-safe-upgrades-flexible-multitenancy-b615ece8532d",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*0NBPtU4oqRRuaj4D",
-    "description": "Photo by Growtika on UnsplashUsing KAI Scheduler and vClusterIn today’s cloud-native landscape, GPU workloads are becoming increasingly critical. From...",
+    "description": "Using KAI Scheduler and vCluster In today’s cloud-native landscape, GPU workloads are becoming increasingly critical. From training large language mod...",
     "date": "Oct 10, 2025",
-    "publishedAt": "Fri, 10 Oct 2025 00:00:59 GMT",
+    "publishedAt": "2025-10-10T00:00:59.000Z",
     "categories": [
       "kubernetes",
       "platform-engineering",
       "devops",
       "artificial-intelligence",
       "software-engineering"
-    ]
-  },
-  {
-    "title": "Kubernetes Multi-tenancy: Are You Doing It the Hard Way?",
-    "link": "https://itnext.io/kubernetes-multi-tenancy-are-you-doing-it-the-hard-way-2619357a7c58",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*o_dvIHt-o4-0xWDdg4l8EA.png",
-    "description": "Virtual clusters with container native isolation on bare-metalIn the world of cloud-native computing, bare metal Kubernetes represents an increasingly...",
-    "date": "May 10, 2025",
-    "publishedAt": "Sat, 10 May 2025 21:06:27 GMT",
-    "categories": [
-      "devops",
-      "cloud-computing",
-      "platform-engineering",
-      "kubernetes",
-      "virtualization"
-    ]
-  },
-  {
-    "title": "Deploy Virtual Kubernetes Clusters on EKS, AKS, and GKE",
-    "link": "https://itnext.io/deploy-virtual-kubernetes-clusters-on-eks-aks-and-gke-215bc7a07f56",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*h_X4x3xp_666RSY_E_-WWg.png",
-    "description": "Step-by-Step Guide to Installing vCluster on Managed Kubernetes ServicesIntroductionKubernetes has revolutionized application deployment, but as teams...",
-    "date": "Nov 28, 2024",
-    "publishedAt": "Thu, 28 Nov 2024 10:03:44 GMT",
-    "categories": [
-      "devops",
-      "kubernetes",
-      "technology",
-      "cncf",
-      "platform-engineering"
-    ]
-  },
-  {
-    "title": "Terminal-Based Presentations",
-    "link": "https://itnext.io/terminal-based-presentations-66c9f0c9b4a3",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*U4dT88z1buEiUtw_Y8UViQ.png",
-    "description": "A Guide to No-Fuss Technical DemosIntroductionTechnical presentations often involve jumping between slides, terminal, and IDE. Picture explaining a Ku...",
-    "date": "Nov 24, 2024",
-    "publishedAt": "Sun, 24 Nov 2024 09:50:19 GMT",
-    "categories": [
-      "presentations",
-      "terminal",
-      "open-source",
-      "development",
-      "technology"
-    ]
-  },
-  {
-    "title": "I Transitioned to Containerized Development Environments",
-    "link": "https://itnext.io/i-transitioned-to-containerized-development-environments-75f2ecbc37c5",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*nQEm-frTadgGZ1sx",
-    "description": "Photo by Amira El Fohail on UnsplashHere’s How It Improved My Daily WorkflowIntroductionIn today’s fast-paced development landscape, maintaining consi...",
-    "date": "Sep 15, 2024",
-    "publishedAt": "Sun, 15 Sep 2024 12:25:03 GMT",
-    "categories": [
-      "technology",
-      "improvement",
-      "software-development",
-      "kubernetes",
-      "containers"
-    ]
-  },
-  {
-    "title": "Top 5 Kubernetes Challenges for Platform Teams",
-    "link": "https://itnext.io/top-5-kubernetes-challenges-for-platform-teams-87aa2f59e904",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*u1lBDlKGpIJwZ03TZl7PeQ.png",
-    "description": "Using vCluster to build scalable, efficient, and manageable platformsIntroductionAs more organizations move towards cloud-native architectures, platfo...",
-    "date": "Sep 8, 2024",
-    "publishedAt": "Sun, 08 Sep 2024 09:57:48 GMT",
-    "categories": [
-      "kubernetes",
-      "devops",
-      "cloud-computing",
-      "platform-engineering",
-      "technology"
-    ]
-  },
-  {
-    "title": "Multi-Container Development Environments",
-    "link": "https://itnext.io/multi-container-development-environments-fc11f4a1c9d5",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*vNoSEHIuONWRP83KFQCAwg.png",
-    "description": "Neovim on IncusIntroductionDevelopment environments have evolved significantly over the years, with containerization playing a crucial role in creatin...",
-    "date": "Aug 23, 2024",
-    "publishedAt": "Fri, 23 Aug 2024 09:18:57 GMT",
-    "categories": [
-      "technology",
-      "docker",
-      "tutorial",
-      "containers",
-      "software-development"
     ]
   }
 ]

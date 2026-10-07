@@ -68,12 +68,12 @@ async function updateProjectStars(project) {
     const data = await fetchGitHubData(apiUrl);
 
     return {
-      ...project,
-      stars: data.stargazers_count
+      project: { ...project, stars: data.stargazers_count },
+      failed: false
     };
   } catch (error) {
     console.error(`Error updating ${project.name}:`, error.message);
-    return project;
+    return { project, failed: true };
   }
 }
 
@@ -87,9 +87,13 @@ async function main() {
   console.log(`Found ${projects.length} projects. Updating stars...`);
 
   const updatedProjects = [];
+  const failedProjects = [];
   for (const project of projects) {
-    const updated = await updateProjectStars(project);
+    const { project: updated, failed } = await updateProjectStars(project);
     updatedProjects.push(updated);
+    if (failed) {
+      failedProjects.push(project.name);
+    }
     // Add delay to avoid rate limiting
     await new Promise(resolve => setTimeout(resolve, 500));
   }
@@ -100,6 +104,12 @@ async function main() {
     JSON.stringify(updatedProjects, null, 2) + '\n',
     'utf8'
   );
+
+  // Keep the successful updates, but fail the step so CI shows it
+  if (failedProjects.length > 0) {
+    console.error(`Failed to update ${failedProjects.length} project(s): ${failedProjects.join(', ')}`);
+    process.exit(1);
+  }
 
   console.log('✓ Successfully updated GitHub stars!');
 }

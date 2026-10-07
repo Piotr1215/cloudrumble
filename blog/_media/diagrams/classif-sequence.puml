@@ -1,0 +1,70 @@
+@startuml classif-sequence
+skinparam dpi 150
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam BackgroundColor #F8F8F8
+skinparam ArrowColor #222222
+skinparam SequenceBoxBorderColor #555555
+skinparam SequenceLifeLineBorderColor #555555
+skinparam participant {
+  BackgroundColor #B9D3EE
+  BorderColor #23466E
+  FontColor #000000
+}
+skinparam actor {
+  BackgroundColor #222222
+  BorderColor #222222
+}
+skinparam note {
+  BackgroundColor #FFF2A8
+  BorderColor #9C8500
+}
+title <b>classif reading a long text</b>
+autonumber
+hide footbox
+
+actor "Your script" as dev
+
+box "classif" #F4F8FC
+  participant "CLI" as cli
+  participant "Router" as router
+  participant "Search" as search
+  participant "Gate" as gate
+end box
+
+box "Ollama on your machine" #FBF4EC
+  participant "Winnow-12B" as judge #E9B27E
+  participant "embeddinggemma" as embed #E9B27E
+end box
+
+dev -> cli : novel and "Does Elizabeth die?"
+cli -> judge : whole text, truncate: false
+judge --> cli : error, longer than the window
+note right of cli
+  The server refuses instead
+  of cutting the text quietly.
+end note
+cli -> router : read it in parts
+router -> judge : the question alone: which kind is it?
+judge --> router : a kind, only 0.75 sure
+note right of router
+  Below 0.8 the pick counts as unsure.
+  classif still searches with the top kind.
+end note
+router -> search : look for a passage that shows it
+search -> search : cut into 1,200-char passages
+search -> embed : passages, then the question
+embed --> search : vectors
+search -> search : rank by words and by meaning
+search -> judge : closest 30,000 chars, answer with one token
+judge --> search : "no" and its probability
+search -> gate : answer, kind, how passages were ranked
+gate -> gate : may this answer stand?
+note right of gate
+  A "no" stands only when the passages
+  were ranked by meaning. Otherwise the
+  linked lines and then a full read follow.
+end note
+gate --> dev : no, probability, exit 1
+@enduml
