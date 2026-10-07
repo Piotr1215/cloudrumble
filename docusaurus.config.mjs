@@ -157,6 +157,11 @@ const config = {
             label: "YouTube",
             position: "right",
           },
+          {
+            href: "pathname:///blog/rss.xml",
+            label: "RSS",
+            position: "right",
+          },
         ],
       },
       footer: {
@@ -179,8 +184,8 @@ const config = {
                 href: "https://medium.com/@piotrzan",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/Piotr1215",
+                label: "Fosstodon",
+                href: "https://fosstodon.org/@piotr1215",
               },
             ],
           },

@@ -16,8 +16,8 @@ const PAGES = [
     link: "https://github.com/Piotr1215",
   },
   {
-    title: "X",
-    link: "https://twitter.com/Piotr1215",
+    title: "Fosstodon",
+    link: "https://fosstodon.org/@piotr1215",
   },
   // {
   //   title: "YouTube",
