@@ -8,13 +8,13 @@ This site also exposes WebMCP tools (navigator/document.modelContext) so in-brow
 
 ## Sections
 
-- [Blog](https://frosty-babbage-3125a3.netlify.app/blog): technical posts on Kubernetes, cloud native, platform engineering, and certifications
-- [Talks](https://frosty-babbage-3125a3.netlify.app/talks): conference talks and workshops, with recordings and slides where available
-- [Projects](https://frosty-babbage-3125a3.netlify.app/projects): open source projects with descriptions and GitHub links
-- [Videos](https://frosty-babbage-3125a3.netlify.app/youtube): YouTube videos
+- [Blog](https://cloudrumble.net/blog): technical posts on Kubernetes, cloud native, platform engineering, and certifications
+- [Talks](https://cloudrumble.net/talks): conference talks and workshops, with recordings and slides where available
+- [Projects](https://cloudrumble.net/projects): open source projects with descriptions and GitHub links
+- [Videos](https://cloudrumble.net/youtube): YouTube videos
 
 ## Links
 
 - GitHub: https://github.com/Piotr1215
 - YouTube: https://www.youtube.com/channel/UCkWVN7H3JqGtJ5Pv5bvCrAw
-- Sitemap: https://frosty-babbage-3125a3.netlify.app/sitemap.xml
+- Sitemap: https://cloudrumble.net/sitemap.xml

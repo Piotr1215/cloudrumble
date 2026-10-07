@@ -25,4 +25,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://frosty-babbage-3125a3.netlify.app/sitemap.xml
+Sitemap: https://cloudrumble.net/sitemap.xml
