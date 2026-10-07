@@ -64,6 +64,21 @@
     "pinned": true
   },
   {
+    "title": "A Bridge Between Code and Semantic Reasoning",
+    "link": "https://itnext.io/a-bridge-between-code-and-semantic-reasoning-57fc3fc9d32c",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*olYfIKQWKKM-41jO.png",
+    "description": "How programs make decisions about text, from grep to a local model that answers with one token, and how classif reads documents far bigger than the mo...",
+    "date": "Oct 5, 2026",
+    "publishedAt": "2026-10-05T18:11:42.000Z",
+    "categories": [
+      "ollama",
+      "command-line",
+      "open-source",
+      "software-development",
+      "ai"
+    ]
+  },
+  {
     "title": "Seven Ways to Multi Line Editing in Neovim",
     "link": "https://piotrzan.medium.com/seven-ways-to-multi-line-editing-in-neovim-55d903120e2a",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*szAIeoYcLHy4ivJQ.png",
@@ -98,7 +113,7 @@
     "link": "https://itnext.io/platform-engineering-for-ai-agents-578380c2de47",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*ClL3kUtR2p-HooF_D_PPDA.png",
     "description": "The Consumer You Never Designed For Is Already Here Platform engineering matured around one thesis: reduce cognitive load for developers. The CNCF Pla...",
-    "date": "Mar 16, 2026",
+    "date": "Mar 15, 2026",
     "publishedAt": "2026-03-15T23:31:18.000Z",
     "categories": [
       "ai-agent",
@@ -196,21 +211,6 @@
       "devops",
       "artificial-intelligence",
       "software-engineering"
-    ]
-  },
-  {
-    "title": "Kubernetes Multi-tenancy: Are You Doing It the Hard Way?",
-    "link": "https://itnext.io/kubernetes-multi-tenancy-are-you-doing-it-the-hard-way-2619357a7c58",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*o_dvIHt-o4-0xWDdg4l8EA.png",
-    "description": "Virtual clusters with container native isolation on bare-metal In the world of cloud-native computing, bare metal Kubernetes represents an increasingl...",
-    "date": "May 10, 2025",
-    "publishedAt": "2025-05-10T21:06:27.000Z",
-    "categories": [
-      "devops",
-      "cloud-computing",
-      "platform-engineering",
-      "kubernetes",
-      "virtualization"
     ]
   }
 ]
