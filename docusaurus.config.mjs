@@ -1,7 +1,7 @@
 // @ts-check
 import {themes as prismThemes} from 'prism-react-renderer';
 
-const siteUrl = "https://frosty-babbage-3125a3.netlify.app";
+const siteUrl = "https://cloudrumble.net";
 const siteDescription =
   "Cloud Rumble by Piotr Zaniewski: IT certification notes and blogs on Kubernetes, cloud native, and platform engineering, plus conference talks and open source projects.";
 
