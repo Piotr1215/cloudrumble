@@ -2939,43 +2939,46 @@ html.blog-post-page aside.col--3 {
   opacity: 1 !important;
 }
 
-/* FIX: Side-by-side layout for blog posts */
-html.blog-post-page .row,
-html.blog-post-page .container > .row {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-  gap: 0 !important;
-}
+/* Side-by-side sidebar layout, desktop only. On phones the sidebar lives in
+   the navbar menu, and a nowrap .row would also catch the site footer and
+   push the page wider than the screen. */
+@media (min-width: 997px) {
+  html.blog-post-page .row,
+  html.blog-post-page .container > .row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+  }
 
-html.blog-post-page aside.col--3 {
-  flex: 0 0 500px !important;
-  order: 1 !important;
-}
+  html.blog-post-page aside.col--3 {
+    flex: 0 0 500px !important;
+    order: 1 !important;
+  }
 
-html.blog-post-page main {
-  flex: 1 !important;
-  order: 2 !important;
-  min-width: 0 !important;
-}
+  html.blog-post-page main {
+    flex: 1 !important;
+    order: 2 !important;
+    min-width: 0 !important;
+  }
 
-/* UNIVERSAL FIX: Side-by-side layout for ALL blog pages */
-html[class*="blog"] .row {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-}
+  html[class*="blog"] .row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+  }
 
-html[class*="blog"] aside.col--3,
-html[class*="blog"] aside[class*="col"] {
-  display: block !important;
-  flex: 0 0 500px !important;
-  order: 1 !important;
-}
+  html[class*="blog"] aside.col--3,
+  html[class*="blog"] aside[class*="col"] {
+    display: block !important;
+    flex: 0 0 500px !important;
+    order: 1 !important;
+  }
 
-html[class*="blog"] main {
-  flex: 1 !important;
-  order: 2 !important;
+  html[class*="blog"] main {
+    flex: 1 !important;
+    order: 2 !important;
+  }
 }
 
 /* ============================================
