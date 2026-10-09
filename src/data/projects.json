@@ -97,7 +97,7 @@
   {
     "name": "mcp-obsidian",
     "description": "Simple MCP server for interacting with local obsidian notes",
-    "stars": 22,
+    "stars": 23,
     "url": "https://github.com/Piotr1215/mcp-obsidian",
     "tags": [
       "MCP",
