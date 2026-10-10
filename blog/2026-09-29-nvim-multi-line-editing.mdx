@@ -146,12 +146,12 @@ Because it is a nightly feature until 0.13, check `nvim --version` before relyin
 
 ### Placing cursors
 
-`Q` places cursors in four ways:
+Four keys place cursors:
 
 ```vim
 {Visual}Q     " a cursor on each selected line
 Q             " toggle a cursor where you stand
-[count]Q      " a cursor on every match of the last search
+zqgn          " a cursor on every match of the last search
 CTRL-click    " add a cursor with the mouse
 ```
 
@@ -161,7 +161,7 @@ After that you type, and the edit lands at every cursor as you go. A first examp
 VGQI- <Esc>
 ```
 
-`V` selects the line, `G` extends to the last line, `Q` puts a cursor on each, and `I- <Esc>` inserts the prefix at all of them. Two details from the help are worth knowing. A Visual `Q` also enables follow mode (`q=`), where motions such as `w` and `f]` replay per cursor. And `[count]Q` uses the last search pattern, so `/_<CR>1Q` puts a cursor at every underscore, even several on one line.
+`V` selects the line, `G` extends to the last line, `Q` puts a cursor on each, and `I- <Esc>` inserts the prefix at all of them. A few details from the help are worth knowing. A Visual `Q` also enables follow mode (`q=`), where motions such as `w` and `f]` replay per cursor. And `zq` is an operator that places a cursor at every target of a motion, so `/_<CR>zqgn` puts a cursor at every underscore, even several on one line. A count on `Q` forces it instead of toggling: `1Q` adds a cursor, `2Q` removes one.
 
 ### Scripted placement
 
@@ -174,7 +174,7 @@ VGQI- <Esc>
 :cdo normal! Q            " at each quickfix item
 ```
 
-From Lua, `nvim_mcursor(0, {r, c})` places a cursor anywhere. A command picks the spots and you type the edit live. The `:g` and `:v` conditions from the classic section now drive cursor placement instead of a fixed edit.
+From Lua, an extmark in the `nvim.multicursor` namespace places a cursor anywhere: `vim.api.nvim_buf_set_extmark(0, vim.api.nvim_create_namespace("nvim.multicursor"), r, c, {})`. A command picks the spots and you type the edit live. The `:g` and `:v` conditions from the classic section now drive cursor placement instead of a fixed edit.
 
 ### Command replay
 
@@ -259,8 +259,8 @@ Nine exercises, each with a `.before` file and a `.solution` file. Every row was
 | 05 add-semicolons | :s `:%s/$/;<CR>`, 8 keys | `VGQA;<Esc>`, 6 keys |
 | 06 wrap-parens | macro `qqwi(<Esc>A)<Esc>+q4@q`, 14 keys | `VGQwi(<Esc>A)<Esc>`, 10 keys |
 | 07 flip-assignment | macro `qqdt=A=<Esc>p0xjq4@q`, 16 keys | `VGQdt=A=<Esc>p0x`, 12 keys |
-| 08 conditional-prefix | :v `:v/:/s/^/[ok] <CR>`, 15 keys | `/^\w*$<CR>1QI[ok] <Esc>`, 16 keys |
-| 09 snake-to-camel | :s `:%s/\v_(.)/\u\1/g<CR>`, 18 keys | `/_<CR>1Qx~`, 7 keys |
+| 08 conditional-prefix | :v `:v/:/s/^/[ok] <CR>`, 15 keys | `/^\w*$<CR>zqgnI[ok] <Esc>`, 18 keys |
+| 09 snake-to-camel | :s `:%s/\v_(.)/\u\1/g<CR>`, 18 keys | `/_<CR>zqgnx~`, 9 keys |
 
 Multicursor is shorter on seven of the nine. The two exceptions match the rule of thumb. Visual block takes the prefix in 01 by one key. In 08 the condition is the whole task, and `:v/:/` states it directly, while the multicursor version has to find the lines with a search pattern first.
 
@@ -268,7 +268,7 @@ A few notes on the counts:
 
 - A macro that steps to the next line before `q` and replays with `4@q` costs its edit plus 7 keys. That beats `:norm` and `:s` on 02, 03, 06, and 07. `+` steps to the first word, and `j` keeps the column, which breaks 06 but suits 07, whose edit ends in column 1.
 - The other methods for a few rows: `:%norm I- <CR>` (11) on 01, `:%s/ \zs.*/(&)<CR>` (15) on 06, `:%s/\v(.*)\=(.*)/\2=\1<CR>` (23) on 07, and `:v/:/norm! Q<CR>I[ok] <Esc>` (20) on 08.
-- Exercise 09 puts several cursors on one line: `1Q` adds one at every `_` match.
+- Exercise 09 puts several cursors on one line: `zqgn` adds one at every `_` match. The video uses `1Q` on 08 and 09, which placed a cursor at every match until Neovim added `zq` on September 29; `1Q` now forces a single cursor.
 
 Keys typed is one measure. A `:s` command shows only the result, and a macro replays from a register long after the session ends. The rule of thumb weighs those properties as well as the count.
 
