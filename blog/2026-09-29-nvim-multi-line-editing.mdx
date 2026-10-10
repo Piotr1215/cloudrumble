@@ -6,6 +6,8 @@ image: _media/nvim-multi-line-editing-hero.png
 description: "Every Neovim method for editing many lines at once, from :norm and :s to macros and the new built-in multicursor, with a rule of thumb and a keystroke scoreboard."
 ---
 
+import ReactPlayer from 'react-player';
+
 ![Cursors sitting at the same spot on every line of a terminal editor](_media/nvim-multi-line-editing-hero.png)
 
 <style>{`
@@ -15,9 +17,17 @@ description: "Every Neovim method for editing many lines at once, from :norm and
   }
 `}</style>
 
-Sooner or later you make the same small edit on line one, then line two, then line three. Neovim has had several ways to avoid that loop for years, and a newer one arrives with 0.13: built-in multicursor. This post walks through each method with a small example, covers multicursor in depth, and ends with a rule of thumb and a keystroke count for nine exercises. Multicursor is available only in nightly builds until Neovim 0.13 ships.
+Sooner or later you make the same small edit on line one, then line two, then line three. Neovim has had several ways to avoid that loop for years, and a newer one arrives with 0.13: built-in multicursor. This post walks through each method with a small example, covers multicursor in depth, and ends with a rule of thumb and a keystroke count for nine exercises. Multicursor is available only in nightly builds until Neovim 0.13 ships; every other method works in any Neovim, and in Vim.
+
+The post goes with the video [Neovim Multi-Line Editing Overview, Multicursor Included](https://youtu.be/S5kfUZQNzhU), which plays three of the exercises live.
 
 <!--truncate-->
+
+<ReactPlayer
+  controls
+  src='https://youtu.be/S5kfUZQNzhU'
+  style={{ width: '100%', height: 'auto', aspectRatio: '16 / 9' }}
+/>
 
 ## The edit loop
 
@@ -48,7 +58,7 @@ The Vim grammar already helps with the second question. A motion finds its own t
 
 The methods split by how you work.
 
-Command methods describe the edit and run it: `:norm`, `:g` and `:v`, `:s`, `:!` filters, and macros. You see the result and none of the individual keys.
+Command methods describe the edit and run it: `:norm`, `:g` and `:v`, `:s`, `:!` external commands, and macros. You see the result and none of the individual keys.
 
 Cursor methods make the edit on screen and let you watch it land: visual block and multicursor. You see every key take effect.
 
@@ -104,7 +114,7 @@ Here the target is a condition that no screen position can express.
 
 `\v` is very magic mode, where `( )` group without backslashes. `_(.)` matches an underscore and the letter after it, `\u\1` writes that letter back in uppercase, and `g` applies to every match on the line. Substitution also combines with `:cdo` and `:argdo` to reach many files.
 
-### Filter commands
+### External commands
 
 `:{range}!cmd` pipes lines through a command-line tool and keeps what it prints.
 
@@ -178,7 +188,7 @@ dt=        ──▶  each line's own text, cut to its own register
 u          ──▶  one undo for every cursor
 ```
 
-This is why a motion that lands in a different column on each line still works, and why macros run at every cursor too. Undo is atomic: one `u` reverts the edits from all cursors at once.
+This is why a motion that lands in a different column on each line still works, and why macros run at every cursor too. Undo is atomic: one `u` reverts the edits from all cursors at once. A cursor whose edit cannot start is removed, so `ct;` drops the cursor on any line with no `;`.
 
 ### Per-cursor registers
 
@@ -226,7 +236,7 @@ From `:help mcursor-limitations` and the cursor rules:
 
 Ask from the top of the list. The first yes picks the method.
 
-1. Is it a job a command-line tool already does? Use a `:!` filter.
+1. Is it a job a command-line tool already does? Use a `:%!` external command.
 2. Is it across files, or too many lines to watch? Use `:s` or `:norm` with `:cdo`.
 3. Is it an edit you will replay later? Record a macro.
 4. Is it one column on adjacent lines? Use visual block.
@@ -234,7 +244,7 @@ Ask from the top of the list. The first yes picks the method.
 6. Is it one fixed string swapped for another? Use `:s`.
 7. Is it anything else that you can see on screen? Use multicursor.
 
-Multicursor handles whatever the earlier questions leave. Visual block still wins the column prefix. `:v` wins the conditional prefix. A filter beats everything when a tool already exists.
+Multicursor handles whatever the earlier questions leave. Visual block still wins the column prefix. `:v` wins the conditional prefix. An external command beats everything when a tool already exists.
 
 ## Keystroke golf
 
@@ -268,7 +278,10 @@ Grab a nightly build from the [Neovim releases page](https://github.com/neovim/n
 
 ## Resources
 
+- [Video: Neovim Multi-Line Editing Overview, Multicursor Included](https://youtu.be/S5kfUZQNzhU)
+- [Discussion on r/neovim](https://www.reddit.com/r/neovim/comments/1x2akdv/neovim_multiline_editing_overview_multicursor/)
+- [Presentation source](https://github.com/Piotr1215/youtube/blob/main/nvim-multi-line-editing/presentation.md)
+- [The nine exercises](https://github.com/Piotr1215/youtube/tree/main/nvim-multi-line-editing/exercises)
 - [Multicursor pull request, neovim/neovim#41587](https://github.com/neovim/neovim/pull/41587)
 - `:help mcursor` in a nightly build
 - [Multiple cursors in Neovim 0.13, Oli Morris](https://blog.olimorris.com/2026/09/02/multiple-cursors-in-neovim-0.13)
-- [The nine exercises and solutions](https://github.com/Piotr1215/youtube/tree/main/nvim-multi-line-editing)
