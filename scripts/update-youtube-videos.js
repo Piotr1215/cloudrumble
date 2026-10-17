@@ -39,6 +39,23 @@ function fetchRSS(url) {
 }
 
 /**
+ * Retry an async call, waiting longer after each failure
+ */
+async function withRetry(fn, { attempts = 4, delayMs = 5000, sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms)) } = {}) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (attempt >= attempts) {
+        throw error;
+      }
+      console.warn(`Attempt ${attempt} failed: ${error.message}, retrying`);
+      await sleep(delayMs * attempt);
+    }
+  }
+}
+
+/**
  * Parse XML string to extract video data
  */
 function parseVideos(xmlText) {
@@ -89,7 +106,7 @@ async function main() {
   console.log('Fetching latest YouTube videos...');
 
   try {
-    const xmlData = await fetchRSS(RSS_URL);
+    const xmlData = await withRetry(() => fetchRSS(RSS_URL));
     const newVideos = parseVideos(xmlData);
 
     console.log(`Found ${newVideos.length} videos from RSS`);
@@ -126,4 +143,8 @@ async function main() {
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = { parseVideos, withRetry };
