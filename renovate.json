@@ -17,6 +17,7 @@
   ],
   "prConcurrentLimit": 10,
   "prHourlyLimit": 0,
+  "minimumReleaseAge": "3 days",
   "semanticCommits": "enabled",
   "commitMessagePrefix": "chore(deps):",
   "prCreation": "immediate",
