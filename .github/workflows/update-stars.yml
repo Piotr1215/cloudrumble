@@ -6,17 +6,21 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch: # Allow manual trigger
 
+# Pushes and PRs authenticate with WORKFLOW_PAT, so GITHUB_TOKEN only reads
+permissions:
+  contents: read
+
 jobs:
   update-data:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
+      - name: Checkout repository # zizmor: ignore[artipacked] -- the push step below uses these credentials
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: ${{ secrets.WORKFLOW_PAT }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '24'
 
@@ -45,7 +49,7 @@ jobs:
       - name: Check for changes
         id: git-check
         run: |
-          git diff --exit-code src/data/ || echo "changed=true" >> $GITHUB_OUTPUT
+          git diff --exit-code src/data/ || echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push to branch if changed
         if: steps.git-check.outputs.changed == 'true'
@@ -57,7 +61,7 @@ jobs:
           git add src/data/projects.json src/data/videos.json src/data/blogs.json src/data/talks.json
           git commit -m "chore: update GitHub stars, YouTube videos, Medium blogs, and talk statuses"
           git push -u origin "$BRANCH_NAME"
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$BRANCH_NAME" >> "$GITHUB_ENV"
 
       - name: Create Pull Request
         if: steps.git-check.outputs.changed == 'true'
@@ -68,14 +72,14 @@ jobs:
             --title "chore: update GitHub stars, YouTube videos, Medium blogs, and talk statuses" \
             --body "Automated data update from scheduled workflow" \
             --base master \
-            --head "${{ env.BRANCH_NAME }}"
+            --head "$BRANCH_NAME"
 
       - name: Enable auto-merge
         if: steps.git-check.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
         run: |
-          PR_NUMBER=$(gh pr list --head "${{ env.BRANCH_NAME }}" --json number --jq '.[0].number')
+          PR_NUMBER=$(gh pr list --head "$BRANCH_NAME" --json number --jq '.[0].number')
           gh pr merge "$PR_NUMBER" --auto --squash
 
       - name: Fail if any update step failed
