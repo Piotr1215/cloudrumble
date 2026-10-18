@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="ast-grep-panel.css"></head><body data-h="660">
+<div class="ground" style="top:560px;height:100px"></div>
+
+<div class="sign" style="left:30px;top:36px">rg 'log\.Printf\(.*, err\)'</div>
+<div class="bubble tail-down-left" style="left:40px;top:150px">l, o, g, dot, P…<br>same letters, match!</div>
+<div class="emoji" style="left:70px;top:350px;font-size:150px">🐜</div>
+<div class="emoji" style="left:210px;top:420px;font-size:72px">🔍</div>
+
+<div class="code lit" style="left:470px;top:50px">log.Printf("login failed: %v", err)</div>
+<div class="note ok" style="left:1000px;top:58px">✅ found</div>
+
+<div class="code bad" style="left:470px;top:180px">log.Printf(
+    "server stopped: %v", err)</div>
+<div class="note bad" style="left:1000px;top:190px">❌ missed: one call<br>on two lines</div>
+
+<div class="code bad" style="left:470px;top:350px">// log.Printf("failed: %v", err)</div>
+<div class="note bad" style="left:1000px;top:345px">🚩 matched: it is<br>only a comment</div>
+
+<div class="cap" style="left:470px;top:590px">grep compares characters; a regex never knows what a call is</div>
+</body></html>

@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="ast-grep-panel.css"></head><body data-h="760">
+<div class="ground" style="top:670px;height:90px"></div>
+
+<div class="emoji" style="left:40px;top:250px;font-size:120px">🐙</div>
+<div class="bubble tail-down-left" style="left:30px;top:60px;font-size:25px">one sentence in,<br>a draft rule out</div>
+
+<div class="scroll" style="left:260px;top:120px">📜 log-error.yml
+pattern: log.Printf($FMT, err)
+fix: slog.Error($MSG, "err", err)
+
+tests
+  must flag          ✅
+  must leave alone   ✅</div>
+<div class="emoji" style="left:420px;top:450px;font-size:100px">🧑‍💻</div>
+<div class="bubble tail-left" style="left:550px;top:470px;font-size:25px">I read twenty lines,<br>not three hundred edits</div>
+
+<svg class="wires" width="1400" height="760">
+  <g stroke="#3f5a46" stroke-width="5" fill="none" stroke-dasharray="12 8">
+    <path d="M700 190 C760 190 790 130 840 125"/>
+    <path d="M700 250 C760 250 790 420 840 430"/>
+  </g>
+</svg>
+
+<div class="note" style="left:850px;top:40px">💻 in the shell</div>
+<div class="screen" style="left:850px;top:90px">$ ast-grep scan
+<span class="del">- log.Printf("login failed: %v", err)</span>
+<span class="add">+ slog.Error("login failed", "err", err)</span>
+<span class="del">- log.Printf(</span>
+<span class="del">-   "server stopped: %v", err)</span>
+<span class="add">+ slog.Error("server stopped", "err", err)</span></div>
+
+<div class="note" style="left:850px;top:350px">📝 in Neovim, as you type</div>
+<div class="screen" style="left:850px;top:400px">func save(err error) {
+    <span class="squig">log.Printf("save failed: %v", err)</span>
+}
+<span class="hint">■ An error goes to slog.Error</span></div>
+
+<div class="cap" style="left:260px;top:695px">the rule makes every edit, the same way every time, with no model involved</div>
+</body></html>

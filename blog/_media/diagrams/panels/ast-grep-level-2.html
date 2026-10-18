@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="ast-grep-panel.css"></head><body data-h="760">
+<div class="ground" style="top:660px;height:100px"></div>
+
+<div class="sign" style="left:30px;top:36px">ast-grep run -p 'log.Printf($FMT, err)'</div>
+<div class="note" style="left:40px;top:96px;font-size:25px;color:#5b5b5b">the pattern is code too, with a placeholder</div>
+
+<div class="code lit" style="left:40px;top:200px">log.Printf(
+    "server stopped: %v", err)</div>
+<div class="note ok" style="left:60px;top:300px">✅ lines 13 and 14: one call</div>
+
+<div class="code dim" style="left:40px;top:430px">// log.Printf("failed: %v", err)</div>
+<div class="emoji" style="left:500px;top:420px;font-size:56px">🍂</div>
+<div class="note" style="left:60px;top:500px">a comment node, not a call: skipped</div>
+
+<svg class="wires" width="1400" height="760">
+  <g stroke="#6b4f2a" stroke-width="9" stroke-linecap="round" fill="none">
+    <path d="M1010 290 L1010 205"/>
+    <path d="M1010 290 C960 300 900 310 860 330"/>
+    <path d="M1010 290 C1060 300 1120 310 1160 330"/>
+    <path d="M1160 380 C1120 420 1060 440 1030 470"/>
+    <path d="M1160 380 C1200 420 1250 440 1280 470"/>
+  </g>
+</svg>
+<div class="node hot" style="left:880px;top:170px">call_expression</div>
+<div class="node" style="left:700px;top:330px">function: log.Printf</div>
+<div class="node hot" style="left:1090px;top:330px">arguments</div>
+<div class="node" style="left:850px;top:470px">"server stopped: %v"</div>
+<div class="node hot" style="left:1240px;top:470px">err</div>
+<div class="note" style="left:850px;top:525px;font-size:24px;color:#5b5b5b">$FMT</div>
+
+<div class="emoji" style="left:1180px;top:60px;font-size:110px">🐿️</div>
+<div class="bubble tail-right" style="left:820px;top:70px;font-size:26px">two lines, one call</div>
+
+<div class="cap" style="left:420px;top:690px">ast-grep matches the shape of the tree, not the layout of the text</div>
+</body></html>
