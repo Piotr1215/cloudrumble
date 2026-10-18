@@ -40,9 +40,18 @@
     "pinned": true
   },
   {
+    "id": "S5kfUZQNzhU",
+    "videoId": "S5kfUZQNzhU",
+    "title": "Neovim Multi-Line Editing Overview, Multicursor Included",
+    "thumbnail": "https://img.youtube.com/vi/S5kfUZQNzhU/maxresdefault.jpg",
+    "description": "",
+    "date": "Oct 10, 2026",
+    "publishedAt": "2026-10-10T09:01:11+00:00"
+  },
+  {
     "id": "ZhgUzG1V0VM",
     "videoId": "ZhgUzG1V0VM",
-    "title": "Stop Steering the Cursor: Copy tmux Scrollback With Regex",
+    "title": "Mouse Drag, Copy Mode, or Regex? Copying Output in tmux",
     "thumbnail": "https://img.youtube.com/vi/ZhgUzG1V0VM/maxresdefault.jpg",
     "description": "",
     "date": "Sep 27, 2026",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Nov 23, 2025",
     "publishedAt": "2025-11-23T16:00:27+00:00"
-  },
-  {
-    "id": "S2gpOr-mbf4",
-    "videoId": "S2gpOr-mbf4",
-    "title": "CV Pipeline as Code: LaTeX, YAML, and GitHub Actions",
-    "thumbnail": "https://img.youtube.com/vi/S2gpOr-mbf4/maxresdefault.jpg",
-    "description": "",
-    "date": "Nov 1, 2025",
-    "publishedAt": "2025-11-01T14:22:36+00:00"
   }
 ]
