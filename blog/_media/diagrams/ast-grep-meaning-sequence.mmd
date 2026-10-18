@@ -1,0 +1,21 @@
+sequenceDiagram
+    autonumber
+    actor You
+    participant AG as ast-grep scan
+    participant T as triage.sh
+    participant C as classif
+    participant M as Winnow 12B<br/>(Ollama, local)
+
+    You->>AG: scan with the rules
+    AG->>T: findings as JSON: the call, each rule's fix,<br/>its question, option and min_p
+    T->>C: "What is this log line for?"<br/>options: debug, info
+    C->>M: the line, answer with one token
+    M-->>C: a score for each option
+    C-->>T: debug 0.96
+    T->>C: "Is the value a secret or personal data?"
+    C-->>T: no
+    alt sure enough and no veto
+        T-->>You: the fix of the rule the answer picked, as a diff
+    else below min_p, or the veto says yes
+        T-->>You: left for a person
+    end
