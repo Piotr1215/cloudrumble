@@ -64,6 +64,21 @@
     "pinned": true
   },
   {
+    "title": "Text, Structure, Meaning: from grep to local LLM classifier",
+    "link": "https://itnext.io/text-structure-meaning-from-grep-to-local-llm-classifier-7a37bd790e36",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*a3OKRBb5wsu-6ODP0pi8nw.png",
+    "description": "Introduction Every codebase eventually needs the same change in many places: a library swap, an API that changed shape, a convention the team agreed o...",
+    "date": "Oct 18, 2026",
+    "publishedAt": "2026-10-18T07:59:39.000Z",
+    "categories": [
+      "llm",
+      "ai",
+      "command-line",
+      "neovim",
+      "software-development"
+    ]
+  },
+  {
     "title": "A Bridge Between Code and Semantic Reasoning",
     "link": "https://itnext.io/a-bridge-between-code-and-semantic-reasoning-57fc3fc9d32c",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*olYfIKQWKKM-41jO.png",
@@ -196,21 +211,6 @@
       "ai",
       "artificial-intelligence",
       "devops"
-    ]
-  },
-  {
-    "title": "GPU on Kubernetes: Safe Upgrades, Flexible Multitenancy",
-    "link": "https://itnext.io/gpu-on-kubernetes-safe-upgrades-flexible-multitenancy-b615ece8532d",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*0NBPtU4oqRRuaj4D",
-    "description": "Using KAI Scheduler and vCluster In today’s cloud-native landscape, GPU workloads are becoming increasingly critical. From training large language mod...",
-    "date": "Oct 10, 2025",
-    "publishedAt": "2025-10-10T00:00:59.000Z",
-    "categories": [
-      "kubernetes",
-      "platform-engineering",
-      "devops",
-      "artificial-intelligence",
-      "software-engineering"
     ]
   }
 ]
