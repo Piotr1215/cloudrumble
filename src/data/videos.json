@@ -40,9 +40,18 @@
     "pinned": true
   },
   {
+    "id": "RqKfaoEvlNY",
+    "videoId": "RqKfaoEvlNY",
+    "title": "Text, Structure, Meaning: grep, ast-grep and a Local LLM Classifier",
+    "thumbnail": "https://img.youtube.com/vi/RqKfaoEvlNY/maxresdefault.jpg",
+    "description": "",
+    "date": "Oct 18, 2026",
+    "publishedAt": "2026-10-18T07:28:01+00:00"
+  },
+  {
     "id": "S5kfUZQNzhU",
     "videoId": "S5kfUZQNzhU",
-    "title": "Neovim Multi-Line Editing Overview, Multicursor Included",
+    "title": "Native Neovim Multicursor vs Classic Multi-Line Edits",
     "thumbnail": "https://img.youtube.com/vi/S5kfUZQNzhU/maxresdefault.jpg",
     "description": "",
     "date": "Oct 10, 2026",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Dec 7, 2025",
     "publishedAt": "2025-12-07T15:28:15+00:00"
-  },
-  {
-    "id": "09dggS8KwBc",
-    "videoId": "09dggS8KwBc",
-    "title": "Self-Improving Claude Code: Hooks, Skills, and Session Automation",
-    "thumbnail": "https://img.youtube.com/vi/09dggS8KwBc/maxresdefault.jpg",
-    "description": "",
-    "date": "Nov 23, 2025",
-    "publishedAt": "2025-11-23T16:00:27+00:00"
   }
 ]
