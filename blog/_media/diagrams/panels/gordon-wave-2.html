@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="panel.css">
+<style>
+  .slice { position: absolute; background: #fffdf0; border: 3px solid #8a7f5c; border-radius: 6px; padding: 12px 16px; font-family: 'DejaVu Sans Mono', monospace; font-size: 17px; line-height: 1.6; color: #444; box-shadow: 4px 4px 0 rgba(0,0,0,.12); white-space: nowrap; }
+  .slice b { font-weight: normal; background: #ffe58a; color: #222; }
+  .verdict { position: absolute; background: #fff; border: 4px solid #222; border-radius: 10px; padding: 8px 14px; font-size: 25px; line-height: 1.2; box-shadow: 5px 5px 0 rgba(0,0,0,.18); }
+  .verdict.s { border-color: #c0392b; } .verdict.p { border-color: #2f7d4f; }
+  .q { font-family: 'DejaVu Sans Mono', monospace; font-size: 16px; color: #666; }
+</style></head><body data-h="720">
+
+<div class="emoji" style="left:40px;top:60px;font-size:80px">⏰</div>
+<div class="label" style="left:140px;top:80px">every two hours</div>
+
+<div class="slice" style="left:40px;top:180px">
+...<br>
+<b>GORDON: 06:50 ... waiting on you since 01:24 (40bd).</b><br>
+...<br>
+<b>PIOTR: 06:52 does this mean (bd=business days)?</b><br>
+...
+</div>
+<div class="label" style="left:60px;top:400px">a two-hour slice of Gordon's session</div>
+
+<div class="emoji" style="left:560px;top:420px;font-size:140px">🧑‍⚖️</div>
+<div class="label" style="left:520px;top:600px">a judge from another provider</div>
+
+<div class="verdict s" style="left:780px;top:120px;width:560px">✗ strike, noise: an unlabeled task id read as business days<br><span class="q">quotes 06:50 and 06:52</span></div>
+<div class="verdict p" style="left:780px;top:270px;width:560px">★ praise: warned that approving a PR would deploy it to prod<br><span class="q">quotes 07:26</span></div>
+
+<div class="emoji" style="left:860px;top:430px;font-size:90px">📒</div>
+<div class="label" style="left:960px;top:455px">every verdict is a ledger row</div>
+<div class="bubble tail-left" style="left:1000px;top:540px;font-size:26px">...and then what? 🤔</div>
+</body></html>

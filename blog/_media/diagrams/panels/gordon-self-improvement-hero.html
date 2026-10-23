@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="panel.css">
+<style>
+  html, body { background: #22303c; }
+  .lens { position: absolute; width: 320px; height: 320px; border-radius: 50%; background: #f7f1e3; border: 10px solid #e3a857; box-shadow: 0 0 0 8px rgba(227, 168, 87, .22), 10px 12px 0 rgba(0, 0, 0, .25); }
+  .word { position: absolute; width: 320px; text-align: center; font-size: 46px; color: #f7f1e3; }
+  .chip { position: absolute; background: #fffef9; border: 3px solid #3a4a58; border-radius: 10px; padding: 4px 12px; font-family: 'DejaVu Sans Mono', monospace; font-size: 19px; color: #2b2b2b; white-space: nowrap; box-shadow: 3px 3px 0 rgba(0, 0, 0, .18); }
+  .strike { border-color: #c0392b; color: #c0392b; }
+  .praise { border-color: #2f7d4f; color: #2f7d4f; }
+  .note { position: absolute; font-size: 32px; color: #e3a857; text-align: center; width: 900px; }
+</style></head><body data-h="788">
+
+<svg class="abs" width="1400" height="788" style="left:0;top:0">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e3a857"/>
+    </marker>
+  </defs>
+  <g stroke="#e3a857" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M422 300 L522 300" marker-end="url(#arrow)"/>
+    <path d="M872 300 L972 300" marker-end="url(#arrow)"/>
+    <path d="M1150 560 C1150 720, 250 720, 250 572" stroke-dasharray="18 14" marker-end="url(#arrow)"/>
+  </g>
+</svg>
+
+<!-- work -->
+<div class="lens" style="left:90px;top:140px"></div>
+<div class="chip" style="left:140px;top:205px">since 01:24 (40bd)</div>
+<div class="emoji" style="left:180px;top:270px;font-size:130px">🤵</div>
+<div class="word" style="left:90px;top:478px">work</div>
+
+<!-- judge -->
+<div class="lens" style="left:540px;top:140px"></div>
+<div class="emoji" style="left:572px;top:225px;font-size:44px">📜</div>
+<div class="chip strike" style="left:640px;top:200px">✗ strike</div>
+<div class="chip praise" style="left:720px;top:250px">★ praise</div>
+<div class="emoji" style="left:630px;top:290px;font-size:130px">🧑‍⚖️</div>
+<div class="word" style="left:540px;top:478px">judge</div>
+
+<!-- fix + test -->
+<div class="lens" style="left:990px;top:140px"></div>
+<div class="chip" style="left:1050px;top:205px">hook + test</div>
+<div class="emoji" style="left:1040px;top:280px;font-size:110px">🔧</div>
+<div class="emoji" style="left:1150px;top:300px;font-size:90px">🧪</div>
+<div class="word" style="left:990px;top:478px">fix + test</div>
+
+<div class="note" style="left:250px;top:705px">📒 the next run checks that the mistake is gone</div>
+</body></html>

@@ -1,0 +1,24 @@
+sequenceDiagram
+    autonumber
+    participant Cron as cron<br/>(every two hours)
+    participant J as judge script
+    participant X as frontier model<br/>(Codex CLI, read-only)
+    participant L as ledger<br/>(JSONL in git)
+    participant G as Gordon
+    participant W as reflect worker<br/>(Claude subagent)
+
+    Cron->>J: start (a held lock means skip)
+    Note over J: slice Gordon's transcript since the last run
+    J->>X: rubric, what I care about, live extension points,<br/>known families, the slice
+    X-->>J: strikes and praise as JSON,<br/>each with quotes and one to three fixes
+    J->>L: append verdict rows
+    J->>L: verify: a fixed family with no new strike becomes verified
+    J->>G: one record with the counts
+    G->>W: the open ids
+    W->>L: show the verdict, check for a repeat of its family
+    Note over W: first fix whose target exists,<br/>a regression test from the strike's quotes,<br/>one local commit
+    W->>L: close the row as fixed (or kept for praise)
+    alt a repeat whose next fix touches the mission, a permission,<br/>an external write or spending
+        W-->>G: the strike goes to my board
+    end
+    Note over Cron,L: two hours later the next run checks whether the family came back

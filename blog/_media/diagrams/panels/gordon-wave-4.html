@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="panel.css">
+<style>
+  .rung { position: absolute; background: #fff; border: 3px solid #222; border-radius: 8px; padding: 6px 14px; font-size: 25px; width: 380px; box-shadow: 4px 4px 0 rgba(0,0,0,.15); }
+  .rung.no { border-color: #c0392b; color: #c0392b; text-decoration: line-through; background: #fdf0ee; }
+  .test { position: absolute; background: #fffef9; border: 3px solid #2f7d4f; border-radius: 6px; padding: 10px 14px; font-family: 'DejaVu Sans Mono', monospace; font-size: 17px; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,.15); white-space: nowrap; }
+</style></head><body data-h="720">
+
+<div class="emoji" style="left:40px;top:420px;font-size:130px">🤵</div>
+<div class="emoji" style="left:170px;top:470px;font-size:80px">🔧</div>
+<div class="label" style="left:30px;top:600px">a worker takes each strike</div>
+
+<div class="label" style="left:330px;top:40px">pick the first fix that works</div>
+<div class="rung" style="left:330px;top:100px">1 inject context at the right time</div>
+<div class="rung" style="left:330px;top:165px">2 a hook that enforces it</div>
+<div class="rung" style="left:330px;top:230px">3 a deterministic tool</div>
+<div class="rung" style="left:330px;top:295px">4 a small-model check</div>
+<div class="rung no" style="left:330px;top:375px">a line in the skill</div>
+
+<div class="test" style="left:330px;top:470px">
+@test "bare pending ref after a time blocks"<br>
+✓ run_guard '... since 01:24 (1720).' → block
+</div>
+<div class="label" style="left:340px;top:600px">a regression test from the real trace</div>
+
+<div class="emoji" style="left:900px;top:150px;font-size:60px">⏰</div>
+<div class="emoji" style="left:980px;top:120px;font-size:120px">🧑‍⚖️</div>
+<div class="bubble tail-down-right" style="left:900px;top:20px;font-size:26px">no strike of this family since the fix</div>
+<div class="sign" style="left:950px;top:300px;width:330px">verified ✓</div>
+
+<div class="post" style="left:1000px;top:380px;height:120px"></div>
+<div class="sign yellow" style="left:900px;top:420px;width:440px;font-size:22px">repeat? the next fix on the list</div>
+<div class="label" style="left:900px;top:600px">a commit is not the proof</div>
+</body></html>

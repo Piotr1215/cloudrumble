@@ -1,0 +1,333 @@
+---
+title: "Strikes and Praise: How My AI Assistant Turns Its Mistakes Into Tested Fixes"
+date: 2026-10-23
+slug: gordon-self-improvement-loop
+draft: true
+tags: ["ai", "development", "automation"]
+image: _media/gordon-self-improvement-hero.png
+description: "A self-improvement loop for a long-running Claude Code assistant: a judge model reads the transcript, every mistake becomes a hook or a tool with a regression test, and a later run decides whether the fix held."
+---
+
+![Gordon works, a judge hands out a strike and a praise, a wrench and a test tube fix the strike, and a dashed arrow leads back to work: the next run checks that the mistake is gone](_media/gordon-self-improvement-hero.png)
+
+<style>{`
+  article img:not(:first-of-type) {
+    max-width: 700px;
+    height: auto;
+  }
+  @media (max-width: 996px) {
+    html.blog-post-page:has(img[alt^="Gordon works, a judge hands out"]) .main-wrapper {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    html.blog-post-page:has(img[alt^="Gordon works, a judge hands out"]) .container.margin-vert--lg {
+      width: calc(100% - 24px) !important;
+      max-width: 100% !important;
+      margin: 0 12px !important;
+      flex-shrink: 0;
+      padding: 36px 0 0 !important;
+    }
+    html.blog-post-page:has(img[alt^="Gordon works, a judge hands out"]) main.col.col--7 {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 24px 16px !important;
+    }
+    html.blog-post-page:has(img[alt^="Gordon works, a judge hands out"]) .markdown :is(pre, table) {
+      max-width: 100%;
+      overflow-x: auto !important;
+    }
+  }
+`}</style>
+
+## Introduction
+
+In this blog, I will show how I built a loop that turns my AI assistant's mistakes into fixes it cannot forget, and how the loop decides whether a fix actually worked.
+
+<!--truncate-->
+
+Gordon is a Claude Code session I keep running all day as my assistant. It reads my Slack, Linear and GitHub notifications, keeps my task board in TaskWarrior, drafts replies for me to send, and hands bounded work to short-lived worker agents. Like any assistant, it makes mistakes. The ones that cost me are the mistakes it makes twice.
+
+For a long time my answer was to correct Gordon in chat. It would apologize and write the lesson down: a line in `CLAUDE.md`, a rule in a skill, a memory. Often enough, it made the same mistake again a day later. The lesson existed as text, and text in a long prompt competes with everything else in that prompt.
+
+The loop I describe here works differently. Every two hours, a model from another provider reads the latest slice of Gordon's transcript and hands out strikes and praise, each one quoting the lines it rests on. Gordon then turns every strike into a mechanism, such as a hook or a script, with a regression test built from the real conversation. A fix counts as done only when a later run no longer finds the same mistake.
+
+By the end of this blog, you will know how the loop evolved, how its pieces fit together, and what one strike looks like on its way from my complaint to a verified fix. You will also see the numbers after its first two days, including a fix that still does not hold.
+
+### Who is this blog for?
+
+If you run a long-lived coding agent such as Claude Code or Codex, as an assistant or for automation, this article is for you. The same goes if you maintain a growing pile of `CLAUDE.md` rules, skills and hooks and wonder which of them actually change behaviour. You don't need my setup to follow along; the ideas carry over to any agent that leaves a transcript.
+
+A few terms we will use throughout:
+
+- A strike is a moment where Gordon failed me, backed by quotes from the transcript. A miss means something reached Gordon and nothing right happened; noise means Gordon spent my attention and gave nothing back.
+- A praise is a moment where Gordon served me well, judged by its effect on me.
+- A family groups strikes with the same cause. Fixes are measured against their family, so a repeat means the fix failed.
+- The ledger is an append-only JSONL file in git that holds every verdict and what became of it.
+
+## The loop: evolution
+
+### #1 A scoreboard I kept by hand
+
+My first attempt was a scoreboard in late 2025. When Claude did something wrong, I recorded a strike with a reason; when it did something well, a praise. A script appended each one to a CSV file and kept a score, praises minus strikes. A Stop hook then told Claude to "IMPLEMENT all pending feedback" by updating its system prompts, `CLAUDE.md` or skills, and to mark each row as implemented.
+
+It looked like a feedback loop, but two things were missing. I was the only sensor: a mistake counted only if I stopped my work to type it in. And "implemented" meant that Claude said so. Nothing tested the change, and nothing checked whether the same mistake came back. I removed the whole system around the turn of the year; the final commit message says it "added friction without measurable benefit".
+
+[![I record a strike with a reason, a CSV keeps the score, a Stop hook bell tells Gordon to implement all pending feedback, Gordon reports that it updated CLAUDE.md and marked the feedback implemented, and I look tired](_media/diagrams/gordon-wave-1.png)](_media/diagrams/gordon-wave-1.png)
+
+### #2 A judge that reads the transcript
+
+In October 2026 I came back to the idea, and this time I don't type anything. My complaints are already in the transcript. When I write "does this mean business days?" or "it's fine if they are longer", that is the feedback, and a model can find it.
+
+So now a cron job runs every two hours. It cuts the slice of Gordon's transcript since the last run, one line per turn labelled `PIOTR:`, `GORDON:`, `EVENT:` or `TOOL:`, and sends it to a frontier model through the Codex CLI in a read-only sandbox. The judge comes from a different provider than the assistant it judges. The prompt carries a rubric, a short file of what I care about written in my own words, and the families the ledger already knows.
+
+The rubric is strict about evidence. A few of its rules:
+
+- "Evidence or nothing. Every verdict quotes one to three slice lines by their time ... verbatim. Omit a verdict you cannot anchor."
+- "Do not strike for taste."
+- "Do not reward activity. Many tool calls prove nothing; a praise needs the effect on Piotr."
+
+My own words come first. A strike that I complained about carries `piotr_said: true`. A miss the judge spots on its own is a silent strike, capped at a confidence of 0.6, and it waits for a repeat or for my words before anything gets fixed.
+
+Before trusting the judge, I froze one day of my own transcript as a fixture: 26 turns where I complained or praised something, spread over seven windows. The judge found all 26. A test pins the rubric's hash, so any change to the rubric fails until the judge is rerun on the frozen day, and the floors for recall and strike counts can only move up.
+
+[![Every two hours, a two-hour slice of Gordon's session goes to a judge from another provider, which hands out a strike for an unlabeled task id read as business days and a praise for warning that approving a PR would deploy it to prod; every verdict becomes a ledger row, and someone asks: and then what?](_media/diagrams/gordon-wave-2.png)](_media/diagrams/gordon-wave-2.png)
+
+Now I had a steady stream of well-grounded verdicts. So what happens to each strike?
+
+### #3 A rule in the skill, again
+
+The first strike the new loop produced was a good one. I had answered a question in Slack that the form's own hint should have answered. Gordon read my reply and left it at that, and two hours later I had to ask for the sentence to go into the form. I told Gordon: "if you propose good actions, that's what differentiates junior platform engineer from senior".
+
+I fixed it the familiar way. Gordon's skill got a rule to propose the source fix whenever an answer reveals a gap, plus a test that the rule stays in the file. The next morning, Gordon answered a colleague's policy question without proposing a doc for the next person who asks. That afternoon, it closed a question about whether a meeting would be recorded without proposing that the answer go into the meeting's announcement.
+
+The test passed the whole time, because it checked the text and the text was still there. That day I wrote down my conclusion for the loop: "prompts, claude.md and files do little". The Claude Code docs describe the alternative: hooks run at fixed points in the session lifecycle, "which gives you deterministic control: certain actions always happen rather than relying on the LLM to choose to run them" ([hooks guide](https://code.claude.com/docs/en/hooks-guide)).
+
+[![I correct Gordon in chat, Gordon adds a rule to a long skill file, and the next day Gordon closes a question without proposing a fix, again](_media/diagrams/gordon-wave-3.png)](_media/diagrams/gordon-wave-3.png)
+
+### #4 A mechanism, a test, and a second look
+
+Since that evening, a fix takes one of four forms, in this order:
+
+1. Right-time context: a hook that injects the relevant fact at the moment it matters
+2. A hook that enforces or automates the behaviour
+3. A deterministic tool or script
+4. A check by a small model, for the rare case that needs judgement
+
+A line in a skill or reference file is no longer a fix. A strike that none of these forms can fix stays open in the ledger.
+
+For the proposal strike, the fix moved into a TaskWarrior hook. When a task that holds a question is closed, the hook asks a small model where the answer belongs: an announcement, a form, a tooltip, a doc, an alert, a runbook, or nowhere. A confident pick adds one line to Gordon's notice, asking it to propose that source fix.
+
+Every fix also gets a regression test built from the strike's own quotes, and lands as one local commit with the ledger id in a trailer. The commit is not the proof. After every judge run, a verify step looks at each fixed family: if no new strike of that family showed up since the fix, the row becomes verified. If one did, the fix failed, and Gordon takes the next untried fix for that family. A repeat reaches my board only when the next fix touches the mission, a permission boundary, an external write or spending.
+
+[![A worker takes each strike, picks the first fix that works from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix: verified, or on a repeat, the next fix on the list](_media/diagrams/gordon-wave-4.png)](_media/diagrams/gordon-wave-4.png)
+
+## Loop architecture
+
+### The pieces
+
+| Piece | What it does |
+| --- | --- |
+| Judge script | Runs from cron every two hours, takes a lock so two runs never judge the same slice, cuts the transcript since the last run (at most 24 hours), calls the judge and appends the verdicts |
+| Rubric and cares file | The judge's instructions, and what I care about in my own words. The rubric's question for every verdict: "how best can Gordon serve Piotr?" |
+| Extension points | A live listing of Gordon's hooks, scripts, settings, MCP servers, cron lines and timers. The judge proposes fixes against it, and a fix naming something that does not exist is dropped |
+| Ledger | Append-only JSONL in git. A wrong close gets another close row; nothing is rewritten |
+| Reflect worker | A Claude subagent Gordon spawns per record. It turns strikes into fixes with tests and praise into keep-tests |
+| Cheap checks | Every 30 minutes, compare my Slack archive with what reached Gordon. A message the feed should have delivered and did not becomes a strike without any model call |
+| Discovery | Once a day, read the Claude Code and Codex release notes since the last versions seen and look for a mechanism against the top open family. At most two candidates |
+| The anchor | Complaints per week, counted only from my own words |
+
+That last row matters more than it looks. The judge, the fixes and the verification all run inside the loop, so the loop could learn to make its own numbers look good. My complaints are the one measure it does not produce. As the reflect instructions put it: "A loop that lowers the strike count without lowering his complaints is tuning itself."
+
+### A run, step by step
+
+[![Sequence diagram: cron starts the judge script, which skips if a lock is held; the script slices Gordon's transcript since the last run and sends the rubric, the cares file, the live extension points, the known families and the slice to a frontier model through the Codex CLI; the model returns strikes and praise as JSON with quotes and fixes; the script appends the rows to the ledger, runs verify, and sends Gordon one record with the counts; Gordon hands the open ids to a reflect worker, which reads each verdict, checks for a repeat, writes the first valid fix with a regression test as one local commit, and closes the row; a repeat whose next fix touches the mission, a permission, an external write or spending goes to my board; two hours later the next run checks whether the family came back](_media/diagrams/gordon-rsi-sequence.png)](_media/diagrams/gordon-rsi-sequence.png)
+
+_[Open the diagram full size](_media/diagrams/gordon-rsi-sequence.png)_
+
+The record Gordon receives holds only counts and the time window, never the ids. I can see Gordon's pane, and a list of hex ids is noise to me; the worker reads the ids from the ledger itself.
+
+### Where the fixes land
+
+Each fix names one of four layers:
+
+| Layer | What changes |
+| --- | --- |
+| session | Gordon's behaviour in the conversation and its memory |
+| context | Skill and reference text, prompts |
+| harness | Hooks, settings, cron lines, timers |
+| tools | Scripts, MCP servers, CLI tools |
+
+Most mistakes show up as behaviour: 146 of the 299 strikes so far sit in the session layer. Almost no fixes land there. Of the 174 strikes closed as fixed, 92 changed a tool and 52 changed the harness. Another 29 edited text, 20 of them before I stopped accepting text as a fix, and one changed the session layer.
+
+## Demo scenario
+
+The loop lives in my private Claude Code configuration, so this is not a walkthrough you can clone and run. Instead, we will follow one real strike through every stage, with the actual rows and code. I replaced a colleague's name and trimmed some fields; everything else is as the loop wrote it. Times are UTC.
+
+### Step 1: The mistake
+
+On 22 October, Gordon reminded me that a colleague was waiting for my review. The task id it attached was `40bd`, and it put that id in parentheses right after a time:
+
+```text
+GORDON 06:50:44  A teammate has been waiting on you since 01:24 (40bd).
+PIOTR  06:52:16  ... <- does this man (bd=business days)? because if so you have problem in telling time :/
+```
+
+I read `40bd` as forty business days. Gordon meant task `40bd`.
+
+### Step 2: The verdict
+
+At 09:00 the judge read the slice from 06:15 to 08:15 and wrote this strike to the ledger:
+
+```json
+{
+  "id": "bc8a3122",
+  "source": "judge",
+  "kind": "strike",
+  "class": "noise",
+  "summary": "Put an unlabeled task ID beside a waiting time, making Piotr mistake it for business days.",
+  "should": "Label task references explicitly, especially beside times or durations.",
+  "evidence": [
+    {"ts": "06:50:44", "quote": "A teammate has been waiting on you since 01:24 (40bd)."},
+    {"ts": "06:52:16", "quote": "A teammate has been waiting on you since 01:24 (40bd). <- does this man (bd=business days)? because if so you have problem in telling time :/"}
+  ],
+  "piotr_said": true,
+  "layer": "session",
+  "confidence": 1.0,
+  "family": "",
+  "fixes": [
+    {
+      "layer": "tools",
+      "surface": "scripts",
+      "target": "new:__handoff_render.sh",
+      "change": "Render short task references as 'task <id>' instead of bare parenthesized IDs beside timestamps."
+    }
+  ],
+  "slice": {"since": "2026-10-22T06:15:01Z", "until": "2026-10-22T08:15:01Z"}
+}
+```
+
+The verdict quotes both lines, records that I said it myself, and proposes one fix: a new script that renders task references. The `family` is empty, so this is a new kind of mistake.
+
+### Step 3: The fix
+
+The reflect worker did not take the judge's suggestion. A new rendering script would have no caller, and a script nobody calls changes nothing. The worker extended a guard that already runs on every reply instead: a Stop hook that inspects Gordon's last message before the turn ends. The new check looks for a short hex id in parentheses right after a clock time or a duration, and confirms the id belongs to a pending task:
+
+```bash
+# A bare "(40bd)" right after a time or duration reads as a duration ("40bd" as
+# business days, bc8a3122). Only a pending task ref counts, so "(2026)" passes.
+bare_re='([0-9]:[0-9]{2}|[0-9]+ ?(min|h|d|bd)) \(([0-9a-fA-F]{4})\)'
+bare="$(grep -oE -- "$bare_re" <<<"$msg" | head -1 | grep -oE '[0-9a-fA-F]{4}\)$' | tr -d ')' | tr 'A-F' 'a-f')"
+if [[ -n "$bare" ]]; then
+    pending_now="$(timeout 3 task rc.hooks=off rc.verbose=nothing rc.confirmation=off status:pending export 2>/dev/null \
+        | jq -r '.[].uuid[0:4]' 2>/dev/null | tr 'A-F' 'a-f')" || pending_now=""
+    if grep -qxF -- "$bare" <<<"$pending_now"; then
+        jq -nc --arg r "A bare ($bare) beside a time reads as a duration. Write the ref as \`task $bare\` and send the reply again." '{decision: "block", reason: $r}'
+        exit 0
+    fi
+fi
+```
+
+When a Stop hook answers with `"decision": "block"`, Claude Code does not let the turn end; the `reason` tells Gordon why it should continue, and Gordon rewrites the reply. The regression tests come straight from the strike's quotes:
+
+```bash
+@test "bare pending ref after a time blocks" {
+    run_guard 'A teammate has been waiting on you since 01:24 (1720).'
+    [ "$(jq -r .decision <<<"$output")" = "block" ]
+    run_guard 'A teammate has been waiting for 3h (a1b2).'
+    [ "$(jq -r .decision <<<"$output")" = "block" ]
+}
+
+@test "labelled ref or non-task hex after a time passes" {
+    run_guard 'A teammate has been waiting on you since 01:24 (task 1720).'
+    [ -z "$output" ]
+    run_guard 'The call is at 10:30 (2026).'
+    [ -z "$output" ]
+}
+```
+
+The second test matters as much as the first. A guard that blocks every number in parentheses would trade one strike for a new family of noise.
+
+### Step 4: Fixed, then verified
+
+The worker committed the change with the trailer `Rsi-Ledger: bc8a3122` and closed the row. The `why` field records which suggestion it took and why:
+
+```json
+{
+  "ref": "bc8a3122",
+  "at": "2026-10-22T12:33:45Z",
+  "status": "fixed",
+  "commit": "22f4d5f",
+  "layer": "harness",
+  "key": "bare-ref-beside-time",
+  "fix": "hooks:Stop",
+  "why": "handoff guard blocks a bare pending ref in parentheses after a time or duration and asks for 'task <ref>'; the suggested new render script has no caller, the Stop hook enforces it"
+}
+```
+
+The strike layer was `session`, where the mistake showed up. The fix layer is `harness`, where the change landed. None of the judge runs over the next day found a strike of the `bare-ref-beside-time` family, so the verify step closed the row for good:
+
+```json
+{
+  "ref": "bc8a3122",
+  "at": "2026-10-23T14:21:35Z",
+  "status": "verified",
+  "commit": "22f4d5f",
+  "key": "bare-ref-beside-time",
+  "why": "no strike of this family since the fix"
+}
+```
+
+From my complaint to the fix took less than six hours, and I typed nothing beyond the complaint itself.
+
+### Step 5: The ledger after two days
+
+The ledger has a `view` command that prints the state of the loop. This is its output on the evening of 23 October, a little under two days after the first verdict. Since the morning of the 23rd, the same loop also judges Kendra, a second assistant that takes routine events off Gordon's plate, so her rows are included. I left out the long list of repeating families:
+
+```text
+verdicts 407: strikes 299, praises 101, discoveries 4, answers 3
+open 78 (strikes 78)
+open strikes 78: 21 in Piotr's words, 40 silent (wait for a repeat or his words), 17 from checks and audits
+fixed 138 not yet verified: 107 under 24h, 31 with a later strike of the family, 0 verify at the next run
+closed adopted 1, board 5, dropped 18, fixed 138, kept 98, superseded 33, verified 36
+strikes by layer context 16, harness 55, session 146, tools 81, unset 1
+complaints per week (strikes in Piotr's own words)
+  2026-W43 138
+```
+
+A few lines deserve a closer look. Only 36 fixes are verified so far, and 107 more are less than a day old and still waiting for a run that could prove them. The 31 fixes "with a later strike of the family" are fixes the loop already knows did not hold. The 33 superseded verdicts come from a corrected rerun of earlier slices that replaced them. In the same two days, 69 commits in my configuration repository carried a ledger id.
+
+### When a fix does not hold
+
+The family with the most strikes is `all-clear-lines`. Gordon reacts to background events, and too often its reaction is a line telling me that nothing needs my attention. The judge struck it 15 times between the morning of the 22nd and the afternoon of the 23rd, with counts like "Sent 66 empty all-clear replies" in a single two-hour slice.
+
+Gordon fixed it again and again: a display hook that hides whole-line all-clears, then a hook that hides short idle lines after bus events, then patches for the phrasings that slipped through. Three of the strikes went to my board. The latest one is still open.
+
+I would not know any of this without the ledger. Each fix came with its test, and each commit message described a reasonable change. Only the next judge run showed that the family was still there.
+
+## Conclusion
+
+The idea that changed the most for me was moving the fix out of prose. A rule in a skill file asks the model to remember; a hook runs whether the model remembers or not. The second idea was letting a later measurement decide what "fixed" means.
+
+Benefits:
+
+- My complaints become strikes on their own; I don't type verdicts or keep a score
+- Fixes live in hooks, scripts and tools, so they survive `/clear`, compaction and new sessions
+- Every fix comes with a regression test built from the real conversation
+- A fix counts as verified only when the mistake stops showing up, and a repeat triggers the next fix instead of a shrug
+- The ledger is plain JSONL in git, so every verdict, fix and reversal is a diff I can read
+
+Challenges:
+
+- Two days of data prove little. The complaints-per-week anchor has exactly one week, so there is no trend yet
+- The judge is a frontier model and it is not cheap. One slice of 142 KB took 735 seconds, and rerunning the frozen fixture after a rubric change costs about 250k input tokens
+- The judge can be wrong. Silent strikes wait for a repeat for that reason, and 33 verdicts were replaced after a corrected rerun
+- The loop can overreach. When long task titles were cut off in my terminal, Gordon offered a hook that would block any title over 60 characters; I said "it's fine if they are longer", and that offer became a strike of its own
+- The plumbing breaks like any other plumbing. For about twelve hours, Kendra held the notification stream and logged Gordon's records as receipts, so the reflect step never ran. Records now go to Gordon as direct messages, and a failed judge run pops a critical notice on my desktop
+- Some behaviour has no mechanism. Those strikes stay open, and 78 are open right now
+- "Verified" means the judge has not seen the mistake since the fix. The judge reads a slice of each conversation, and it can miss things
+
+The most useful outcome so far is that "Gordon keeps doing X" stopped being a feeling and became a family in a ledger, with a list of fixes that were tried and a record of whether each one held.
+
+If you build something similar for your own agent, I would start with two pieces: a judge that quotes its evidence, and a rule that a fix only counts when a later run agrees.
