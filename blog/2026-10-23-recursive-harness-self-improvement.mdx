@@ -49,15 +49,13 @@ RSI stands for Recursive Self-Improvement: an AI system that improves itself, th
 >
 > I. J. Good, [Speculations Concerning the First Ultraintelligent Machine](https://en.wikipedia.org/wiki/I._J._Good), 1965
 
-However, self-improvement doesn't have to mean a model that retrains itself or designs its successors. What an agent can do also depends on its harness: the instructions, context, memory, tools, hooks and permissions around the model. The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
-
-In this blog, I will show such a loop running on my own AI assistant, and how the loop decides whether a change was actually an improvement.
-
 <!--truncate-->
 
-My assistant is an agentic session in Claude Code that I keep running all day. It reads my notifications, keeps my task board, drafts replies and hands work to short-lived worker agents. Like any assistant, it makes mistakes, and the costly ones are those it makes twice.
+My own agent is a long way from an intelligence explosion. It is an agentic session in Claude Code that I keep running all day as my assistant. It reads my notifications, keeps my task board, drafts replies and hands work to short-lived worker agents. Like any assistant, it makes mistakes, and the costly ones are those it makes twice.
 
 For a long time my answer was to correct the agent in chat. It would apologize and write the lesson down: a line in `CLAUDE.md`, a rule in a skill, a memory. Often enough, it made the same mistake again a day later. The lesson existed as text, and text in a long prompt competes with everything else in that prompt.
+
+Fixing that does not take an intelligence explosion. Self-improvement doesn't have to mean a model that retrains itself or designs its successors. What an agent can do also depends on its harness: the instructions, context, memory, tools, hooks and permissions around the model. The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
 
 Changing the harness is the easy part; an agent does it every time it adds a line to a prompt. The hard part is knowing whether the change made anything better. So my loop has three roles, kept apart on purpose:
 
