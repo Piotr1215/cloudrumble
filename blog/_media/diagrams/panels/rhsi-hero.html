@@ -1,47 +1,48 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="panel.css">
 <style>
-  html, body { background: #22303c; }
-  .lens { position: absolute; width: 320px; height: 320px; border-radius: 50%; background: #f7f1e3; border: 10px solid #e3a857; box-shadow: 0 0 0 8px rgba(227, 168, 87, .22), 10px 12px 0 rgba(0, 0, 0, .25); }
-  .word { position: absolute; width: 320px; text-align: center; font-size: 46px; color: #f7f1e3; }
-  .chip { position: absolute; background: #fffef9; border: 3px solid #3a4a58; border-radius: 10px; padding: 4px 12px; font-family: 'DejaVu Sans Mono', monospace; font-size: 19px; color: #2b2b2b; white-space: nowrap; box-shadow: 3px 3px 0 rgba(0, 0, 0, .18); }
-  .strike { border-color: #c0392b; color: #c0392b; }
-  .praise { border-color: #2f7d4f; color: #2f7d4f; }
-  .note { position: absolute; font-size: 32px; color: #e3a857; text-align: center; width: 900px; }
+  html, body { background: #1e2832; }
+  .say { position: absolute; background: #f7f1e3; border: 4px solid #f7f1e3; border-radius: 30px; padding: 18px 28px; font-size: 44px; line-height: 1.1; color: #1e2832; width: 620px; }
+  .say::after { content: ''; position: absolute; left: 70px; bottom: -40px; border: 20px solid transparent; border-top-color: #f7f1e3; }
+  .ghost { position: absolute; background: #f7f1e3; border-radius: 30px; padding: 18px 28px; font-size: 44px; line-height: 1.1; color: #1e2832; width: 620px; }
+  .day { position: absolute; font-family: 'DejaVu Sans Mono', monospace; font-size: 22px; color: #8fa1b1; }
+  .cap { position: absolute; font-size: 40px; color: #f2b544; }
+  .card { position: absolute; width: 230px; height: 310px; background: #d7263d; border: 6px solid #fff; border-radius: 16px; box-shadow: 12px 14px 0 rgba(0, 0, 0, .35); transform: rotate(9deg); color: #fff; text-align: center; }
+  .card .big { font-family: 'DejaVu Sans', sans-serif; font-weight: bold; font-size: 46px; margin-top: 96px; letter-spacing: 2px; }
+  .card .small { font-size: 30px; margin-top: 14px; line-height: 1.1; }
+  .tag { position: absolute; border-radius: 12px; padding: 6px 16px; font-family: 'DejaVu Sans Mono', monospace; font-size: 24px; white-space: nowrap; }
+  .fixed { background: #3a4754; color: #cfd8e0; border: 3px solid #6d7f8f; }
+  .mutable { background: #f2b544; color: #1e2832; border: 3px solid #f2b544; }
+  .jersey { position: absolute; width: 260px; height: 150px; border-radius: 40px 40px 0 0; background: repeating-linear-gradient(90deg, #f7f1e3 0 26px, #111 26px 52px); border: 5px solid #111; }
 </style></head><body data-h="788">
 
+<!-- the same apology, again and again -->
+<div class="ghost" style="left:132px;top:26px;height:140px;background:#3a4754"></div>
+<div class="day" style="left:152px;top:34px">Mon</div>
+<div class="ghost" style="left:112px;top:64px;height:140px;background:#56636f"></div>
+<div class="day" style="left:132px;top:72px;color:#c2ccd5">Tue</div>
+<div class="ghost" style="left:92px;top:102px;height:140px;background:#8a959e"></div>
+<div class="day" style="left:112px;top:110px;color:#1e2832">Wed</div>
+<div class="say" style="left:72px;top:140px">You're absolutely right,<br>I should have run the tests.</div>
+
 <svg class="abs" width="1400" height="788" style="left:0;top:0">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#e3a857"/>
-    </marker>
-  </defs>
-  <g stroke="#e3a857" stroke-width="8" stroke-linecap="round" fill="none">
-    <path d="M422 300 L522 300" marker-end="url(#arrow)"/>
-    <path d="M872 300 L972 300" marker-end="url(#arrow)"/>
-    <path d="M1150 560 C1150 720, 250 720, 250 572" stroke-dasharray="18 14" marker-end="url(#arrow)"/>
-  </g>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f2b544"/></marker></defs>
+  <path d="M950 250 C820 300, 790 520, 676 560" stroke="#f2b544" stroke-width="7" stroke-dasharray="16 12" fill="none" stroke-linecap="round" marker-end="url(#a)"/>
 </svg>
 
-<!-- work -->
-<div class="lens" style="left:90px;top:140px"></div>
-<div class="chip" style="left:140px;top:205px">since 01:24 (40bd)</div>
-<div class="emoji" style="left:180px;top:270px;font-size:130px">🤵</div>
-<div class="word" style="left:90px;top:478px">work</div>
+<!-- the agent: model locked, harness open -->
+<div class="emoji" style="left:120px;top:370px;font-size:250px">🤖</div>
+<div class="tag fixed" style="left:410px;top:400px">🔒 model: fixed</div>
+<div class="tag mutable" style="left:410px;top:470px">🔧 harness: mutable</div>
+<div class="tag mutable" style="left:410px;top:540px">+ hook &nbsp;+ test</div>
 
-<!-- judge -->
-<div class="lens" style="left:540px;top:140px"></div>
-<div class="emoji" style="left:572px;top:225px;font-size:44px">📜</div>
-<div class="chip strike" style="left:640px;top:200px">✗ strike</div>
-<div class="chip praise" style="left:720px;top:250px">★ praise</div>
-<div class="emoji" style="left:630px;top:290px;font-size:130px">🧑‍⚖️</div>
-<div class="word" style="left:540px;top:478px">judge</div>
-
-<!-- fix + test -->
-<div class="lens" style="left:990px;top:140px"></div>
-<div class="chip" style="left:1050px;top:205px">hook + test</div>
-<div class="emoji" style="left:1040px;top:280px;font-size:110px">🔧</div>
-<div class="emoji" style="left:1150px;top:300px;font-size:90px">🧪</div>
-<div class="word" style="left:990px;top:478px">fix + test</div>
-
-<div class="note" style="left:250px;top:705px">📒 the next run checks that the mistake is gone</div>
+<!-- the judge from another league: a second robot, other vendor, referee stripes -->
+<svg class="abs" width="1400" height="788" style="left:0;top:0">
+  <path d="M1090 560 L1010 470 L1020 350" stroke="#9aa7b2" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="1020" cy="345" r="22" fill="#9aa7b2"/>
+</svg>
+<div class="jersey" style="left:1060px;top:545px"></div>
+<div class="emoji" style="left:1040px;top:340px;font-size:220px;filter:hue-rotate(150deg) saturate(1.6)">🤖</div>
+<div class="card" style="left:905px;top:40px"><div class="big">STRIKE</div><div class="small">same mistake,<br>4th time</div></div>
+<div class="tag fixed" style="left:760px;top:630px">⚖️ judge: another vendor</div>
+<div class="cap" style="left:72px;top:680px">The model can't change. Everything around it can.</div>
 </body></html>

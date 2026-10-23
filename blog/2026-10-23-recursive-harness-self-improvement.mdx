@@ -8,7 +8,7 @@ image: _media/rhsi-hero.png
 description: "The model is fixed and the harness is mutable. How an observer, an independent judge and an improving agent turn my Claude Code assistant's mistakes into hooks and tools with regression tests, and how a later run decides whether a change was an improvement."
 ---
 
-![An agent works, a judge hands out a strike and a praise, a wrench and a test tube fix the strike, and a dashed arrow leads back to work: the next run checks that the mistake is gone](_media/rhsi-hero.png)
+![A robot apologizes for the fourth day running with "You're absolutely right, I should have run the tests"; a judge raises a red strike card, and the fix lands in the harness as a hook and a test while the model stays locked](_media/rhsi-hero.png)
 
 <style>{`
   article img:not(:first-of-type) {
@@ -16,25 +16,25 @@ description: "The model is fixed and the harness is mutable. How an observer, an
     height: auto;
   }
   @media (max-width: 996px) {
-    html.blog-post-page:has(img[alt^="An agent works, a judge hands out"]) .main-wrapper {
+    html.blog-post-page:has(img[alt^="A robot apologizes for the fourth day"]) .main-wrapper {
       width: 100% !important;
       max-width: 100% !important;
       margin: 0 !important;
       padding: 0 !important;
     }
-    html.blog-post-page:has(img[alt^="An agent works, a judge hands out"]) .container.margin-vert--lg {
+    html.blog-post-page:has(img[alt^="A robot apologizes for the fourth day"]) .container.margin-vert--lg {
       width: calc(100% - 24px) !important;
       max-width: 100% !important;
       margin: 0 12px !important;
       flex-shrink: 0;
       padding: 36px 0 0 !important;
     }
-    html.blog-post-page:has(img[alt^="An agent works, a judge hands out"]) main.col.col--7 {
+    html.blog-post-page:has(img[alt^="A robot apologizes for the fourth day"]) main.col.col--7 {
       width: 100% !important;
       max-width: 100% !important;
       padding: 24px 16px !important;
     }
-    html.blog-post-page:has(img[alt^="An agent works, a judge hands out"]) .markdown :is(pre, table) {
+    html.blog-post-page:has(img[alt^="A robot apologizes for the fourth day"]) .markdown :is(pre, table) {
       max-width: 100%;
       overflow-x: auto !important;
     }
@@ -77,25 +77,25 @@ RHSI didn't occur to me right away. At the beginning, I tried other ideas, and e
 
 My first attempt, in late 2025, was a scoreboard. When Claude got something wrong, I typed a strike with a reason; when it got something right, a praise. A script kept the score in a CSV file, and a Stop hook told Claude to "IMPLEMENT all pending feedback" in its prompts, `CLAUDE.md` or skills. I liked it enough to show it in [a video](https://www.youtube.com/watch?v=09dggS8KwBc).
 
+[![I record a strike with a reason, a CSV keeps the score, a Stop hook bell tells Claude to implement all pending feedback, Claude reports that it updated CLAUDE.md and marked the feedback implemented, and I look tired](_media/diagrams/rhsi-wave-1.png)](_media/diagrams/rhsi-wave-1.png)
+
 It was too simple, and it kept me in the loop. I collected the evidence and judged it myself, and Claude graded its own homework: "implemented" meant Claude said so. Nothing checked whether the mistake came back. Around the turn of the year I removed it; the last commit says it "added friction without measurable benefit".
 
 > The first principle is that you must not fool yourself, and you are the easiest person to fool.
 >
 > Richard Feynman, [Galileo Symposium lecture](https://en.wikiquote.org/wiki/Richard_Feynman), 1964
 
-[![I record a strike with a reason, a CSV keeps the score, a Stop hook bell tells Claude to implement all pending feedback, Claude reports that it updated CLAUDE.md and marked the feedback implemented, and I look tired](_media/diagrams/rhsi-wave-1.png)](_media/diagrams/rhsi-wave-1.png)
-
 ### #2 A clinical trial for every instruction
 
 In August 2026 the pendulum swung the other way: a session-eval harness that works like a drug trial. For each moment I was unhappy, a model proposes one instruction that would have prevented it. The harness replays that moment five times without the instruction and five times with it, a blind judge picks the better answer, and a binomial test decides.
+
+[![One recorded moment is frozen and replayed as one answer with no tools and no later turns; five test tubes run without the instruction and five with it; a blind judge says B, 5 of 5, p = 0.031; each candidate costs ten or more replays, the result is one more line of text, 43 candidates gave 4 findings, and I ask: and three turns later?](_media/diagrams/rhsi-evals.png)](_media/diagrams/rhsi-evals.png)
 
 In its first week, it tested 43 candidate instructions and kept four. It was also too heavy and too low level. Every candidate cost at least ten replays, and each replay was one answer, without tools, at the moment I complained, so a mistake that played out over tool calls or later turns was out of its reach. And the four findings were, once again, lines of text.
 
 > I think the problem, to be quite honest with you, is that you've never actually known what the question is.
 >
 > Deep Thought, in Douglas Adams' [The Hitchhiker's Guide to the Galaxy](https://en.wikiquote.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy), 1979
-
-[![One recorded moment is frozen and replayed as one answer with no tools and no later turns; five test tubes run without the instruction and five with it; a blind judge says B, 5 of 5, p = 0.031; each candidate costs ten or more replays, the result is one more line of text, 43 candidates gave 4 findings, and I ask: and three turns later?](_media/diagrams/rhsi-evals.png)](_media/diagrams/rhsi-evals.png)
 
 ### #3 Physician, heal thyself
 
@@ -109,7 +109,7 @@ Every two hours, a cron job sends the slice of the agent's transcript since the 
 
 The rubric's first rule is "Evidence or nothing": every verdict quotes the transcript. A strike the judge finds without a complaint from me is a silent strike, and it waits for a repeat. Before trusting the judge, I ran it on a frozen day with 26 of my complaints and praises. It found all 26.
 
-[![Every two hours, a two-hour slice of the agent's session goes to a judge from another provider, which hands out a strike for an unlabeled task id read as business days and a praise for warning that approving a PR would deploy it to prod; every verdict becomes a ledger row, and someone asks: and then what?](_media/diagrams/rhsi-wave-2.png)](_media/diagrams/rhsi-wave-2.png)
+[![Every two hours, a two-hour slice of the agent's session goes to a judge robot in referee stripes from another provider, which hands out a strike for an unlabeled task id read as business days and a praise for warning that approving a PR would deploy it to prod; every verdict becomes a ledger row](_media/diagrams/rhsi-wave-2.png)](_media/diagrams/rhsi-wave-2.png)
 
 Every verdict lands in the ledger, an append-only JSONL file in git, and every strike in it waits for a fix.
 
@@ -144,27 +144,37 @@ The first is what Andrej Karpathy calls context engineering:
 
 A strike none of these can fix stays open. The proposal strike became a TaskWarrior hook: when a task holding a question closes, a small model picks where the answer belongs, and the agent proposes that fix.
 
-Each fix gets a regression test from the strike's own quotes. Strikes that share one cause form a family, and a fix is verified only after a day with no new strike of its family. A repeat sends the agent to the next fix on the list.
-
 [![A worker takes each strike, picks the first fix that works from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix: verified, or on a repeat, the next fix on the list](_media/diagrams/rhsi-wave-4.png)](_media/diagrams/rhsi-wave-4.png)
+
+Each fix gets a regression test from the strike's own quotes. Strikes that share one cause form a family, and a fix is verified only after a day with no new strike of its family. A repeat sends the agent to the next fix on the list.
 
 ## Architecture
 
-The loop runs in the background every two hours. The diagram shows one run, from the transcript slice to the check that the mistake is gone.
+The loop has three roles, and each does one job. The observer collects evidence and interprets nothing. The judge hands out strikes and praise but cannot touch the harness. The improving agent, a subagent of my agent, makes the change and writes its test but cannot mark it verified; only a later judge run can. The diagram shows one run, from the transcript slice to the check that the mistake is gone.
 
 [![Sequence diagram: cron starts the judge script, which skips if a lock is held; the script slices the agent's transcript since the last run and sends the rubric, the cares file, the live extension points, the known families and the slice to a frontier model through the Codex CLI; the model returns strikes and praise as JSON with quotes and fixes; the script appends the rows to the ledger, runs verify, and sends the agent one record with the counts; the agent hands the open ids to a reflect worker, which reads each verdict, checks for a repeat, writes the first valid fix with a regression test as one local commit, and closes the row; a repeat whose next fix needs my authority, because it touches the mission, a permission, an external write or spending, goes to my board; two hours later the next run checks whether the family came back](_media/diagrams/rhsi-sequence.png)](_media/diagrams/rhsi-sequence.png)
 
-Each role does one job. The observer collects evidence and interprets nothing. The judge hands out strikes and praise but cannot touch the harness. The improving agent, a subagent of my agent, makes the change and writes its test but cannot mark it verified; only a later judge run can.
+A cron job starts the judge script every two hours. If the previous run still holds the lock, the new one exits without judging, so two runs never judge the same slice. The script cuts the agent's transcript since the last run into a slice of my messages, the agent's replies and the event lines it received; tool results and thinking are dropped and long texts are capped. Beside it, a cheap check runs every 30 minutes and compares my Slack archive with what reached the agent. A message that never arrived becomes a strike without a model call.
+
+The judge is a frontier model from another vendor, called through the Codex CLI in a read-only sandbox. Besides the slice, it gets the rubric, a file of what I care about in my own words, a live listing of every hook, script and setting a fix may target, and the families of strikes it already knows. It answers in JSON: each strike or praise with its quotes from the slice, a family, and up to three fixes, best first.
+
+The script appends the verdicts to the ledger and runs verify, which marks a fixed family verified once a day has passed with no new strike of it. Then it sends my agent one record with the counts, the time window and the top strike. The record carries no ids: I read the agent's pane, and a list of hex ids is noise to me.
+
+My agent hands the open ids to a reflect worker, a subagent that takes strikes first. For each one, it reads the verdict and checks whether the same family was fixed within the last week. If not, it takes the first suggested fix whose target is on the live listing, writes a regression test from the strike's own quotes, makes one local commit with the ledger id in a trailer, and closes the row with the layer, the family and why it chose that fix. A repeat means the earlier fix failed, so the worker takes the next untried fix instead. A repeat goes to my board only when that next fix needs my authority: the mission, a permission, an external write or spending. A praise gets a keep-test that pins the behaviour that earned it.
+
+Once a day, a discovery step reads the Claude Code and Codex release notes for a built-in feature that could fix an open family or replace one of my own mechanisms. When a built-in covers a hook or script of mine, the candidate is a removal: retire mine, switch to theirs, and keep my tests as the proof.
+
+Two hours later, the next run judges the next slice. A family that comes back marks its fix as failed, and a family that stays away for a day marks it verified.
 
 ### Harness components
 
 The harness is everything around the fixed model: what fills its context window, what runs before and after each tool call, and the tools themselves.
 
-[![The harness around one turn: hooks on session start and on each prompt fill the context window with repo and git context, the skill catalog and RAG on request; the agent session, a fixed model with memory, makes tool calls that pass guard hooks, permission rules and memory and repo RAG before the tool, run built-ins, MCP servers, CLIs, scripts or subagents, and pass formatters, linters and an injection guard after the tool, with the result going back into the context window; the answer triggers stop and session-end hooks; colors mark the session, context, harness and tools layers](_media/diagrams/rhsi-components.png)](_media/diagrams/rhsi-components.png)
-
-In my setup, that is 86 hook commands on 18 events, 68 allow and 21 deny permission rules, 10 MCP servers, 50 skills, 12 subagents and 229 scripts. RAG arrives through hooks, before a search or a read and on request. Every change the loop makes names the layer it lands in.
+In my setup, that is 86 hook commands on 18 events, 68 allow and 21 deny permission rules, 10 MCP servers, 50 skills, 12 subagents and 229 scripts. RAG arrives through hooks, before a search or a read and on request. The diagram colors them in four layers, session, context, harness and tools, and every change the loop makes names the layer it lands in.
 
 Most mistakes are behaviour: 146 of 299 strikes, counting a second agentic session, sit in the session layer. Almost no fixes land there. Of the 174 strikes closed as fixed, 92 changed a tool, 52 the harness and one the session; 29 edited text, all but one before I stopped accepting text. Fixed is not verified, though: 36 passed the one-day check, 107 were still too young for it, and 31 already saw their family come back.
+
+[![The harness around one turn: hooks on session start and on each prompt fill the context window with repo and git context, the skill catalog and RAG on request; the agent session, a fixed model with memory, makes tool calls that pass guard hooks, permission rules and memory and repo RAG before the tool, run built-ins, MCP servers, CLIs, scripts or subagents, and pass formatters, linters and an injection guard after the tool, with the result going back into the context window; the answer triggers stop and session-end hooks; colors mark the session, context, harness and tools layers](_media/diagrams/rhsi-components.png)](_media/diagrams/rhsi-components.png)
 
 A fix in a hook or a tool reaches every later session at once. Geoffrey Hinton made the same point about digital intelligence:
 
@@ -209,9 +219,9 @@ What to watch:
 
 - Anchor metrics: my complaints per week, verified against fixed, families that came back, and strikes no mechanism can fix. The raw strike count says little on its own.
 - Judge mistakes: 33 verdicts were superseded by a corrected rerun. The ledger keeps them, so a judge error stays visible.
-- Failure alerts: a failed judge run raises a critical desktop notice, and a held lock makes a run exit without judging, so two runs never judge the same slice.
+- Failure alerts: a failed judge run raises a critical desktop notice with the cause from the judge log.
 - Stalled delivery: for about twelve hours, the second session held the notification stream and logged the main session's records as receipts, so the reflect step never ran. Records now go to the main session as direct messages.
-- Daily view: after each run, the agent gets one line with the counts, the time window and the top strike, and I read it in the pane I already watch. The ids stay out of it; the worker reads them from the ledger.
+- Daily view: the one-line record after each run is the only loop output I read, in the pane I already watch; everything else stays in the ledger.
 - Cost and latency: one 142 KB slice took the judge 735 seconds, and rerunning the frozen day after a rubric change is estimated at about 250k input tokens.
 
 ## Conclusion
