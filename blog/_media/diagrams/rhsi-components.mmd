@@ -1,0 +1,36 @@
+flowchart TB
+    subgraph IN["before the model sees anything"]
+        direction LR
+        P(["my prompt"]) --> UPS["on each prompt<br/><i>RAG on request</i>"]
+        SS["on session start<br/><i>repo and git context,<br/>skill catalog</i>"]
+    end
+    CTX["context window<br/><i>CLAUDE.md, skills, injected facts</i>"]
+    AG{{"agent session<br/><i>fixed model, memory</i>"}}
+    subgraph TC["every tool call"]
+        direction LR
+        PRE["before the tool<br/><i>guard hooks, permission rules,<br/>memory and repo RAG</i>"] --> T["tools<br/><i>built-ins, MCP servers,<br/>CLIs, scripts, subagents</i>"] --> POST["after the tool<br/><i>formatters, linters,<br/>injection guard</i>"]
+    end
+    END["on stop and session end<br/><i>notices, session memory</i>"]
+
+    IN --> CTX --> AG
+    AG -- "tool call" --> TC
+    TC -- "result" --> CTX
+    AG -- "answer" --> END
+
+    subgraph LG["layers"]
+        direction LR
+        L1["session"]:::session ~~~ L2["context"]:::context ~~~ L3["harness"]:::harness ~~~ L4["tools"]:::tools
+    end
+    END ~~~ LG
+
+    classDef session fill:#dbeafe,stroke:#3b6fb6,color:#111
+    classDef context fill:#fff4c2,stroke:#b39200,color:#111
+    classDef harness fill:#ece4ff,stroke:#7a5cc4,color:#111
+    classDef tools fill:#dff3e4,stroke:#3c8a55,color:#111
+    class AG session
+    class CTX context
+    class SS,UPS,PRE,POST,END harness
+    class T tools
+    style IN fill:#fafafa,stroke:#bbb
+    style TC fill:#fafafa,stroke:#bbb
+    style LG fill:#ffffff,stroke:#ddd
