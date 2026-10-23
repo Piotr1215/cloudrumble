@@ -196,9 +196,9 @@ A loop that edits its own harness is an agent with write access to its own guard
 
 The self-improving coding agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. Any loop where the improver can reach the judge, the rubric or the metric has the same lever.
 
-In my loop, the judge sits outside the improver's reach: cron starts it, it runs through the Codex CLI in a read-only sandbox, and it only suggests fixes. The rubric is a file in the same repository the improver edits, so a test pins it: any change fails until the judge is rerun on a frozen day of 26 of my complaints and praises, and the floors on that day only move up. The rubric may change to agree better with my complaints, never to lower the strike count. The number I trust is my complaints per week, counted from lines I typed, which the loop cannot write. If strikes fall while my complaints stay flat, the loop is tuning itself.
+In my loop, the judge cannot write: cron starts it, it runs through the Codex CLI in a read-only sandbox, and it only suggests fixes. That restricts the judge, not the improver. The judge script and its rubric are files in the same repository the improver edits, so a test pins the rubric: any change fails until the judge is rerun on a frozen day of 26 of my complaints and praises, and the floors on that day only move up. The rubric may change to agree better with my complaints, never to lower the strike count. The number I trust is my complaints per week, counted from lines I typed, which the loop cannot write. If strikes fall while my complaints stay flat, the loop is tuning itself.
 
-What stays open: the frozen day is one day, and a rubric can fit it while drifting everywhere else.
+What to check in your own loop: whether the improver can edit the judge, its prompt or its schedule, and whether anything besides a test stands in the way. A frozen day is also only one day, and a rubric can fit it while drifting everywhere else.
 
 #### Prompt injection through the transcript
 
@@ -220,7 +220,7 @@ What to check in your own loop: whether rules like the board rule are enforced b
 
 A judge that finds a mistake where none happened produces a fix for nothing, and every such fix is one more guard the agent has to work around. Self-improving harnesses can "hallucinate mistakes that never happened" ([Phantom Guardrails](https://arxiv.org/abs/2607.13083)).
 
-The silent-strike rule covers this too: one verdict without my words cannot add a guard. Before trusting the judge, I ran it on the frozen day, and it found all 26 of my complaints and praises. When a rerun corrects a verdict, the wrong row stays in the ledger as superseded, so the judge's error rate stays countable; 33 rows carry that status so far.
+The silent-strike rule covers this too: one verdict without my words cannot add a guard. Before relying on the judge, I ran it on the frozen day, and it found all 26 of my complaints and praises; that measures recall on one day. When a rerun corrects a verdict, the wrong row stays in the ledger as superseded, and 33 rows carry that status so far. That counts the mistakes a rerun happened to catch; it is not an error rate.
 
 #### Data leaving the machine
 
@@ -247,7 +247,7 @@ complaints per week (strikes in Piotr's own words)
 What to watch, and how:
 
 - Anchor metrics: my complaints per week, families that came back after a fix, fixes that stayed quiet, and strikes no mechanism can fix. A family that comes back is hard evidence; a quiet one is weak. The raw strike count says little on its own. Compute these from the raw ledger rows, never from a report the improving agent writes about itself.
-- Judge mistakes: 33 verdicts were superseded by a corrected rerun. Never delete a wrong verdict; close it as superseded so the error rate stays countable, and rerun the frozen day after every rubric change.
+- Judge mistakes: 33 verdicts were superseded by a corrected rerun. Never delete a wrong verdict; close it as superseded so corrections stay visible. To estimate an error rate, sample verdicts at random and check each one by hand against the transcript, and rerun the frozen day after every rubric change.
 - Failure alerts: a failed judge run raises a critical desktop notice with the cause from the judge log. Send failures through a channel the loop does not own, because a broken loop cannot report itself in its own record, and log every run, including the ones that skip because the lock is held.
 - Stalled delivery: for about twelve hours, the second session held the notification stream and logged the main session's records as receipts, so the reflect step never ran. Records now go to the main session as direct messages. No error showed it, so watch freshness: when verdicts keep arriving and fixes stop, something between the judge and the worker is broken.
 - Daily view: the one-line record after each run is the only loop output I read, in the pane I already watch. Put the summary where you already look, and keep ids and details in the ledger.
