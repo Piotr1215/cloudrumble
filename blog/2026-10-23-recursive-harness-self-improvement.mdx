@@ -142,7 +142,11 @@ The first is what Andrej Karpathy calls context engineering:
 >
 > Andrej Karpathy, [on X](https://x.com/karpathy/status/1937902205765607626), 2025
 
-A strike none of these can fix stays open. The strike about proposing fixes got a hook. When a TaskWarrior task closes and its text looks like a question someone asked, a small model picks where the answer should have lived: an announcement, a form, a tooltip, a doc, an alert, a runbook or nowhere. Any pick but nowhere adds one line to the task-closed notice, asking the agent to propose that edit. One of the repeats was "will sessions be recorded?", asked in the thread under my office-hours announcement. I answered with a reaction, the task closed, and nobody proposed putting the answer in the announcement itself. The hook's tests replay that closed task with a stand-in for the small model and check that the added line names the announcement. In the day since, the family has drawn no new strike and three praises for proposed fixes. That fits the hook working, and it proves nothing yet.
+A strike none of these can fix stays open. The strike about proposing fixes got a hook. When a TaskWarrior task closes and its text looks like a question someone asked, a small model picks where the answer should have lived: an announcement, a form, a tooltip, a doc, an alert, a runbook or nowhere. Any pick but nowhere adds one line to the task-closed notice, asking the agent to propose that edit.
+
+One of the repeats was "will sessions be recorded?", asked in the thread under my office-hours announcement. I answered with a reaction, the task closed, and nobody proposed putting the answer in the announcement itself.
+
+The hook's tests replay that closed task with a stand-in for the small model and check that the added line names the announcement. In the day since, the family has drawn no new strike and three praises for proposed fixes. That fits the hook working, and it proves nothing yet.
 
 [![A worker takes each strike, picks the first fix that fits from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix, which earns only a quiet-for-a-day label, or on a repeat, the next fix on the list](_media/diagrams/rhsi-wave-4.png)](_media/diagrams/rhsi-wave-4.png)
 
