@@ -63,15 +63,15 @@ Fixing that does not take an intelligence explosion. Self-improvement doesn't ha
 
 The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
 
-Changing the harness is the easy part; an agent does it every time it adds a line to its instructions. The hard part is knowing whether the change made anything better. So my loop has three roles, kept apart on purpose:
+Changing the harness is the easy part; an agent does it every time it adds a line to its instructions. The hard part is knowing whether the change made anything better. So RHSI keeps three roles apart:
 
 - An observer collects evidence about what the agent did
-- An independent judge reads that evidence and hands out strikes and praise
+- An independent judge reads that evidence and decides what went well and what went wrong
 - An improving agent, the agent itself, works out what in its harness to change, makes the change and tests it
 
 A change counts as an improvement only when a later run of the judge no longer finds the same mistake.
 
-By the end of this blog, you will know how the loop evolved, how the three roles fit together, and what one strike looks like on its way from my complaint to a verified fix. You will also see the numbers after its first two days, including a fix that still does not hold.
+By the end of this blog, you will know how my own loop evolved, how the three roles fit together in it, and what one strike looks like on its way from my complaint to a verified fix. You will also see the numbers after its first two days, including a fix that still does not hold.
 
 ### Who is this blog for?
 
