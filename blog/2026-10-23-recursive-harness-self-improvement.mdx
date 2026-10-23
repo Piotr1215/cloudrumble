@@ -5,7 +5,7 @@ slug: recursive-harness-self-improvement
 draft: false
 tags: ["ai", "development", "automation"]
 image: _media/rhsi-hero.png
-description: "The model is fixed and the harness is mutable. How an observer, an independent judge and an improving agent turn my Claude Code assistant's mistakes into hooks and tools with regression tests, and how a later run decides whether a change was an improvement."
+description: "The model is fixed and the harness is mutable. How an observer, an independent judge and an improving agent turn my Claude Code assistant's mistakes into hooks and tools with regression tests, and what a quiet day after a change does and does not show."
 ---
 
 ![A flawless crystal floats at the center of a ring of stone blocks; on one side the blocks are cracked with glowing cyan seams, and around the ring they give way to new blocks of glowing amber glass while old fragments fall away](_media/rhsi-hero.png)
@@ -57,9 +57,9 @@ My own agent is a long way from an intelligence explosion. It is an agentic sess
 >
 > Phil Connors, [Groundhog Day](https://en.wikiquote.org/wiki/Groundhog_Day_(film)), 1993
 
-Self-improvement doesn't have to mean retraining the model, though. If the prompt is what you ask and the context is everything the model sees when it answers, the harness is what builds that context and acts on the answers: instruction files, skills, memory, hooks, tools and permissions. The model can stay fixed while the agent improves its harness, including the parts that do the improving. That loop has a working name: Recursive Harness Self-Improvement, or RHSI.
+Self-improvement doesn't have to mean retraining the model, though. If the prompt is what you ask and the context is everything the model sees when it answers, the harness is what builds that context and acts on the answers: instruction files, skills, memory, hooks, tools and permissions. The model can stay fixed while the agent improves its harness, including the parts that do the improving. That loop has a working name: Recursive Harness Self-Improvement, or RHSI. It is an idea, and my own setup is where I am testing it.
 
-By the end of this blog, you will know how my own loop evolved and how it is built. You will also see what it fixed in its first two days, including a fix that still does not hold.
+By the end of this blog, you will know how my own loop evolved and how it is built. You will also see what it changed in its first two days, and why none of it counts as proven yet.
 
 ### Who is this blog for?
 
@@ -99,7 +99,7 @@ In its first week, it tested 43 candidate instructions and kept four. It was als
 
 ### #3 Physician, heal thyself
 
-The third attempt is the RHSI loop. I built it in October 2026, and it took three steps to get right.
+The third attempt is the RHSI loop. I built it in October 2026, and it went through three steps.
 
 #### A referee from another league
 
@@ -144,13 +144,13 @@ The first is what Andrej Karpathy calls context engineering:
 
 A strike none of these can fix stays open. The proposal strike became a TaskWarrior hook: when a task holding a question closes, a small model picks where the answer belongs, and the agent proposes that fix.
 
-[![A worker takes each strike, picks the first fix that works from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix: verified, or on a repeat, the next fix on the list](_media/diagrams/rhsi-wave-4.png)](_media/diagrams/rhsi-wave-4.png)
+[![A worker takes each strike, picks the first fix that fits from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix, which earns only a quiet-for-a-day label, or on a repeat, the next fix on the list](_media/diagrams/rhsi-wave-4.png)](_media/diagrams/rhsi-wave-4.png)
 
-Each fix gets a regression test from the strike's own quotes. Strikes that share one cause form a family, and a fix is verified only after a day with no new strike of its family. A repeat sends the agent to the next fix on the list.
+Each fix gets a regression test from the strike's own quotes. Strikes that share one cause form a family, and the loop labels a fix verified after a day with no new strike of its family. That label is a weak signal: a quiet day can mean the fix worked, the situation never came up, or the judge missed it. A repeat sends the agent to the next fix on the list.
 
 ## Architecture
 
-The loop has three roles, and each does one job. The observer collects evidence and interprets nothing. The judge hands out strikes and praise but cannot touch the harness. The improving agent, a subagent of my agent, makes the change and writes its test but cannot mark it verified; only a later judge run can. The diagram shows one run, from the transcript slice to the check that the mistake is gone.
+The loop has three roles, and each does one job. The observer collects evidence and interprets nothing. The judge hands out strikes and praise but cannot touch the harness. The improving agent, a subagent of my agent, makes the change and writes its test but cannot vouch for its own fix; only later judge runs add evidence. The diagram shows one run, from the transcript slice to the check that the mistake is gone.
 
 [![Sequence diagram: cron starts the judge script, which skips if a lock is held; the script slices the agent's transcript since the last run and sends the rubric, the cares file, the live extension points, the known families and the slice to a frontier model through the Codex CLI; the model returns strikes and praise as JSON with quotes and fixes; the script appends the rows to the ledger, runs verify, and sends the agent one record with the counts; the agent hands the open ids to a reflect worker, which reads each verdict, checks for a repeat, writes the first valid fix with a regression test as one local commit, and closes the row; a repeat whose next fix needs my authority, because it touches the mission, a permission, an external write or spending, goes to my board; two hours later the next run checks whether the family came back](_media/diagrams/rhsi-sequence.png)](_media/diagrams/rhsi-sequence.png)
 
@@ -158,13 +158,13 @@ A cron job starts the judge script every two hours. If the previous run still ho
 
 The judge is a frontier model from another vendor, called through the Codex CLI in a read-only sandbox. Besides the slice, it gets the rubric, a file of what I care about in my own words, a live listing of every hook, script and setting a fix may target, and the families of strikes it already knows. It answers in JSON: each strike or praise with its quotes from the slice, a family, and up to three fixes, best first.
 
-The script appends the verdicts to the ledger and runs verify, which marks a fixed family verified once a day has passed with no new strike of it. Then it sends my agent one record with the counts, the time window and the top strike. The record carries no ids: I read the agent's pane, and a list of hex ids is noise to me.
+The script appends the verdicts to the ledger and runs verify, which labels a fixed family verified once a day has passed with no new strike of it. Then it sends my agent one record with the counts, the time window and the top strike. The record carries no ids: I read the agent's pane, and a list of hex ids is noise to me.
 
 My agent hands the open ids to a reflect worker, a subagent that takes strikes first. For each one, it reads the verdict and checks whether the same family was fixed within the last week. If not, it takes the first suggested fix whose target is on the live listing, writes a regression test from the strike's own quotes, makes one local commit with the ledger id in a trailer, and closes the row with the layer, the family and why it chose that fix. A repeat means the earlier fix failed, so the worker takes the next untried fix instead. A repeat goes to my board only when that next fix needs my authority: the mission, a permission, an external write or spending. A praise gets a keep-test that pins the behaviour that earned it.
 
 Once a day, a discovery step reads the Claude Code and Codex release notes for a built-in feature that could fix an open family or replace one of my own mechanisms. When a built-in covers a hook or script of mine, the candidate is a removal: retire mine, switch to theirs, and keep my tests as the proof.
 
-Two hours later, the next run judges the next slice. A family that comes back marks its fix as failed, and a family that stays away for a day marks it verified.
+Two hours later, the next run judges the next slice. A family that comes back shows its fix failed. A family that stays away for a day only shows that nothing has contradicted the fix yet.
 
 ### Harness components
 
@@ -172,7 +172,7 @@ The harness is everything around the fixed model: what fills its context window,
 
 In my setup, that is 86 hook commands on 18 events, 68 allow and 21 deny permission rules, 10 MCP servers, 50 skills, 12 subagents and 229 scripts. RAG arrives through hooks, before a search or a read and on request. The diagram colors them in four layers, session, context, harness and tools, and every change the loop makes names the layer it lands in.
 
-Most mistakes are behaviour: 146 of 299 strikes, counting a second agentic session, sit in the session layer. Almost no fixes land there. Of the 174 strikes closed as fixed, 92 changed a tool, 52 the harness and one the session; 29 edited text, all but one before I stopped accepting text. Fixed is not verified, though: 36 passed the one-day check, 107 were still too young for it, and 31 already saw their family come back.
+Most mistakes are behaviour: 146 of 299 strikes, counting a second agentic session, sit in the session layer. Almost no fixes land there. Of the 174 strikes closed as fixed, 92 changed a tool, 52 the harness and one the session; 29 edited text, all but one before I stopped accepting text. A commit is not a result, though: 36 stayed quiet for a day, 107 were too young for even that, and 31 already saw their family come back. The 31 are hard evidence of failure; the 36 are only the absence of it.
 
 [![The harness around one turn: hooks on session start and on each prompt fill the context window with repo and git context, the skill catalog and RAG on request; the agent session, a fixed model with memory, makes tool calls that pass guard hooks, permission rules and memory and repo RAG before the tool, run built-ins, MCP servers, CLIs, scripts or subagents, and pass formatters, linters and an injection guard after the tool, with the result going back into the context window; the answer triggers stop and session-end hooks; colors mark the session, context, harness and tools layers](_media/diagrams/rhsi-components.png)](_media/diagrams/rhsi-components.png)
 
@@ -246,17 +246,17 @@ complaints per week (strikes in Piotr's own words)
 
 What to watch, and how:
 
-- Anchor metrics: my complaints per week, verified against fixed, families that came back, and strikes no mechanism can fix. The raw strike count says little on its own. Compute these from the raw ledger rows, never from a report the improving agent writes about itself.
+- Anchor metrics: my complaints per week, families that came back after a fix, fixes that stayed quiet, and strikes no mechanism can fix. A family that comes back is hard evidence; a quiet one is weak. The raw strike count says little on its own. Compute these from the raw ledger rows, never from a report the improving agent writes about itself.
 - Judge mistakes: 33 verdicts were superseded by a corrected rerun. Never delete a wrong verdict; close it as superseded so the error rate stays countable, and rerun the frozen day after every rubric change.
 - Failure alerts: a failed judge run raises a critical desktop notice with the cause from the judge log. Send failures through a channel the loop does not own, because a broken loop cannot report itself in its own record, and log every run, including the ones that skip because the lock is held.
 - Stalled delivery: for about twelve hours, the second session held the notification stream and logged the main session's records as receipts, so the reflect step never ran. Records now go to the main session as direct messages. No error showed it, so watch freshness: when verdicts keep arriving and fixes stop, something between the judge and the worker is broken.
 - Daily view: the one-line record after each run is the only loop output I read, in the pane I already watch. Put the summary where you already look, and keep ids and details in the ledger.
-- Audit trail: the ledger id in each fix commit's trailer links the code to the verdict. Searching `git log` for the trailer answers why a hook exists, and the ledger answers whether it worked.
+- Audit trail: the ledger id in each fix commit's trailer links the code to the verdict. Searching `git log` for the trailer answers why a hook exists, and the ledger shows whether its family came back.
 - Cost and latency: one 142 KB slice took the judge 735 seconds, and rerunning the frozen day after a rubric change is estimated at about 250k input tokens. Log the slice size and wall time of every run; a slice that keeps growing means the window or the caps need attention.
 
 ## Conclusion
 
-Waiting for RSI shouldn't stop us from improving the agents we already have. RHSI keeps the model fixed and lets the agent improve its harness: an outside judge finds the mistakes in my own words, the agent turns each one into a hook, a tool or a check, and only a later run decides whether it worked. After two days, 36 fixes have held, and the agent still tells me that nothing needs my attention more often than it should.
+Waiting for RSI shouldn't stop us from improving the agents we already have. RHSI keeps the model fixed and lets the agent improve its harness: an outside judge finds the mistakes in my own words, the agent turns each one into a hook, a tool or a check, and later runs show whether the mistake comes back. After two days, 31 fixes have already failed, 36 have stayed quiet for a day, and nothing is proven. The agent still tells me that nothing needs my attention more often than it should.
 
 The next time your agent says "You're absolutely right, I should have...", don't let it write another note on the fridge. Ask it what would make the mistake impossible, and who will check tomorrow.
 
