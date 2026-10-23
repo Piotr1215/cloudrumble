@@ -31,7 +31,7 @@ For an evolution story, show the old approach, what improved, and the limitation
 
 Explain the architectural roles that support the story. Put exhaustive mechanisms, measurements, and reference catalogs in technical docs. Do not remove all explanation and transitions to make the blog shorter.
 
-End with the author's view, benefits, and challenges. Link to useful sources naturally. A resources-only ending, social links, and a call to action are not required.
+End with the author's view, the open question the evidence leaves, and a final statement or call to action the post has earned. Skip benefits and challenges lists. Link to useful sources naturally. A resources-only ending and social links are not required.
 
 ## Technical Content
 
@@ -75,3 +75,19 @@ Review found these gaps:
 - A claim that nobody would take an action hid a search limitation. The revision named the passages supporting the answer and said search could miss one.
 
 After Piotr approved the story and cute visuals, review focused on these corrections.
+
+## Lessons from the RHSI Review
+
+The RHSI post described a live self-improvement loop. Piotr liked its story, quotes, and pictures; a reader review then found claims stronger than the evidence:
+
+- A fix was labeled verified after one quiet day. The post called it proven until Piotr said nothing was verified yet. A quiet day fits the fix working, the case not recurring, or the judge missing it, and the post now says so once, in full.
+- A count of verdicts that reruns corrected was presented as the judge's error rate. It had no denominator.
+- A sentence said the judge sat outside the improver's reach. The judge could not write, but its script and rubric lived in the repository the improver edited.
+- A slicer label was presented as an injection defense. The source labeled any unrecognized line as the author's words.
+- The security section first listed open gaps in the live setup. Piotr accepted a review that called it an attack recipe; the gaps became general checks for the reader.
+- The failed fix was vivid and its replacement read as an internal ticket name. The revision walked the real question, where its answer belonged, and what the hook's tests replay.
+- The view output said "fixed 138" while the prose said 174 fixes. A sentence before the output now decodes the state names.
+- A SkillsBench quote appeared only in older paper versions; the citation now links the version and states the current finding.
+- The call to action promised to make a mistake "impossible" after a post about weak signals. It now asks which check would catch the next repeat and what that check can miss.
+
+Piotr's structural feedback on the same post: an in-depth architecture walkthrough after the diagram, prose security and observability chapters that say how to watch, text between images, an abstract hero with cartoons inside, and no teaser labels or structure announcements.
