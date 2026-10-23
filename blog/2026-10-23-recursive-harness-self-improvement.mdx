@@ -55,9 +55,15 @@ My own agent is a long way from an intelligence explosion. It is an agentic sess
 
 For a long time my answer was to correct the agent in chat. It would apologize and write the lesson down: a line in `CLAUDE.md`, a rule in a skill, a memory. Often enough, it made the same mistake again a day later. The lesson existed as text, and text in a long prompt competes with everything else in that prompt.
 
-Fixing that does not take an intelligence explosion. Self-improvement doesn't have to mean a model that retrains itself or designs its successors. What an agent can do also depends on its harness: the instructions, context, memory, tools, hooks and permissions around the model. The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
+Fixing that does not take an intelligence explosion. Self-improvement doesn't have to mean a model that retrains itself or designs its successors. It can also mean improving what sits around the model:
 
-Changing the harness is the easy part; an agent does it every time it adds a line to a prompt. The hard part is knowing whether the change made anything better. So my loop has three roles, kept apart on purpose:
+- The prompt is what you ask on one turn
+- The context is everything the model sees on that turn: the system prompt, instructions, earlier messages, files and tool output
+- The harness is everything that builds that context and acts on the model's answers: instruction files, skills, memory, hooks, tools, MCP servers, permissions and scheduled jobs
+
+The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
+
+Changing the harness is the easy part; an agent does it every time it adds a line to its instructions. The hard part is knowing whether the change made anything better. So my loop has three roles, kept apart on purpose:
 
 - An observer collects evidence about what the agent did
 - An independent judge reads that evidence and hands out strikes and praise
@@ -69,11 +75,10 @@ By the end of this blog, you will know how the loop evolved, how the three roles
 
 ### Who is this blog for?
 
-If you run a long-lived coding agent such as Claude Code or Codex, as an assistant or for automation, this article is for you. The same goes if you maintain a growing pile of `CLAUDE.md` rules, skills and hooks and wonder which of them actually change behaviour. You don't need my setup to follow along; the ideas carry over to any agent that leaves a transcript.
+If you use an AI agent in a terminal or a desktop app and have told it the same thing twice, this blog is for you. If it apologized politely both times, even more so.
 
 A few terms we will use throughout:
 
-- The harness is everything around the model: prompts, skills, context injection, memory, hooks, tools, MCP servers, settings and scheduled jobs.
 - A strike is a moment where the agent failed me, backed by quotes from the transcript. A miss means something reached the agent and nothing right happened; noise means the agent spent my attention and gave nothing back.
 - A praise is a moment where the agent served me well, judged by its effect on me.
 - A family groups strikes with the same cause. Changes are measured against their family, so a repeat means the change failed.
