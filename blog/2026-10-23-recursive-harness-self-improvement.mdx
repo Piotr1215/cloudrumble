@@ -53,23 +53,13 @@ RSI stands for Recursive Self-Improvement: an AI system that improves itself, th
 
 My own agent is a long way from an intelligence explosion. It is an agentic session in Claude Code that runs all day as my assistant, and like any assistant it makes mistakes. When I corrected it, it apologized and wrote the lesson down in `CLAUDE.md`, a skill or a memory: one more line competing with everything else in its context. Often it made the same mistake a day later, and nothing told me whether a lesson had changed anything.
 
-Self-improvement doesn't have to mean retraining the model, though. The model can stay fixed while the agent improves its harness, everything around the model, including the parts that do the improving. That loop has a working name: Recursive Harness Self-Improvement, or RHSI.
+Self-improvement doesn't have to mean retraining the model, though. If the prompt is what you ask and the context is everything the model sees when it answers, the harness is what builds that context and acts on the answers: instruction files, skills, memory, hooks, tools and permissions. The model can stay fixed while the agent improves its harness, including the parts that do the improving. That loop has a working name: Recursive Harness Self-Improvement, or RHSI.
 
 By the end of this blog, you will know how my own loop evolved, how it is built, and what one strike looks like on its way from my complaint to a verified fix. You will also see the numbers after its first two days, including a fix that still does not hold.
 
 ### Who is this blog for?
 
 If you use an AI agent in a terminal or a desktop app and are tired of hearing "You're absolutely right, I should have...", this blog is for you.
-
-### Terms
-
-- The prompt is what you ask on one turn.
-- The context is everything the model sees on that turn: the system prompt, instructions, earlier messages, files and tool output.
-- The harness is everything that builds that context and acts on the model's answers: instruction files, skills, memory, hooks, tools, MCP servers, permissions and scheduled jobs.
-- A strike is a moment where the agent failed me, backed by quotes from the transcript. A miss means something reached the agent and nothing right happened; noise means the agent spent my attention and gave nothing back.
-- A praise is a moment where the agent served me well, judged by its effect on me.
-- A family groups strikes with the same cause. Changes are measured against their family, so a repeat means the change failed.
-- The ledger is an append-only JSONL file in git that holds every verdict and what became of it.
 
 ## The loop: evolution
 
@@ -93,13 +83,13 @@ The rubric is strict about that. A few of its rules:
 - "Do not strike for taste."
 - "Do not reward activity. Many tool calls prove nothing; a praise needs the effect on Piotr."
 
-A strike that I complained about carries `piotr_said: true`. A miss the judge spots on its own is a silent strike, capped at a confidence of 0.6, and it waits for a repeat or for my words before anything gets changed.
+Each strike is either a miss, where something reached the agent and nothing right happened, or noise, where the agent spent my attention and gave nothing back. A strike that I complained about carries `piotr_said: true`. A miss the judge spots on its own is a silent strike, capped at a confidence of 0.6, and it waits for a repeat or for my words before anything gets changed.
 
 Before trusting the judge, I froze one day of my own transcript as a fixture: 26 turns where I complained or praised something, spread over seven windows. The judge found all 26. A test pins the rubric's hash, so any change to the rubric fails until the judge is rerun on the frozen day, and the floors for recall and strike counts can only move up.
 
 [![Every two hours, a two-hour slice of the agent's session goes to a judge from another provider, which hands out a strike for an unlabeled task id read as business days and a praise for warning that approving a PR would deploy it to prod; every verdict becomes a ledger row, and someone asks: and then what?](_media/diagrams/rhsi-wave-2.png)](_media/diagrams/rhsi-wave-2.png)
 
-Now I had a steady stream of well-grounded verdicts. So what happens to each strike?
+Every verdict lands in the ledger, an append-only JSONL file in git that also records what became of it. Now I had a steady stream of well-grounded verdicts. So what happens to each strike?
 
 ### #3 A rule in the skill, again
 
@@ -126,7 +116,7 @@ A line in a skill or reference file no longer counts. A strike that none of thes
 
 For the proposal strike, the change moved into a TaskWarrior hook. When a task that holds a question is closed, the hook asks a small model where the answer belongs: an announcement, a form, a tooltip, a doc, an alert, a runbook, or nowhere. A confident pick adds one line to the agent's notice, asking it to propose that source fix.
 
-Every change also gets a regression test built from the strike's own quotes, and lands as one local commit with the ledger id in a trailer. The commit is the modification; the improvement is something else, and the agent that made the change does not get to declare it. [VERSE](https://arxiv.org/abs/2610.02616), a system that evolves agent harnesses, measured the same thing: "optimizer self-evolution fails to improve performance without execution-based verification". After every judge run, a verify step looks at each fixed family: once a day has passed with no new strike of that family, the row becomes verified. If one turned up, the change failed, and the agent takes the next untried fix for that family. A repeat reaches my board only when the next fix needs my authority: the mission, a permission boundary, an external write or spending.
+Every change also gets a regression test built from the strike's own quotes, and lands as one local commit with the ledger id in a trailer. The commit is the modification; the improvement is something else, and the agent that made the change does not get to declare it. [VERSE](https://arxiv.org/abs/2610.02616), a system that evolves agent harnesses, measured the same thing: "optimizer self-evolution fails to improve performance without execution-based verification". Changes are measured against a family, the strikes that share one cause. After every judge run, a verify step looks at each fixed family: once a day has passed with no new strike of that family, the row becomes verified. If one turned up, the change failed, and the agent takes the next untried fix for that family. A repeat reaches my board only when the next fix needs my authority: the mission, a permission boundary, an external write or spending.
 
 [![A worker takes each strike, picks the first fix that works from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix: verified, or on a repeat, the next fix on the list](_media/diagrams/rhsi-wave-4.png)](_media/diagrams/rhsi-wave-4.png)
 
