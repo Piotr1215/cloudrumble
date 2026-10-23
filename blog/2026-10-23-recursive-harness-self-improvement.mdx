@@ -65,8 +65,6 @@ By the end of this blog, you will know how my own loop evolved and how it is bui
 
 If you use an AI agent in a terminal or a desktop app and are tired of hearing "You're absolutely right, I should have...", this blog is for you.
 
-[![A robot apologizes for the fourth day running with "You're absolutely right, I should have run the tests"; a judge raises a red strike card, and the fix lands in the harness as a hook and a test while the model stays locked](_media/diagrams/rhsi-apology.png)](_media/diagrams/rhsi-apology.png)
-
 ## Attempts to solve the problem
 
 RHSI didn't occur to me right away. At the beginning, I tried other ideas, and each one failed in a way that pointed to the next. In the following sections, I'll briefly explain what I tried, what failed and how it led to the next idea.
@@ -208,7 +206,7 @@ The slice carries more than my words. Event lines from Slack, mail and the calen
 
 Three rules break that chain. The slicer labels every line by origin, PIOTR for text I typed and EVENT for anything injected between turns, so a stranger's message cannot pass for my complaint. A strike without my words is a silent strike: the rubric caps its confidence at 0.6, and the worker never fixes it on first sight. It waits until a later run repeats it or my words confirm it. And a fix that touches a permission, an external write or spending goes to my board, whatever its evidence.
 
-What stays open: the judge still reads hostile text, and a sender who writes the same thing twice can turn a silent strike into a repeat. Web content the agent fetches passes a small classifier that scores each result for injection and warns the agent above 0.99, but it blocks nothing and does not read Slack or mail.
+Web content the agent fetches also passes a small classifier that scores each result for injection and warns the agent above 0.99. What to check in your own loop: whether a repeat has to come from someone you trust, and whether injection screening covers every channel that reaches the transcript, not only the web. The judge reads text strangers wrote, so the rules that decide what it may act on matter more than the judge itself.
 
 #### Privilege creep
 
@@ -216,7 +214,7 @@ Every fix lands in the harness, and the harness holds the permission rules and t
 
 My loop narrows what a fix can touch. Before the improving agent edits anything, a script checks the target against a live listing of every hook, script, setting and server on this machine, and a suggested fix that names anything else is dropped unread. A fix takes one of four forms, right-time context, a hook, a deterministic tool or a small-model check, and never a line of text. A repeat whose next fix needs my authority, because it touches the mission, a permission, an external write or spending, goes to my board, and the ledger refuses a board row that names none of those four. The improving agent also runs behind the same guards as every other session: hooks block a push to main, commands that would kill my desktop session and a recursive `rm` outside scratch space, and 21 deny rules hold.
 
-What stays open: the board rule lives in the worker's instructions. No hook blocks an edit to a permission rule, so what catches a bad one is the commit trail.
+What to check in your own loop: whether rules like the board rule are enforced by a mechanism or only by the worker's instructions. A rule that lives in instructions is the kind of fix this loop refuses to accept from itself, and the same standard applies to the guards around the improver.
 
 #### Invented mistakes
 
