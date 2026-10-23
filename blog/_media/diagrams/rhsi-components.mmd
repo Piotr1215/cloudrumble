@@ -1,0 +1,24 @@
+flowchart TB
+    subgraph S["session"]
+        A["agent (fixed model)"]
+        M["memory"]
+    end
+    subgraph C["context"]
+        I["instruction files and skills"]
+    end
+    subgraph H["harness"]
+        K["hooks"]
+        P["settings and permissions"]
+    end
+    subgraph T["tools"]
+        MCP["MCP servers"]
+        CLI["CLIs and scripts"]
+        R["RAG (repo vector store)"]
+    end
+    I --> A
+    M --> A
+    A -- "tool calls" --> K
+    K --- P
+    K --> MCP
+    K --> CLI
+    R -.-> K

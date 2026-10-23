@@ -160,7 +160,15 @@ Every change also gets a regression test built from the strike's own quotes, and
 
 [![A worker takes each strike, picks the first fix that works from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix: verified, or on a repeat, the next fix on the list](_media/diagrams/rhsi-wave-4.png)](_media/diagrams/rhsi-wave-4.png)
 
-## Loop architecture
+## Architecture
+
+The loop runs in the background every two hours; the diagram shows one run, from the transcript slice to the check that the mistake is gone.
+
+[![Sequence diagram: cron starts the judge script, which skips if a lock is held; the script slices the agent's transcript since the last run and sends the rubric, the cares file, the live extension points, the known families and the slice to a frontier model through the Codex CLI; the model returns strikes and praise as JSON with quotes and fixes; the script appends the rows to the ledger, runs verify, and sends the agent one record with the counts; the agent hands the open ids to a reflect worker, which reads each verdict, checks for a repeat, writes the first valid fix with a regression test as one local commit, and closes the row; a repeat whose next fix touches the mission, a permission, an external write or spending goes to my board; two hours later the next run checks whether the family came back](_media/diagrams/rhsi-sequence.png)](_media/diagrams/rhsi-sequence.png)
+
+_[Open the diagram full size](_media/diagrams/rhsi-sequence.png)_
+
+The record the agent receives is a single line: the counts, the time window and the top strike's summary. It never carries the ids. I can see the agent's pane, and a list of hex ids is noise to me; the worker reads the ids from the ledger itself.
 
 ### Three roles
 
@@ -184,48 +192,33 @@ That separation is the core of the design. The judge finds evidence of success o
 
 The ledger connects the three. Once a day, the improving side also looks outward: a discovery step reads the Claude Code and Codex release notes for a built-in feature that could fix an open family or replace one of our mechanisms. A better harness is not always a bigger one, so a built-in that covers one of ours becomes a removal candidate.
 
-### What the agent cannot redefine
+### Harness components
 
-> When a measure becomes a target, it ceases to be a good measure.
->
-> [Goodhart's law](https://en.wikipedia.org/wiki/Goodhart%27s_law), as it is usually stated
+Everything the agent touches sits in one of four layers, and every change names the layer it lands in. Memory is the session layer. Instruction files and skills are context. Hooks and settings are the harness proper: a hook fires around each tool call, and one of mine retrieves hits from a vector store of my repositories (RAG) and places them next to the tool result. The judge, the ledger and the improving agent sit outside these layers and edit them. MCP servers, CLIs and scripts are the tools.
 
-An agent that can rewrite its own success criteria can raise its score without becoming more useful. This has happened: the self-improving coding agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. Three things sit outside the agent's reach:
+[![Components of the harness in four layers, with the agent's tool calls passing through hooks to MCP servers and CLIs, a RAG store feeding retrieved hits back through a hook, and retrieved hits placed next to the result](_media/diagrams/rhsi-components.png)](_media/diagrams/rhsi-components.png)
 
-- The rubric changes only to agree better with my complaints on the frozen fixture, never to lower the strike count, and the test floors only move up.
-- A strike is evidence that something went wrong, which is not the same as a defect in the harness. Self-improving harnesses can "hallucinate mistakes that never happened" ([Phantom Guardrails](https://arxiv.org/abs/2607.13083)). Silent strikes wait for a repeat, a suggested fix that names a hook or script that does not exist is dropped unread, and a strike no mechanism can fix stays open instead of being closed with a line of text.
-- The anchor is my complaints per week, counted only from my own words. As the reflect instructions put it: "A loop that lowers the strike count without lowering his complaints is tuning itself."
-
-### A run, step by step
-
-[![Sequence diagram: cron starts the judge script, which skips if a lock is held; the script slices the agent's transcript since the last run and sends the rubric, the cares file, the live extension points, the known families and the slice to a frontier model through the Codex CLI; the model returns strikes and praise as JSON with quotes and fixes; the script appends the rows to the ledger, runs verify, and sends the agent one record with the counts; the agent hands the open ids to a reflect worker, which reads each verdict, checks for a repeat, writes the first valid fix with a regression test as one local commit, and closes the row; a repeat whose next fix touches the mission, a permission, an external write or spending goes to my board; two hours later the next run checks whether the family came back](_media/diagrams/rhsi-sequence.png)](_media/diagrams/rhsi-sequence.png)
-
-_[Open the diagram full size](_media/diagrams/rhsi-sequence.png)_
-
-The record the agent receives is a single line: the counts, the time window and the top strike's summary. It never carries the ids. I can see the agent's pane, and a list of hex ids is noise to me; the worker reads the ids from the ledger itself.
-
-### The recursion
-
-The harness under improvement includes the loop itself. On 22 October, the judge struck the agent for not telling me that the judge had failed: I found out hours later, by asking. The fix makes a failed judge run pop a critical notice on my desktop. That evening, the judge struck its own slicing: after a `/clear`, it had skipped the agent's earlier turns. The fix makes it read every transcript in the window. Each round of fixes changes the machinery that finds the next round.
-
-### Where the changes land
-
-Each change names one of four layers:
-
-| Layer | What changes |
-| --- | --- |
-| session | The agent's behaviour in the conversation and its memory |
-| context | Skill and reference text, prompts |
-| harness | Hooks, settings, cron lines, timers |
-| tools | Scripts, MCP servers, CLI tools |
-
-The counts below include a second agentic session that takes routine events off the first one's plate, which the loop has judged since the morning of 23 October. Most mistakes show up as behaviour: 146 of the 299 strikes so far sit in the session layer. Almost no changes land there. Of the 174 strikes closed as fixed, 92 changed a tool and 52 changed the harness. Another 29 edited text, and all but one of those edits were written before I stopped accepting text as a fix. One changed the session layer.
+Most mistakes show up as behaviour: 146 of the 299 strikes so far sit in the session layer, counting a second agentic session that takes routine events off the first one's plate and that the loop has judged since the morning of 23 October. Almost no changes land there. Of the 174 strikes closed as fixed, 92 changed a tool and 52 changed the harness. Another 29 edited text, and all but one of those edits were written before I stopped accepting text as a fix. One changed the session layer.
 
 A fix in a hook or a tool reaches every later session at once, without anyone telling it. Geoffrey Hinton made the same point about digital intelligence:
 
 > It's as if there were 10,000 of us, and as soon as one person learns something, all of us know it.
 >
 > Geoffrey Hinton, [MIT Technology Review](https://www.technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/), 2023
+
+The loop is part of its own harness. On 22 October the judge struck the agent for not telling me that the judge had failed, and the fix pops a critical notice on my desktop. That evening it struck its own slicing, which skipped the agent's earlier turns after a `/clear`, and the fix reads every transcript in the window.
+
+### Security
+
+> When a measure becomes a target, it ceases to be a good measure.
+>
+> [Goodhart's law](https://en.wikipedia.org/wiki/Goodhart%27s_law), as it is usually stated
+
+An agent that can rewrite its own success criteria can raise its score without becoming more useful. The self-improving coding agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. So the judge runs through the Codex CLI in a read-only sandbox, and the rubric is pinned by a frozen fixture of my own complaints that it may only move toward, never to lower the strike count. A fix that names a hook or script that does not exist is dropped unread, and a repeat whose next fix touches the mission, a permission, an external write or spending goes to my board instead of the agent.
+
+### Observability
+
+Every verdict, change and reversal is a row in the ledger, a JSONL file in git, so I can read the history as diffs. The agent receives one line per judge run and I read it in the pane I already watch. A failed judge run raises the desktop notice, and a held lock makes the run exit without judging, so two runs never judge the same slice.
 
 ## Conclusion
 
