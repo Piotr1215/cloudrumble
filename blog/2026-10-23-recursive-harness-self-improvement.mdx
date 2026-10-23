@@ -103,19 +103,11 @@ The third attempt is the RHSI loop. I built it in October 2026, and it took thre
 
 #### A referee from another league
 
-This time I don't type anything, and nothing is replayed: the judge reads what actually happened. My complaints are already in the transcript. When I ask whether "bd" means business days, or tell the agent that long titles are fine, that is the feedback, and a model can find it. A study of real chat logs found such feedback useful but "Noisy as a Learning Signal" ([Liu et al.](https://arxiv.org/abs/2507.23158)), so every verdict has to quote it.
+This time I don't type anything, and nothing is replayed. My complaints are already in the transcript: when I ask whether "bd" means business days, that is feedback, and a model can find it.
 
-So now a cron job runs every two hours. It cuts the slice of the agent's transcript since the last run, one line per turn from me, the agent, an event or a tool, and sends it to a frontier model through the Codex CLI in a read-only sandbox. The judge comes from a different model family than the assistant it judges, because a model is a lenient judge of its own work: an LLM evaluator "scores its own outputs higher than others' while human annotators consider them of equal quality" ([Panickssery et al.](https://arxiv.org/abs/2404.13076)). A different family lowers that risk without removing it, since "model mistakes are becoming more similar with increasing capabilities" ([Goel et al.](https://arxiv.org/abs/2502.04313)). What makes the judge independent is evidence: the judge has to point at the transcript, and my own words outrank its guesses.
+Every two hours, a cron job cuts the slice of the agent's transcript since the last run and sends it to a judge from a different model family, through the Codex CLI in a read-only sandbox. A model is a lenient judge of its own work: it "scores its own outputs higher than others' while human annotators consider them of equal quality" ([Panickssery et al.](https://arxiv.org/abs/2404.13076)). Another family lowers that risk, though it does not remove it.
 
-The rubric is strict about that. A few of its rules:
-
-- "Evidence or nothing. Every verdict quotes one to three slice lines by their time ... verbatim. Omit a verdict you cannot anchor."
-- "Do not strike for taste."
-- "Do not reward activity. Many tool calls prove nothing; a praise needs the effect on Piotr."
-
-Each strike is either a miss, where something reached the agent and nothing right happened, or noise, where the agent spent my attention and gave nothing back. A strike that I complained about carries `piotr_said: true`. A miss the judge spots on its own is a silent strike, capped at a confidence of 0.6, and it waits for a repeat or for my words before anything gets changed.
-
-Before trusting the judge, I froze one day of my own transcript as a fixture: 26 turns where I complained or praised something, spread over seven windows. The judge found all 26. A test pins the rubric's hash, so any change to the rubric fails until the judge is rerun on the frozen day, and the floors for recall and strike counts can only move up.
+So the judge has to show its evidence. The rubric's first rule is "Evidence or nothing": every verdict quotes the lines it rests on, and my own words outrank the judge's guesses. A strike the judge finds without a complaint from me is a silent strike, and it waits for a repeat before anything changes. Before I trusted the judge, I ran it on one frozen day of my transcript with 26 complaints and praises. It found all 26.
 
 [![Every two hours, a two-hour slice of the agent's session goes to a judge from another provider, which hands out a strike for an unlabeled task id read as business days and a praise for warning that approving a PR would deploy it to prod; every verdict becomes a ledger row, and someone asks: and then what?](_media/diagrams/rhsi-wave-2.png)](_media/diagrams/rhsi-wave-2.png)
 
@@ -123,40 +115,36 @@ Every verdict lands in the ledger, an append-only JSONL file in git that also re
 
 #### Another note on the fridge
 
-The first strike in the ledger was one I wrote by hand on the day I built the loop. I had answered a question in Slack that a form's hint should have answered. The agent read my reply and left it at that, and two hours later I had to ask for the sentence to go into the form. I told the agent: "if you propose good actions, that's what differentiates junior platform engineer from senior".
+The first strike was one I wrote by hand. I had answered a question in Slack that a form's hint should have answered, and the agent left it at that. I told it: "if you propose good actions, that's what differentiates junior platform engineer from senior".
 
-I fixed it the familiar way. The agent's skill got a rule to propose the source fix whenever an answer reveals a gap, plus a test that the rule stays in the file. The next day, the judge caught the agent twice more, answering colleagues' questions without proposing where the answers should live.
+I fixed it the familiar way: a rule in the agent's skill to propose the source fix, plus a test that the rule stays in the file. The next day, the judge caught the agent twice more doing the same thing.
 
 > Sammy Jankis had the same problem, but he really had no system. He wrote himself a ridiculous amount of notes, but he'd get them all mixed up.
 >
 > Leonard Shelby, [Memento](https://en.wikiquote.org/wiki/Memento_(film)), 2000
 
-The test passed the whole time, because it checked the text and the text was still there. That day I wrote down for the agent what actually improves it: injecting relevant information at the right time, hooks that automate its behaviour, deterministic tools, and small models for the isolated parts that need judgement. Prompts and files were not on the list. The Claude Code docs describe the difference: hooks run at fixed points in the session lifecycle, "which gives you deterministic control: certain actions always happen rather than relying on the LLM to choose to run them" ([hooks guide](https://code.claude.com/docs/en/hooks-guide)).
-
-Research agrees about text an agent writes for itself: [SkillsBench](https://arxiv.org/abs/2602.12670) found that "Self-generated Skills provide no benefit on average". Text can work, though. [GEPA](https://arxiv.org/abs/2507.19457) and [ACE](https://arxiv.org/abs/2510.04618) improve agents with lessons written in plain language, and both build each change from how the agent actually ran: GEPA tests every prompt update, and ACE learns from execution feedback. My test only checked that the line was still in the file. What failed was text that nothing checked against behaviour.
+The test passed the whole time, because it checked the text, and the text was still there. [SkillsBench](https://arxiv.org/abs/2602.12670) found the same about skills agents write for themselves: they "provide no benefit on average". Text can work when something tests it against real runs, as [GEPA](https://arxiv.org/abs/2507.19457) does. Mine was checked only for being there. Has anything ever checked the lines in your own `CLAUDE.md`?
 
 [![I correct the agent in chat, it adds a rule to a long skill file, and the next day it closes a question without proposing a fix, again](_media/diagrams/rhsi-wave-3.png)](_media/diagrams/rhsi-wave-3.png)
 
 #### Trust, but verify
 
-Since that evening, a harness change takes one of four forms, in this order:
+Since then, a fix has to be a mechanism. The agent tries four kinds, in this order:
 
 1. Right-time context: a hook that injects the relevant fact at the moment it matters
 2. A hook that enforces or automates the behaviour
 3. A deterministic tool or script
 4. A check by a small model, for the rare case that needs judgement
 
-The first form is what Andrej Karpathy calls context engineering:
+The first is what Andrej Karpathy calls context engineering:
 
 > ...context engineering is the delicate art and science of filling the context window with just the right information for the next step.
 >
 > Andrej Karpathy, [on X](https://x.com/karpathy/status/1937902205765607626), 2025
 
-A line in a skill or reference file no longer counts. A strike that none of these forms can fix stays open in the ledger.
+A strike that none of these can fix stays open. The proposal strike became a TaskWarrior hook: when a task that holds a question is closed, a small model picks where the answer belongs, such as a form, a doc or a runbook, and the agent is asked to propose that fix.
 
-For the proposal strike, the change moved into a TaskWarrior hook. When a task that holds a question is closed, the hook asks a small model where the answer belongs: an announcement, a form, a tooltip, a doc, an alert, a runbook, or nowhere. A confident pick adds one line to the agent's notice, asking it to propose that source fix.
-
-Every change also gets a regression test built from the strike's own quotes, and lands as one local commit with the ledger id in a trailer. The commit is the modification; the improvement is something else, and the agent that made the change does not get to declare it. [VERSE](https://arxiv.org/abs/2610.02616), a system that evolves agent harnesses, measured the same thing: "optimizer self-evolution fails to improve performance without execution-based verification". Changes are measured against a family, the strikes that share one cause. After every judge run, a verify step looks at each fixed family: once a day has passed with no new strike of that family, the row becomes verified. If one turned up, the change failed, and the agent takes the next untried fix for that family. A repeat reaches my board only when the next fix needs my authority: the mission, a permission boundary, an external write or spending.
+Every fix gets a regression test built from the strike's own quotes, but the agent that made it does not get to call it an improvement. Strikes that share one cause form a family. After every judge run, a verify step checks each fixed family: a day without a new strike makes the fix verified, and a repeat sends the agent to the next untried fix.
 
 [![A worker takes each strike, picks the first fix that works from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix: verified, or on a repeat, the next fix on the list](_media/diagrams/rhsi-wave-4.png)](_media/diagrams/rhsi-wave-4.png)
 
@@ -202,30 +190,26 @@ Every verdict, change and reversal is a row in the ledger, a JSONL file in git, 
 
 ## Conclusion
 
-The model under my agent did not change during any of this. The harness did, and two ideas made those changes count. A fix lives in the harness as a mechanism: a rule in a skill file asks the model to remember, while a hook runs whether the model remembers or not. And an improvement is a result observed by someone other than the agent that made the change.
+The model under my agent did not change during any of this. The harness did, and two ideas made those changes count. A fix is a mechanism: a rule in a skill file asks the model to remember, while a hook runs whether it remembers or not. And an improvement is something observed by someone other than the agent that made the change.
 
-One question stays open: does the agent find its own deficiencies, or does an external judge find them while the agent experiments with the fixes? For now, mine is the second kind. The judge finds the problems, and the agent decides what to change, makes the change and tests it.
+The best outcome so far is that "my agent keeps doing X" stopped being a feeling. It is a family in a ledger, with the fixes that were tried and whether each one held.
 
 Benefits:
 
 - My complaints become strikes on their own; I don't type verdicts or keep a score
-- Changes live in hooks, scripts and tools, so they survive `/clear`, compaction and new sessions
-- Every change comes with a regression test built from the real conversation
-- A change counts as verified only when the mistake stops showing up, and a repeat triggers the next fix instead of a shrug
-- The loop improves its own machinery through the same path, from judge failures to blind spots in the slicer
-- The ledger is plain JSONL in git, so every verdict, change and reversal is a diff I can read
+- Fixes live in hooks, scripts and tools, so they survive `/clear`, compaction and new sessions
+- A fix counts only when the mistake stops showing up, and a repeat triggers the next fix instead of a shrug
+- The loop improves its own machinery through the same path
 
 Challenges:
 
-- Two days of data prove little. The complaints-per-week anchor has exactly one week, so there is no trend yet
-- The judge is a frontier model, and it is not cheap. One slice of 142 KB took 735 seconds, and rerunning the frozen fixture after a rubric change is estimated at about 250k input tokens
+- Two days prove little. The complaints-per-week anchor has one week of data, so there is no trend yet
+- The judge is not cheap: one 142 KB slice took 735 seconds
 - The judge can be wrong. Silent strikes wait for a repeat for that reason, and 33 verdicts were replaced after a corrected rerun
-- The loop can overreach. When long task titles were cut off in my terminal, the agent offered a hook that would block any title over 60 characters; I said "it's fine if they are longer", and that offer became a strike of its own
-- The plumbing breaks like any other plumbing. For about twelve hours, the second session held the notification stream and logged the main session's records as receipts, so the reflect step never ran. Records now go to the main session as direct messages
+- The loop can overreach. It once offered a hook to block task titles over 60 characters; I said "it's fine if they are longer", and the offer became a strike of its own
+- A fix can pass its own test and still fail. 31 fixes already saw their family come back, and the agent's empty all-clear replies still repeat. Harness research finds the same: "search-set gains often fail to transfer to held-out tasks" ([Harness-Delta Attribution](https://arxiv.org/abs/2610.22466))
 - Some behaviour has no mechanism. Those strikes stay open, and 78 are open right now
-- A fix can pass its own test and still fail. 31 fixes have already seen their family come back, and the most frequent family, the agent's empty all-clear replies, still repeats. Harness research finds the same: "search-set gains often fail to transfer to held-out tasks" ([Harness-Delta Attribution](https://arxiv.org/abs/2610.22466))
-- "Verified" means the judge has not seen the mistake for at least a day after the change. The judge reads a slice of each conversation, and it can miss things
-
-The most useful outcome so far is that "my agent keeps doing X" stopped being a feeling and became a family in a ledger, with a list of changes that were tried and a record of whether each one held.
 
 If you build something similar for your own agent, start with the separation: a judge that quotes its evidence and cannot rewrite its own rubric, and a rule that a change only counts when a later run agrees.
+
+One question stays open, and I keep coming back to it: can an agent find its own deficiencies, or will it always need an outside judge to point at them while it experiments with the fixes? Mine is the second kind, for now.
