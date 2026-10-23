@@ -190,26 +190,8 @@ Every verdict, change and reversal is a row in the ledger, so the history reads 
 
 ## Conclusion
 
-The model under my agent did not change during any of this. The harness did, and two ideas made the changes count: a fix is a mechanism, because a hook runs whether the model remembers or not, and an improvement is observed by someone other than the agent that made it.
+Waiting for RSI shouldn't stop us from improving the agents we already have. RHSI keeps the model fixed and lets the agent improve its harness: an outside judge finds the mistakes in my own words, the agent turns each one into a hook, a tool or a check, and only a later run decides whether it worked. After two days, 36 fixes have held, and the agent still tells me that nothing needs my attention more often than it should.
 
-The best outcome so far is that "my agent keeps doing X" stopped being a feeling. It is a family in a ledger, with the fixes that were tried and whether each one held.
+The next time your agent says "You're absolutely right, I should have...", don't let it write another note on the fridge. Ask it what would make the mistake impossible, and who will check tomorrow.
 
-Benefits:
-
-- My complaints become strikes on their own; I don't type verdicts or keep a score
-- Fixes live in hooks, scripts and tools, so they survive `/clear`, compaction and new sessions
-- A fix counts only when the mistake stops showing up, and a repeat triggers the next fix instead of a shrug
-- The loop improves its own machinery through the same path
-
-Challenges:
-
-- Two days prove little. The complaints-per-week anchor has one week of data, so there is no trend yet
-- The judge is not cheap: one 142 KB slice took 735 seconds
-- The judge can be wrong. Silent strikes wait for a repeat for that reason, and 33 verdicts were replaced after a corrected rerun
-- The loop can overreach. It once offered a hook to block task titles over 60 characters; I said "it's fine if they are longer", and the offer became a strike of its own
-- A fix can pass its own test and still fail. 31 fixes already saw their family come back, and the agent's empty all-clear replies still repeat. Harness research finds the same: "search-set gains often fail to transfer to held-out tasks" ([Harness-Delta Attribution](https://arxiv.org/abs/2610.22466))
-- Some behaviour has no mechanism. Those strikes stay open, and 78 are open right now
-
-If you build something similar for your own agent, start with the separation: a judge that quotes its evidence and cannot rewrite its own rubric, and a rule that a change only counts when a later run agrees.
-
-One question stays open, and I keep coming back to it: can an agent find its own deficiencies, or will it always need an outside judge to point at them while it experiments with the fixes? Mine is the second kind, for now.
+Phil Connors only got out of Groundhog Day by changing himself. My agent can't change its model, but it can change its harness, and every two hours someone checks whether it did.
