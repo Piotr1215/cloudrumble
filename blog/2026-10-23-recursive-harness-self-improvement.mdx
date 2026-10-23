@@ -65,7 +65,7 @@ If you use an AI agent in a terminal or a desktop app and are tired of hearing "
 
 RHSI didn't occur to me right away. At the beginning, I tried simpler ideas, and each one failed in a way that pointed to the next. In the following sections, I'll briefly explain what I tried, what failed and how it led to the next idea.
 
-### #1 A scoreboard I kept by hand
+### #1 Stick and carrot, but for AI
 
 My first attempt was a scoreboard in late 2025. When Claude did something wrong, I recorded a strike with a reason; when it did something well, a praise. A script appended each one to a CSV file and kept a score, praises minus strikes. A Stop hook then told Claude to "IMPLEMENT all pending feedback" by updating its system prompts, `CLAUDE.md` or skills, and to mark each row as implemented.
 
@@ -73,7 +73,7 @@ I collected the evidence and judged it myself, and Claude graded its own homewor
 
 [![I record a strike with a reason, a CSV keeps the score, a Stop hook bell tells Claude to implement all pending feedback, Claude reports that it updated CLAUDE.md and marked the feedback implemented, and I look tired](_media/diagrams/rhsi-wave-1.png)](_media/diagrams/rhsi-wave-1.png)
 
-### #2 A judge that reads the transcript
+### #2 A referee from another league
 
 In October 2026 I came back to the idea, and this time I don't type anything. My complaints are already in the transcript. When I ask whether "bd" means business days, or tell the agent that long titles are fine, that is the feedback, and a model can find it. A study of real chat logs found such feedback useful but "Noisy as a Learning Signal" ([Liu et al.](https://arxiv.org/abs/2507.23158)), so every verdict has to quote it.
 
@@ -93,7 +93,7 @@ Before trusting the judge, I froze one day of my own transcript as a fixture: 26
 
 Every verdict lands in the ledger, an append-only JSONL file in git that also records what became of it. Now I had a steady stream of well-grounded verdicts. So what happens to each strike?
 
-### #3 A rule in the skill, again
+### #3 Another note on the fridge
 
 The first strike in the ledger was one I wrote by hand on the day I built the loop. I had answered a question in Slack that a form's hint should have answered. The agent read my reply and left it at that, and two hours later I had to ask for the sentence to go into the form. I told the agent: "if you propose good actions, that's what differentiates junior platform engineer from senior".
 
@@ -105,7 +105,7 @@ Research agrees about text an agent writes for itself: [SkillsBench](https://arx
 
 [![I correct the agent in chat, it adds a rule to a long skill file, and the next day it closes a question without proposing a fix, again](_media/diagrams/rhsi-wave-3.png)](_media/diagrams/rhsi-wave-3.png)
 
-### #4 A mechanism, a test, and a second look
+### #4 Trust, but verify
 
 Since that evening, a harness change takes one of four forms, in this order:
 
