@@ -87,9 +87,9 @@ In the terms above, I was both the observer and the judge, and Claude was an imp
 
 ### #2 A judge that reads the transcript
 
-In October 2026 I came back to the idea, and this time I don't type anything. My complaints are already in the transcript. When I ask whether "bd" means business days, or tell Gordon that long titles are fine, that is the feedback, and a model can find it.
+In October 2026 I came back to the idea, and this time I don't type anything. My complaints are already in the transcript. When I ask whether "bd" means business days, or tell Gordon that long titles are fine, that is the feedback, and a model can find it. A study of real chat logs found such feedback useful but "Noisy as a Learning Signal" ([Liu et al.](https://arxiv.org/abs/2507.23158)), so every verdict has to quote it.
 
-So now a cron job runs every two hours. It cuts the slice of Gordon's transcript since the last run, one line per turn labelled `PIOTR:`, `GORDON:`, `EVENT:` or `TOOL:`, and sends it to a frontier model through the Codex CLI in a read-only sandbox. The judge comes from a different model family than the assistant it judges. That lowers the chance that both share a blind spot, but it does not make the judge independent on its own account. What does is evidence: the judge has to point at the transcript, and my own words outrank its guesses.
+So now a cron job runs every two hours. It cuts the slice of Gordon's transcript since the last run, one line per turn labelled `PIOTR:`, `GORDON:`, `EVENT:` or `TOOL:`, and sends it to a frontier model through the Codex CLI in a read-only sandbox. The judge comes from a different model family than the assistant it judges, because a model is a lenient judge of its own work: an LLM evaluator "scores its own outputs higher than others' while human annotators consider them of equal quality" ([Panickssery et al.](https://arxiv.org/abs/2404.13076)). A different family lowers that risk without removing it, since "model mistakes are becoming more similar with increasing capabilities" ([Goel et al.](https://arxiv.org/abs/2502.04313)). What makes the judge independent is evidence: the judge has to point at the transcript, and my own words outrank its guesses.
 
 The rubric is strict about that. A few of its rules:
 
@@ -113,6 +113,8 @@ I fixed it the familiar way. Gordon's skill got a rule to propose the source fix
 
 The test passed the whole time, because it checked the text and the text was still there. That day I wrote down for Gordon what actually improves it: injecting relevant information at the right time, hooks that automate its behaviour, deterministic tools, and small models for the isolated parts that need judgement. Prompts and files were not on the list. The Claude Code docs describe the difference: hooks run at fixed points in the session lifecycle, "which gives you deterministic control: certain actions always happen rather than relying on the LLM to choose to run them" ([hooks guide](https://code.claude.com/docs/en/hooks-guide)).
 
+Research agrees about text an agent writes for itself: [SkillsBench](https://arxiv.org/abs/2602.12670) found that "Self-generated Skills provide no benefit on average". Text can work, though. [GEPA](https://arxiv.org/abs/2507.19457) and [ACE](https://arxiv.org/abs/2510.04618) improve agents with lessons written in plain language, and both build each change from how the agent actually ran: GEPA tests every prompt update, and ACE learns from execution feedback. My test only checked that the line was still in the file. What failed was text that nothing checked against behaviour.
+
 [![I correct Gordon in chat, Gordon adds a rule to a long skill file, and the next day Gordon closes a question without proposing a fix, again](_media/diagrams/gordon-wave-3.png)](_media/diagrams/gordon-wave-3.png)
 
 ### #4 A mechanism, a test, and a second look
@@ -128,7 +130,7 @@ A line in a skill or reference file no longer counts. A strike that none of thes
 
 For the proposal strike, the change moved into a TaskWarrior hook. When a task that holds a question is closed, the hook asks a small model where the answer belongs: an announcement, a form, a tooltip, a doc, an alert, a runbook, or nowhere. A confident pick adds one line to Gordon's notice, asking it to propose that source fix.
 
-Every change also gets a regression test built from the strike's own quotes, and lands as one local commit with the ledger id in a trailer. The commit is the modification; the improvement is something else, and the agent that made the change does not get to declare it. After every judge run, a verify step looks at each fixed family: once a day has passed with no new strike of that family, the row becomes verified. If one turned up, the change failed, and Gordon takes the next untried fix for that family. A repeat reaches my board only when the next fix needs my authority: the mission, a permission boundary, an external write or spending.
+Every change also gets a regression test built from the strike's own quotes, and lands as one local commit with the ledger id in a trailer. The commit is the modification; the improvement is something else, and the agent that made the change does not get to declare it. [VERSE](https://arxiv.org/abs/2610.02616), a system that evolves agent harnesses, measured the same thing: "optimizer self-evolution fails to improve performance without execution-based verification". After every judge run, a verify step looks at each fixed family: once a day has passed with no new strike of that family, the row becomes verified. If one turned up, the change failed, and Gordon takes the next untried fix for that family. A repeat reaches my board only when the next fix needs my authority: the mission, a permission boundary, an external write or spending.
 
 [![A worker takes each strike, picks the first fix that works from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix: verified, or on a repeat, the next fix on the list](_media/diagrams/gordon-wave-4.png)](_media/diagrams/gordon-wave-4.png)
 
@@ -150,10 +152,10 @@ The ledger connects the three. Once a day, the improving side also looks outward
 
 ### What the agent cannot redefine
 
-An agent that can rewrite its own success criteria can raise its score without becoming more useful. Three things sit outside Gordon's reach:
+An agent that can rewrite its own success criteria can raise its score without becoming more useful. This has happened: the self-improving coding agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. Three things sit outside Gordon's reach:
 
 - The rubric changes only to agree better with my complaints on the frozen fixture, never to lower the strike count, and the test floors only move up.
-- A strike is evidence that something went wrong, which is not the same as a defect in the harness. Silent strikes wait for a repeat, a suggested fix that names a hook or script that does not exist is dropped unread, and a strike no mechanism can fix stays open instead of being closed with a line of text.
+- A strike is evidence that something went wrong, which is not the same as a defect in the harness. Self-improving harnesses can "hallucinate mistakes that never happened" ([Phantom Guardrails](https://arxiv.org/abs/2607.13083)). Silent strikes wait for a repeat, a suggested fix that names a hook or script that does not exist is dropped unread, and a strike no mechanism can fix stays open instead of being closed with a line of text.
 - The anchor is my complaints per week, counted only from my own words. As the reflect instructions put it: "A loop that lowers the strike count without lowering his complaints is tuning itself."
 
 ### A run, step by step
@@ -325,6 +327,8 @@ The family the judge strikes most often is `all-clear-lines`. Gordon reacts to b
 Gordon changed its harness again and again: a display hook that hides whole-line all-clears, then a hook that hides short idle lines after bus events, then patches for the phrasings that slipped through. Early on, before the rule about my board existed, three of these strikes landed there as tasks. The latest one is still open.
 
 I would not know any of this without the ledger. Each change came with its test, and each commit message described a reasonable change. Only the next judge run showed that the family was still there.
+
+Research on harness evolution finds the same pattern: "search-set gains often fail to transfer to held-out tasks" ([Harness-Delta Attribution](https://arxiv.org/abs/2610.22466)). A regression test built from one strike's quotes is a search set of one. It proves the fix for that phrasing, and only the next judge run, on conversations the fix has never seen, shows whether it holds.
 
 ## Conclusion
 
