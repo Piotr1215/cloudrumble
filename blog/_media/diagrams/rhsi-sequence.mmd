@@ -4,11 +4,11 @@ sequenceDiagram
     participant J as judge script
     participant X as frontier model<br/>(Codex CLI, read-only)
     participant L as ledger<br/>(JSONL in git)
-    participant G as Gordon
+    participant G as agent session
     participant W as reflect worker<br/>(Claude subagent)
 
     Cron->>J: start (a held lock means skip)
-    Note over J: slice Gordon's transcript since the last run
+    Note over J: slice the agent's transcript since the last run
     J->>X: rubric, what I care about, live extension points,<br/>known families, the slice
     X-->>J: strikes and praise as JSON,<br/>each with quotes and one to three fixes
     J->>L: append verdict rows
