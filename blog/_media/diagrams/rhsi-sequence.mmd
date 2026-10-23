@@ -18,7 +18,8 @@ sequenceDiagram
     W->>L: show the verdict, check for a repeat of its family
     Note over W: first fix whose target exists,<br/>a regression test from the strike's quotes,<br/>one local commit
     W->>L: close the row as fixed (or kept for praise)
-    alt a repeat whose next fix touches the mission, a permission,<br/>an external write or spending
+    alt the next fix needs my authority
+        Note over G,W: a repeat whose next fix touches the mission,<br/>a permission, an external write or spending
         W-->>G: the strike goes to my board
     end
     Note over Cron,L: two hours later the next run checks whether the family came back
