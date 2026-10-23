@@ -43,23 +43,21 @@ description: "The model is fixed and the harness is mutable. How an observer, an
 
 ## Introduction
 
-RSI stands for Recursive Self-Improvement: an AI system that makes itself better, then uses the better version to improve itself again. It is one of the milestones AI is expected to reach one day, and the idea goes back decades. In 1965, the mathematician I. J. Good put it like this:
+RSI stands for Recursive Self-Improvement: an AI system that improves itself, then uses the improved version to improve itself again. It is one of the milestones AI is expected to reach one day. In 1965, the mathematician I. J. Good put it like this:
 
 > Let an ultraintelligent machine be defined as a machine that can far surpass all the intellectual activities of any man however clever. Since the design of machines is one of these intellectual activities, an ultraintelligent machine could design even better machines; there would then unquestionably be an 'intelligence explosion,' and the intelligence of man would be left far behind.
 >
 > I. J. Good, [Speculations Concerning the First Ultraintelligent Machine](https://en.wikipedia.org/wiki/I._J._Good), 1965
 
-However, self-improvement doesn't have to mean a model that retrains itself or designs its successors. What an agent can do depends on more than its weights. It also depends on its harness: the instructions, which context arrives and when, the memory, the tools, the hooks and the permissions. Two agents on the same model behave differently because their harnesses differ. The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
+However, self-improvement doesn't have to mean a model that retrains itself or designs its successors. What an agent can do also depends on its harness: the instructions, context, memory, tools, hooks and permissions around the model. The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
 
 In this blog, I will show such a loop running on my own AI assistant, and how the loop decides whether a change was actually an improvement.
 
 <!--truncate-->
 
-My assistant is an agentic session in Claude Code that I keep running all day. It reads my Slack, Linear and GitHub notifications, keeps my task board in TaskWarrior, drafts replies for me to send, and hands bounded work to short-lived worker agents. Like any assistant, it makes mistakes. The ones that cost me are the mistakes it makes twice.
+My assistant is an agentic session in Claude Code that I keep running all day. It reads my notifications, keeps my task board, drafts replies and hands work to short-lived worker agents. Like any assistant, it makes mistakes, and the costly ones are those it makes twice.
 
 For a long time my answer was to correct the agent in chat. It would apologize and write the lesson down: a line in `CLAUDE.md`, a rule in a skill, a memory. Often enough, it made the same mistake again a day later. The lesson existed as text, and text in a long prompt competes with everything else in that prompt.
-
-I talked this problem through with Codex, and the framing above came out of that conversation: I can't change the weights of the model my agent runs on, but I can change everything around it.
 
 Changing the harness is the easy part; an agent does it every time it adds a line to a prompt. The hard part is knowing whether the change made anything better. So my loop has three roles, kept apart on purpose:
 
@@ -342,7 +340,7 @@ Research on harness evolution finds the same pattern: "search-set gains often fa
 
 The model under my agent did not change during any of this. The harness did, and two ideas made those changes count. A fix lives in the harness as a mechanism: a rule in a skill file asks the model to remember, while a hook runs whether the model remembers or not. And an improvement is a result observed by someone other than the agent that made the change.
 
-Codex asked me a question while we worked out the framing: does the agent find its own deficiencies, or does an external judge find them while the agent experiments with the fixes? For now, mine is the second kind. The judge finds the problems, and the agent decides what to change, makes the change and tests it.
+One question stays open: does the agent find its own deficiencies, or does an external judge find them while the agent experiments with the fixes? For now, mine is the second kind. The judge finds the problems, and the agent decides what to change, makes the change and tests it.
 
 Benefits:
 
