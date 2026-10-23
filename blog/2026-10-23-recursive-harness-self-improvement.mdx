@@ -75,9 +75,9 @@ RHSI didn't occur to me right away. At the beginning, I tried other ideas, and e
 
 ### #1 Stick and carrot, but for AI
 
-My first attempt was a scoreboard in late 2025. When Claude did something wrong, I recorded a strike with a reason; when it did something well, a praise. A script appended each one to a CSV file and kept a score, praises minus strikes. A Stop hook then told Claude to "IMPLEMENT all pending feedback" by updating its system prompts, `CLAUDE.md` or skills, and to mark each row as implemented. I liked it enough to show it in [a video](https://www.youtube.com/watch?v=09dggS8KwBc).
+My first attempt, in late 2025, was a scoreboard. When Claude got something wrong, I typed a strike with a reason; when it got something right, a praise. A script kept the score in a CSV file, and a Stop hook told Claude to "IMPLEMENT all pending feedback" in its prompts, `CLAUDE.md` or skills. I liked it enough to show it in [a video](https://www.youtube.com/watch?v=09dggS8KwBc).
 
-It was too simple, and it kept me in the loop. I collected the evidence and judged it myself, and Claude graded its own homework. A mistake counted only if I stopped my work to type it in. "Implemented" meant that Claude said so: nothing tested the change, and nothing checked whether the same mistake came back. I removed the whole system around the turn of the year; the final commit message says it "added friction without measurable benefit".
+It was too simple, and it kept me in the loop. I collected the evidence and judged it myself, and Claude graded its own homework: "implemented" meant Claude said so. Nothing checked whether the mistake came back. Around the turn of the year I removed it; the last commit says it "added friction without measurable benefit".
 
 > The first principle is that you must not fool yourself, and you are the easiest person to fool.
 >
@@ -87,9 +87,9 @@ It was too simple, and it kept me in the loop. I collected the evidence and judg
 
 ### #2 A clinical trial for every instruction
 
-In August 2026 the pendulum swung the other way. I built a session-eval harness that works like a drug trial. A script searches my past sessions for moments when I was unhappy, and a model proposes one instruction that would have prevented each one, picked from a closed list of behaviours. The harness then replays the moment twice, once without the instruction and once with it, five times each, and a judge model compares each pair of answers without knowing which is which. An exact binomial test decides whether the instruction won, and a finding needs support from two independent sessions.
+In August 2026 the pendulum swung the other way: a session-eval harness that works like a drug trial. For each moment I was unhappy, a model proposes one instruction that would have prevented it. The harness replays that moment five times without the instruction and five times with it, a blind judge picks the better answer, and a binomial test decides.
 
-The statistics were sound. In its first week, the harness tested 43 candidate instructions from ten sessions, and four survived as findings. It was also too heavy and too low level. Every candidate cost at least ten replays plus the judging, and when I designed the next attempt in October, my research notes ruled the harness out as "too heavy for continuous use". It also measured exactly one answer, generated without tools, at the moment I complained, so a mistake that played out over tool calls, later turns or something the agent never did was out of its reach. When a candidate needed any of that, the judge marked the scenario infeasible and the verdict came back inconclusive. And the four findings were, once again, lines of text.
+In its first week, it tested 43 candidate instructions and kept four. It was also too heavy and too low level. Every candidate cost at least ten replays, and each replay was one answer, without tools, at the moment I complained, so a mistake that played out over tool calls or later turns was out of its reach. And the four findings were, once again, lines of text.
 
 > I think the problem, to be quite honest with you, is that you've never actually known what the question is.
 >
@@ -105,13 +105,13 @@ The third attempt is the RHSI loop. I built it in October 2026, and it took thre
 
 This time I don't type anything, and nothing is replayed. My complaints are already in the transcript: when I ask whether "bd" means business days, that is feedback, and a model can find it.
 
-Every two hours, a cron job cuts the slice of the agent's transcript since the last run and sends it to a judge from a different model family, through the Codex CLI in a read-only sandbox. A model is a lenient judge of its own work: it "scores its own outputs higher than others' while human annotators consider them of equal quality" ([Panickssery et al.](https://arxiv.org/abs/2404.13076)). Another family lowers that risk, though it does not remove it.
+Every two hours, a cron job sends the slice of the agent's transcript since the last run to a judge from another model family, which can read but not write. Models are lenient judges of their own work: one "scores its own outputs higher than others' while human annotators consider them of equal quality" ([Panickssery et al.](https://arxiv.org/abs/2404.13076)). Another family lowers that risk, though it does not remove it.
 
-So the judge has to show its evidence. The rubric's first rule is "Evidence or nothing": every verdict quotes the lines it rests on, and my own words outrank the judge's guesses. A strike the judge finds without a complaint from me is a silent strike, and it waits for a repeat before anything changes. Before I trusted the judge, I ran it on one frozen day of my transcript with 26 complaints and praises. It found all 26.
+The rubric's first rule is "Evidence or nothing": every verdict quotes the transcript. A strike the judge finds without a complaint from me is a silent strike, and it waits for a repeat. Before trusting the judge, I ran it on a frozen day with 26 of my complaints and praises. It found all 26.
 
 [![Every two hours, a two-hour slice of the agent's session goes to a judge from another provider, which hands out a strike for an unlabeled task id read as business days and a praise for warning that approving a PR would deploy it to prod; every verdict becomes a ledger row, and someone asks: and then what?](_media/diagrams/rhsi-wave-2.png)](_media/diagrams/rhsi-wave-2.png)
 
-Every verdict lands in the ledger, an append-only JSONL file in git that also records what became of it. Now I had a steady stream of well-grounded verdicts. So what happens to each strike?
+Every verdict lands in the ledger, an append-only JSONL file in git. So what happens to each strike?
 
 #### Another note on the fridge
 
@@ -123,13 +123,13 @@ I fixed it the familiar way: a rule in the agent's skill to propose the source f
 >
 > Leonard Shelby, [Memento](https://en.wikiquote.org/wiki/Memento_(film)), 2000
 
-The test passed the whole time, because it checked the text, and the text was still there. [SkillsBench](https://arxiv.org/abs/2602.12670) found the same about skills agents write for themselves: they "provide no benefit on average". Text can work when something tests it against real runs, as [GEPA](https://arxiv.org/abs/2507.19457) does. Mine was checked only for being there. Has anything ever checked the lines in your own `CLAUDE.md`?
+The test passed the whole time: it checked that the text was there, and it was. Skills that agents write for themselves "provide no benefit on average" ([SkillsBench](https://arxiv.org/abs/2602.12670)). Has anything ever checked the lines in your own `CLAUDE.md`?
 
 [![I correct the agent in chat, it adds a rule to a long skill file, and the next day it closes a question without proposing a fix, again](_media/diagrams/rhsi-wave-3.png)](_media/diagrams/rhsi-wave-3.png)
 
 #### Trust, but verify
 
-Since then, a fix has to be a mechanism. The agent tries four kinds, in this order:
+Since then, a fix has to be a mechanism, tried in this order:
 
 1. Right-time context: a hook that injects the relevant fact at the moment it matters
 2. A hook that enforces or automates the behaviour
@@ -142,9 +142,9 @@ The first is what Andrej Karpathy calls context engineering:
 >
 > Andrej Karpathy, [on X](https://x.com/karpathy/status/1937902205765607626), 2025
 
-A strike that none of these can fix stays open. The proposal strike became a TaskWarrior hook: when a task that holds a question is closed, a small model picks where the answer belongs, such as a form, a doc or a runbook, and the agent is asked to propose that fix.
+A strike none of these can fix stays open. The proposal strike became a TaskWarrior hook: when a task holding a question closes, a small model picks where the answer belongs, and the agent proposes that fix.
 
-Every fix gets a regression test built from the strike's own quotes, but the agent that made it does not get to call it an improvement. Strikes that share one cause form a family. After every judge run, a verify step checks each fixed family: a day without a new strike makes the fix verified, and a repeat sends the agent to the next untried fix.
+Each fix gets a regression test from the strike's own quotes. Strikes that share one cause form a family, and a fix is verified only after a day with no new strike of its family. A repeat sends the agent to the next fix on the list.
 
 [![A worker takes each strike, picks the first fix that works from a ladder of right-time context, a hook, a deterministic tool and a small-model check, with a line in the skill crossed out, writes a regression test from the real trace, and the judge's next run says no strike of this family since the fix: verified, or on a repeat, the next fix on the list](_media/diagrams/rhsi-wave-4.png)](_media/diagrams/rhsi-wave-4.png)
 
@@ -154,7 +154,7 @@ The loop runs in the background every two hours. The diagram shows one run, from
 
 [![Sequence diagram: cron starts the judge script, which skips if a lock is held; the script slices the agent's transcript since the last run and sends the rubric, the cares file, the live extension points, the known families and the slice to a frontier model through the Codex CLI; the model returns strikes and praise as JSON with quotes and fixes; the script appends the rows to the ledger, runs verify, and sends the agent one record with the counts; the agent hands the open ids to a reflect worker, which reads each verdict, checks for a repeat, writes the first valid fix with a regression test as one local commit, and closes the row; a repeat whose next fix needs my authority, because it touches the mission, a permission, an external write or spending, goes to my board; two hours later the next run checks whether the family came back](_media/diagrams/rhsi-sequence.png)](_media/diagrams/rhsi-sequence.png)
 
-Each role in the diagram does one job. The observer, a slicer plus cheap checks that compare my Slack archive with what reached the agent, collects evidence and interprets nothing. The judge, a model from another vendor, hands out strikes and praise but cannot touch the harness. The improving agent, a subagent my agent spawns for each judge record, makes the change and writes its test, but cannot mark it verified. Only a later judge run that no longer finds the mistake does that.
+Each role does one job. The observer collects evidence and interprets nothing. The judge hands out strikes and praise but cannot touch the harness. The improving agent, a subagent of my agent, makes the change and writes its test but cannot mark it verified; only a later judge run can.
 
 ### Harness components
 
@@ -162,17 +162,17 @@ The harness is everything around the fixed model: what fills its context window,
 
 [![The harness around one turn: hooks on session start and on each prompt fill the context window with repo and git context, the skill catalog and RAG on request; the agent session, a fixed model with memory, makes tool calls that pass guard hooks, permission rules and memory and repo RAG before the tool, run built-ins, MCP servers, CLIs, scripts or subagents, and pass formatters, linters and an injection guard after the tool, with the result going back into the context window; the answer triggers stop and session-end hooks; colors mark the session, context, harness and tools layers](_media/diagrams/rhsi-components.png)](_media/diagrams/rhsi-components.png)
 
-In my setup, that is 86 hook commands on 18 hook events, permission rules with 68 allows and 21 denies, 10 MCP servers, 50 skills, 12 subagent definitions and 229 scripts. RAG arrives through hooks: memories and repository documents from a vector store are recalled before a search or a read, and on request when a prompt names a topic. The colors mark the four layers, and every change the loop makes names the layer it lands in.
+In my setup, that is 86 hook commands on 18 events, 68 allow and 21 deny permission rules, 10 MCP servers, 50 skills, 12 subagents and 229 scripts. RAG arrives through hooks, before a search or a read and on request. Every change the loop makes names the layer it lands in.
 
-Most mistakes show up as behaviour: 146 of the 299 strikes so far sit in the session layer, counting a second agentic session that takes routine events off the first one's plate and that the loop has judged since the morning of 23 October. Almost no changes land there. Of the 174 strikes closed as fixed, 92 changed a tool and 52 changed the harness. Another 29 edited text, and all but one of those edits were written before I stopped accepting text as a fix. One changed the session layer. Fixed is not the same as verified: only 36 of the 174 have passed the one-day check, 107 were still too young for it, and 31 already saw their family come back.
+Most mistakes are behaviour: 146 of 299 strikes, counting a second agentic session, sit in the session layer. Almost no fixes land there. Of the 174 strikes closed as fixed, 92 changed a tool, 52 the harness and one the session; 29 edited text, all but one before I stopped accepting text. Fixed is not verified, though: 36 passed the one-day check, 107 were still too young for it, and 31 already saw their family come back.
 
-A fix in a hook or a tool reaches every later session at once, without anyone telling it. Geoffrey Hinton made the same point about digital intelligence:
+A fix in a hook or a tool reaches every later session at once. Geoffrey Hinton made the same point about digital intelligence:
 
 > It's as if there were 10,000 of us, and as soon as one person learns something, all of us know it.
 >
 > Geoffrey Hinton, [MIT Technology Review](https://www.technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/), 2023
 
-The loop is part of its own harness. On 22 October the judge struck the agent for not telling me that the judge had failed, and the fix pops a critical notice on my desktop. That evening it struck its own slicing, which skipped the agent's earlier turns after a `/clear`, and the fix reads every transcript in the window.
+The loop is part of its own harness. The judge once struck the agent for not telling me the judge had failed, and once struck its own slicer for skipping turns after a `/clear`. Both fixes came through the same loop.
 
 ### Security
 
@@ -180,17 +180,17 @@ The loop is part of its own harness. On 22 October the judge struck the agent fo
 >
 > [Goodhart's law](https://en.wikipedia.org/wiki/Goodhart%27s_law), as it is usually stated
 
-An agent that can rewrite its own success criteria can raise its score without becoming more useful. The self-improving coding agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. So the judge runs through the Codex CLI in a read-only sandbox, and the rubric is pinned by a frozen fixture of my own complaints that it may only move toward, never to lower the strike count. A fix that names a hook or script that does not exist is dropped unread, and a repeat whose next fix touches the mission, a permission, an external write or spending goes to my board instead of the agent.
+An agent that can rewrite its own success criteria can raise its score without becoming more useful. The self-improving coding agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. So the judge runs read-only, its rubric is pinned to the frozen day of my complaints, and a repeat whose next fix needs my authority goes to my board.
 
-The improving agent also works behind the harness it improves. Guard hooks block a push to main, commands that would take down my desktop session, and a recursive `rm` outside scratch space, and closing a tmux session needs my approval. A small classifier scores web content for prompt injection and warns the agent when a result looks hostile.
+The improving agent also works behind the harness it improves: guard hooks block a push to main, commands that would kill my desktop session and a recursive `rm` outside scratch space, and a small classifier flags web content that looks like prompt injection.
 
 ### Observability and visibility
 
-Every verdict, change and reversal is a row in the ledger, a JSONL file in git, so the history reads as diffs. A `view` command prints the state of the loop: open strikes, fixes waiting for verification, strikes per layer and my complaints per week. After each judge run, the agent gets one line with the counts, the time window and the top strike, which I read in the pane I already watch; the ids stay out of it, because the worker reads them from the ledger. A failed judge run raises a critical desktop notice, and a held lock makes a run exit without judging, so two runs never judge the same slice.
+Every verdict, change and reversal is a row in the ledger, so the history reads as git diffs. A `view` command prints open strikes, fixes awaiting verification, strikes per layer and my complaints per week. After each run, the agent gets one line with the counts, which I read in the pane I already watch, and a failed run raises a desktop notice.
 
 ## Conclusion
 
-The model under my agent did not change during any of this. The harness did, and two ideas made those changes count. A fix is a mechanism: a rule in a skill file asks the model to remember, while a hook runs whether it remembers or not. And an improvement is something observed by someone other than the agent that made the change.
+The model under my agent did not change during any of this. The harness did, and two ideas made the changes count: a fix is a mechanism, because a hook runs whether the model remembers or not, and an improvement is observed by someone other than the agent that made it.
 
 The best outcome so far is that "my agent keeps doing X" stopped being a feeling. It is a family in a ledger, with the fixes that were tried and whether each one held.
 
