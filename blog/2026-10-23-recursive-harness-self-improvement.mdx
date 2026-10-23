@@ -51,17 +51,9 @@ RSI stands for Recursive Self-Improvement: an AI system that improves itself, th
 
 <!--truncate-->
 
-My own agent is a long way from an intelligence explosion. It is an agentic session in Claude Code that I keep running all day as my assistant. It reads my notifications, keeps my task board, drafts replies and hands work to short-lived worker agents. Like any assistant, it makes mistakes, and the costly ones are those it makes twice.
+My own agent is a long way from an intelligence explosion. It is an agentic session in Claude Code that runs all day as my assistant, and like any assistant it makes mistakes. When I corrected it, it apologized and wrote the lesson down in `CLAUDE.md`, a skill or a memory: one more line competing with everything else in its context. Often it made the same mistake a day later, and nothing told me whether a lesson had changed anything.
 
-For a long time my answer was to correct the agent in chat. It would apologize and write the lesson down: a line in `CLAUDE.md`, a rule in a skill, a memory. Often enough, it made the same mistake again a day later. The lesson existed as text, and text in a long prompt competes with everything else in that prompt. Adding the line was easy; nothing told me whether it changed anything.
-
-Fixing that does not take an intelligence explosion. Self-improvement doesn't have to mean a model that retrains itself or designs its successors. It can also mean improving what sits around the model:
-
-- The prompt is what you ask on one turn
-- The context is everything the model sees on that turn: the system prompt, instructions, earlier messages, files and tool output
-- The harness is everything that builds that context and acts on the model's answers: instruction files, skills, memory, hooks, tools, MCP servers, permissions and scheduled jobs
-
-The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
+Self-improvement doesn't have to mean retraining the model, though. The model can stay fixed while the agent improves its harness, everything around the model, including the parts that do the improving. That loop has a working name: Recursive Harness Self-Improvement, or RHSI.
 
 By the end of this blog, you will know how my own loop evolved, how it is built, and what one strike looks like on its way from my complaint to a verified fix. You will also see the numbers after its first two days, including a fix that still does not hold.
 
@@ -71,6 +63,9 @@ If you use an AI agent in a terminal or a desktop app and have told it the same 
 
 A few terms we will use throughout:
 
+- The prompt is what you ask on one turn.
+- The context is everything the model sees on that turn: the system prompt, instructions, earlier messages, files and tool output.
+- The harness is everything that builds that context and acts on the model's answers: instruction files, skills, memory, hooks, tools, MCP servers, permissions and scheduled jobs.
 - A strike is a moment where the agent failed me, backed by quotes from the transcript. A miss means something reached the agent and nothing right happened; noise means the agent spent my attention and gave nothing back.
 - A praise is a moment where the agent served me well, judged by its effect on me.
 - A family groups strikes with the same cause. Changes are measured against their family, so a repeat means the change failed.
