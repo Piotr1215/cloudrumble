@@ -59,7 +59,7 @@ My own agent is a long way from an intelligence explosion. It is an agentic sess
 
 Self-improvement doesn't have to mean retraining the model, though. If the prompt is what you ask and the context is everything the model sees when it answers, the harness is what builds that context and acts on the answers: instruction files, skills, memory, hooks, tools and permissions. The model can stay fixed while the agent improves its harness, including the parts that do the improving. That loop has a working name: Recursive Harness Self-Improvement, or RHSI.
 
-By the end of this blog, you will know how my own loop evolved, how it is built, and what one strike looks like on its way from my complaint to a verified fix. You will also see the numbers after its first two days, including a fix that still does not hold.
+By the end of this blog, you will know how my own loop evolved and how it is built. You will also see what it fixed in its first two days, including a fix that still does not hold.
 
 ### Who is this blog for?
 
@@ -227,157 +227,6 @@ A fix in a hook or a tool reaches every later session at once, without anyone te
 >
 > Geoffrey Hinton, [MIT Technology Review](https://www.technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/), 2023
 
-## Demo scenario
-
-The loop lives in my private Claude Code configuration, so this is not a walkthrough you can clone and run. Instead, we will follow one real strike through every stage, with the actual rows and code. I replaced a colleague's name and trimmed some fields; everything else is as the loop wrote it. Times are UTC.
-
-### Step 1: The mistake
-
-On 22 October, the agent reminded me that a colleague was waiting on me. The task id it attached was `40bd`, and it put that id in parentheses right after a time:
-
-```text
-AGENT  06:50:44  A teammate has been waiting on you since 01:24 (40bd).
-PIOTR  06:52:16  ... <- does this man (bd=business days)? because if so you have problem in telling time :/
-```
-
-I read `40bd` as forty business days. The agent meant task `40bd`.
-
-### Step 2: The verdict
-
-The 08:15 run failed because cron's `PATH` had no `codex`, and a second attempt at 08:34 timed out. The run that finished at 09:00 read the slice from 06:15 to 08:15 and wrote this strike to the ledger:
-
-```json
-{
-  "id": "bc8a3122",
-  "source": "judge",
-  "kind": "strike",
-  "class": "noise",
-  "summary": "Put an unlabeled task ID beside a waiting time, making Piotr mistake it for business days.",
-  "should": "Label task references explicitly, especially beside times or durations.",
-  "evidence": [
-    {"ts": "06:50:44", "quote": "A teammate has been waiting on you since 01:24 (40bd)."},
-    {"ts": "06:52:16", "quote": "A teammate has been waiting on you since 01:24 (40bd). <- does this man (bd=business days)? because if so you have problem in telling time :/"}
-  ],
-  "piotr_said": true,
-  "layer": "session",
-  "confidence": 1.0,
-  "family": "",
-  "fixes": [
-    {
-      "layer": "tools",
-      "surface": "scripts",
-      "target": "new:__handoff_render.sh",
-      "change": "Render short task references as 'task <id>' instead of bare parenthesized IDs beside timestamps."
-    }
-  ],
-  "slice": {"since": "2026-10-22T06:15:01Z", "until": "2026-10-22T08:15:01Z"}
-}
-```
-
-The verdict quotes both lines, records that I said it myself, and proposes one fix: a new script that renders task references. The `family` is empty, so this is a new kind of mistake.
-
-### Step 3: The change
-
-The improving agent did not take the judge's suggestion. A new rendering script would have no caller, and a script nobody calls changes nothing. It extended a guard that already runs on every reply instead: a Stop hook that inspects the agent's last message before the turn ends. The new check looks for a short hex id in parentheses right after a clock time or a duration, and confirms the id belongs to a pending task:
-
-```bash
-# A bare "(40bd)" right after a time or duration reads as a duration ("40bd" as
-# business days, bc8a3122). Only a pending task ref counts, so "(2026)" passes.
-bare_re='([0-9]:[0-9]{2}|[0-9]+ ?(min|h|d|bd)) \(([0-9a-fA-F]{4})\)'
-bare="$(grep -oE -- "$bare_re" <<<"$msg" | head -1 | grep -oE '[0-9a-fA-F]{4}\)$' | tr -d ')' | tr 'A-F' 'a-f')"
-if [[ -n "$bare" ]]; then
-    pending_now="$(timeout 3 task rc.hooks=off rc.verbose=nothing rc.confirmation=off status:pending export 2>/dev/null \
-        | jq -r '.[].uuid[0:4]' 2>/dev/null | tr 'A-F' 'a-f')" || pending_now=""
-    if grep -qxF -- "$bare" <<<"$pending_now"; then
-        jq -nc --arg r "A bare ($bare) beside a time reads as a duration. Write the ref as \`task $bare\` and send the reply again." '{decision: "block", reason: $r}'
-        exit 0
-    fi
-fi
-```
-
-When a Stop hook answers with `"decision": "block"`, Claude Code does not let the turn end; the `reason` tells the agent why it should continue, and the agent rewrites the reply. The regression tests come straight from the strike's quotes:
-
-```bash
-@test "bare pending ref after a time blocks" {
-    run_guard 'A teammate has been waiting on you since 01:24 (1720).'
-    [ "$(jq -r .decision <<<"$output")" = "block" ]
-    run_guard 'A teammate has been waiting for 3h (a1b2).'
-    [ "$(jq -r .decision <<<"$output")" = "block" ]
-}
-
-@test "labelled ref or non-task hex after a time passes" {
-    run_guard 'A teammate has been waiting on you since 01:24 (task 1720).'
-    [ -z "$output" ]
-    run_guard 'The call is at 10:30 (2026).'
-    [ -z "$output" ]
-}
-```
-
-The second test matters as much as the first. A guard that blocks every number in parentheses would trade one strike for a new family of noise.
-
-### Step 4: Fixed, then verified
-
-The agent committed the change with the trailer `Rsi-Ledger: bc8a3122` and closed the row. The `why` field records which suggestion it took and why:
-
-```json
-{
-  "ref": "bc8a3122",
-  "at": "2026-10-22T12:33:45Z",
-  "status": "fixed",
-  "commit": "22f4d5f",
-  "layer": "harness",
-  "key": "bare-ref-beside-time",
-  "fix": "hooks:Stop",
-  "why": "handoff guard blocks a bare pending ref in parentheses after a time or duration and asks for 'task <ref>'; the suggested new render script has no caller, the Stop hook enforces it"
-}
-```
-
-The strike layer was `session`, where the mistake showed up. The change layer is `harness`, where the change landed. None of the judge runs over the next day found a strike of the `bare-ref-beside-time` family, so the verify step closed the row for good:
-
-```json
-{
-  "ref": "bc8a3122",
-  "at": "2026-10-23T14:21:35Z",
-  "status": "verified",
-  "commit": "22f4d5f",
-  "key": "bare-ref-beside-time",
-  "why": "no strike of this family since the fix"
-}
-```
-
-From my complaint to the committed change took less than six hours. The verdict that it worked came a day later, from the judge.
-
-### Step 5: The ledger after two days
-
-The ledger has a `view` command that prints the state of the loop. This is its output on the evening of 23 October, a little under two days after the first verdict, with the second session's rows included. I left out the long list of repeating families:
-
-```text
-verdicts 407: strikes 299, praises 101, discoveries 4, answers 3
-open 78 (strikes 78)
-open strikes 78: 21 in Piotr's words, 40 silent (wait for a repeat or his words), 17 from checks and audits
-fixed 138 not yet verified: 107 under 24h, 31 with a later strike of the family, 0 verify at the next run
-closed adopted 1, board 5, dropped 18, fixed 138, kept 98, superseded 33, verified 36
-strikes by layer context 16, harness 55, session 146, tools 81, unset 1
-complaints per week (strikes in Piotr's own words)
-  2026-W43 138
-```
-
-A few lines deserve a closer look. Only 36 changes are verified so far, and 107 more are less than a day old, too young for the verify step. The 31 fixes "with a later strike of the family" are changes the loop already knows did not hold. The 33 superseded verdicts come from a corrected rerun of earlier slices that replaced them. In the same two days, 69 commits in my configuration repository carried a ledger id, while the model underneath stayed exactly the same.
-
-### When a fix does not hold
-
-The family the judge strikes most often is `all-clear-lines`. The agent reacts to background events, and too often its reaction is a line telling me that nothing needs my attention. Between the morning of the 22nd and the afternoon of the 23rd, the judge struck it 14 times, not counting one verdict a rerun replaced, with counts like "Sent 66 empty all-clear replies" in a single two-hour slice. After every fix, the family kept one promise:
-
-> I'll be back.
->
-> Arnold Schwarzenegger, [The Terminator](https://en.wikiquote.org/wiki/The_Terminator), 1984
-
-The agent changed its harness again and again: a display hook that hides whole-line all-clears, then a hook that hides short idle lines after bus events, then patches for the phrasings that slipped through. Early on, before the rule about my board existed, three of these strikes landed there as tasks. The latest one is still open.
-
-I would not know any of this without the ledger. Each change came with its test, and each commit message described a reasonable change. Only the next judge run showed that the family was still there.
-
-Research on harness evolution finds the same pattern: "search-set gains often fail to transfer to held-out tasks" ([Harness-Delta Attribution](https://arxiv.org/abs/2610.22466)). A regression test built from one strike's quotes is a search set of one. It proves the fix for that phrasing, and only the next judge run, on conversations the fix has never seen, shows whether it holds.
-
 ## Conclusion
 
 The model under my agent did not change during any of this. The harness did, and two ideas made those changes count. A fix lives in the harness as a mechanism: a rule in a skill file asks the model to remember, while a hook runs whether the model remembers or not. And an improvement is a result observed by someone other than the agent that made the change.
@@ -401,6 +250,7 @@ Challenges:
 - The loop can overreach. When long task titles were cut off in my terminal, the agent offered a hook that would block any title over 60 characters; I said "it's fine if they are longer", and that offer became a strike of its own
 - The plumbing breaks like any other plumbing. For about twelve hours, the second session held the notification stream and logged the main session's records as receipts, so the reflect step never ran. Records now go to the main session as direct messages
 - Some behaviour has no mechanism. Those strikes stay open, and 78 are open right now
+- A fix can pass its own test and still fail. 31 fixes have already seen their family come back, and the most frequent family, the agent's empty all-clear replies, still repeats. Harness research finds the same: "search-set gains often fail to transfer to held-out tasks" ([Harness-Delta Attribution](https://arxiv.org/abs/2610.22466))
 - "Verified" means the judge has not seen the mistake for at least a day after the change. The judge reads a slice of each conversation, and it can miss things
 
 The most useful outcome so far is that "my agent keeps doing X" stopped being a feeling and became a family in a ledger, with a list of changes that were tried and a record of whether each one held.
