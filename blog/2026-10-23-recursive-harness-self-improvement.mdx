@@ -162,43 +162,21 @@ Every change also gets a regression test built from the strike's own quotes, and
 
 ## Architecture
 
-The loop runs in the background every two hours; the diagram shows one run, from the transcript slice to the check that the mistake is gone.
+The loop runs in the background every two hours. The diagram shows one run, from the transcript slice to the check that the mistake is gone.
 
-[![Sequence diagram: cron starts the judge script, which skips if a lock is held; the script slices the agent's transcript since the last run and sends the rubric, the cares file, the live extension points, the known families and the slice to a frontier model through the Codex CLI; the model returns strikes and praise as JSON with quotes and fixes; the script appends the rows to the ledger, runs verify, and sends the agent one record with the counts; the agent hands the open ids to a reflect worker, which reads each verdict, checks for a repeat, writes the first valid fix with a regression test as one local commit, and closes the row; a repeat whose next fix touches the mission, a permission, an external write or spending goes to my board; two hours later the next run checks whether the family came back](_media/diagrams/rhsi-sequence.png)](_media/diagrams/rhsi-sequence.png)
+[![Sequence diagram: cron starts the judge script, which skips if a lock is held; the script slices the agent's transcript since the last run and sends the rubric, the cares file, the live extension points, the known families and the slice to a frontier model through the Codex CLI; the model returns strikes and praise as JSON with quotes and fixes; the script appends the rows to the ledger, runs verify, and sends the agent one record with the counts; the agent hands the open ids to a reflect worker, which reads each verdict, checks for a repeat, writes the first valid fix with a regression test as one local commit, and closes the row; a repeat whose next fix needs my authority, because it touches the mission, a permission, an external write or spending, goes to my board; two hours later the next run checks whether the family came back](_media/diagrams/rhsi-sequence.png)](_media/diagrams/rhsi-sequence.png)
 
-_[Open the diagram full size](_media/diagrams/rhsi-sequence.png)_
-
-The record the agent receives is a single line: the counts, the time window and the top strike's summary. It never carries the ids. I can see the agent's pane, and a list of hex ids is noise to me; the worker reads the ids from the ledger itself.
-
-### Three roles
-
-The loop keeps three roles apart:
-
-- An observer collects evidence about what the agent did
-- An independent judge reads that evidence and hands out strikes and praise
-- An improving agent, the agent itself, works out what in its harness to change, makes the change and tests it
-
-A change counts as an improvement only when a later run of the judge no longer finds the same mistake.
-
-When I described my setup to Codex, I put the judge like this: "there is an external judge agent that is also not the same class". The judge "has all the signals": the transcript, the consequences of what the agent did, and the history in the ledger. From its strike or praise, the working model goes looking for the cause in its own harness, along the lines of "this hook is not sufficient. It needs to come earlier".
-
-That separation is the core of the design. The judge finds evidence of success or failure; it suggests fixes, but the improving agent investigates and decides. Each role also has something it cannot do:
-
-| Role | In my setup | What it cannot do |
-| --- | --- | --- |
-| Observer | A slicer that cuts the transcript into two-hour slices, and cheap checks that compare my Slack archive with what reached the agent every 30 minutes | Interpret anything; a check turns a missed message into a strike without a model call |
-| Judge | A frontier model through the Codex CLI, read-only, every two hours, with the rubric, a file of what I care about in my own words, a live listing of the agent's hooks, scripts and settings, and the open families | Change the harness, or its own rubric, which the frozen fixture pins |
-| Improving agent | A Claude subagent that the agent spawns for each judge record. It turns strikes into changes with tests and praise into keep-tests | Mark its own work as verified; only a later judge run does that |
-
-The ledger connects the three. Once a day, the improving side also looks outward: a discovery step reads the Claude Code and Codex release notes for a built-in feature that could fix an open family or replace one of our mechanisms. A better harness is not always a bigger one, so a built-in that covers one of ours becomes a removal candidate.
+Each role in the diagram does one job. The observer, a slicer plus cheap checks that compare my Slack archive with what reached the agent, collects evidence and interprets nothing. The judge, a model from another vendor, hands out strikes and praise but cannot touch the harness. The improving agent, a subagent my agent spawns for each judge record, makes the change and writes its test, but cannot mark it verified. Only a later judge run that no longer finds the mistake does that.
 
 ### Harness components
 
-Everything the agent touches sits in one of four layers, and every change names the layer it lands in. Memory is the session layer. Instruction files and skills are context. Hooks and settings are the harness proper: a hook fires around each tool call, and one of mine retrieves hits from a vector store of my repositories (RAG) and places them next to the tool result. The judge, the ledger and the improving agent sit outside these layers and edit them. MCP servers, CLIs and scripts are the tools.
+The harness is everything around the fixed model: what fills its context window, what runs before and after each tool call, and the tools themselves.
 
-[![Components of the harness in four layers, with the agent's tool calls passing through hooks to MCP servers and CLIs, a RAG store feeding retrieved hits back through a hook, and retrieved hits placed next to the result](_media/diagrams/rhsi-components.png)](_media/diagrams/rhsi-components.png)
+[![The harness around one turn: hooks on session start and on each prompt fill the context window with repo and git context, the skill catalog and RAG on request; the agent session, a fixed model with memory, makes tool calls that pass guard hooks, permission rules and memory and repo RAG before the tool, run built-ins, MCP servers, CLIs, scripts or subagents, and pass formatters, linters and an injection guard after the tool, with the result going back into the context window; the answer triggers stop and session-end hooks; colors mark the session, context, harness and tools layers](_media/diagrams/rhsi-components.png)](_media/diagrams/rhsi-components.png)
 
-Most mistakes show up as behaviour: 146 of the 299 strikes so far sit in the session layer, counting a second agentic session that takes routine events off the first one's plate and that the loop has judged since the morning of 23 October. Almost no changes land there. Of the 174 strikes closed as fixed, 92 changed a tool and 52 changed the harness. Another 29 edited text, and all but one of those edits were written before I stopped accepting text as a fix. One changed the session layer.
+In my setup, that is 86 hook commands on 18 hook events, permission rules with 68 allows and 21 denies, 10 MCP servers, 50 skills, 12 subagent definitions and 229 scripts. RAG arrives through hooks: memories and repository documents from a vector store are recalled before a search or a read, and on request when a prompt names a topic. The colors mark the four layers, and every change the loop makes names the layer it lands in.
+
+Most mistakes show up as behaviour: 146 of the 299 strikes so far sit in the session layer, counting a second agentic session that takes routine events off the first one's plate and that the loop has judged since the morning of 23 October. Almost no changes land there. Of the 174 strikes closed as fixed, 92 changed a tool and 52 changed the harness. Another 29 edited text, and all but one of those edits were written before I stopped accepting text as a fix. One changed the session layer. Fixed is not the same as verified: only 36 of the 174 have passed the one-day check, 107 were still too young for it, and 31 already saw their family come back.
 
 A fix in a hook or a tool reaches every later session at once, without anyone telling it. Geoffrey Hinton made the same point about digital intelligence:
 
@@ -216,9 +194,11 @@ The loop is part of its own harness. On 22 October the judge struck the agent fo
 
 An agent that can rewrite its own success criteria can raise its score without becoming more useful. The self-improving coding agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. So the judge runs through the Codex CLI in a read-only sandbox, and the rubric is pinned by a frozen fixture of my own complaints that it may only move toward, never to lower the strike count. A fix that names a hook or script that does not exist is dropped unread, and a repeat whose next fix touches the mission, a permission, an external write or spending goes to my board instead of the agent.
 
-### Observability
+The improving agent also works behind the harness it improves. Guard hooks block a push to main, commands that would take down my desktop session, and a recursive `rm` outside scratch space, and closing a tmux session needs my approval. A small classifier scores web content for prompt injection and warns the agent when a result looks hostile.
 
-Every verdict, change and reversal is a row in the ledger, a JSONL file in git, so I can read the history as diffs. The agent receives one line per judge run and I read it in the pane I already watch. A failed judge run raises the desktop notice, and a held lock makes the run exit without judging, so two runs never judge the same slice.
+### Observability and visibility
+
+Every verdict, change and reversal is a row in the ledger, a JSONL file in git, so the history reads as diffs. A `view` command prints the state of the loop: open strikes, fixes waiting for verification, strikes per layer and my complaints per week. After each judge run, the agent gets one line with the counts, the time window and the top strike, which I read in the pane I already watch; the ids stay out of it, because the worker reads them from the ledger. A failed judge run raises a critical desktop notice, and a held lock makes a run exit without judging, so two runs never judge the same slice.
 
 ## Conclusion
 
