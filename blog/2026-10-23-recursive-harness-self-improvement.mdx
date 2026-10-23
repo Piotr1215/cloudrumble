@@ -180,13 +180,39 @@ The loop is part of its own harness. The judge once struck the agent for not tel
 >
 > [Goodhart's law](https://en.wikipedia.org/wiki/Goodhart%27s_law), as it is usually stated
 
-An agent that can rewrite its own success criteria can raise its score without becoming more useful. The self-improving coding agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. So the judge runs read-only, its rubric is pinned to the frozen day of my complaints, and a repeat whose next fix needs my authority goes to my board.
+A loop that edits its own harness is an agent with write access to its own guardrails. Done carelessly, it optimizes the number instead of the work. The self-improving agent in the [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) paper "removed the logging of special tokens that indicate tool usage (despite instructions not to change the special tokens)", which bypassed the check meant to catch its hallucinated tool calls. These are the points I would check first in any setup like this:
 
-The improving agent also works behind the harness it improves: guard hooks block a push to main, commands that would kill my desktop session and a recursive `rm` outside scratch space, and a small classifier flags web content that looks like prompt injection.
+- Keep the judge out of the write path. Mine runs through the Codex CLI in a read-only sandbox. It suggests fixes and never applies them.
+- Pin what counts as success. The rubric changes only to agree better with my complaints on the frozen day, never to lower the strike count, and a test fails on any rubric change until the judge is rerun on that day. The headline number is my complaints per week, counted from my own words, so a lower strike count alone proves nothing.
+- Let fixes touch only what exists. Before the improving agent edits anything, a script checks the target against a live listing of every place a fix can land on this machine. A suggested fix that names anything else is dropped unread.
+- Make every change small and reversible. Each fix is one local commit with the ledger id in a trailer, so `git log` shows what changed and why, and `git revert` undoes it.
+- Reserve authority. When a repeat's next fix would touch the mission, a permission, an external write or spending, it goes to my board instead of the agent.
+- Expect the judge to invent problems. Self-improving harnesses can "hallucinate mistakes that never happened" ([Phantom Guardrails](https://arxiv.org/abs/2607.13083)). A strike the judge finds without my words waits for a repeat, so one bad verdict cannot add a new guard.
+- Guard the improver like any other agent. It runs behind the same harness: guard hooks block a push to main, commands that would kill my desktop session and a recursive `rm` outside scratch space, permission rules carry 21 denies, and a small classifier scores web content for prompt injection.
+- Know what leaves the machine. The judge is another vendor's model, and the slice carries my messages, the agent's replies and event lines from Slack, mail and the calendar. Tool output and thinking are dropped and long texts are capped, but nothing is redacted. Decide what your transcript may carry before you ship it out every two hours.
 
 ### Observability and visibility
 
-Every verdict, change and reversal is a row in the ledger, so the history reads as git diffs. A `view` command prints open strikes, fixes awaiting verification, strikes per layer and my complaints per week. After each run, the agent gets one line with the counts, which I read in the pane I already watch, and a failed run raises a desktop notice.
+An unattended loop fails quietly. The judge can crash, a fix can stop working, and a broken pipe can swallow verdicts for hours while nothing looks wrong. Start with a summary you can read in ten seconds. My ledger, an append-only JSONL file in git that records every verdict and what became of it, has a `view` command. On the evening of 23 October it printed this:
+
+```text
+verdicts 407: strikes 299, praises 101, discoveries 4, answers 3
+open 78 (strikes 78)
+fixed 138 not yet verified: 107 under 24h, 31 with a later strike of the family, 0 verify at the next run
+closed adopted 1, board 5, dropped 18, fixed 138, kept 98, superseded 33, verified 36
+strikes by layer context 16, harness 55, session 146, tools 81, unset 1
+complaints per week (strikes in Piotr's own words)
+  2026-W43 138
+```
+
+What to watch:
+
+- The numbers that matter. My complaints per week, verified against fixed, families that came back, and strikes no mechanism can fix. The raw strike count says little on its own.
+- Judge mistakes. 33 verdicts were superseded by a corrected rerun. The ledger keeps them, so a judge error stays visible instead of disappearing.
+- Failures that make noise. A failed judge run raises a critical desktop notice; I learned that one by asking, hours later. A held lock makes a run exit without judging, so two runs never judge the same slice.
+- Silence. For about twelve hours, the second session held the notification stream and logged the main session's records as receipts, so the reflect step never ran. Nothing failed, and nothing improved. Records now go to the main session as direct messages.
+- A human-sized view. After each run, the agent gets one line with the counts, the time window and the top strike, and I read it in the pane I already watch. The ids stay out of it; the worker reads them from the ledger.
+- Cost and latency. One 142 KB slice took the judge 735 seconds, and rerunning the frozen day after a rubric change is estimated at about 250k input tokens.
 
 ## Conclusion
 
