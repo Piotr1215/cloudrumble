@@ -53,7 +53,7 @@ RSI stands for Recursive Self-Improvement: an AI system that improves itself, th
 
 My own agent is a long way from an intelligence explosion. It is an agentic session in Claude Code that I keep running all day as my assistant. It reads my notifications, keeps my task board, drafts replies and hands work to short-lived worker agents. Like any assistant, it makes mistakes, and the costly ones are those it makes twice.
 
-For a long time my answer was to correct the agent in chat. It would apologize and write the lesson down: a line in `CLAUDE.md`, a rule in a skill, a memory. Often enough, it made the same mistake again a day later. The lesson existed as text, and text in a long prompt competes with everything else in that prompt.
+For a long time my answer was to correct the agent in chat. It would apologize and write the lesson down: a line in `CLAUDE.md`, a rule in a skill, a memory. Often enough, it made the same mistake again a day later. The lesson existed as text, and text in a long prompt competes with everything else in that prompt. Adding the line was easy; nothing told me whether it changed anything.
 
 Fixing that does not take an intelligence explosion. Self-improvement doesn't have to mean a model that retrains itself or designs its successors. It can also mean improving what sits around the model:
 
@@ -63,15 +63,7 @@ Fixing that does not take an intelligence explosion. Self-improvement doesn't ha
 
 The model is fixed, and the harness is mutable. A loop in which an agent keeps improving its own harness, including the parts that do the improving, has a working name: Recursive Harness Self-Improvement, or RHSI.
 
-Changing the harness is the easy part; an agent does it every time it adds a line to its instructions. The hard part is knowing whether the change made anything better. So RHSI keeps three roles apart:
-
-- An observer collects evidence about what the agent did
-- An independent judge reads that evidence and decides what went well and what went wrong
-- An improving agent, the agent itself, works out what in its harness to change, makes the change and tests it
-
-A change counts as an improvement only when a later run of the judge no longer finds the same mistake.
-
-By the end of this blog, you will know how my own loop evolved, how the three roles fit together in it, and what one strike looks like on its way from my complaint to a verified fix. You will also see the numbers after its first two days, including a fix that still does not hold.
+By the end of this blog, you will know how my own loop evolved, how it is built, and what one strike looks like on its way from my complaint to a verified fix. You will also see the numbers after its first two days, including a fix that still does not hold.
 
 ### Who is this blog for?
 
@@ -90,7 +82,7 @@ A few terms we will use throughout:
 
 My first attempt was a scoreboard in late 2025. When Claude did something wrong, I recorded a strike with a reason; when it did something well, a praise. A script appended each one to a CSV file and kept a score, praises minus strikes. A Stop hook then told Claude to "IMPLEMENT all pending feedback" by updating its system prompts, `CLAUDE.md` or skills, and to mark each row as implemented.
 
-In the terms above, I was both the observer and the judge, and Claude was an improving agent that graded its own homework. A mistake counted only if I stopped my work to type it in. "Implemented" meant that Claude said so: nothing tested the change, and nothing checked whether the same mistake came back. I removed the whole system around the turn of the year; the final commit message says it "added friction without measurable benefit".
+I collected the evidence and judged it myself, and Claude graded its own homework. A mistake counted only if I stopped my work to type it in. "Implemented" meant that Claude said so: nothing tested the change, and nothing checked whether the same mistake came back. I removed the whole system around the turn of the year; the final commit message says it "added friction without measurable benefit".
 
 [![I record a strike with a reason, a CSV keeps the score, a Stop hook bell tells Claude to implement all pending feedback, Claude reports that it updated CLAUDE.md and marked the feedback implemented, and I look tired](_media/diagrams/rhsi-wave-1.png)](_media/diagrams/rhsi-wave-1.png)
 
@@ -146,6 +138,14 @@ Every change also gets a regression test built from the strike's own quotes, and
 ## Loop architecture
 
 ### Three roles
+
+The loop keeps three roles apart:
+
+- An observer collects evidence about what the agent did
+- An independent judge reads that evidence and hands out strikes and praise
+- An improving agent, the agent itself, works out what in its harness to change, makes the change and tests it
+
+A change counts as an improvement only when a later run of the judge no longer finds the same mistake.
 
 When I described my setup to Codex, I put the judge like this: "there is an external judge agent that is also not the same class". The judge "has all the signals": the transcript, the consequences of what the agent did, and the history in the ledger. From its strike or praise, the working model goes looking for the cause in its own harness, along the lines of "this hook is not sufficient. It needs to come earlier".
 
