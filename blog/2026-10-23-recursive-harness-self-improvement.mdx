@@ -63,7 +63,7 @@ By the end of this blog, you will know how my own loop evolved and how it is bui
 
 ### Who is this blog for?
 
-If you use an AI agent in a terminal or a desktop app and are tired of hearing "You're absolutely right, I should have...", this blog is for you.
+If you use an AI agent in a terminal or a desktop app and are tired of hearing "You're absolutely right, I should have...", this blog is for you. If you build the harness around your agent, the second half covers how my loop is built, where it can go wrong, and how to watch it.
 
 ## Attempts to solve the problem
 
@@ -174,7 +174,7 @@ Two hours later, the next run judges the next slice and checks whether each fixe
 
 The harness is everything around the fixed model: what fills its context window, what runs before and after each tool call, and the tools themselves.
 
-The loop sits on top of the setup I already use: 86 hook commands on 18 events, 68 allow and 21 deny permission rules, 10 MCP servers, 50 skills, 12 subagents and 229 scripts. Hooks also retrieve relevant memories and repository context before a search or a file read, and on request. The diagram colors these parts in four layers, session, context, harness and tools, and every change the loop makes names the layer it lands in.
+The loop sits on top of the setup I already use: 86 hook commands on 19 events, 68 allow and 21 deny permission rules, 10 MCP servers, 50 skills, 11 subagents and 231 scripts. Hooks also retrieve relevant memories and repository context before a search or a file read, and on request. The diagram colors these parts in four layers, session, context, harness and tools, and every change the loop makes names the layer it lands in.
 
 Most strikes are about behaviour: 146 of 299, counting a second agentic session, sit in the session layer. Almost no fixes land there. Of the 174 strikes closed with a committed fix, 92 changed a tool, 52 the harness and one the session; 29 edited text, all but one before I stopped accepting text.
 
@@ -234,7 +234,7 @@ The judge is another vendor's model. Every two hours, it receives my messages, t
 
 #### Rollback
 
-Each fix is one local commit with the ledger id in a trailer, and nothing is pushed. `git log` shows what changed and why, and `git revert` undoes one fix without touching the others.
+Each fix is one local commit with the ledger id in a trailer, and nothing is pushed. `git log` shows what changed and why, and `git revert` undoes one fix without touching the others. The catch is that the repository is the live harness: a fix takes effect the moment the worker writes it, before its test runs or its commit lands, and a revert cannot undo what it did in between.
 
 ### Observability and visibility
 
@@ -254,7 +254,8 @@ What to watch, and how:
 
 - Anchor metrics: my complaints per week, families that came back after a fix, fixes that stayed quiet, and strikes no mechanism can fix. The raw strike count says little on its own. Compute these from the raw ledger rows, never from a report the improving agent writes about itself.
 - Judge mistakes: 33 verdicts were superseded by a corrected rerun. Never delete a wrong verdict; close it as superseded so corrections stay visible. To estimate an error rate, sample verdicts at random and check each one by hand against the transcript, and rerun the frozen day after every rubric change.
-- Failure alerts: a failed judge run raises a critical desktop notice with the cause from the judge log. Send failures through a channel the loop does not own, because a broken loop cannot report itself in its own record, and log every run, including the ones that skip because the lock is held.
+- Failure alerts: a failed judge run raises a critical desktop notice with the cause from the judge log. Send failures through a channel the loop does not own, because a broken loop cannot report itself in its own record.
+- Skipped runs: log every run, including the ones that skip because the lock is held. On 23 October that log was the only witness. A background job the judge starts inherited its lock, so the second session's pass skipped every run for ten hours, and when one finally ran, its slice was 182 characters over the judge's input limit of 1,048,576. Another background job failed three runs out of three because it could not find the agent's CLI. None of it raised an alert, because a skip is not a failure. The fix closes the lock in the background job and judges a backlog in two-hour windows, split further when a prompt is too large.
 - Stalled delivery: for about twelve hours, the second session held the notification stream and logged the main session's records as receipts, so the reflect step never ran. Records now go to the main session as direct messages. No error showed it, so watch freshness: when verdicts keep arriving and fixes stop, something between the judge and the worker is broken.
 - Daily view: the one-line record after each run is the only loop output I read, in the pane I already watch. Put the summary where you already look, and keep ids and details in the ledger.
 - Audit trail: the ledger id in each fix commit's trailer links the code to the verdict. Searching `git log` for the trailer answers why a hook exists, and the ledger shows whether its family came back.
@@ -262,7 +263,7 @@ What to watch, and how:
 
 ## Conclusion
 
-Waiting for RSI shouldn't stop us from improving the agents we already have. RHSI keeps the model fixed and lets the agent improve its harness: an outside judge finds the mistakes in my own words, the agent turns each one into a hook, a tool or a check, and later runs show whether the mistake comes back. After two days, 31 fixes have already failed, 36 have stayed quiet for a day, and nothing is proven. The agent still tells me that nothing needs my attention more often than it should. The open question is whether the loop cuts my corrections enough to pay for its cost and upkeep, or piles up guards that become friction of their own.
+Waiting for RSI shouldn't stop us from improving the agents we already have. RHSI keeps the model fixed and lets the agent improve its harness: an outside judge finds the mistakes in my own words, the agent turns each one into a hook, a tool or a check, and later runs show whether the mistake comes back. After two days, 31 fixes have already failed, 36 have stayed quiet for a day, and nothing is proven. The agent still tells me that nothing needs my attention more often than it should, and the loop finds mistakes faster than it fixes them: once the skipped hours were judged, open strikes rose from 78 to 133 in one evening. The open question is whether the loop cuts my corrections enough to pay for its cost and upkeep, or piles up guards that become friction of their own.
 
 The next time your agent says "You're absolutely right, I should have...", don't let it write another note on the fridge. Ask it which check would catch the next repeat, what that check can miss, and who will look tomorrow.
 
