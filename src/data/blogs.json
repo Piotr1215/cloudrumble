@@ -64,6 +64,21 @@
     "pinned": true
   },
   {
+    "title": "You’re Absolutely Right: Now Fix Your Harness",
+    "link": "https://itnext.io/youre-absolutely-right-now-fix-your-harness-de84abad19c7",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*o56uMkVdn49w6zCI.png",
+    "description": "How my AI agent turns its own mistakes into hooks and tests, and why nothing is proven yet The model is fixed and the harness is mutable. How an obser...",
+    "date": "Oct 23, 2026",
+    "publishedAt": "2026-10-23T19:48:53.000Z",
+    "categories": [
+      "llm",
+      "ai-agent",
+      "software-development",
+      "artificial-intelligence",
+      "automation"
+    ]
+  },
+  {
     "title": "Text, Structure, Meaning: from grep to local LLM classifier",
     "link": "https://itnext.io/text-structure-meaning-from-grep-to-local-llm-classifier-7a37bd790e36",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*a3OKRBb5wsu-6ODP0pi8nw.png",
@@ -195,21 +210,6 @@
       "education",
       "kubernetes",
       "software-engineering",
-      "devops"
-    ]
-  },
-  {
-    "title": "Stop AI from Hallucinating Your Kubernetes YAML",
-    "link": "https://itnext.io/stop-ai-from-hallucinating-your-kubernetes-yaml-10142f685a8b",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*1GsCYrgwVq4LJjs0",
-    "description": "Using a vCluster YAML MCP Server You ask an AI to generate a Kubernetes manifest, Helm chart values, or Ansible playbook. It responds instantly with c...",
-    "date": "Oct 18, 2025",
-    "publishedAt": "2025-10-18T19:49:25.000Z",
-    "categories": [
-      "kubernetes",
-      "cloud-computing",
-      "ai",
-      "artificial-intelligence",
       "devops"
     ]
   }
