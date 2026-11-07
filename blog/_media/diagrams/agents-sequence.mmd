@@ -1,0 +1,23 @@
+sequenceDiagram
+    autonumber
+    participant P as me (pane or relay)
+    participant M as Mercury
+    participant S as job store
+    participant H as dispatch hook
+    participant W as one worker
+    participant B as pane or board
+    participant T as minute timer
+
+    P->>M: a request, typed or relayed
+    M->>S: add (same text within 10 min is a duplicate)
+    S-->>M: queued id
+    M-->>P: receipt: id and the worker it picked
+    M->>H: Agent call, first line mercury:id
+    H->>S: journal the intent, refuse past 3 in flight or while draining
+    H->>W: background run with the result contract
+    W-->>M: task notification
+    M->>S: tick
+    S-->>M: deliver id, result path
+    M->>B: answer in the pane, or a handoff with my one step
+    B-->>M: a small-model check can refuse a row that is a chore
+    T->>M: nudge, defer while I sit in the pane, restart fresh once drained

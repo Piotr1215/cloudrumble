@@ -1,0 +1,5 @@
+PLACEHOLDER: blog/_media/agents-hero.png is a generated stand-in (PIL, scripts in the PR description). Render the real hero with the prompt below and replace the file in place; the post's alt text already describes this scene.
+
+Model: Z-Image Turbo (Hugging Face Space mcp-tools/Z-Image-Turbo), 1536x864, 8 steps.
+
+Cinematic abstract 3D render on a pure black background, three-quarter view. Three small glass spheres rest on three separate stone pedestals in a shallow arc: one glowing warm amber, one cool cyan, one violet. Thin precise lines of light run from each sphere to a single matte ring floating at the center, like three stations joined by one quiet bus. Behind them, far back in the dark, one much larger dark sphere sits cracked open, its glowing seams dimming, old fragments scattered on the floor beneath it. Each small pedestal has its own faint pool of light; the large sphere has none. Dramatic rim lighting, amber, cyan and violet palette on black, high contrast, shallow depth of field, photoreal materials, octane render, wide landscape composition with dark negative space. No text, no letters, no people.
