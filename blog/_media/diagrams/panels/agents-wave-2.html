@@ -1,35 +1,5 @@
-<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="panel.css">
-<style>
-  .bin { position: absolute; width: 250px; background: #fff; border: 4px solid #222; border-radius: 10px 10px 4px 4px; padding: 10px 14px; font-size: 24px; text-align: center; box-shadow: 4px 4px 0 rgba(0,0,0,.15); }
-  .bin.ok { border-color: #1a7f37; }
-  .bin.board { border-color: #1f5fbf; }
-  .bin.esc { border-color: #c62828; }
-  .feed { position: absolute; font-family: 'Noto Color Emoji'; line-height: 1; }
-</style></head><body data-h="720">
-
-<div class="label" style="left:40px;top:24px;font-size:34px">Kendra takes the event stream</div>
-
-<div class="feed" style="left:50px;top:130px;font-size:60px">💬</div>
-<div class="feed" style="left:130px;top:170px;font-size:60px">📬</div>
-<div class="feed" style="left:50px;top:230px;font-size:60px">🔔</div>
-<div class="feed" style="left:130px;top:280px;font-size:60px">🔀</div>
-<div class="feed" style="left:50px;top:340px;font-size:60px">📅</div>
-<div class="feed" style="left:130px;top:390px;font-size:60px">🐛</div>
-<div class="label" style="left:40px;top:470px;font-size:24px">the same feeds,<br>one pane earlier</div>
-
-<div class="emoji" style="left:300px;top:220px;font-size:160px">🤖</div>
-<div class="emoji" style="left:290px;top:160px;font-size:70px">📥</div>
-<div class="label" style="left:290px;top:410px">Kendra, intake</div>
-<div class="bubble tail-down-left" style="left:290px;top:88px;font-size:24px;width:400px">settled means verified, not announced</div>
-
-<div class="bin ok" style="left:560px;top:120px">✅ settled<br><span style="font-size:19px">checked at the source</span></div>
-<div class="bin board" style="left:560px;top:290px">📋 handoff<br><span style="font-size:19px">one step left for me</span></div>
-<div class="bin esc" style="left:560px;top:460px">⚠️ exception<br><span style="font-size:19px">to Gordon</span></div>
-
-<div class="emoji" style="left:980px;top:240px;font-size:150px">🤖</div>
-<div class="emoji" style="left:965px;top:180px;font-size:66px">🎩</div>
-<div class="label" style="left:960px;top:420px">Gordon, quiet at last</div>
-<div class="bubble tail-down-right" style="left:900px;top:60px;font-size:24px;width:420px">Nothing requires your attention right now.</div>
-
-<div class="sign yellow" style="left:900px;top:560px;width:460px;font-size:21px">her window down? everything reaches Gordon as before</div>
-</body></html>
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="panel.css"><style>
+html,body{height:780px;background:#f7f1e5;color:#182b2b;font-family:'DejaVu Sans',sans-serif}.scene{position:absolute;inset:0;padding:44px 58px}.eyebrow{font:700 18px 'DejaVu Sans';letter-spacing:2px;text-transform:uppercase;color:#397b78}.title{position:static;font-size:44px;font-weight:700;margin:0 0 10px}.sub{font-size:24px;color:#506361}.card{position:absolute;border:3px solid #233b39;border-radius:24px;background:#fffaf0;box-shadow:0 10px 0 #ded4c3}.role{top:220px;width:330px;height:315px;text-align:center;padding:25px}.role.one{left:210px}.role.two{left:860px}.bot{font:140px/1.2 'Noto Color Emoji'}.role h2{font-size:30px;margin:10px 0}.symbol{position:absolute;top:261px;font:48px 'Noto Color Emoji';background:#f2c875;border:4px solid #f7f1e5;border-radius:50%;width:75px;height:75px;display:grid;place-items:center}.symbol.one{left:430px}.symbol.two{left:1080px}.label{font-size:21px;color:#60716d;line-height:1.4}.strap{position:absolute;left:265px;top:570px;width:880px;height:42px;background:#c47d54;border-radius:18px;transform:rotate(-2deg);z-index:2}.pack{position:absolute;left:312px;top:555px;width:780px;height:95px;border:4px solid #a85d43;border-radius:18px;background:#f5d7c8;padding:17px 25px;display:flex;align-items:center;justify-content:space-around;z-index:3}.tool{font:39px 'Noto Color Emoji';text-align:center}.tool span{display:block;font:18px 'DejaVu Sans';margin-top:8px}.join{position:absolute;left:540px;top:370px;width:310px;height:8px;background:#d08b36}.join:after{content:'';position:absolute;right:-2px;top:-11px;border:15px solid transparent;border-left-color:#d08b36}.context{position:absolute;left:442px;top:665px;width:510px;text-align:center;font-size:24px;font-weight:700;color:#a85d43}.side{position:absolute;top:645px;font-size:20px;color:#60716d}.side.left{left:240px}.side.right{right:235px}
+</style></head><body data-h="780"><main class="scene"><div class="eyebrow">A useful split, but only half the fix</div><h1 class="title">A second session, shared baggage</h1><div class="sub">Intake and main work have different roles, yet inherit the same loaded toolkit.</div>
+<section class="card role one"><div class="bot">🤖</div><h2>Intake</h2><div class="label">sorts incoming events<br>and flags exceptions</div></section><div class="symbol one">📥</div><div class="join"></div><section class="card role two"><div class="bot">🤖</div><h2>Main session</h2><div class="label">handles requests<br>and supervises work</div></section><div class="symbol two">🧭</div>
+<div class="strap"></div><div class="pack"><div class="tool">🧰<span>tools</span></div><div class="tool">📚<span>rules</span></div><div class="tool">🧩<span>skills</span></div><div class="tool">🔌<span>connections</span></div><div class="tool">🗂️<span>profiles</span></div></div><div class="context">The same large backpack follows both roles.</div><div class="side left">separate jobs</div><div class="side right">shared context</div></main></body></html>

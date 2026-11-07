@@ -1,50 +1,26 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"DejaVu Sans","fontSize":"25px","primaryColor":"#fff4df","primaryTextColor":"#182b2b","primaryBorderColor":"#397b78","lineColor":"#397b78","secondaryColor":"#e7f1ed","tertiaryColor":"#f5d7c8"}}}%%
 flowchart TB
-    subgraph IN["what comes in"]
+    subgraph EVENTS["Event path"]
         direction LR
-        REQ(["my requests<br/><i>pane, voice, Signal, ChatGPT relay</i>"])
-        EV["event feeds<br/><i>Slack, mail, calendar, GitHub,<br/>Linear, popups, task notices</i>"]
+        EV["Event inbox"] --> IN["Intake"] -->|exceptions| MAIN["Main session<br/>answers and supervises"]
     end
-    subgraph AG["three stable agents, one tmux session, one bus"]
+    subgraph JOBS["Jobs"]
         direction LR
-        M{{"Mercury<br/><i>ad hoc requests, disposable context<br/>~/loft/mercury/.claude, 5 skills</i>"}}
-        G{{"Gordon<br/><i>control plane: my attention,<br/>workers, escalations<br/>~/loft/gordon/.claude, 27 skills</i>"}}
-        K{{"Kendra<br/><i>intake: the event stream<br/>~/loft/kendra/.claude, 6 skills</i>"}}
+        REQ["My requests"] --> DIS["Dispatcher"] --> WORK["Bounded worker<br/>one job, small toolkit"] --> STORE["Stored result"] --> DELIVER["Dispatcher delivers"]
+        DELIVER -->|routine answer| USER["User or source"]
+        DELIVER -->|decision| HUMAN["Human decision list"]
     end
-    subgraph WK["workers, one job each"]
-        direction LR
-        SUB["designated subagents<br/><i>Haiku, Sonnet, a Codex relay</i>"]
-        REM["remote agents<br/><i>team lookups, code and builds</i>"]
-        TMX["persistent tmux workers<br/><i>Gordon starts them</i>"]
-    end
-    BOARD["handoffs board<br/><i>+piotr rows: finished work, one step for me</i>"]
+    MAIN -->|dispatches| WORK
+    NOTE["Shared guardrails · every role<br/>Role context · loaded per job"]
 
-    REQ --> M
-    REQ --> G
-    EV --> K
-    M -- "escalations" --> G
-    K -- "exceptions" --> G
-    M --> SUB
-    M --> REM
-    G --> SUB
-    G --> REM
-    G --> TMX
-    K --> SUB
-    WK -- "results with evidence" --> AG
-    AG -- "answers and handoffs" --> BOARD
-
-    subgraph LG["legend"]
-        direction LR
-        L1["me and my feeds"]:::me ~~~ L2["stable agent and its folder"]:::agent ~~~ L3["workers"]:::work
-    end
-    BOARD ~~~ LG
-
-    classDef me fill:#fff4c2,stroke:#b39200,color:#111
-    classDef agent fill:#dbeafe,stroke:#3b6fb6,color:#111
-    classDef work fill:#dff3e4,stroke:#3c8a55,color:#111
-    class REQ,EV,BOARD me
-    class G,K,M agent
-    class SUB,REM,TMX work
-    style IN fill:#fafafa,stroke:#bbb
-    style AG fill:#fafafa,stroke:#bbb
-    style WK fill:#fafafa,stroke:#bbb
-    style LG fill:#ffffff,stroke:#ddd
+    classDef input fill:#f5d7c8,stroke:#a85d43,color:#182b2b,stroke-width:2px
+    classDef role fill:#fff4df,stroke:#c38a3f,color:#182b2b,stroke-width:2px
+    classDef work fill:#e7f1ed,stroke:#397b78,color:#182b2b,stroke-width:2px
+    classDef store fill:#fffaf0,stroke:#397b78,color:#182b2b,stroke-width:2px
+    classDef note fill:#d9e9e2,stroke:#397b78,color:#182b2b,stroke-width:2px
+    class EV,REQ,USER,HUMAN input
+    class IN,MAIN,DIS,DELIVER role
+    class WORK work
+    class STORE store
+    class NOTE note
+    linkStyle default stroke:#397b78,stroke-width:2px

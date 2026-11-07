@@ -1,23 +1,23 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"DejaVu Sans","fontSize":"23px","primaryColor":"#fffaf0","primaryTextColor":"#182b2b","primaryBorderColor":"#397b78","lineColor":"#397b78","actorBkg":"#e7f1ed","actorBorder":"#397b78","actorTextColor":"#182b2b","signalColor":"#397b78","signalTextColor":"#182b2b","noteBkgColor":"#f5d7c8","noteBorderColor":"#a85d43","noteTextColor":"#182b2b"}}}%%
 sequenceDiagram
-    autonumber
-    participant P as me (pane or relay)
-    participant M as Mercury
-    participant S as job store
-    participant H as dispatch hook
-    participant W as one worker
-    participant B as pane or board
-    participant T as minute timer
+    actor U as User
+    participant D as Dispatcher
+    participant S as Job + result store
+    participant W as Worker
 
-    P->>M: a request, typed or relayed
-    M->>S: add (same text within 10 min is a duplicate)
-    S-->>M: queued id
-    M-->>P: receipt: id and the worker it picked
-    M->>H: Agent call, first line mercury:id
-    H->>S: journal the intent, refuse past 3 in flight or while draining
-    H->>W: background run with the result contract
-    W-->>M: task notification
-    M->>S: tick
-    S-->>M: deliver id, result path
-    M->>B: answer in the pane, or a handoff with my one step
-    B-->>M: a small-model check can refuse a row that is a chore
-    T->>M: nudge, defer while I sit in the pane, restart fresh once drained
+    U->>D: Send a request
+    D->>S: Record the job
+    D->>W: Start one bounded task
+    opt Dispatcher restarts before completion
+        D->>S: Find unfinished work
+        S-->>D: Return the recorded job
+        D->>W: Restart the task
+    end
+    W->>S: Save result file
+    S-->>D: Result file is ready
+    D->>S: Record completion
+    alt Routine answer
+        D-->>U: Deliver answer to user or source
+    else A decision is needed
+        Note over D,S: Decision handoff to list
+    end
