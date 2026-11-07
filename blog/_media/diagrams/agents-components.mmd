@@ -1,0 +1,26 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"DejaVu Sans","fontSize":"25px","primaryColor":"#fff4df","primaryTextColor":"#182b2b","primaryBorderColor":"#397b78","lineColor":"#397b78","secondaryColor":"#e7f1ed","tertiaryColor":"#f5d7c8"}}}%%
+flowchart TB
+    subgraph EVENTS["Event path"]
+        direction LR
+        EV["Event inbox"] --> IN["Intake"] -->|exceptions| MAIN["Main session<br/>answers and supervises"]
+    end
+    subgraph JOBS["Jobs"]
+        direction LR
+        REQ["My requests"] --> DIS["Dispatcher"] --> WORK["Bounded worker<br/>one job, small toolkit"] --> STORE["Stored result"] --> DELIVER["Dispatcher delivers"]
+        DELIVER -->|routine answer| USER["User or source"]
+        DELIVER -->|decision| HUMAN["Human decision list"]
+    end
+    MAIN -->|dispatches| WORK
+    NOTE["Shared guardrails · every role<br/>Role context · loaded per job"]
+
+    classDef input fill:#f5d7c8,stroke:#a85d43,color:#182b2b,stroke-width:2px
+    classDef role fill:#fff4df,stroke:#c38a3f,color:#182b2b,stroke-width:2px
+    classDef work fill:#e7f1ed,stroke:#397b78,color:#182b2b,stroke-width:2px
+    classDef store fill:#fffaf0,stroke:#397b78,color:#182b2b,stroke-width:2px
+    classDef note fill:#d9e9e2,stroke:#397b78,color:#182b2b,stroke-width:2px
+    class EV,REQ,USER,HUMAN input
+    class IN,MAIN,DIS,DELIVER role
+    class WORK work
+    class STORE store
+    class NOTE note
+    linkStyle default stroke:#397b78,stroke-width:2px

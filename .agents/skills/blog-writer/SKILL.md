@@ -44,11 +44,13 @@ Piotr prefers fact-dense prose, but fact density does not need clause density: s
 
 Use the repo's frontmatter, hero, truncate marker, and image sizing conventions. Add component imports only when the post uses them.
 
+Always `draft: false`, in the first commit and in the PR. A post marked `draft: true` is dropped from every production build, and the Netlify deploy preview of the PR is one, so the reviewer sees nothing. The PR preview is the review and the merge publishes (Piotr, 7 Nov 2026: "there is no reason to have a PR with draft true").
+
 ```mdx
 ---
 title: "The topic and reader's problem"
 date: YYYY-MM-DD
-draft: true
+draft: false
 tags: ["development"]
 image: _media/hero-image.png
 description: "What the reader will learn"

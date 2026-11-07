@@ -1,0 +1,8 @@
+Generated with the built-in imagegen tool on 2026-11-07. Replaces the placeholder hero.
+Final asset: blog/_media/agents-hero.png
+
+Exact generation prompt:
+Create a finished, premium editorial hero image for a technical essay titled 'One AI Agent, Too Many Jobs'. Use case: stylized-concept. Wide landscape composition, approximately 16:9. Abstract architectural still life photographed like an exquisite physical installation, not an infographic. A dense tangled bundle of fine amber light fibers enters from the left into a dark graphite structure and separates into three clear, independent channels. Each channel passes through its own beautifully crafted translucent glass chamber with a distinct subtle interior: one sorts small incoming tiles, one holds a single calm luminous core, one releases a few small discrete task capsules. Only a few finished warm light tiles emerge at the far right. The metaphor is clear division of responsibilities, separate context, and selective delivery to one person's attention. Restrained teal, amber and ivory lighting against deep midnight graphite; tactile brushed metal, thick optical glass, subtle paper-like surfaces, cinematic side lighting and realistic soft shadows, elegant negative space, strong coherent composition readable as a thumbnail. Sophisticated high-end 3D editorial art, precise geometry, optically plausible materials. No text, no letters, no symbols that look like writing, no logos, no watermarks, no robots, no people, no cartoon, no glowing spheres on pedestals, no network spaghetti, no stock AI brain aesthetic. This is the final article artwork, not a placeholder.
+
+Transparent background: false.
+Original generated output is retained under the active Codex home's generated_images directory.
