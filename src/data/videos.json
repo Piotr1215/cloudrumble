@@ -40,6 +40,15 @@
     "pinned": true
   },
   {
+    "id": "gwKwIOhnfF8",
+    "videoId": "gwKwIOhnfF8",
+    "title": "Build AI Apps Locally With a Remote GPU and vCluster",
+    "thumbnail": "https://img.youtube.com/vi/gwKwIOhnfF8/maxresdefault.jpg",
+    "description": "",
+    "date": "Nov 14, 2026",
+    "publishedAt": "2026-11-14T12:00:16+00:00"
+  },
+  {
     "id": "RqKfaoEvlNY",
     "videoId": "RqKfaoEvlNY",
     "title": "Text, Structure, Meaning: grep, ast-grep and a Local LLM Classifier",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Dec 13, 2025",
     "publishedAt": "2025-12-13T21:53:54+00:00"
-  },
-  {
-    "id": "UZtutO0NRoE",
-    "videoId": "UZtutO0NRoE",
-    "title": "4 Event-Driven Techniques That Changed My Terminal Workflow",
-    "thumbnail": "https://img.youtube.com/vi/UZtutO0NRoE/maxresdefault.jpg",
-    "description": "",
-    "date": "Dec 7, 2025",
-    "publishedAt": "2025-12-07T15:28:15+00:00"
   }
 ]
