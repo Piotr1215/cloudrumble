@@ -6,13 +6,15 @@ const confirmedTalks = require('../data/publicTalks');
 const Talks = () => {
 
   // Separate upcoming, pinned, and other talks
-  const upcomingTalks = confirmedTalks.filter(t => t.upcoming);
+  const upcomingTalks = confirmedTalks
+    .filter(t => t.upcoming)
+    .sort((a, b) => (a.date ?? '').localeCompare(b.date ?? ''));
   const pinnedTalks = confirmedTalks.filter(t => t.pinned && !t.upcoming);
 
   // Sort all other talks in descending order (newest first)
   const allTalks = confirmedTalks
     .filter(talk => !talk.upcoming && !talk.pinned)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
 
   return (
     <div className="max-w-[96rem] mx-auto font-mono">
