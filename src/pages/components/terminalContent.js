@@ -14,9 +14,15 @@ export default function TerminalContent() {
   const latestBlogs = blogsData.filter(b => !b.pinned).slice(0, 3);
 
   // Talks: upcoming first, then pinned, then recent
-  const upcomingTalks = talksData.filter(t => t.upcoming).slice(0, 3);
+  const upcomingTalks = talksData
+    .filter(t => t.upcoming)
+    .sort((a, b) => (a.date ?? '').localeCompare(b.date ?? ''))
+    .slice(0, 3);
   const pinnedTalks = talksData.filter(t => t.pinned && !t.upcoming).slice(0, 3);
-  const latestTalks = talksData.filter(t => !t.upcoming && !t.pinned).slice(0, 3);
+  const latestTalks = talksData
+    .filter(t => !t.upcoming && !t.pinned)
+    .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
+    .slice(0, 3);
 
   return (
     <section className="px-4">
