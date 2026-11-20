@@ -270,7 +270,7 @@
   {
     "name": "OpenGitOps Documents",
     "description": "Lasting documents from the OpenGitOps project which are versioned and released together, including the GitOps Principles and Glossary. Defining standards and best practices for GitOps.",
-    "stars": 483,
+    "stars": 482,
     "url": "https://github.com/open-gitops/documents",
     "tags": [
       "GitOps",
