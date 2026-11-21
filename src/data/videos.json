@@ -40,6 +40,15 @@
     "pinned": true
   },
   {
+    "id": "yWvU7jXGtPQ",
+    "videoId": "yWvU7jXGtPQ",
+    "title": "What Changes When an AI Agent Becomes a System Operator?",
+    "thumbnail": "https://img.youtube.com/vi/yWvU7jXGtPQ/maxresdefault.jpg",
+    "description": "",
+    "date": "Nov 20, 2026",
+    "publishedAt": "2026-11-20T20:26:33+00:00"
+  },
+  {
     "id": "gwKwIOhnfF8",
     "videoId": "gwKwIOhnfF8",
     "title": "Build AI Apps Locally With a Remote GPU and vCluster",
@@ -137,14 +146,5 @@
     "description": "",
     "date": "Dec 21, 2025",
     "publishedAt": "2025-12-21T22:40:20+00:00"
-  },
-  {
-    "id": "aqEIE6Jn0mU",
-    "videoId": "aqEIE6Jn0mU",
-    "title": "Practical Bash Scripting: What AI Can't Teach You",
-    "thumbnail": "https://img.youtube.com/vi/aqEIE6Jn0mU/maxresdefault.jpg",
-    "description": "",
-    "date": "Dec 13, 2025",
-    "publishedAt": "2025-12-13T21:53:54+00:00"
   }
 ]
