@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="ai-operators-panel.css"><style>
+html, body { height: 760px; }
+.loop { position: absolute; left: 470px; top: 205px; width: 400px; height: 380px; border-radius: 50%; border: 6px solid #1d8fa3; background: #e4f3f5; }
+.step { position: absolute; font-size: 22px; font-weight: 700; color: #1d5f6e; background: #eef3f5; padding: 2px 10px; border-radius: 10px; }
+</style></head><body data-h="760"><main class="scene">
+<div class="eyebrow">#2 Code operates</div>
+<h1 class="title">A controller follows the procedure</h1>
+<div class="sub">The desired state and the steps to reach it are written ahead of time.</div>
+
+<section class="card" style="left:58px;top:240px;width:300px;height:300px">
+  <div class="mid center">📄</div>
+  <h2 class="center">Spec</h2>
+  <div class="note center">the desired state, plus the cases its author thought of</div>
+</section>
+<div class="arrow cyan" style="left:368px;top:390px;width:92px"></div>
+
+<div class="loop"></div>
+<div class="big" style="position:absolute;left:600px;top:300px">⚙️</div>
+<div class="step" style="left:610px;top:190px">observe</div>
+<div class="step" style="left:830px;top:380px">compare</div>
+<div class="step" style="left:620px;top:568px">change</div>
+
+<div class="arrow" style="left:892px;top:300px;width:110px"></div>
+<section class="card" style="left:1020px;top:200px;width:320px;height:175px">
+  <div class="row"><span class="ico">✅</span><b>A known case</b></div>
+  <div class="note">fixed by the coded procedure</div>
+</section>
+<div class="arrow" style="left:892px;top:470px;width:110px;background:#c9694f"></div>
+<section class="card" style="left:1020px;top:405px;width:320px;height:190px">
+  <div class="row"><span class="ico">❓</span><b>A new case</b></div>
+  <div class="note">retry, log, wait, then page a person <span class="ico" style="font-size:24px">📟🧑‍🔧</span></div>
+</section>
+
+<div class="footer">Code took the procedures. Judgment stayed with people.</div>
+</main></body></html>
