@@ -1,0 +1,29 @@
+/* Shared look for the AI operators panels: cool paper, ink, amber for the agent, cyan for the platform. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1400px; background: #eef3f5; color: #16232e; font-family: 'DejaVu Sans', sans-serif; overflow: hidden; }
+.scene { position: absolute; inset: 0; padding: 44px 58px; }
+.eyebrow { font: 700 18px 'DejaVu Sans', sans-serif; letter-spacing: 2px; text-transform: uppercase; color: #1d7f92; }
+.title { font-size: 44px; font-weight: 700; margin: 4px 0 10px; }
+.sub { font-size: 24px; color: #4b5d68; }
+.card { position: absolute; border: 3px solid #22323d; border-radius: 22px; background: #fbfdfd; box-shadow: 0 9px 0 #d3dde2; padding: 24px; }
+.card h2 { font-size: 27px; margin: 0 0 14px; }
+.card.agent { background: #fff6e8; }
+.card.platform { background: #e4f3f5; }
+.row { display: flex; align-items: center; gap: 14px; font-size: 23px; margin: 13px 0; }
+.ico { font-family: 'Noto Color Emoji'; font-size: 32px; width: 40px; text-align: center; }
+.big { font-family: 'Noto Color Emoji'; font-size: 120px; line-height: 1.15; text-align: center; }
+.mid { font-family: 'Noto Color Emoji'; font-size: 64px; line-height: 1.1; }
+.note { font-size: 21px; color: #586a74; line-height: 1.35; }
+.center { text-align: center; }
+.arrow { position: absolute; height: 8px; background: #e0912b; }
+.arrow::after { content: ''; position: absolute; right: -2px; top: -12px; border: 16px solid transparent; border-left-color: #e0912b; }
+.arrow.cyan { background: #1d8fa3; }
+.arrow.cyan::after { border-left-color: #1d8fa3; }
+.pill { position: absolute; border-radius: 30px; padding: 11px 20px; font-size: 21px; border: 2px solid; }
+.pill.warn { background: #f8dccf; border-color: #c9694f; }
+.pill.ok { background: #d9efe2; border-color: #3f8f63; }
+.pill.info { background: #dcecf4; border-color: #3f7f9f; }
+.tag { display: inline-block; border-radius: 16px; padding: 6px 14px; margin: 6px 6px 0 0; font-size: 20px; background: #f8dccf; border: 2px solid #c9694f; }
+.footer { position: absolute; left: 58px; bottom: 34px; font-size: 21px; color: #586a74; }
+.fence { position: absolute; border: 5px dashed #1d8fa3; border-radius: 30px; }
+.fence-label { position: absolute; font: 700 17px 'DejaVu Sans', sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #1d7f92; background: #eef3f5; padding: 0 10px; }

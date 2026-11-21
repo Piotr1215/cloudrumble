@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="ai-operators-panel.css"><style>
+html, body { height: 740px; }
+.cmd { font: 19px 'DejaVu Sans Mono', monospace; background: #16232e; color: #e8f1f3; border-radius: 10px; padding: 12px 14px; margin-top: 14px; line-height: 1.35; }
+.vc { position: absolute; width: 150px; height: 120px; border: 3px solid #22323d; border-radius: 16px; background: #fbfdfd; text-align: center; padding-top: 10px; font-size: 18px; }
+.vc.mine { background: #fff6e8; border-color: #e0912b; border-width: 4px; }
+.vc .ico { display: block; width: auto; font-size: 40px; margin-bottom: 4px; }
+</style></head><body data-h="740"><main class="scene">
+<div class="eyebrow">#1 A developer's own cluster</div>
+<h1 class="title">One command, a cluster of my own</h1>
+<div class="sub">Self-service at its best: ask the platform, get a system, break it if you like.</div>
+
+<section class="card" style="left:58px;top:215px;width:340px;height:350px">
+  <div class="mid center">🧑‍💻</div>
+  <h2 class="center">Developer</h2>
+  <div class="cmd">vcluster platform \<br>&nbsp;&nbsp;create vcluster \<br>&nbsp;&nbsp;my-cluster</div>
+</section>
+<div class="arrow" style="left:408px;top:385px;width:80px"></div>
+
+<section class="card platform" style="left:505px;top:200px;width:520px;height:380px">
+  <h2>Host cluster</h2>
+  <div class="note">each virtual cluster is a control plane running in a pod</div>
+</section>
+<div class="vc mine" style="left:540px;top:345px"><span class="ico">🧑‍💻</span>my cluster<br><b>admin</b></div>
+<div class="vc" style="left:695px;top:345px"><span class="ico">🧑‍🎨</span>team A</div>
+<div class="vc" style="left:850px;top:345px"><span class="ico">🧑‍🔬</span>team B</div>
+
+<section class="card" style="left:1045px;top:215px;width:297px;height:350px">
+  <div class="mid center">🛡️</div>
+  <h2 class="center">Safe to hand out</h2>
+  <div class="note center">admin inside a virtual cluster cannot touch the host or the other tenants</div>
+</section>
+
+<div class="footer">Getting a system became easy. Keeping it running is still my job.</div>
+</main></body></html>

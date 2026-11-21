@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="ai-operators-panel.css"><style>
+html, body { height: 760px; }
+.node { position: absolute; width: 230px; text-align: center; }
+.node .mid { font-size: 70px; }
+.node b { display: block; font-size: 24px; margin-top: 4px; }
+.node .note { margin-top: 4px; }
+.curve { position: absolute; height: 8px; background: #e0912b; }
+.curve::after { content: ''; position: absolute; right: -2px; top: -12px; border: 16px solid transparent; border-left-color: #e0912b; }
+.curve.back { background: #1d8fa3; }
+.curve.back::after { right: auto; left: -2px; border-left-color: transparent; border-right-color: #1d8fa3; }
+.vline { position: absolute; width: 8px; background: #e0912b; }
+.vline::after { content: ''; position: absolute; left: -12px; bottom: -2px; border: 16px solid transparent; border-top-color: #e0912b; }
+.vline.up { background: #1d8fa3; }
+.vline.up::after { bottom: auto; top: -2px; border-top-color: transparent; border-bottom-color: #1d8fa3; }
+.cmd { font: 18px 'DejaVu Sans Mono', monospace; background: #16232e; color: #e8f1f3; border-radius: 10px; padding: 10px 12px; margin-top: 12px; line-height: 1.35; }
+</style></head><body data-h="760"><main class="scene">
+<div class="eyebrow">#2 A developer using AI</div>
+<h1 class="title">The person is the loop</h1>
+<div class="sub">The model answers. I copy, run and paste back every step.</div>
+
+<section class="card" style="left:58px;top:200px;width:840px;height:420px"></section>
+<div class="node" style="left:90px;top:250px"><div class="mid">🧑‍💻</div><b>I ask</b><div class="note">"how do I list everything running?"</div></div>
+<div class="curve" style="left:320px;top:300px;width:150px"></div>
+<div class="node" style="left:480px;top:250px"><div class="mid">💬</div><b>A model answers</b><div class="note">with a command, as text</div></div>
+<div class="curve back" style="left:320px;top:500px;width:150px"></div>
+<div class="node" style="left:90px;top:445px"><div class="mid">📋</div><b>I paste the result back</b></div>
+<div class="node" style="left:480px;top:445px"><div class="mid">⌨️</div><b>I copy and run it</b></div>
+<div class="vline" style="left:745px;top:300px;height:190px"></div>
+<div class="vline up" style="left:72px;top:330px;height:170px"></div>
+<div class="pill warn" style="left:300px;top:640px">The model never touches the cluster</div>
+
+<section class="card agent" style="left:930px;top:200px;width:412px;height:420px">
+  <div class="mid center">⚖️</div>
+  <h2 class="center">A decision model</h2>
+  <div class="note center">answers one question about a text: yes or no, and how sure it is</div>
+  <div class="cmd">kubectl get pods -A | classif<br>"Are all pods Running?"<br>→ yes 0.99</div>
+</section>
+</main></body></html>

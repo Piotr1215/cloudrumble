@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="ai-operators-panel.css"><style>
+html, body { height: 640px; }
+.col { position: absolute; top: 215px; width: 400px; height: 320px; }
+.who { display: flex; gap: 10px; align-items: center; font-size: 21px; margin: 8px 0; }
+.who .ico { font-size: 28px; width: 34px; }
+.track { position: absolute; left: 58px; top: 568px; width: 1250px; height: 10px; border-radius: 5px; background: linear-gradient(90deg, #1d8fa3, #e0912b); }
+.track::after { content: ''; position: absolute; right: -26px; top: -13px; border: 18px solid transparent; border-left-color: #e0912b; }
+</style></head><body data-h="640"><main class="scene">
+<div class="eyebrow">The shift</div>
+<h1 class="title">Who a system is built for</h1>
+<div class="sub">The same platform work, designed around a different first operator.</div>
+
+<section class="card col" style="left:58px">
+  <h2>Built for people</h2>
+  <div class="who"><span class="ico">🧑‍🔧</span>a person operates</div>
+  <div class="who"><span class="ico">🧑‍💻</span>a person consumes</div>
+  <div class="note" style="margin-top:16px">UI for every action, runbooks, dashboards, alerts written for people to read</div>
+</section>
+
+<section class="card platform col" style="left:500px">
+  <h2>Adapted for AI</h2>
+  <div class="who"><span class="ico">🧑‍🔧</span>a person operates</div>
+  <div class="who"><span class="ico">🤖</span>an agent helps out</div>
+  <div class="note" style="margin-top:16px">MCP servers and CLIs over APIs made for people, a file of instructions for agents beside the README</div>
+</section>
+
+<section class="card agent col" style="left:942px">
+  <h2>Built for AI</h2>
+  <div class="who"><span class="ico">🤖</span>an agent operates</div>
+  <div class="who"><span class="ico">🧑‍💻</span>people get the outcome</div>
+  <div class="note" style="margin-top:16px">a goal as the spec, docs written for agents first, maybe no UI at all, and a fence the platform keeps</div>
+</section>
+
+<div class="track"></div>
+</main></body></html>
