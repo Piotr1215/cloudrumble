@@ -85,7 +85,9 @@ The platform team writes the top box: the goal, the role that limits the agent's
 
 Walk through one run, step by step.
 
-**An account.** Tess is a Platform user, created like any developer. The manifest is the same `User` object the platform uses for people. The platform team adds her to a project for agent clusters.
+### An account
+
+Tess is a Platform user, created like any developer. The manifest is the same `User` object the platform uses for people. The platform team adds her to a project for agent clusters.
 
 ```yaml
 apiVersion: management.loft.sh/v1
@@ -98,9 +100,13 @@ spec:
   subject: tess
 ```
 
-**A role.** The project gives Tess one role, `agent-stack-author`. It lets her create and manage Stacks in her own project, read their outputs, and look at virtual cluster instances. It does not let her create a cluster or change a cluster's config. The role was written once, before Tess existed.
+### A role
 
-**A key.** Tess gets an API key that carries her rights and nothing more, valid for a week (`ttl: 604800`), and a kubeconfig that holds it. If the key leaks, it opens what Tess's role opens, and only until it expires.
+The project gives Tess one role, `agent-stack-author`. It lets her create and manage Stacks in her own project, read their outputs, and look at virtual cluster instances. It does not let her create a cluster or change a cluster's config. The role was written once, before Tess existed.
+
+### A key
+
+Tess gets an API key that carries her rights and nothing more, valid for a week (`ttl: 604800`), and a kubeconfig that holds it. If the key leaks, it opens what Tess's role opens, and only until it expires.
 
 ```yaml
 apiVersion: management.loft.sh/v1
@@ -114,9 +120,13 @@ spec:
   ttl: 604800
 ```
 
-**A cluster.** The platform team creates the cluster Tess operates, from its own config file, `agent.yaml`. Tess cannot create clusters. The config sets a resource quota (four CPUs, eight gigabytes of memory, twenty pods, two load balancers), a limit range, a Service that exposes the model the platform runs on a GPU node, and the goal mapping described next.
+### A cluster
 
-**A goal.** The goal is a ConfigMap on the host, in a namespace only the platform team can write. The cluster config syncs it into Tess's cluster as a copy she can read. This is the goal in the demo, in full:
+The platform team creates the cluster Tess operates, from its own config file, `agent.yaml`. Tess cannot create clusters. The config sets a resource quota (four CPUs, eight gigabytes of memory, twenty pods, two load balancers), a limit range, a Service that exposes the model the platform runs on a GPU node, and the goal mapping described next.
+
+### A goal
+
+The goal is a ConfigMap on the host, in a namespace only the platform team can write. The cluster config syncs it into Tess's cluster as a copy she can read. This is the goal in the demo, in full:
 
 ```yaml
 data:
@@ -133,7 +143,9 @@ data:
 
 The last sentence is the on-call duty. It is part of the goal, in plain language, not a separate alerting setup.
 
-**A session.** A task starts Tess. She reads the goal, looks up the fields she needs, writes a Stack, applies it, and fixes what fails until the Stack reports Healthy. A Stack is a file applied to the Platform that describes a graph of apps. Each task is an app with its manifests and the cluster it goes to, a `dependsOn` makes a task wait for the one above it, and the last task is a proof that the whole system works. The Platform deploys the apps, tracks them and shows the Stack's outputs, such as a URL. Deleting the Stack removes every app it made.
+### A session
+
+A task starts Tess. She reads the goal, looks up the fields she needs, writes a Stack, applies it, and fixes what fails until the Stack reports Healthy. A Stack is a file applied to the Platform that describes a graph of apps. Each task is an app with its manifests and the cluster it goes to, a `dependsOn` makes a task wait for the one above it, and the last task is a proof that the whole system works. The Platform deploys the apps, tracks them and shows the Stack's outputs, such as a URL. Deleting the Stack removes every app it made.
 
 That answers the fourth limit from the list above. What Tess builds is one Stack, so it has an owner, a status, and one command that removes it.
 
@@ -145,7 +157,7 @@ From the goal, Tess built a question board for the room: a web page where people
 
 Two details matter for the argument of this post. First, the message goes to the model on stdin and never into a shell, so a message cannot become a command. Second, the choice of what to ask the model and how the board asks it was Tess's. The platform team wrote a goal, not a design. Tess also wrote the proof task at the end of the Stack, which passes only when the page loads, genuine questions are accepted and attempts to instruct the board are dropped.
 
-The talk's room used the board from their phones. This post does not report numbers from that session; it describes what the demo was built to show.
+The board takes questions from any phone in the room. This post reports no numbers from a live session; it describes what the demo was built to show.
 
 ## What the key reaches
 
@@ -153,12 +165,12 @@ Before trusting an agent with admin in a cluster, I want to see what its key rea
 
 The checks, with what they are meant to show:
 
-- **Own cluster:** `kubectl auth can-i '*' '*'` is yes. She is cluster-admin there, including its own CRDs and controllers.
-- **Own Stacks:** a Stack that deploys to her own cluster is accepted.
-- **Run as admin:** a Stack that names the admin as its owner is refused. A Stack runs as the agent who made it.
-- **Another cluster:** a Stack aimed at the host cluster is refused. Her Stacks reach her own cluster only.
-- **Cluster config:** a patch to her cluster's Helm values is refused. `agent.yaml` stays the platform's.
-- **A new cluster:** creating a virtual cluster instance is refused. Clusters come from the platform team.
+- Own cluster: `kubectl auth can-i '*' '*'` is yes. She is cluster-admin there, including its own CRDs and controllers.
+- Own Stacks: a Stack that deploys to her own cluster is accepted.
+- Run as admin: a Stack that names the admin as its owner is refused. A Stack runs as the agent who made it.
+- Another cluster: a Stack aimed at the host cluster is refused. Her Stacks reach her own cluster only.
+- Cluster config: a patch to her cluster's Helm values is refused. `agent.yaml` stays the platform's.
+- A new cluster: creating a virtual cluster instance is refused. Clusters come from the platform team.
 
 I have not published a captured run of that script here. When you build your own version, run the equivalent probes against your own roles before the agent gets its first goal; they are cheap and they read like a test suite for your fence.
 
