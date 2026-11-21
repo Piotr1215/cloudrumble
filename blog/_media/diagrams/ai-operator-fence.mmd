@@ -1,0 +1,24 @@
+flowchart TB
+  subgraph PT["Platform team: writes, agent cannot"]
+    G["goal<br/>agent-goals/tess"]
+    R["role: agent-stack-author<br/>Stacks in its own project only"]
+    C["cluster config<br/>agent.yaml: quota, synced goal"]
+  end
+  subgraph PL["Platform API"]
+    U["user: tess<br/>API key, 1 week"]
+    S["StackInstance<br/>(Tess's Stack)"]
+  end
+  subgraph VC["Tess's virtual cluster: Tess is admin"]
+    GC["goal/goal<br/>read copy, edits undone"]
+    A["apps of the Stack<br/>board, model access, canary, proof"]
+    E["Warning events<br/>the pager"]
+  end
+  T(("Tess<br/>observe, decide,<br/>act, check"))
+  G -- "synced from host, never back" --> GC
+  C -. "shapes" .-> VC
+  R -. "limits" .-> U
+  T -- "kubectl, own key" --> VC
+  T -- "own key" --> S
+  S -- "deploys to" --> A
+  E -- "starts a session" --> T
+  GC -- "read" --> T
