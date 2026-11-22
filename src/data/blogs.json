@@ -64,6 +64,21 @@
     "pinned": true
   },
   {
+    "title": "Your Platform Already Has AI Operators",
+    "link": "https://itnext.io/your-platform-already-has-ai-operators-e927d0e3c8c6",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*B1tN93E41NYQ4QA4.png",
+    "description": "From a developer’s own cluster to an agent’s own cluster: how AI moves from helping us use a platform to operating systems on it, and why the next sys...",
+    "date": "Nov 21, 2026",
+    "publishedAt": "2026-11-21T10:53:33.000Z",
+    "categories": [
+      "devops",
+      "ai-agent",
+      "platform-engineering",
+      "artificial-intelligence",
+      "kubernetes"
+    ]
+  },
+  {
     "title": "You’re Absolutely Right: Now Fix Your Harness",
     "link": "https://itnext.io/youre-absolutely-right-now-fix-your-harness-de84abad19c7",
     "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*o56uMkVdn49w6zCI.png",
@@ -196,21 +211,6 @@
       "artificial-intelligence",
       "cloud-computing",
       "kubernetes"
-    ]
-  },
-  {
-    "title": "From Physical Servers to Virtual Kubernetes Clusters",
-    "link": "https://itnext.io/from-physical-servers-to-virtual-kubernetes-clusters-85f931d4cdff",
-    "thumbnail": "https://cdn-images-1.medium.com/max/1024/0*ZEsdmS2pVjxM3l6K.png",
-    "description": "Understanding the need for Kubernetes multi-tenancy with vCluster TL;DR: This blog explains the evolution of computing abstractions from physical serv...",
-    "date": "Oct 23, 2025",
-    "publishedAt": "2025-10-23T19:33:21.000Z",
-    "categories": [
-      "cloud-computing",
-      "education",
-      "kubernetes",
-      "software-engineering",
-      "devops"
     ]
   }
 ]
